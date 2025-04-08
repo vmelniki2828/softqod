@@ -8,7 +8,7 @@ const LoaderContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
-  background: #000000;
+  background: #021024;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,9 +22,9 @@ const LoaderContent = styled.div`
 const LogoText = styled(motion.h1)`
   font-size: 3rem;
   font-weight: 800;
-  color: #ffffff;
+  color: #C1E8FF;
   margin-bottom: 2rem;
-  background: linear-gradient(45deg, #40A9FF, #69C0FF);
+  background: linear-gradient(45deg, #5483B3, #7DA0CA);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
@@ -32,7 +32,7 @@ const LogoText = styled(motion.h1)`
 const LoaderShape = styled(motion.div)`
   width: 100px;
   height: 100px;
-  background: linear-gradient(45deg, #40A9FF, #69C0FF);
+  background: linear-gradient(45deg, #5483B3, #7DA0CA);
   margin: 0 auto;
   border-radius: 20px;
 `;
@@ -40,8 +40,8 @@ const LoaderShape = styled(motion.div)`
 const Loader = ({ isLoading }) => {
   const containerVariants = {
     hidden: { opacity: 1 },
-    visible: { 
-      opacity: 0,
+    visible: {
+      opacity: 1,
       transition: {
         duration: 0.5,
         when: "afterChildren"
@@ -51,8 +51,8 @@ const Loader = ({ isLoading }) => {
 
   const logoVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.5

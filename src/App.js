@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import Benefits from './components/Benefits';
 import Cases from './components/Cases';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 import Loader from './components/Loader';
 
 const GlobalStyle = createGlobalStyle`
@@ -17,8 +19,8 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #021024;
+    color: #C1E8FF;
     overflow-x: hidden;
   }
 
@@ -27,16 +29,16 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-track {
-    background: #1a1a1a;
+    background: #052659;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #333;
+    background: #5483B3;
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #444;
+    background: #7DA0CA;
   }
 `;
 
@@ -66,11 +68,13 @@ const App = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
+            <Header />
             <Hero />
             <Services />
             <Benefits />
             <Cases />
             <Contact />
+            <Footer />
           </motion.div>
         )}
       </AnimatePresence>

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const CasesSection = styled.section`
   padding: 6rem 2rem;
-  background: #111111;
+  background: #052659;
 `;
 
 const Container = styled.div`
@@ -16,7 +16,7 @@ const SectionTitle = styled(motion.h2)`
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 4rem;
-  color: #ffffff;
+  color: #C1E8FF;
   
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -33,18 +33,18 @@ const CaseCard = styled(motion.div)`
   position: relative;
   border-radius: 10px;
   overflow: hidden;
-  background: #1a1a1a;
-  border: 1px solid #333;
+  background: #021024;
+  border: 1px solid #5483B3;
   
   &:hover {
-    border-color: #ffffff;
+    border-color: #C1E8FF;
   }
 `;
 
 const CaseImage = styled.div`
   width: 100%;
   height: 250px;
-  background: #222;
+  background: #052659;
   position: relative;
   overflow: hidden;
   
@@ -55,7 +55,7 @@ const CaseImage = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.8) 100%);
+    background: linear-gradient(to bottom, transparent 0%, rgba(2, 16, 36, 0.8) 100%);
     z-index: 1;
   }
 `;
@@ -69,17 +69,17 @@ const CaseContent = styled.div`
 const CaseTitle = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #ffffff;
+  color: #C1E8FF;
 `;
 
 const CaseDescription = styled.p`
-  color: #888888;
+  color: #7DA0CA;
   margin-bottom: 1.5rem;
   line-height: 1.6;
 `;
 
 const CaseLink = styled(motion.a)`
-  color: #ffffff;
+  color: #C1E8FF;
   text-decoration: none;
   font-weight: 500;
   display: inline-flex;
@@ -87,7 +87,7 @@ const CaseLink = styled(motion.a)`
   gap: 0.5rem;
   
   &:hover {
-    color: #888888;
+    color: #7DA0CA;
   }
 `;
 

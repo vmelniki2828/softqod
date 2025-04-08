@@ -8,8 +8,8 @@ const HeroSection = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
-  background: #000000;
+  padding: 6rem 0 0 0;
+  background: #021024;
   overflow: hidden;
 `;
 
@@ -19,7 +19,7 @@ const GradientBackground = styled(motion.div)`
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(30, 144, 255, 0.1) 0%, transparent 50%);
+  background: radial-gradient(circle at 50% 50%, rgba(193, 232, 255, 0.1) 0%, transparent 50%);
   z-index: 1;
 `;
 
@@ -71,7 +71,7 @@ const Title = styled(motion.h1)`
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 1.5rem;
-  background: linear-gradient(45deg, #40A9FF, #69C0FF);
+  background: linear-gradient(45deg, #5483B3, #7DA0CA);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   
@@ -82,7 +82,7 @@ const Title = styled(motion.h1)`
 
 const Subtitle = styled(motion.p)`
   font-size: 1.25rem;
-  color: #888888;
+  color: #C1E8FF;
   margin-bottom: 2rem;
   line-height: 1.6;
   
@@ -106,16 +106,16 @@ const PrimaryButton = styled(motion.button)`
   padding: 1rem 2rem;
   font-size: 1.1rem;
   font-weight: 500;
-  color: #000000;
-  background: #ffffff;
+  color: #021024;
+  background: #C1E8FF;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   
   &:hover {
-    background: #40A9FF;
-    color: #ffffff;
+    background: #5483B3;
+    color: #C1E8FF;
   }
 `;
 
@@ -123,15 +123,15 @@ const SecondaryButton = styled(motion.button)`
   padding: 1rem 2rem;
   font-size: 1.1rem;
   font-weight: 500;
-  color: #ffffff;
+  color: #C1E8FF;
   background: transparent;
-  border: 1px solid #ffffff;
+  border: 1px solid #C1E8FF;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   
   &:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(193, 232, 255, 0.1);
   }
 `;
 
@@ -153,7 +153,7 @@ const StatItem = styled(motion.div)`
 const StatNumber = styled.div`
   font-size: 2.5rem;
   font-weight: 700;
-  color: #40A9FF;
+  color: #5483B3;
   margin-bottom: 0.5rem;
   
   @media (max-width: 768px) {
@@ -162,14 +162,14 @@ const StatNumber = styled.div`
 `;
 
 const StatLabel = styled.div`
-  color: #888888;
+  color: #C1E8FF;
   font-size: 1rem;
 `;
 
 const AnimatedShape = styled(motion.div)`
   width: 400px;
   height: 400px;
-  background: linear-gradient(45deg, #1a1a1a, #333333);
+  background: linear-gradient(45deg, #052659, #5483B3);
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   position: relative;
   margin-left: auto;
@@ -181,7 +181,7 @@ const AnimatedShape = styled(motion.div)`
     left: 10px;
     right: 10px;
     bottom: 10px;
-    border: 2px solid #40A9FF;
+    border: 2px solid #7DA0CA;
     border-radius: inherit;
     opacity: 0.3;
   }

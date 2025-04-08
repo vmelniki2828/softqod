@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const BenefitsSection = styled.section`
   padding: 6rem 2rem;
-  background: #000000;
+  background: #021024;
 `;
 
 const Container = styled.div`
@@ -16,7 +16,7 @@ const SectionTitle = styled(motion.h2)`
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 4rem;
-  color: #ffffff;
+  color: #C1E8FF;
   
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -35,21 +35,21 @@ const BenefitItem = styled(motion.div)`
   align-items: center;
   text-align: center;
   padding: 2rem;
-  background: #111111;
+  background: #052659;
   border-radius: 10px;
-  border: 1px solid #333;
+  border: 1px solid #5483B3;
   
   &:hover {
-    border-color: #ffffff;
+    border-color: #C1E8FF;
   }
 `;
 
 const Number = styled.div`
   font-size: 3rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #C1E8FF;
   margin-bottom: 1rem;
-  background: linear-gradient(45deg, #ffffff, #888888);
+  background: linear-gradient(45deg, #C1E8FF, #7DA0CA);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
@@ -57,11 +57,11 @@ const Number = styled.div`
 const BenefitTitle = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #ffffff;
+  color: #C1E8FF;
 `;
 
 const BenefitDescription = styled.p`
-  color: #888888;
+  color: #7DA0CA;
   line-height: 1.6;
 `;
 
