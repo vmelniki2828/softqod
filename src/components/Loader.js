@@ -8,7 +8,7 @@ const LoaderContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
-  background: #021024;
+  background: #06141B;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,9 +22,9 @@ const LoaderContent = styled.div`
 const LogoText = styled(motion.h1)`
   font-size: 3rem;
   font-weight: 800;
-  color: #C1E8FF;
+  color: #CCD0CF;
   margin-bottom: 2rem;
-  background: linear-gradient(45deg, #5483B3, #7DA0CA);
+  background: linear-gradient(45deg, #4A5C6A, #9BA8AB);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
@@ -32,7 +32,7 @@ const LogoText = styled(motion.h1)`
 const LoaderShape = styled(motion.div)`
   width: 100px;
   height: 100px;
-  background: linear-gradient(45deg, #5483B3, #7DA0CA);
+  background: linear-gradient(45deg, #4A5C6A, #9BA8AB);
   margin: 0 auto;
   border-radius: 20px;
 `;
@@ -107,4 +107,4 @@ const Loader = ({ isLoading }) => {
   );
 };
 
-export default Loader; 
+export default Loader;

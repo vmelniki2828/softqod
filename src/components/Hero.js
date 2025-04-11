@@ -9,7 +9,7 @@ const HeroSection = styled.section`
   align-items: center;
   justify-content: center;
   padding: 6rem 0 0 0;
-  background: #021024;
+  background: #06141B;
   overflow: hidden;
 `;
 
@@ -19,7 +19,7 @@ const GradientBackground = styled(motion.div)`
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(193, 232, 255, 0.1) 0%, transparent 50%);
+  background: radial-gradient(circle at 50% 50%, rgba(155, 168, 171, 0.1) 0%, transparent 50%);
   z-index: 1;
 `;
 
@@ -71,7 +71,7 @@ const Title = styled(motion.h1)`
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 1.5rem;
-  background: linear-gradient(45deg, #5483B3, #7DA0CA);
+  background: linear-gradient(45deg, #4A5C6A, #9BA8AB);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   
@@ -82,7 +82,7 @@ const Title = styled(motion.h1)`
 
 const Subtitle = styled(motion.p)`
   font-size: 1.25rem;
-  color: #C1E8FF;
+  color: #CCD0CF;
   margin-bottom: 2rem;
   line-height: 1.6;
   
@@ -106,16 +106,16 @@ const PrimaryButton = styled(motion.button)`
   padding: 1rem 2rem;
   font-size: 1.1rem;
   font-weight: 500;
-  color: #021024;
-  background: #C1E8FF;
+  color: #06141B;
+  background: #CCD0CF;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   
   &:hover {
-    background: #5483B3;
-    color: #C1E8FF;
+    background: #4A5C6A;
+    color: #CCD0CF;
   }
 `;
 
@@ -123,15 +123,15 @@ const SecondaryButton = styled(motion.button)`
   padding: 1rem 2rem;
   font-size: 1.1rem;
   font-weight: 500;
-  color: #C1E8FF;
+  color: #CCD0CF;
   background: transparent;
-  border: 1px solid #C1E8FF;
+  border: 1px solid #CCD0CF;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   
   &:hover {
-    background: rgba(193, 232, 255, 0.1);
+    background: rgba(155, 168, 171, 0.1);
   }
 `;
 
@@ -153,7 +153,7 @@ const StatItem = styled(motion.div)`
 const StatNumber = styled.div`
   font-size: 2.5rem;
   font-weight: 700;
-  color: #5483B3;
+  color: #4A5C6A;
   margin-bottom: 0.5rem;
   
   @media (max-width: 768px) {
@@ -162,14 +162,14 @@ const StatNumber = styled.div`
 `;
 
 const StatLabel = styled.div`
-  color: #C1E8FF;
+  color: #CCD0CF;
   font-size: 1rem;
 `;
 
 const AnimatedShape = styled(motion.div)`
   width: 400px;
   height: 400px;
-  background: linear-gradient(45deg, #052659, #5483B3);
+  background: linear-gradient(45deg, #11212D, #4A5C6A);
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   position: relative;
   margin-left: auto;
@@ -181,7 +181,7 @@ const AnimatedShape = styled(motion.div)`
     left: 10px;
     right: 10px;
     bottom: 10px;
-    border: 2px solid #7DA0CA;
+    border: 2px solid #9BA8AB;
     border-radius: inherit;
     opacity: 0.3;
   }
@@ -208,7 +208,7 @@ const Hero = () => {
       />
       <FloatingCircle
         size={300}
-        color="#40A9FF"
+        color="#4A5C6A"
         initial={{ x: -100, y: -100 }}
         animate={{
           x: [-100, 100, -100],
@@ -222,7 +222,7 @@ const Hero = () => {
       />
       <FloatingCircle
         size={200}
-        color="#69C0FF"
+        color="#9BA8AB"
         initial={{ x: 100, y: 100 }}
         animate={{
           x: [100, -100, 100],
@@ -308,4 +308,4 @@ const Hero = () => {
   );
 };
 
-export default Hero; 
+export default Hero;

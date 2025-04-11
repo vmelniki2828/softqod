@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const CasesSection = styled.section`
   padding: 6rem 2rem;
-  background: #052659;
+  background: #06141B;
 `;
 
 const Container = styled.div`
@@ -16,7 +16,7 @@ const SectionTitle = styled(motion.h2)`
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 4rem;
-  color: #C1E8FF;
+  color: #CCD0CF;
   
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -33,18 +33,18 @@ const CaseCard = styled(motion.div)`
   position: relative;
   border-radius: 10px;
   overflow: hidden;
-  background: #021024;
-  border: 1px solid #5483B3;
+  background: #11212D;
+  border: 1px solid #4A5C6A;
   
   &:hover {
-    border-color: #C1E8FF;
+    border-color: #CCD0CF;
   }
 `;
 
 const CaseImage = styled.div`
   width: 100%;
   height: 250px;
-  background: #052659;
+  background: #06141B;
   position: relative;
   overflow: hidden;
   
@@ -55,7 +55,7 @@ const CaseImage = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, transparent 0%, rgba(2, 16, 36, 0.8) 100%);
+    background: linear-gradient(to bottom, transparent 0%, rgba(17, 33, 45, 0.8) 100%);
     z-index: 1;
   }
 `;
@@ -69,17 +69,17 @@ const CaseContent = styled.div`
 const CaseTitle = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #C1E8FF;
+  color: #CCD0CF;
 `;
 
 const CaseDescription = styled.p`
-  color: #7DA0CA;
+  color: #9BA8AB;
   margin-bottom: 1.5rem;
   line-height: 1.6;
 `;
 
 const CaseLink = styled(motion.a)`
-  color: #C1E8FF;
+  color: #CCD0CF;
   text-decoration: none;
   font-weight: 500;
   display: inline-flex;
@@ -87,7 +87,7 @@ const CaseLink = styled(motion.a)`
   gap: 0.5rem;
   
   &:hover {
-    color: #7DA0CA;
+    color: #9BA8AB;
   }
 `;
 
@@ -95,17 +95,17 @@ const cases = [
   {
     title: 'E-commerce платформа',
     description: 'Разработка современной платформы электронной коммерции с интеграцией платежных систем и аналитикой.',
-    image: '#1a1a1a'
+    image: '#253745'
   },
   {
     title: 'Корпоративный портал',
     description: 'Создание корпоративного портала для крупной компании с системой управления документами.',
-    image: '#222222'
+    image: '#4A5C6A'
   },
   {
     title: 'AI-ассистент',
     description: 'Разработка интеллектуального ассистента для автоматизации бизнес-процессов.',
-    image: '#333333'
+    image: '#9BA8AB'
   }
 ];
 
@@ -150,4 +150,4 @@ const Cases = () => {
   );
 };
 
-export default Cases; 
+export default Cases;

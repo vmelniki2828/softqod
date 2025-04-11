@@ -5,7 +5,7 @@ import { FaCode, FaPaintBrush, FaChartLine, FaRobot, FaHeadset } from 'react-ico
 
 const ServicesSection = styled.section`
   padding: 6rem 2rem;
-  background: #052659;
+  background: #06141B;
 `;
 
 const Container = styled.div`
@@ -17,7 +17,7 @@ const SectionTitle = styled(motion.h2)`
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 4rem;
-  color: #C1E8FF;
+  color: #CCD0CF;
   
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -31,34 +31,34 @@ const ServicesGrid = styled.div`
 `;
 
 const ServiceCard = styled(motion.div)`
-  background: #021024;
+  background: #11212D;
   padding: 2rem;
   border-radius: 10px;
   text-align: center;
   transition: all 0.3s ease;
-  border: 1px solid #5483B3;
+  border: 1px solid #4A5C6A;
   
   &:hover {
     transform: translateY(-10px);
-    border-color: #C1E8FF;
-    box-shadow: 0 10px 30px rgba(193, 232, 255, 0.1);
+    border-color: #CCD0CF;
+    box-shadow: 0 10px 30px rgba(204, 208, 207, 0.1);
   }
 `;
 
 const IconWrapper = styled.div`
   font-size: 3rem;
   margin-bottom: 1.5rem;
-  color: #C1E8FF;
+  color: #CCD0CF;
 `;
 
 const ServiceTitle = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #C1E8FF;
+  color: #CCD0CF;
 `;
 
 const ServiceDescription = styled.p`
-  color: #7DA0CA;
+  color: #9BA8AB;
   line-height: 1.6;
 `;
 
@@ -123,4 +123,4 @@ const Services = () => {
   );
 };
 
-export default Services; 
+export default Services;

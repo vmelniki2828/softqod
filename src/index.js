@@ -19,8 +19,8 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #021024;
-    color: #C1E8FF;
+    background-color: #06141B;
+    color: #CCD0CF;
     overflow-x: hidden;
   }
 
@@ -29,16 +29,16 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-track {
-    background: #052659;
+    background: #11212D;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #5483B3;
+    background: #4A5C6A;
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #7DA0CA;
+    background: #9BA8AB;
   }
 `;
 

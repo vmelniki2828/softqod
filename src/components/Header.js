@@ -9,9 +9,9 @@ const HeaderContainer = styled(motion.header)`
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(2, 16, 36, 0.95);
+  background: rgba(6, 20, 27, 0.95);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(193, 232, 255, 0.1);
+  border-bottom: 1px solid rgba(204, 208, 207, 0.1);
 `;
 
 const HeaderContent = styled.div`
@@ -26,8 +26,8 @@ const HeaderContent = styled.div`
 const Logo = styled(motion.div)`
   font-size: 1.8rem;
   font-weight: 800;
-  color: #C1E8FF;
-  background: linear-gradient(45deg, #5483B3, #7DA0CA);
+  color: #CCD0CF;
+  background: linear-gradient(45deg, #253745, #4A5C6A);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   cursor: pointer;
@@ -36,7 +36,7 @@ const Logo = styled(motion.div)`
 const MobileMenuButton = styled(motion.button)`
   background: none;
   border: none;
-  color: #C1E8FF;
+  color: #CCD0CF;
   font-size: 1.5rem;
   cursor: pointer;
   padding: 0.5rem;
@@ -48,7 +48,7 @@ const FullScreenOverlay = styled(motion.div)`
   right: 0;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(135deg, #021024, #052659);
+  background: linear-gradient(135deg, #06141B, #11212D);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -87,7 +87,7 @@ const Column = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  color: #C1E8FF;
+  color: #CCD0CF;
   min-width: 250px;
 
   @media (max-width: 768px) {
@@ -100,7 +100,7 @@ const ColumnTitle = styled.h3`
   font-size: 2rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  color: #7DA0CA;
+  color: #4A5C6A;
 
   @media (max-width: 768px) {
     font-size: 1.8rem;
@@ -114,11 +114,11 @@ const ColumnItem = styled(motion.div)`
   font-size: 1.2rem;
   margin: 0.5rem 0;
   cursor: pointer;
-  color: #C1E8FF;
+  color: #CCD0CF;
   transition: color 0.3s ease, transform 0.3s ease;
 
   &:hover {
-    color: #7DA0CA;
+    color: #4A5C6A;
     transform: translateX(10px);
   }
 
@@ -135,11 +135,11 @@ const ItemIcon = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  color: #5483B3;
+  color: #253745;
   transition: color 0.3s ease;
 
   ${ColumnItem}:hover & {
-    color: #7DA0CA;
+    color: #4A5C6A;
   }
 
   @media (max-width: 768px) {
@@ -153,12 +153,12 @@ const CloseButton = styled(motion.button)`
   right: 2rem;
   background: none;
   border: none;
-  color: #C1E8FF;
+  color: #CCD0CF;
   font-size: 2.5rem;
   cursor: pointer;
 
   &:hover {
-    color: #7DA0CA;
+    color: #4A5C6A;
   }
 `;
 
