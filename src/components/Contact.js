@@ -5,7 +5,7 @@ import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 
 const ContactSection = styled.section`
   padding: 6rem 2rem;
-  background: #06141B;
+  background: var(--bg-primary);
   position: relative;
   overflow: hidden;
 `;
@@ -21,7 +21,7 @@ const SectionTitle = styled(motion.h2)`
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 4rem;
-  color: #CCD0CF;
+  color: var(--text-primary);
 
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -47,32 +47,32 @@ const ContactInfo = styled.div`
 `;
 
 const ContactCard = styled(motion.div)`
-  background: #11212D;
+  background: var(--bg-secondary);
   padding: 2rem;
   border-radius: 15px;
-  border: 1px solid #4A5C6A;
+  border: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   gap: 1.5rem;
   transition: all 0.3s ease;
 
   &:hover {
-    border-color: #CCD0CF;
+    border-color: var(--accent-color);
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(204, 208, 207, 0.1);
+    box-shadow: 0 10px 30px rgba(74, 144, 226, 0.1);
   }
 `;
 
 const IconWrapper = styled.div`
   width: 60px;
   height: 60px;
-  background: linear-gradient(45deg, #4A5C6A, #9BA8AB);
+  background: linear-gradient(45deg, var(--accent-color), var(--text-secondary));
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  color: #CCD0CF;
+  color: var(--text-primary);
 `;
 
 const InfoContent = styled.div`
@@ -81,28 +81,28 @@ const InfoContent = styled.div`
 
 const InfoTitle = styled.h3`
   font-size: 1.25rem;
-  color: #CCD0CF;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 `;
 
 const InfoText = styled.p`
-  color: #9BA8AB;
+  color: var(--text-secondary);
   line-height: 1.6;
 `;
 
 const ContactForm = styled(motion.form)`
-  background: #11212D;
+  background: var(--bg-secondary);
   padding: 3rem;
   border-radius: 20px;
-  border: 1px solid #4A5C6A;
+  border: 1px solid var(--border-color);
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
 
   &:hover {
-    border-color: #CCD0CF;
+    border-color: var(--accent-color);
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(204, 208, 207, 0.1);
+    box-shadow: 0 10px 30px rgba(74, 144, 226, 0.1);
   }
 `;
 
@@ -112,7 +112,7 @@ const FormGroup = styled.div`
 
 const Label = styled.label`
   display: block;
-  color: #CCD0CF;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
 `;
@@ -120,27 +120,27 @@ const Label = styled.label`
 const Input = styled.input`
   width: 100%;
   padding: 1rem;
-  background: #06141B;
-  border: 1px solid #4A5C6A;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  color: #CCD0CF;
+  color: var(--text-primary);
   font-size: 1rem;
   transition: all 0.3s ease;
 
   &:focus {
     outline: none;
-    border-color: #CCD0CF;
-    box-shadow: 0 0 0 2px rgba(204, 208, 207, 0.1);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
   }
 `;
 
 const TextArea = styled.textarea`
   width: 100%;
   padding: 1rem;
-  background: #06141B;
-  border: 1px solid #4A5C6A;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  color: #CCD0CF;
+  color: var(--text-primary);
   font-size: 1rem;
   min-height: 150px;
   resize: vertical;
@@ -148,25 +148,25 @@ const TextArea = styled.textarea`
 
   &:focus {
     outline: none;
-    border-color: #CCD0CF;
-    box-shadow: 0 0 0 2px rgba(204, 208, 207, 0.1);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
   }
 `;
 
 const SubmitButton = styled(motion.button)`
   width: 100%;
   padding: 1rem;
-  background: linear-gradient(45deg, #4A5C6A, #9BA8AB);
+  background: linear-gradient(45deg, var(--accent-color), var(--text-secondary));
   border: none;
   border-radius: 8px;
-  color: #CCD0CF;
+  color: var(--text-primary);
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover {
-    background: linear-gradient(45deg, #9BA8AB, #CCD0CF);
+    background: linear-gradient(45deg, var(--text-secondary), var(--accent-color));
     transform: translateY(-2px);
   }
 `;
@@ -175,7 +175,7 @@ const FloatingShape = styled(motion.div)`
   position: absolute;
   width: 300px;
   height: 300px;
-  background: linear-gradient(45deg, #4A5C6A, #9BA8AB);
+  background: linear-gradient(45deg, var(--accent-color), var(--text-secondary));
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   opacity: 0.1;
   z-index: 1;

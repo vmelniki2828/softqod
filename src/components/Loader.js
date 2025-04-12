@@ -8,7 +8,7 @@ const LoaderContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
-  background: #06141B;
+  background: var(--bg-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,19 +22,19 @@ const LoaderContent = styled.div`
 const LogoText = styled(motion.h1)`
   font-size: 3rem;
   font-weight: 800;
-  color: #CCD0CF;
+  color: var(--text-primary);
   margin-bottom: 2rem;
-  background: linear-gradient(45deg, #4A5C6A, #9BA8AB);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  letter-spacing: 2px;
 `;
 
 const LoaderShape = styled(motion.div)`
   width: 100px;
   height: 100px;
-  background: linear-gradient(45deg, #4A5C6A, #9BA8AB);
+  background: linear-gradient(45deg, var(--accent-color), var(--text-secondary));
   margin: 0 auto;
   border-radius: 20px;
+  box-shadow: 0 0 20px rgba(128, 128, 128, 0.3);
 `;
 
 const Loader = ({ isLoading }) => {
