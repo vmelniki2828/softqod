@@ -28,7 +28,7 @@ const HeaderContainer = styled(motion.header)`
   left: 0;
   right: 0;
   z-index: 1000;
-  background: var(--bg-secondary);
+  background: rgba(11, 30, 43, 0.85);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-color);
   height: 80px;
@@ -53,15 +53,15 @@ const Logo = styled.div`
   font-size: 2rem;
   font-weight: 700;
   color: var(--logo-color);
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
   letter-spacing: 2px;
   transition: all 0.3s ease;
   position: absolute;
   left: 2rem;
 
   &:hover {
-    color: var(--logo-accent);
-    text-shadow: 0 0 15px rgba(128, 128, 128, 0.5);
+    color: var(--accent-color);
+    text-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
   }
 
   @media (max-width: 768px) {
@@ -466,29 +466,52 @@ const HeaderNavigation = () => {
 
 const Header = () => {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+  
+  // Обработчик закрытия меню
+  const handleCloseMenu = () => {
+    setIsOverlayOpen(false);
+    // Явно сбрасываем стиль overflow с небольшой задержкой
+    setTimeout(() => {
+      document.body.style.overflow = '';
+    }, 50);
+  };
 
-  // const handleMouseEnter = block => {
-  //   setActiveBlock(block);
-  // };
-
-  // const handleMouseLeave = () => {
-  //   setActiveBlock(null);
-  // };
+  // Обработчик открытия меню
+  const handleOpenMenu = () => {
+    setIsOverlayOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
 
   useEffect(() => {
     const handleScroll = () => {
+      const header = document.querySelector('header');
+      
+      // Управление стилем overflow для body при открытии/закрытии меню
       if (isOverlayOpen) {
         document.body.style.overflow = 'hidden';
       } else {
-        document.body.style.overflow = 'auto';
+        // Вместо немедленного сброса, даем анимации немного времени на завершение
+        setTimeout(() => {
+          document.body.style.overflow = '';
+        }, 50);
+      }
+      
+      if (window.scrollY > 50) {
+        header.style.background = 'rgba(6, 20, 27, 0.95)';
+        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+      } else {
+        header.style.background = 'rgba(11, 30, 43, 0.85)';
+        header.style.boxShadow = 'none';
       }
     };
 
     handleScroll();
     window.addEventListener('scroll', handleScroll);
+    
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      document.body.style.overflow = 'auto';
+      // Гарантируем, что overflow сбрасывается при размонтировании
+      document.body.style.overflow = '';
     };
   }, [isOverlayOpen]);
 
@@ -506,7 +529,7 @@ const Header = () => {
         <HeaderNavigation />
 
         <DesktopMenuButton
-          onClick={() => setIsOverlayOpen(true)}
+          onClick={handleOpenMenu}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
@@ -516,7 +539,7 @@ const Header = () => {
 
       <BurgerMenu
         isOpen={isOverlayOpen}
-        onClose={() => setIsOverlayOpen(false)}
+        onClose={handleCloseMenu}
       />
     </HeaderContainer>
   );

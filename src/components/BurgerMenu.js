@@ -31,11 +31,11 @@ import {
     FaCube, 
     FaChartPie, 
     FaBox, 
-    FaCamera, 
-    FaInstagram, 
-    FaEnvelope, 
-    FaChartArea, 
-    FaClipboardList 
+    FaCamera,
+    FaInstagram,
+    FaEnvelope,
+    FaChartArea,
+    FaClipboardList
 } from 'react-icons/fa';
 
 const FullScreenOverlay = styled(motion.div)`
@@ -53,10 +53,12 @@ const FullScreenOverlay = styled(motion.div)`
   pointer-events: none;
   transition: opacity 0.3s ease;
   overflow: hidden;
+  visibility: hidden;
 
   &.active {
     opacity: 1;
     pointer-events: auto;
+    visibility: visible;
   }
 `;
 
@@ -79,11 +81,13 @@ const CloseButton = styled(motion.button)`
   border-radius: 50%;
   width: 40px;
   height: 40px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.9;
     background: var(--accent-color);
     color: var(--bg-primary);
+    box-shadow: 0 5px 20px rgba(74, 144, 226, 0.3);
   }
 `;
 
@@ -110,10 +114,12 @@ const MenuBlock = styled(motion.div)`
   position: relative;
   overflow: hidden;
   margin-bottom: 1rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 
   &:hover {
     border-color: var(--accent-color);
     transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   }
 `;
 
@@ -134,6 +140,7 @@ const MenuBlockIcon = styled.div`
   justify-content: center;
   color: var(--accent-color);
   font-size: 1.25rem;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 `;
 
 const MenuBlockTitle = styled.h3`
@@ -170,6 +177,7 @@ const MenuBlockLink = styled(motion.a)`
     color: var(--bg-primary);
     transform: translateY(-2px);
     border-color: var(--accent-color);
+    box-shadow: 0 5px 15px rgba(74, 144, 226, 0.2);
   }
 `;
 
@@ -185,26 +193,80 @@ const MenuBlockIconSmall = styled.div`
   border-radius: 8px;
   padding: 0.5rem;
   flex-shrink: 0;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 `;
 
 const BurgerMenu = ({ isOpen, onClose }) => {
     const [activeBlock, setActiveBlock] = useState(null);
+    const [isAnimating, setIsAnimating] = useState(false);
 
     useEffect(() => {
         if (!isOpen) {
             setActiveBlock(null);
+            setIsAnimating(true);
+            
+            setTimeout(() => {
+                document.body.style.overflow = '';
+                setIsAnimating(false);
+            }, 300);
+        } else {
+            const handleEscClose = () => {
+                setIsAnimating(true);
+                
+                onClose();
+                
+                setTimeout(() => {
+                    document.body.style.overflow = '';
+                    setIsAnimating(false);
+                }, 300);
+            };
+            
+            const handleEscKey = (e) => {
+                if (e.key === 'Escape') {
+                    handleEscClose();
+                }
+            };
+            
+            window.addEventListener('keydown', handleEscKey);
+            
+            return () => {
+                window.removeEventListener('keydown', handleEscKey);
+            };
         }
-    }, [isOpen]);
+    }, [isOpen, onClose]);
+
+    const handleClose = () => {
+        setIsAnimating(true);
+        
+        onClose();
+        
+        setTimeout(() => {
+            document.body.style.overflow = '';
+            setIsAnimating(false);
+        }, 300);
+    };
+
+    const handleOverlayClick = (e) => {
+        if (e.target === e.currentTarget) {
+            handleClose();
+        }
+    };
 
     return (
-        <FullScreenOverlay className={isOpen ? 'active' : ''}>
+        <FullScreenOverlay 
+            className={isOpen ? 'active' : isAnimating ? 'inactive' : ''}
+            onClick={handleOverlayClick}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isOpen ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+        >
             <CloseButton
-                onClick={onClose}
+                onClick={handleClose}
                 whileTap={{ scale: 0.9 }}
             >
                 <FaTimes />
             </CloseButton>
-            <OverlayContent>
+            <OverlayContent onClick={(e) => e.stopPropagation()}>
                 <MenuBlock
                     onMouseEnter={() => setActiveBlock('development')}
                     onMouseLeave={() => setActiveBlock(null)}

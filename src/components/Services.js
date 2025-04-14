@@ -81,7 +81,7 @@ const ServiceCard = styled(motion.div)`
   max-width: 800px;
   position: relative;
   border: 1px solid var(--border-color);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -89,7 +89,7 @@ const ServiceCard = styled(motion.div)`
   transition: all 0.3s ease;
 
   &:hover {
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
     border-color: var(--accent-color);
     background: linear-gradient(145deg, var(--bg-secondary), var(--bg-primary));
 
@@ -166,7 +166,7 @@ const BenefitItem = styled(motion.li)`
   }
 
   &:hover {
-    background: rgba(74, 144, 226, 0.1);
+    background: rgba(74, 144, 226, 0.15);
     transform: translateX(5px);
   }
 `;
@@ -187,11 +187,13 @@ const NavigationButton = styled(motion.button)`
   cursor: pointer;
   z-index: 10;
   transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
   &:hover {
     background: var(--accent-color);
     color: white;
     border-color: var(--accent-color);
+    box-shadow: 0 5px 20px rgba(74, 144, 226, 0.3);
   }
 
   &.prev {

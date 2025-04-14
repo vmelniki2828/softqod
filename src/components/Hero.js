@@ -19,7 +19,8 @@ const GradientBackground = styled(motion.div)`
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 50% 50%, var(--accent-color) 0%, transparent 50%);
+  background: radial-gradient(circle at 50% 50%, var(--accent-color) 0%, transparent 40%);
+  opacity: 0.15;
   z-index: 1;
 `;
 
@@ -74,6 +75,10 @@ const Title = styled.h1`
   margin-bottom: 1.5rem;
   line-height: 1.2;
   letter-spacing: 1px;
+  
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
 `;
 
 const Subtitle = styled.p`
@@ -106,10 +111,12 @@ const PrimaryButton = styled(motion.button)`
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
   
   &:hover {
-    background: var(--text-primary);
-    color: var(--bg-primary);
+    background: #6AADFF;
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.5);
+    transform: translateY(-2px);
   }
 `;
 
@@ -126,6 +133,9 @@ const SecondaryButton = styled(motion.button)`
   
   &:hover {
     background: var(--bg-secondary);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   }
 `;
 
@@ -163,10 +173,11 @@ const StatLabel = styled.div`
 const AnimatedShape = styled(motion.div)`
   width: 400px;
   height: 400px;
-  background: linear-gradient(45deg, var(--bg-secondary), var(--accent-color));
+  background: linear-gradient(145deg, var(--bg-secondary), var(--accent-color));
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   position: relative;
   margin-left: auto;
+  box-shadow: 0 0 50px rgba(74, 144, 226, 0.2);
   
   &::before {
     content: '';
@@ -175,7 +186,7 @@ const AnimatedShape = styled(motion.div)`
     left: 10px;
     right: 10px;
     bottom: 10px;
-    border: 2px solid var(--border-color);
+    border: 2px solid var(--accent-color);
     border-radius: inherit;
     opacity: 0.3;
   }
@@ -192,7 +203,7 @@ const Hero = () => {
     <HeroSection>
       <GradientBackground
         animate={{
-          opacity: [0.5, 0.8, 0.5],
+          opacity: [0.1, 0.2, 0.1],
         }}
         transition={{
           duration: 5,
@@ -202,7 +213,7 @@ const Hero = () => {
       />
       <FloatingCircle
         size={300}
-        color="#4A5C6A"
+        color="#4A90E2"
         initial={{ x: -100, y: -100 }}
         animate={{
           x: [-100, 100, -100],
@@ -216,7 +227,7 @@ const Hero = () => {
       />
       <FloatingCircle
         size={200}
-        color="#9BA8AB"
+        color="#4A5C6A"
         initial={{ x: 100, y: 100 }}
         animate={{
           x: [100, -100, 100],

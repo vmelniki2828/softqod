@@ -62,7 +62,7 @@ const Number = styled(motion.div)`
   background: linear-gradient(
     45deg,
     var(--accent-color),
-    var(--text-secondary)
+    #6AADFF
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -97,11 +97,11 @@ const BenefitItem = styled(motion.div)`
   
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     border-color: var(--accent-color);
     
     &::before {
-      opacity: 0.05;
+      opacity: 0.1;
     }
     
     ${Number} {

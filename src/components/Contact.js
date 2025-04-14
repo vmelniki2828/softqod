@@ -55,24 +55,26 @@ const ContactCard = styled(motion.div)`
   align-items: center;
   gap: 1.5rem;
   transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 
   &:hover {
     border-color: var(--accent-color);
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(74, 144, 226, 0.1);
+    box-shadow: 0 10px 30px rgba(74, 144, 226, 0.2);
   }
 `;
 
 const IconWrapper = styled.div`
   width: 60px;
   height: 60px;
-  background: linear-gradient(45deg, var(--accent-color), var(--text-secondary));
+  background: linear-gradient(45deg, var(--accent-color), #6AADFF);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  color: var(--text-primary);
+  color: var(--bg-primary);
+  box-shadow: 0 5px 10px rgba(74, 144, 226, 0.2);
 `;
 
 const InfoContent = styled.div`
@@ -98,11 +100,12 @@ const ContactForm = styled(motion.form)`
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 
   &:hover {
     border-color: var(--accent-color);
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(74, 144, 226, 0.1);
+    box-shadow: 0 15px 35px rgba(74, 144, 226, 0.15);
   }
 `;
 
@@ -130,7 +133,7 @@ const Input = styled.input`
   &:focus {
     outline: none;
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
   }
 `;
 
@@ -149,25 +152,27 @@ const TextArea = styled.textarea`
   &:focus {
     outline: none;
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
   }
 `;
 
 const SubmitButton = styled(motion.button)`
   width: 100%;
   padding: 1rem;
-  background: linear-gradient(45deg, var(--accent-color), var(--text-secondary));
+  background: linear-gradient(45deg, var(--accent-color), #6AADFF);
   border: none;
   border-radius: 8px;
-  color: var(--text-primary);
+  color: var(--bg-primary);
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(74, 144, 226, 0.2);
 
   &:hover {
-    background: linear-gradient(45deg, var(--text-secondary), var(--accent-color));
+    background: linear-gradient(45deg, #6AADFF, var(--accent-color));
     transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
   }
 `;
 
@@ -175,7 +180,7 @@ const FloatingShape = styled(motion.div)`
   position: absolute;
   width: 300px;
   height: 300px;
-  background: linear-gradient(45deg, var(--accent-color), var(--text-secondary));
+  background: linear-gradient(45deg, var(--accent-color), #6AADFF);
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   opacity: 0.1;
   z-index: 1;

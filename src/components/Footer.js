@@ -37,7 +37,7 @@ const Logo = styled(motion.div)`
   font-size: 1.3rem;
   font-weight: 800;
   color: var(--text-primary);
-  background: linear-gradient(45deg, var(--accent-color), var(--text-secondary));
+  background: linear-gradient(45deg, var(--accent-color), #6AADFF);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 0.5rem;
@@ -73,6 +73,14 @@ const IconWrapper = styled.div`
   color: var(--accent-color);
   font-size: 0.9rem;
   flex-shrink: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  ${ContactItem}:hover & {
+    background: var(--accent-color);
+    color: var(--bg-primary);
+    box-shadow: 0 3px 10px rgba(74, 144, 226, 0.3);
+  }
 `;
 
 const FooterLink = styled(motion.a)`
@@ -83,6 +91,7 @@ const FooterLink = styled(motion.a)`
 
   &:hover {
     color: var(--accent-color);
+    text-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
   }
 `;
 

@@ -2,14 +2,28 @@
 
 :root {
   /* Основные цвета */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #2a2a2a;
+  --bg-primary: #06141B;
+  --bg-secondary: #11212D;
   --text-primary: #ffffff;
-  --text-secondary: #cccccc;
-  --accent-color: #808080;
-  --border-color: #404040;
+  --text-secondary: #CCD0CF;
+  --accent-color: #4A90E2;
+  --border-color: #4A5C6A;
   --logo-color: #ffffff;
-  --logo-accent: #808080;
+  --logo-accent: #4A90E2;
+}
+
+/* Стили для бургер-меню и оверлеев */
+.active {
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.inactive {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: visibility 0.3s, opacity 0.3s !important;
 }
 
 body {
