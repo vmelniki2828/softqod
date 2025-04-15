@@ -10,7 +10,7 @@ import Cases from './components/Cases';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Loader from './components/Loader';
-import DevelopmentRoutes from './services/development';
+import PWAPage from 'services/development/PWAPage';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -81,7 +81,7 @@ const App = () => {
                   <Contact />
                 </>
               } />
-              <Route path="/services/development/*" element={<DevelopmentRoutes />} />
+              <Route path="/services/development/pwa" element={<PWAPage />} />
             </Routes>
             <Footer />
           </motion.div>
