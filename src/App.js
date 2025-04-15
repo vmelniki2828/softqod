@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -9,6 +10,7 @@ import Cases from './components/Cases';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Loader from './components/Loader';
+import DevelopmentRoutes from './services/development';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -55,7 +57,7 @@ const App = () => {
   }, []);
 
   return (
-    <>
+    <Router>
       <GlobalStyle />
       <AnimatePresence mode="wait">
         {isLoading ? (
@@ -69,16 +71,23 @@ const App = () => {
             transition={{ duration: 0.5 }}
           >
             <Header />
-            <Hero />
-            <Services />
-            <Benefits />
-            <Cases />
-            <Contact />
+            <Routes>
+              <Route path="/" element={
+                <>
+                  <Hero />
+                  <Services />
+                  <Benefits />
+                  <Cases />
+                  <Contact />
+                </>
+              } />
+              <Route path="/services/development/*" element={<DevelopmentRoutes />} />
+            </Routes>
             <Footer />
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </Router>
   );
 };
 

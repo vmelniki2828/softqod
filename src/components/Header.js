@@ -355,7 +355,7 @@ const HeaderNavigation = () => {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
           >
-            <DropdownItem href="#pwa">
+            <DropdownItem href="/services/development/pwa">
               <FaLaptopCode />
               PWA (Progressive Web Apps)
             </DropdownItem>
