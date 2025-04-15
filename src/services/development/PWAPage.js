@@ -149,36 +149,26 @@ const PathLine = styled(motion.div)`
 const PathSteps = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: stretch;
   position: relative;
   z-index: 2;
   margin-top: 4rem;
+  gap: 2rem;
 `;
 
 const PathStep = styled(motion.div)`
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-  padding: 2rem;
+  padding: 2.5rem 2rem;
   border-radius: 20px;
-  width: 22%;
+  width: 23%;
+  min-height: 320px;
   position: relative;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 40px;
-    background: var(--accent-color);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 20px rgba(74, 144, 226, 0.5);
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &:hover {
     transform: translateY(-10px);
@@ -206,10 +196,14 @@ const StepNumber = styled.div`
 `;
 
 const StepIcon = styled.div`
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   color: var(--accent-color);
-  margin-bottom: 1.5rem;
+  margin: 1.5rem 0;
   text-align: center;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const StepTitle = styled.h3`
@@ -217,6 +211,7 @@ const StepTitle = styled.h3`
   margin-bottom: 1rem;
   color: var(--text-primary);
   text-align: center;
+  width: 100%;
 `;
 
 const StepDescription = styled.p`
@@ -224,23 +219,27 @@ const StepDescription = styled.p`
   line-height: 1.6;
   margin-bottom: 1.5rem;
   text-align: center;
+  font-size: 1rem;
+  width: 100%;
 `;
 
 const StepFeatures = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
+  width: 100%;
 `;
 
 const StepFeature = styled(motion.li)`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
   color: var(--text-secondary);
-  padding: 0.5rem;
+  padding: 0.6rem;
   border-radius: 8px;
   transition: all 0.3s ease;
+  font-size: 0.95rem;
 
   &:hover {
     background: rgba(255, 255, 255, 0.05);
@@ -249,6 +248,8 @@ const StepFeature = styled(motion.li)`
 
   svg {
     color: var(--accent-color);
+    font-size: 1.2rem;
+    flex-shrink: 0;
   }
 `;
 
@@ -316,46 +317,162 @@ const AIBenefit = styled.div`
 `;
 
 const InteractiveDemo = styled(motion.div)`
-  background: var(--bg-secondary);
-  padding: 2rem;
-  border-radius: 20px;
-  margin: 3rem 0;
-  border: 1px solid var(--border-color);
+  background: linear-gradient(135deg, rgba(11, 30, 43, 0.8) 0%, rgba(6, 20, 27, 0.9) 100%);
+  padding: 4rem 3rem;
+  border-radius: 30px;
+  margin: 4rem 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+    opacity: 0.05;
+    z-index: 0;
+  }
 `;
 
 const DemoTitle = styled.h3`
-  font-size: 1.8rem;
-  color: var(--accent-color);
-  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  background: linear-gradient(120deg, var(--accent-color), #64B5F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2.5rem;
   text-align: center;
+  position: relative;
+  z-index: 1;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+    border-radius: 2px;
+  }
 `;
 
 const DemoContent = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 4rem;
   align-items: center;
+  position: relative;
+  z-index: 1;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
 `;
 
 const DemoText = styled.div`
   color: var(--text-secondary);
-  line-height: 1.6;
+  
+  h4 {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    background: linear-gradient(120deg, #FFFFFF, #B0BEC5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateX(10px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &::before {
+      content: '→';
+      color: var(--accent-color);
+      font-size: 1.2rem;
+    }
+  }
 `;
 
 const DemoVisual = styled(motion.div)`
-  background: var(--bg-primary);
-  padding: 2rem;
-  border-radius: 15px;
-  min-height: 300px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  padding: 3rem;
+  border-radius: 20px;
+  min-height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
+  position: relative;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+
+  svg {
+    font-size: 5rem;
+    color: var(--accent-color);
+    filter: drop-shadow(0 0 20px rgba(74, 144, 226, 0.5));
+  }
+
+  p {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    text-align: center;
+    margin: 0;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 0%,
+      rgba(74, 144, 226, 0.1) 50%,
+      transparent 100%
+    );
+    animation: shine 4s infinite linear;
+  }
+
+  @keyframes shine {
+    0% {
+      transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    }
+    100% {
+      transform: translateX(-50%) translateY(-50%) rotate(360deg);
+    }
+  }
 `;
 
 const TechStack = styled.div`
@@ -609,26 +726,30 @@ const PWAPage = () => {
         <DemoContent>
           <DemoText>
             <h4>Как работает ИИ в PWA?</h4>
-            <p>Наш ИИ анализирует поведение пользователей в реальном времени и автоматически оптимизирует:</p>
+            <p>
+              Наш искусственный интеллект непрерывно анализирует поведение пользователей 
+              и автоматически оптимизирует каждый аспект приложения для максимальной 
+              производительности и удобства использования.
+            </p>
             <ul>
-              <li>Загрузку контента</li>
-              <li>Кэширование данных</li>
-              <li>Адаптацию интерфейса</li>
-              <li>Производительность</li>
+              <li>Интеллектуальная загрузка контента</li>
+              <li>Предиктивное кэширование данных</li>
+              <li>Адаптивная оптимизация интерфейса</li>
+              <li>Анализ производительности в реальном времени</li>
             </ul>
           </DemoText>
           <DemoVisual
             animate={{
-              scale: [1, 1.05, 1],
+              scale: [1, 1.02, 1],
               rotate: [0, 2, 0],
             }}
             transition={{
-              duration: 2,
+              duration: 4,
               repeat: Infinity,
               ease: "easeInOut"
             }}
           >
-            <FaBrain size={60} color="var(--accent-color)" />
+            <FaBrain />
             <p>ИИ в действии</p>
           </DemoVisual>
         </DemoContent>
