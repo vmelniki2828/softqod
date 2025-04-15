@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -10,7 +10,7 @@ import Cases from './components/Cases';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Loader from './components/Loader';
-import PWAPage from 'services/development/PWAPage';
+import PWAPage from './services/development/PWAPage';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -81,7 +81,10 @@ const App = () => {
                   <Contact />
                 </>
               } />
+              <Route path="/services" element={<Navigate to="/" replace />} />
+              <Route path="/services/development" element={<Navigate to="/" replace />} />
               <Route path="/services/development/pwa" element={<PWAPage />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
             <Footer />
           </motion.div>

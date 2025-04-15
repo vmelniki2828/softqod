@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 import {
   FaBars,
   FaDesktop,
@@ -95,7 +96,7 @@ const NavItem = styled.div`
   padding: 0.5rem 0;
 `;
 
-const NavLink = styled(motion.a)`
+const NavLink = styled(Link)`
   color: var(--text-primary);
   text-decoration: none;
   font-weight: 500;
@@ -111,6 +112,19 @@ const NavLink = styled(motion.a)`
 
   &:hover {
     color: var(--accent-color);
+  }
+
+  &.active {
+    color: var(--accent-color);
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent-color);
+    }
   }
 `;
 
@@ -128,7 +142,7 @@ const DropdownMenu = styled(motion.div)`
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 `;
 
-const DropdownItem = styled(motion.a)`
+const DropdownItem = styled(Link)`
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -143,6 +157,11 @@ const DropdownItem = styled(motion.a)`
     background: var(--bg-primary);
     color: var(--accent-color);
     transform: translateX(5px);
+  }
+
+  &.active {
+    background: var(--bg-primary);
+    color: var(--accent-color);
   }
 
   @media (max-width: 1024px) {
@@ -167,178 +186,10 @@ const DesktopMenuButton = styled(motion.button)`
   }
 `;
 
-// const FullScreenOverlay = styled(motion.div)`
-//   position: fixed;
-//   top: 0;
-//   right: 0;
-//   width: 100vw;
-//   height: 100vh;
-//   background: var(--bg-primary);
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   z-index: 2000;
-//   overflow-y: auto;
-//   padding: 2rem;
-//   opacity: 0;
-//   pointer-events: none;
-//   transition: opacity 0.3s ease;
 
-//   &.active {
-//     opacity: 1;
-//     pointer-events: auto;
-//   }
-
-//   @media (max-width: 768px) {
-//     padding: 1rem;
-//   }
-// `;
-
-// const OverlayContent = styled(motion.div)`
-//   width: 100%;
-//   max-width: 1200px;
-//   display: flex;
-//   flex-direction: column;
-//   gap: 2rem;
-// `;
-
-// const OverlaySection = styled(motion.div)`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 1rem;
-// `;
-
-// const OverlayTitle = styled.h3`
-//   font-size: 2rem;
-//   color: var(--accent-color);
-//   margin-bottom: 1rem;
-// `;
-
-// const OverlayLink = styled(motion.a)`
-//   color: var(--text-primary);
-//   text-decoration: none;
-//   font-size: 1.2rem;
-//   padding: 0.5rem;
-//   transition: all 0.3s ease;
-//   display: flex;
-//   align-items: center;
-//   gap: 1rem;
-
-//   &:hover {
-//     color: var(--accent-color);
-//     transform: translateX(10px);
-//   }
-// `;
-
-// const CloseButton = styled(motion.button)`
-//   position: absolute;
-//   top: 2rem;
-//   right: 2rem;
-//   background: none;
-//   border: none;
-//   color: var(--text-primary);
-//   font-size: 2rem;
-//   cursor: pointer;
-//   transition: all 0.3s ease;
-
-//   &:hover {
-//     color: var(--accent-color);
-//     transform: rotate(90deg);
-//   }
-// `;
-
-// const IconWrapper = styled.div`
-//   width: 24px;
-//   height: 24px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   color: var(--accent-color);
-//   font-size: 1.1rem;
-
-//   @media (max-width: 768px) {
-//     font-size: 1rem;
-//   }
-// `;
-
-// const MenuBlock = styled(motion.div)`
-//   background: var(--bg-secondary);
-//   border: 1px solid var(--border-color);
-//   border-radius: 12px;
-//   padding: 1.5rem;
-//   width: 100%;
-//   cursor: pointer;
-//   transition: all 0.3s ease;
-//   position: relative;
-//   overflow: hidden;
-
-//   &:hover {
-//     border-color: var(--accent-color);
-//     transform: translateY(-5px);
-//   }
-// `;
-
-// const MenuBlockHeader = styled.div`
-//   display: flex;
-//   align-items: center;
-//   gap: 1rem;
-//   margin-bottom: 1rem;
-// `;
-
-// const MenuBlockIcon = styled.div`
-//   width: 48px;
-//   height: 48px;
-//   background: var(--bg-primary);
-//   border-radius: 12px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   color: var(--accent-color);
-//   font-size: 1.5rem;
-// `;
-
-// const MenuBlockTitle = styled.h3`
-//   color: var(--text-primary);
-//   font-size: 1.5rem;
-//   margin: 0;
-// `;
-
-// const MenuBlockContent = styled(motion.div)`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 0.75rem;
-//   padding-top: 1rem;
-//   border-top: 1px solid var(--border-color);
-// `;
-
-// const MenuBlockLink = styled(motion.a)`
-//   color: var(--text-secondary);
-//   text-decoration: none;
-//   padding: 0.5rem;
-//   border-radius: 8px;
-//   transition: all 0.3s ease;
-//   display: flex;
-//   align-items: center;
-//   gap: 0.75rem;
-
-//   &:hover {
-//     background: var(--bg-primary);
-//     color: var(--accent-color);
-//     transform: translateX(5px);
-//   }
-// `;
-
-// const MenuBlockIconSmall = styled.div`
-//   width: 24px;
-//   height: 24px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   color: var(--accent-color);
-// `;
 
 const HeaderNavigation = () => {
+  const location = useLocation();
   const [activeBlock, setActiveBlock] = useState(null);
 
   return (
@@ -347,7 +198,9 @@ const HeaderNavigation = () => {
         onMouseEnter={() => setActiveBlock('development')}
         onMouseLeave={() => setActiveBlock(null)}
       >
-        <NavLink href="#development">Разработка</NavLink>
+        <NavLink to="/services" className={location.pathname.startsWith('/services') ? 'active' : ''}>
+          Разработка
+        </NavLink>
         {activeBlock === 'development' && (
           <DropdownMenu
             initial={{ opacity: 0, y: -10 }}
@@ -355,27 +208,27 @@ const HeaderNavigation = () => {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
           >
-            <DropdownItem href="/services/development/pwa">
+            <DropdownItem to="/services/development/pwa" className={location.pathname === '/services/development/pwa' ? 'active' : ''}>
               <FaLaptopCode />
               PWA (Progressive Web Apps)
             </DropdownItem>
-            <DropdownItem href="#automation">
+            <DropdownItem to="/services/development/automation">
               <FaCogs />
               Автоматизация и оптимизация бизнес-процессов
             </DropdownItem>
-            <DropdownItem href="#erp">
+            <DropdownItem to="/services/development/erp">
               <FaDatabase />
               ERP и CRM системы
             </DropdownItem>
-            <DropdownItem href="#ecommerce">
+            <DropdownItem to="/services/development/ecommerce">
               <FaStore />
               Интернет-магазины
             </DropdownItem>
-            <DropdownItem href="#landing">
+            <DropdownItem to="/services/development/landing">
               <FaGlobe />
               Одностраничные сайты (landing page)
             </DropdownItem>
-            <DropdownItem href="#mobile">
+            <DropdownItem to="/services/development/mobile">
               <FaMobile />
               Мобильные приложения
             </DropdownItem>
@@ -386,7 +239,9 @@ const HeaderNavigation = () => {
         onMouseEnter={() => setActiveBlock('design')}
         onMouseLeave={() => setActiveBlock(null)}
       >
-        <NavLink href="#design">Дизайн</NavLink>
+        <NavLink to="/design">
+          Дизайн
+        </NavLink>
         {activeBlock === 'design' && (
           <DropdownMenu
             initial={{ opacity: 0, y: -10 }}
@@ -394,27 +249,27 @@ const HeaderNavigation = () => {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
           >
-            <DropdownItem href="#banners">
+            <DropdownItem to="/design/banners">
               <FaPaintBrush />
               Рекламные Банера
             </DropdownItem>
-            <DropdownItem href="#brandbook">
+            <DropdownItem to="/design/brandbook">
               <FaBook />
               Бренд Бук
             </DropdownItem>
-            <DropdownItem href="#web-design">
+            <DropdownItem to="/design/web">
               <FaDesktop />
               Веб Дизайн
             </DropdownItem>
-            <DropdownItem href="#ui-ux">
+            <DropdownItem to="/design/ui-ux">
               <FaPalette />
               UX/UI дизайн
             </DropdownItem>
-            <DropdownItem href="#typography">
+            <DropdownItem to="/design/typography">
               <FaFont />
               Типографика и леттеринг
             </DropdownItem>
-            <DropdownItem href="#branding">
+            <DropdownItem to="/design/branding">
               <FaPencilRuler />
               Разработка фирменного стиля
             </DropdownItem>
@@ -425,7 +280,9 @@ const HeaderNavigation = () => {
         onMouseEnter={() => setActiveBlock('marketing')}
         onMouseLeave={() => setActiveBlock(null)}
       >
-        <NavLink href="#marketing">Маркетинг</NavLink>
+        <NavLink to="/marketing">
+          Маркетинг
+        </NavLink>
         {activeBlock === 'marketing' && (
           <DropdownMenu
             initial={{ opacity: 0, y: -10 }}
@@ -433,27 +290,27 @@ const HeaderNavigation = () => {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
           >
-            <DropdownItem href="#banner-ads">
+            <DropdownItem to="/marketing/banner-ads">
               <FaBullhorn />
               Банерная реклама на сайтах
             </DropdownItem>
-            <DropdownItem href="#smm">
+            <DropdownItem to="/marketing/smm">
               <FaUsers />
               SMM
             </DropdownItem>
-            <DropdownItem href="#context-ads">
+            <DropdownItem to="/marketing/context-ads">
               <FaChartBar />
               Контекстная реклама
             </DropdownItem>
-            <DropdownItem href="#seo">
+            <DropdownItem to="/marketing/seo">
               <FaSearch />
               Seo Оптимизация
             </DropdownItem>
-            <DropdownItem href="#target-ads">
+            <DropdownItem to="/marketing/target-ads">
               <FaBullhorn />
               Таргетированная реклама
             </DropdownItem>
-            <DropdownItem href="#marketing-audit">
+            <DropdownItem to="/marketing/audit">
               <FaChartBar />
               Маркетинговый аудит
             </DropdownItem>
@@ -523,7 +380,9 @@ const Header = () => {
     >
       <HeaderContent>
         <Logo whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          softqod
+          <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            softqod
+          </Link>
         </Logo>
 
         <HeaderNavigation />
