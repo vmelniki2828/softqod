@@ -208,7 +208,7 @@ const HeaderNavigation = () => {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
           >
-            <DropdownItem to="/services/development/pwa" className={location.pathname === '/services/development/pwa' ? 'active' : ''}>
+            <DropdownItem to="/services/development/pwa">
               <FaLaptopCode />
               PWA (Progressive Web Apps)
             </DropdownItem>

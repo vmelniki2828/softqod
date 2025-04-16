@@ -11,6 +11,18 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Loader from './components/Loader';
 import PWAPage from './services/development/PWAPage';
+import BusinessAutomationPage from 'services/development/BusinessAutomationPage';
+import ERPCRMPage from 'services/development/ERPCRMPage';
+import EcommercePage from 'services/development/EcommercePage';
+import LandingPage from 'services/development/LandingPage';
+import MobileAppsPage from 'services/development/MobileAppsPage';
+import APIDevelopmentPage from 'services/development/APIDevelopmentPage';
+import BigDataPage from 'services/development/BigDataPage';
+import ElectronicJournalsPage from 'services/development/ElectronicJournalsPage';
+import OnlineEducationPage from 'services/development/OnlineEducationPage';
+import DocumentManagementPage from 'services/development/DocumentManagementPage';
+import CorporateWebsitePage from 'services/development/CorporateWebsitePage';
+import AIPage from 'services/development/AIPage';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -81,9 +93,19 @@ const App = () => {
                   <Contact />
                 </>
               } />
-              <Route path="/services" element={<Navigate to="/" replace />} />
-              <Route path="/services/development" element={<Navigate to="/" replace />} />
               <Route path="/services/development/pwa" element={<PWAPage />} />
+              <Route path="/services/development/automation" element={<BusinessAutomationPage />} />
+              <Route path="/services/development/erp" element={<ERPCRMPage />} />
+              <Route path="/services/development/ecommerce" element={<EcommercePage />} />
+              <Route path="/services/development/landing" element={<LandingPage />} />
+              <Route path="/services/development/mobile" element={<MobileAppsPage />} />
+              <Route path="/services/development/API" element={<APIDevelopmentPage />} />
+              <Route path="/services/development/bigdata" element={<BigDataPage />} />
+              <Route path="/services/development/journals" element={<ElectronicJournalsPage />} />
+              <Route path="/services/development/education" element={<OnlineEducationPage />} />
+              <Route path="/services/development/document" element={<DocumentManagementPage />} />
+              <Route path="/services/development/corporate" element={<CorporateWebsitePage />} />
+              <Route path="/services/development/AI" element={<AIPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
             <Footer />

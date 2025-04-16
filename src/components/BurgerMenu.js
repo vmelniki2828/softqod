@@ -1,42 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { 
-    FaTimes, 
-    FaLaptopCode, 
-    FaCogs, 
-    FaDatabase, 
-    FaStore, 
-    FaGlobe, 
-    FaMobile, 
-    FaPalette, 
-    FaPaintBrush, 
-    FaBook, 
-    FaDesktop, 
-    FaFont, 
-    FaPencilRuler, 
-    FaBullhorn, 
-    FaUsers, 
-    FaChartBar, 
-    FaSearch, 
-    FaCode, 
-    FaChartLine, 
-    FaBookOpen, 
-    FaGraduationCap, 
-    FaFileAlt, 
-    FaBuilding, 
-    FaRobot, 
-    FaImage, 
-    FaVideo, 
-    FaCube, 
-    FaChartPie, 
-    FaBox, 
-    FaCamera,
-    FaInstagram,
-    FaEnvelope,
-    FaChartArea,
-    FaClipboardList
+import {
+  FaTimes,
+  FaLaptopCode,
+  FaCogs,
+  FaDatabase,
+  FaStore,
+  FaGlobe,
+  FaMobile,
+  FaPalette,
+  FaPaintBrush,
+  FaBook,
+  FaDesktop,
+  FaFont,
+  FaPencilRuler,
+  FaBullhorn,
+  FaUsers,
+  FaChartBar,
+  FaSearch,
+  FaCode,
+  FaChartLine,
+  FaBookOpen,
+  FaGraduationCap,
+  FaFileAlt,
+  FaBuilding,
+  FaRobot,
+  FaImage,
+  FaVideo,
+  FaCube,
+  FaChartPie,
+  FaBox,
+  FaCamera,
+  FaInstagram,
+  FaEnvelope,
+  FaChartArea,
+  FaClipboardList,
 } from 'react-icons/fa';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const FullScreenOverlay = styled(motion.div)`
   position: fixed;
@@ -158,7 +159,7 @@ const MenuBlockContent = styled(motion.div)`
   overflow: hidden;
 `;
 
-const MenuBlockLink = styled(motion.a)`
+const MenuBlockLink = styled(Link)`
   color: var(--text-secondary);
   text-decoration: none;
   padding: 0.75rem;
@@ -197,293 +198,419 @@ const MenuBlockIconSmall = styled.div`
 `;
 
 const BurgerMenu = ({ isOpen, onClose }) => {
-    const [activeBlock, setActiveBlock] = useState(null);
-    const [isAnimating, setIsAnimating] = useState(false);
+  const [activeBlock, setActiveBlock] = useState(null);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    useEffect(() => {
-        if (!isOpen) {
-            setActiveBlock(null);
-            setIsAnimating(true);
-            
-            setTimeout(() => {
-                document.body.style.overflow = '';
-                setIsAnimating(false);
-            }, 300);
-        } else {
-            const handleEscClose = () => {
-                setIsAnimating(true);
-                
-                onClose();
-                
-                setTimeout(() => {
-                    document.body.style.overflow = '';
-                    setIsAnimating(false);
-                }, 300);
-            };
-            
-            const handleEscKey = (e) => {
-                if (e.key === 'Escape') {
-                    handleEscClose();
-                }
-            };
-            
-            window.addEventListener('keydown', handleEscKey);
-            
-            return () => {
-                window.removeEventListener('keydown', handleEscKey);
-            };
-        }
-    }, [isOpen, onClose]);
+  useEffect(() => {
+    if (!isOpen) {
+      setActiveBlock(null);
+      setIsAnimating(true);
 
-    const handleClose = () => {
+      setTimeout(() => {
+        document.body.style.overflow = '';
+        setIsAnimating(false);
+      }, 300);
+    } else {
+      const handleEscClose = () => {
         setIsAnimating(true);
-        
+
         onClose();
-        
+
         setTimeout(() => {
-            document.body.style.overflow = '';
-            setIsAnimating(false);
+          document.body.style.overflow = '';
+          setIsAnimating(false);
         }, 300);
-    };
+      };
 
-    const handleOverlayClick = (e) => {
-        if (e.target === e.currentTarget) {
-            handleClose();
+      const handleEscKey = e => {
+        if (e.key === 'Escape') {
+          handleEscClose();
         }
-    };
+      };
 
-    return (
-        <FullScreenOverlay 
-            className={isOpen ? 'active' : isAnimating ? 'inactive' : ''}
-            onClick={handleOverlayClick}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isOpen ? 1 : 0 }}
-            transition={{ duration: 0.3 }}
+      window.addEventListener('keydown', handleEscKey);
+
+      return () => {
+        window.removeEventListener('keydown', handleEscKey);
+      };
+    }
+  }, [isOpen, onClose]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  const handleClose = () => {
+    setIsAnimating(true);
+
+    onClose();
+
+    setTimeout(() => {
+      document.body.style.overflow = '';
+      setIsAnimating(false);
+    }, 300);
+  };
+
+  const handleOverlayClick = e => {
+    if (e.target === e.currentTarget) {
+      handleClose();
+    }
+  };
+
+  const handleLinkClick = (e, to) => {
+    e.preventDefault();
+    handleClose();
+    setTimeout(() => {
+      navigate(to);
+    }, 300);
+  };
+
+  return (
+    <FullScreenOverlay
+      className={isOpen ? 'active' : isAnimating ? 'inactive' : ''}
+      onClick={handleOverlayClick}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isOpen ? 1 : 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <CloseButton onClick={handleClose} whileTap={{ scale: 0.9 }}>
+        <FaTimes />
+      </CloseButton>
+      <OverlayContent onClick={e => e.stopPropagation()}>
+        <MenuBlock
+          onMouseEnter={() => setActiveBlock('development')}
+          onMouseLeave={() => setActiveBlock(null)}
         >
-            <CloseButton
-                onClick={handleClose}
-                whileTap={{ scale: 0.9 }}
+          <MenuBlockHeader>
+            <MenuBlockIcon>
+              <FaLaptopCode />
+            </MenuBlockIcon>
+            <MenuBlockTitle>Разработка</MenuBlockTitle>
+          </MenuBlockHeader>
+          <MenuBlockContent
+            initial={{ height: 0, opacity: 0 }}
+            animate={{
+              height: activeBlock === 'development' ? 'auto' : 0,
+              opacity: activeBlock === 'development' ? 1 : 0,
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            <MenuBlockLink
+              to="/services/development/pwa"
+              onClick={(e) => handleLinkClick(e, "/services/development/pwa")}
             >
-                <FaTimes />
-            </CloseButton>
-            <OverlayContent onClick={(e) => e.stopPropagation()}>
-                <MenuBlock
-                    onMouseEnter={() => setActiveBlock('development')}
-                    onMouseLeave={() => setActiveBlock(null)}
-                >
-                    <MenuBlockHeader>
-                        <MenuBlockIcon>
-                            <FaLaptopCode />
-                        </MenuBlockIcon>
-                        <MenuBlockTitle>Разработка</MenuBlockTitle>
-                    </MenuBlockHeader>
-                    <MenuBlockContent
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ 
-                            height: activeBlock === 'development' ? 'auto' : 0,
-                            opacity: activeBlock === 'development' ? 1 : 0
-                        }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        <MenuBlockLink href="#pwa">
-                            <MenuBlockIconSmall><FaLaptopCode /></MenuBlockIconSmall>
-                            PWA (Progressive Web Apps)
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#api">
-                            <MenuBlockIconSmall><FaCode /></MenuBlockIconSmall>
-                            API разработка
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#bigdata">
-                            <MenuBlockIconSmall><FaChartLine /></MenuBlockIconSmall>
-                            Big Data и аналитика
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#automation">
-                            <MenuBlockIconSmall><FaCogs /></MenuBlockIconSmall>
-                            Автоматизация и оптимизация бизнес-процессов
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#journals">
-                            <MenuBlockIconSmall><FaBookOpen /></MenuBlockIconSmall>
-                            Разработка электронных журналов и систем учёта
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#education">
-                            <MenuBlockIconSmall><FaGraduationCap /></MenuBlockIconSmall>
-                            Платформы для онлайн-образования
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#document-flow">
-                            <MenuBlockIconSmall><FaFileAlt /></MenuBlockIconSmall>
-                            Системы документооборота
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#erp">
-                            <MenuBlockIconSmall><FaDatabase /></MenuBlockIconSmall>
-                            ERP и CRM системы
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#corporate">
-                            <MenuBlockIconSmall><FaBuilding /></MenuBlockIconSmall>
-                            Корпоративные сайты
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#ecommerce">
-                            <MenuBlockIconSmall><FaStore /></MenuBlockIconSmall>
-                            Интернет-магазины
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#landing">
-                            <MenuBlockIconSmall><FaGlobe /></MenuBlockIconSmall>
-                            Одностраничные сайты (landing page)
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#mobile">
-                            <MenuBlockIconSmall><FaMobile /></MenuBlockIconSmall>
-                            Мобильные приложения
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#ai">
-                            <MenuBlockIconSmall><FaRobot /></MenuBlockIconSmall>
-                            ИИ
-                        </MenuBlockLink>
-                    </MenuBlockContent>
-                </MenuBlock>
+              <MenuBlockIconSmall>
+                <FaLaptopCode />
+              </MenuBlockIconSmall>
+              PWA (Progressive Web Apps)
+            </MenuBlockLink>
+            <MenuBlockLink
+              to="/services/development/API"
+              onClick={(e) => handleLinkClick(e, "/services/development/API")}
+            >
+              <MenuBlockIconSmall>
+                <FaCode />
+              </MenuBlockIconSmall>
+              API разработка
+            </MenuBlockLink>
+            <MenuBlockLink
+              to="/services/development/bigdata"
+              onClick={(e) => handleLinkClick(e, "/services/development/bigdata")}
+            >
+              <MenuBlockIconSmall>
+                <FaChartLine />
+              </MenuBlockIconSmall>
+              Big Data и аналитика
+            </MenuBlockLink>
+            <MenuBlockLink
+              to="/services/development/automation"
+              onClick={(e) => handleLinkClick(e, "/services/development/automation")}
+            >
+              <MenuBlockIconSmall>
+                <FaCogs />
+              </MenuBlockIconSmall>
+              Автоматизация и оптимизация бизнес-процессов
+            </MenuBlockLink>
+            <MenuBlockLink
+              to="/services/development/journals"
+              onClick={(e) => handleLinkClick(e, "/services/development/journals")}
+            >
+              <MenuBlockIconSmall>
+                <FaBookOpen />
+              </MenuBlockIconSmall>
+              Разработка электронных журналов и систем учёта
+            </MenuBlockLink>
+            <MenuBlockLink
+              to="/services/development/education"
+              onClick={(e) => handleLinkClick(e, "/services/development/education")}
+            >
+              <MenuBlockIconSmall>
+                <FaGraduationCap />
+              </MenuBlockIconSmall>
+              Платформы для онлайн-образования
+            </MenuBlockLink>
+            <MenuBlockLink
+              to="/services/development/document"
+              onClick={(e) => handleLinkClick(e, "/services/development/document")}
+            >
+              <MenuBlockIconSmall>
+                <FaFileAlt />
+              </MenuBlockIconSmall>
+              Системы документооборота
+            </MenuBlockLink>
+            <MenuBlockLink
+              to="/services/development/erp"
+              onClick={(e) => handleLinkClick(e, "/services/development/erp")}
+            >
+              <MenuBlockIconSmall>
+                <FaDatabase />
+              </MenuBlockIconSmall>
+              ERP и CRM системы
+            </MenuBlockLink>
+            <MenuBlockLink
+              to="/services/development/corporate"
+              onClick={(e) => handleLinkClick(e, "/services/development/corporate")}
+            >
+              <MenuBlockIconSmall>
+                <FaBuilding />
+              </MenuBlockIconSmall>
+              Корпоративные сайты
+            </MenuBlockLink>
+            <MenuBlockLink
+              to="/services/development/ecommerce"
+              onClick={(e) => handleLinkClick(e, "/services/development/ecommerce")}
+            >
+              <MenuBlockIconSmall>
+                <FaStore />
+              </MenuBlockIconSmall>
+              Интернет-магазины
+            </MenuBlockLink>
+            <MenuBlockLink
+              to="/services/development/landing"
+              onClick={(e) => handleLinkClick(e, "/services/development/landing")}
+            >
+              <MenuBlockIconSmall>
+                <FaGlobe />
+              </MenuBlockIconSmall>
+              Одностраничные сайты (landing page)
+            </MenuBlockLink>
+            <MenuBlockLink
+              to="/services/development/mobile"
+              onClick={(e) => handleLinkClick(e, "/services/development/mobile")}
+            >
+              <MenuBlockIconSmall>
+                <FaMobile />
+              </MenuBlockIconSmall>
+              Мобильные приложения
+            </MenuBlockLink>
+            <MenuBlockLink
+              to="/services/development/AI"
+              onClick={(e) => handleLinkClick(e, "/services/development/AI")}
+            >
+              <MenuBlockIconSmall>
+                <FaRobot />
+              </MenuBlockIconSmall>
+              ИИ
+            </MenuBlockLink>
+          </MenuBlockContent>
+        </MenuBlock>
 
-                <MenuBlock
-                    onMouseEnter={() => setActiveBlock('design')}
-                    onMouseLeave={() => setActiveBlock(null)}
-                >
-                    <MenuBlockHeader>
-                        <MenuBlockIcon>
-                            <FaPalette />
-                        </MenuBlockIcon>
-                        <MenuBlockTitle>Дизайн</MenuBlockTitle>
-                    </MenuBlockHeader>
-                    <MenuBlockContent
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ 
-                            height: activeBlock === 'design' ? 'auto' : 0,
-                            opacity: activeBlock === 'design' ? 1 : 0
-                        }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        <MenuBlockLink href="#banners">
-                            <MenuBlockIconSmall><FaPaintBrush /></MenuBlockIconSmall>
-                            Рекламные Банера
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#motion">
-                            <MenuBlockIconSmall><FaVideo /></MenuBlockIconSmall>
-                            Моушен дизайн
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#brandbook">
-                            <MenuBlockIconSmall><FaBook /></MenuBlockIconSmall>
-                            Бренд Бук
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#web-design">
-                            <MenuBlockIconSmall><FaDesktop /></MenuBlockIconSmall>
-                            Веб дизайн
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#ui-ux">
-                            <MenuBlockIconSmall><FaPalette /></MenuBlockIconSmall>
-                            UX/UI дизайн
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#illustrations">
-                            <MenuBlockIconSmall><FaPaintBrush /></MenuBlockIconSmall>
-                            Иллюстрации и иконографика
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#3d">
-                            <MenuBlockIconSmall><FaCube /></MenuBlockIconSmall>
-                            3D моделирование и визуализация
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#infographics">
-                            <MenuBlockIconSmall><FaChartPie /></MenuBlockIconSmall>
-                            Инфографика
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#package">
-                            <MenuBlockIconSmall><FaBox /></MenuBlockIconSmall>
-                            Пакетный дизайн
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#typography">
-                            <MenuBlockIconSmall><FaFont /></MenuBlockIconSmall>
-                            Типографика и леттеринг
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#social">
-                            <MenuBlockIconSmall><FaInstagram /></MenuBlockIconSmall>
-                            Социальные медиа дизайн
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#animation">
-                            <MenuBlockIconSmall><FaVideo /></MenuBlockIconSmall>
-                            Анимация и видео дизайн
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#branding">
-                            <MenuBlockIconSmall><FaPencilRuler /></MenuBlockIconSmall>
-                            Разработка фирменного стиля
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#retouch">
-                            <MenuBlockIconSmall><FaCamera /></MenuBlockIconSmall>
-                            Ретушь и обработка фотографий
-                        </MenuBlockLink>
-                    </MenuBlockContent>
-                </MenuBlock>
+        <MenuBlock
+          onMouseEnter={() => setActiveBlock('design')}
+          onMouseLeave={() => setActiveBlock(null)}
+        >
+          <MenuBlockHeader>
+            <MenuBlockIcon>
+              <FaPalette />
+            </MenuBlockIcon>
+            <MenuBlockTitle>Дизайн</MenuBlockTitle>
+          </MenuBlockHeader>
+          <MenuBlockContent
+            initial={{ height: 0, opacity: 0 }}
+            animate={{
+              height: activeBlock === 'design' ? 'auto' : 0,
+              opacity: activeBlock === 'design' ? 1 : 0,
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            <MenuBlockLink href="#banners" onClick={(e) => handleLinkClick(e, "#banners")}>
+              <MenuBlockIconSmall>
+                <FaPaintBrush />
+              </MenuBlockIconSmall>
+              Рекламные Банера
+            </MenuBlockLink>
+            <MenuBlockLink href="#motion" onClick={(e) => handleLinkClick(e, "#motion")}>
+              <MenuBlockIconSmall>
+                <FaVideo />
+              </MenuBlockIconSmall>
+              Моушен дизайн
+            </MenuBlockLink>
+            <MenuBlockLink href="#brandbook" onClick={(e) => handleLinkClick(e, "#brandbook")}>
+              <MenuBlockIconSmall>
+                <FaBook />
+              </MenuBlockIconSmall>
+              Бренд Бук
+            </MenuBlockLink>
+            <MenuBlockLink href="#web-design" onClick={(e) => handleLinkClick(e, "#web-design")}>
+              <MenuBlockIconSmall>
+                <FaDesktop />
+              </MenuBlockIconSmall>
+              Веб дизайн
+            </MenuBlockLink>
+            <MenuBlockLink href="#ui-ux" onClick={(e) => handleLinkClick(e, "#ui-ux")}>
+              <MenuBlockIconSmall>
+                <FaPalette />
+              </MenuBlockIconSmall>
+              UX/UI дизайн
+            </MenuBlockLink>
+            <MenuBlockLink href="#illustrations" onClick={(e) => handleLinkClick(e, "#illustrations")}>
+              <MenuBlockIconSmall>
+                <FaPaintBrush />
+              </MenuBlockIconSmall>
+              Иллюстрации и иконографика
+            </MenuBlockLink>
+            <MenuBlockLink href="#3d" onClick={(e) => handleLinkClick(e, "#3d")}>
+              <MenuBlockIconSmall>
+                <FaCube />
+              </MenuBlockIconSmall>
+              3D моделирование и визуализация
+            </MenuBlockLink>
+            <MenuBlockLink href="#infographics" onClick={(e) => handleLinkClick(e, "#infographics")}>
+              <MenuBlockIconSmall>
+                <FaChartPie />
+              </MenuBlockIconSmall>
+              Инфографика
+            </MenuBlockLink>
+            <MenuBlockLink href="#package" onClick={(e) => handleLinkClick(e, "#package")}>
+              <MenuBlockIconSmall>
+                <FaBox />
+              </MenuBlockIconSmall>
+              Пакетный дизайн
+            </MenuBlockLink>
+            <MenuBlockLink href="#typography" onClick={(e) => handleLinkClick(e, "#typography")}>
+              <MenuBlockIconSmall>
+                <FaFont />
+              </MenuBlockIconSmall>
+              Типографика и леттеринг
+            </MenuBlockLink>
+            <MenuBlockLink href="#social" onClick={(e) => handleLinkClick(e, "#social")}>
+              <MenuBlockIconSmall>
+                <FaInstagram />
+              </MenuBlockIconSmall>
+              Социальные медиа дизайн
+            </MenuBlockLink>
+            <MenuBlockLink href="#animation" onClick={(e) => handleLinkClick(e, "#animation")}>
+              <MenuBlockIconSmall>
+                <FaVideo />
+              </MenuBlockIconSmall>
+              Анимация и видео дизайн
+            </MenuBlockLink>
+            <MenuBlockLink href="#branding" onClick={(e) => handleLinkClick(e, "#branding")}>
+              <MenuBlockIconSmall>
+                <FaPencilRuler />
+              </MenuBlockIconSmall>
+              Разработка фирменного стиля
+            </MenuBlockLink>
+            <MenuBlockLink href="#retouch" onClick={(e) => handleLinkClick(e, "#retouch")}>
+              <MenuBlockIconSmall>
+                <FaCamera />
+              </MenuBlockIconSmall>
+              Ретушь и обработка фотографий
+            </MenuBlockLink>
+          </MenuBlockContent>
+        </MenuBlock>
 
-                <MenuBlock
-                    onMouseEnter={() => setActiveBlock('marketing')}
-                    onMouseLeave={() => setActiveBlock(null)}
-                >
-                    <MenuBlockHeader>
-                        <MenuBlockIcon>
-                            <FaBullhorn />
-                        </MenuBlockIcon>
-                        <MenuBlockTitle>Маркетинг</MenuBlockTitle>
-                    </MenuBlockHeader>
-                    <MenuBlockContent
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ 
-                            height: activeBlock === 'marketing' ? 'auto' : 0,
-                            opacity: activeBlock === 'marketing' ? 1 : 0
-                        }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        <MenuBlockLink href="#banner-ads">
-                            <MenuBlockIconSmall><FaImage /></MenuBlockIconSmall>
-                            Банерная реклама на сайтах
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#smm">
-                            <MenuBlockIconSmall><FaUsers /></MenuBlockIconSmall>
-                            SMM
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#context-ads">
-                            <MenuBlockIconSmall><FaChartBar /></MenuBlockIconSmall>
-                            Контекстная реклама
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#seo">
-                            <MenuBlockIconSmall><FaSearch /></MenuBlockIconSmall>
-                            Seo Оптимизация
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#target-ads">
-                            <MenuBlockIconSmall><FaBullhorn /></MenuBlockIconSmall>
-                            Таргетированная реклама
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#marketing-strategy">
-                            <MenuBlockIconSmall><FaChartLine /></MenuBlockIconSmall>
-                            Маркетинговая стратегия
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#marketing-audit">
-                            <MenuBlockIconSmall><FaChartBar /></MenuBlockIconSmall>
-                            Маркетинговый аудит
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#email">
-                            <MenuBlockIconSmall><FaEnvelope /></MenuBlockIconSmall>
-                            E-mail рассылки
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#competitors">
-                            <MenuBlockIconSmall><FaSearch /></MenuBlockIconSmall>
-                            Анализ конкурентов
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#web-analytics">
-                            <MenuBlockIconSmall><FaChartArea /></MenuBlockIconSmall>
-                            Веб аналитика
-                        </MenuBlockLink>
-                        <MenuBlockLink href="#content-plan">
-                            <MenuBlockIconSmall><FaClipboardList /></MenuBlockIconSmall>
-                            Контент план
-                        </MenuBlockLink>
-                    </MenuBlockContent>
-                </MenuBlock>
-            </OverlayContent>
-        </FullScreenOverlay>
-    );
+        <MenuBlock
+          onMouseEnter={() => setActiveBlock('marketing')}
+          onMouseLeave={() => setActiveBlock(null)}
+        >
+          <MenuBlockHeader>
+            <MenuBlockIcon>
+              <FaBullhorn />
+            </MenuBlockIcon>
+            <MenuBlockTitle>Маркетинг</MenuBlockTitle>
+          </MenuBlockHeader>
+          <MenuBlockContent
+            initial={{ height: 0, opacity: 0 }}
+            animate={{
+              height: activeBlock === 'marketing' ? 'auto' : 0,
+              opacity: activeBlock === 'marketing' ? 1 : 0,
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            <MenuBlockLink href="#banner-ads" onClick={(e) => handleLinkClick(e, "#banner-ads")}>
+              <MenuBlockIconSmall>
+                <FaImage />
+              </MenuBlockIconSmall>
+              Банерная реклама на сайтах
+            </MenuBlockLink>
+            <MenuBlockLink href="#smm" onClick={(e) => handleLinkClick(e, "#smm")}>
+              <MenuBlockIconSmall>
+                <FaUsers />
+              </MenuBlockIconSmall>
+              SMM
+            </MenuBlockLink>
+            <MenuBlockLink href="#context-ads" onClick={(e) => handleLinkClick(e, "#context-ads")}>
+              <MenuBlockIconSmall>
+                <FaChartBar />
+              </MenuBlockIconSmall>
+              Контекстная реклама
+            </MenuBlockLink>
+            <MenuBlockLink href="#seo" onClick={(e) => handleLinkClick(e, "#seo")}>
+              <MenuBlockIconSmall>
+                <FaSearch />
+              </MenuBlockIconSmall>
+              Seo Оптимизация
+            </MenuBlockLink>
+            <MenuBlockLink href="#target-ads" onClick={(e) => handleLinkClick(e, "#target-ads")}>
+              <MenuBlockIconSmall>
+                <FaBullhorn />
+              </MenuBlockIconSmall>
+              Таргетированная реклама
+            </MenuBlockLink>
+            <MenuBlockLink href="#marketing-strategy" onClick={(e) => handleLinkClick(e, "#marketing-strategy")}>
+              <MenuBlockIconSmall>
+                <FaChartLine />
+              </MenuBlockIconSmall>
+              Маркетинговая стратегия
+            </MenuBlockLink>
+            <MenuBlockLink href="#marketing-audit" onClick={(e) => handleLinkClick(e, "#marketing-audit")}>
+              <MenuBlockIconSmall>
+                <FaChartBar />
+              </MenuBlockIconSmall>
+              Маркетинговый аудит
+            </MenuBlockLink>
+            <MenuBlockLink href="#email" onClick={(e) => handleLinkClick(e, "#email")}>
+              <MenuBlockIconSmall>
+                <FaEnvelope />
+              </MenuBlockIconSmall>
+              E-mail рассылки
+            </MenuBlockLink>
+            <MenuBlockLink href="#competitors" onClick={(e) => handleLinkClick(e, "#competitors")}>
+              <MenuBlockIconSmall>
+                <FaSearch />
+              </MenuBlockIconSmall>
+              Анализ конкурентов
+            </MenuBlockLink>
+            <MenuBlockLink href="#web-analytics" onClick={(e) => handleLinkClick(e, "#web-analytics")}>
+              <MenuBlockIconSmall>
+                <FaChartArea />
+              </MenuBlockIconSmall>
+              Веб аналитика
+            </MenuBlockLink>
+            <MenuBlockLink href="#content-plan" onClick={(e) => handleLinkClick(e, "#content-plan")}>
+              <MenuBlockIconSmall>
+                <FaClipboardList />
+              </MenuBlockIconSmall>
+              Контент план
+            </MenuBlockLink>
+          </MenuBlockContent>
+        </MenuBlock>
+      </OverlayContent>
+    </FullScreenOverlay>
+  );
 };
 
-export default BurgerMenu; 
+export default BurgerMenu;
