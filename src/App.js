@@ -23,6 +23,7 @@ import OnlineEducationPage from 'services/development/OnlineEducationPage';
 import DocumentManagementPage from 'services/development/DocumentManagementPage';
 import CorporateWebsitePage from 'services/development/CorporateWebsitePage';
 import AIPage from 'services/development/AIPage';
+import BannerAds from './services/design/BannerAds';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -106,6 +107,7 @@ const App = () => {
               <Route path="/services/development/document" element={<DocumentManagementPage />} />
               <Route path="/services/development/corporate" element={<CorporateWebsitePage />} />
               <Route path="/services/development/AI" element={<AIPage />} />
+              <Route path="/services/design/banners" element={<BannerAds />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
             <Footer />

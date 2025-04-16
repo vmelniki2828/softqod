@@ -249,7 +249,7 @@ const HeaderNavigation = () => {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
           >
-            <DropdownItem to="/design/banners">
+            <DropdownItem to="/services/design/banners">
               <FaPaintBrush />
               Рекламные Банера
             </DropdownItem>
