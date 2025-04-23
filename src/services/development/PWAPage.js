@@ -1088,18 +1088,6 @@ const PWAPage = () => {
     }
   };
   
-  const phoneVariants = {
-    initial: { rotateY: 0 },
-    animate: {
-      rotateY: 360,
-      transition: {
-        duration: 20,
-        repeat: Infinity,
-        ease: "linear"
-      }
-    }
-  };
-
   return (
     <Container>
       <HeroSection
@@ -1145,7 +1133,7 @@ const PWAPage = () => {
         >
           <Phone
             initial={{ opacity: 0 }}
-            animate={{ ...phoneVariants.animate, opacity: 1 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.1 }}
           >
             <OrbitingCircle />
