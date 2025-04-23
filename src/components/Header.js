@@ -198,7 +198,7 @@ const HeaderNavigation = () => {
         onMouseEnter={() => setActiveBlock('development')}
         onMouseLeave={() => setActiveBlock(null)}
       >
-        <NavLink to="/services" className={location.pathname.startsWith('/services') ? 'active' : ''}>
+        <NavLink className={location.pathname.startsWith('/services/development') ? 'active' : ''}>
           Разработка
         </NavLink>
         {activeBlock === 'development' && (
@@ -239,7 +239,7 @@ const HeaderNavigation = () => {
         onMouseEnter={() => setActiveBlock('design')}
         onMouseLeave={() => setActiveBlock(null)}
       >
-        <NavLink to="/design">
+        <NavLink className={location.pathname.startsWith('/services/design') ? 'active' : ''}>
           Дизайн
         </NavLink>
         {activeBlock === 'design' && (
@@ -280,7 +280,7 @@ const HeaderNavigation = () => {
         onMouseEnter={() => setActiveBlock('marketing')}
         onMouseLeave={() => setActiveBlock(null)}
       >
-        <NavLink to="/marketing">
+        <NavLink className={location.pathname.startsWith('/services/marketing') ? 'active' : ''}>
           Маркетинг
         </NavLink>
         {activeBlock === 'marketing' && (
@@ -290,7 +290,7 @@ const HeaderNavigation = () => {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
           >
-            <DropdownItem to="/marketing/banner-ads">
+            <DropdownItem to="/services/marketing/banners">
               <FaBullhorn />
               Банерная реклама на сайтах
             </DropdownItem>
