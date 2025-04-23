@@ -287,7 +287,7 @@ const AppIcon = styled(motion.div)`
 `;
 
 const OrbitingCircle = styled(motion.div)`
-  position: absolute;
+    position: absolute;
   width: 200%;
   height: 200%;
   left: -50%;
@@ -342,7 +342,7 @@ const HeroBenefitItem = styled(motion.div)`
   align-items: center;
   gap: 1rem;
   transition: all 0.3s ease;
-  
+
   &:hover {
     border-color: rgba(94, 234, 212, 0.3);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
@@ -476,7 +476,7 @@ const PWAFeatureItem = styled(motion.li)`
   background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   transition: all 0.3s ease;
-  
+
   &:hover {
     background: rgba(255, 255, 255, 0.1);
     transform: translateX(10px);
@@ -499,7 +499,7 @@ const PWASummary = styled(motion.p)`
   color: var(--text-primary);
   border-left: 4px solid var(--accent-color);
   padding: 1.5rem 2rem;
-  background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.05);
   border-radius: 0 12px 12px 0;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 `;
@@ -541,7 +541,7 @@ const PWABenefitsContainer = styled.div`
 const PWABenefitsTitle = styled(motion.h2)`
   font-size: 3rem;
   font-weight: 700;
-  color: var(--accent-color);
+    color: var(--accent-color);
   margin-bottom: 4rem;
   position: relative;
   display: inline-block;
@@ -664,7 +664,7 @@ const PWACtaButton = styled(motion.button)`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -690,7 +690,7 @@ const PWABenefitsDecoration = styled.div`
   background: radial-gradient(circle, rgba(94, 234, 212, 0.1) 0%, transparent 70%);
   border-radius: 50%;
   filter: blur(40px);
-  z-index: 0;
+    z-index: 0;
   
   &::after {
     content: '';
@@ -739,7 +739,7 @@ const PWAServicesTitle = styled(motion.h2)`
   position: relative;
   display: inline-block;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -783,36 +783,36 @@ const PWAServicesIntro = styled(motion.p)`
   position: relative;
   z-index: 1;
 `;
-
+  
 const ServicesHeading = styled(motion.h3)`
-  font-size: 1.8rem;
+    font-size: 1.8rem;
   font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
   position: relative;
   z-index: 1;
 `;
 
 const ServicesList = styled(motion.ul)`
-  list-style: none;
-  padding: 0;
+    list-style: none;
+    padding: 0;
   margin: 0 0 3rem 0;
   position: relative;
   z-index: 1;
 `;
 
 const ServiceItem = styled(motion.li)`
-  display: flex;
+    display: flex;
   align-items: flex-start;
   margin-bottom: 1.5rem;
-  padding: 1rem;
-  border-radius: 12px;
+    padding: 1rem;
+    border-radius: 12px;
   background: rgba(255, 255, 255, 0.03);
-  transition: all 0.3s ease;
-  
-  &:hover {
+    transition: all 0.3s ease;
+
+    &:hover {
     background: rgba(255, 255, 255, 0.07);
-    transform: translateX(10px);
+      transform: translateX(10px);
   }
 `;
 
@@ -850,14 +850,14 @@ const PWAServiceSummary = styled(motion.p)`
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 1.7;
-  color: var(--text-primary);
+    color: var(--text-primary);
   padding: 2rem;
   background: linear-gradient(90deg, rgba(94, 234, 212, 0.1), rgba(59, 130, 246, 0.1));
   border-radius: 12px;
   margin: 2rem 0 3rem;
   position: relative;
   z-index: 1;
-  
+
   &::before {
     content: '"';
     position: absolute;
@@ -926,7 +926,7 @@ const ServiceLink = styled(motion.a)`
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   &:hover {
     color: var(--accent-color);
   }
@@ -1088,6 +1088,18 @@ const PWAPage = () => {
     }
   };
   
+  const phoneVariants = {
+    initial: { rotateY: 0 },
+    animate: {
+      rotateY: 360,
+      transition: {
+        duration: 20,
+        repeat: Infinity,
+        ease: "linear"
+      }
+    }
+  };
+
   return (
     <Container>
       <HeroSection
@@ -1149,15 +1161,15 @@ const PWAPage = () => {
             >
               <PhoneContent>
                 <IconCircle
-                  animate={{
+              animate={{ 
                     scale: [1, 1.1, 1],
                     rotateZ: [0, 10, -10, 0]
-                  }}
-                  transition={{
+              }}
+              transition={{
                     duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
                 >
                   <FaRocket />
                 </IconCircle>
@@ -1394,8 +1406,8 @@ const PWAPage = () => {
               boxShadow: '0 0 25px rgba(94, 234, 212, 0.5)' 
             }}
             whileTap={{ scale: 0.98 }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
           >
             Замовити PWA-розробку
@@ -1408,8 +1420,8 @@ const PWAPage = () => {
       <PWAServicesSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
+          transition={{ duration: 0.8 }}
+        >
         <ServicesWave />
         
         <PWAServicesContainer>
@@ -1423,8 +1435,8 @@ const PWAPage = () => {
           
           <PWAServicesContent>
             <PWAServicesIntro
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
               Ми створюємо прогресивні веб-додатки під ключ — від ідеї до запуску. 
@@ -1574,8 +1586,8 @@ const PWAPage = () => {
           </WhyUsCardsContainer>
           
           <WhyUsAction
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             <PulsingButton
