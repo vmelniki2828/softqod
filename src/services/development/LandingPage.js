@@ -1836,7 +1836,7 @@ const LandingPage = () => {
               </CtaInputWrapper>
 
               <CtaInputWrapper>
-                <CtaInput type="text" placeholder="Тип бізнесу" />
+                <CtaInput type="email" placeholder="Email" />
                 <CtaInputBg />
               </CtaInputWrapper>
 
