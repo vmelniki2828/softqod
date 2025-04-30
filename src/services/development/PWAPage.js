@@ -1150,9 +1150,6 @@ const PWAPage = () => {
           >
             <OrbitingCircle />
             <OrbitingCircleInner />
-            {orbitingDots.map(dot => (
-              <OrbitingDot key={dot.id} top={dot.top} left={dot.left} />
-            ))}
             
             <PhoneScreen
               initial={{ opacity: 0 }}
