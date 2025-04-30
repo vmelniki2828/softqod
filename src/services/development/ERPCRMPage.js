@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import styled, { keyframes } from 'styled-components';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaDatabase, 
   FaChartLine, 
@@ -15,560 +15,3926 @@ import {
   FaWarehouse,
   FaShoppingCart,
   FaMoneyBillWave,
+  FaShieldAlt,
+  FaServer,
+  FaLaptopCode,
+  FaUsers,
+  FaSyncAlt,
+  FaMobile,
+  FaClipboardCheck,
+  FaPlus,
+  FaHandshake,
+  FaTasks,
+  FaHeadset,
+  FaStar,
+  FaStarHalfAlt,
+  FaFacebook,
+  FaLinkedin,
+  FaTwitter,
+  FaInstagram,
+  FaMapMarkerAlt,
+  FaPhone,
+  FaEnvelope,
+  FaFacebookF,
+  FaLinkedinIn,
+  FaPhoneAlt,
+  FaClock,
+  FaTruck,
+  FaIndustry
 } from 'react-icons/fa';
 
-const PageContainer = styled.div`
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  color: var(--text-primary);
+// Анимации
+const pulse = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 `;
 
-const MainHero = styled(motion.section)`
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-  padding: 6rem 2rem;
-  text-align: center;
+const rotate = keyframes`
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`;
+
+const glow = keyframes`
+  0% { box-shadow: 0 0 5px rgba(74, 144, 226, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(74, 144, 226, 0.6), 0 0 30px rgba(41, 98, 255, 0.3); }
+  100% { box-shadow: 0 0 5px rgba(74, 144, 226, 0.3); }
+`;
+
+const shimmer = keyframes`
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
+`;
+
+const floatVertical = keyframes`
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+`;
+
+const pulseRing = keyframes`
+  0% { transform: scale(0.8); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 0.4; }
+  100% { transform: scale(0.8); opacity: 0.8; }
+`;
+
+const circleFloat = keyframes`
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+`;
+
+const spinGlow = keyframes`
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+`;
+
+const fadeInScale = keyframes`
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+`;
+
+const shimmerEffect = keyframes`
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
+`;
+
+// Стилизованные компоненты
+const Container = styled.div`
+  width: 100%;
+  max-width: 100vw;
+  margin: 0 auto;
+  padding-top: 100px;
+  color: var(--text-primary);
   position: relative;
   overflow: hidden;
-  border-radius: 30px;
-  margin-bottom: 4rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+`;
 
-  &::before {
+const HeroSection = styled(motion.div)`
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 2rem;
+`;
+
+const Background = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  z-index: -1;
+  
+  &::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('https://images.unsplash.com/photo-1551289061-6097d62404d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
-    opacity: 0.1;
-    z-index: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(74, 144, 226, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 80% 70%, rgba(41, 98, 255, 0.15) 0%, transparent 25%);
   }
 `;
 
-const MainTitle = styled(motion.h1)`
-  font-size: 4rem;
-  color: var(--accent-color);
-  margin-bottom: 1.5rem;
+const StarField = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 0%, var(--bg-primary) 100%);
+  z-index: -1;
+`;
+
+const Star = styled.div`
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: ${props => props.opacity};
+  width: ${props => props.size}px;
+  height: ${props => props.size}px;
+  top: ${props => props.top}%;
+  left: ${props => props.left}%;
+  animation: ${pulse} ${props => props.duration}s infinite ease-in-out;
+`;
+
+const Title = styled(motion.h1)`
+  font-size: 4.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: transparent;
+  background: linear-gradient(90deg, var(--accent-color), #4a90e2, var(--accent-color));
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: ${shimmer} 8s linear infinite;
   position: relative;
   z-index: 1;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.5px;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {
     font-size: 2.5rem;
   }
-`;
-
-const MainSubtitle = styled(motion.p)`
-  font-size: 1.5rem;
-  color: var(--text-secondary);
-  max-width: 800px;
-  margin: 0 auto 2rem;
-  position: relative;
-  z-index: 1;
-  line-height: 1.6;
-
-  @media (max-width: 768px) {
-    font-size: 1.2rem;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 3px;
   }
 `;
 
-const CreationPath = styled(motion.div)`
-  background: linear-gradient(135deg, rgba(11, 30, 43, 0.8) 0%, rgba(6, 20, 27, 0.9) 100%);
-  padding: 4rem 2rem;
-  border-radius: 30px;
-  margin: 4rem 0;
+const Subtitle = styled(motion.p)`
+  font-size: 1.5rem;
+  max-width: 800px;
+  text-align: center;
+  margin: 0 auto 3rem;
+  color: var(--text-secondary);
   position: relative;
+  z-index: 1;
+  line-height: 1.8;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    padding: 0 1rem;
+  }
+`;
+
+const SystemContainer = styled(motion.div)`
+  width: 320px;
+  height: 480px;
+  position: relative;
+  margin: 0 auto;
+  
+  @media (max-width: 768px) {
+    width: 260px;
+    height: 400px;
+  }
+`;
+
+const SystemBox = styled(motion.div)`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  border-radius: 36px;
+  box-shadow: 0 0 50px rgba(74, 144, 226, 0.3);
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  animation: ${glow} 4s infinite ease-in-out;
 
   &::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 25px;
+    background: var(--bg-primary);
+    border-radius: 20px;
+    z-index: 2;
+  }
+  
+  &::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('https://images.unsplash.com/photo-1551289061-6097d62404d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
-    opacity: 0.05;
-    z-index: 0;
+    background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(41, 98, 255, 0.1) 100%);
+    z-index: 1;
   }
 `;
 
-const PathContainer = styled.div`
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+const SystemInterface = styled(motion.div)`
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 90%;
+  height: 80%;
+  background: var(--accent-color);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
 `;
 
-const PathLine = styled(motion.div)`
+const SystemContent = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+`;
+
+const IconCircle = styled(motion.div)`
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+`;
+
+const SystemModules = styled(motion.div)`
   position: absolute;
-  top: 50%;
+  bottom: 20px;
   left: 0;
   right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent-color) 0%, transparent 100%);
-  transform: translateY(-50%);
-  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+`;
 
+const ModuleIcon = styled(motion.div)`
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+`;
+
+const OrbitingCircle = styled(motion.div)`
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  left: -50%;
+  top: -50%;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  animation: ${rotate} 20s linear infinite;
+  z-index: 0;
+`;
+
+const OrbitingCircleInner = styled(motion.div)`
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  left: -20%;
+  top: -20%;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  animation: ${rotate} 15s linear infinite reverse;
+  z-index: 0;
+`;
+
+const OrbitingDot = styled(motion.div)`
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #4a90e2 0%, #2962ff 100%);
+  border-radius: 50%;
+  top: ${props => props.top}%;
+  left: ${props => props.left}%;
+  box-shadow: 0 0 20px rgba(74, 144, 226, 0.5);
+  z-index: 10;
+`;
+
+const HeroBenefitsList = styled(motion.div)`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 4rem auto 0;
+  max-width: 1200px;
+  z-index: 1;
+  position: relative;
+`;
+
+const HeroBenefitItem = styled(motion.div)`
+  background: rgba(16, 24, 39, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: rgba(74, 144, 226, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+  }
+`;
+
+const HeroBenefitIcon = styled.div`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  box-shadow: 0 0 20px rgba(41, 98, 255, 0.5);
+  flex-shrink: 0;
+`;
+
+const HeroBenefitContent = styled.div`
+  flex: 1;
+`;
+
+const HeroBenefitTitle = styled.h3`
+  font-size: 1.1rem;
+  color: white;
+  margin-bottom: 0.5rem;
+`;
+
+const HeroBenefitDescription = styled.p`
+  color: #9ca3af;
+  font-size: 0.9rem;
+  line-height: 1.4;
+`;
+
+// Информационная секция
+const InfoSection = styled(motion.section)`
+  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  position: relative;
+  padding: 8rem 2rem;
+  overflow: hidden;
+  box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: 0;
+    right: 0;
+    height: 160px;
+    background: linear-gradient(to bottom, transparent, var(--bg-secondary));
+    z-index: 2;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    transform: scaleX(2);
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 70% 20%, rgba(74, 144, 226, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 30% 70%, rgba(41, 98, 255, 0.1) 0%, transparent 30%);
+    z-index: 1;
+  }
+`;
+
+const InfoContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3;
+  background: rgba(16, 24, 39, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+`;
+
+const InfoTitle = styled(motion.h2)`
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+    border-radius: 4px;
+  }
+`;
+
+const InfoContent = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: var(--text-primary);
+`;
+
+const InfoText = styled(motion.p)`
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  color: var(--text-secondary);
+`;
+
+const FeaturesList = styled(motion.ul)`
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+`;
+
+const FeatureItem = styled(motion.li)`
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.2rem;
+  padding: 1rem 1rem 1rem 2.5rem;
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(10px);
+  }
+  
+  &::before {
+    content: '—';
+    position: absolute;
+    left: 1rem;
+    color: var(--accent-color);
+    font-weight: bold;
+  }
+`;
+
+const InfoSummary = styled(motion.p)`
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8;
+  margin: 2.5rem 0;
+  color: var(--text-primary);
+  border-left: 4px solid var(--accent-color);
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+`;
+
+const BackgroundShape = styled(motion.div)`
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-color) 0%, transparent 70%);
+  opacity: 0.1;
+  z-index: 0;
+`;
+
+// Секция преимуществ
+const BenefitsSection = styled(motion.section)`
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  position: relative;
+  padding: 8rem 2rem;
+  overflow: hidden;
+  
   &::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent 0%, var(--accent-color) 100%);
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0% { opacity: 0.3; }
-    50% { opacity: 1; }
-    100% { opacity: 0.3; }
+    height: 150px;
+    background: linear-gradient(to top, transparent, var(--bg-primary));
+    z-index: 1;
   }
 `;
 
-const PathSteps = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
+const BenefitsContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
   position: relative;
   z-index: 2;
-  margin-top: 4rem;
-  gap: 2rem;
 `;
 
-const PathStep = styled(motion.div)`
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-  padding: 2.5rem 2rem;
-  border-radius: 20px;
-  width: 23%;
-  min-height: 320px;
+const BenefitsTitle = styled(motion.h2)`
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 4rem;
   position: relative;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 100%);
+  display: inline-block;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+    border-radius: 4px;
   }
 `;
 
-const StepNumber = styled.div`
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 40px;
-  background: var(--accent-color);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  color: white;
-  z-index: 3;
-  box-shadow: 0 0 20px rgba(74, 144, 226, 0.5);
+const BenefitCardContainer = styled(motion.div)`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
-const StepIcon = styled.div`
-  font-size: 2.8rem;
-  color: var(--accent-color);
-  margin: 1.5rem 0;
-  text-align: center;
+const BenefitCard = styled(motion.div)`
+  background: rgba(16, 24, 39, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, rgba(74, 144, 226, 0.05) 0%, transparent 50%);
+    z-index: 0;
+  }
+`;
+
+const BenefitIconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+`;
+
+const BenefitIcon = styled.div`
+  width: 60px;
   height: 60px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent-color) 0%, rgba(41, 98, 255, 0.8) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.8rem;
+  color: white;
+  box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+  position: relative;
+  z-index: 1;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+    border-radius: inherit;
+    z-index: -1;
+  }
 `;
 
-const StepTitle = styled.h3`
-  font-size: 1.5rem;
+const BenefitNumber = styled.span`
+  font-size: 3rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.08);
+  font-family: sans-serif;
+`;
+
+const BenefitContent = styled.div`
+  position: relative;
+  z-index: 1;
+`;
+
+const BenefitCardTitle = styled.h3`
+  font-size: 1.4rem;
+  font-weight: 600;
   margin-bottom: 1rem;
   color: var(--text-primary);
-  text-align: center;
-  width: 100%;
 `;
 
-const StepDescription = styled.p`
+const BenefitCardDescription = styled.p`
+  font-size: 1.05rem;
+  line-height: 1.7;
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  font-size: 1rem;
-  width: 100%;
 `;
 
-const StepFeatures = styled.ul`
+const CtaButton = styled(motion.button)`
+  padding: 1.2rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--accent-color), rgba(41, 98, 255, 0.9));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 8px 20px rgba(74, 144, 226, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+  width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.6s ease;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+`;
+
+const BenefitsDecoration = styled.div`
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(74, 144, 226, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+  z-index: 0;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: -30%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(41, 98, 255, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(40px);
+  }
+`;
+
+// Секция услуг
+const ServicesSection = styled(motion.section)`
+  position: relative;
+  padding: 8rem 2rem;
+  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  overflow: hidden;
+`;
+
+const ServicesWave = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: var(--bg-secondary);
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 100%);
+  z-index: 1;
+`;
+
+const ServicesContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+`;
+
+const ServicesTitle = styled(motion.h2)`
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 4rem;
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+    border-radius: 4px;
+  }
+`;
+
+const ServicesContent = styled.div`
+  background: rgba(16, 24, 39, 0.7);
+  backdrop-filter: blur(15px);
+  border-radius: 24px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(74, 144, 226, 0.05) 0%, transparent 70%);
+    top: -200px;
+    right: -200px;
+    border-radius: 50%;
+    z-index: 0;
+  }
+`;
+
+const ServicesIntro = styled(motion.p)`
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+`;
+  
+const ServicesHeading = styled(motion.h3)`
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+`;
+
+const ServicesList = styled(motion.ul)`
   list-style: none;
   padding: 0;
-  margin: 0;
-  width: 100%;
+  margin: 0 0 3rem 0;
+  position: relative;
+  z-index: 1;
 `;
 
-const StepFeature = styled(motion.li)`
+const ServiceItem = styled(motion.li)`
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.07);
+    transform: translateX(10px);
+  }
+`;
+
+const ServiceIcon = styled.div`
+  margin-right: 1rem;
+  position: relative;
+`;
+
+const ServiceCircle = styled.div`
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-color) 0%, #2962ff 100%);
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  margin-bottom: 0.8rem;
-  color: var(--text-secondary);
-  padding: 0.6rem;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  font-size: 0.95rem;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.05);
-    transform: translateX(5px);
-  }
-
-  svg {
-    color: var(--accent-color);
-    font-size: 1.2rem;
+  justify-content: center;
+  
+  &::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
   }
 `;
 
-const FeaturesGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-`;
-
-const FeatureCard = styled(motion.div)`
-  background: var(--bg-secondary);
-  padding: 2rem;
-  border-radius: 15px;
-  border: 1px solid var(--border-color);
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  }
-`;
-
-const FeatureIcon = styled.div`
-  font-size: 2.5rem;
-  color: var(--accent-color);
-  margin-bottom: 1rem;
-`;
-
-const FeatureTitle = styled.h3`
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-`;
-
-const FeatureDescription = styled.p`
-  color: var(--text-secondary);
+const ServiceText = styled.p`
+  font-size: 1.15rem;
   line-height: 1.6;
+  color: var(--text-secondary);
+  flex: 1;
 `;
 
-const SystemsSection = styled.section`
-  background: var(--bg-primary);
-  padding: 3rem;
-  border-radius: 20px;
+const ServiceSummary = styled(motion.p)`
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--text-primary);
+  padding: 2rem;
+  background: linear-gradient(90deg, rgba(74, 144, 226, 0.1), rgba(41, 98, 255, 0.1));
+  border-radius: 12px;
+  margin: 2rem 0 3rem;
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    content: '"';
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-size: 4rem;
+    color: rgba(74, 144, 226, 0.2);
+    font-family: serif;
+  }
+  
+  &::after {
+    content: '"';
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-size: 4rem;
+    color: rgba(74, 144, 226, 0.2);
+    font-family: serif;
+  }
+`;
+
+const ServiceActions = styled(motion.div)`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
   margin-top: 3rem;
+  position: relative;
+  z-index: 1;
 `;
 
-const SystemsTitle = styled.h2`
-  font-size: 2.5rem;
+const ServiceButton = styled(motion.button)`
+  padding: 1.2rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--accent-color), rgba(41, 98, 255, 0.9));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(74, 144, 226, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.6s ease;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+`;
+
+const ServiceLink = styled(motion.a)`
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
   color: var(--accent-color);
+  }
+`;
+
+// Секция FAQ
+const FaqSection = styled(motion.section)`
+  position: relative;
+  padding: 8rem 2rem;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(16, 24, 39, 0.9) 100%);
+  overflow: hidden;
+  z-index: 0;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at top right, rgba(74, 144, 226, 0.08) 0%, transparent 70%);
+    z-index: -1;
+  }
+`;
+
+const FaqWaveTop = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(to top left, transparent 49%, var(--bg-primary) 51%);
+  z-index: 1;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+`;
+
+const FaqContainer = styled.div`
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+`;
+
+const FaqGlowCircle = styled.div`
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  
+  &.circle-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(74, 144, 226, 0.05) 0%, transparent 70%);
+    top: 10%;
+    left: -200px;
+    animation: ${floatVertical} 15s infinite ease-in-out;
+  }
+  
+  &.circle-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(41, 98, 255, 0.05) 0%, transparent 70%);
+    bottom: 5%;
+    right: -200px;
+    animation: ${floatVertical} 18s infinite ease-in-out reverse;
+  }
+`;
+
+const FaqTitle = styled(motion.h2)`
+  font-size: 3.5rem;
+  font-weight: 800;
+    color: var(--accent-color);
+  margin-bottom: 3rem;
   text-align: center;
+  position: relative;
+  text-shadow: 0 2px 10px rgba(74, 144, 226, 0.2);
+  
+  &::before {
+    content: 'FAQ';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 5rem;
+    color: rgba(74, 144, 226, 0.03);
+    font-weight: 900;
+    letter-spacing: 5px;
+    z-index: -1;
+    white-space: nowrap;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    border-radius: 4px;
+    animation: ${pulse} 2s infinite ease-in-out;
+  }
+`;
+
+const FaqList = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+`;
+
+const FaqItem = styled(motion.div)`
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(16, 24, 39, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+
+  &:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 15px rgba(74, 144, 226, 0.1);
+    border-color: rgba(74, 144, 226, 0.1);
+    transform: translateY(-3px);
+  }
+`;
+
+const FaqItemContent = styled(motion.div)`
+  overflow: hidden;
+`;
+
+const FaqQuestion = styled(motion.div)`
+  padding: 1.8rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--accent-color), rgba(41, 98, 255, 0.5));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 0 3px 3px 0;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 2rem;
+    right: 2rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  }
+`;
+
+const FaqQuestionText = styled.h3`
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  flex: 1;
+  transform: translateZ(5px);
+  
+  ${FaqQuestion}:hover & {
+  color: var(--accent-color);
+    transform: translateZ(10px);
+  }
+`;
+
+const FaqToggle = styled(motion.div)`
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  margin-left: 1rem;
+  flex-shrink: 0;
+  background: rgba(74, 144, 226, 0.05);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(74, 144, 226, 0.1);
+    box-shadow: 0 0 10px rgba(74, 144, 226, 0.2);
+  }
+`;
+
+const FaqAnswer = styled.div`
+  padding: 0 15px 15px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  
+  ${props => props.isOpen && `
+    opacity: 1;
+    max-height: 1000px;
+    padding-top: 15px;
+  `}
+`;
+
+// ... existing code ...
+
+const TestimonialsSection = styled(motion.section)`
+  position: relative;
+  padding: 8rem 2rem;
+  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  overflow: hidden;
+`;
+
+const TestimonialsWaveTop = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: var(--bg-secondary);
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 100%);
+  z-index: 1;
+`;
+
+const TestimonialsContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+`;
+
+const TestimonialsTitle = styled(motion.h2)`
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 4rem;
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+    border-radius: 4px;
+  }
+`;
+
+const TestimonialsCarousel = styled(motion.div)`
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+`;
+
+const TestimonialCard = styled(motion.div)`
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  background: rgba(16, 24, 39, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, rgba(74, 144, 226, 0.05) 0%, transparent 50%);
+    z-index: 0;
+  }
+`;
+
+const TestimonialQuote = styled.div`
+  font-size: 2rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.8);
   margin-bottom: 2rem;
 `;
 
-const SystemsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+const TestimonialText = styled.p`
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
 `;
 
-const SystemCard = styled(motion.div)`
-  background: var(--bg-secondary);
-  padding: 2rem;
-  border-radius: 15px;
-  border: 1px solid var(--border-color);
-  transition: all 0.3s ease;
+const TestimonialAuthor = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
 
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+const TestimonialAvatar = styled.img`
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+`;
+
+const TestimonialAuthorInfo = styled.div`
+  flex: 1;
+`;
+
+const TestimonialAuthorName = styled.h3`
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+`;
+
+const TestimonialAuthorRole = styled.p`
+  font-size: 1rem;
+  color: var(--text-secondary);
+`;
+
+const TestimonialRating = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+const TestimonialCTA = styled(motion.div)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+`;
+
+const TestimonialCtaText = styled(motion.p)`
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent-color);
+`;
+
+const TestimonialCtaButton = styled(motion.a)`
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--accent-color), rgba(41, 98, 255, 0.9));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  display: block;
+  box-shadow: 0 8px 20px rgba(74, 144, 226, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.6s ease;
+  }
+  
+  &:hover::before {
+    left: 100%;
   }
 `;
 
-const SystemIcon = styled.div`
-  font-size: 2.5rem;
+const TestimonialsWaveBottom = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: var(--bg-secondary);
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 100%);
+  z-index: 1;
+`;
+
+const TestimonialsCTA = styled(motion.div)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+`;
+
+const TestimonialsCtaText = styled(motion.p)`
+  font-size: 1.2rem;
+  font-weight: 600;
   color: var(--accent-color);
+`;
+
+const TestimonialsCtaButton = styled(motion.a)`
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--accent-color), rgba(41, 98, 255, 0.9));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  display: block;
+  box-shadow: 0 8px 20px rgba(74, 144, 226, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.6s ease;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+`;
+
+// Footer Styled Components
+const Footer = styled.footer`
+  position: relative;
+  background: linear-gradient(180deg, #0c1021 0%, #060a17 100%);
+  color: #fff;
+  overflow: hidden;
+  margin-top: 4rem;
+`;
+
+const FooterWave = styled.svg`
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: translateY(1px);
+`;
+
+const FooterContent = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  z-index: 2;
+  position: relative;
+  
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+`;
+
+const FooterLogoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+const FooterLogo = styled.div`
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #4a90e2, #a265ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 1rem;
 `;
 
-const SystemTitle = styled.h3`
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-`;
-
-const SystemDescription = styled.p`
-  color: var(--text-secondary);
+const FooterTagline = styled.p`
+  font-size: 1rem;
+  opacity: 0.7;
+  margin-bottom: 2rem;
+  max-width: 300px;
   line-height: 1.6;
 `;
 
-const CTAButton = styled(motion.button)`
-  background: var(--accent-color);
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 10px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  margin: 2rem auto;
-  display: block;
+const FooterSocial = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
+const FooterSocialLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
   transition: all 0.3s ease;
 
   &:hover {
+    background: var(--accent-color);
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+`;
+
+const FooterNavigation = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const FooterColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const FooterColumnTitle = styled.h4`
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  position: relative;
+  
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.5rem;
+    width: 30px;
+    height: 2px;
+    background: var(--accent-color);
+  }
+`;
+
+const FooterLink = styled.a`
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.7rem;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  position: relative;
+  text-decoration: none;
+  
+  &:before {
+    content: '›';
+    opacity: 0;
+    margin-right: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  &:hover {
+    color: #fff;
+    transform: translateX(5px);
+    
+    &:before {
+      opacity: 1;
+    }
+  }
+`;
+
+const FooterContactItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  
+  svg {
+    min-width: 18px;
+    color: var(--accent-color);
+  }
+`;
+
+const FooterBottom = styled.div`
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+`;
+
+const FooterCopyright = styled.p`
+  font-size: 0.9rem;
+  opacity: 0.6;
+`;
+
+const FooterBottomLinks = styled.div`
+  display: flex;
+  gap: 1.5rem;
+`;
+
+const FooterBottomLink = styled.a`
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: #fff;
   }
 `;
 
 const ERPCRMPage = () => {
+  const [stars, setStars] = useState([]);
+  const [orbitingDots, setOrbitingDots] = useState([]);
+  const [backgroundShapes, setBackgroundShapes] = useState([]);
+  // Состояние для аккордеона FAQ
+  const [expandedFaqs, setExpandedFaqs] = useState([]);
+  
+  useEffect(() => {
+    // Генерация звезд для фона
+    const generatedStars = [];
+    for (let i = 0; i < 100; i++) {
+      generatedStars.push({
+        id: i,
+        size: Math.random() * 3 + 1,
+        opacity: Math.random() * 0.5 + 0.1,
+        top: Math.random() * 100,
+        left: Math.random() * 100,
+        duration: Math.random() * 3 + 1
+      });
+    }
+    setStars(generatedStars);
+    
+    // Генерация вращающихся точек
+    const dots = [];
+    for (let i = 0; i < 5; i++) {
+      dots.push({
+        id: i,
+        top: Math.random() * 100,
+        left: Math.random() * 100
+      });
+    }
+    setOrbitingDots(dots);
+    
+    // Генерация фоновых форм
+    const shapes = [];
+    for (let i = 0; i < 5; i++) {
+      shapes.push({
+        id: i,
+        size: Math.random() * 200 + 100,
+        top: Math.random() * 100,
+        left: Math.random() * 100,
+        duration: Math.random() * 20 + 10,
+        delay: Math.random() * 5
+      });
+    }
+    setBackgroundShapes(shapes);
+  }, []);
+  
+  // Функция для переключения состояния аккордеона
+  const toggleFaq = (index) => {
+    if (expandedFaqs.includes(index)) {
+      setExpandedFaqs(expandedFaqs.filter(item => item !== index));
+    } else {
+      setExpandedFaqs([...expandedFaqs, index]);
+    }
+  };
+  
+  const benefitsData = [
+    {
+      icon: <FaDatabase />,
+      title: "Централизованное управление",
+      description: "Все данные и процессы компании в единой системе, доступной для всех отделов"
+    },
+    {
+      icon: <FaChartLine />,
+      title: "Повышение эффективности",
+      description: "Автоматизация рутинных задач и оптимизация бизнес-процессов"
+    },
+    {
+      icon: <FaUsers />,
+      title: "Улучшение клиентского сервиса",
+      description: "Полная история взаимодействия с клиентами и быстрый доступ к данным"
+    },
+    {
+      icon: <FaChartBar />,
+      title: "Аналитика в реальном времени",
+      description: "Мониторинг ключевых показателей и генерация отчетов для принятия решений"
+    },
+    {
+      icon: <FaShieldAlt />,
+      title: "Надежная защита данных",
+      description: "Многоуровневая система безопасности и контроля доступа к информации"
+    },
+    {
+      icon: <FaExchangeAlt />,
+      title: "Гибкая интеграция",
+      description: "Возможность подключения к существующим системам и сторонним сервисам"
+    }
+  ];
+  
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+  
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
+  };
+  
+  const systemVariants = {
+    initial: { rotateY: 0 },
+    animate: {
+      rotateY: 360,
+      transition: {
+        duration: 20,
+        repeat: Infinity,
+        ease: "linear"
+      }
+    }
+  };
+
   return (
-    <PageContainer>
-      <MainHero
+    <Container>
+      <HeroSection
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <Background />
+        <StarField>
+          {stars.map(star => (
+            <Star 
+              key={star.id} 
+              size={star.size} 
+              opacity={star.opacity} 
+              top={star.top} 
+              left={star.left} 
+              duration={star.duration} 
+            />
+          ))}
+        </StarField>
+        
+        <Title
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
+          ERP и CRM системы
+        </Title>
+        
+        <Subtitle
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          Комплексные решения для управления бизнесом и взаимоотношениями с клиентами.
+          Оптимизируйте процессы, автоматизируйте рутину и увеличивайте прибыль.
+        </Subtitle>
+        
+        <SystemContainer
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.9 }}
+        >
+          <SystemBox
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.1 }}
+          >
+            <OrbitingCircle />
+            <OrbitingCircleInner />
+            
+            <SystemInterface
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.5, duration: 1 }}
+            >
+              <SystemContent>
+                <IconCircle
+                  animate={{ 
+                    scale: [1, 1.1, 1],
+                    rotateZ: [0, 10, -10, 0]
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <FaDatabase />
+                </IconCircle>
+                <motion.h3
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.8, duration: 0.5 }}
+                  style={{ marginBottom: '0.5rem' }}
+                >
+                  ERP/CRM
+                </motion.h3>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 2, duration: 0.5 }}
+                >
+                  Управление и аналитика
+                </motion.p>
+              </SystemContent>
+              
+              <SystemModules>
+                <ModuleIcon whileHover={{ scale: 1.2 }}><FaUserCog /></ModuleIcon>
+                <ModuleIcon whileHover={{ scale: 1.2 }}><FaChartBar /></ModuleIcon>
+                <ModuleIcon whileHover={{ scale: 1.2 }}><FaFileInvoice /></ModuleIcon>
+              </SystemModules>
+            </SystemInterface>
+          </SystemBox>
+        </SystemContainer>
+        
+        <HeroBenefitsList
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.3 }}
+        >
+          {benefitsData.slice(0, 3).map((benefit, index) => (
+            <HeroBenefitItem
+              key={index}
+              whileHover={{ scale: 1.02 }}
+            >
+              <HeroBenefitIcon>
+                {benefit.icon}
+              </HeroBenefitIcon>
+              <HeroBenefitContent>
+                <HeroBenefitTitle>{benefit.title}</HeroBenefitTitle>
+                <HeroBenefitDescription>{benefit.description}</HeroBenefitDescription>
+              </HeroBenefitContent>
+            </HeroBenefitItem>
+          ))}
+        </HeroBenefitsList>
+        
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.6 }}
+          whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(41, 98, 255, 0.7)' }}
+          whileTap={{ scale: 0.95 }}
+          style={{
+            padding: '1rem 2.5rem',
+            fontSize: '1.2rem',
+            fontWeight: 'bold',
+            background: 'var(--accent-color)',
+            color: 'white',
+            border: 'none',
+            borderRadius: '12px',
+            cursor: 'pointer',
+            marginTop: '3rem',
+            zIndex: 1,
+            position: 'relative'
+          }}
+        >
+          Узнать больше
+        </motion.button>
+      </HeroSection>
+      
+      <InfoSection
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <MainTitle>ERP и CRM системы</MainTitle>
-        <MainSubtitle>
-          Комплексные решения для управления бизнесом и взаимоотношениями с клиентами
-        </MainSubtitle>
-      </MainHero>
-
-      <CreationPath>
-        <PathContainer>
-          <PathLine
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 1.5, delay: 0.5 }}
+        {backgroundShapes.map((shape) => (
+          <BackgroundShape
+            key={shape.id}
+            style={{
+              width: shape.size,
+              height: shape.size,
+              top: `${shape.top}%`,
+              left: `${shape.left}%`,
+            }}
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.05, 0.1, 0.05],
+              rotate: [0, 360],
+            }}
+            transition={{
+              duration: shape.duration,
+              repeat: Infinity,
+              delay: shape.delay,
+              ease: "linear"
+            }}
           />
-          <PathSteps>
-            <PathStep
-              initial={{ opacity: 0, y: 20 }}
+        ))}
+        
+        <InfoContainer>
+          <InfoTitle
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            style={{ marginBottom: '0.75rem' }}
+          >
+            Що таке ERP та CRM системи?
+          </InfoTitle>
+          
+          <InfoContent>
+            <motion.h3
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              style={{ 
+                fontSize: '1.8rem', 
+                color: 'var(--accent-color)', 
+                marginBottom: '0.5rem',
+                fontWeight: '600' 
+              }}
             >
-              <StepNumber>1</StepNumber>
-              <StepIcon><FaProjectDiagram /></StepIcon>
-              <StepTitle>Анализ и Планирование</StepTitle>
-              <StepDescription>
-                Глубокий анализ бизнес-процессов и разработка стратегии внедрения
-              </StepDescription>
-              <StepFeatures>
-                <StepFeature>
-                  <FaCheck /> Аудит текущих процессов
-                </StepFeature>
-                <StepFeature>
-                  <FaCheck /> Определение требований
-                </StepFeature>
-                <StepFeature>
-                  <FaCheck /> Разработка концепции
-                </StepFeature>
-              </StepFeatures>
-            </PathStep>
-
-            <PathStep
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1 }}
+              ERP: управління ресурсами компанії
+            </motion.h3>
+            
+            <InfoText
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              style={{ marginBottom: '0.5rem' }}
             >
-              <StepNumber>2</StepNumber>
-              <StepIcon><FaCogs /></StepIcon>
-              <StepTitle>Разработка</StepTitle>
-              <StepDescription>
-                Создание и настройка системы под ваши бизнес-процессы
-              </StepDescription>
-              <StepFeatures>
-                <StepFeature>
-                  <FaCheck /> Настройка модулей
-                </StepFeature>
-                <StepFeature>
-                  <FaCheck /> Интеграция с существующими системами
-                </StepFeature>
-                <StepFeature>
-                  <FaCheck /> Разработка кастомных решений
-                </StepFeature>
-              </StepFeatures>
-            </PathStep>
-
-            <PathStep
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1.2 }}
+              ERP (Enterprise Resource Planning) — це система комплексного управління всіма ресурсами підприємства: фінансами, виробництвом, закупівлями, складом, персоналом.
+              Мета ERP — створити єдиний інформаційний простір, що дозволяє керівництву бачити повну картину бізнес-процесів і оперативно приймати рішення.
+            </InfoText>
+            
+            <InfoText
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              style={{ marginTop: '0.5rem', marginBottom: '0.5rem', fontWeight: '600' }}
             >
-              <StepNumber>3</StepNumber>
-              <StepIcon><FaTools /></StepIcon>
-              <StepTitle>Внедрение</StepTitle>
-              <StepDescription>
-                Поэтапное внедрение и обучение персонала
-              </StepDescription>
-              <StepFeatures>
-                <StepFeature>
-                  <FaCheck /> Обучение сотрудников
-                </StepFeature>
-                <StepFeature>
-                  <FaCheck /> Тестирование системы
-                </StepFeature>
-                <StepFeature>
-                  <FaCheck /> Запуск в эксплуатацию
-                </StepFeature>
-              </StepFeatures>
-            </PathStep>
+              Основні можливості ERP систем:
+            </InfoText>
+            
+            <FeaturesList style={{ marginBottom: '1rem' }}>
+              {[
+                'Автоматизація обліку та управління фінансами',
+                'Управління постачаннями та запасами',
+                'Планування виробництва',
+                'Управління персоналом',
+                'Аналітика та звітність в реальному часі'
+              ].map((feature, index) => (
+                <FeatureItem
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 + (index * 0.15) }}
+                  whileHover={{ x: 10 }}
+                  style={{ marginBottom: '0.5rem' }}
+                >
+                  {feature}
+                </FeatureItem>
+              ))}
+            </FeaturesList>
+            
+            <motion.h3
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              style={{ 
+                fontSize: '1.8rem', 
+                color: 'var(--accent-color)', 
+                marginTop: '1rem',
+                marginBottom: '0.5rem',
+                fontWeight: '600' 
+              }}
+            >
+              CRM: управління відносинами з клієнтами
+            </motion.h3>
+            
+            <InfoText
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+              style={{ marginBottom: '0.5rem' }}
+            >
+              CRM (Customer Relationship Management) — це система для організації ефективної взаємодії з клієнтами.
+              Вона допомагає відстежувати історію контактів, покращувати якість обслуговування, управляти продажами та маркетингом.
+            </InfoText>
+            
+            <InfoText
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+              style={{ marginTop: '0.5rem', marginBottom: '0.5rem', fontWeight: '600' }}
+            >
+              Функції CRM систем:
+            </InfoText>
+            
+            <FeaturesList>
+              {[
+                'Ведення клієнтської бази',
+                'Управління лідами та угодами',
+                'Автоматизація продажів',
+                'Аналіз ефективності роботи відділу продажу',
+                'Маркетингові кампанії та комунікація'
+              ].map((feature, index) => (
+                <FeatureItem
+                  key={index + 5}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 1.0 + (index * 0.15) }}
+                  whileHover={{ x: 10 }}
+                  style={{ marginBottom: '0.5rem' }}
+                >
+                  {feature}
+                </FeatureItem>
+              ))}
+            </FeaturesList>
+          </InfoContent>
+        </InfoContainer>
+      </InfoSection>
+      
+      <BenefitsSection
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <BenefitsContainer>
+          <BenefitsTitle
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Які проблеми вирішують ERP та CRM системи?
+          </BenefitsTitle>
+          
+          <InfoText
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            style={{ marginBottom: '2rem' }}
+          >
+            ERP та CRM системи допомагають вирішити ключові завдання, що заважають компаніям рости, розвиватися та ефективно працювати. Вони усувають хаос у бізнес-процесах, дозволяють зосередитися на розвитку компанії та підвищенні прибутковості.
+          </InfoText>
+          
+          <motion.h3
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            style={{ 
+              fontSize: '1.8rem', 
+              color: 'var(--accent-color)', 
+              marginBottom: '1rem',
+              fontWeight: '600' 
+            }}
+          >
+            Основні проблеми, які вирішує ERP система:
+          </motion.h3>
+          
+          <BenefitCardContainer
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {[
+              {
+                title: "Відсутність єдиної бази даних",
+                description: "Інформація про фінанси, закупівлі, складські залишки та виробництво розкидана по різних системах або ведеться вручну. ERP об'єднує всі дані в єдину базу, забезпечуючи прозорість і доступність інформації для керівництва.",
+                icon: <FaDatabase />
+              },
+              {
+                title: "Неузгодженість між відділами",
+                description: "Відсутність взаємодії між підрозділами призводить до помилок, затримок і фінансових втрат. ERP системи синхронізують роботу всіх відділів у реальному часі.",
+                icon: <FaProjectDiagram />
+              },
+              {
+                title: "Низька швидкість прийняття рішень",
+                description: "Через нестачу актуальної аналітики керівники змушені ухвалювати рішення \"наосліп\". ERP надає аналітичні звіти в один клік, що дозволяє швидко реагувати на зміни на ринку.",
+                icon: <FaChartLine />
+              },
+              {
+                title: "Труднощі в плануванні ресурсів",
+                description: "Виробничі збої, нестача матеріалів або перевитрати бюджету — наслідки відсутності планування. ERP автоматизує ці процеси, допомагаючи більш точно прогнозувати потреби.",
+                icon: <FaCogs />
+              }
+            ].map((benefit, index) => (
+              <BenefitCard
+                key={index}
+                variants={itemVariants}
+                whileHover={{ 
+                  y: -10, 
+                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3)',
+                  borderColor: 'rgba(74, 144, 226, 0.4)'
+                }}
+              >
+                <BenefitIconWrapper>
+                  <BenefitIcon>{benefit.icon}</BenefitIcon>
+                </BenefitIconWrapper>
+                <BenefitContent>
+                  <BenefitCardTitle>{benefit.title}</BenefitCardTitle>
+                  <BenefitCardDescription>{benefit.description}</BenefitCardDescription>
+                </BenefitContent>
+              </BenefitCard>
+            ))}
+          </BenefitCardContainer>
+          
+          <motion.h3
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            style={{ 
+              fontSize: '1.8rem', 
+              color: 'var(--accent-color)', 
+              marginTop: '2rem',
+              marginBottom: '1rem',
+              fontWeight: '600' 
+            }}
+          >
+            Основні проблеми, які вирішує CRM система:
+          </motion.h3>
+          
+          <BenefitCardContainer
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {[
+              {
+                title: "Втрата клієнтів через неякісне обслуговування",
+                description: "Без CRM важко зберігати історію взаємодії з клієнтом, відстежувати його потреби та пропонувати актуальні рішення. CRM фіксує всі контакти, завдання та угоди, підвищуючи рівень обслуговування.",
+                icon: <FaUsers />
+              },
+              {
+                title: "Неефективний продаж і маркетинг",
+                description: "Без структурованої роботи з лідами компанія втрачає потенційні доходи. CRM допомагає автоматизувати воронку продажів, управляти лідами, аналізувати конверсію та підвищувати ефективність маркетингових кампаній.",
+                icon: <FaChartBar />
+              },
+              {
+                title: "Незрозуміла ефективність менеджерів",
+                description: "Коли відсутня централізована система обліку діяльності менеджерів з продажу, складно оцінити їхню продуктивність. CRM дозволяє бачити кількість дзвінків, листів, зустрічей та фактичні результати кожного співробітника.",
+                icon: <FaUserCog />
+              },
+              {
+                title: "Відсутність системного підходу до розвитку клієнтської бази",
+                description: "CRM формує повноцінний профіль клієнта, допомагаючи краще розуміти його потреби і пропонувати відповідні товари або послуги, що збільшує обсяг повторних продажів.",
+                icon: <FaExchangeAlt />
+              }
+            ].map((benefit, index) => (
+              <BenefitCard
+                key={index + 4}
+                variants={itemVariants}
+                whileHover={{ 
+                  y: -10, 
+                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3)',
+                  borderColor: 'rgba(74, 144, 226, 0.4)'
+                }}
+              >
+                <BenefitIconWrapper>
+                  <BenefitIcon>{benefit.icon}</BenefitIcon>
+                </BenefitIconWrapper>
+                <BenefitContent>
+                  <BenefitCardTitle>{benefit.title}</BenefitCardTitle>
+                  <BenefitCardDescription>{benefit.description}</BenefitCardDescription>
+                </BenefitContent>
+              </BenefitCard>
+            ))}
+          </BenefitCardContainer>
+        </BenefitsContainer>
+        
+        <BenefitsDecoration />
+      </BenefitsSection>
 
-            <PathStep
+      <ServicesSection
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <ServicesWave />
+        
+        <ServicesContainer>
+          <ServicesTitle
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Наші рішення для вашого бізнесу
+          </ServicesTitle>
+          
+          <ServicesContent>
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              style={{ marginBottom: '3rem' }}
+            >
+              <ServicesHeading
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+              >
+                Впровадження ERP систем
+              </ServicesHeading>
+              
+              <ServiceText style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>
+                Ми підбираємо і налаштовуємо ERP системи під ваші завдання: від управління фінансами до автоматизації виробництва.
+                Працюємо як із готовими рішеннями, так і з індивідуальними розробками.
+              </ServiceText>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              style={{ marginBottom: '3rem' }}
+            >
+              <ServicesHeading
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.4 }}
+              >
+                Впровадження CRM систем
+              </ServicesHeading>
+              
+              <ServiceText style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>
+                Допомагаємо налаштувати ефективну роботу з клієнтами: автоматизація продажів, облік угод, 
+                створення клієнтських баз, аналітика маркетингових кампаній.
+              </ServiceText>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.5 }}
+              style={{ marginBottom: '3rem' }}
+            >
+              <ServicesHeading
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.6 }}
+              >
+                Інтеграція ERP та CRM
+              </ServicesHeading>
+              
+              <ServiceText style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>
+                Об'єднуємо ERP та CRM системи для створення єдиного цифрового середовища, 
+                де бізнес-процеси та взаємодія з клієнтами працюють як єдиний механізм.
+              </ServiceText>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.7 }}
+            >
+              <ServicesHeading
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.8 }}
+              >
+                Індивідуальні рішення
+              </ServicesHeading>
+              
+              <ServiceText style={{ fontSize: '1.2rem' }}>
+                Розробляємо системи під конкретні потреби бізнесу: особливості логістики, 
+                виробничі процеси, нестандартні схеми продажів тощо.
+              </ServiceText>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.9 }}
+              style={{ marginBottom: '3rem' }}
+            >
+              <ServicesHeading
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 1.0 }}
+              >
+                Консалтинг з цифрової трансформації
+              </ServicesHeading>
+              
+              <ServiceText style={{ fontSize: '1.2rem' }}>
+                Допомагаємо бізнесу визначити оптимальну стратегію автоматизації та цифровізації.
+                Проводимо аудит існуючих процесів, розробляємо дорожню карту впровадження ERP/CRM
+                та супроводжуємо на всіх етапах цифрової трансформації.
+              </ServiceText>
+            </motion.div>
+            
+            <ServiceActions
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1 }}
+            >
+              <ServiceButton
+                whileHover={{ 
+                  scale: 1.05, 
+                  boxShadow: '0 0 25px rgba(74, 144, 226, 0.5)' 
+                }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Замовити консультацію
+              </ServiceButton>
+              
+              <ServiceLink
+                whileHover={{ 
+                  color: 'var(--accent-color)',
+                  textDecoration: 'underline'
+                }}
+              >
+                Портфоліо проєктів
+              </ServiceLink>
+            </ServiceActions>
+            
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1.2 }}
+              style={{ marginTop: '4rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '2rem' }}
+            >
+              <ServicesTitle
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 1.3 }}
+                style={{ fontSize: '2.2rem', marginBottom: '2rem', textAlign: 'center' }}
+              >
+                Наші переваги
+              </ServicesTitle>
+              
+              <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+                <motion.div 
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 1.4 }}
+                  style={{ 
+                    width: '48%', 
+                    marginBottom: '1.5rem', 
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '1rem'
+                  }}
+                >
+                  <ServiceCircle style={{ background: 'linear-gradient(135deg, #3498db, #2980b9)' }}>
+                    <FaHandshake size={24} color="#fff" />
+                  </ServiceCircle>
+                  <div>
+                    <ServiceText style={{ fontWeight: 'bold', fontSize: '1.1rem', marginBottom: '0.5rem' }}>
+                      Досвід у різних галузях
+                    </ServiceText>
+                    <ServiceText style={{ fontSize: '0.95rem' }}>
+                      Маємо успішні кейси впровадження ERP/CRM систем у різних сферах бізнесу: роздрібна торгівля, виробництво, сфера послуг, логістика.
+                    </ServiceText>
+                  </div>
+                </motion.div>
+                
+                <motion.div 
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 1.5 }}
+                  style={{ 
+                    width: '48%', 
+                    marginBottom: '1.5rem', 
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '1rem'
+                  }}
+                >
+                  <ServiceCircle style={{ background: 'linear-gradient(135deg, #9b59b6, #8e44ad)' }}>
+                    <FaUserCog size={24} color="#fff" />
+                  </ServiceCircle>
+                  <div>
+                    <ServiceText style={{ fontWeight: 'bold', fontSize: '1.1rem', marginBottom: '0.5rem' }}>
+                      Індивідуальний підхід
+                    </ServiceText>
+                    <ServiceText style={{ fontSize: '0.95rem' }}>
+                      Розробляємо рішення з урахуванням всіх особливостей вашого бізнесу, забезпечуючи максимальну ефективність та легку адаптацію.
+                    </ServiceText>
+                  </div>
+                </motion.div>
+                
+                <motion.div 
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 1.6 }}
+                  style={{ 
+                    width: '48%', 
+                    marginBottom: '1.5rem', 
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '1rem'
+                  }}
+                >
+                  <ServiceCircle style={{ background: 'linear-gradient(135deg, #f39c12, #e67e22)' }}>
+                    <FaTasks size={24} color="#fff" />
+                  </ServiceCircle>
+                  <div>
+                    <ServiceText style={{ fontWeight: 'bold', fontSize: '1.1rem', marginBottom: '0.5rem' }}>
+                      Комплексна методологія
+                    </ServiceText>
+                    <ServiceText style={{ fontSize: '0.95rem' }}>
+                      Використовуємо перевірені підходи до впровадження: від аналізу процесів до навчання персоналу та технічної підтримки.
+                    </ServiceText>
+                  </div>
+                </motion.div>
+                
+                <motion.div 
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 1.7 }}
+                  style={{ 
+                    width: '48%', 
+                    marginBottom: '1.5rem', 
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '1rem'
+                  }}
+                >
+                  <ServiceCircle style={{ background: 'linear-gradient(135deg, #1abc9c, #16a085)' }}>
+                    <FaHeadset size={24} color="#fff" />
+                  </ServiceCircle>
+                  <div>
+                    <ServiceText style={{ fontWeight: 'bold', fontSize: '1.1rem', marginBottom: '0.5rem' }}>
+                      Цілодобова підтримка
+                    </ServiceText>
+                    <ServiceText style={{ fontSize: '0.95rem' }}>
+                      Забезпечуємо технічну підтримку впроваджених систем 24/7, швидко вирішуючи будь-які питання та проблеми.
+                    </ServiceText>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </ServicesContent>
+        </ServicesContainer>
+        <ServicesWave xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path fill="#ffffff" d="M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,176C672,160,768,160,864,160C960,160,1056,160,1152,160C1248,160,1344,160,1440,160L1440,320L0,320Z"></path>
+        </ServicesWave>
+      </ServicesSection>
+      
+      {/* Блок с преимуществами сотрудничества */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        style={{
+          position: 'relative',
+          padding: '8rem 2rem',
+          background: 'linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%)',
+          overflow: 'hidden'
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '150px',
+            background: 'linear-gradient(to top, transparent, var(--bg-secondary))',
+            zIndex: 1
+          }}
+        ></div>
+        
+        <div
+          style={{
+            maxWidth: '1200px',
+            margin: '0 auto',
+            position: 'relative',
+            zIndex: 2
+          }}
+        >
+          <motion.h2
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            style={{
+              fontSize: '3rem',
+              fontWeight: 700,
+              color: 'var(--accent-color)',
+              marginBottom: '4rem',
+              position: 'relative',
+              display: 'inline-block',
+              textShadow: '0 5px 15px rgba(0, 0, 0, 0.2)'
+            }}
+          >
+            Переваги співпраці з нами
+          </motion.h2>
+          
+          <motion.ul
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { 
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.2
+                }
+              }
+            }}
+            initial="hidden"
+            animate="visible"
+            style={{
+              listStyle: 'none',
+              padding: 0,
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+              gap: '2rem',
+              width: '100%'
+            }}
+          >
+            {[
+              {
+                icon: <FaTools />,
+                title: "Досвід у різних галузях",
+                description: "Від роздрібної торгівлі до виробництва та сервісу"
+              },
+              {
+                icon: <FaUserCog />,
+                title: "Індивідуальний підхід",
+                description: "Підбираємо рішення під конкретні цілі компанії"
+              },
+              {
+                icon: <FaClipboardCheck />,
+                title: "Комплексний підхід",
+                description: "Аналіз, впровадження, навчання, підтримка"
+              },
+            ].map((advantage, index) => (
+              <motion.li
+                key={index}
+                variants={{
+                  hidden: { y: 20, opacity: 0 },
+                  visible: { 
+                    y: 0, 
+                    opacity: 1,
+                    transition: { duration: 0.8, ease: "easeOut" }
+                  }
+                }}
+                style={{
+                  background: 'rgba(16, 24, 39, 0.6)',
+                  backdropFilter: 'blur(10px)',
+                  borderRadius: '16px',
+                  padding: '2rem',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  transition: 'all 0.3s ease',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '1rem'
+                }}
+                whileHover={{ 
+                  y: -10, 
+                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3)',
+                  borderColor: 'rgba(74, 144, 226, 0.4)'
+                }}
+              >
+                <div
+                  style={{
+                    width: '60px',
+                    height: '60px',
+                    borderRadius: '14px',
+                    background: 'linear-gradient(135deg, var(--accent-color) 0%, rgba(41, 98, 255, 0.8) 100%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '1.8rem',
+                    color: 'white',
+                    boxShadow: '0 8px 20px rgba(74, 144, 226, 0.3)',
+                    marginBottom: '1rem'
+                  }}
+                >
+                  {advantage.icon}
+                </div>
+                
+                <h3
+                  style={{
+                    fontSize: '1.4rem',
+                    fontWeight: 600,
+                    marginBottom: '0.5rem',
+                    color: 'var(--text-primary)'
+                  }}
+                >
+                  {advantage.title}
+                </h3>
+                
+                <p
+                  style={{
+                    fontSize: '1.05rem',
+                    lineHeight: 1.7,
+                    color: 'var(--text-secondary)'
+                  }}
+                >
+                  {advantage.description}
+                </p>
+              </motion.li>
+            ))}
+          </motion.ul>
+          
+          {/* Последние два элемента по центру */}
+          <motion.div 
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '2rem',
+              marginTop: '2rem',
+              flexWrap: 'wrap'
+            }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { 
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.2,
+                  delayChildren: 0.6
+                }
+              }
+            }}
+            initial="hidden"
+            animate="visible"
+          >
+            {[
+              {
+                icon: <FaChartLine />,
+                title: "Гарантія результату",
+                description: "Підвищення ефективності бізнесу після впровадження"
+              },
+              {
+                icon: <FaSyncAlt />,
+                title: "Супровід і розвиток системи",
+                description: "Адаптація до змін у бізнесі"
+              }
+            ].map((advantage, index) => (
+              <motion.div
+                key={index}
+                variants={{
+                  hidden: { y: 20, opacity: 0 },
+                  visible: { 
+                    y: 0, 
+                    opacity: 1,
+                    transition: { duration: 0.8, ease: "easeOut" }
+                  }
+                }}
+                style={{
+                  background: 'rgba(16, 24, 39, 0.6)',
+                  backdropFilter: 'blur(10px)',
+                  borderRadius: '16px',
+                  padding: '2rem',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  transition: 'all 0.3s ease',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '1rem',
+                  width: 'calc(33% - 1rem)',
+                  minWidth: '350px',
+                  maxWidth: '450px'
+                }}
+                whileHover={{ 
+                  y: -10, 
+                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3)',
+                  borderColor: 'rgba(74, 144, 226, 0.4)'
+                }}
+              >
+                <div
+                  style={{
+                    width: '60px',
+                    height: '60px',
+                    borderRadius: '14px',
+                    background: 'linear-gradient(135deg, var(--accent-color) 0%, rgba(41, 98, 255, 0.8) 100%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '1.8rem',
+                    color: 'white',
+                    boxShadow: '0 8px 20px rgba(74, 144, 226, 0.3)',
+                    marginBottom: '1rem'
+                  }}
+                >
+                  {advantage.icon}
+                </div>
+                
+                <h3
+                  style={{
+                    fontSize: '1.4rem',
+                    fontWeight: 600,
+                    marginBottom: '0.5rem',
+                    color: 'var(--text-primary)'
+                  }}
+                >
+                  {advantage.title}
+                </h3>
+                
+                <p
+                  style={{
+                    fontSize: '1.05rem',
+                    lineHeight: 1.7,
+                    color: 'var(--text-secondary)'
+                  }}
+                >
+                  {advantage.description}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Блок с этапами работы */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        style={{
+          position: 'relative',
+          padding: '10rem 2rem',
+          background: 'linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%)',
+          overflow: 'hidden'
+        }}
+      >
+        {/* Декоративные элементы фона */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '5%',
+            right: '10%',
+            width: '400px',
+            height: '400px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(74, 144, 226, 0.1) 0%, transparent 70%)',
+            filter: 'blur(60px)'
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '15%',
+            left: '5%',
+            width: '300px',
+            height: '300px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(41, 98, 255, 0.1) 0%, transparent 70%)',
+            filter: 'blur(50px)'
+          }}
+        />
+        
+        <div
+          style={{
+            maxWidth: '1400px',
+            margin: '0 auto',
+            position: 'relative',
+            zIndex: 2
+          }}
+        >
+          <motion.h2
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            style={{
+              fontSize: '4rem',
+              fontWeight: 800,
+              color: 'var(--accent-color)',
+              marginBottom: '6rem',
+              position: 'relative',
+              textAlign: 'center',
+              textShadow: '0 5px 15px rgba(0, 0, 0, 0.2)'
+            }}
+          >
+            Етапи нашої роботи
+            <motion.div 
+              style={{
+                position: 'absolute',
+                bottom: '-20px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '150px',
+                height: '4px',
+                background: 'linear-gradient(90deg, transparent, var(--accent-color), transparent)',
+                borderRadius: '4px'
+              }}
+              animate={{
+                width: ['0%', '150px'],
+                opacity: [0, 1]
+              }}
+              transition={{ duration: 1, delay: 0.3 }}
+            />
+          </motion.h2>
+          
+          <motion.div
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { 
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.3
+                }
+              }
+            }}
+            initial="hidden"
+            animate="visible"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '3rem',
+              alignItems: 'center'
+            }}
+          >
+            {[
+              {
+                icon: <FaClipboardCheck />,
+                title: "Аналіз потреб бізнесу",
+                description: "Вивчаємо особливості діяльності компанії, проблемні зони та очікувані результати."
+              },
+              {
+                icon: <FaCogs />,
+                title: "Вибір оптимального рішення",
+                description: "Пропонуємо рішення — готові продукти або індивідуальну розробку."
+              },
+              {
+                icon: <FaLaptopCode />,
+                title: "Впровадження системи",
+                description: "Налаштовуємо, адаптуємо та інтегруємо систему в існуючі процеси компанії."
+              },
+              {
+                icon: <FaUsers />,
+                title: "Тестування та навчання персоналу",
+                description: "Перевіряємо роботу системи на практиці, навчаємо співробітників роботі з новими інструментами."
+              },
+              {
+                icon: <FaSyncAlt />,
+                title: "Підтримка та розвиток",
+                description: "Забезпечуємо технічну підтримку та модернізацію системи відповідно до змін вашого бізнесу."
+              }
+            ].map((step, index) => (
+              <React.Fragment key={index}>
+                <motion.div
+                  variants={{
+                    hidden: { x: -50, opacity: 0 },
+                    visible: { 
+                      x: 0, 
+                      opacity: 1,
+                      transition: { duration: 0.8, ease: "easeOut" }
+                    }
+                  }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: '2rem',
+                    padding: '2rem',
+                    width: '1000px',
+                    height: '180px',
+                    background: 'rgba(16, 24, 39, 0.2)',
+                    backdropFilter: 'blur(5px)',
+                    borderRadius: '20px',
+                    border: '1px solid rgba(255, 255, 255, 0.05)',
+                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
+                  }}
+                  whileHover={{
+                    scale: 1.02,
+                    transition: { duration: 0.3 },
+                    boxShadow: '0 15px 40px rgba(0, 0, 0, 0.2)',
+                    border: '1px solid rgba(74, 144, 226, 0.2)'
+                  }}
+                >
+                  {/* Номер этапа */}
+                  <motion.div
+                    style={{
+                      width: '100px',
+                      height: '100px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '4rem',
+                      fontWeight: '900',
+                      color: 'rgba(74, 144, 226, 0.8)',
+                      textShadow: '0 2px 10px rgba(74, 144, 226, 0.4)',
+                      flexShrink: 0
+                    }}
+                  >
+                    {index + 1}
+                  </motion.div>
+                  
+                  {/* Иконка */}
+                  <motion.div
+                    style={{
+                      width: '120px',
+                      height: '120px',
+                      borderRadius: '50%',
+                      background: 'linear-gradient(135deg, var(--accent-color) 0%, rgba(41, 98, 255, 0.8) 100%)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '2.5rem',
+                      color: 'white',
+                      boxShadow: '0 10px 30px rgba(74, 144, 226, 0.4)',
+                      position: 'relative',
+                      flexShrink: 0
+                    }}
+                    whileHover={{
+                      boxShadow: '0 15px 40px rgba(74, 144, 226, 0.6)',
+                      scale: 1.05,
+                      transition: { duration: 0.3 }
+                    }}
+                  >
+                    {/* Пульсирующий круг вокруг иконки */}
+                    <motion.div
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        borderRadius: '50%',
+                        border: '2px solid rgba(74, 144, 226, 0.5)'
+                      }}
+                      animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.5, 0, 0.5]
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
+                    
+                    {step.icon}
+                  </motion.div>
+                  
+                  {/* Текстовый блок */}
+                  <motion.div
+                    style={{
+                      background: 'rgba(10, 15, 25, 0.85)',
+                      backdropFilter: 'blur(10px)',
+                      borderRadius: '20px',
+                      padding: '1.5rem 2rem',
+                      border: '1px solid rgba(74, 144, 226, 0.3)',
+                      boxShadow: '0 15px 40px rgba(0, 0, 0, 0.3)',
+                      width: 'calc(100% - 250px)',
+                      height: '160px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <h3
+                      style={{
+                        fontSize: '1.5rem',
+                        fontWeight: 700,
+                        marginBottom: '0.8rem',
+                        color: '#FFFFFF',
+                        textShadow: '0 2px 5px rgba(0, 0, 0, 0.5)'
+                      }}
+                    >
+                      {step.title}
+                    </h3>
+                    
+                    <p
+                      style={{
+                        fontSize: '1rem',
+                        lineHeight: 1.5,
+                        color: '#FFFFFF',
+                        overflow: 'hidden',
+                        textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)'
+                      }}
+                    >
+                      {step.description}
+                    </p>
+                  </motion.div>
+                </motion.div>
+                
+                {/* Вертикальная линия между блоками */}
+                {index < 4 && (
+                  <motion.div 
+                    style={{
+                      width: '4px',
+                      height: '5rem',
+                      background: 'linear-gradient(to bottom, var(--accent-color), rgba(41, 98, 255, 0.1))',
+                      borderRadius: '4px'
+                    }}
+                    initial={{ height: 0 }}
+                    animate={{ height: '5rem' }}
+                    transition={{ duration: 0.8, delay: index * 0.3 + 0.5 }}
+                  />
+                )}
+              </React.Fragment>
+            ))}
+          </motion.div>
+        </div>
+      </motion.section>
+
+      <FaqSection
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <FaqWaveTop />
+        
+        <FaqContainer>
+          <FaqGlowCircle className="circle-1" />
+          <FaqGlowCircle className="circle-2" />
+          
+          <FaqTitle
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Часто задаваемые вопросы
+          </FaqTitle>
+          
+          <FaqList
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            {[
+              {
+                question: "Чем отличается ERP от CRM системы?",
+                answer: "ERP система управляет всеми внутренними процессами компании (финансы, производство, логистика и т.д.), а CRM фокусируется на взаимоотношениях с клиентами, продажах и маркетинге. Во многих случаях эти системы интегрируются для создания комплексного решения."
+              },
+              {
+                question: "Сколько времени занимает внедрение ERP/CRM?",
+                answer: "Сроки внедрения зависят от масштаба бизнеса и сложности процессов. Для малого бизнеса это может занять от 1 до 3 месяцев, для среднего — от 3 до 6 месяцев, для крупного — от 6 месяцев до года."
+              },
+              {
+                question: "Можно ли интегрировать ERP/CRM с нашими существующими программами?",
+                answer: "Да, современные системы имеют открытый API и возможности интеграции с бухгалтерскими программами, сайтами, маркетплейсами, системами аналитики и многими другими решениями."
+              },
+              {
+                question: "Какой бюджет потребуется на внедрение?",
+                answer: "Стоимость зависит от выбранного решения (готовый продукт или разработка с нуля), количества пользователей, необходимых модулей и сложности интеграций. Мы составляем детальный расчет после анализа потребностей бизнеса."
+              },
+              {
+                question: "Как выбрать подходящую систему для бизнеса?",
+                answer: "Выбор зависит от размера компании, отрасли, бюджета и специфических требований. Мы проводим аудит бизнес-процессов и на его основе рекомендуем оптимальное решение — готовое или индивидуальное."
+              },
+              {
+                question: "Нужно ли специальное оборудование для ERP/CRM?",
+                answer: "Большинство современных систем работают в облаке и не требуют установки сложного оборудования. Для локальных решений может потребоваться собственный сервер."
+              }
+            ].map((faq, index) => (
+              <FaqItem
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 + (index * 0.1) }}
+              >
+                <AnimatePresence>
+                  <FaqItemContent
+                    layout
+                    initial={{ borderRadius: 16 }}
+                    key={`faq-${index}`}
+                  >
+                    <FaqQuestion
+                      layout
+                      onClick={() => toggleFaq(index)}
+                      whileHover={{ color: 'var(--accent-color)' }}
+                    >
+                      <FaqQuestionText>{faq.question}</FaqQuestionText>
+                      <FaqToggle
+                        animate={{ rotate: expandedFaqs.includes(index) ? 45 : 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <FaPlus />
+                      </FaqToggle>
+                    </FaqQuestion>
+                    
+                    <AnimatePresence>
+                      {expandedFaqs.includes(index) && (
+                        <FaqAnswer
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                          isOpen={expandedFaqs.includes(index)}
+                        >
+                          {faq.answer}
+                        </FaqAnswer>
+                      )}
+                    </AnimatePresence>
+                  </FaqItemContent>
+                </AnimatePresence>
+              </FaqItem>
+            ))}
+          </FaqList>
+        </FaqContainer>
+      </FaqSection>
+
+      {/* Раздел с отзывами */}
+      <TestimonialsSection>
+        <TestimonialsWaveTop xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path fill="#ffffff" d="M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,176C672,160,768,160,864,160C960,160,1056,160,1152,160C1248,160,1344,160,1440,160L1440,0L0,0Z"></path>
+        </TestimonialsWaveTop>
+        <TestimonialsContainer>
+          <TestimonialsTitle
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            Відгуки наших клієнтів
+          </TestimonialsTitle>
+          
+          <TestimonialsCarousel>
+            <TestimonialCard 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <StepNumber>4</StepNumber>
-              <StepIcon><FaChartLine /></StepIcon>
-              <StepTitle>Поддержка</StepTitle>
-              <StepDescription>
-                Постоянная поддержка и развитие системы
-              </StepDescription>
-              <StepFeatures>
-                <StepFeature>
-                  <FaCheck /> Техническая поддержка
-                </StepFeature>
-                <StepFeature>
-                  <FaCheck /> Обновление системы
-                </StepFeature>
-                <StepFeature>
-                  <FaCheck /> Анализ эффективности
-                </StepFeature>
-              </StepFeatures>
-            </PathStep>
-          </PathSteps>
-        </PathContainer>
-      </CreationPath>
-
-      <FeaturesGrid>
-        <FeatureCard
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+              <TestimonialQuote>"</TestimonialQuote>
+              <TestimonialText>
+                Після впровадження ERP системи, розробленої командою SoftQoD, наша ефективність зросла на 35%. Автоматизація бізнес-процесів дозволила скоротити операційні витрати та прискорити прийняття рішень.
+              </TestimonialText>
+              <TestimonialAuthor>
+                <TestimonialAvatar src="https://randomuser.me/api/portraits/men/32.jpg" alt="Олександр В." />
+                <TestimonialAuthorInfo>
+                  <TestimonialAuthorName>Олександр В.</TestimonialAuthorName>
+                  <TestimonialAuthorRole>Директор з виробництва, ТОВ "Металпром"</TestimonialAuthorRole>
+                </TestimonialAuthorInfo>
+                <TestimonialRating>
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                </TestimonialRating>
+              </TestimonialAuthor>
+            </TestimonialCard>
+            
+            <TestimonialCard 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <TestimonialQuote>"</TestimonialQuote>
+              <TestimonialText>
+                CRM система, розроблена SoftQoD, повністю змінила наш підхід до роботи з клієнтами. Усі дані тепер зберігаються в одному місці, а автоматизація маркетингу дозволила збільшити конверсію на 28%.
+              </TestimonialText>
+              <TestimonialAuthor>
+                <TestimonialAvatar src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ірина К." />
+                <TestimonialAuthorInfo>
+                  <TestimonialAuthorName>Ірина К.</TestimonialAuthorName>
+                  <TestimonialAuthorRole>Керівник відділу продажів, "Best Shop Ukraine"</TestimonialAuthorRole>
+                </TestimonialAuthorInfo>
+                <TestimonialRating>
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                </TestimonialRating>
+              </TestimonialAuthor>
+            </TestimonialCard>
+            
+            <TestimonialCard 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+            >
+              <TestimonialQuote>"</TestimonialQuote>
+              <TestimonialText>
+                Найбільше вразила індивідуальна адаптація системи під наші потреби та постійна технічна підтримка. Команда реагує на запити максимально оперативно та завжди готова допомогти.
+              </TestimonialText>
+              <TestimonialAuthor>
+                <TestimonialAvatar src="https://randomuser.me/api/portraits/men/67.jpg" alt="Михайло Д." />
+                <TestimonialAuthorInfo>
+                  <TestimonialAuthorName>Михайло Д.</TestimonialAuthorName>
+                  <TestimonialAuthorRole>IT-директор, мережа клінік "МедЕксперт"</TestimonialAuthorRole>
+                </TestimonialAuthorInfo>
+                <TestimonialRating>
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                  <FaStarHalfAlt />
+                </TestimonialRating>
+              </TestimonialAuthor>
+            </TestimonialCard>
+          </TestimonialsCarousel>
+          
+          <TestimonialsCTA
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.8 }}
+          >
+            <TestimonialsCtaText>Приєднуйтесь до сотень задоволених клієнтів</TestimonialsCtaText>
+            <TestimonialsCtaButton to="/contact">Замовити консультацію</TestimonialsCtaButton>
+          </TestimonialsCTA>
+        </TestimonialsContainer>
+        <TestimonialsWaveBottom xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path fill="#ffffff" d="M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,176C672,160,768,160,864,160C960,160,1056,160,1152,160C1248,160,1344,160,1440,160L1440,320L0,320Z"></path>
+        </TestimonialsWaveBottom>
+      </TestimonialsSection>
+      
+      {/* Контактная секция */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        style={{
+          position: 'relative',
+          padding: '8rem 2rem',
+          background: 'linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%)',
+          overflow: 'hidden'
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '150px',
+            background: 'linear-gradient(to top, transparent, var(--bg-secondary))',
+            zIndex: 1
+          }}
+        ></div>
+        
+        <div
+          style={{
+            maxWidth: '1200px',
+            margin: '0 auto',
+            position: 'relative',
+            zIndex: 2
+          }}
         >
-          <FeatureIcon>
-            <FaDatabase />
-          </FeatureIcon>
-          <FeatureTitle>Централизованное управление данными</FeatureTitle>
-          <FeatureDescription>
-            Единая база данных для всех подразделений компании, обеспечивающая согласованность и актуальность информации
-          </FeatureDescription>
-        </FeatureCard>
+          <motion.h2
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            style={{
+              fontSize: '3rem',
+              fontWeight: 700,
+              color: 'var(--accent-color)',
+              marginBottom: '4rem',
+              position: 'relative',
+              display: 'inline-block',
+              textShadow: '0 5px 15px rgba(0, 0, 0, 0.2)'
+            }}
+          >
+            Зв'яжіться з нами
+          </motion.h2>
+          
+          <motion.form
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '2rem'
+            }}
+          >
+            <input
+              type="text"
+              placeholder="Ім'я"
+              required
+              style={{
+                padding: '1rem',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                borderRadius: '12px',
+                background: 'rgba(255, 255, 255, 0.1)',
+                color: 'white',
+                fontSize: '1.2rem'
+              }}
+            />
+            <input
+              type="email"
+              placeholder="Електронна пошта"
+              required
+              style={{
+                padding: '1rem',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                borderRadius: '12px',
+                background: 'rgba(255, 255, 255, 0.1)',
+                color: 'white',
+                fontSize: '1.2rem'
+              }}
+            />
+            <textarea
+              placeholder="Повідомлення"
+              required
+              rows="4"
+              style={{
+                padding: '1rem',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                borderRadius: '12px',
+                background: 'rgba(255, 255, 255, 0.1)',
+                color: 'white',
+                fontSize: '1.2rem'
+              }}
+            ></textarea>
+            <motion.button
+              whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(41, 98, 255, 0.7)' }}
+            whileTap={{ scale: 0.95 }}
+              style={{
+                padding: '1rem 2rem',
+                fontSize: '1.2rem',
+                fontWeight: 'bold',
+                background: 'var(--accent-color)',
+                color: 'white',
+                border: 'none',
+                borderRadius: '12px',
+                cursor: 'pointer',
+                boxShadow: '0 8px 20px rgba(74, 144, 226, 0.2)'
+              }}
+            >
+              Надіслати
+            </motion.button>
+          </motion.form>
+        </div>
+      </motion.section>
 
-        <FeatureCard
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+      {/* Footer */}
+      <Footer>
+        <FooterWave xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path fill="var(--bg-primary)" d="M0,96L48,122.7C96,149,192,203,288,202.7C384,203,480,149,576,117.3C672,85,768,75,864,96C960,117,1056,171,1152,176C1248,181,1344,139,1392,117.3L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+        </FooterWave>
+        <FooterContent>
+          <FooterLogoContainer>
+            <FooterLogo>SoftQoD</FooterLogo>
+            <FooterTagline>Ваш надійний партнер у цифровій трансформації</FooterTagline>
+            <FooterSocial>
+              <FooterSocialLink href="https://facebook.com" target="_blank" aria-label="Facebook">
+                <FaFacebook />
+              </FooterSocialLink>
+              <FooterSocialLink href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                <FaLinkedin />
+              </FooterSocialLink>
+              <FooterSocialLink href="https://twitter.com" target="_blank" aria-label="Twitter">
+                <FaTwitter />
+              </FooterSocialLink>
+              <FooterSocialLink href="https://instagram.com" target="_blank" aria-label="Instagram">
+                <FaInstagram />
+              </FooterSocialLink>
+            </FooterSocial>
+          </FooterLogoContainer>
+          
+          <FooterNavigation>
+            <FooterColumn>
+              <FooterColumnTitle>Послуги</FooterColumnTitle>
+              <FooterLink href="/services/erp-crm">ERP і CRM системи</FooterLink>
+              <FooterLink href="/services/web-development">Веб-розробка</FooterLink>
+              <FooterLink href="/services/mobile-development">Мобільна розробка</FooterLink>
+              <FooterLink href="/services/cloud-services">Хмарні рішення</FooterLink>
+            </FooterColumn>
+            
+            <FooterColumn>
+              <FooterColumnTitle>Компанія</FooterColumnTitle>
+              <FooterLink href="/about">Про нас</FooterLink>
+              <FooterLink href="/portfolio">Портфоліо</FooterLink>
+              <FooterLink href="/blog">Блог</FooterLink>
+              <FooterLink href="/careers">Кар'єра</FooterLink>
+            </FooterColumn>
+            
+            <FooterColumn>
+              <FooterColumnTitle>Контакти</FooterColumnTitle>
+              <FooterContactItem>
+                <FaMapMarkerAlt />
+                <span>Київ, вул. Хрещатик, 22</span>
+              </FooterContactItem>
+              <FooterContactItem>
+                <FaPhone />
+                <span>+380 44 123 45 67</span>
+              </FooterContactItem>
+              <FooterContactItem>
+                <FaEnvelope />
+                <span>info@softqod.com</span>
+              </FooterContactItem>
+            </FooterColumn>
+          </FooterNavigation>
+        </FooterContent>
+        
+        <FooterBottom>
+          <FooterCopyright>&copy; {new Date().getFullYear()} SoftQoD. Всі права захищені.</FooterCopyright>
+          <FooterBottomLinks>
+            <FooterBottomLink href="/privacy">Політика конфіденційності</FooterBottomLink>
+            <FooterBottomLink href="/terms">Умови використання</FooterBottomLink>
+          </FooterBottomLinks>
+        </FooterBottom>
+      </Footer>
+      
+      {/* Блок с технологиями */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        style={{
+          position: 'relative',
+          padding: '8rem 2rem',
+          background: 'linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%)',
+          overflow: 'hidden'
+        }}
+      >
+        <motion.div
+          style={{
+            maxWidth: '1200px',
+            margin: '0 auto',
+            position: 'relative',
+            zIndex: 2
+          }}
         >
-          <FeatureIcon>
-            <FaChartBar />
-          </FeatureIcon>
-          <FeatureTitle>Аналитика и отчетность</FeatureTitle>
-          <FeatureDescription>
-            Глубокая аналитика и автоматическая генерация отчетов для принятия управленческих решений
-          </FeatureDescription>
-        </FeatureCard>
-
-        <FeatureCard
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            style={{
+              fontSize: '2.8rem',
+              textAlign: 'center',
+              marginBottom: '3rem',
+              color: 'var(--accent-color)',
+              fontWeight: '700',
+              textShadow: '0 2px 15px rgba(74, 144, 226, 0.3)'
+            }}
+          >
+            Технології, з якими ми працюємо
+          </motion.h2>
+          
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            style={{
+              fontSize: '1.2rem',
+              textAlign: 'center',
+              maxWidth: '900px',
+              margin: '0 auto 4rem',
+              lineHeight: '1.6'
+            }}
+          >
+            Наша команда має досвід роботи з широким спектром ERP та CRM систем — від великих корпоративних рішень до гнучких хмарних сервісів. Ми підбираємо оптимальні технології під конкретні завдання та бюджет.
+          </motion.p>
+          
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2rem' }}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              style={{
+                width: 'calc(50% - 1rem)',
+                minWidth: '300px',
+                background: 'rgba(255, 255, 255, 0.05)',
+                borderRadius: '12px',
+                padding: '2rem',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)'
+              }}
+            >
+              <motion.h3
+                style={{
+                  fontSize: '1.8rem',
+                  color: 'var(--accent-color)',
+                  marginBottom: '1.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}
+              >
+                <span style={{ 
+                  display: 'inline-flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center',
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  background: 'linear-gradient(135deg, #4e54c8, #8f94fb)',
+                  marginRight: '0.8rem'
+                }}>
+                  <FaCogs color="#fff" size={20} />
+                </span>
+                ERP системи
+              </motion.h3>
+              
+              <ul style={{ listStyle: 'none', padding: 0 }}>
+                {[
+                  { name: 'SAP', desc: 'Комплексна ERP система для великих підприємств' },
+                  { name: '1C: Підприємство', desc: 'Популярне рішення для автоматизації бізнесу' },
+                  { name: 'Microsoft Dynamics 365', desc: 'Модульна ERP та CRM система від Microsoft' },
+                  { name: 'Oracle NetSuite', desc: 'Хмарна ERP система для бізнесу будь-якого розміру' },
+                  { name: 'Odoo', desc: 'Гнучка відкрита ERP з великою кількістю модулів' }
+                ].map((tech, index) => (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4 + (index * 0.1) }}
+                    style={{
+                      marginBottom: '1rem',
+                      padding: '1rem',
+                      background: 'rgba(255, 255, 255, 0.03)',
+                      borderRadius: '8px',
+                      border: '1px solid rgba(255, 255, 255, 0.05)'
+                    }}
+                  >
+                    <div style={{ 
+                      fontWeight: 'bold', 
+                      fontSize: '1.1rem', 
+                      marginBottom: '0.3rem',
+                      color: '#fff' 
+                    }}>
+                      {tech.name}
+                    </div>
+                    <div style={{ fontSize: '0.95rem', opacity: 0.8 }}>
+                      {tech.desc}
+                    </div>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              style={{
+                width: 'calc(50% - 1rem)',
+                minWidth: '300px',
+                background: 'rgba(255, 255, 255, 0.05)',
+                borderRadius: '12px',
+                padding: '2rem',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)'
+              }}
+            >
+              <motion.h3
+                style={{
+                  fontSize: '1.8rem',
+                  color: 'var(--accent-color)',
+                  marginBottom: '1.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}
+              >
+                <span style={{ 
+                  display: 'inline-flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center',
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  background: 'linear-gradient(135deg, #00b09b, #96c93d)',
+                  marginRight: '0.8rem'
+                }}>
+                  <FaUsers color="#fff" size={20} />
+                </span>
+                CRM системи
+              </motion.h3>
+              
+              <ul style={{ listStyle: 'none', padding: 0 }}>
+                {[
+                  { name: 'Salesforce', desc: 'Лідер ринку CRM з широкими можливостями для налаштування' },
+                  { name: 'Bitrix24', desc: 'Популярне рішення з інтегрованими інструментами для бізнесу' },
+                  { name: 'amoCRM', desc: 'Інтуїтивна CRM-система для відділів продажів' },
+                  { name: 'HubSpot', desc: 'Потужна інбаунд-маркетингова платформа з CRM' },
+                  { name: 'Zoho CRM', desc: 'Доступна CRM-система з розширеними можливостями автоматизації' }
+                ].map((tech, index) => (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5 + (index * 0.1) }}
+                    style={{
+                      marginBottom: '1rem',
+                      padding: '1rem',
+                      background: 'rgba(255, 255, 255, 0.03)',
+                      borderRadius: '8px',
+                      border: '1px solid rgba(255, 255, 255, 0.05)'
+                    }}
+                  >
+                    <div style={{ 
+                      fontWeight: 'bold', 
+                      fontSize: '1.1rem', 
+                      marginBottom: '0.3rem',
+                      color: '#fff' 
+                    }}>
+                      {tech.name}
+                    </div>
+                    <div style={{ fontSize: '0.95rem', opacity: 0.8 }}>
+                      {tech.desc}
+                    </div>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+          
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.8 }}
+            style={{
+              marginTop: '4rem',
+              textAlign: 'center',
+              padding: '2rem',
+              background: 'rgba(74, 144, 226, 0.1)',
+              borderRadius: '12px',
+              border: '1px solid rgba(74, 144, 226, 0.2)'
+            }}
+          >
+            <motion.h3
+              style={{
+                fontSize: '1.5rem',
+                marginBottom: '1rem',
+                color: 'var(--accent-color)'
+              }}
+            >
+              Не знаєте, яке рішення підходить саме вам?
+            </motion.h3>
+            <motion.p
+              style={{
+                fontSize: '1.1rem',
+                marginBottom: '1.5rem'
+              }}
+            >
+              Наші експерти проведуть аудит вашого бізнесу та порекомендують оптимальну систему під ваші завдання та бюджет.
+            </motion.p>
+            <motion.button
+              whileHover={{ 
+                scale: 1.05, 
+                boxShadow: '0 0 25px rgba(74, 144, 226, 0.5)'
+              }}
+              whileTap={{ scale: 0.98 }}
+              style={{
+                padding: '1rem 2rem',
+                fontSize: '1.1rem',
+                fontWeight: 'bold',
+                background: 'linear-gradient(135deg, var(--accent-color), var(--accent-color-secondary))',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '30px',
+                cursor: 'pointer',
+                boxShadow: '0 10px 20px rgba(74, 144, 226, 0.3)',
+                transition: 'all 0.3s ease'
+              }}
+            >
+              Отримати безкоштовну консультацію
+            </motion.button>
+          </motion.div>
+        </motion.div>
+        
+        {/* Декоративные элементы */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.3 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          style={{
+            position: 'absolute',
+            top: '5%',
+            left: '5%',
+            width: '300px',
+            height: '300px',
+            background: 'radial-gradient(circle, rgba(74, 144, 226, 0.3) 0%, rgba(74, 144, 226, 0) 70%)',
+            borderRadius: '50%',
+            filter: 'blur(40px)',
+            zIndex: 1
+          }}
+        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.3 }}
+          transition={{ duration: 1, delay: 0.7 }}
+          style={{
+            position: 'absolute',
+            bottom: '10%',
+            right: '10%',
+            width: '250px',
+            height: '250px',
+            background: 'radial-gradient(circle, rgba(138, 43, 226, 0.2) 0%, rgba(138, 43, 226, 0) 70%)',
+            borderRadius: '50%',
+            filter: 'blur(40px)',
+            zIndex: 1
+          }}
+        />
+      </motion.section>
+      
+      {/* Секция успешных проектов */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        style={{
+          position: 'relative',
+          padding: '8rem 2rem',
+          background: 'linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%)',
+          overflow: 'hidden'
+        }}
+      >
+        <svg
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            transform: 'rotate(180deg)',
+            zIndex: 1
+          }}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
         >
-          <FeatureIcon>
-            <FaExchangeAlt />
-          </FeatureIcon>
-          <FeatureTitle>Интеграция с другими системами</FeatureTitle>
-          <FeatureDescription>
-            Возможность интеграции с существующими системами и внешними сервисами
-          </FeatureDescription>
-        </FeatureCard>
-      </FeaturesGrid>
+          <path
+            fill="rgba(255, 255, 255, 0.03)"
+            d="M0,96L48,122.7C96,149,192,203,288,202.7C384,203,480,149,576,117.3C672,85,768,75,864,96C960,117,1056,171,1152,176C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+          ></path>
+        </svg>
 
-      <SystemsSection>
-        <SystemsTitle>Основные модули систем</SystemsTitle>
-        <SystemsGrid>
-          <SystemCard
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+        <motion.div
+          style={{
+            maxWidth: '1200px',
+            margin: '0 auto',
+            position: 'relative',
+            zIndex: 2
+          }}
+        >
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            style={{
+              fontSize: '2.8rem',
+              textAlign: 'center',
+              marginBottom: '1.5rem',
+              color: 'var(--accent-color)',
+              fontWeight: '700',
+              textShadow: '0 2px 15px rgba(74, 144, 226, 0.3)'
+            }}
           >
-            <SystemIcon><FaUserCog /></SystemIcon>
-            <SystemTitle>Управление персоналом</SystemTitle>
-            <SystemDescription>
-              Учет рабочего времени, кадровый учет, расчет заработной платы
-            </SystemDescription>
-          </SystemCard>
+            Успішні проекти
+          </motion.h2>
 
-          <SystemCard
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            style={{
+              fontSize: '1.2rem',
+              textAlign: 'center',
+              maxWidth: '900px',
+              margin: '0 auto 4rem',
+              lineHeight: '1.6'
+            }}
           >
-            <SystemIcon><FaFileInvoice /></SystemIcon>
-            <SystemTitle>Финансы и бухгалтерия</SystemTitle>
-            <SystemDescription>
-              Управление финансами, учет, планирование и контроль бюджета
-            </SystemDescription>
-          </SystemCard>
+            Реалізували понад 50 проектів впровадження ERP та CRM систем для компаній 
+            різних галузей. Кожен кейс — це історія успішної цифрової трансформації бізнесу.
+          </motion.p>
 
-          <SystemCard
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', 
+            gap: '2rem', 
+            marginBottom: '4rem' 
+          }}>
+            {[
+              {
+                title: 'Автоматизація логістичної компанії',
+                system: 'SAP S/4HANA',
+                industry: 'Логістика',
+                scope: 'Повний цикл впровадження',
+                results: 'Скорочення витрат на 25%, оптимізація маршрутів на 30%',
+                icon: <FaTruck />
+              },
+              {
+                title: 'CRM для мережі роздрібної торгівлі',
+                system: 'Microsoft Dynamics 365',
+                industry: 'Рітейл',
+                scope: 'Міграція даних, налаштування, інтеграція',
+                results: 'Підвищення конверсії на 18%, збільшення LTV на 22%',
+                icon: <FaShoppingCart />
+              },
+              {
+                title: 'ERP-система для виробництва',
+                system: 'Oracle NetSuite',
+                industry: 'Виробництво',
+                scope: 'Налаштування і оптимізація',
+                results: 'Зниження простоїв на 40%, підвищення продуктивності на 35%',
+                icon: <FaIndustry />
+              }
+            ].map((project, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 + (index * 0.1) }}
+                style={{
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  borderRadius: '12px',
+                  padding: '2rem',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }}
+              >
+                <div style={{ 
+                  position: 'absolute', 
+                  right: '20px', 
+                  top: '20px',
+                  width: '50px',
+                  height: '50px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color-secondary) 100%)',
+                  borderRadius: '50%',
+                  fontSize: '1.5rem',
+                  boxShadow: '0 5px 15px rgba(74, 144, 226, 0.3)'
+                }}>
+                  {project.icon}
+                </div>
+                
+                <h3 style={{ 
+                  fontSize: '1.6rem', 
+                  marginBottom: '1.5rem', 
+                  paddingRight: '60px',
+                  color: '#fff',
+                  fontWeight: '600'
+                }}>
+                  {project.title}
+                </h3>
+                
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <div style={{ marginBottom: '1rem' }}>
+                    <strong style={{ color: 'var(--accent-color)' }}>Система:</strong> {project.system}
+                  </div>
+                  <div style={{ marginBottom: '1rem' }}>
+                    <strong style={{ color: 'var(--accent-color)' }}>Галузь:</strong> {project.industry}
+                  </div>
+                  <div style={{ marginBottom: '1rem' }}>
+                    <strong style={{ color: 'var(--accent-color)' }}>Обсяг робіт:</strong> {project.scope}
+                  </div>
+                </div>
+                
+                <div style={{
+                  padding: '1rem',
+                  background: 'rgba(74, 144, 226, 0.1)',
+                  borderRadius: '8px',
+                  borderLeft: '3px solid var(--accent-color)'
+                }}>
+                  <strong style={{ color: 'var(--accent-color)' }}>Результати:</strong> {project.results}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          {/* Статистика */}
+          <div style={{ 
+            display: 'flex', 
+            flexWrap: 'wrap', 
+            justifyContent: 'space-between',
+            gap: '2rem',
+            margin: '0 auto 4rem',
+            maxWidth: '900px'
+          }}>
+            {[
+              { value: '50+', label: 'Реалізованих проектів' },
+              { value: '95%', label: 'Задоволених клієнтів' },
+              { value: '30%', label: 'Середній приріст ефективності' },
+              { value: '2x', label: 'Прискорення бізнес-процесів' }
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.5 + (index * 0.1) }}
+                style={{
+                  flex: '1 1 200px',
+                  textAlign: 'center',
+                  padding: '1.5rem',
+                  background: 'rgba(255, 255, 255, 0.03)',
+                  borderRadius: '12px',
+                  boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)'
+                }}
+              >
+                <div style={{ 
+                  fontSize: '3rem', 
+                  fontWeight: 'bold',
+                  color: 'var(--accent-color)',
+                  marginBottom: '0.5rem'
+                }}>
+                  {stat.value}
+                </div>
+                <div style={{ fontSize: '1.1rem' }}>
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+            style={{
+              textAlign: 'center',
+              padding: '3rem',
+              background: 'rgba(255, 255, 255, 0.03)',
+              borderRadius: '16px',
+              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
+              border: '1px solid rgba(255, 255, 255, 0.05)'
+            }}
           >
-            <SystemIcon><FaWarehouse /></SystemIcon>
-            <SystemTitle>Управление запасами</SystemTitle>
-            <SystemDescription>
-              Контроль и оптимизация складских запасов, логистика
-            </SystemDescription>
-          </SystemCard>
-
-          <SystemCard
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <SystemIcon><FaShoppingCart /></SystemIcon>
-            <SystemTitle>Продажи и маркетинг</SystemTitle>
-            <SystemDescription>
-              Управление продажами, маркетинговыми кампаниями и клиентской базой
-            </SystemDescription>
-          </SystemCard>
-
-          <SystemCard
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <SystemIcon><FaMoneyBillWave /></SystemIcon>
-            <SystemTitle>Управление проектами</SystemTitle>
-            <SystemDescription>
-              Планирование, контроль и управление проектами компании
-            </SystemDescription>
-          </SystemCard>
-        </SystemsGrid>
-      </SystemsSection>
-
-      <CTAButton
+            <h3 style={{ 
+              fontSize: '2rem', 
+              marginBottom: '1.5rem',
+              color: '#fff'
+            }}>
+              Станьте наступним успішним кейсом
+            </h3>
+            <p style={{ 
+              fontSize: '1.1rem', 
+              marginBottom: '2rem',
+              maxWidth: '700px',
+              margin: '0 auto 2rem'
+            }}>
+              Почніть свій шлях цифрової трансформації сьогодні. Наші експерти готові обговорити ваш проект та запропонувати оптимальне рішення для вашого бізнесу.
+            </p>
+            <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-      >
-        Начать внедрение ERP/CRM системы
-      </CTAButton>
-    </PageContainer>
+              style={{
+                background: 'linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color-secondary) 100%)',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '30px',
+                padding: '1rem 2.5rem',
+                fontSize: '1.1rem',
+                fontWeight: 'bold',
+                cursor: 'pointer',
+                boxShadow: '0 10px 20px rgba(74, 144, 226, 0.3)',
+                transition: 'all 0.3s ease'
+              }}
+            >
+              Замовити консультацію
+            </motion.button>
+          </motion.div>
+        </motion.div>
+      </motion.section>
+    </Container>
   );
 };
 
