@@ -74,6 +74,17 @@ const shimmerEffect = keyframes`
   100% { background-position: 100% 0; }
 `;
 
+const shine = keyframes`
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+`;
+
+const float = keyframes`
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+`;
+
 // Стилизованные компоненты
 const Container = styled.div`
   width: 100%;
@@ -1263,6 +1274,39 @@ const LandingPage = () => {
     },
   ];
 
+  const conversionData = [
+    {
+      icon: "🎯",
+      title: "Чітка структура",
+      text: "Кожен блок логічно пов'язаний з наступним, ведучи відвідувача до цільової дії"
+    },
+    {
+      icon: "💎",
+      title: "Візуальні акценти",
+      text: "Ключові елементи виділені так, щоб привертати увагу та підштовхувати до конверсії"
+    },
+    {
+      icon: "⚡",
+      title: "Швидкість роботи",
+      text: "Оптимізована швидкість завантаження утримує відвідувачів на сайті"
+    },
+    {
+      icon: "📱",
+      title: "Адаптивність",
+      text: "Ідеальне відображення на всіх пристроях збільшує конверсію з мобільного трафіку"
+    },
+    {
+      icon: "🎨",
+      title: "Продуманий дизайн",
+      text: "Сучасна естетика викликає довіру та підвищує конверсію"
+    },
+    {
+      icon: "📊",
+      title: "Аналітика та A/B",
+      text: "Постійне тестування та оптимізація для максимальної ефективності"
+    }
+  ];
+
   return (
     <Container>
       <HeroSection
@@ -1532,141 +1576,79 @@ const LandingPage = () => {
           >
             Чим лендінг відрізняється від багатосторінкового сайту
           </LandingVsTitle>
+          
           <LandingVsQuote
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             <QuoteIcon>💡</QuoteIcon>
-            Головна відмінність лендінгу — фокус. На відміну від
-            багатосторінкових сайтів, які розпорошують увагу між десятками
-            сторінок, лендінг веде користувача по логічному шляху до однієї
-            цільової дії. Це збільшує шанси, що відвідувач стане вашим клієнтом.
+            Головна відмінність лендінгу — фокус. На відміну від багатосторінкових сайтів, 
+            які розпорошують увагу між десятками сторінок, лендінг веде користувача по логічному 
+            шляху до однієї цільової дії. Це збільшує шанси, що відвідувач стане вашим клієнтом.
           </LandingVsQuote>
+          
           <LandingVsGrid>
             <VsCol
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              whileHover={{ scale: 1.04 }}
+              whileHover={{ scale: 1.02 }}
             >
               <VsColTitle>
-                <VsColIcon>🎯</VsColIcon>Лендінг
+                <VsColIcon>🎯</VsColIcon>
+                Лендінг
               </VsColTitle>
               <VsList>
                 <VsListItem>
                   Одна сторінка — один чіткий шлях для користувача
                 </VsListItem>
-                <VsListItem>Всі елементи ведуть до цільової дії</VsListItem>
-                <VsListItem>Висока конверсія завдяки фокусу</VsListItem>
                 <VsListItem>
-                  Ідеально для реклами та швидких запусків
+                  Всі елементи ведуть до цільової дії
                 </VsListItem>
-                <VsListItem>Легко тестувати й оптимізувати</VsListItem>
+                <VsListItem>
+                  Висока конверсія завдяки фокусу на результат
+                </VsListItem>
+                <VsListItem>
+                  Швидкий запуск та легке тестування
+                </VsListItem>
+                <VsListItem>
+                  Ідеально для реклами та швидких продажів
+                </VsListItem>
               </VsList>
             </VsCol>
+            
             <VsCol
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
-              whileHover={{ scale: 1.04 }}
+              whileHover={{ scale: 1.02 }}
             >
               <VsColTitle>
-                <VsColIcon>📄</VsColIcon>Багатосторінковий сайт
+                <VsColIcon>📄</VsColIcon>
+                Багатосторінковий сайт
               </VsColTitle>
               <VsList>
-                <VsListItem>Багато сторінок і розділів</VsListItem>
                 <VsListItem>
-                  Користувач може відволікатися на різні теми
+                  Розгалужена структура з багатьма сторінками
                 </VsListItem>
-                <VsListItem>Складніша навігація</VsListItem>
                 <VsListItem>
-                  Підходить для великих компаній, каталогів, блогів
+                  Розширений функціонал та можливості
                 </VsListItem>
-                <VsListItem>Менш прогнозована конверсія</VsListItem>
+                <VsListItem>
+                  Складніша навігація та довший шлях до цілі
+                </VsListItem>
+                <VsListItem>
+                  Підходить для великих проектів та каталогів
+                </VsListItem>
+                <VsListItem>
+                  Потребує більше часу на розробку та підтримку
+                </VsListItem>
               </VsList>
             </VsCol>
           </LandingVsGrid>
         </LandingVsContainer>
       </LandingVsMultiSection>
-      <ConversionGlowSection
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <ConversionGlowBg />
-        <ConversionGlass>
-          <ConversionGlowTitle
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            Як правильно побудований лендінг допомагає збільшити конверсію
-          </ConversionGlowTitle>
-          <ConversionGlowCallout
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            <ConversionGlowIcon>💡</ConversionGlowIcon>
-            Стратегічно спроєктований лендінг враховує потреби цільової
-            аудиторії, вирішує її болі та підводить до прийняття рішення. Від
-            грамотного заголовка до переконливого заклику до дії — кожен елемент
-            працює на результат. Саме тому ефективний лендинг — це не просто
-            сайт, а інструмент зростання прибутку.
-          </ConversionGlowCallout>
-          <ConversionGlowList>
-            {[
-              {
-                icon: '🧩',
-                title: 'Індивідуальний підхід',
-                desc: 'Враховуємо специфіку вашого бізнесу, цілі та конкурентні переваги.',
-              },
-              {
-                icon: '🎨',
-                title: 'Дизайн, що запам`ятовується',
-                desc: 'Унікальний стиль, який виділяє вас серед конкурентів та чіпляє увагу.',
-              },
-              {
-                icon: '⚡',
-                title: 'Швидкість і адаптивність',
-                desc: 'Сторінка ідеально працює на всіх пристроях і завантажується миттєво.',
-              },
-              {
-                icon: '🔍',
-                title: 'SEO-оптимізація',
-                desc: 'Ваш лендінг легко знаходять у Google — це нові клієнти без додаткових витрат.',
-              },
-              {
-                icon: '📊',
-                title: 'Аналітика та реклама',
-                desc: 'Підключаємо аналітику, готуємо до запуску реклами та відстеження результатів.',
-              },
-            ].map((item, idx) => (
-              <ConversionGlowCard
-                key={item.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 + idx * 0.13 }}
-                whileHover={{ scale: 1.04 }}
-              >
-                <ConversionGlowCardIcon>{item.icon}</ConversionGlowCardIcon>
-                <ConversionGlowCardTitle>{item.title}</ConversionGlowCardTitle>
-                <ConversionGlowCardDesc>{item.desc}</ConversionGlowCardDesc>
-              </ConversionGlowCard>
-            ))}
-          </ConversionGlowList>
-          <ConversionGlowCTA
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
-          >
-            Замовити консультацію
-          </ConversionGlowCTA>
-        </ConversionGlass>
-      </ConversionGlowSection>
       <LPEffectSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -1710,7 +1692,8 @@ const LandingPage = () => {
             {' '}
             Щоб створити <b>ефективний лендинг</b>, ми починаємо з глибокого
             аналізу: вивчаємо ринок, конкурентів і чітко визначаємо цільову
-            аудиторію. Це дозволяє побудувати не просто красивий сайт, а такий,
+            аудиторію. Це дозволяє побудувати не просто красивий сайт, а
+ такий,
             що <span className="how-accent">говорить мовою клієнта</span> й
             відповідає на його потреби.
             <br />
@@ -3240,59 +3223,83 @@ const FaqDecoration = styled.div`
 
 const LandingVsMultiSection = styled(motion.section)`
   position: relative;
-  padding: 7rem 2rem 6rem 2rem;
+  padding: 6rem 2rem;
+  background: var(--bg-primary);
   overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(94, 234, 212, 0.2), transparent);
+  }
 `;
 
 const LandingVsContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  background: rgba(16, 24, 39, 0.7);
-  backdrop-filter: blur(12px);
-  border-radius: 32px;
-  box-shadow: 0 8px 40px rgba(59, 130, 246, 0.1);
-  padding: 3.5rem 2rem 3rem 2rem;
   position: relative;
   z-index: 2;
-  overflow: hidden;
 `;
 
-const LandingVsTitle = styled(motion.h3)`
-  font-size: 2.5rem;
+const LandingVsTitle = styled(motion.h2)`
+  font-size: 2.8rem;
   font-weight: 800;
-  color: #0ea5e9;
-  margin-bottom: 2.2rem;
+  background: linear-gradient(135deg, #fff 0%, #94A3B8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-align: center;
-  letter-spacing: -1px;
+  margin-bottom: 3rem;
   position: relative;
-  z-index: 2;
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+
   &::after {
     content: '';
-    display: block;
-    margin: 1.2rem auto 0 auto;
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 80px;
     height: 4px;
+    background: linear-gradient(90deg, #5eead4, var(--accent-color));
     border-radius: 2px;
-    background: linear-gradient(90deg, #5eead4, #0ea5e9);
   }
 `;
 
 const LandingVsQuote = styled(motion.div)`
-  font-size: 1.35rem;
-  color: #fff;
-  background: linear-gradient(
-    90deg,
-    rgba(14, 165, 233, 0.15),
-    rgba(94, 234, 212, 0.12)
-  );
-  border-left: 6px solid #5eead4;
-  border-radius: 0 18px 18px 0;
-  padding: 1.5rem 2rem;
-  margin-bottom: 3.5rem;
-  box-shadow: 0 4px 24px rgba(14, 165, 233, 0.08);
-  display: flex;
-  align-items: flex-start;
-  gap: 1.2rem;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #E2E8F0;
+  background: rgba(94, 234, 212, 0.08);
+  border-radius: 24px;
+  padding: 2rem;
+  margin-bottom: 4rem;
+  position: relative;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(94, 234, 212, 0.1);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(94, 234, 212, 0.1),
+      transparent
+    );
+    transform: translateX(-100%);
+    animation: ${shine} 3s infinite;
+  }
 `;
 
 const QuoteIcon = styled.span`
@@ -3300,182 +3307,334 @@ const QuoteIcon = styled.span`
   color: #5eead4;
   margin-right: 0.7rem;
   flex-shrink: 0;
+  filter: drop-shadow(0 0 10px rgba(94, 234, 212, 0.5));
+  animation: ${float} 3s ease-in-out infinite;
 `;
 
 const LandingVsGrid = styled.div`
-  display: flex;
-  gap: 2.5rem;
-  justify-content: center;
-  align-items: stretch;
-  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 2rem;
+  
   @media (max-width: 900px) {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 2rem;
   }
 `;
 
 const VsCol = styled(motion.div)`
-  flex: 1 1 0;
-  background: rgba(255, 255, 255, 0.13);
+  background: rgba(15, 23, 42, 0.6);
   border-radius: 24px;
-  box-shadow: 0 4px 24px rgba(14, 165, 233, 0.07);
-  padding: 2.2rem 1.5rem 2.5rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 260px;
-  position: relative;
-  z-index: 1;
-  border: 2px solid #5eead4;
-  transition: box-shadow 0.3s;
+  padding: 2.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(94, 234, 212, 0.1);
+  transition: all 0.3s ease;
+  
   &:hover {
-    box-shadow: 0 8px 32px rgba(14, 165, 233, 0.13);
-    border-color: #0ea5e9;
+    transform: translateY(-5px);
+    border-color: rgba(94, 234, 212, 0.3);
+    box-shadow: 0 20px 40px rgba(94, 234, 212, 0.1);
   }
 `;
 
-const VsColTitle = styled.h4`
-  font-size: 1.35rem;
+const VsColTitle = styled.h3`
+  font-size: 1.5rem;
   font-weight: 700;
-  color: #0ea5e9;
-  margin-bottom: 1.2rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: 0.8rem;
 `;
 
 const VsColIcon = styled.span`
   font-size: 2rem;
-  color: #5eead4;
+  filter: drop-shadow(0 0 8px rgba(94, 234, 212, 0.4));
 `;
 
 const VsList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
 
 const VsListItem = styled.li`
-  font-size: 1.08rem;
-  color: #fff;
-  margin-bottom: 1.1rem;
-  padding-left: 1.7rem;
+  font-size: 1.1rem;
+  color: #E2E8F0;
+  padding-left: 2rem;
   position: relative;
-  &:before {
-    content: '•';
-    color: #5eead4;
-    font-size: 1.2rem;
+  line-height: 1.6;
+  
+  &::before {
+    content: '';
     position: absolute;
     left: 0;
-    top: 0.1rem;
+    top: 0.5rem;
+    width: 8px;
+    height: 8px;
+    background: #5eead4;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(94, 234, 212, 0.6);
+  }
+  
+  &:hover::before {
+    animation: ${pulse} 2s infinite;
   }
 `;
 
 // Conversion styled-components
 const ConversionSection = styled(motion.section)`
   position: relative;
-  padding: 7rem 2rem 6rem 2rem;
-  background: linear-gradient(
-    180deg,
-    var(--bg-secondary) 0%,
-    var(--bg-primary) 100%
-  );
+  padding: 7rem 2rem;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, #0f1729 100%);
   overflow: hidden;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(94, 234, 212, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.5; }
+  }
 `;
 
 const ConversionContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.07);
-  border-radius: 32px;
-  box-shadow: 0 8px 40px rgba(59, 130, 246, 0.1);
-  padding: 3.5rem 2rem 3rem 2rem;
   position: relative;
   z-index: 2;
-  overflow: hidden;
 `;
 
-const ConversionTitle = styled(motion.h3)`
-  font-size: 2.5rem;
+const ConversionTitle = styled(motion.h2)`
+  font-size: 2.8rem;
   font-weight: 800;
-  color: var(--accent-color);
-  margin-bottom: 2.2rem;
   text-align: center;
-  letter-spacing: -1px;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, #fff 0%, #5eead4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(94, 234, 212, 0.3));
   position: relative;
-  z-index: 2;
+
   &::after {
     content: '';
-    display: block;
-    margin: 1.2rem auto 0 auto;
-    width: 80px;
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
     height: 4px;
+    background: linear-gradient(90deg, transparent, #5eead4, transparent);
     border-radius: 2px;
-    background: linear-gradient(90deg, #5eead4, var(--accent-color));
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
   }
 `;
 
 const ConversionQuote = styled(motion.div)`
-  font-size: 1.25rem;
-  color: #fff;
-  background: linear-gradient(
-    90deg,
-    rgba(94, 234, 212, 0.13),
-    rgba(59, 130, 246, 0.1)
-  );
-  border-left: 6px solid var(--accent-color);
-  border-radius: 0 18px 18px 0;
-  padding: 1.5rem 2rem;
-  margin-bottom: 3.5rem;
-  box-shadow: 0 4px 24px rgba(59, 130, 246, 0.08);
-  display: flex;
-  align-items: flex-start;
-  gap: 1.2rem;
-`;
-
-const ConversionIcon = styled.span`
-  font-size: 2.2rem;
-  color: var(--accent-color);
-  margin-right: 0.7rem;
-  flex-shrink: 0;
-`;
-
-const ConversionList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0 auto;
-  max-width: 700px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.3rem;
-`;
-
-const ConversionListItem = styled(motion.li)`
-  font-size: 1.13rem;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
-  padding: 1.1rem 1.5rem 1.1rem 3.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(94, 234, 212, 0.2);
+  border-radius: 24px;
+  padding: 2.5rem;
+  margin: 0 auto 4rem auto;
+  max-width: 900px;
   position: relative;
-  box-shadow: 0 2px 12px rgba(59, 130, 246, 0.06);
-  display: flex;
-  align-items: center;
-  min-height: 48px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(94, 234, 212, 0.1);
+    border-color: #5eead4;
+  }
+  
+  &::before, &::after {
+    content: '"';
+    position: absolute;
+    font-size: 4rem;
+    color: #5eead4;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+  }
+
+  &:hover::before, &:hover::after {
+    color: #fff;
+    text-shadow: 0 0 15px #5eead4;
+  }
+
+  &::before {
+    top: 1rem;
+    left: 1.5rem;
+  }
+
+  &::after {
+    bottom: 0;
+    right: 1.5rem;
+  }
+`;
+
+const ConversionQuoteText = styled.p`
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #e0f2fe;
+  text-align: center;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+`;
+
+const ConversionGrid = styled(motion.div)`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+`;
+
+const ConversionCard = styled(motion.div)`
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    transform: translateY(-5px) scale(1.02);
+    border: 1px solid #5eead4;
+    background: rgba(94, 234, 212, 0.05);
+    box-shadow: 0 10px 30px rgba(94, 234, 212, 0.1);
+  }
+
   &::before {
     content: '';
     position: absolute;
-    left: 1.1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1.6rem;
-    height: 1.6rem;
-    background: linear-gradient(135deg, #5eead4 0%, var(--accent-color) 100%);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 10px rgba(94, 234, 212, 0.15);
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #5eead4, transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                rgba(94, 234, 212, 0.15), transparent 100px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+`;
+
+const ConversionCardIcon = styled.div`
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #5eead4;
+  filter: drop-shadow(0 0 10px rgba(94, 234, 212, 0.3));
+  transition: all 0.3s ease;
+
+  ${ConversionCard}:hover & {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px rgba(94, 234, 212, 0.5));
+  }
+`;
+
+const ConversionCardTitle = styled.h3`
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #fff;
+  transition: color 0.3s ease;
+
+  ${ConversionCard}:hover & {
+    color: #5eead4;
+  }
+`;
+
+const ConversionCardText = styled.p`
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #94a3b8;
+  transition: color 0.3s ease;
+
+  ${ConversionCard}:hover & {
+    color: #e0f2fe;
+  }
+`;
+
+const ConversionCTA = styled(motion.button)`
+  display: block;
+  margin: 4rem auto 0;
+  padding: 1.2rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #5eead4 0%, var(--accent-color) 100%);
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(94, 234, 212, 0.2);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: 0.5s;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(94, 234, 212, 0.3);
+    
+    &::before {
+      left: 100%;
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
   }
 `;
 
@@ -4356,182 +4515,242 @@ const LPWhatNeedCardText = styled.p`
 // --- Уникальный блок сравнения ---
 const LPUniqueCompareSection = styled.section`
   position: relative;
-  padding: 0;
+  padding: 6rem 0;
   min-height: 400px;
   overflow: hidden;
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #5eead4, transparent);
+  }
 `;
+
 const LPUniqueCompareBg = styled.div`
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 40px);
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(94, 234, 212, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0px 2px, transparent 2px 40px);
   pointer-events: none;
   z-index: 0;
 `;
+
 const LPUniqueCompareContent = styled.div`
   position: relative;
   z-index: 2;
-  padding: 4.5rem 2.5rem 3.5rem 2.5rem;
+  padding: 0 2.5rem;
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
-const LPUniqueCompareTitle = styled.h2`
-  font-size: 2.5rem;
+
+const LPUniqueCompareTitle = styled(motion.h2)`
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 900;
   color: #fff;
-  margin-bottom: 3.2rem;
+  margin-bottom: 4rem;
   text-align: center;
   letter-spacing: -1px;
-  text-shadow: 0 2px 10px #0ea5e9aa;
-`;
-const LPUniqueCompareSplit = styled.div`
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  gap: 2.5rem;
-  margin-bottom: 2.5rem;
-  width: 100%;
-  max-width: 900px;
-  position: relative;
-  @media (max-width: 900px) {
-    flex-direction: column;
-    gap: 1.5rem;
-    max-width: 100%;
-  }
-`;
-const LPUniqueCompareCol = styled(motion.div)`
-  background: rgba(255,255,255,0.13);
-  backdrop-filter: blur(16px);
-  border-radius: 32px;
-  box-shadow: 0 4px 24px rgba(255,255,255,0.08);
-  padding: 2.2rem 2rem 2rem 2rem;
-  flex: 1 1 0;
-  min-width: 220px;
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  transition: box-shadow 0.3s, border 0.3s, background 0.3s;
-  z-index: 1;
-`;
-const LPUniqueCompareColTitle = styled.h3`
-  font-size: 1.18rem;
-  font-weight: 800;
-  color: #fff;
-  margin-bottom: 1.1rem;
-  margin-top: 0.2rem;
   line-height: 1.3;
+  background: linear-gradient(135deg, #fff 0%, #5eead4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 10px rgba(14, 165, 233, 0.3);
+  
+  span {
+    font-size: 1.2em;
+    margin-right: 0.5rem;
+    display: inline-block;
+    vertical-align: middle;
+  }
 `;
-const LPUniqueCompareColDesc = styled.p`
-  font-size: 1.05rem;
-  color: #e0f2fe;
-  line-height: 1.7;
-  margin-bottom: 0.7rem;
-  font-weight: 500;
+
+const LPUniqueCompareSplit = styled.div`
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2rem;
+  width: 100%;
+  margin-bottom: 3rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
 `;
+
 const LPUniqueCompareVs = styled.div`
-  font-size: 2.2rem;
+  font-size: 1.5rem;
   font-weight: 900;
-  color: #fff;
-  align-self: center;
-  margin: 0 1.2rem;
-  opacity: 0.7;
+  color: #5eead4;
   display: flex;
   align-items: center;
   justify-content: center;
-  @media (max-width: 900px) {
-    margin: 1.2rem 0;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(94, 234, 212, 0.1);
+    z-index: -1;
+    animation: pulse 2s infinite ease-in-out;
+  }
+  
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
-const LPUniqueCompareText = styled.h3`
-  font-size: 1.35rem;
-  color: #fff;
-  margin-bottom: 1.2rem;
+
+const LPUniqueCompareCol = styled(motion.div)`
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(94, 234, 212, 0.1);
+  border-radius: 24px;
+  padding: 2.5rem;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    border-color: rgba(94, 234, 212, 0.3);
+    box-shadow: 0 20px 40px rgba(94, 234, 212, 0.1);
+  }
+`;
+
+const LPUniqueCompareColTitle = styled.h3`
+  font-size: 1.5rem;
   font-weight: 700;
-  text-align: center;
-`;
-const LPUniqueCompareDesc = styled.p`
-  font-size: 1.08rem;
-  color: #e0f2fe;
-  line-height: 1.8;
-  margin-bottom: 2.2rem;
-  font-weight: 500;
-  text-align: center;
-  max-width: 900px;
-`;
-const LPUniqueCompareListTitle = styled.h4`
-  font-size: 1.18rem;
-  color: #fff;
-  font-weight: 800;
-  margin: 2.2rem 0 1.2rem 0;
-  text-align: center;
-`;
-const LPUniqueCompareList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0 auto 2.2rem auto;
-  max-width: 700px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-`;
-const LPUniqueCompareListItem = styled(motion.li)`
-  font-size: 1.08rem;
-  color: #fff;
-  background: rgba(255,255,255,0.09);
-  border-radius: 18px;
-  padding: 1.1rem 1.5rem 1.1rem 2.7rem;
-  position: relative;
-  box-shadow: 0 2px 12px rgba(255,255,255,0.06);
+  color: #5eead4;
+  margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
-  min-height: 48px;
-  transition: background 0.3s, box-shadow 0.3s;
+  gap: 0.75rem;
+  
+  &::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: #5eead4;
+    border-radius: 50%;
+  }
 `;
+
+const LPUniqueCompareColDesc = styled.p`
+  font-size: 1.1rem;
+  color: #94a3b8;
+  line-height: 1.8;
+  
+  span {
+    font-size: 1.4em;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+  }
+`;
+
+const LPUniqueCompareText = styled.h3`
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 3rem 0 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, #5eead4 0%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
+const LPUniqueCompareDesc = styled.p`
+  font-size: 1.125rem;
+  color: #94a3b8;
+  line-height: 1.8;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+`;
+
+const LPUniqueCompareListTitle = styled.h4`
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 2rem 0 1.5rem;
+  text-align: center;
+`;
+
+const LPUniqueCompareList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 3rem;
+`;
+
+const LPUniqueCompareListItem = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  background: rgba(30, 41, 59, 0.3);
+  border: 1px solid rgba(94, 234, 212, 0.05);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(94, 234, 212, 0.08);
+    border-color: rgba(94, 234, 212, 0.2);
+    transform: translateX(5px);
+  }
+`;
+
 const LPUniqueCompareListIcon = styled.span`
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: #5eead4;
-  margin-right: 1.1rem;
   flex-shrink: 0;
 `;
+
 const LPUniqueCompareFeatures = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
-  justify-content: center;
-  margin-top: 1.5rem;
+  width: 100%;
+  margin-top: 2rem;
 `;
+
 const LPUniqueCompareFeature = styled(motion.div)`
-  background: rgba(255,255,255,0.13);
-  border-radius: 22px;
-  box-shadow: 0 2px 12px #5eead422;
-  padding: 1.2rem 1.3rem 1.1rem 1.3rem;
-  min-width: 220px;
-  max-width: 320px;
-  flex: 1 1 220px;
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(94, 234, 212, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
   display: flex;
-  align-items: center;
-  gap: 1.1rem;
-  text-align: left;
-  position: relative;
-  z-index: 1;
-  transition: box-shadow 0.3s, background 0.3s;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(30, 41, 59, 0.6);
+    border-color: rgba(94, 234, 212, 0.2);
+    transform: translateY(-5px);
+  }
 `;
-const LPUniqueCompareFeatureIcon = styled.div`
-  font-size: 1.7rem;
-  color: #5eead4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+const LPUniqueCompareFeatureIcon = styled.span`
+  font-size: 2rem;
+  line-height: 1;
 `;
-const LPUniqueCompareFeatureText = styled.div`
-  font-size: 1.05rem;
-  color: #fff;
-  font-weight: 600;
+
+const LPUniqueCompareFeatureText = styled.p`
+  font-size: 1rem;
+  color: #94a3b8;
+  line-height: 1.6;
 `;
 
 export default LandingPage;
