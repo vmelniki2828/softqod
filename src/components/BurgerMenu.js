@@ -185,6 +185,8 @@ const MenuBlockLink = styled(Link)`
 const MenuBlockIconSmall = styled.div`
   width: 32px;
   height: 32px;
+  min-width: 32px;
+  min-height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -195,6 +197,11 @@ const MenuBlockIconSmall = styled.div`
   padding: 0.5rem;
   flex-shrink: 0;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  
+  svg {
+    width: 16px;
+    height: 16px;
+  }
 `;
 
 const BurgerMenu = ({ isOpen, onClose }) => {

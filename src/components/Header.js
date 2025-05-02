@@ -153,6 +153,13 @@ const DropdownItem = styled(Link)`
   border-radius: 8px;
   font-size: 0.95rem;
 
+  svg {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+  }
+
   &:hover {
     background: var(--bg-primary);
     color: var(--accent-color);
