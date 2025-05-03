@@ -1,585 +1,2633 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useState } from 'react';
+import styled, { keyframes } from 'styled-components';
 import { motion } from 'framer-motion';
-import { 
-  FaShoppingCart, 
-  FaMobile, 
-  FaRocket, 
-  FaCode,
-  FaCheck,
-  FaTools,
-  FaProjectDiagram,
-  FaChartLine,
-  FaUserShield,
-  FaCreditCard,
-  FaTruck,
-  FaSearch,
-  FaComments,
-  FaBell,
-} from 'react-icons/fa';
+import { FaShoppingCart, FaCheckCircle, FaStore, FaSearch, FaMobile, FaCreditCard, FaChartLine, FaTags, FaHeadset, FaRocket, FaPercent, FaCode, FaCog, FaLink, FaShieldAlt, FaExpand, FaSitemap, FaPencilRuler, FaClock, FaPlus } from 'react-icons/fa';
+import { AnimatePresence } from 'framer-motion';
 
-const PageContainer = styled.div`
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  color: var(--text-primary);
+// Анимации
+const pulse = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 `;
 
-const MainHero = styled(motion.section)`
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-  padding: 6rem 2rem;
-  text-align: center;
+const shimmer = keyframes`
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
+`;
+
+const glow = keyframes`
+  0% { box-shadow: 0 0 5px rgba(94, 234, 212, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(94, 234, 212, 0.6), 0 0 30px rgba(59, 130, 246, 0.3); }
+  100% { box-shadow: 0 0 5px rgba(94, 234, 212, 0.3); }
+`;
+
+const rotate = keyframes`
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`;
+
+const pulseRing = keyframes`
+  0% { transform: scale(0.8); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 0.4; }
+  100% { transform: scale(0.8); opacity: 0.8; }
+`;
+
+const floatVertical = keyframes`
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+`;
+
+const shimmerEffect = keyframes`
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; }
+`;
+
+// Стилизованные компоненты
+const PageContainer = styled.div`
+  width: 100%;
+  max-width: 100vw;
+  margin: 0 auto;
+  padding-top: 100px;
+  color: var(--text-primary);
   position: relative;
   overflow: hidden;
-  border-radius: 30px;
-  margin-bottom: 4rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+`;
 
-  &::before {
+const HeroSection = styled(motion.div)`
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 2rem;
+`;
+
+const Background = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  z-index: -1;
+  
+  &::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('https://images.unsplash.com/photo-1551289061-6097d62404d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
-    opacity: 0.1;
-    z-index: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(94, 234, 212, 0.15) 0%, transparent 25%),
+                radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.15) 0%, transparent 25%);
   }
 `;
 
-const MainTitle = styled(motion.h1)`
-  font-size: 4rem;
-  color: var(--accent-color);
-  margin-bottom: 1.5rem;
+const StarField = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 0%, var(--bg-primary) 100%);
+  z-index: -1;
+`;
+
+const Star = styled.div`
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: ${props => props.opacity};
+  width: ${props => props.size}px;
+  height: ${props => props.size}px;
+  top: ${props => props.top}%;
+  left: ${props => props.left}%;
+  animation: ${pulse} ${props => props.duration}s infinite ease-in-out;
+`;
+
+const Title = styled(motion.h1)`
+  font-size: 4.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: transparent;
+  background: linear-gradient(90deg, var(--accent-color), #5eead4, var(--accent-color));
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: ${shimmer} 8s linear infinite;
   position: relative;
   z-index: 1;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.5px;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 768px) {
     font-size: 2.5rem;
   }
-`;
-
-const MainSubtitle = styled(motion.p)`
-  font-size: 1.5rem;
-  color: var(--text-secondary);
-  max-width: 800px;
-  margin: 0 auto 2rem;
-  position: relative;
-  z-index: 1;
-  line-height: 1.6;
-
-  @media (max-width: 768px) {
-    font-size: 1.2rem;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 3px;
   }
 `;
 
-const CreationPath = styled(motion.div)`
-  background: linear-gradient(135deg, rgba(11, 30, 43, 0.8) 0%, rgba(6, 20, 27, 0.9) 100%);
-  padding: 4rem 2rem;
-  border-radius: 30px;
-  margin: 4rem 0;
+const Subtitle = styled(motion.p)`
+  font-size: 1.5rem;
+  max-width: 800px;
+  text-align: center;
+  margin: 0 auto 3rem;
+  color: var(--text-secondary);
   position: relative;
+  z-index: 1;
+  line-height: 1.8;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    padding: 0 1rem;
+  }
+`;
+
+const PhoneContainer = styled(motion.div)`
+  width: 300px;
+  height: 500px;
+  position: relative;
+  perspective: 1000px;
+  margin: 0 auto;
+  
+  @media (max-width: 768px) {
+    width: 220px;
+    height: 400px;
+  }
+`;
+
+const Phone = styled(motion.div)`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  border-radius: 36px;
+  box-shadow: 0 0 50px rgba(94, 234, 212, 0.3);
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  animation: ${glow} 4s infinite ease-in-out;
 
   &::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 25px;
+    background: var(--bg-primary);
+    border-radius: 20px;
+    z-index: 2;
+  }
+  
+  &::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('https://images.unsplash.com/photo-1551289061-6097d62404d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
-    opacity: 0.05;
+    background: linear-gradient(135deg, rgba(94, 234, 212, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+    z-index: 1;
+  }
+`;
+
+const PhoneScreen = styled(motion.div)`
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 90%;
+  height: 80%;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+`;
+
+const StoreHeader = styled.div`
+  background: var(--accent-color);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const StoreLogo = styled.div`
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  
+  svg {
+    margin-right: 8px;
+  }
+`;
+
+const StoreSearch = styled.div`
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  
+  svg {
+    margin-right: 4px;
+    color: white;
+  }
+  
+  &::after {
+    content: 'Пошук...';
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.8rem;
+  }
+`;
+
+const StoreContent = styled.div`
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  padding: 1rem;
+  background: #f8fafc;
+  overflow-y: auto;
+`;
+
+const ProductCard = styled(motion.div)`
+  background: white;
+  border-radius: 12px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f5f9;
+`;
+
+const ProductImage = styled.div`
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  svg {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+  }
+`;
+
+const ProductTitle = styled.div`
+  color: #0f172a;
+  font-weight: 500;
+  font-size: 0.8rem;
+  margin-bottom: 0.3rem;
+  text-align: center;
+`;
+
+const ProductPrice = styled.div`
+  color: var(--accent-color);
+  font-weight: bold;
+  font-size: 0.9rem;
+`;
+
+const StoreFooter = styled.div`
+  display: flex;
+  justify-content: space-around;
+  padding: 0.8rem;
+  background: #f1f5f9;
+  border-top: 1px solid #e2e8f0;
+`;
+
+const FooterItem = styled.div`
+  color: #64748b;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  svg {
+    margin-bottom: 4px;
+    font-size: 1.2rem;
+  }
+`;
+
+const OrbitingCircle = styled(motion.div)`
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  left: -50%;
+  top: -50%;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  animation: ${rotate} 20s linear infinite;
+  z-index: 0;
+`;
+
+const OrbitingCircleInner = styled(motion.div)`
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  left: -20%;
+  top: -20%;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  animation: ${rotate} 15s linear infinite reverse;
+  z-index: 0;
+`;
+
+const HeroBenefitsList = styled(motion.div)`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 4rem auto 0;
+  max-width: 1200px;
+  z-index: 1;
+  position: relative;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const HeroBenefitItem = styled(motion.div)`
+  background: rgba(16, 24, 39, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: rgba(94, 234, 212, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+  }
+`;
+
+const HeroBenefitIcon = styled.div`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  flex-shrink: 0;
+`;
+
+const HeroBenefitContent = styled.div`
+  flex: 1;
+`;
+
+const HeroBenefitTitle = styled.h3`
+  font-size: 1.1rem;
+  color: white;
+  margin-bottom: 0.5rem;
+`;
+
+const HeroBenefitDescription = styled.p`
+  color: #9ca3af;
+  font-size: 0.9rem;
+  line-height: 1.4;
+`;
+
+const EcommerceWhyUsSection = styled(motion.section)`
+  position: relative;
+  padding: 8rem 2rem;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(16, 24, 39, 1) 100%);
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(94, 234, 212, 0.05) 0%, transparent 20%),
+      radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.05) 0%, transparent 20%);
+    top: 0;
+    left: 0;
     z-index: 0;
   }
 `;
 
-const PathContainer = styled.div`
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+const WhyUsDiagonal = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  background: linear-gradient(135deg, var(--bg-primary) 0%, transparent 70%);
+  opacity: 0.5;
+  z-index: 1;
 `;
 
-const PathLine = styled(motion.div)`
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent-color) 0%, transparent 100%);
-  transform: translateY(-50%);
-  z-index: 1;
+const WhyUsContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+`;
 
+const FaqCta = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  background: rgba(16, 24, 39, 0.4);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 3rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  
   &::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.8));
+    z-index: 1;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent 0%, var(--accent-color) 100%);
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0% { opacity: 0.3; }
-    50% { opacity: 1; }
-    100% { opacity: 0.3; }
+    background: linear-gradient(135deg, rgba(94, 234, 212, 0.05) 0%, transparent 50%);
+    z-index: -1;
   }
 `;
 
-const PathSteps = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  position: relative;
-  z-index: 2;
-  margin-top: 4rem;
-  gap: 2rem;
-`;
-
-const PathStep = styled(motion.div)`
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-  padding: 2.5rem 2rem;
-  border-radius: 20px;
-  width: 23%;
-  min-height: 320px;
-  position: relative;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 100%);
-  }
-`;
-
-const StepNumber = styled.div`
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 40px;
-  background: var(--accent-color);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  color: white;
-  z-index: 3;
-  box-shadow: 0 0 20px rgba(74, 144, 226, 0.5);
-`;
-
-const StepIcon = styled.div`
-  font-size: 2.8rem;
-  color: var(--accent-color);
-  margin: 1.5rem 0;
-  text-align: center;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const StepTitle = styled.h3`
+const FaqCtaText = styled.p`
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-weight: 500;
   color: var(--text-primary);
   text-align: center;
-  width: 100%;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 `;
 
-const StepDescription = styled.p`
-  color: var(--text-secondary);
-  line-height: 1.6;
+const FaqCtaButton = styled(motion.button)`
+  padding: 1.2rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.9));
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(94, 234, 212, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.6s ease;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.5), var(--accent-color));
+    filter: blur(5px);
+    opacity: 0.5;
+  }
+`;
+
+const WhyUsTitle = styled(motion.h2)`
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-color);
   margin-bottom: 1.5rem;
-  text-align: center;
-  font-size: 1rem;
-  width: 100%;
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+    border-radius: 4px;
+  }
 `;
 
-const StepFeatures = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
+const WhyUsSubtitle = styled(motion.h3)`
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  margin-bottom: 4rem;
+  max-width: 800px;
+  line-height: 1.6;
 `;
 
-const StepFeature = styled(motion.li)`
+const WhyUsCardsContainer = styled(motion.div)`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const WhyUsCard = styled(motion.div)`
+  background: rgba(16, 24, 39, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  z-index: 1;
+  height: 100%;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.8));
+    z-index: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  
+  &:hover::before {
+    transform: scaleX(1);
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    background: linear-gradient(to top, rgba(94, 234, 212, 0.03), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  &:hover::after {
+    opacity: 1;
+  }
+`;
+
+const WhyUsCardGlow = styled.div`
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  background: radial-gradient(circle, rgba(94, 234, 212, 0.06) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.5s ease;
+  z-index: -1;
+  transform: scale(0.8);
+  
+  ${WhyUsCard}:hover & {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
+
+const WhyUsIconWrapper = styled.div`
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  margin-bottom: 1.5rem;
+  width: 70px;
+  height: 70px;
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  margin-bottom: 0.8rem;
-  color: var(--text-secondary);
-  padding: 0.6rem;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  font-size: 0.95rem;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.05);
-    transform: translateX(5px);
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  
+  ${WhyUsCard}:hover & {
+    transform: scale(1.1);
   }
-
-  svg {
-    color: var(--accent-color);
-    font-size: 1.2rem;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    border: 1px dashed rgba(94, 234, 212, 0.3);
+    animation: ${pulse} 3s infinite ease-in-out 1.5s;
   }
 `;
 
-const FeaturesGrid = styled.div`
+const WhyUsCardTitle = styled.h3`
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--accent-color);
+    border-radius: 2px;
+  }
+`;
+
+const WhyUsCardDescription = styled.p`
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-top: 1rem;
+`;
+
+const CardAccent = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 0 0 20px 0;
+  background: linear-gradient(135deg, transparent 50%, rgba(94, 234, 212, 0.1) 50%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: scale(0);
+  
+  ${WhyUsCard}:hover & {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
+
+const WhyUsAction = styled(motion.div)`
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+`;
+
+const PulsingButton = styled(motion.button)`
+  padding: 1.2rem 3.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.9));
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 8px 25px rgba(94, 234, 212, 0.3);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
+    z-index: -1;
+    animation: ${pulseRing} 4s infinite;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: all 0.6s ease;
+  }
+  
+  &:hover::after {
+    left: 100%;
+  }
+`;
+
+const WhyUsBackgroundShapes = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    z-index: 0;
+  }
+  
+  &::before {
+    top: 20%;
+    left: -100px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
+    filter: blur(50px);
+  }
+  
+  &::after {
+    bottom: 10%;
+    right: -100px;
+    background: radial-gradient(circle, rgba(94, 234, 212, 0.03) 0%, transparent 70%);
+    filter: blur(50px);
+  }
+`;
+
+const EcommerceFeaturesSection = styled(motion.section)`
+  position: relative;
+  padding: 8rem 2rem;
+  background: linear-gradient(180deg, rgba(16, 24, 39, 1) 0%, var(--bg-primary) 100%);
+  overflow: hidden;
+`;
+
+const FeaturesWave = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: rgba(16, 24, 39, 1);
+  clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
+  z-index: 1;
+`;
+
+const FeaturesContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+`;
+
+const FeaturesGlowCircle = styled.div`
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  
+  &.circle-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(94, 234, 212, 0.07) 0%, transparent 70%);
+    top: -100px;
+    left: -200px;
+  }
+  
+  &.circle-2 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.07) 0%, transparent 70%);
+    bottom: -200px;
+    right: -200px;
+  }
+`;
+
+const FeaturesTitle = styled(motion.h2)`
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+    border-radius: 4px;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+`;
+
+const FeaturesIntro = styled(motion.p)`
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 4rem;
+  max-width: 900px;
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+`;
+
+const FeaturesGrid = styled(motion.div)`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
-  margin-top: 3rem;
+  margin-bottom: 3rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const FeatureCard = styled(motion.div)`
-  background: var(--bg-secondary);
+  background: rgba(16, 24, 39, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
   padding: 2rem;
-  border-radius: 15px;
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
-
+  display: flex;
+  gap: 1.5rem;
+  
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: rgba(94, 234, 212, 0.2);
   }
 `;
 
-const FeatureIcon = styled.div`
-  font-size: 2.5rem;
-  color: var(--accent-color);
-  margin-bottom: 1rem;
+const FeatureIconContainer = styled.div`
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent-color) 0%, rgba(59, 130, 246, 0.8) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: 0 8px 20px rgba(94, 234, 212, 0.2);
+`;
+
+const FeatureContent = styled.div`
+  flex: 1;
 `;
 
 const FeatureTitle = styled.h3`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-primary);
   margin-bottom: 1rem;
 `;
 
 const FeatureDescription = styled.p`
+  font-size: 1.05rem;
+  line-height: 1.7;
   color: var(--text-secondary);
-  line-height: 1.6;
 `;
 
-const SystemsSection = styled.section`
-  background: var(--bg-primary);
-  padding: 3rem;
-  border-radius: 20px;
-  margin-top: 3rem;
+const FeaturesAction = styled(motion.div)`
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
 `;
 
-const SystemsTitle = styled.h2`
-  font-size: 2.5rem;
-  color: var(--accent-color);
-  text-align: center;
-  margin-bottom: 2rem;
-`;
-
-const SystemsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-`;
-
-const SystemCard = styled(motion.div)`
-  background: var(--bg-secondary);
-  padding: 2rem;
-  border-radius: 15px;
-  border: 1px solid var(--border-color);
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+const FeaturesButton = styled(motion.button)`
+  padding: 1.2rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.9));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(94, 234, 212, 0.3);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.6s ease;
+  }
+  
+  &:hover::before {
+    left: 100%;
   }
 `;
 
-const SystemIcon = styled.div`
-  font-size: 2.5rem;
+const FeaturesDecoration = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+  }
+  
+  &::before {
+    width: 150px;
+    height: 150px;
+    border: 2px dashed rgba(94, 234, 212, 0.1);
+    top: 15%;
+    right: 10%;
+    animation: ${rotate} 30s linear infinite;
+  }
+  
+  &::after {
+    width: 80px;
+    height: 80px;
+    border: 1px solid rgba(94, 234, 212, 0.05);
+    bottom: 25%;
+    left: 5%;
+    animation: ${rotate} 20s linear infinite reverse;
+  }
+`;
+
+const EcommerceStagesSection = styled(motion.section)`
+  position: relative;
+  padding: 10rem 2rem;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  overflow: hidden;
+`;
+
+const EcommercePricingSection = styled(motion.section)`
+  position: relative;
+  padding: 8rem 2rem;
+  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to top, transparent, var(--bg-secondary));
+    z-index: 1;
+  }
+`;
+
+const PricingWave = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: var(--bg-secondary);
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 100%);
+  z-index: 1;
+`;
+
+const PricingContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+`;
+
+const PricingTitle = styled(motion.h2)`
+  font-size: 3rem;
+  font-weight: 700;
   color: var(--accent-color);
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+    border-radius: 4px;
+  }
 `;
 
-const SystemTitle = styled.h3`
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+const PricingContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 `;
 
-const SystemDescription = styled.p`
+const PricingCard = styled(motion.div)`
+  background: rgba(16, 24, 39, 0.6);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(94, 234, 212, 0.05) 0%, transparent 70%);
+    top: -200px;
+    right: -200px;
+    border-radius: 50%;
+    z-index: 0;
+  }
+`;
+
+const PricingText = styled(motion.p)`
+  font-size: 1.25rem;
+  line-height: 1.8;
   color: var(--text-secondary);
-  line-height: 1.6;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
 `;
 
-const CTAButton = styled(motion.button)`
-  background: var(--accent-color);
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 10px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  margin: 2rem auto;
-  display: block;
-  transition: all 0.3s ease;
+const PricingFactorsContainer = styled(motion.div)`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+`;
 
+const PricingFactor = styled(motion.div)`
+  background: rgba(16, 24, 39, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  
   &:hover {
+    transform: translateY(-10px);
+    border-color: rgba(94, 234, 212, 0.2);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+`;
+
+const PricingFactorIcon = styled.div`
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent-color) 0%, rgba(59, 130, 246, 0.8) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 1rem;
+  box-shadow: 0 8px 15px rgba(94, 234, 212, 0.2);
+`;
+
+const PricingFactorTitle = styled.h3`
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin-bottom: 0.8rem;
+`;
+
+const PricingFactorDescription = styled.p`
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+`;
+
+const PricingCTA = styled(motion.div)`
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+`;
+
+const PriceDependenciesSection = styled(motion.div)`
+  margin: 3rem 0;
+  background: rgba(16, 24, 39, 0.4);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  
+  &:hover {
+    border-color: rgba(94, 234, 212, 0.2);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(94, 234, 212, 0.05) 0%, transparent 70%);
+    bottom: -150px;
+    left: -150px;
+    border-radius: 50%;
+    z-index: 0;
+  }
+`;
+
+const PriceDependenciesTitle = styled.h3`
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+    border-radius: 2px;
+  }
+`;
+
+const PriceDependenciesList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+`;
+
+const PriceDependencyItem = styled(motion.li)`
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  &::before {
+    content: '•';
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-right: 0.8rem;
+    line-height: 1.3;
+  }
+`;
+
+const EcommerceFaqSection = styled(motion.section)`
+  position: relative;
+  padding: 8rem 2rem;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(16, 24, 39, 0.9) 100%);
+  overflow: hidden;
+  z-index: 0;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at top right, rgba(94, 234, 212, 0.08) 0%, transparent 70%);
+    z-index: -1;
+  }
+`;
+
+const FaqWaveTop = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(to top left, transparent 49%, var(--bg-primary) 51%);
+  z-index: 1;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+`;
+
+const FaqContainer = styled.div`
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+`;
+
+const FaqGlowCircle = styled.div`
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  
+  &.circle-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(94, 234, 212, 0.05) 0%, transparent 70%);
+    top: 10%;
+    left: -200px;
+    animation: ${floatVertical} 15s infinite ease-in-out;
+  }
+  
+  &.circle-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+    bottom: 5%;
+    right: -200px;
+    animation: ${floatVertical} 18s infinite ease-in-out reverse;
+  }
+`;
+
+const FaqTitle = styled(motion.h2)`
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--accent-color);
+  margin-bottom: 3rem;
+  text-align: center;
+  position: relative;
+  text-shadow: 0 2px 10px rgba(94, 234, 212, 0.2);
+  
+  &::before {
+    content: 'F.A.Q';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 5rem;
+    color: rgba(94, 234, 212, 0.03);
+    font-weight: 900;
+    letter-spacing: 5px;
+    z-index: -1;
+    white-space: nowrap;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    border-radius: 4px;
+    animation: ${pulse} 2s infinite ease-in-out;
+  }
+`;
+
+const FaqList = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+`;
+
+const FaqItem = styled(motion.div)`
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(16, 24, 39, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  
+  &:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 15px rgba(94, 234, 212, 0.1);
+    border-color: rgba(94, 234, 212, 0.1);
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+`;
+
+const FaqItemContent = styled(motion.div)`
+  overflow: hidden;
+`;
+
+const FaqQuestion = styled(motion.div)`
+  padding: 1.8rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--accent-color), rgba(59, 130, 246, 0.5));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 0 3px 3px 0;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 2rem;
+    right: 2rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  }
+`;
+
+const FaqQuestionText = styled.h3`
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  flex: 1;
+  transform: translateZ(5px);
+  
+  ${FaqQuestion}:hover & {
+    color: var(--accent-color);
+    transform: translateZ(10px);
+  }
+`;
+
+const FaqToggle = styled(motion.div)`
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  margin-left: 1rem;
+  flex-shrink: 0;
+  background: rgba(94, 234, 212, 0.05);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(94, 234, 212, 0.1);
+    box-shadow: 0 0 10px rgba(94, 234, 212, 0.2);
+  }
+`;
+
+const FaqAnswer = styled(motion.div)`
+  padding: 0 2rem 1.8rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  overflow: hidden;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    right: 2rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  }
+  
+  strong {
+    color: var(--accent-color);
+    font-weight: 600;
+  }
+  
+  ul {
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+  }
+  
+  li {
+    margin-bottom: 0.5rem;
+    position: relative;
+    
+    &::before {
+      content: '•';
+      color: var(--accent-color);
+      position: absolute;
+      left: -1rem;
+    }
+  }
+  
+  p {
+    margin-bottom: 0.8rem;
+  }
+  
+  .highlight {
+    background: linear-gradient(90deg, rgba(94, 234, 212, 0.1), rgba(59, 130, 246, 0.1));
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin: 0 0.2rem;
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, 
+        transparent, rgba(255, 255, 255, 0.05), transparent
+      );
+      background-size: 200% 100%;
+      animation: ${shimmerEffect} 2s infinite;
+    }
   }
 `;
 
 const EcommercePage = () => {
+  const [stars, setStars] = useState([]);
+  const [expandedFaqs, setExpandedFaqs] = useState([]);
+  
+  useEffect(() => {
+    // Генерация звезд для фона
+    const generatedStars = [];
+    for (let i = 0; i < 100; i++) {
+      generatedStars.push({
+        id: i,
+        size: Math.random() * 3 + 1,
+        opacity: Math.random() * 0.5 + 0.1,
+        top: Math.random() * 100,
+        left: Math.random() * 100,
+        duration: Math.random() * 3 + 1
+      });
+    }
+    setStars(generatedStars);
+  }, []);
+  
+  const benefitsData = [
+    {
+      icon: <FaStore />,
+      title: "Індивідуальний дизайн",
+      description: "Унікальний дизайн магазину під вашу нішу та цільову аудиторію."
+    },
+    {
+      icon: <FaMobile />,
+      title: "Мобільна адаптація",
+      description: "Ідеальне відображення на всіх пристроях — від смартфонів до комп'ютерів."
+    },
+    {
+      icon: <FaSearch />,
+      title: "SEO-оптимізація",
+      description: "Вбудована SEO-підготовка для високих позицій у пошукових системах."
+    }
+  ];
+  
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+  
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
+  };
+
+  const toggleFaq = (index) => {
+    setExpandedFaqs(prev => {
+      if (prev.includes(index)) {
+        return prev.filter(i => i !== index);
+      } else {
+        return [...prev, index];
+      }
+    });
+  };
+
   return (
     <PageContainer>
-      <MainHero
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <HeroSection
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <Background />
+        <StarField>
+          {stars.map(star => (
+            <Star 
+              key={star.id} 
+              size={star.size} 
+              opacity={star.opacity} 
+              top={star.top} 
+              left={star.left} 
+              duration={star.duration} 
+            />
+          ))}
+        </StarField>
+        
+        <Title
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
+          Розробка інтернет-магазинів під ключ
+        </Title>
+        
+        <Subtitle
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          Створюємо інтернет-магазини, які продають. Від проєктування до запуску — повний цикл розробки під ваш бізнес. 
+          Ми враховуємо специфіку ніші, цілі, поведінку покупців і вимоги до SEO-просування. 
+          Гарантуємо технічну надійність, зручний інтерфейс та готовність до маркетингу з першого дня.
+        </Subtitle>
+        
+        <PhoneContainer
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.9 }}
+        >
+          <Phone
+            initial={{ opacity: 0 }}
+            animate={{ 
+              opacity: 1,
+              rotateY: [0, 5, 0, -5, 0]
+            }}
+            transition={{ 
+              opacity: { duration: 0.8, delay: 1.1 },
+              rotateY: { duration: 10, repeat: Infinity, ease: "easeInOut" }
+            }}
+          >
+            <OrbitingCircle />
+            <OrbitingCircleInner />
+            
+            <PhoneScreen
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.5, duration: 1 }}
+            >
+              <StoreHeader>
+                <StoreLogo>
+                  <FaStore /> YourStore
+                </StoreLogo>
+                <StoreSearch>
+                  <FaSearch />
+                </StoreSearch>
+              </StoreHeader>
+              
+              <StoreContent>
+                <ProductCard 
+                  whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)' }}
+                >
+                  <ProductImage>
+                    <FaTags />
+                  </ProductImage>
+                  <ProductTitle>Футболка чоловіча</ProductTitle>
+                  <ProductPrice>1 200 грн</ProductPrice>
+                </ProductCard>
+                
+                <ProductCard 
+                  whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)' }}
+                >
+                  <ProductImage>
+                    <FaTags />
+                  </ProductImage>
+                  <ProductTitle>Худі з капюшоном</ProductTitle>
+                  <ProductPrice>1 750 грн</ProductPrice>
+                </ProductCard>
+                
+                <ProductCard 
+                  whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)' }}
+                >
+                  <ProductImage>
+                    <FaTags />
+                  </ProductImage>
+                  <ProductTitle>Шорти спортивні</ProductTitle>
+                  <ProductPrice>950 грн</ProductPrice>
+                </ProductCard>
+                
+                <ProductCard 
+                  whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)' }}
+                >
+                  <ProductImage>
+                    <FaTags />
+                  </ProductImage>
+                  <ProductTitle>Шапка зимова</ProductTitle>
+                  <ProductPrice>550 грн</ProductPrice>
+                </ProductCard>
+              </StoreContent>
+              
+              <StoreFooter>
+                <FooterItem>
+                  <FaShoppingCart />
+                  Кошик
+                </FooterItem>
+                <FooterItem>
+                  <FaHeadset />
+                  Підтримка
+                </FooterItem>
+                <FooterItem>
+                  <FaChartLine />
+                  Акції
+                </FooterItem>
+              </StoreFooter>
+            </PhoneScreen>
+          </Phone>
+        </PhoneContainer>
+        
+        <HeroBenefitsList
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.3 }}
+        >
+          {benefitsData.map((benefit, index) => (
+            <HeroBenefitItem
+              key={index}
+              whileHover={{ scale: 1.02 }}
+            >
+              <HeroBenefitIcon>
+                {benefit.icon}
+              </HeroBenefitIcon>
+              <HeroBenefitContent>
+                <HeroBenefitTitle>{benefit.title}</HeroBenefitTitle>
+                <HeroBenefitDescription>{benefit.description}</HeroBenefitDescription>
+              </HeroBenefitContent>
+            </HeroBenefitItem>
+          ))}
+        </HeroBenefitsList>
+        
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.6 }}
+          whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(59, 130, 246, 0.7)' }}
+          whileTap={{ scale: 0.95 }}
+          style={{
+            padding: '1rem 2.5rem',
+            fontSize: '1.2rem',
+            fontWeight: 'bold',
+            background: 'var(--accent-color)',
+            color: 'white',
+            border: 'none',
+            borderRadius: '12px',
+            cursor: 'pointer',
+            marginTop: '3rem',
+            zIndex: 1,
+            position: 'relative'
+          }}
+        >
+          Замовити розробку
+        </motion.button>
+      </HeroSection>
+      
+      <EcommerceWhyUsSection
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <MainTitle>Интернет-магазины</MainTitle>
-        <MainSubtitle>
-          Создаем современные и эффективные интернет-магазины для вашего бизнеса
-        </MainSubtitle>
-      </MainHero>
-
-      <CreationPath>
-        <PathContainer>
-          <PathLine
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 1.5, delay: 0.5 }}
-          />
-          <PathSteps>
-            <PathStep
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
+        <WhyUsDiagonal />
+        
+        <WhyUsContainer>
+          <WhyUsTitle
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Чому варто замовити інтернет-магазин у нас
+          </WhyUsTitle>
+          
+          <WhyUsSubtitle
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Гарантуємо зростання продажів та зручність для користувачів
+          </WhyUsSubtitle>
+          
+          <WhyUsCardsContainer
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <WhyUsCard
+              variants={itemVariants}
+              whileHover={{ 
+                y: -15,
+                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+                rotateY: 5,
+                rotateX: -5
+              }}
             >
-              <StepNumber>1</StepNumber>
-              <StepIcon><FaProjectDiagram /></StepIcon>
-              <StepTitle>Анализ и Планирование</StepTitle>
-              <StepDescription>
-                Изучение вашего бизнеса и разработка концепции интернет-магазина
-              </StepDescription>
-              <StepFeatures>
-                <StepFeature>
-                  <FaCheck /> Анализ целевой аудитории
-                </StepFeature>
-                <StepFeature>
-                  <FaCheck /> Разработка структуры магазина
-                </StepFeature>
-                <StepFeature>
-                  <FaCheck /> Планирование функционала
-                </StepFeature>
-              </StepFeatures>
-            </PathStep>
-
-            <PathStep
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1 }}
+              <WhyUsCardGlow />
+              <WhyUsIconWrapper>
+                <FaRocket />
+              </WhyUsIconWrapper>
+              <WhyUsCardTitle>Гарантуємо зростання продажів та зручність для користувачів</WhyUsCardTitle>
+              <WhyUsCardDescription>
+                Ми проєктуємо інтерфейс на основі логіки користувача. Зручна навігація, швидке завантаження, проста корзина і оформлення замовлення — усе це скорочує шлях до покупки та підвищує конверсію.
+              </WhyUsCardDescription>
+              <CardAccent />
+            </WhyUsCard>
+            
+            <WhyUsCard
+              variants={itemVariants}
+              whileHover={{ 
+                y: -15,
+                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+                rotateY: 5,
+                rotateX: -5
+              }}
             >
-              <StepNumber>2</StepNumber>
-              <StepIcon><FaCode /></StepIcon>
-              <StepTitle>Разработка</StepTitle>
-              <StepDescription>
-                Создание современного и удобного интернет-магазина
-              </StepDescription>
-              <StepFeatures>
-                <StepFeature>
-                  <FaCheck /> Разработка дизайна
-                </StepFeature>
-                <StepFeature>
-                  <FaCheck /> Программирование функционала
-                </StepFeature>
-                <StepFeature>
-                  <FaCheck /> Интеграция платежных систем
-                </StepFeature>
-              </StepFeatures>
-            </PathStep>
-
-            <PathStep
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1.2 }}
+              <WhyUsCardGlow />
+              <WhyUsIconWrapper>
+                <FaStore />
+              </WhyUsIconWrapper>
+              <WhyUsCardTitle>Досвід у eCommerce та індивідуальні рішення</WhyUsCardTitle>
+              <WhyUsCardDescription>
+                За нашими плечима — десятки реалізованих проєктів у різних галузях: одяг, електроніка, товари для дому, B2B-рішення. Ми не працюємо за шаблонами — кожен магазин розробляємо індивідуально, з урахуванням продукту, цільової аудиторії та бізнес-цілей клієнта.
+              </WhyUsCardDescription>
+              <CardAccent />
+            </WhyUsCard>
+            
+            <WhyUsCard
+              variants={itemVariants}
+              whileHover={{ 
+                y: -15,
+                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+                rotateY: 5,
+                rotateX: -5
+              }}
             >
-              <StepNumber>3</StepNumber>
-              <StepIcon><FaTools /></StepIcon>
-              <StepTitle>Тестирование</StepTitle>
-              <StepDescription>
-                Проверка работы всех функций магазина
-              </StepDescription>
-              <StepFeatures>
-                <StepFeature>
-                  <FaCheck /> Функциональное тестирование
-                </StepFeature>
-                <StepFeature>
-                  <FaCheck /> Проверка безопасности
-                </StepFeature>
-                <StepFeature>
-                  <FaCheck /> Оптимизация производительности
-                </StepFeature>
-              </StepFeatures>
-            </PathStep>
-
-            <PathStep
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1.4 }}
+              <WhyUsCardGlow />
+              <WhyUsIconWrapper>
+                <FaSearch />
+              </WhyUsIconWrapper>
+              <WhyUsCardTitle>SEO-оптимізація вже «з коробки»</WhyUsCardTitle>
+              <WhyUsCardDescription>
+                Ми впроваджуємо правильну структуру URL, оптимізовані мета-теги, мікророзмітку Schema.org та налаштовуємо швидке завантаження сторінок. Це формує міцну SEO-базу для швидкого виходу в топ та подальшого просування.
+              </WhyUsCardDescription>
+              <CardAccent />
+            </WhyUsCard>
+          </WhyUsCardsContainer>
+          
+          <WhyUsAction
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            <PulsingButton
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <StepNumber>4</StepNumber>
-              <StepIcon><FaRocket /></StepIcon>
-              <StepTitle>Запуск и Поддержка</StepTitle>
-              <StepDescription>
-                Запуск магазина и постоянная техническая поддержка
-              </StepDescription>
-              <StepFeatures>
-                <StepFeature>
-                  <FaCheck /> Запуск на хостинг
-                </StepFeature>
-                <StepFeature>
-                  <FaCheck /> Обучение персонала
-                </StepFeature>
-                <StepFeature>
-                  <FaCheck /> Техническая поддержка
-                </StepFeature>
-              </StepFeatures>
-            </PathStep>
-          </PathSteps>
-        </PathContainer>
-      </CreationPath>
-
-      <FeaturesGrid>
-        <FeatureCard
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <FeatureIcon>
-            <FaMobile />
-          </FeatureIcon>
-          <FeatureTitle>Адаптивный дизайн</FeatureTitle>
-          <FeatureDescription>
-            Магазин корректно отображается на всех устройствах: компьютерах, планшетах и смартфонах
-          </FeatureDescription>
-        </FeatureCard>
-
-        <FeatureCard
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <FeatureIcon>
-            <FaUserShield />
-          </FeatureIcon>
-          <FeatureTitle>Безопасность</FeatureTitle>
-          <FeatureDescription>
-            Защита данных клиентов и безопасные платежи с использованием современных технологий
-          </FeatureDescription>
-        </FeatureCard>
-
-        <FeatureCard
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <FeatureIcon>
-            <FaChartLine />
-          </FeatureIcon>
-          <FeatureTitle>Аналитика</FeatureTitle>
-          <FeatureDescription>
-            Подробная аналитика продаж и поведения пользователей для оптимизации бизнеса
-          </FeatureDescription>
-        </FeatureCard>
-      </FeaturesGrid>
-
-      <SystemsSection>
-        <SystemsTitle>Основные функции интернет-магазина</SystemsTitle>
-        <SystemsGrid>
-          <SystemCard
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <SystemIcon><FaSearch /></SystemIcon>
-            <SystemTitle>Удобный поиск</SystemTitle>
-            <SystemDescription>
-              Быстрый поиск товаров с фильтрацией и сортировкой
-            </SystemDescription>
-          </SystemCard>
-
-          <SystemCard
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <SystemIcon><FaShoppingCart /></SystemIcon>
-            <SystemTitle>Корзина и оформление заказа</SystemTitle>
-            <SystemDescription>
-              Простой процесс оформления заказа и управления корзиной
-            </SystemDescription>
-          </SystemCard>
-
-          <SystemCard
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <SystemIcon><FaCreditCard /></SystemIcon>
-            <SystemTitle>Платежные системы</SystemTitle>
-            <SystemDescription>
-              Интеграция с популярными платежными системами
-            </SystemDescription>
-          </SystemCard>
-
-          <SystemCard
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <SystemIcon><FaTruck /></SystemIcon>
-            <SystemTitle>Доставка</SystemTitle>
-            <SystemDescription>
-              Расчет стоимости доставки и отслеживание заказов
-            </SystemDescription>
-          </SystemCard>
-
-          <SystemCard
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <SystemIcon><FaComments /></SystemIcon>
-            <SystemTitle>Обратная связь</SystemTitle>
-            <SystemDescription>
-              Чат с поддержкой и система отзывов о товарах
-            </SystemDescription>
-          </SystemCard>
-
-          <SystemCard
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <SystemIcon><FaBell /></SystemIcon>
-            <SystemTitle>Уведомления</SystemTitle>
-            <SystemDescription>
-              Email и SMS уведомления о статусе заказа
-            </SystemDescription>
-          </SystemCard>
-        </SystemsGrid>
-      </SystemsSection>
-
-      <CTAButton
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+              <span className="glow-effect"></span>
+              Обговорити проєкт
+            </PulsingButton>
+          </WhyUsAction>
+        </WhyUsContainer>
+        
+        <WhyUsBackgroundShapes />
+      </EcommerceWhyUsSection>
+      
+      <EcommerceFeaturesSection
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
       >
-        Создать интернет-магазин
-      </CTAButton>
+        <FeaturesWave />
+        
+        <FeaturesContainer>
+          <FeaturesGlowCircle className="circle-1" />
+          <FeaturesGlowCircle className="circle-2" />
+          
+          <FeaturesTitle
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Що ви отримаєте з інтернет-магазином від нас
+          </FeaturesTitle>
+          
+          <FeaturesIntro
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Ми створюємо не просто сайт з кошиком, а повноцінну eCommerce-платформу, 
+            готову до продажів, просування та масштабування. Усе необхідне для запуску вже включено:
+          </FeaturesIntro>
+          
+          <FeaturesGrid
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <FeatureCard
+              variants={itemVariants}
+              whileHover={{ y: -10, boxShadow: '0 15px 30px rgba(0, 0, 0, 0.2)' }}
+            >
+              <FeatureIconContainer>
+                <FaMobile />
+              </FeatureIconContainer>
+              <FeatureContent>
+                <FeatureTitle>Адаптивний сучасний дизайн</FeatureTitle>
+                <FeatureDescription>
+                  Ваш інтернет-магазин буде однаково зручним на смартфонах, планшетах і комп'ютерах. 
+                  Користувач швидко знайде товар і оформить замовлення без зайвих кроків.
+                </FeatureDescription>
+              </FeatureContent>
+            </FeatureCard>
+            
+            <FeatureCard
+              variants={itemVariants}
+              whileHover={{ y: -10, boxShadow: '0 15px 30px rgba(0, 0, 0, 0.2)' }}
+            >
+              <FeatureIconContainer>
+                <FaCog />
+              </FeatureIconContainer>
+              <FeatureContent>
+                <FeatureTitle>Зручна система керування</FeatureTitle>
+                <FeatureDescription>
+                  Ви зможете самостійно додавати й редагувати товари, керувати замовленнями, 
+                  цінами, акціями та сторінками — без потреби звертатися до розробника.
+                </FeatureDescription>
+              </FeatureContent>
+            </FeatureCard>
+            
+            <FeatureCard
+              variants={itemVariants}
+              whileHover={{ y: -10, boxShadow: '0 15px 30px rgba(0, 0, 0, 0.2)' }}
+            >
+              <FeatureIconContainer>
+                <FaLink />
+              </FeatureIconContainer>
+              <FeatureContent>
+                <FeatureTitle>Інтеграції під ключ</FeatureTitle>
+                <FeatureDescription>
+                  Підключаємо платіжні системи (LiqPay, Stripe, Fondy), служби доставки 
+                  (Нова пошта, Укрпошта), CRM, аналітику, e-mail-маркетинг, трекінг подій і 
+                  рекламу — все для автоматизації процесів.
+                </FeatureDescription>
+              </FeatureContent>
+            </FeatureCard>
+            
+            <FeatureCard
+              variants={itemVariants}
+              whileHover={{ y: -10, boxShadow: '0 15px 30px rgba(0, 0, 0, 0.2)' }}
+            >
+              <FeatureIconContainer>
+                <FaSearch />
+              </FeatureIconContainer>
+              <FeatureContent>
+                <FeatureTitle>SEO та аналітика з першого дня</FeatureTitle>
+                <FeatureDescription>
+                  Грамотна структура URL, мета-теги, мікророзмітка (Schema.org), швидке 
+                  завантаження сторінок — усе це вже налаштовано. Додатково інтегруємо 
+                  Google Analytics, GA4, Google Tag Manager, налаштовуємо події та цілі.
+                </FeatureDescription>
+              </FeatureContent>
+            </FeatureCard>
+            
+            <FeatureCard
+              variants={itemVariants}
+              whileHover={{ y: -10, boxShadow: '0 15px 30px rgba(0, 0, 0, 0.2)' }}
+            >
+              <FeatureIconContainer>
+                <FaShieldAlt />
+              </FeatureIconContainer>
+              <FeatureContent>
+                <FeatureTitle>Безпека та продуктивність</FeatureTitle>
+                <FeatureDescription>
+                  SSL-сертифікат, захист від ботів, регулярні оновлення CMS, капча, 
+                  оптимізація коду та зображень — усе для стабільної та швидкої роботи магазину.
+                </FeatureDescription>
+              </FeatureContent>
+            </FeatureCard>
+            
+            <FeatureCard
+              variants={itemVariants}
+              whileHover={{ y: -10, boxShadow: '0 15px 30px rgba(0, 0, 0, 0.2)' }}
+            >
+              <FeatureIconContainer>
+                <FaExpand />
+              </FeatureIconContainer>
+              <FeatureContent>
+                <FeatureTitle>Можливість масштабування</FeatureTitle>
+                <FeatureDescription>
+                  Інтернет-магазин легко розширити: додати нові категорії, змінити валюту, 
+                  запустити акції або інтегрувати з маркетплейсами. Ми проєктуємо платформу 
+                  з урахуванням вашого росту.
+                </FeatureDescription>
+              </FeatureContent>
+            </FeatureCard>
+          </FeaturesGrid>
+          
+          <FeaturesAction
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            <FeaturesButton
+              whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(94, 234, 212, 0.4)' }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Замовити консультацію
+            </FeaturesButton>
+          </FeaturesAction>
+        </FeaturesContainer>
+        
+        <FeaturesDecoration />
+      </EcommerceFeaturesSection>
+      
+      <EcommerceStagesSection
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        {/* Декоративные элементы фона */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '5%',
+            right: '10%',
+            width: '400px',
+            height: '400px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(94, 234, 212, 0.1) 0%, transparent 70%)',
+            filter: 'blur(60px)'
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '15%',
+            left: '5%',
+            width: '300px',
+            height: '300px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%)',
+            filter: 'blur(50px)'
+          }}
+        />
+        
+        <div
+          style={{
+            maxWidth: '1400px',
+            margin: '0 auto',
+            position: 'relative',
+            zIndex: 2
+          }}
+        >
+          <motion.h2
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            style={{
+              fontSize: '4rem',
+              fontWeight: 800,
+              color: 'var(--accent-color)',
+              marginBottom: '6rem',
+              position: 'relative',
+              textAlign: 'center',
+              textShadow: '0 5px 15px rgba(0, 0, 0, 0.2)'
+            }}
+          >
+            Етапи створення інтернет-магазину
+            <motion.div 
+              style={{
+                position: 'absolute',
+                bottom: '-20px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '150px',
+                height: '4px',
+                background: 'linear-gradient(90deg, transparent, var(--accent-color), transparent)',
+                borderRadius: '4px'
+              }}
+              animate={{
+                width: ['0%', '150px'],
+                opacity: [0, 1]
+              }}
+              transition={{ duration: 1, delay: 0.3 }}
+            />
+          </motion.h2>
+          
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            style={{
+              fontSize: '1.3rem',
+              maxWidth: '1000px',
+              textAlign: 'center',
+              margin: '0 auto 4rem',
+              color: 'var(--text-secondary)'
+            }}
+          >
+            Ми працюємо поетапно, прозоро й системно — щоб ви розуміли, на якому етапі знаходиться проєкт 
+            і що отримаєте в результаті:
+          </motion.p>
+          
+          <motion.div
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { 
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.3
+                }
+              }
+            }}
+            initial="hidden"
+            animate="visible"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '3rem',
+              alignItems: 'center'
+            }}
+          >
+            {[
+              {
+                icon: <FaSearch />,
+                title: "Аналіз ніші та цільової аудиторії",
+                description: "Вивчаємо ринок, конкурентів і поведінку ваших потенційних покупців. Формуємо структуру сайту, визначаємо ключовий функціонал і точки зростання."
+              },
+              {
+                icon: <FaSitemap />,
+                title: "Прототипування та структура каталогу",
+                description: "Створюємо логічну схему сторінок, меню, фільтрів, карток товарів. Розробляємо зручну архітектуру, яка спрощує навігацію та сприяє SEO."
+              },
+              {
+                icon: <FaPencilRuler />,
+                title: "Дизайн і розробка функціоналу",
+                description: "Створюємо індивідуальний дизайн з урахуванням UX/UI, адаптуємо під мобільні пристрої. Реалізуємо кошик, оплату, доставку, реєстрацію, особистий кабінет тощо."
+              },
+              {
+                icon: <FaRocket />,
+                title: "Тестування, запуск і підтримка",
+                description: "Перевіряємо сайт на помилки, швидкість, адаптивність і коректність усіх інтеграцій. Після запуску — супроводжуємо, оновлюємо, консультуємо."
+              }
+            ].map((step, index) => (
+              <React.Fragment key={index}>
+                <motion.div
+                  variants={{
+                    hidden: { x: -50, opacity: 0 },
+                    visible: { 
+                      x: 0, 
+                      opacity: 1,
+                      transition: { duration: 0.8, ease: "easeOut" }
+                    }
+                  }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: '2rem',
+                    padding: '2rem',
+                    width: '1000px',
+                    height: '180px',
+                    background: 'rgba(16, 24, 39, 0.2)',
+                    backdropFilter: 'blur(5px)',
+                    borderRadius: '20px',
+                    border: '1px solid rgba(255, 255, 255, 0.05)',
+                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
+                  }}
+                  whileHover={{
+                    scale: 1.02,
+                    transition: { duration: 0.3 },
+                    boxShadow: '0 15px 40px rgba(0, 0, 0, 0.2)',
+                    border: '1px solid rgba(94, 234, 212, 0.2)'
+                  }}
+                >
+                  {/* Номер этапа */}
+                  <motion.div
+                    style={{
+                      width: '100px',
+                      height: '100px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '4rem',
+                      fontWeight: '900',
+                      color: 'rgba(94, 234, 212, 0.8)',
+                      textShadow: '0 2px 10px rgba(94, 234, 212, 0.4)',
+                      flexShrink: 0
+                    }}
+                  >
+                    {index + 1}
+                  </motion.div>
+                  
+                  {/* Иконка */}
+                  <motion.div
+                    style={{
+                      width: '120px',
+                      height: '120px',
+                      borderRadius: '50%',
+                      background: 'linear-gradient(135deg, var(--accent-color) 0%, rgba(59, 130, 246, 0.8) 100%)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '2.5rem',
+                      color: 'white',
+                      boxShadow: '0 10px 30px rgba(94, 234, 212, 0.4)',
+                      position: 'relative',
+                      flexShrink: 0
+                    }}
+                    whileHover={{
+                      boxShadow: '0 15px 40px rgba(94, 234, 212, 0.6)',
+                      scale: 1.05,
+                      transition: { duration: 0.3 }
+                    }}
+                  >
+                    {/* Пульсирующий круг вокруг иконки */}
+                    <motion.div
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        borderRadius: '50%',
+                        border: '2px solid rgba(94, 234, 212, 0.5)'
+                      }}
+                      animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.5, 0, 0.5]
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
+                    
+                    {step.icon}
+                  </motion.div>
+                  
+                  {/* Текстовый блок */}
+                  <motion.div
+                    style={{
+                      background: 'rgba(10, 15, 25, 0.85)',
+                      backdropFilter: 'blur(10px)',
+                      borderRadius: '20px',
+                      padding: '1.5rem 2rem',
+                      border: '1px solid rgba(94, 234, 212, 0.3)',
+                      boxShadow: '0 15px 40px rgba(0, 0, 0, 0.3)',
+                      width: 'calc(100% - 250px)',
+                      height: '160px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <h3
+                      style={{
+                        fontSize: '1.5rem',
+                        fontWeight: 700,
+                        marginBottom: '0.8rem',
+                        color: '#FFFFFF',
+                        textShadow: '0 2px 5px rgba(0, 0, 0, 0.5)'
+                      }}
+                    >
+                      {step.title}
+                    </h3>
+                    
+                    <p
+                      style={{
+                        fontSize: '1rem',
+                        lineHeight: 1.5,
+                        color: '#FFFFFF',
+                        overflow: 'hidden',
+                        textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)'
+                      }}
+                    >
+                      {step.description}
+                    </p>
+                  </motion.div>
+                </motion.div>
+                
+                {/* Вертикальная линия между блоками */}
+                {index < 3 && (
+                  <motion.div 
+                    style={{
+                      width: '4px',
+                      height: '5rem',
+                      background: 'linear-gradient(to bottom, var(--accent-color), rgba(59, 130, 246, 0.1))',
+                      borderRadius: '4px'
+                    }}
+                    initial={{ height: 0 }}
+                    animate={{ height: '5rem' }}
+                    transition={{ duration: 0.8, delay: index * 0.3 + 0.5 }}
+                  />
+                )}
+              </React.Fragment>
+            ))}
+          </motion.div>
+          
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.6 }}
+            whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(59, 130, 246, 0.7)' }}
+            whileTap={{ scale: 0.95 }}
+            style={{
+              padding: '1rem 2.5rem',
+              fontSize: '1.2rem',
+              fontWeight: 'bold',
+              background: 'var(--accent-color)',
+              color: 'white',
+              border: 'none',
+              borderRadius: '12px',
+              cursor: 'pointer',
+              margin: '5rem auto 0',
+              zIndex: 1,
+              position: 'relative',
+              display: 'block'
+            }}
+          >
+            Замовити розробку
+          </motion.button>
+        </div>
+      </EcommerceStagesSection>
+      
+      <EcommercePricingSection
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <PricingWave />
+        
+        <PricingContainer>
+          <PricingTitle
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Вартість і терміни розробки інтернет-магазину
+          </PricingTitle>
+          
+          <PricingContent>
+            <PricingCard
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <PricingText
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              >
+                Ціна створення інтернет-магазину залежить від складності функціоналу, кількості сторінок, 
+                інтеграцій та індивідуального дизайну. Ми не використовуємо шаблонних рішень, тому кожен проєкт — унікальний.
+              </PricingText>
+              
+              <PricingFactorsContainer
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { 
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.2
+                    }
+                  }
+                }}
+                initial="hidden"
+                animate="visible"
+                style={{ 
+                  display: 'grid', 
+                  gridTemplateColumns: 'repeat(2, 1fr)', 
+                  gap: '2rem'
+                }}
+              >
+                <PricingFactor
+                  variants={itemVariants}
+                >
+                  <PricingFactorIcon>
+                    <FaCode />
+                  </PricingFactorIcon>
+                  <PricingFactorTitle>Складність функціоналу</PricingFactorTitle>
+                  <PricingFactorDescription>
+                    Кількість та складність функцій: фільтри товарів, особистий кабінет, 
+                    порівняння, збереження кошика, мультивалютність.
+                  </PricingFactorDescription>
+                </PricingFactor>
+                
+                <PricingFactor
+                  variants={itemVariants}
+                >
+                  <PricingFactorIcon>
+                    <FaLink />
+                  </PricingFactorIcon>
+                  <PricingFactorTitle>Інтеграції</PricingFactorTitle>
+                  <PricingFactorDescription>
+                    Підключення платіжних систем, служб доставки, CRM, ERP, 
+                    систем аналітики, сервісів розсилки.
+                  </PricingFactorDescription>
+                </PricingFactor>
+                
+                <PricingFactor
+                  variants={itemVariants}
+                >
+                  <PricingFactorIcon>
+                    <FaPencilRuler />
+                  </PricingFactorIcon>
+                  <PricingFactorTitle>Дизайн</PricingFactorTitle>
+                  <PricingFactorDescription>
+                    Від базового стильного оформлення до повністю кастомного дизайну 
+                    з анімаціями та індивідуальною графікою.
+                  </PricingFactorDescription>
+                </PricingFactor>
+                
+                <PricingFactor
+                  variants={itemVariants}
+                >
+                  <PricingFactorIcon>
+                    <FaClock />
+                  </PricingFactorIcon>
+                  <PricingFactorTitle>Терміни розробки</PricingFactorTitle>
+                  <PricingFactorDescription>
+                    В середньому проєкт займає від 4 до 12 тижнів, залежно від складності 
+                    та кількості сторінок.
+                  </PricingFactorDescription>
+                </PricingFactor>
+              </PricingFactorsContainer>
+              
+              <PriceDependenciesSection
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
+                <PriceDependenciesTitle>Від чого залежить ціна</PriceDependenciesTitle>
+                <PriceDependenciesList>
+                  <PriceDependencyItem
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                  >
+                    Обсяг каталогу товарів та складність фільтрації.
+                  </PriceDependencyItem>
+                  <PriceDependencyItem
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7 }}
+                  >
+                    Необхідні інтеграції: платіжні системи, доставка, CRM, склад.
+                  </PriceDependencyItem>
+                  <PriceDependencyItem
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.8 }}
+                  >
+                    Наявність особистого кабінету, бонусної системи, мультивалютності тощо.
+                  </PriceDependencyItem>
+                  <PriceDependencyItem
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.9 }}
+                  >
+                    Індивідуальний або типовий дизайн.
+                  </PriceDependencyItem>
+                  <PriceDependencyItem
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 1 }}
+                  >
+                    Потрібна чи ні подальша технічна підтримка.
+                  </PriceDependencyItem>
+                </PriceDependenciesList>
+              </PriceDependenciesSection>
+              
+              <PricingText
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 1 }}
+                style={{ fontWeight: '500', color: 'var(--text-primary)' }}
+              >
+                Для визначення точної вартості та термінів проводимо детальний аналіз проєкту. 
+                Ми допоможемо вам визначитися з оптимальним набором функцій для успішного старту, 
+                а потім масштабувати бізнес.
+              </PricingText>
+              
+              <PricingCTA
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1.2 }}
+              >
+                <motion.button
+                  whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(59, 130, 246, 0.7)' }}
+                  whileTap={{ scale: 0.95 }}
+                  style={{
+                    padding: '1rem 2.5rem',
+                    fontSize: '1.2rem',
+                    fontWeight: 'bold',
+                    background: 'var(--accent-color)',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '50px',
+                    cursor: 'pointer',
+                    zIndex: 1,
+                    position: 'relative'
+                  }}
+                >
+                  Отримати безкоштовну консультацію
+                </motion.button>
+              </PricingCTA>
+            </PricingCard>
+          </PricingContent>
+        </PricingContainer>
+      </EcommercePricingSection>
+
+      <EcommerceFaqSection
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <FaqWaveTop />
+        
+        <FaqContainer>
+          <FaqGlowCircle className="circle-1" />
+          <FaqGlowCircle className="circle-2" />
+          
+          <FaqTitle
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            FAQ
+          </FaqTitle>
+          
+          <FaqList
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            {[
+              {
+                question: "Скільки коштує розробка інтернет-магазину?",
+                answer: "Вартість залежить від кількості функцій та складності проекту. Ми розробляємо інтернет-магазини індивідуально під ваші потреби, тому точну ціну можна визначити після оцінки вимог і специфікацій."
+              },
+              {
+                question: "Скільки часу займає розробка інтернет-магазину?",
+                answer: "Терміни варіюються в залежності від складності проєкту. Мінімальний термін — від 3 тижнів, але зазвичай на розробку потрібно 4-6 тижнів. У цей час входять дизайн, розробка функціоналу, тестування і запуск."
+              },
+              {
+                question: "Чи надається підтримка після запуску?",
+                answer: "Так, ми надаємо технічну підтримку після запуску інтернет-магазину. Ви можете звертатися за допомогою щодо технічних питань, оновлень або додаткових налаштувань."
+              },
+              {
+                question: "Чи потрібно замовляти домен і хостинг самостійно?",
+                answer: "Ми можемо допомогти з вибором домену та хостингу або налаштувати їх для вас. Усі питання з хостингом і доменом ми обговорюємо на етапі підготовки проєкту."
+              },
+              {
+                question: "Чи можна інтегрувати магазин з маркетплейсами та соцмережами?",
+                answer: "Так, ми інтегруємо інтернет-магазин з маркетплейсами (Prom, Rozetka) та соціальними мережами (Facebook, Instagram) для продажу та реклами."
+              },
+              {
+                question: "Чи підходять ваші магазини для мобільних пристроїв?",
+                answer: "Так, ми створюємо адаптивний дизайн, який дозволяє інтернет-магазину коректно відображатися на всіх типах пристроїв — смартфонах, планшетах та комп'ютерах."
+              }
+            ].map((faq, index) => (
+              <FaqItem
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 + (index * 0.1) }}
+              >
+                <AnimatePresence>
+                  <FaqItemContent
+                    layout
+                    initial={{ borderRadius: 16 }}
+                    key={`faq-${index}`}
+                  >
+                    <FaqQuestion
+                      layout
+                      onClick={() => toggleFaq(index)}
+                      whileHover={{ color: 'var(--accent-color)' }}
+                    >
+                      <FaqQuestionText>{faq.question}</FaqQuestionText>
+                      <FaqToggle
+                        animate={{ rotate: expandedFaqs.includes(index) ? 45 : 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <FaPlus />
+                      </FaqToggle>
+                    </FaqQuestion>
+                    
+                    <AnimatePresence>
+                      {expandedFaqs.includes(index) && (
+                        <FaqAnswer
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          {faq.answer}
+                        </FaqAnswer>
+                      )}
+                    </AnimatePresence>
+                  </FaqItemContent>
+                </AnimatePresence>
+              </FaqItem>
+            ))}
+          </FaqList>
+
+          <FaqCta
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.2 }}
+          >
+            <FaqCtaText>Не знайшли відповідь на своє питання?</FaqCtaText>
+            <FaqCtaButton
+              whileHover={{ scale: 1.03, boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)' }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Напишіть нам
+            </FaqCtaButton>
+          </FaqCta>
+        </FaqContainer>
+      </EcommerceFaqSection>
     </PageContainer>
   );
 };
