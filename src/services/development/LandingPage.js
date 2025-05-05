@@ -4653,13 +4653,10 @@ const LPUniqueCompareListTitle = styled.h4`
 
 const LPUniqueCompareList = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin: 2rem 0;
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 3rem;
 `;
 
 const LPUniqueCompareListItem = styled(motion.div)`
