@@ -16,6 +16,9 @@ import {
   FaBrain,
   FaPlus,
   FaShoppingCart,
+  FaCheck,
+  FaBriefcase,
+  FaGraduationCap,
 } from 'react-icons/fa';
 
 // Анимации
@@ -1649,255 +1652,210 @@ const LandingPage = () => {
           </LandingVsGrid>
         </LandingVsContainer>
       </LandingVsMultiSection>
-      <LPEffectSection
+      
+      <LPConversionBenefitsSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <LPEffectContainer>
-          <LPEffectTitle
+        <ConversionBenefitsContainer>
+          <ConversionBenefitsTitle
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Чому Landing Page — це найефективніший інструмент для залучення
-            клієнтів?
-          </LPEffectTitle>
-          <LPEffectCards>
-            {lpEffectData.map((item, idx) => (
-              <LPEffectCard key={item.title}>
-                <LPEffectIcon>{item.icon}</LPEffectIcon>
-                <LPEffectCardTitle>{item.title}</LPEffectCardTitle>
-                <LPEffectCardDesc>{item.desc}</LPEffectCardDesc>
-              </LPEffectCard>
-            ))}
-          </LPEffectCards>
-        </LPEffectContainer>
-      </LPEffectSection>
-      {/* --- Уникальный текстовый блок: Как мы создаём лендінг --- */}{' '}
-      <LandingHowSection>
-        {' '}
-        <LandingHowPattern />{' '}
-        <LandingHowContent>
-          {' '}
-          <LandingHowAccentLine />{' '}
-          <LandingHowTitle>
-            {' '}
-            <span role="img" aria-label="idea">
-              🚀
-            </span>{' '}
-            Як ми створюємо лендінг, що перетворює відвідувачів у покупців{' '}
-          </LandingHowTitle>{' '}
-          <LandingHowText>
-            {' '}
-            Щоб створити <b>ефективний лендинг</b>, ми починаємо з глибокого
-            аналізу: вивчаємо ринок, конкурентів і чітко визначаємо цільову
-            аудиторію. Це дозволяє побудувати не просто красивий сайт, а
- такий,
-            що <span className="how-accent">говорить мовою клієнта</span> й
-            відповідає на його потреби.
-            <br />
-            <br /> Далі переходимо до структури — створюємо логічний сценарій
-            взаємодії користувача зі сторінкою. Формуємо прототип, де визначаємо
-            ключові блоки, їх послідовність та розташування елементів, що ведуть
-            до цільової дії.
-            <br />
-            <br /> Дизайн сайту розробляється під конкретну нішу —{' '}
-            <span className="how-accent">сучасний, стильний</span>, з акцентами
-            на головне. Після цього ми зверстаємо сайт і адаптуємо його під усі
-            пристрої: смартфони, планшети, ноутбуки. Ваш лендінг буде виглядати{' '}
-            <b>бездоганно</b> незалежно від роздільної здатності екрана.
-            <br />
-            <br /> Перед запуском ми підключаємо інструменти аналітики (Google
-            Analytics, Facebook Pixel тощо), перевіряємо працездатність усіх
-            елементів та тестуємо швидкість завантаження. І лише після цього
-            сайт запускається в онлайн.
-            <br />
-            <br />{' '}
-            <span className="how-quote">
-              "Після запуску ми не залишаємо вас наодинці — допомагаємо з
-              оптимізацією, аналізуємо поведінку користувачів і вносимо зміни
-              для покращення конверсії."
-            </span>{' '}
-          </LandingHowText>{' '}
-        </LandingHowContent>{' '}
-      </LandingHowSection>
-      {/* --- Блок: Що потрібно для створення односторінкового сайту, який продає? --- */}
-      <LPWhatNeedSection>
-        <LPWhatNeedContent>
-          <LPWhatNeedAccentLine />
-          <div style={{ width: '100%' }}>
-            <LPWhatNeedTitle>
-              <span role="img" aria-label="target">
-                🎯
-              </span>{' '}
-              Що потрібно для створення односторінкового сайту, який продає?
-            </LPWhatNeedTitle>
-            <LPWhatNeedCards>
-              <LPWhatNeedCard
-                whileHover={{ scale: 1.04, boxShadow: '0 8px 32px #5eead4aa' }}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7 }}
-              >
-                <LPWhatNeedCardIcon>
-                  <motion.span
-                    animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{
-                      repeat: Infinity,
-                      duration: 2,
-                      ease: 'easeInOut',
-                    }}
-                    role="img"
-                    aria-label="structure"
-                  >
-                    📐
-                  </motion.span>
-                </LPWhatNeedCardIcon>
-                <LPWhatNeedCardTitle>
-                  Чітка структура та сильне УТП
-                </LPWhatNeedCardTitle>
-                <LPWhatNeedCardText>
-                  Успішний лендинг починається зі сценарію, що веде користувача
-                  до конкретної дії: залишити заявку, здійснити покупку або
-                  записатися на консультацію. Унікальна торгова пропозиція (УТП)
-                  повинна одразу захоплювати увагу, бути зрозумілою та цінною
-                  для вашого клієнта.
-                </LPWhatNeedCardText>
-              </LPWhatNeedCard>
-              <LPWhatNeedCard
-                whileHover={{ scale: 1.04, boxShadow: '0 8px 32px #0ea5e9aa' }}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.15 }}
-              >
-                <LPWhatNeedCardIcon>
-                  <motion.span
-                    animate={{ scale: [1, 1.15, 1] }}
-                    transition={{
-                      repeat: Infinity,
-                      duration: 1.7,
-                      ease: 'easeInOut',
-                    }}
-                    role="img"
-                    aria-label="trust"
-                  >
-                    🤝
-                  </motion.span>
-                </LPWhatNeedCardIcon>
-                <LPWhatNeedCardTitle>
-                  Тригери довіри та правильний заклик до дії
-                </LPWhatNeedCardTitle>
-                <LPWhatNeedCardText>
-                  Щоб користувач не сумнівався, важливо додати елементи довіри:
-                  реальні відгуки, кейси, фото, сертифікати, гарантії. Це
-                  суттєво підвищує рівень впевненості. А завершальним кроком має
-                  стати сильний заклик до дії (CTA): яскрава кнопка з чітким
-                  посилом, що мотивує натиснути.
-                  <br />
-                  <br />
-                  Також важливо не перенавантажувати сторінку — мінімум зайвих
-                  елементів, максимум фокус на цілі. А ще — технічна
-                  оптимізація: швидке завантаження, адаптивність, зручна
-                  навігація на будь-якому пристрої.
-                </LPWhatNeedCardText>
-              </LPWhatNeedCard>
-            </LPWhatNeedCards>
-          </div>
-        </LPWhatNeedContent>
-      </LPWhatNeedSection>
-
-      {/* --- Уникальный блок сравнения: Индивидуальный vs Шаблонный Landing Page --- */}
-      <LPUniqueCompareSection>
-        <LPUniqueCompareContent>
-          <LPUniqueCompareTitle>
-            <span role="img" aria-label="rocket">🚀</span> Отримайте ефективний Landing Page під ключ — швидко та вигідно
-          </LPUniqueCompareTitle>
-          <LPUniqueCompareSplit>
-            <LPUniqueCompareCol
-              whileHover={{ scale: 1.04, rotate: -2 }}
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
-            >
-              <LPUniqueCompareColTitle>Індивідуальний лендінг</LPUniqueCompareColTitle>
-              <LPUniqueCompareColDesc>
-                <span role="img" aria-label="star">🌟</span> Максимум унікальності, глибоке занурення в нішу, дизайн під ваш бренд, кастомна структура, wow-ефекти, повний цикл розробки.
-              </LPUniqueCompareColDesc>
-            </LPUniqueCompareCol>
-            <LPUniqueCompareVs>VS</LPUniqueCompareVs>
-            <LPUniqueCompareCol
-              whileHover={{ scale: 1.04, rotate: 2 }}
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-            >
-              <LPUniqueCompareColTitle>Шаблонний лендінг</LPUniqueCompareColTitle>
-              <LPUniqueCompareColDesc>
-                <span role="img" aria-label="bolt">⚡</span> Швидкий старт, оптимізація під бюджет, адаптація під ваші задачі, сучасний вигляд, базова кастомізація.
-              </LPUniqueCompareColDesc>
-            </LPUniqueCompareCol>
-          </LPUniqueCompareSplit>
-          <LPUniqueCompareText>
-            Чому варто замовити лендінг у професіоналів
-          </LPUniqueCompareText>
-          <LPUniqueCompareDesc>
-            Самостійно створити лендінг — можна. Але створити той, що дійсно продає, — справа для команди з досвідом. Ми знаємо, як вивести клієнта на цільову дію, як структурувати контент, де поставити кнопку й що написати в заголовку. Ваш сайт — це обличчя бізнесу, і воно має працювати на вас.
-            <br /><br />
-            Ми пропонуємо як повністю індивідуальну розробку, так і адаптацію шаблонів під ваш бізнес. Обидва варіанти мають свої переваги — все залежить від бюджету, задач і термінів. У будь-якому випадку ви отримаєте сучасний, адаптивний та конверсійний лендінг.
-          </LPUniqueCompareDesc>
-          <LPUniqueCompareListTitle>Що ви отримаєте:</LPUniqueCompareListTitle>
-          <LPUniqueCompareList>
+            Як правильно побудований лендінг допомагає збільшити конверсію
+          </ConversionBenefitsTitle>
+          
+          <ConversionBenefitsDescription
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Стратегічно спроєктований лендінг враховує потреби цільової аудиторії, вирішує її болі та підводить до прийняття рішення. Від грамотного заголовка до переконливого заклику до дії — кожен елемент працює на результат. Саме тому ефективний лендинг — це не просто сайт, а інструмент зростання прибутку.
+          </ConversionBenefitsDescription>
+          
+          <ConversionBenefitsSubtitle
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            Переваги замовлення професійного лендингу
+          </ConversionBenefitsSubtitle>
+          
+          <ConversionBenefitsList>
             {[
-              'Повноцінний лендінг під ключ — від дослідження ринку до запуску',
-              'Унікальний дизайн, який передає стиль вашого бренду',
-              'Логічну структуру, що веде користувача до дії',
-              'Адаптивну верстку для мобільних, планшетів і ПК',
-              'Максимально швидке завантаження сторінки',
-              'Інтеграцію аналітики (Google Analytics, Pixel та інші)',
-              'Копірайтинг, який продає — тексти, заголовки, CTA',
-              'Контактні форми, чати, кнопки — все для збору лідів',
-              'Базову SEO-оптимізацію — для старту просування',
-              'Підготовку до реклами — ми подбаємо про конверсії',
-              'Підтримку та можливість доопрацювань після запуску',
-            ].map((item, idx) => (
-              <LPUniqueCompareListItem
-                key={item}
-                initial={{ opacity: 0, x: 30 }}
+              {
+                icon: <FaPencilRuler />,
+                text: "Індивідуальний підхід до вашого бізнесу",
+              },
+              {
+                icon: <FaChartLine />,
+                text: "Дизайн, що чіпляє та запам'ятовується",
+              },
+              {
+                icon: <FaBolt />,
+                text: "Висока швидкість завантаження й адаптивність",
+              },
+              {
+                icon: <FaTools />,
+                text: "SEO-оптимізація для просування в Google",
+              },
+              {
+                icon: <FaChartLine />,
+                text: "Підключення аналітики й готовність до реклами",
+              },
+            ].map((advantage, index) => (
+              <ConversionBenefitsItem
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 + idx * 0.07 }}
-                whileHover={{ scale: 1.04, background: 'rgba(94,234,212,0.08)' }}
+                transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                whileHover={{ scale: 1.02, boxShadow: '0 8px 20px rgba(94, 234, 212, 0.1)' }}
               >
-                <LPUniqueCompareListIcon>✔️</LPUniqueCompareListIcon>
-                {item}
-              </LPUniqueCompareListItem>
+                <ConversionBenefitsIcon>
+                  {advantage.icon}
+                </ConversionBenefitsIcon>
+                <ConversionBenefitsText>{advantage.text}</ConversionBenefitsText>
+              </ConversionBenefitsItem>
             ))}
-          </LPUniqueCompareList>
-          <LPUniqueCompareListTitle>Наші фішки:</LPUniqueCompareListTitle>
-          <LPUniqueCompareFeatures>
+          </ConversionBenefitsList>
+          
+          <ConversionBenefitsButton
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+            whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(94, 234, 212, 0.2)' }}
+            whileTap={{ scale: 0.98 }}
+          >
+            Замовити лендінг
+          </ConversionBenefitsButton>
+        </ConversionBenefitsContainer>
+        
+        <ConversionBenefitsBgCircle className="circle-left" />
+        <ConversionBenefitsBgCircle className="circle-right" />
+      </LPConversionBenefitsSection>
+      
+      <LPWhyEffectiveSection
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <LPWhyEffectiveContainer>
+          <LPWhyEffectiveTitle
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Чому Landing Page — це найефективніший інструмент для залучення клієнтів?
+          </LPWhyEffectiveTitle>
+          
+          <LPWhyEffectiveSubtitle
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            Як односторінковий сайт фокусується на конкретній дії користувача
+          </LPWhyEffectiveSubtitle>
+          
+          <LPWhyEffectiveDescription
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            Landing Page створюється з чіткою метою: зацікавити, переконати й спонукати користувача виконати певну дію — залишити заявку, зателефонувати, придбати товар. Завдяки мінімуму відволікаючих елементів і чіткій структурі, односторінкові сайти досягають вищої конверсії, ніж класичні багатосторінкові сайти.
+          </LPWhyEffectiveDescription>
+          
+          <LPWhyEffectiveDecoration />
+        </LPWhyEffectiveContainer>
+        
+        <LPWhyEffectiveBgCircle className="circle-left" />
+        <LPWhyEffectiveBgCircle className="circle-right" />
+      </LPWhyEffectiveSection>
+      
+      <LPBusinessBenefitSection
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <LPBusinessBenefitContainer>
+          <LPBusinessBenefitSubtitle
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Які бізнеси отримують найбільше користі від лендингів
+          </LPBusinessBenefitSubtitle>
+          
+          <LPBusinessBenefitText
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Лендінги ідеально підходять для:
+          </LPBusinessBenefitText>
+          
+          <LPBusinessBenefitList>
             {[
-              { icon: '🔎', text: 'Занурення в нішу — ми не просто робимо сайт, ми вникаємо у ваш бізнес' },
-              { icon: '✍️', text: 'Без води в текстах — тільки конкретика, що чіпляє' },
-              { icon: '🎯', text: 'Заточено під конверсію — UX, CTA, тригери довіри — усе на місці' },
-              { icon: '✨', text: 'Мікроанімація та wow-ефекти — підсилюють враження, не відволікають' },
-              { icon: '🧪', text: 'A/B готовність — закладаємо основу для тестування та покращення' },
-              { icon: '⏱️', text: 'Чіткі терміни — швидко, без поспіху і втрати якості' },
-              { icon: '🤝', text: 'Людський підхід — підтримка, прозора комунікація, без технічної мови' },
-            ].map((item, idx) => (
-              <LPUniqueCompareFeature
-                key={item.text}
-                whileHover={{ scale: 1.08, boxShadow: '0 4px 24px #5eead4aa' }}
-                initial={{ opacity: 0, y: 30 }}
+              {
+                icon: <FaBriefcase />,
+                title: 'Послуг',
+                text: 'юридичних, косметологічних, будівельних тощо',
+                color: '#5eead4'
+              },
+              {
+                icon: <FaGraduationCap />,
+                title: 'Онлайн-курсів',
+                text: 'та різноманітних інфопродуктів',
+                color: '#60a5fa'
+              },
+              {
+                icon: <FaShoppingCart />,
+                title: 'Продажу товарів',
+                text: 'окремих продуктів або нових колекцій',
+                color: '#f472b6'
+              },
+              {
+                icon: <FaRocket />,
+                title: 'Промо-акцій',
+                text: 'та запуску перспективних стартапів',
+                color: '#818cf8'
+              },
+            ].map((item, index) => (
+              <LPBusinessBenefitItem
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.1 + idx * 0.07 }}
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                whileHover={{ 
+                  y: -5, 
+                  boxShadow: `0 10px 25px rgba(${item.color.replace('#', '').match(/.{2}/g).map(hex => parseInt(hex, 16)).join(', ')}, 0.2)` 
+                }}
+                color={item.color}
               >
-                <LPUniqueCompareFeatureIcon>{item.icon}</LPUniqueCompareFeatureIcon>
-                <LPUniqueCompareFeatureText>{item.text}</LPUniqueCompareFeatureText>
-              </LPUniqueCompareFeature>
+                <LPBusinessBenefitIconWrapper color={item.color}>
+                  {item.icon}
+                </LPBusinessBenefitIconWrapper>
+                <LPBusinessBenefitItemContent>
+                  <LPBusinessBenefitItemTitle>{item.title}</LPBusinessBenefitItemTitle>
+                  <LPBusinessBenefitItemText>{item.text}</LPBusinessBenefitItemText>
+                </LPBusinessBenefitItemContent>
+              </LPBusinessBenefitItem>
             ))}
-          </LPUniqueCompareFeatures>
-        </LPUniqueCompareContent>
-      </LPUniqueCompareSection>
+          </LPBusinessBenefitList>
+          
+          <LPBusinessBenefitSummary
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+          >
+            Фактично, будь-який бізнес, що має конкретну цільову аудиторію та чітку пропозицію, виграє від використання лендінгу.
+          </LPBusinessBenefitSummary>
+          
+          <LPBusinessBenefitDecoration />
+        </LPBusinessBenefitContainer>
+      </LPBusinessBenefitSection>
+
       <PWACtaSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -3223,8 +3181,12 @@ const FaqDecoration = styled.div`
 
 const LandingVsMultiSection = styled(motion.section)`
   position: relative;
-  padding: 6rem 2rem;
-  background: var(--bg-primary);
+  padding: 8rem 2rem;
+  background: linear-gradient(
+    180deg,
+    var(--bg-secondary) 0%,
+    var(--bg-primary) 100%
+  );
   overflow: hidden;
   
   &::before {
@@ -3232,9 +3194,10 @@ const LandingVsMultiSection = styled(motion.section)`
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(94, 234, 212, 0.2), transparent);
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to top, transparent, var(--bg-secondary));
+    z-index: 1;
   }
 `;
 
@@ -3243,45 +3206,49 @@ const LandingVsContainer = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 2;
+  background: rgba(16, 24, 39, 0.7);
+  backdrop-filter: blur(15px);
+  border-radius: 24px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 `;
 
 const LandingVsTitle = styled(motion.h2)`
-  font-size: 2.8rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #fff 0%, #94A3B8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-color);
   margin-bottom: 3rem;
+  text-align: center;
   position: relative;
-  
-  @media (max-width: 768px) {
-    font-size: 2rem;
-  }
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
   &::after {
     content: '';
     position: absolute;
-    bottom: -12px;
+    bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
+    width: 120px;
     height: 4px;
-    background: linear-gradient(90deg, #5eead4, var(--accent-color));
-    border-radius: 2px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+    border-radius: 4px;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
   }
 `;
 
 const LandingVsQuote = styled(motion.div)`
   font-size: 1.2rem;
   line-height: 1.8;
-  color: #E2E8F0;
-  background: rgba(94, 234, 212, 0.08);
-  border-radius: 24px;
+  color: var(--text-secondary);
+  background: rgba(94, 234, 212, 0.05);
+  border-radius: 16px;
   padding: 2rem;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   position: relative;
-  backdrop-filter: blur(10px);
   border: 1px solid rgba(94, 234, 212, 0.1);
   
   &::before {
@@ -3294,28 +3261,25 @@ const LandingVsQuote = styled(motion.div)`
     background: linear-gradient(
       45deg,
       transparent,
-      rgba(94, 234, 212, 0.1),
+      rgba(94, 234, 212, 0.05),
       transparent
     );
-    transform: translateX(-100%);
-    animation: ${shine} 3s infinite;
+    opacity: 0.5;
   }
 `;
 
 const QuoteIcon = styled.span`
   font-size: 2.2rem;
-  color: #5eead4;
+  color: var(--accent-color);
   margin-right: 0.7rem;
   flex-shrink: 0;
-  filter: drop-shadow(0 0 10px rgba(94, 234, 212, 0.5));
-  animation: ${float} 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(94, 234, 212, 0.3));
 `;
 
 const LandingVsGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  margin-top: 2rem;
+  gap: 2rem;
   
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
@@ -3324,24 +3288,24 @@ const LandingVsGrid = styled.div`
 `;
 
 const VsCol = styled(motion.div)`
-  background: rgba(15, 23, 42, 0.6);
-  border-radius: 24px;
-  padding: 2.5rem;
+  background: rgba(16, 24, 39, 0.6);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(94, 234, 212, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
   
   &:hover {
     transform: translateY(-5px);
     border-color: rgba(94, 234, 212, 0.3);
-    box-shadow: 0 20px 40px rgba(94, 234, 212, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
 `;
 
 const VsColTitle = styled.h3`
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
@@ -3350,6 +3314,7 @@ const VsColTitle = styled.h3`
 
 const VsColIcon = styled.span`
   font-size: 2rem;
+  color: var(--accent-color);
   filter: drop-shadow(0 0 8px rgba(94, 234, 212, 0.4));
 `;
 
@@ -3364,7 +3329,7 @@ const VsList = styled.ul`
 
 const VsListItem = styled.li`
   font-size: 1.1rem;
-  color: #E2E8F0;
+  color: var(--text-secondary);
   padding-left: 2rem;
   position: relative;
   line-height: 1.6;
@@ -3376,9 +3341,9 @@ const VsListItem = styled.li`
     top: 0.5rem;
     width: 8px;
     height: 8px;
-    background: #5eead4;
+    background: var(--accent-color);
     border-radius: 50%;
-    box-shadow: 0 0 12px rgba(94, 234, 212, 0.6);
+    box-shadow: 0 0 10px rgba(94, 234, 212, 0.5);
   }
   
   &:hover::before {
@@ -4688,10 +4653,13 @@ const LPUniqueCompareListTitle = styled.h4`
 
 const LPUniqueCompareList = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
-  width: 100%;
-  margin-bottom: 3rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const LPUniqueCompareListItem = styled(motion.div)`
@@ -4751,6 +4719,524 @@ const LPUniqueCompareFeatureText = styled.p`
   font-size: 1rem;
   color: #94a3b8;
   line-height: 1.6;
+`;
+
+// Добавляем стили для нового блока
+const LPConversionBenefitsSection = styled(motion.section)`
+  position: relative;
+  padding: 8rem 2rem;
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,
+    var(--bg-secondary) 100%
+  );
+  overflow: hidden;
+  z-index: 1;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(94, 234, 212, 0.2), transparent);
+    z-index: 1;
+  }
+`;
+
+const ConversionBenefitsContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  background: rgba(16, 24, 39, 0.7);
+  backdrop-filter: blur(15px);
+  border-radius: 24px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+`;
+
+const ConversionBenefitsTitle = styled(motion.h2)`
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 2rem;
+  position: relative;
+  text-align: center;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+    border-radius: 4px;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+  }
+`;
+
+const ConversionBenefitsDescription = styled(motion.p)`
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin: 2.5rem 0;
+  text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+const ConversionBenefitsSubtitle = styled(motion.h3)`
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 3rem 0 2rem;
+  text-align: center;
+  position: relative;
+`;
+
+const ConversionBenefitsList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 2rem 0;
+`;
+
+const ConversionBenefitsItem = styled(motion.div)`
+  background: rgba(16, 24, 39, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: calc(50% - 0.75rem);
+  max-width: 500px;
+  
+  @media (max-width: 900px) {
+    width: 100%;
+  }
+  
+  &:hover {
+    border-color: rgba(94, 234, 212, 0.3);
+    transform: translateY(-5px);
+  }
+`;
+
+const ConversionBenefitsIcon = styled.div`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  box-shadow: 0 0 20px rgba(94, 234, 212, 0.4);
+  flex-shrink: 0;
+`;
+
+const ConversionBenefitsText = styled.p`
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+`;
+
+const ConversionBenefitsButton = styled(motion.button)`
+  padding: 1.2rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: linear-gradient(
+    90deg,
+    var(--accent-color),
+    rgba(59, 130, 246, 0.9)
+  );
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  display: block;
+  margin: 3rem auto 0;
+  box-shadow: 0 8px 20px rgba(94, 234, 212, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: all 0.6s ease;
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
+`;
+
+const ConversionBenefitsBgCircle = styled.div`
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  
+  &.circle-left {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(
+      circle,
+      rgba(94, 234, 212, 0.08) 0%,
+      transparent 70%
+    );
+    top: 10%;
+    left: -200px;
+  }
+  
+  &.circle-right {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(
+      circle,
+      rgba(59, 130, 246, 0.08) 0%,
+      transparent 70%
+    );
+    bottom: 5%;
+    right: -200px;
+  }
+`;
+
+const LPWhyEffectiveSection = styled(motion.section)`
+  position: relative;
+  padding: 8rem 2rem;
+  background: linear-gradient(
+    180deg,
+    var(--bg-secondary) 0%,
+    var(--bg-primary) 100%
+  );
+  overflow: hidden;
+  z-index: 1;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(94, 234, 212, 0.2), transparent);
+    z-index: 1;
+  }
+`;
+
+const LPWhyEffectiveContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  background: rgba(16, 24, 39, 0.7);
+  backdrop-filter: blur(15px);
+  border-radius: 24px;
+  padding: 4rem 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+`;
+
+const LPWhyEffectiveTitle = styled(motion.h2)`
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 3rem;
+  position: relative;
+  text-align: center;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+    border-radius: 4px;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+  }
+`;
+
+const LPWhyEffectiveSubtitle = styled(motion.h3)`
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 2.5rem 0 1.5rem;
+  text-align: center;
+  position: relative;
+`;
+
+const LPWhyEffectiveDescription = styled(motion.p)`
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  background: rgba(94, 234, 212, 0.05);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(94, 234, 212, 0.1);
+`;
+
+const LPWhyEffectiveDecoration = styled.div`
+  position: absolute;
+  bottom: -20px;
+  right: 30px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(94, 234, 212, 0.1) 0%,
+    transparent 70%
+  );
+  z-index: 0;
+`;
+
+const LPWhyEffectiveBgCircle = styled.div`
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  
+  &.circle-left {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(
+      circle,
+      rgba(94, 234, 212, 0.08) 0%,
+      transparent 70%
+    );
+    top: 10%;
+    left: -200px;
+  }
+  
+  &.circle-right {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(
+      circle,
+      rgba(59, 130, 246, 0.08) 0%,
+      transparent 70%
+    );
+    bottom: 5%;
+    right: -200px;
+  }
+`;
+
+const LPBusinessBenefitSection = styled(motion.section)`
+  position: relative;
+  padding: 6rem 2rem;
+  background: var(--bg-primary);
+  overflow: hidden;
+  z-index: 1;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(94, 234, 212, 0.1), transparent);
+    z-index: 1;
+  }
+`;
+
+const LPBusinessBenefitContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  background: rgba(16, 24, 39, 0.6);
+  backdrop-filter: blur(15px);
+  border-radius: 24px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+`;
+
+const LPBusinessBenefitSubtitle = styled(motion.h3)`
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 1.5rem;
+  position: relative;
+  text-align: center;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+    border-radius: 4px;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+  }
+`;
+
+const LPBusinessBenefitText = styled(motion.p)`
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 2rem 0 1.5rem;
+  text-align: center;
+`;
+
+const LPBusinessBenefitList = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const LPBusinessBenefitItem = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: rgba(16, 24, 39, 0.8);
+  border-radius: 16px;
+  padding: 1.8rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: ${props => props.color || 'var(--accent-color)'};
+    opacity: 0.7;
+  }
+  
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, 
+      rgba(${props => props.color ? props.color.replace('#', '').match(/.{2}/g).map(hex => parseInt(hex, 16)).join(', ') : '94, 234, 212'}, 0.08) 0%,
+      transparent 70%
+    );
+    border-radius: 50%;
+  }
+`;
+
+const LPBusinessBenefitIconWrapper = styled.div`
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(16, 24, 39, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: ${props => props.color || 'var(--accent-color)'};
+  box-shadow: 0 0 20px rgba(${props => props.color ? props.color.replace('#', '').match(/.{2}/g).map(hex => parseInt(hex, 16)).join(', ') : '94, 234, 212'}, 0.3);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 1px dashed ${props => props.color || 'var(--accent-color)'};
+    opacity: 0.4;
+    animation: rotate 20s linear infinite;
+  }
+`;
+
+const LPBusinessBenefitItemContent = styled.div`
+  flex: 1;
+`;
+
+const LPBusinessBenefitItemTitle = styled.h4`
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+`;
+
+const LPBusinessBenefitItemText = styled.p`
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+`;
+
+const LPBusinessBenefitSummary = styled(motion.p)`
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  margin: 2rem 0 0;
+  text-align: center;
+  background: rgba(94, 234, 212, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border-left: 3px solid var(--accent-color);
+`;
+
+const LPBusinessBenefitDecoration = styled.div`
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 1px dashed rgba(94, 234, 212, 0.2);
+  opacity: 0.5;
 `;
 
 export default LandingPage;
