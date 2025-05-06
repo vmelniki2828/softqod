@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import styled, { keyframes } from 'styled-components';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useAnimation, useInView } from 'framer-motion';
 import {
   FaMobile,
   FaRocket,
@@ -24,8 +24,6 @@ import {
   FaHeart,
   FaHandPointer,
   FaArrowRight,
-  FaSearch,
-  FaCode,
 } from 'react-icons/fa';
 
 // Анимации
@@ -1140,31 +1138,6 @@ const LandingPage = () => {
   const [backgroundShapes, setBackgroundShapes] = useState([]);
   // Добавляем состояние для аккордеона FAQ
   const [expandedFaqs, setExpandedFaqs] = useState([]);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = useCallback((e, element) => {
-    const rect = element.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / element.clientWidth) * 100;
-    const y = ((e.clientY - rect.top) / element.clientHeight) * 100;
-    element.style.setProperty('--mouse-x', `${x}%`);
-    element.style.setProperty('--mouse-y', `${y}%`);
-  }, []);
-
-  useEffect(() => {
-    const cards = document.querySelectorAll('.creation-step-card');
-
-    const addMouseEvent = card => {
-      card.addEventListener('mousemove', e => handleMouseMove(e, card));
-    };
-
-    cards.forEach(addMouseEvent);
-
-    return () => {
-      cards.forEach(card => {
-        card.removeEventListener('mousemove', e => handleMouseMove(e, card));
-      });
-    };
-  }, [handleMouseMove]);
 
   useEffect(() => {
     // Генерация звезд для фона
@@ -1679,6 +1652,7 @@ const LandingPage = () => {
           </LandingVsGrid>
         </LandingVsContainer>
       </LandingVsMultiSection>
+
       <LPConversionBenefitsSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -1773,6 +1747,7 @@ const LandingPage = () => {
         <ConversionBenefitsBgCircle className="circle-left" />
         <ConversionBenefitsBgCircle className="circle-right" />
       </LPConversionBenefitsSection>
+
       <LPWhyEffectiveSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -1814,6 +1789,7 @@ const LandingPage = () => {
         <LPWhyEffectiveBgCircle className="circle-left" />
         <LPWhyEffectiveBgCircle className="circle-right" />
       </LPWhyEffectiveSection>
+
       <LPBusinessBenefitSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -1905,6 +1881,7 @@ const LandingPage = () => {
           <LPBusinessBenefitDecoration />
         </LPBusinessBenefitContainer>
       </LPBusinessBenefitSection>
+
       <LPEffectivenessSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -2138,123 +2115,7 @@ const LandingPage = () => {
           </LPEffectivenessCTA>
         </LPEffectivenessContainer>
       </LPEffectivenessSection>
-      <LPCreationSection
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        {' '}
-        <LPCreationBgGlow /> <LPCreationBgPattern />{' '}
-        <LPCreationContainer>
-          {' '}
-          <LPCreationTitle
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            {' '}
-            Як ми створюємо лендінг, що перетворює відвідувачів у покупців{' '}
-          </LPCreationTitle>{' '}
-          <LPCreationContent>
-            {' '}
-            <LPCreationSteps>
-              {' '}
-              {[
-                {
-                  icon: <FaSearch />,
-                  title: 'Аналіз та стратегія',
-                  text: 'Вивчаємо ваш бізнес, конкурентів і цільову аудиторію для формування чіткої стратегії',
-                },
-                {
-                  icon: <FaPencilRuler />,
-                  title: 'Дизайн та прототип',
-                  text: 'Створюємо унікальний дизайн, що відображає ваш бренд, та розробляємо прототип з фокусом на конверсію',
-                },
-                {
-                  icon: <FaCode />,
-                  title: 'Розробка',
-                  text: 'Верстаємо адаптивний лендінг з сучасними анімаціями та оптимізуємо швидкість і продуктивність',
-                },
-                {
-                  icon: <FaRocket />,
-                  title: 'Запуск та аналітика',
-                  text: 'Налаштовуємо аналітику, тестуємо всі елементи та запускаємо лендінг з подальшою підтримкою',
-                },
-              ].map((step, index) => (
-                <LPCreationStep
-                  key={index}
-                  className="creation-step-card"
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                >
-                  {' '}
-                  <LPCreationStepHeader>
-                    {' '}
-                    <LPCreationStepNumber>
-                      {(index + 1).toString().padStart(2, '0')}
-                    </LPCreationStepNumber>{' '}
-                    <LPCreationStepIcon className="step-icon">
-                      {step.icon}
-                    </LPCreationStepIcon>{' '}
-                  </LPCreationStepHeader>{' '}
-                  <LPCreationStepTitle>{step.title}</LPCreationStepTitle>{' '}
-                  <LPCreationStepText>{step.text}</LPCreationStepText>{' '}
-                </LPCreationStep>
-              ))}{' '}
-            </LPCreationSteps>{' '}
-            <LPCreationVisual
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
-            >
-              {' '}
-              <LPCreationCards
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-              >
-                {' '}
-                {[
-                  {
-                    icon: '🎯',
-                    title: 'Чітка структура',
-                    text: 'Логічна послідовність блоків, що ведуть до цільової дії',
-                  },
-                  {
-                    icon: '💡',
-                    title: 'Унікальний дизайн',
-                    text: 'Креативні рішення, що виділяють вас серед конкурентів',
-                  },
-                  {
-                    icon: '⚡',
-                    title: 'Швидкість роботи',
-                    text: 'Оптимізована швидкість завантаження та відгуку',
-                  },
-                  {
-                    icon: '📱',
-                    title: 'Адаптивність',
-                    text: 'Ідеальне відображення на всіх пристроях',
-                  },
-                ].map((card, index) => (
-                  <LPCreationCard
-                    key={index}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
-                    whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                  >
-                    {' '}
-                    <LPCreationCardIcon>{card.icon}</LPCreationCardIcon>{' '}
-                    <LPCreationCardTitle>{card.title}</LPCreationCardTitle>{' '}
-                    <LPCreationCardText>{card.text}</LPCreationCardText>{' '}
-                  </LPCreationCard>
-                ))}{' '}
-              </LPCreationCards>{' '}
-            </LPCreationVisual>{' '}
-          </LPCreationContent>{' '}
-        </LPCreationContainer>{' '}
-      </LPCreationSection>
+
       <PWACtaSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -2479,6 +2340,9 @@ const LandingPage = () => {
 
         <FaqDecoration />
       </PWAFaqSection>
+      <LPEffectivenessSection />
+      <LandingCreationProcess />
+      <LPUniqueCompareSection />
     </Container>
   );
 };
@@ -6118,266 +5982,771 @@ const LPEffectivenessCTAArrow = styled.span`
   font-size: 1.1rem;
 `;
 
+// Add these styled components for the new section after LPEffectivenessCTAArrow
+const LandingHowSection = styled(motion.section)`
+  position: relative;
+  padding: 8rem 2rem;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  overflow: hidden;
+  z-index: 1;
+`;
+
+const LandingHowBgPattern = styled.div`
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(94, 234, 212, 0.05) 1px, transparent 1px), 
+                    linear-gradient(90deg, rgba(94, 234, 212, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0;
+  z-index: 0;
+  opacity: 0.2;
+`;
+
+const LandingHowBottomFade = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 300px;
+  background: linear-gradient(to bottom, transparent, #0f172a);
+  z-index: 0;
+  pointer-events: none;
+`;
+
+const LandingHowContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const LandingHowAccentLine = styled(motion.div)`
+  height: 4px;
+  background: linear-gradient(90deg, #5eead4, #0ea5e9);
+  border-radius: 2px;
+  margin-bottom: 2rem;
+`;
+
+const LandingHowTitle = styled(motion.h2)`
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  background: linear-gradient(135deg, #fff 0%, #5eead4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(94, 234, 212, 0.3));
+  position: relative;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+`;
+
+const LandingHowDescription = styled(motion.p)`
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #94a3b8;
+  text-align: center;
+  max-width: 900px;
+  margin-bottom: 4rem;
+`;
+
+const LandingHowStepsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  margin-bottom: 4rem;
+`;
+
+const LandingHowStepCard = styled(motion.div)`
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  isolation: isolate;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const LandingHowStepNumber = styled.div`
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.03);
+  font-family: monospace;
+  line-height: 1;
+`;
+
+const LandingHowStepIcon = styled.div`
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 10px rgba(94, 234, 212, 0.2));
+`;
+
+const LandingHowStepTitle = styled.h3`
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 10%, #5eead4 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
+const LandingHowStepText = styled.p`
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #94a3b8;
+  flex-grow: 1;
+`;
+
+const LandingHowInfoBox = styled(motion.div)`
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 3rem;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 4rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  position: relative;
+`;
+
+const LandingHowInfoTitle = styled(motion.h3)`
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 1.5rem;
+  text-align: center;
+`;
+
+const LandingHowInfoContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+`;
+
+const LandingHowInfoItem = styled(motion.div)`
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+`;
+
+const LandingHowInfoBullet = styled.div`
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5eead4 0%, #0ea5e9 100%);
+  flex-shrink: 0;
+  margin-top: 0.3rem;
+`;
+
+const LandingHowInfoText = styled.p`
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #94a3b8;
+  margin: 0;
+  
+  strong {
+    color: #f1f5f9;
+  }
+`;
+
+const LandingHowQuote = styled(motion.div)`
+  background: rgba(94, 234, 212, 0.05);
+  border: 1px solid rgba(94, 234, 212, 0.1);
+  border-radius: 24px;
+  padding: 2rem;
+  margin: 0 auto 4rem auto;
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 3;
+`;
+
+const LandingHowQuoteIcon = styled.div`
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+`;
+
+const LandingHowQuoteText = styled.p`
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-style: italic;
+  color: #f1f5f9;
+  margin: 0;
+  line-height: 1.7;
+`;
+
+const LandingHowTimeline = styled(motion.div)`
+  width: 100%;
+  max-width: 1000px;
+  padding: 3rem 0;
+  position: relative;
+  margin: 0 auto 3rem auto;
+`;
+
+const LandingHowTimelineLine = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: rgba(94, 234, 212, 0.2);
+  transform: translateX(-50%);
+`;
+
+const LandingHowTimelineItem = styled(motion.div)`
+  display: flex;
+  justify-content: ${props => props.isLeft ? 'flex-end' : 'flex-start'};
+  padding: 2rem 0;
+  position: relative;
+`;
+
+const LandingHowTimelineContent = styled.div`
+  width: 45%;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: all 0.3s ease;
+`;
+
+const LandingHowTimelineConnector = styled.div`
+  position: absolute;
+  top: 50%;
+  ${props => props.isLeft ? 'right: -40px;' : 'left: -40px;'}
+  transform: translateY(-50%);
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(94, 234, 212, 0.2), rgba(94, 234, 212, 0.6));
+`;
+
+const LandingHowTimelineDot = styled.div`
+  position: absolute;
+  top: 50%;
+  ${props => props.isLeft ? 'right: -55px;' : 'left: -55px;'}
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5eead4 0%, #0ea5e9 100%);
+  border: 3px solid #0f172a;
+  z-index: 2;
+`;
+
+const LandingHowTimelineTitle = styled.h4`
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #fff 0%, #5eead4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
+const LandingHowTimelineText = styled.p`
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #94a3b8;
+  margin: 0;
+`;
+
+const LandingHowCTA = styled(motion.button)`
+  background: linear-gradient(90deg, #5eead4, #0ea5e9);
+  border: none;
+  padding: 1.2rem 2.5rem;
+  border-radius: 12px;
+  color: #0f172a;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  box-shadow: 0 10px 20px rgba(94, 234, 212, 0.2);
+  position: relative;
+  overflow: hidden;
+`;
+
+const LandingHowDecorativeCircle = styled.div`
+  position: absolute;
+  border-radius: 50%;
+  z-index: 0;
+  
+  &.circle1 {
+    width: 300px;
+    height: 300px;
+    border: 1px dashed rgba(94, 234, 212, 0.1);
+    top: 10%;
+    left: -150px;
+    animation: ${rotate} 40s linear infinite;
+  }
+  
+  &.circle2 {
+    width: 200px;
+    height: 200px;
+    border: 1px dashed rgba(14, 165, 233, 0.1);
+    bottom: 20%;
+    right: -100px;
+    animation: ${rotate} 30s linear infinite reverse;
+  }
+  
+  &.circle3 {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(94, 234, 212, 0.05) 0%, transparent 70%);
+    top: 40%;
+    right: 10%;
+    filter: blur(20px);
+    animation: ${pulse} 5s ease-in-out infinite;
+  }
+`;
+
+const LandingHowWaveContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  z-index: 1;
+  pointer-events: none;
+`;
+
+// Rename all the styled components with unique names
 const LPCreationSection = styled(motion.section)`
   position: relative;
   padding: 8rem 2rem;
-  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   overflow: hidden;
-  isolation: isolate;
-`;
-
-const LPCreationBgGlow = styled.div`
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  z-index: 0;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    width: 40%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    filter: blur(80px);
-  }
-
-  &::before {
-    background: rgba(94, 234, 212, 0.15);
-    top: -10%;
-    left: -10%;
-    animation: floatGlow 8s ease-in-out infinite;
-  }
-
-  &::after {
-    background: rgba(14, 165, 233, 0.15);
-    bottom: -10%;
-    right: -10%;
-    animation: floatGlow 8s ease-in-out infinite reverse;
-  }
-
-  @keyframes floatGlow {
-    0%,
-    100% {
-      transform: translate(0, 0);
-    }
-    50% {
-      transform: translate(20px, 20px);
-    }
-  }
+  z-index: 1;
 `;
 
 const LPCreationBgPattern = styled.div`
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(
-      circle at 20% 30%,
-      rgba(94, 234, 212, 0.15) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 80% 70%,
-      rgba(14, 165, 233, 0.15) 0%,
-      transparent 50%
-    );
-  opacity: 0.5;
+  background-image: linear-gradient(rgba(94, 234, 212, 0.05) 1px, transparent 1px), 
+                   linear-gradient(90deg, rgba(94, 234, 212, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0;
   z-index: 0;
+  opacity: 0.2;
+`;
+
+const LPCreationBottomFade = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 300px;
+  background: linear-gradient(to bottom, transparent, #0f172a);
+  z-index: 0;
+  pointer-events: none;
 `;
 
 const LPCreationContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const LPCreationAccentLine = styled(motion.div)`
+  height: 4px;
+  width: 80px;
+  background: linear-gradient(90deg, #5eead4, #0ea5e9);
+  border-radius: 2px;
+  margin-bottom: 2rem;
 `;
 
 const LPCreationTitle = styled(motion.h2)`
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
   font-weight: 800;
   text-align: center;
-  margin-bottom: 3rem;
-  line-height: 1.2;
-  background: linear-gradient(135deg, #fff 0%, #5eead4 50%, #0ea5e9 100%);
+  margin-bottom: 2.5rem;
+  background: linear-gradient(135deg, #fff 0%, #5eead4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 2px 4px rgba(94, 234, 212, 0.3));
-
-  &::after {
-    content: '';
-    display: block;
-    width: 100px;
-    height: 4px;
-    margin: 1.5rem auto 0;
-    background: linear-gradient(90deg, #5eead4, #0ea5e9);
-    border-radius: 2px;
-  }
+  position: relative;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
 `;
 
-const LPCreationContent = styled.div`
+const LPCreationDescription = styled(motion.p)`
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #94a3b8;
+  text-align: center;
+  max-width: 900px;
+  margin-bottom: 4rem;
+`;
+
+const LPCreationStepsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 4rem;
-  align-items: start;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-`;
-
-const LPCreationSteps = styled.div`
-  display: flex;
-  flex-direction: column;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
+  width: 100%;
+  margin-bottom: 4rem;
 `;
 
-const LPCreationStep = styled(motion.div)`
+const LPCreationStepCard = styled(motion.div)`
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   border-radius: 20px;
-  padding: 2rem;
+  padding: 2.5rem 2rem;
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      90deg,
-      rgba(94, 234, 212, 0.1),
-      rgba(14, 165, 233, 0.1)
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  &:hover {
-    transform: translateX(10px);
-    border-color: rgba(94, 234, 212, 0.2);
-    box-shadow: 0 10px 30px rgba(94, 234, 212, 0.1);
-
-    &::before {
-      opacity: 1;
-    }
-
-    .step-icon {
-      transform: scale(1.1);
-      color: #5eead4;
-    }
-  }
-`;
-
-const LPCreationStepHeader = styled.div`
+  isolation: isolate;
+  height: 100%;
   display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  flex-direction: column;
 `;
 
-const LPCreationStepNumber = styled.span`
-  font-size: 3rem;
-  font-weight: 800;
-  font-family: 'SF Mono', monospace;
-  background: linear-gradient(135deg, #5eead4, #0ea5e9);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+const LPCreationStepNumber = styled.div`
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.03);
+  font-family: monospace;
   line-height: 1;
 `;
 
 const LPCreationStepIcon = styled.div`
-  font-size: 2rem;
-  color: #94a3b8;
-  transition: all 0.3s ease;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
   filter: drop-shadow(0 0 10px rgba(94, 234, 212, 0.2));
 `;
 
 const LPCreationStepTitle = styled.h3`
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  color: #fff;
+  color: #f1f5f9;
   margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 10%, #5eead4 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 const LPCreationStepText = styled.p`
   font-size: 1.1rem;
   line-height: 1.7;
   color: #94a3b8;
+  flex-grow: 1;
 `;
 
-const LPCreationVisual = styled.div`
+const LPCreationInfoBox = styled(motion.div)`
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 3rem;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 4rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   position: relative;
-  padding: 2rem;
+`;
 
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-      circle at center,
-      rgba(94, 234, 212, 0.1),
-      transparent 70%
-    );
-    border-radius: 30px;
-    filter: blur(30px);
+const LPCreationDecorativeCircle = styled.div`
+  position: absolute;
+  border-radius: 50%;
+  z-index: 0;
+  
+  &.circle1 {
+    width: 300px;
+    height: 300px;
+    border: 1px dashed rgba(94, 234, 212, 0.1);
+    top: 10%;
+    left: -150px;
+    animation: ${rotate} 40s linear infinite;
+  }
+  
+  &.circle2 {
+    width: 200px;
+    height: 200px;
+    border: 1px dashed rgba(14, 165, 233, 0.1);
+    bottom: 20%;
+    right: -100px;
+    animation: ${rotate} 30s linear infinite reverse;
+  }
+  
+  &.circle3 {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(94, 234, 212, 0.05) 0%, transparent 70%);
+    top: 40%;
+    right: 10%;
+    filter: blur(20px);
+    animation: ${pulse} 5s ease-in-out infinite;
   }
 `;
 
-const LPCreationCards = styled(motion.div)`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-`;
+// Add the component implementation before the export default
+const LandingCreationProcess = () => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: false
+  });
 
-const LPCreationCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 2rem;
-  position: relative;
-  overflow: hidden;
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
 
-  &:nth-child(even) {
-    transform: translateY(2rem);
-  }
+  const container = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3
+      }
+    }
+  };
 
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      45deg,
-      rgba(94, 234, 212, 0.1),
-      rgba(14, 165, 233, 0.1)
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10
+      }
+    }
+  };
 
-  &:hover::before {
-    opacity: 1;
-  }
-`;
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+  
+  const creationSteps = [
+    {
+      id: 1,
+      icon: "🔍",
+      title: "Аналіз та стратегія",
+      content: "Глибоко вивчаємо бізнес, конкурентів та цільову аудиторію для формування чіткої стратегії. Визначаємо ключові цілі та метрики успіху."
+    },
+    {
+      id: 2,
+      icon: "🎨",
+      title: "Дизайн та прототип",
+      content: "Створюємо унікальний дизайн, що відображає сутність бренду. Розробляємо прототип з фокусом на конверсію та досвід користувача."
+    },
+    {
+      id: 3,
+      icon: "💻",
+      title: "Розробка",
+      content: "Будуємо адаптивний лендінг з сучасними анімаціями. Оптимізуємо швидкість та продуктивність для найкращих результатів."
+    },
+    {
+      id: 4,
+      icon: "🚀",
+      title: "Запуск та аналітика",
+      content: "Налаштовуємо аналітику, тестуємо всі елементи та запускаємо лендінг з подальшою підтримкою для постійного вдосконалення."
+    }
+  ];
 
-const LPCreationCardIcon = styled.div`
-  font-size: 2.5rem;
-  color: #5eead4;
-  margin-bottom: 1.5rem;
-  filter: drop-shadow(0 0 10px rgba(94, 234, 212, 0.3));
-`;
+  // Mouse following effect for the cards
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-const LPCreationCardTitle = styled.h4`
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 1rem;
-`;
+  const handleMouseMove = useCallback((e) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    setMousePosition({ x, y });
+  }, []);
 
-const LPCreationCardText = styled.p`
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #94a3b8;
-`;
+  return (
+    <LPCreationSection 
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={fadeIn}
+      id="landing-creation-process"
+    >
+      <LPCreationBgPattern />
+      <LPCreationDecorativeCircle className="circle1" />
+      <LPCreationDecorativeCircle className="circle2" />
+      <LPCreationDecorativeCircle className="circle3" />
+      <LPCreationBottomFade />
+      
+      <LPCreationContainer>
+        <LPCreationAccentLine 
+          initial={{ width: 0 }}
+          animate={controls}
+          variants={{
+            hidden: { width: 0 },
+            visible: { 
+              width: 80,
+              transition: { duration: 0.8, ease: "easeOut" }
+            }
+          }}
+        />
+        
+        <LPCreationTitle
+          initial={{ opacity: 0, y: 20 }}
+          animate={controls}
+          variants={item}
+        >
+          Як ми створюємо лендінг, що перетворює відвідувачів у покупців
+        </LPCreationTitle>
+        
+        <LPCreationDescription
+          initial={{ opacity: 0 }}
+          animate={controls}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { 
+              opacity: 1,
+              transition: { duration: 1.2, ease: "easeOut", delay: 0.2 }
+            }
+          }}
+        >
+          Щоб створити ефективний лендинг, ми починаємо з глибокого аналізу: вивчаємо ринок, конкурентів і чітко визначаємо цільову аудиторію. Це дозволяє побудувати не просто красивий сайт, а такий, що говорить мовою клієнта й відповідає на його потреби.
+        </LPCreationDescription>
+        
+        <LPCreationStepsGrid 
+          as={motion.div}
+          variants={container}
+          initial="hidden"
+          animate={controls}
+        >
+          {creationSteps.map((step, index) => (
+            <LPCreationStepCard
+              key={step.id}
+              variants={item}
+              whileHover={{ 
+                y: -10, 
+                boxShadow: "0 15px 30px rgba(0, 0, 0, 0.3)",
+                backgroundColor: "rgba(255, 255, 255, 0.05)",
+                transition: { duration: 0.3 }
+              }}
+              onMouseMove={handleMouseMove}
+              style={{
+                background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, 
+                  rgba(94, 234, 212, 0.08) 0%, 
+                  rgba(255, 255, 255, 0.03) 50%)`
+              }}
+            >
+              <LPCreationStepNumber>{step.id}</LPCreationStepNumber>
+              <LPCreationStepIcon>{step.icon}</LPCreationStepIcon>
+              <LPCreationStepTitle>{step.title}</LPCreationStepTitle>
+              <LPCreationStepText>{step.content}</LPCreationStepText>
+            </LPCreationStepCard>
+          ))}
+        </LPCreationStepsGrid>
+        
+        <LPCreationInfoBox
+          as={motion.div}
+          variants={fadeIn}
+          whileHover={{ 
+            boxShadow: "0 15px 40px rgba(94, 234, 212, 0.15)",
+            transition: { duration: 0.3 }
+          }}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={controls}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { 
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.8, ease: "easeOut", delay: 0.6 }
+              }
+            }}
+          >
+            <p style={{ fontSize: "1.1rem", lineHeight: 1.8, color: "#94a3b8" }}>
+              <strong style={{ color: "#f1f5f9" }}>Структура</strong> — створюємо логічний сценарій взаємодії користувача зі сторінкою. Формуємо прототип, де визначаємо ключові блоки, їх послідовність та розташування елементів, що ведуть до цільової дії.
+            </p>
+            <br />
+            <p style={{ fontSize: "1.1rem", lineHeight: 1.8, color: "#94a3b8" }}>
+              <strong style={{ color: "#f1f5f9" }}>Дизайн</strong> сайту розробляється під конкретну нішу — сучасний, стильний, з акцентами на головне. Після цього ми зверстаємо сайт і адаптуємо його під усі пристрої: смартфони, планшети, ноутбуки.
+            </p>
+            <br />
+            <p style={{ fontSize: "1.1rem", lineHeight: 1.8, color: "#94a3b8" }}>
+              <strong style={{ color: "#f1f5f9" }}>Перед запуском</strong> ми підключаємо інструменти аналітики (Google Analytics, Facebook Pixel тощо), перевіряємо працездатність усіх елементів та тестуємо швидкість завантаження. Після запуску ми не залишаємо вас наодинці — допомагаємо з оптимізацією та аналізуємо поведінку користувачів для покращення конверсії.
+            </p>
+          </motion.div>
+        </LPCreationInfoBox>
+        
+        <motion.div
+          variants={fadeIn}
+          initial="hidden"
+          animate={controls}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <button 
+            style={{
+              background: "linear-gradient(90deg, #5eead4, #0ea5e9)",
+              border: "none",
+              padding: "1.2rem 2.5rem",
+              borderRadius: "12px",
+              color: "#0f172a",
+              fontSize: "1.2rem",
+              fontWeight: 700,
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.8rem",
+              boxShadow: "0 10px 20px rgba(94, 234, 212, 0.2)",
+              position: "relative",
+              overflow: "hidden"
+            }}
+          >
+            Замовити ефективний лендінг
+            <span>→</span>
+          </button>
+        </motion.div>
+      </LPCreationContainer>
+    </LPCreationSection>
+  );
+};
 
 export default LandingPage;
