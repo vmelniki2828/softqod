@@ -26,6 +26,9 @@ import {
   FaArrowRight,
   FaSearch,
   FaCode,
+  FaBullhorn,
+  FaMagic,
+  FaClock,
 } from 'react-icons/fa';
 
 // Анимации
@@ -2152,7 +2155,6 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {' '}
             Як ми створюємо лендінг, що перетворює відвідувачів у покупців{' '}
           </LPCreationTitle>{' '}
           <LPCreationContent>
@@ -2255,6 +2257,8 @@ const LandingPage = () => {
           </LPCreationContent>{' '}
         </LPCreationContainer>{' '}
       </LPCreationSection>
+      <LPRequirementsSection />
+      <LPOfferSection />
       <PWACtaSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -6379,5 +6383,304 @@ const LPCreationCardText = styled.p`
   line-height: 1.6;
   color: #94a3b8;
 `;
+
+const RequirementsCard = styled(motion.div)`
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ff4d4d, #f9cb28);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
+`;
+
+const RequirementsTitle = styled.h3`
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+`;
+
+const RequirementsText = styled.p`
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #94a3b8;
+`;
+
+const RequirementsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+`;
+
+const OfferContainer = styled(Container)`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 4rem 2rem;
+  
+  @media (max-width: 968px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+`;
+
+const OfferBlock = styled.div`
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+`;
+
+const BlockTitle = styled.h3`
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--accent-color), #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+`;
+
+const OfferList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+`;
+
+const OfferItem = styled.li`
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 1.1rem;
+  color: #94a3b8;
+  line-height: 1.6;
+`;
+
+const OfferIcon = styled.div`
+  color: var(--accent-color);
+  font-size: 1.5rem;
+  margin-top: 0.2rem;
+`;
+
+const LPOfferSection = () => {
+  return (
+    <Section>
+      <Container>
+        <Title as="h2" style={{ color: 'var(--accent-color)', WebkitTextFillColor: 'var(--accent-color)', marginBottom: '3rem', textAlign: 'center' }}>
+          Отримайте ефективний Landing Page під ключ — швидко та вигідно
+        </Title>
+        
+        <OfferCard
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <RequirementsTitle style={{ color: 'var(--text-primary)' }}>
+            Чому варто замовити лендінг у професіоналів
+          </RequirementsTitle>
+          <RequirementsText>
+            Самостійно створити лендінг — можна. Але створити той, що дійсно продає, — справа для команди з досвідом. Ми знаємо, як вивести клієнта на цільову дію, як структурувати контент, де поставити кнопку й що написати в заголовку. Ваш сайт — це обличчя бізнесу, і воно має працювати на вас.
+          </RequirementsText>
+          <RequirementsText style={{ marginTop: '1.5rem' }}>
+            Ми пропонуємо як повністю індивідуальну розробку, так і адаптацію шаблонів під ваш бізнес. Обидва варіанти мають свої переваги — все залежить від бюджету, задач і термінів. У будь-якому випадку ви отримаєте сучасний, адаптивний та конверсійний лендінг.
+          </RequirementsText>
+        </OfferCard>
+
+        <OfferContainer>
+          <OfferBlock>
+            <BlockTitle>Що ви отримаєте:</BlockTitle>
+            <OfferList>
+              <OfferItem>
+                <OfferIcon>
+                  <FaRocket />
+                </OfferIcon>
+                <span>Професійний односторінковий сайт, оптимізований під ваші цілі та аудиторію</span>
+              </OfferItem>
+              <OfferItem>
+                <OfferIcon>
+                  <FaChartLine />
+                </OfferIcon>
+                <span>Збільшення конверсії та продажів завдяки правильній структурі та УТП</span>
+              </OfferItem>
+              <OfferItem>
+                <OfferIcon>
+                  <FaMobile />
+                </OfferIcon>
+                <span>Адаптивний дизайн, що відмінно виглядає на всіх пристроях</span>
+              </OfferItem>
+              <OfferItem>
+                <OfferIcon>
+                  <FaBolt />
+                </OfferIcon>
+                <span>Швидке завантаження та оптимальна продуктивність</span>
+              </OfferItem>
+            </OfferList>
+          </OfferBlock>
+
+          <OfferBlock>
+            <BlockTitle>Наші фішки:</BlockTitle>
+            <OfferList>
+              <OfferItem>
+                <OfferIcon>
+                  <FaBrain />
+                </OfferIcon>
+                <span>Унікальний дизайн, створений під ваш бренд та цільову аудиторію</span>
+              </OfferItem>
+              <OfferItem>
+                <OfferIcon>
+                  <FaCog />
+                </OfferIcon>
+                <span>Інтеграція з CRM та системами аналітики</span>
+              </OfferItem>
+              <OfferItem>
+                <OfferIcon>
+                  <FaShieldAlt />
+                </OfferIcon>
+                <span>Захист від спаму та безпека даних</span>
+              </OfferItem>
+              <OfferItem>
+                <OfferIcon>
+                  <FaTools />
+                </OfferIcon>
+                <span>Технічна підтримка та консультації після запуску</span>
+              </OfferItem>
+            </OfferList>
+          </OfferBlock>
+        </OfferContainer>
+      </Container>
+    </Section>
+  );
+};
+
+const OfferCard = styled(motion.div)`
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 24px;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 4rem;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      45deg,
+      rgba(94, 234, 212, 0.05),
+      rgba(14, 165, 233, 0.05)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
+`;
+
+const Section = styled.section`
+  padding: 6rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+`;
+
+const LPRequirementsSection = () => {
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 }
+    }
+  };
+
+  return (
+    <Section>
+      <Container>
+        <Title as="h2" style={{ color: 'var(--accent-color)', WebkitTextFillColor: 'var(--accent-color)' }}>
+          Що потрібно для створення односторінкового сайту, який продає?
+        </Title>
+        <RequirementsGrid>
+          <RequirementsCard
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <RequirementsTitle>Чітка структура та сильне УТП</RequirementsTitle>
+            <RequirementsText>
+              Успішний лендинг починається зі сценарію, що веде користувача до конкретної дії: залишити заявку, здійснити покупку або записатися на консультацію. Унікальна торгова пропозиція (УТП) повинна одразу захоплювати увагу, бути зрозумілою та цінною для вашого клієнта.
+            </RequirementsText>
+          </RequirementsCard>
+
+          <RequirementsCard
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <RequirementsTitle>
+              Тригери довіри та правильний заклик до дії
+            </RequirementsTitle>
+            <RequirementsText>
+              Щоб користувач не сумнівався, важливо додати елементи довіри: реальні відгуки, кейси, фото, сертифікати, гарантії. Це суттєво підвищує рівень впевненості. А завершальним кроком має стати сильний заклик до дії (CTA): яскрава кнопка з чітким посилом, що мотивує натиснути.
+            </RequirementsText>
+          </RequirementsCard>
+
+          <RequirementsCard
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <RequirementsTitle>Оптимізація та простота</RequirementsTitle>
+            <RequirementsText>
+              Важливо не перенавантажувати сторінку — мінімум зайвих елементів, максимум фокус на цілі. А ще — технічна оптимізація: швидке завантаження, адаптивність, зручна навігація на будь-якому пристрої.
+            </RequirementsText>
+          </RequirementsCard>
+        </RequirementsGrid>
+      </Container>
+    </Section>
+  );
+};
 
 export default LandingPage;
