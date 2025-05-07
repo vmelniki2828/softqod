@@ -107,6 +107,9 @@ const Container = styled.div`
   color: var(--text-primary);
   position: relative;
   overflow: hidden;
+  padding-bottom: 100px;
+  padding-right: 20px;
+  padding-left: 20px;
 `;
 
 const HeroSection = styled(motion.div)`
@@ -1913,21 +1916,20 @@ const LandingPage = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <LPEffectivenessBackground>
-          <LPEffectivenessGlow className="glow-1" />
-          <LPEffectivenessGlow className="glow-2" />
-          <LPEffectivenessPattern />
-        </LPEffectivenessBackground>
-
-        <LPEffectivenessContainer>
-          <LPEffectivenessTitle
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+        <LPEffectivenessDivider />
+        <Container>
+          <Title
+            as="h2"
+            style={{
+              color: 'var(--accent-color)',
+              WebkitTextFillColor: 'var(--accent-color)',
+              marginBottom: '3rem',
+              textAlign: 'center',
+            }}
           >
             Чому Landing Page — це найефективніший інструмент для залучення
             клієнтів?
-          </LPEffectivenessTitle>
+          </Title>
 
           <LPEffectivenessBanner
             initial={{ opacity: 0, scale: 0.9 }}
@@ -2139,17 +2141,18 @@ const LandingPage = () => {
               <FaArrowRight />
             </LPEffectivenessCTAArrow>
           </LPEffectivenessCTA>
-        </LPEffectivenessContainer>
+        </Container>
       </LPEffectivenessSection>
       <LPCreationSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        {' '}
-        <LPCreationBgGlow /> <LPCreationBgPattern />{' '}
+        <LPCreationDivider />
+        <LPCreationBackground>
+          <LPCreationPattern />
+        </LPCreationBackground>
         <LPCreationContainer>
-          {' '}
           <LPCreationTitle
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -5703,15 +5706,6 @@ const LPBusinessBenefitDecoration = styled.div`
   opacity: 0.5;
 `;
 
-// LPEffectivenessSection styled components
-const LPEffectivenessSection = styled(motion.section)`
-  position: relative;
-  padding: 8rem 2rem;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  overflow: hidden;
-  z-index: 1;
-`;
-
 const LPEffectivenessBackground = styled.div`
   position: absolute;
   inset: 0;
@@ -5783,9 +5777,8 @@ const LPEffectivenessTitle = styled(motion.h2)`
   font-weight: 800;
   text-align: center;
   margin-bottom: 2.5rem;
-  background: linear-gradient(135deg, #fff 0%, #5eead4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--accent-color);
+  -webkit-text-fill-color: var(--accent-color);
   filter: drop-shadow(0 2px 4px rgba(94, 234, 212, 0.3));
   position: relative;
   line-height: 1.3;
@@ -5809,6 +5802,7 @@ const LPEffectivenessBanner = styled(motion.div)`
   gap: 1.5rem;
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+  margin: 0 auto;
 
   &:hover {
     background: rgba(94, 234, 212, 0.15);
@@ -5837,7 +5831,7 @@ const LPEffectivenessText = styled(motion.p)`
   color: #94a3b8;
   text-align: center;
   max-width: 900px;
-  margin-bottom: 4rem;
+  margin: 60px auto;
 `;
 
 const LPEffectivenessGraphic = styled(motion.div)`
@@ -6022,7 +6016,7 @@ const LPEffectivenessStatShine = styled.div`
 const LPEffectivenessAdvantages = styled(motion.div)`
   width: 100%;
   max-width: 900px;
-  margin-bottom: 4rem;
+  margin: 60px auto;
 `;
 
 const LPEffectivenessAdvantagesTitle = styled.h3`
@@ -6116,76 +6110,93 @@ const LPEffectivenessCTA = styled(motion.button)`
   cursor: pointer;
   box-shadow: 0 5px 20px rgba(94, 234, 212, 0.3);
   transition: all 0.3s ease;
+
+  margin: 60px auto;
 `;
 
 const LPEffectivenessCTAArrow = styled.span`
   font-size: 1.1rem;
 `;
 
-const LPCreationSection = styled(motion.section)`
-  position: relative;
-  padding: 8rem 2rem;
-  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
-  overflow: hidden;
-  isolation: isolate;
+const LPCreationDivider = styled.div`
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(94, 234, 212, 0.1),
+    transparent
+  );
+  z-index: 1;
 `;
 
-const LPCreationBgGlow = styled.div`
+const LPCreationBackground = styled.div`
   position: absolute;
   inset: 0;
+  z-index: 0;
   overflow: hidden;
+`;
+
+const LPCreationGlow = styled.div`
+  position: absolute;
+  width: 30vw;
+  height: 30vw;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.15;
   z-index: 0;
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    width: 40%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    filter: blur(80px);
-  }
-
-  &::before {
-    background: rgba(94, 234, 212, 0.15);
+  &.glow-1 {
+    background: #5eead4;
     top: -10%;
-    left: -10%;
-    animation: floatGlow 8s ease-in-out infinite;
+    right: -5%;
+    animation: float 20s ease-in-out infinite;
   }
 
-  &::after {
-    background: rgba(14, 165, 233, 0.15);
-    bottom: -10%;
-    right: -10%;
-    animation: floatGlow 8s ease-in-out infinite reverse;
+  &.glow-2 {
+    background: #0ea5e9;
+    bottom: -15%;
+    left: -5%;
+    animation: float 25s ease-in-out infinite reverse;
   }
 
-  @keyframes floatGlow {
-    0%,
-    100% {
-      transform: translate(0, 0);
+  @keyframes float {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
     }
     50% {
-      transform: translate(20px, 20px);
+      transform: translate(3%, 5%) rotate(180deg);
+    }
+    100% {
+      transform: translate(0, 0) rotate(360deg);
     }
   }
 `;
 
-const LPCreationBgPattern = styled.div`
+const LPCreationPattern = styled.div`
   position: absolute;
   inset: 0;
   background-image: radial-gradient(
-      circle at 20% 30%,
-      rgba(94, 234, 212, 0.15) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 80% 70%,
-      rgba(14, 165, 233, 0.15) 0%,
-      transparent 50%
-    );
-  opacity: 0.5;
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 30px 30px;
+  background-position: 0 0;
   z-index: 0;
+  opacity: 0.3;
+`;
+
+const LPCreationSection = styled(motion.section)`
+  position: relative;
+  padding: 6rem 2rem;
+  background: var(--bg-primary);
+  overflow: hidden;
+  z-index: 1;
 `;
 
 const LPCreationContainer = styled.div`
@@ -6196,24 +6207,19 @@ const LPCreationContainer = styled.div`
 `;
 
 const LPCreationTitle = styled(motion.h2)`
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
   font-weight: 800;
   text-align: center;
-  margin-bottom: 3rem;
-  line-height: 1.2;
-  background: linear-gradient(135deg, #fff 0%, #5eead4 50%, #0ea5e9 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  margin-bottom: 2.5rem;
+  color: var(--accent-color);
+  -webkit-text-fill-color: var(--accent-color);
   filter: drop-shadow(0 2px 4px rgba(94, 234, 212, 0.3));
+  position: relative;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
 
-  &::after {
-    content: '';
-    display: block;
-    width: 100px;
-    height: 4px;
-    margin: 1.5rem auto 0;
-    background: linear-gradient(90deg, #5eead4, #0ea5e9);
-    border-radius: 2px;
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
   }
 `;
 
@@ -6435,7 +6441,7 @@ const OfferContainer = styled(Container)`
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   padding: 4rem 2rem;
-  
+
   @media (max-width: 968px) {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -6450,7 +6456,7 @@ const OfferBlock = styled.div`
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
@@ -6460,7 +6466,7 @@ const OfferBlock = styled.div`
 const BlockTitle = styled.h3`
   font-size: 2rem;
   margin-bottom: 2rem;
-  background: linear-gradient(135deg, var(--accent-color), #8B5CF6);
+  background: linear-gradient(135deg, var(--accent-color), #8b5cf6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
@@ -6490,14 +6496,39 @@ const OfferIcon = styled.div`
   margin-top: 0.2rem;
 `;
 
+const LPOfferDivider = styled.div`
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(94, 234, 212, 0.1),
+    transparent
+  );
+  z-index: 1;
+`;
+
 const LPOfferSection = () => {
   return (
     <Section>
+      <LPOfferDivider />
       <Container>
-        <Title as="h2" style={{ color: 'var(--accent-color)', WebkitTextFillColor: 'var(--accent-color)', marginBottom: '3rem', textAlign: 'center' }}>
+        <Title
+          as="h2"
+          style={{
+            color: 'var(--accent-color)',
+            WebkitTextFillColor: 'var(--accent-color)',
+            marginBottom: '3rem',
+            textAlign: 'center',
+          }}
+        >
           Отримайте ефективний Landing Page під ключ — швидко та вигідно
         </Title>
-        
         <OfferCard
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -6508,10 +6539,17 @@ const LPOfferSection = () => {
             Чому варто замовити лендінг у професіоналів
           </RequirementsTitle>
           <RequirementsText>
-            Самостійно створити лендінг — можна. Але створити той, що дійсно продає, — справа для команди з досвідом. Ми знаємо, як вивести клієнта на цільову дію, як структурувати контент, де поставити кнопку й що написати в заголовку. Ваш сайт — це обличчя бізнесу, і воно має працювати на вас.
+            Самостійно створити лендінг — можна. Але створити той, що дійсно
+            продає, — справа для команди з досвідом. Ми знаємо, як вивести
+            клієнта на цільову дію, як структурувати контент, де поставити
+            кнопку й що написати в заголовку. Ваш сайт — це обличчя бізнесу, і
+            воно має працювати на вас.
           </RequirementsText>
           <RequirementsText style={{ marginTop: '1.5rem' }}>
-            Ми пропонуємо як повністю індивідуальну розробку, так і адаптацію шаблонів під ваш бізнес. Обидва варіанти мають свої переваги — все залежить від бюджету, задач і термінів. У будь-якому випадку ви отримаєте сучасний, адаптивний та конверсійний лендінг.
+            Ми пропонуємо як повністю індивідуальну розробку, так і адаптацію
+            шаблонів під ваш бізнес. Обидва варіанти мають свої переваги — все
+            залежить від бюджету, задач і термінів. У будь-якому випадку ви
+            отримаєте сучасний, адаптивний та конверсійний лендінг.
           </RequirementsText>
         </OfferCard>
 
@@ -6523,19 +6561,27 @@ const LPOfferSection = () => {
                 <OfferIcon>
                   <FaRocket />
                 </OfferIcon>
-                <span>Професійний односторінковий сайт, оптимізований під ваші цілі та аудиторію</span>
+                <span>
+                  Професійний односторінковий сайт, оптимізований під ваші цілі
+                  та аудиторію
+                </span>
               </OfferItem>
               <OfferItem>
                 <OfferIcon>
                   <FaChartLine />
                 </OfferIcon>
-                <span>Збільшення конверсії та продажів завдяки правильній структурі та УТП</span>
+                <span>
+                  Збільшення конверсії та продажів завдяки правильній структурі
+                  та УТП
+                </span>
               </OfferItem>
               <OfferItem>
                 <OfferIcon>
                   <FaMobile />
                 </OfferIcon>
-                <span>Адаптивний дизайн, що відмінно виглядає на всіх пристроях</span>
+                <span>
+                  Адаптивний дизайн, що відмінно виглядає на всіх пристроях
+                </span>
               </OfferItem>
               <OfferItem>
                 <OfferIcon>
@@ -6553,7 +6599,10 @@ const LPOfferSection = () => {
                 <OfferIcon>
                   <FaBrain />
                 </OfferIcon>
-                <span>Унікальний дизайн, створений під ваш бренд та цільову аудиторію</span>
+                <span>
+                  Унікальний дизайн, створений під ваш бренд та цільову
+                  аудиторію
+                </span>
               </OfferItem>
               <OfferItem>
                 <OfferIcon>
@@ -6589,7 +6638,7 @@ const OfferCard = styled(motion.div)`
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: 4rem;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -6605,16 +6654,32 @@ const OfferCard = styled(motion.div)`
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  
+
   &:hover::before {
     opacity: 1;
   }
 `;
 
 const Section = styled.section`
-  padding: 6rem 1.5rem;
   position: relative;
   overflow: hidden;
+`;
+
+const LPRequirementsDivider = styled.div`
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(94, 234, 212, 0.1),
+    transparent
+  );
+  z-index: 1;
 `;
 
 const LPRequirementsSection = () => {
@@ -6623,14 +6688,23 @@ const LPRequirementsSection = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 }
-    }
+      transition: { duration: 0.6 },
+    },
   };
 
   return (
     <Section>
+      <LPRequirementsDivider />
       <Container>
-        <Title as="h2" style={{ color: 'var(--accent-color)', WebkitTextFillColor: 'var(--accent-color)' }}>
+        <Title
+          as="h2"
+          style={{
+            color: 'var(--accent-color)',
+            WebkitTextFillColor: 'var(--accent-color)',
+            marginBottom: '3rem',
+            textAlign: 'center',
+          }}
+        >
           Що потрібно для створення односторінкового сайту, який продає?
         </Title>
         <RequirementsGrid>
@@ -6640,11 +6714,14 @@ const LPRequirementsSection = () => {
             whileInView="visible"
             viewport={{ once: true }}
             whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 300 }}
+            transition={{ type: 'spring', stiffness: 300 }}
           >
             <RequirementsTitle>Чітка структура та сильне УТП</RequirementsTitle>
             <RequirementsText>
-              Успішний лендинг починається зі сценарію, що веде користувача до конкретної дії: залишити заявку, здійснити покупку або записатися на консультацію. Унікальна торгова пропозиція (УТП) повинна одразу захоплювати увагу, бути зрозумілою та цінною для вашого клієнта.
+              Успішний лендинг починається зі сценарію, що веде користувача до
+              конкретної дії: залишити заявку, здійснити покупку або записатися
+              на консультацію. Унікальна торгова пропозиція (УТП) повинна одразу
+              захоплювати увагу, бути зрозумілою та цінною для вашого клієнта.
             </RequirementsText>
           </RequirementsCard>
 
@@ -6654,13 +6731,17 @@ const LPRequirementsSection = () => {
             whileInView="visible"
             viewport={{ once: true }}
             whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 300 }}
+            transition={{ type: 'spring', stiffness: 300 }}
           >
             <RequirementsTitle>
               Тригери довіри та правильний заклик до дії
             </RequirementsTitle>
             <RequirementsText>
-              Щоб користувач не сумнівався, важливо додати елементи довіри: реальні відгуки, кейси, фото, сертифікати, гарантії. Це суттєво підвищує рівень впевненості. А завершальним кроком має стати сильний заклик до дії (CTA): яскрава кнопка з чітким посилом, що мотивує натиснути.
+              Щоб користувач не сумнівався, важливо додати елементи довіри:
+              реальні відгуки, кейси, фото, сертифікати, гарантії. Це суттєво
+              підвищує рівень впевненості. А завершальним кроком має стати
+              сильний заклик до дії (CTA): яскрава кнопка з чітким посилом, що
+              мотивує натиснути.
             </RequirementsText>
           </RequirementsCard>
 
@@ -6670,11 +6751,14 @@ const LPRequirementsSection = () => {
             whileInView="visible"
             viewport={{ once: true }}
             whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 300 }}
+            transition={{ type: 'spring', stiffness: 300 }}
           >
             <RequirementsTitle>Оптимізація та простота</RequirementsTitle>
             <RequirementsText>
-              Важливо не перенавантажувати сторінку — мінімум зайвих елементів, максимум фокус на цілі. А ще — технічна оптимізація: швидке завантаження, адаптивність, зручна навігація на будь-якому пристрої.
+              Важливо не перенавантажувати сторінку — мінімум зайвих елементів,
+              максимум фокус на цілі. А ще — технічна оптимізація: швидке
+              завантаження, адаптивність, зручна навігація на будь-якому
+              пристрої.
             </RequirementsText>
           </RequirementsCard>
         </RequirementsGrid>
@@ -6682,5 +6766,29 @@ const LPRequirementsSection = () => {
     </Section>
   );
 };
+
+const LPEffectivenessDivider = styled.div`
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(94, 234, 212, 0.1),
+    transparent
+  );
+  z-index: 1;
+`;
+
+const LPEffectivenessSection = styled(motion.section)`
+  position: relative;
+  background: var(--bg-primary);
+  overflow: hidden;
+  z-index: 1;
+`;
 
 export default LandingPage;
