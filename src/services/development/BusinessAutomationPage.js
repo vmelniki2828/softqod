@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion } from 'framer-motion';
 import {
+  FaMobile,
   FaRocket,
   FaChartLine,
   FaCog,
+  FaAutomobile,
   FaBuilding,
   FaBrain,
   FaClipboardCheck,
@@ -351,6 +353,18 @@ const OrbitingCircleInner = styled(motion.div)`
   border-radius: 50%;
   animation: ${rotate} 15s linear infinite reverse;
   z-index: 0;
+`;
+
+const OrbitingDot = styled(motion.div)`
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #60a5fa 0%, #5eead4 100%);
+  border-radius: 50%;
+  top: ${props => props.top}%;
+  left: ${props => props.left}%;
+  box-shadow: 0 0 20px rgba(94, 234, 212, 0.5);
+  z-index: 10;
 `;
 
 const HeroBenefitsList = styled(motion.div)`
@@ -2186,6 +2200,7 @@ const FaqDecoration = styled.div`
 
 const BusinessAutomationPage = () => {
   const [stars, setStars] = useState([]);
+  const [orbitingDots, setOrbitingDots] = useState([]);
   // Добавляем состояние для аккордеона FAQ
   const [expandedFaqs, setExpandedFaqs] = useState([]);
 
@@ -2213,6 +2228,7 @@ const BusinessAutomationPage = () => {
         left: Math.random() * 100,
       });
     }
+    setOrbitingDots(dots);
   }, []);
 
   const benefitsData = [
