@@ -1,14 +1,12 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaMobile,
   FaRocket,
   FaChartLine,
-  FaWifi,
   FaCog,
   FaShieldAlt,
-  FaBell,
   FaCoins,
   FaPencilRuler,
   FaTools,
@@ -19,6 +17,13 @@ import {
   FaCheck,
   FaBriefcase,
   FaGraduationCap,
+  FaEye,
+  FaLightbulb,
+  FaHeart,
+  FaHandPointer,
+  FaArrowRight,
+  FaSearch,
+  FaCode,
 } from 'react-icons/fa';
 
 // Анимации
@@ -50,23 +55,6 @@ const floatVertical = keyframes`
   100% { transform: translateY(0); }
 `;
 
-const pulseRing = keyframes`
-  0% { transform: scale(0.8); opacity: 0.8; }
-  50% { transform: scale(1.1); opacity: 0.4; }
-  100% { transform: scale(0.8); opacity: 0.8; }
-`;
-
-const circleFloat = keyframes`
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0); }
-`;
-
-const spinGlow = keyframes`
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
-`;
-
 const fadeInScale = keyframes`
   0% { opacity: 0; transform: scale(0.95); }
   100% { opacity: 1; transform: scale(1); }
@@ -75,17 +63,6 @@ const fadeInScale = keyframes`
 const shimmerEffect = keyframes`
   0% { background-position: -100% 0; }
   100% { background-position: 100% 0; }
-`;
-
-const shine = keyframes`
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-`;
-
-const float = keyframes`
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
 `;
 
 // Стилизованные компоненты
@@ -97,6 +74,9 @@ const Container = styled.div`
   color: var(--text-primary);
   position: relative;
   overflow: hidden;
+  padding-bottom: 100px;
+  padding-right: 20px;
+  padding-left: 20px;
 `;
 
 const HeroSection = styled(motion.div)`
@@ -371,18 +351,6 @@ const OrbitingCircleInner = styled(motion.div)`
   z-index: 0;
 `;
 
-const OrbitingDot = styled(motion.div)`
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: linear-gradient(135deg, #60a5fa 0%, #5eead4 100%);
-  border-radius: 50%;
-  top: ${props => props.top}%;
-  left: ${props => props.left}%;
-  box-shadow: 0 0 20px rgba(94, 234, 212, 0.5);
-  z-index: 10;
-`;
-
 const HeroBenefitsList = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -585,547 +553,6 @@ const BackgroundShape = styled(motion.div)`
   z-index: 0;
 `;
 
-// Стилизация новой секции
-const PWABenefitsSection = styled(motion.section)`
-  background: linear-gradient(
-    180deg,
-    var(--bg-primary) 0%,
-    var(--bg-secondary) 100%
-  );
-  position: relative;
-  padding: 8rem 2rem;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 150px;
-    background: linear-gradient(to top, transparent, var(--bg-primary));
-    z-index: 1;
-  }
-`;
-
-const PWABenefitsContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-`;
-
-const PWABenefitsTitle = styled(motion.h2)`
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--accent-color);
-  margin-bottom: 4rem;
-  position: relative;
-  display: inline-block;
-  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 0;
-    width: 120px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent-color), transparent);
-    border-radius: 4px;
-  }
-`;
-
-const PWABenefitCardContainer = styled(motion.div)`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2rem;
-  margin-bottom: 4rem;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const PWABenefitCard = styled(motion.div)`
-  background: rgba(16, 24, 39, 0.6);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(94, 234, 212, 0.05) 0%,
-      transparent 50%
-    );
-    z-index: 0;
-  }
-`;
-
-const PWABenefitIconWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-`;
-
-const PWABenefitIcon = styled.div`
-  width: 60px;
-  height: 60px;
-  border-radius: 14px;
-  background: linear-gradient(
-    135deg,
-    var(--accent-color) 0%,
-    rgba(59, 130, 246, 0.8) 100%
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  color: white;
-  box-shadow: 0 8px 20px rgba(94, 234, 212, 0.3);
-  position: relative;
-  z-index: 1;
-
-  &::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.2) 0%,
-      transparent 100%
-    );
-    border-radius: inherit;
-    z-index: -1;
-  }
-`;
-
-const PWABenefitNumber = styled.span`
-  font-size: 3rem;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.08);
-  font-family: sans-serif;
-`;
-
-const PWABenefitContent = styled.div`
-  position: relative;
-  z-index: 1;
-`;
-
-const PWABenefitCardTitle = styled.h3`
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
-`;
-
-const PWABenefitCardDescription = styled.p`
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
-`;
-
-const PWACtaButton = styled(motion.button)`
-  padding: 1.2rem 3rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  background: linear-gradient(
-    90deg,
-    var(--accent-color),
-    rgba(59, 130, 246, 0.9)
-  );
-  color: white;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  display: block;
-  margin: 0 auto;
-  box-shadow: 0 8px 20px rgba(94, 234, 212, 0.2);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    transition: all 0.6s ease;
-  }
-
-  &:hover::before {
-    left: 100%;
-  }
-`;
-
-const PWABenefitsDecoration = styled.div`
-  position: absolute;
-  top: 10%;
-  right: 5%;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(
-    circle,
-    rgba(94, 234, 212, 0.1) 0%,
-    transparent 70%
-  );
-  border-radius: 50%;
-  filter: blur(40px);
-  z-index: 0;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -50%;
-    left: -30%;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(
-      circle,
-      rgba(59, 130, 246, 0.1) 0%,
-      transparent 70%
-    );
-    border-radius: 50%;
-    filter: blur(40px);
-  }
-`;
-
-// Добавляем стили для секции услуг
-const PWAServicesSection = styled(motion.section)`
-  position: relative;
-  padding: 8rem 2rem;
-  background: linear-gradient(
-    180deg,
-    var(--bg-secondary) 0%,
-    var(--bg-primary) 100%
-  );
-  overflow: hidden;
-`;
-
-const ServicesWave = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background: var(--bg-secondary);
-  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 100%);
-  z-index: 1;
-`;
-
-const PWAServicesContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-`;
-
-const PWAServicesTitle = styled(motion.h2)`
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--accent-color);
-  margin-bottom: 4rem;
-  position: relative;
-  display: inline-block;
-  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 0;
-    width: 120px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent-color), transparent);
-    border-radius: 4px;
-  }
-`;
-
-const PWAServicesContent = styled.div`
-  background: rgba(16, 24, 39, 0.7);
-  backdrop-filter: blur(15px);
-  border-radius: 24px;
-  padding: 3rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(
-      circle,
-      rgba(94, 234, 212, 0.05) 0%,
-      transparent 70%
-    );
-    top: -200px;
-    right: -200px;
-    border-radius: 50%;
-    z-index: 0;
-  }
-`;
-
-const PWAServicesIntro = styled(motion.p)`
-  font-size: 1.3rem;
-  line-height: 1.8;
-  color: var(--text-secondary);
-  margin-bottom: 3rem;
-  position: relative;
-  z-index: 1;
-`;
-
-const ServicesHeading = styled(motion.h3)`
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 2rem;
-  position: relative;
-  z-index: 1;
-`;
-
-const ServicesList = styled(motion.ul)`
-  list-style: none;
-  padding: 0;
-  margin: 0 0 3rem 0;
-  position: relative;
-  z-index: 1;
-`;
-
-const ServiceItem = styled(motion.li)`
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.03);
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.07);
-    transform: translateX(10px);
-  }
-`;
-
-const ServiceIcon = styled.div`
-  margin-right: 1rem;
-  position: relative;
-`;
-
-const ServiceCircle = styled.div`
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent-color) 0%, #3b82f6 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &::before {
-    content: '';
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
-  }
-`;
-
-const ServiceText = styled.p`
-  font-size: 1.15rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
-  flex: 1;
-`;
-
-const PWAServiceSummary = styled(motion.p)`
-  font-size: 1.5rem;
-  font-weight: 500;
-  line-height: 1.7;
-  color: var(--text-primary);
-  padding: 2rem;
-  background: linear-gradient(
-    90deg,
-    rgba(94, 234, 212, 0.1),
-    rgba(59, 130, 246, 0.1)
-  );
-  border-radius: 12px;
-  margin: 2rem 0 3rem;
-  position: relative;
-  z-index: 1;
-
-  &::before {
-    content: '"';
-    position: absolute;
-    top: 10px;
-    left: 15px;
-    font-size: 4rem;
-    color: rgba(94, 234, 212, 0.2);
-    font-family: serif;
-  }
-
-  &::after {
-    content: '"';
-    position: absolute;
-    bottom: 10px;
-    right: 15px;
-    font-size: 4rem;
-    color: rgba(94, 234, 212, 0.2);
-    font-family: serif;
-  }
-`;
-
-const ServiceActions = styled(motion.div)`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-  align-items: center;
-  margin-top: 3rem;
-  position: relative;
-  z-index: 1;
-`;
-
-const ServiceButton = styled(motion.button)`
-  padding: 1.2rem 3rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  background: linear-gradient(
-    90deg,
-    var(--accent-color),
-    rgba(59, 130, 246, 0.9)
-  );
-  color: white;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 0 8px 25px rgba(94, 234, 212, 0.3);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    transition: all 0.6s ease;
-  }
-
-  &:hover::before {
-    left: 100%;
-  }
-`;
-
-const ServiceLink = styled(motion.a)`
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    color: var(--accent-color);
-  }
-`;
-
-const ServicesBgDecoration = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: radial-gradient(
-      circle at 20% 30%,
-      rgba(94, 234, 212, 0.03) 0%,
-      transparent 25%
-    ),
-    radial-gradient(
-      circle at 80% 70%,
-      rgba(59, 130, 246, 0.03) 0%,
-      transparent 25%
-    );
-  z-index: 0;
-`;
-
-const ServicesBgGlow = styled.div`
-  position: absolute;
-  bottom: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 500px;
-  height: 300px;
-  background: radial-gradient(
-    ellipse,
-    rgba(94, 234, 212, 0.1) 0%,
-    transparent 70%
-  );
-  border-radius: 50%;
-  filter: blur(50px);
-  z-index: 0;
-`;
-
-// Добавляем стили для секции "Почему мы"
-const PWAWhyUsSection = styled(motion.section)`
-  position: relative;
-  padding: 8rem 2rem;
-  background: linear-gradient(
-    180deg,
-    var(--bg-primary) 0%,
-    rgba(16, 24, 39, 1) 100%
-  );
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(
-        circle at 20% 30%,
-        rgba(94, 234, 212, 0.05) 0%,
-        transparent 20%
-      ),
-      radial-gradient(
-        circle at 80% 70%,
-        rgba(59, 130, 246, 0.05) 0%,
-        transparent 20%
-      );
-    top: 0;
-    left: 0;
-    z-index: 0;
-  }
-`;
 
 // Основной компонент
 const LandingPage = () => {
@@ -1133,6 +560,30 @@ const LandingPage = () => {
   const [backgroundShapes, setBackgroundShapes] = useState([]);
   // Добавляем состояние для аккордеона FAQ
   const [expandedFaqs, setExpandedFaqs] = useState([]);
+
+  const handleMouseMove = useCallback((e, element) => {
+    const rect = element.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / element.clientWidth) * 100;
+    const y = ((e.clientY - rect.top) / element.clientHeight) * 100;
+    element.style.setProperty('--mouse-x', `${x}%`);
+    element.style.setProperty('--mouse-y', `${y}%`);
+  }, []);
+
+  useEffect(() => {
+    const cards = document.querySelectorAll('.creation-step-card');
+
+    const addMouseEvent = card => {
+      card.addEventListener('mousemove', e => handleMouseMove(e, card));
+    };
+
+    cards.forEach(addMouseEvent);
+
+    return () => {
+      cards.forEach(card => {
+        card.removeEventListener('mousemove', e => handleMouseMove(e, card));
+      });
+    };
+  }, [handleMouseMove]);
 
   useEffect(() => {
     // Генерация звезд для фона
@@ -1172,143 +623,6 @@ const LandingPage = () => {
       setExpandedFaqs([...expandedFaqs, index]);
     }
   };
-
-  const benefitsData = [
-    {
-      icon: <FaChartLine />,
-      title: 'Більше клієнтів',
-      description:
-        'Завдяки PWA доступ до вашого продукту стає простішим, що збільшує охоплення аудиторії.',
-    },
-    {
-      icon: <FaMobile />,
-      title: 'Краще юзер-експірієнс',
-      description:
-        'Швидкість, зручність та інтуїтивний інтерфейс забезпечують найкращий досвід користувача.',
-    },
-    {
-      icon: <FaRocket />,
-      title: 'Швидший шлях до прибутку',
-      description:
-        'Економія на розробці нативних додатків та швидше введення продукту на ринок.',
-    },
-    {
-      icon: <FaWifi />,
-      title: 'Офлайн-режим',
-      description:
-        "PWA доступні навіть за відсутності інтернет-з'єднання завдяки кешуванню.",
-    },
-    {
-      icon: <FaCog />,
-      title: 'Автоматичні оновлення',
-      description:
-        'Користувачі завжди отримують найновішу версію без необхідності ручного оновлення.',
-    },
-    {
-      icon: <FaShieldAlt />,
-      title: 'Підвищена безпека',
-      description:
-        "HTTPS-з'єднання та додаткові рівні захисту для користувача та його даних.",
-    },
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.8, ease: 'easeOut' },
-    },
-  };
-
-  const phoneVariants = {
-    initial: { rotateY: 0 },
-    animate: {
-      rotateY: 360,
-      transition: {
-        duration: 20,
-        repeat: Infinity,
-        ease: 'linear',
-      },
-    },
-  };
-
-  // Новый блок-аргументация эффективности Landing Page
-  const lpEffectData = [
-    {
-      icon: '🎯',
-      title: 'Фокус на результат',
-      desc: 'Лендінг веде користувача до однієї цільової дії, що підвищує конверсію та зменшує відволікання.',
-    },
-    {
-      icon: '⚡',
-      title: 'Швидкість запуску',
-      desc: 'Односторінкові сайти створюються та запускаються швидше, що дозволяє оперативно реагувати на ринок.',
-    },
-    {
-      icon: '📱',
-      title: 'Адаптивність',
-      desc: 'Лендінги ідеально виглядають на будь-яких пристроях, забезпечуючи зручність для всіх користувачів.',
-    },
-    {
-      icon: '🔍',
-      title: 'SEO та аналітика',
-      desc: 'Сучасні лендінги оптимізовані для пошукових систем і легко інтегруються з аналітикою.',
-    },
-    {
-      icon: '💡',
-      title: 'Яскравий дизайн',
-      desc: 'Кожен лендінг — це унікальний стиль, що запам`ятовується та підкреслює ваш бренд.',
-    },
-    {
-      icon: '💬',
-      title: 'Взаємодія з клієнтом',
-      desc: 'Форми, чати, інтеграції — все для швидкого контакту з потенційним клієнтом.',
-    },
-  ];
-
-  const conversionData = [
-    {
-      icon: "🎯",
-      title: "Чітка структура",
-      text: "Кожен блок логічно пов'язаний з наступним, ведучи відвідувача до цільової дії"
-    },
-    {
-      icon: "💎",
-      title: "Візуальні акценти",
-      text: "Ключові елементи виділені так, щоб привертати увагу та підштовхувати до конверсії"
-    },
-    {
-      icon: "⚡",
-      title: "Швидкість роботи",
-      text: "Оптимізована швидкість завантаження утримує відвідувачів на сайті"
-    },
-    {
-      icon: "📱",
-      title: "Адаптивність",
-      text: "Ідеальне відображення на всіх пристроях збільшує конверсію з мобільного трафіку"
-    },
-    {
-      icon: "🎨",
-      title: "Продуманий дизайн",
-      text: "Сучасна естетика викликає довіру та підвищує конверсію"
-    },
-    {
-      icon: "📊",
-      title: "Аналітика та A/B",
-      text: "Постійне тестування та оптимізація для максимальної ефективності"
-    }
-  ];
 
   return (
     <Container>
@@ -1579,18 +893,19 @@ const LandingPage = () => {
           >
             Чим лендінг відрізняється від багатосторінкового сайту
           </LandingVsTitle>
-          
+
           <LandingVsQuote
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             <QuoteIcon>💡</QuoteIcon>
-            Головна відмінність лендінгу — фокус. На відміну від багатосторінкових сайтів, 
-            які розпорошують увагу між десятками сторінок, лендінг веде користувача по логічному 
-            шляху до однієї цільової дії. Це збільшує шанси, що відвідувач стане вашим клієнтом.
+            Головна відмінність лендінгу — фокус. На відміну від
+            багатосторінкових сайтів, які розпорошують увагу між десятками
+            сторінок, лендінг веде користувача по логічному шляху до однієї
+            цільової дії. Це збільшує шанси, що відвідувач стане вашим клієнтом.
           </LandingVsQuote>
-          
+
           <LandingVsGrid>
             <VsCol
               initial={{ opacity: 0, x: -30 }}
@@ -1606,21 +921,17 @@ const LandingPage = () => {
                 <VsListItem>
                   Одна сторінка — один чіткий шлях для користувача
                 </VsListItem>
-                <VsListItem>
-                  Всі елементи ведуть до цільової дії
-                </VsListItem>
+                <VsListItem>Всі елементи ведуть до цільової дії</VsListItem>
                 <VsListItem>
                   Висока конверсія завдяки фокусу на результат
                 </VsListItem>
-                <VsListItem>
-                  Швидкий запуск та легке тестування
-                </VsListItem>
+                <VsListItem>Швидкий запуск та легке тестування</VsListItem>
                 <VsListItem>
                   Ідеально для реклами та швидких продажів
                 </VsListItem>
               </VsList>
             </VsCol>
-            
+
             <VsCol
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -1635,9 +946,7 @@ const LandingPage = () => {
                 <VsListItem>
                   Розгалужена структура з багатьма сторінками
                 </VsListItem>
-                <VsListItem>
-                  Розширений функціонал та можливості
-                </VsListItem>
+                <VsListItem>Розширений функціонал та можливості</VsListItem>
                 <VsListItem>
                   Складніша навігація та довший шлях до цілі
                 </VsListItem>
@@ -1652,7 +961,6 @@ const LandingPage = () => {
           </LandingVsGrid>
         </LandingVsContainer>
       </LandingVsMultiSection>
-      
       <LPConversionBenefitsSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -1666,15 +974,19 @@ const LandingPage = () => {
           >
             Як правильно побудований лендінг допомагає збільшити конверсію
           </ConversionBenefitsTitle>
-          
+
           <ConversionBenefitsDescription
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Стратегічно спроєктований лендінг враховує потреби цільової аудиторії, вирішує її болі та підводить до прийняття рішення. Від грамотного заголовка до переконливого заклику до дії — кожен елемент працює на результат. Саме тому ефективний лендинг — це не просто сайт, а інструмент зростання прибутку.
+            Стратегічно спроєктований лендінг враховує потреби цільової
+            аудиторії, вирішує її болі та підводить до прийняття рішення. Від
+            грамотного заголовка до переконливого заклику до дії — кожен елемент
+            працює на результат. Саме тому ефективний лендинг — це не просто
+            сайт, а інструмент зростання прибутку.
           </ConversionBenefitsDescription>
-          
+
           <ConversionBenefitsSubtitle
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -1682,12 +994,12 @@ const LandingPage = () => {
           >
             Переваги замовлення професійного лендингу
           </ConversionBenefitsSubtitle>
-          
+
           <ConversionBenefitsList>
             {[
               {
                 icon: <FaPencilRuler />,
-                text: "Індивідуальний підхід до вашого бізнесу",
+                text: 'Індивідуальний підхід до вашого бізнесу',
               },
               {
                 icon: <FaChartLine />,
@@ -1695,15 +1007,15 @@ const LandingPage = () => {
               },
               {
                 icon: <FaBolt />,
-                text: "Висока швидкість завантаження й адаптивність",
+                text: 'Висока швидкість завантаження й адаптивність',
               },
               {
                 icon: <FaTools />,
-                text: "SEO-оптимізація для просування в Google",
+                text: 'SEO-оптимізація для просування в Google',
               },
               {
                 icon: <FaChartLine />,
-                text: "Підключення аналітики й готовність до реклами",
+                text: 'Підключення аналітики й готовність до реклами',
               },
             ].map((advantage, index) => (
               <ConversionBenefitsItem
@@ -1711,31 +1023,38 @@ const LandingPage = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                whileHover={{ scale: 1.02, boxShadow: '0 8px 20px rgba(94, 234, 212, 0.1)' }}
+                whileHover={{
+                  scale: 1.02,
+                  boxShadow: '0 8px 20px rgba(94, 234, 212, 0.1)',
+                }}
               >
                 <ConversionBenefitsIcon>
                   {advantage.icon}
                 </ConversionBenefitsIcon>
-                <ConversionBenefitsText>{advantage.text}</ConversionBenefitsText>
+                <ConversionBenefitsText>
+                  {advantage.text}
+                </ConversionBenefitsText>
               </ConversionBenefitsItem>
             ))}
           </ConversionBenefitsList>
-          
+
           <ConversionBenefitsButton
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.9 }}
-            whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(94, 234, 212, 0.2)' }}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: '0 10px 25px rgba(94, 234, 212, 0.2)',
+            }}
             whileTap={{ scale: 0.98 }}
           >
             Замовити лендінг
           </ConversionBenefitsButton>
         </ConversionBenefitsContainer>
-        
+
         <ConversionBenefitsBgCircle className="circle-left" />
         <ConversionBenefitsBgCircle className="circle-right" />
       </LPConversionBenefitsSection>
-      
       <LPWhyEffectiveSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -1747,9 +1066,10 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Чому Landing Page — це найефективніший інструмент для залучення клієнтів?
+            Чому Landing Page — це найефективніший інструмент для залучення
+            клієнтів?
           </LPWhyEffectiveTitle>
-          
+
           <LPWhyEffectiveSubtitle
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -1757,22 +1077,25 @@ const LandingPage = () => {
           >
             Як односторінковий сайт фокусується на конкретній дії користувача
           </LPWhyEffectiveSubtitle>
-          
+
           <LPWhyEffectiveDescription
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Landing Page створюється з чіткою метою: зацікавити, переконати й спонукати користувача виконати певну дію — залишити заявку, зателефонувати, придбати товар. Завдяки мінімуму відволікаючих елементів і чіткій структурі, односторінкові сайти досягають вищої конверсії, ніж класичні багатосторінкові сайти.
+            Landing Page створюється з чіткою метою: зацікавити, переконати й
+            спонукати користувача виконати певну дію — залишити заявку,
+            зателефонувати, придбати товар. Завдяки мінімуму відволікаючих
+            елементів і чіткій структурі, односторінкові сайти досягають вищої
+            конверсії, ніж класичні багатосторінкові сайти.
           </LPWhyEffectiveDescription>
-          
+
           <LPWhyEffectiveDecoration />
         </LPWhyEffectiveContainer>
-        
+
         <LPWhyEffectiveBgCircle className="circle-left" />
         <LPWhyEffectiveBgCircle className="circle-right" />
       </LPWhyEffectiveSection>
-      
       <LPBusinessBenefitSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -1786,7 +1109,7 @@ const LandingPage = () => {
           >
             Які бізнеси отримують найбільше користі від лендингів
           </LPBusinessBenefitSubtitle>
-          
+
           <LPBusinessBenefitText
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -1794,32 +1117,32 @@ const LandingPage = () => {
           >
             Лендінги ідеально підходять для:
           </LPBusinessBenefitText>
-          
+
           <LPBusinessBenefitList>
             {[
               {
                 icon: <FaBriefcase />,
                 title: 'Послуг',
                 text: 'юридичних, косметологічних, будівельних тощо',
-                color: '#5eead4'
+                color: '#5eead4',
               },
               {
                 icon: <FaGraduationCap />,
                 title: 'Онлайн-курсів',
                 text: 'та різноманітних інфопродуктів',
-                color: '#60a5fa'
+                color: '#60a5fa',
               },
               {
                 icon: <FaShoppingCart />,
                 title: 'Продажу товарів',
                 text: 'окремих продуктів або нових колекцій',
-                color: '#f472b6'
+                color: '#f472b6',
               },
               {
                 icon: <FaRocket />,
                 title: 'Промо-акцій',
                 text: 'та запуску перспективних стартапів',
-                color: '#818cf8'
+                color: '#818cf8',
               },
             ].map((item, index) => (
               <LPBusinessBenefitItem
@@ -1827,9 +1150,13 @@ const LandingPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                whileHover={{ 
-                  y: -5, 
-                  boxShadow: `0 10px 25px rgba(${item.color.replace('#', '').match(/.{2}/g).map(hex => parseInt(hex, 16)).join(', ')}, 0.2)` 
+                whileHover={{
+                  y: -5,
+                  boxShadow: `0 10px 25px rgba(${item.color
+                    .replace('#', '')
+                    .match(/.{2}/g)
+                    .map(hex => parseInt(hex, 16))
+                    .join(', ')}, 0.2)`,
                 }}
                 color={item.color}
               >
@@ -1837,25 +1164,380 @@ const LandingPage = () => {
                   {item.icon}
                 </LPBusinessBenefitIconWrapper>
                 <LPBusinessBenefitItemContent>
-                  <LPBusinessBenefitItemTitle>{item.title}</LPBusinessBenefitItemTitle>
-                  <LPBusinessBenefitItemText>{item.text}</LPBusinessBenefitItemText>
+                  <LPBusinessBenefitItemTitle>
+                    {item.title}
+                  </LPBusinessBenefitItemTitle>
+                  <LPBusinessBenefitItemText>
+                    {item.text}
+                  </LPBusinessBenefitItemText>
                 </LPBusinessBenefitItemContent>
               </LPBusinessBenefitItem>
             ))}
           </LPBusinessBenefitList>
-          
+
           <LPBusinessBenefitSummary
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
-            Фактично, будь-який бізнес, що має конкретну цільову аудиторію та чітку пропозицію, виграє від використання лендінгу.
+            Фактично, будь-який бізнес, що має конкретну цільову аудиторію та
+            чітку пропозицію, виграє від використання лендінгу.
           </LPBusinessBenefitSummary>
-          
+
           <LPBusinessBenefitDecoration />
         </LPBusinessBenefitContainer>
       </LPBusinessBenefitSection>
+      <LPEffectivenessSection
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <LPEffectivenessDivider />
+        <Container>
+          <Title
+            as="h2"
+            style={{
+              color: 'var(--accent-color)',
+              WebkitTextFillColor: 'var(--accent-color)',
+              marginBottom: '3rem',
+              textAlign: 'center',
+            }}
+          >
+            Чому Landing Page — це найефективніший інструмент для залучення
+            клієнтів?
+          </Title>
 
+          <LPEffectivenessBanner
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <LPEffectivenessBannerIcon>🚀</LPEffectivenessBannerIcon>
+            <LPEffectivenessBannerText>
+              Односторінковий сайт, який перетворює відвідувачів у клієнтів
+            </LPEffectivenessBannerText>
+          </LPEffectivenessBanner>
+
+          <LPEffectivenessText
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            Landing Page створюється з чіткою метою: зацікавити, переконати й
+            спонукати користувача виконати певну дію — залишити заявку,
+            зателефонувати, придбати товар. Завдяки мінімуму відволікаючих
+            елементів і чіткій структурі, односторінкові сайти досягають вищої
+            конверсії, ніж класичні багатосторінкові сайти.
+          </LPEffectivenessText>
+
+          <LPEffectivenessGraphic
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <LPEffectivenessConversionFlow>
+              {[
+                {
+                  title: 'Привернення уваги',
+                  icon: <FaEye />,
+                  color: '#5eead4',
+                },
+                {
+                  title: 'Утримання інтересу',
+                  icon: <FaLightbulb />,
+                  color: '#60a5fa',
+                },
+                {
+                  title: 'Формування бажання',
+                  icon: <FaHeart />,
+                  color: '#f472b6',
+                },
+                {
+                  title: 'Спонукання до дії',
+                  icon: <FaHandPointer />,
+                  color: '#818cf8',
+                },
+              ].map((step, index) => (
+                <LPEffectivenessConversionStep
+                  key={index}
+                  whileHover={{
+                    y: -10,
+                    boxShadow: `0 15px 30px rgba(${step.color
+                      .replace('#', '')
+                      .match(/.{2}/g)
+                      .map(hex => parseInt(hex, 16))
+                      .join(', ')}, 0.2)`,
+                  }}
+                  color={step.color}
+                >
+                  <LPEffectivenessStepNumber color={step.color}>
+                    {step.number}
+                  </LPEffectivenessStepNumber>
+                  <LPEffectivenessStepTitle>
+                    {step.title}
+                  </LPEffectivenessStepTitle>
+                  <LPEffectivenessStepIcon color={step.color}>
+                    {step.icon}
+                  </LPEffectivenessStepIcon>
+                  {index < 3 && <LPEffectivenessStepConnector />}
+                </LPEffectivenessConversionStep>
+              ))}
+            </LPEffectivenessConversionFlow>
+          </LPEffectivenessGraphic>
+
+          <LPEffectivenessStatsTitle
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            Реальні переваги лендінгів у цифрах
+          </LPEffectivenessStatsTitle>
+
+          <LPEffectivenessStats>
+            {[
+              {
+                value: '+75%',
+                label: 'Збільшення конверсії',
+                icon: <FaChartLine />,
+                color: '#5eead4',
+              },
+              {
+                value: '-50%',
+                label: 'Менша вартість залучення клієнта',
+                icon: <FaCoins />,
+                color: '#60a5fa',
+              },
+              {
+                value: 'x3',
+                label: 'Швидше введення на ринок',
+                icon: <FaRocket />,
+                color: '#f472b6',
+              },
+            ].map((stat, index) => (
+              <LPEffectivenessStatCard
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                whileHover={{
+                  y: -5,
+                  boxShadow: `0 15px 30number: "04",px rgba(${stat.color
+                    .replace('#', '')
+                    .match(/.{2}/g)
+                    .map(hex => parseInt(hex, 16))
+                    .join(', ')}, 0.2)`,
+                }}
+                color={stat.color}
+              >
+                <LPEffectivenessStatValue color={stat.color}>
+                  {stat.value}
+                </LPEffectivenessStatValue>
+                <LPEffectivenessStatLabel>
+                  {stat.label}
+                </LPEffectivenessStatLabel>
+                <LPEffectivenessStatIcon color={stat.color}>
+                  {stat.icon}
+                </LPEffectivenessStatIcon>
+                <LPEffectivenessStatShine />
+              </LPEffectivenessStatCard>
+            ))}
+          </LPEffectivenessStats>
+
+          <LPEffectivenessAdvantages
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.9 }}
+          >
+            <LPEffectivenessAdvantagesTitle>
+              Ключові переваги лендингу перед звичайними сайтами
+            </LPEffectivenessAdvantagesTitle>
+
+            <LPEffectivenessAdvantagesList>
+              {[
+                {
+                  text: '<strong>Одна мета</strong> — користувач не відволікається на другорядну інформацію',
+                },
+                {
+                  text: '<strong>Чітка структура</strong> — кожний блок логічно підводить до цільової дії',
+                },
+                {
+                  text: '<strong>Спрощена аналітика</strong> — легше відстежувати поведінку користувача',
+                },
+                {
+                  text: '<strong>A/B тестування</strong> — можливість швидко перевіряти різні гіпотези',
+                },
+              ].map((item, index) => (
+                <LPEffectivenessAdvantagesItem
+                  key={index}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
+                  whileHover={{ scale: 1.03, y: -5 }}
+                >
+                  <LPEffectivenessAdvantagesCheck>
+                    <FaCheck />
+                  </LPEffectivenessAdvantagesCheck>
+                  <LPEffectivenessAdvantagesText
+                    dangerouslySetInnerHTML={{ __html: item.text }}
+                  />
+                </LPEffectivenessAdvantagesItem>
+              ))}
+            </LPEffectivenessAdvantagesList>
+          </LPEffectivenessAdvantages>
+
+          <LPEffectivenessQuote
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 1.2 }}
+            whileHover={{
+              boxShadow: '0 20px 40px rgba(94, 234, 212, 0.2)',
+              scale: 1.02,
+            }}
+          >
+            <LPEffectivenessQuoteIcon>💡</LPEffectivenessQuoteIcon>
+            <LPEffectivenessQuoteText>
+              Лендінг — це не просто сторінка, а конверсійна воронка, де кожен
+              елемент має свою роль у перетворенні відвідувача в клієнта
+            </LPEffectivenessQuoteText>
+          </LPEffectivenessQuote>
+
+          <LPEffectivenessCTA
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.3 }}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: '0 15px 30px rgba(94, 234, 212, 0.3)',
+            }}
+            whileTap={{ scale: 0.98 }}
+          >
+            Замовити ефективний лендінг
+            <LPEffectivenessCTAArrow>
+              <FaArrowRight />
+            </LPEffectivenessCTAArrow>
+          </LPEffectivenessCTA>
+        </Container>
+      </LPEffectivenessSection>
+      <LPCreationSection
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <LPCreationDivider />
+        <LPCreationBackground>
+          <LPCreationPattern />
+        </LPCreationBackground>
+        <LPCreationContainer>
+          <LPCreationTitle
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Як ми створюємо лендінг, що перетворює відвідувачів у покупців{' '}
+          </LPCreationTitle>{' '}
+          <LPCreationContent>
+            {' '}
+            <LPCreationSteps>
+              {' '}
+              {[
+                {
+                  icon: <FaSearch />,
+                  title: 'Аналіз та стратегія',
+                  text: 'Вивчаємо ваш бізнес, конкурентів і цільову аудиторію для формування чіткої стратегії',
+                },
+                {
+                  icon: <FaPencilRuler />,
+                  title: 'Дизайн та прототип',
+                  text: 'Створюємо унікальний дизайн, що відображає ваш бренд, та розробляємо прототип з фокусом на конверсію',
+                },
+                {
+                  icon: <FaCode />,
+                  title: 'Розробка',
+                  text: 'Верстаємо адаптивний лендінг з сучасними анімаціями та оптимізуємо швидкість і продуктивність',
+                },
+                {
+                  icon: <FaRocket />,
+                  title: 'Запуск та аналітика',
+                  text: 'Налаштовуємо аналітику, тестуємо всі елементи та запускаємо лендінг з подальшою підтримкою',
+                },
+              ].map((step, index) => (
+                <LPCreationStep
+                  key={index}
+                  className="creation-step-card"
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                >
+                  {' '}
+                  <LPCreationStepHeader>
+                    {' '}
+                    <LPCreationStepNumber>
+                      {(index + 1).toString().padStart(2, '0')}
+                    </LPCreationStepNumber>{' '}
+                    <LPCreationStepIcon className="step-icon">
+                      {step.icon}
+                    </LPCreationStepIcon>{' '}
+                  </LPCreationStepHeader>{' '}
+                  <LPCreationStepTitle>{step.title}</LPCreationStepTitle>{' '}
+                  <LPCreationStepText>{step.text}</LPCreationStepText>{' '}
+                </LPCreationStep>
+              ))}{' '}
+            </LPCreationSteps>{' '}
+            <LPCreationVisual
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+            >
+              {' '}
+              <LPCreationCards
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
+                {' '}
+                {[
+                  {
+                    icon: '🎯',
+                    title: 'Чітка структура',
+                    text: 'Логічна послідовність блоків, що ведуть до цільової дії',
+                  },
+                  {
+                    icon: '💡',
+                    title: 'Унікальний дизайн',
+                    text: 'Креативні рішення, що виділяють вас серед конкурентів',
+                  },
+                  {
+                    icon: '⚡',
+                    title: 'Швидкість роботи',
+                    text: 'Оптимізована швидкість завантаження та відгуку',
+                  },
+                  {
+                    icon: '📱',
+                    title: 'Адаптивність',
+                    text: 'Ідеальне відображення на всіх пристроях',
+                  },
+                ].map((card, index) => (
+                  <LPCreationCard
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                    whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                  >
+                    {' '}
+                    <LPCreationCardIcon>{card.icon}</LPCreationCardIcon>{' '}
+                    <LPCreationCardTitle>{card.title}</LPCreationCardTitle>{' '}
+                    <LPCreationCardText>{card.text}</LPCreationCardText>{' '}
+                  </LPCreationCard>
+                ))}{' '}
+              </LPCreationCards>{' '}
+            </LPCreationVisual>{' '}
+          </LPCreationContent>{' '}
+        </LPCreationContainer>{' '}
+      </LPCreationSection>
+      <LPRequirementsSection />
+      <LPOfferSection />
       <PWACtaSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -2348,374 +2030,6 @@ const CtaDecoration = styled.div`
   }
 `;
 
-// Добавляем компоненты для секции "Чому варто обрати нас?"
-const WhyUsDiagonal = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 150px;
-  clip-path: polygon(0 0, 100% 0, 0 100%);
-  background: linear-gradient(135deg, var(--bg-primary) 0%, transparent 70%);
-  opacity: 0.5;
-  z-index: 1;
-`;
-
-const WhyUsContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-`;
-
-const WhyUsTitle = styled(motion.h2)`
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--accent-color);
-  margin-bottom: 4rem;
-  position: relative;
-  display: inline-block;
-  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 0;
-    width: 120px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent-color), transparent);
-    border-radius: 4px;
-  }
-`;
-
-const WhyUsCardsContainer = styled(motion.div)`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  padding: 1.5rem 0.5rem;
-
-  @media (max-width: 768px) {
-    padding-bottom: 2rem;
-    gap: 1.5rem;
-  }
-`;
-
-const WhyUsCard = styled(motion.div)`
-  background: rgba(16, 24, 39, 0.8);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 2.5rem 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  transition: all 0.3s ease;
-  overflow: hidden;
-  z-index: 1;
-  text-align: center;
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  width: calc(25% - 1.5rem);
-  min-width: 250px;
-  max-width: 300px;
-
-  @media (max-width: 1200px) {
-    width: calc(33.333% - 1.5rem);
-  }
-
-  @media (max-width: 992px) {
-    width: calc(50% - 1.5rem);
-  }
-
-  @media (max-width: 576px) {
-    width: 100%;
-    max-width: 350px;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: linear-gradient(
-      90deg,
-      var(--accent-color),
-      rgba(59, 130, 246, 0.8)
-    );
-    z-index: 0;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-  }
-
-  &:hover::before {
-    transform: scaleX(1);
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 70%;
-    background: linear-gradient(to top, rgba(94, 234, 212, 0.03), transparent);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-
-  &:hover::after {
-    opacity: 1;
-  }
-`;
-
-const WhyUsCardGlow = styled.div`
-  position: absolute;
-  width: 150%;
-  height: 150%;
-  top: -25%;
-  left: -25%;
-  background: radial-gradient(
-    circle,
-    rgba(94, 234, 212, 0.06) 0%,
-    transparent 70%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.5s ease;
-  z-index: -1;
-  transform: scale(0.8);
-
-  ${WhyUsCard}:hover & {
-    opacity: 1;
-    transform: scale(1);
-  }
-`;
-
-const WhyUsIconWrapper = styled.div`
-  font-size: 2.5rem;
-  color: var(--accent-color);
-  margin-bottom: 1.5rem;
-  width: 80px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 20px;
-  position: relative;
-  animation: ${pulse} 3s infinite ease-in-out;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  transform: translateZ(20px);
-  transition: transform 0.3s ease;
-
-  ${WhyUsCard}:hover & {
-    transform: translateZ(30px) scale(1.1);
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    border: 1px dashed rgba(94, 234, 212, 0.3);
-    animation: ${pulse} 3s infinite ease-in-out 1.5s;
-  }
-`;
-
-const WhyUsCardTitle = styled.h3`
-  font-size: 1.4rem;
-  color: var(--text-primary);
-  margin-bottom: 1.2rem;
-  font-weight: 600;
-  position: relative;
-  transform: translateZ(10px);
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 2px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--accent-color),
-      transparent
-    );
-    border-radius: 2px;
-  }
-`;
-
-const WhyUsCardDescription = styled.p`
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
-  margin-top: 1rem;
-  transform: translateZ(5px);
-`;
-
-const CardAccent = styled.div`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 60px;
-  height: 60px;
-  border-radius: 0 0 20px 0;
-  background: linear-gradient(
-    135deg,
-    transparent 50%,
-    rgba(94, 234, 212, 0.1) 50%
-  );
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  transform: scale(0);
-
-  ${WhyUsCard}:hover & {
-    opacity: 1;
-    transform: scale(1);
-  }
-`;
-
-const WhyUsAction = styled(motion.div)`
-  display: flex;
-  justify-content: center;
-  margin-top: 4rem;
-`;
-
-const PulsingButton = styled(motion.button)`
-  padding: 1.2rem 3.5rem;
-  font-size: 1.3rem;
-  font-weight: 600;
-  background: linear-gradient(
-    90deg,
-    var(--accent-color),
-    rgba(59, 130, 246, 0.9)
-  );
-  color: white;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  box-shadow: 0 8px 25px rgba(94, 234, 212, 0.3);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(
-      circle,
-      rgba(255, 255, 255, 0.2) 0%,
-      transparent 60%
-    );
-    z-index: -1;
-    animation: ${pulseRing} 4s infinite;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.3),
-      transparent
-    );
-    transition: all 0.6s ease;
-  }
-
-  &:hover::after {
-    left: 100%;
-  }
-
-  .glow-effect {
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: conic-gradient(
-      from 0deg,
-      transparent,
-      rgba(94, 234, 212, 0.3),
-      transparent
-    );
-    border-radius: 50%;
-    animation: ${spinGlow} 3s linear infinite;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  &:hover .glow-effect {
-    opacity: 1;
-  }
-`;
-
-const WhyUsBackgroundShapes = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 0;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    z-index: 0;
-  }
-
-  &::before {
-    top: 20%;
-    left: -100px;
-    background: radial-gradient(
-      circle,
-      rgba(59, 130, 246, 0.03) 0%,
-      transparent 70%
-    );
-    filter: blur(50px);
-    animation: ${circleFloat} 8s ease-in-out infinite;
-  }
-
-  &::after {
-    bottom: 10%;
-    right: -100px;
-    background: radial-gradient(
-      circle,
-      rgba(94, 234, 212, 0.03) 0%,
-      transparent 70%
-    );
-    filter: blur(50px);
-    animation: ${circleFloat} 8s ease-in-out infinite 4s;
-  }
-`;
-
 // Стили для блока FAQ
 const PWAFaqSection = styled(motion.section)`
   position: relative;
@@ -3188,7 +2502,7 @@ const LandingVsMultiSection = styled(motion.section)`
     var(--bg-primary) 100%
   );
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -3234,7 +2548,7 @@ const LandingVsTitle = styled(motion.h2)`
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2.2rem;
   }
@@ -3250,7 +2564,7 @@ const LandingVsQuote = styled(motion.div)`
   margin-bottom: 3rem;
   position: relative;
   border: 1px solid rgba(94, 234, 212, 0.1);
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -3280,7 +2594,7 @@ const LandingVsGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  
+
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -3294,7 +2608,7 @@ const VsCol = styled(motion.div)`
   padding: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-5px);
     border-color: rgba(94, 234, 212, 0.3);
@@ -3333,7 +2647,7 @@ const VsListItem = styled.li`
   padding-left: 2rem;
   position: relative;
   line-height: 1.6;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -3345,1377 +2659,10 @@ const VsListItem = styled.li`
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(94, 234, 212, 0.5);
   }
-  
+
   &:hover::before {
     animation: ${pulse} 2s infinite;
   }
-`;
-
-// Conversion styled-components
-const ConversionSection = styled(motion.section)`
-  position: relative;
-  padding: 7rem 2rem;
-  background: linear-gradient(135deg, var(--bg-primary) 0%, #0f1729 100%);
-  overflow: hidden;
-  z-index: 1;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(94, 234, 212, 0.15) 0%, transparent 70%);
-    pointer-events: none;
-    animation: pulse 4s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0% { opacity: 0.5; }
-    50% { opacity: 0.8; }
-    100% { opacity: 0.5; }
-  }
-`;
-
-const ConversionContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-`;
-
-const ConversionTitle = styled(motion.h2)`
-  font-size: 2.8rem;
-  font-weight: 800;
-  text-align: center;
-  margin-bottom: 3rem;
-  background: linear-gradient(135deg, #fff 0%, #5eead4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 4px rgba(94, 234, 212, 0.3));
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, #5eead4, transparent);
-    border-radius: 2px;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 2.2rem;
-  }
-`;
-
-const ConversionQuote = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(94, 234, 212, 0.2);
-  border-radius: 24px;
-  padding: 2.5rem;
-  margin: 0 auto 4rem auto;
-  max-width: 900px;
-  position: relative;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(94, 234, 212, 0.1);
-    border-color: #5eead4;
-  }
-  
-  &::before, &::after {
-    content: '"';
-    position: absolute;
-    font-size: 4rem;
-    color: #5eead4;
-    opacity: 0.5;
-    transition: all 0.3s ease;
-  }
-
-  &:hover::before, &:hover::after {
-    color: #fff;
-    text-shadow: 0 0 15px #5eead4;
-  }
-
-  &::before {
-    top: 1rem;
-    left: 1.5rem;
-  }
-
-  &::after {
-    bottom: 0;
-    right: 1.5rem;
-  }
-`;
-
-const ConversionQuoteText = styled.p`
-  font-size: 1.2rem;
-  line-height: 1.8;
-  color: #e0f2fe;
-  text-align: center;
-  margin: 0;
-  position: relative;
-  z-index: 1;
-`;
-
-const ConversionGrid = styled(motion.div)`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 4rem;
-`;
-
-const ConversionCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 20px;
-  padding: 2rem;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  border: 1px solid transparent;
-  backdrop-filter: blur(10px);
-
-  &:hover {
-    transform: translateY(-5px) scale(1.02);
-    border: 1px solid #5eead4;
-    background: rgba(94, 234, 212, 0.05);
-    box-shadow: 0 10px 30px rgba(94, 234, 212, 0.1);
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #5eead4, transparent);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  &:hover::before {
-    opacity: 1;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-                rgba(94, 234, 212, 0.15), transparent 100px);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-  }
-
-  &:hover::after {
-    opacity: 1;
-  }
-`;
-
-const ConversionCardIcon = styled.div`
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  color: #5eead4;
-  filter: drop-shadow(0 0 10px rgba(94, 234, 212, 0.3));
-  transition: all 0.3s ease;
-
-  ${ConversionCard}:hover & {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 20px rgba(94, 234, 212, 0.5));
-  }
-`;
-
-const ConversionCardTitle = styled.h3`
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: #fff;
-  transition: color 0.3s ease;
-
-  ${ConversionCard}:hover & {
-    color: #5eead4;
-  }
-`;
-
-const ConversionCardText = styled.p`
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #94a3b8;
-  transition: color 0.3s ease;
-
-  ${ConversionCard}:hover & {
-    color: #e0f2fe;
-  }
-`;
-
-const ConversionCTA = styled(motion.button)`
-  display: block;
-  margin: 4rem auto 0;
-  padding: 1.2rem 3rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #fff;
-  background: linear-gradient(135deg, #5eead4 0%, var(--accent-color) 100%);
-  border: none;
-  border-radius: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 20px rgba(94, 234, 212, 0.2);
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    transition: 0.5s;
-  }
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(94, 234, 212, 0.3);
-    
-    &::before {
-      left: 100%;
-    }
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-`;
-
-// Новый современный дизайн для секции про конверсію
-const ConversionGlowSection = styled(motion.section)`
-  padding: 7rem 2rem 6rem 2rem;
-  background: linear-gradient(
-    180deg,
-    var(--bg-primary) 0%,
-    var(--bg-primary) 100%
-  );
-  overflow: hidden;
-  z-index: 1;
-`;
-
-const ConversionGlowBg = styled.div`
-  position: absolute;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 900px;
-  height: 400px;
-  background: radial-gradient(
-    circle,
-    rgba(94, 234, 212, 0.18) 0%,
-    transparent 70%
-  );
-  filter: blur(60px);
-  z-index: 0;
-  pointer-events: none;
-`;
-
-const ConversionGlass = styled.div`
-  max-width: 1100px;
-  margin: 0 auto;
-  background: rgba(16, 24, 39, 0.7);
-  border-radius: 32px;
-  box-shadow: 0 8px 40px rgba(59, 130, 246, 0.13);
-  padding: 3.5rem 2rem 3rem 2rem;
-  position: relative;
-  z-index: 2;
-  overflow: hidden;
-  backdrop-filter: blur(12px);
-`;
-
-const ConversionGlowTitle = styled(motion.h3)`
-  font-size: 2.6rem;
-  font-weight: 900;
-  color: var(--accent-color);
-  margin-bottom: 2.2rem;
-  text-align: center;
-  letter-spacing: -1px;
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  &::after {
-    content: '';
-    display: block;
-    margin: 1.2rem auto 0 auto;
-    width: 80px;
-    height: 4px;
-    border-radius: 2px;
-    background: linear-gradient(90deg, #5eead4, var(--accent-color));
-    position: absolute;
-    left: 50%;
-    bottom: -18px;
-    transform: translateX(-50%);
-  }
-`;
-
-const ConversionGlowIcon = styled.span`
-  font-size: 2.5rem;
-  color: #5eead4;
-  filter: drop-shadow(0 0 8px #5eead4aa);
-`;
-
-const ConversionGlowCallout = styled(motion.div)`
-  font-size: 1.22rem;
-  color: #fff;
-  background: linear-gradient(
-    90deg,
-    rgba(94, 234, 212, 0.13),
-    rgba(59, 130, 246, 0.1)
-  );
-  border-left: 6px solid #5eead4;
-  border-radius: 0 18px 18px 0;
-  padding: 1.5rem 2rem;
-  margin-bottom: 3.5rem;
-  box-shadow: 0 4px 24px rgba(59, 130, 246, 0.08);
-  display: flex;
-  align-items: flex-start;
-  gap: 1.2rem;
-`;
-
-const ConversionGlowList = styled.div`
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 2.5rem 0 2.5rem 0;
-  @media (max-width: 900px) {
-    gap: 1.2rem;
-  }
-`;
-
-const ConversionGlowCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.09);
-  border-radius: 20px;
-  box-shadow: 0 4px 24px rgba(94, 234, 212, 0.1);
-  padding: 2.1rem 1.5rem 1.7rem 1.5rem;
-  min-width: 220px;
-  max-width: 270px;
-  flex: 1 1 220px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-  border: 2px solid transparent;
-  transition: box-shadow 0.3s, border 0.3s;
-  &:hover {
-    box-shadow: 0 8px 32px rgba(94, 234, 212, 0.18);
-    border: 2px solid #5eead4;
-    background: rgba(94, 234, 212, 0.13);
-  }
-`;
-
-const ConversionGlowCardIcon = styled.div`
-  font-size: 2.1rem;
-  color: #5eead4;
-  margin-bottom: 1.1rem;
-  filter: drop-shadow(0 0 8px #5eead4aa);
-`;
-
-const ConversionGlowCardTitle = styled.h4`
-  font-size: 1.15rem;
-  color: var(--accent-color);
-  font-weight: 700;
-  margin-bottom: 0.7rem;
-  text-align: center;
-`;
-
-const ConversionGlowCardDesc = styled.p`
-  color: #e0f2fe;
-  font-size: 1.01rem;
-  text-align: center;
-`;
-
-const ConversionGlowCTA = styled(motion.button)`
-  margin: 2.5rem auto 0 auto;
-  display: block;
-  padding: 1.2rem 3rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #5eead4, var(--accent-color));
-  color: #fff;
-  border: none;
-  border-radius: 16px;
-  cursor: pointer;
-  box-shadow: 0 8px 25px rgba(94, 234, 212, 0.18);
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-  &:hover {
-    background: linear-gradient(90deg, var(--accent-color), #5eead4);
-    box-shadow: 0 12px 32px rgba(94, 234, 212, 0.25);
-    filter: brightness(1.08);
-  }
-`;
-
-// Уникальный блок про эффективность лендингов
-const LPMainSection = styled(motion.section)`
-  position: relative;
-  padding: 7rem 2rem 6rem 2rem;
-  background: linear-gradient(
-    180deg,
-    var(--bg-secondary) 0%,
-    var(--bg-primary) 100%
-  );
-  overflow: hidden;
-  z-index: 1;
-`;
-
-const LPMainTitle = styled(motion.h2)`
-  font-size: 2.6rem;
-  font-weight: 900;
-  color: var(--accent-color);
-  margin-bottom: 2.5rem;
-  text-align: center;
-  letter-spacing: -1px;
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.1rem;
-  background: none;
-  box-shadow: none;
-  &::after {
-    content: '';
-    display: block;
-    margin: 1.2rem auto 0 auto;
-    width: 90px;
-    height: 5px;
-    border-radius: 2px;
-    background: linear-gradient(90deg, #5eead4, var(--accent-color));
-    position: absolute;
-    left: 50%;
-    bottom: -20px;
-    transform: translateX(-50%);
-  }
-`;
-
-const LPMainTitleIcon = styled.span`
-  font-size: 2.7rem;
-  color: #5eead4;
-  filter: drop-shadow(0 0 8px #5eead4aa);
-`;
-
-const LPSubBlock = styled(motion.div)`
-  margin: 3.5rem 0 2.5rem 0;
-  padding: 0 0 2.5rem 0;
-  background: none;
-  border-radius: 0;
-  box-shadow: none;
-  position: relative;
-  z-index: 1;
-`;
-
-const LPSubTitle = styled(motion.h3)`
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: #0ea5e9;
-  margin: 0 auto 1.2rem auto;
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  max-width: 700px;
-  text-align: center;
-  justify-content: center;
-`;
-
-const LPSubIcon = styled.span`
-  font-size: 2rem;
-  color: #5eead4;
-`;
-
-const LPText = styled.p`
-  font-size: 1.18rem;
-  color: #334155;
-  margin: 0 auto 1.5rem auto;
-  max-width: 650px;
-  line-height: 1.85;
-  text-align: center;
-`;
-
-const LPList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0 auto 1.5rem auto;
-  max-width: 540px;
-  text-align: left;
-`;
-
-const LPListItem = styled.li`
-  font-size: 1.08rem;
-  color: #0ea5e9;
-  margin-bottom: 0.9rem;
-  padding-left: 2rem;
-  position: relative;
-  &:before {
-    content: '•';
-    color: #5eead4;
-    font-size: 1.2rem;
-    position: absolute;
-    left: 0;
-    top: 0.1rem;
-  }
-`;
-
-const LPExamplesGrid = styled.div`
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 2.5rem;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-const LPExampleCard = styled(motion.div)`
-  background: none;
-  border-radius: 0;
-  box-shadow: none;
-  padding: 1.5rem 1rem 1.2rem 1rem;
-  min-width: 220px;
-  max-width: 300px;
-  flex: 1 1 220px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-  border: none;
-`;
-
-const LPExampleIcon = styled.div`
-  font-size: 2.1rem;
-  color: #0ea5e9;
-  margin-bottom: 1.1rem;
-`;
-
-const LPExampleTitle = styled.h4`
-  font-size: 1.13rem;
-  color: var(--accent-color);
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  text-align: center;
-`;
-
-const LPExampleDesc = styled.p`
-  color: #334155;
-  font-size: 1.01rem;
-  text-align: center;
-  margin: 0;
-`;
-
-// Новый анимированный блок про эффективность лендингов
-const LPAnimatedSection = styled(motion.section)`
-  position: relative;
-  padding: 8rem 2rem 7rem 2rem;
-  background: linear-gradient(
-    180deg,
-    var(--bg-secondary) 0%,
-    var(--bg-primary) 100%
-  );
-  overflow: hidden;
-  z-index: 1;
-`;
-
-const LPAnimatedBg = styled(motion.div)`
-  position: absolute;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1200px;
-  height: 400px;
-  background: radial-gradient(
-    circle,
-    rgba(94, 234, 212, 0.13) 0%,
-    transparent 70%
-  );
-  filter: blur(80px);
-  z-index: 0;
-  pointer-events: none;
-`;
-
-const LPAnimatedTitle = styled(motion.h2)`
-  font-size: 2.7rem;
-  font-weight: 900;
-  color: var(--accent-color);
-  margin-bottom: 2.5rem;
-  text-align: center;
-  letter-spacing: -1px;
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.1rem;
-  &::after {
-    content: '';
-    display: block;
-    margin: 1.2rem auto 0 auto;
-    width: 90px;
-    height: 5px;
-    border-radius: 2px;
-    background: linear-gradient(90deg, #5eead4, var(--accent-color));
-    position: absolute;
-    left: 50%;
-    bottom: -20px;
-    transform: translateX(-50%);
-  }
-`;
-
-const LPAnimatedSub = styled(motion.h3)`
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #0ea5e9;
-  margin: 0 auto 1.2rem auto;
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  max-width: 700px;
-  text-align: center;
-  justify-content: center;
-`;
-
-const LPAnimatedText = styled(motion.p)`
-  font-size: 1.18rem;
-  color: #334155;
-  margin: 0 auto 1.5rem auto;
-  max-width: 650px;
-  line-height: 1.85;
-  text-align: center;
-`;
-
-const LPAnimatedList = styled(motion.ul)`
-  list-style: none;
-  padding: 0;
-  margin: 0 auto 1.5rem auto;
-  max-width: 540px;
-  text-align: left;
-`;
-
-const LPAnimatedListItem = styled(motion.li)`
-  font-size: 1.08rem;
-  color: #0ea5e9;
-  margin-bottom: 0.9rem;
-  padding-left: 2rem;
-  position: relative;
-  &:before {
-    content: '•';
-    color: #5eead4;
-    font-size: 1.2rem;
-    position: absolute;
-    left: 0;
-    top: 0.1rem;
-  }
-`;
-
-const LPAnimatedExamplesGrid = styled(motion.div)`
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 2.5rem;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-const LPAnimatedExampleCard = styled(motion.div)`
-  background: none;
-  border-radius: 0;
-  box-shadow: none;
-  padding: 1.5rem 1rem 1.2rem 1rem;
-  min-width: 220px;
-  max-width: 300px;
-  flex: 1 1 220px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-  border: none;
-`;
-
-const LPAnimatedExampleIcon = styled.div`
-  font-size: 2.1rem;
-  color: #0ea5e9;
-  margin-bottom: 1.1rem;
-`;
-
-const LPAnimatedExampleTitle = styled.h4`
-  font-size: 1.13rem;
-  color: var(--accent-color);
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  text-align: center;
-`;
-
-const LPAnimatedExampleDesc = styled.p`
-  color: #334155;
-  font-size: 1.01rem;
-  text-align: center;
-  margin: 0;
-`;
-
-// Новый блок-аргументация эффективности Landing Page
-const LPEffectSection = styled(motion.section)`
-  position: relative;
-  padding: 7rem 2rem 6rem 2rem;
-  overflow: hidden;
-  z-index: 1;
-`;
-
-const LPEffectContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-`;
-
-const LPEffectTitle = styled(motion.h2)`
-  font-size: 2.7rem;
-  font-weight: 900;
-  color: var(--accent-color);
-  margin-bottom: 3.2rem;
-  text-align: center;
-  letter-spacing: -1px;
-  position: relative;
-  z-index: 2;
-  &::after {
-    content: '';
-    display: block;
-    margin: 1.2rem auto 0 auto;
-    width: 90px;
-    height: 5px;
-    border-radius: 2px;
-    background: linear-gradient(90deg, #5eead4, var(--accent-color));
-    position: absolute;
-    left: 50%;
-    bottom: -20px;
-    transform: translateX(-50%);
-  }
-`;
-
-const LPEffectCards = styled(motion.div)`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2.2rem;
-  margin-bottom: 2.5rem;
-`;
-
-const LPEffectCard = styled(motion.div)`
-  background: rgba(16, 24, 39, 0.8);
-  border-radius: 20px;
-  padding: 2.2rem 1.7rem 2rem 1.7rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  transition: all 0.3s ease;
-  min-width: 260px;
-  max-width: 320px;
-  box-shadow: 0 4px 24px rgba(59, 130, 246, 0.07);
-  text-align: center;
-  &:hover {
-    box-shadow: 0 8px 32px rgba(94, 234, 212, 0.13);
-    border: 1px solid #5eead4;
-    background: rgba(16, 24, 39, 0.92);
-  }
-`;
-
-const LPEffectIcon = styled.div`
-  font-size: 2.3rem;
-  color: #5eead4;
-  margin-bottom: 1.1rem;
-`;
-
-const LPEffectCardTitle = styled.h3`
-  font-size: 1.18rem;
-  color: var(--accent-color);
-  font-weight: 700;
-  margin-bottom: 0.7rem;
-`;
-
-const LPEffectCardDesc = styled.p`
-  color: #e0f2fe;
-  font-size: 1.01rem;
-`;
-
-const LPEffectCta = styled(motion.button)`
-  margin: 2.5rem auto 0 auto;
-  display: block;
-  padding: 1.2rem 3rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #5eead4, var(--accent-color));
-  color: #fff;
-  border: none;
-  border-radius: 16px;
-  cursor: pointer;
-  box-shadow: 0 8px 25px rgba(94, 234, 212, 0.18);
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-  &:hover {
-    background: linear-gradient(90deg, var(--accent-color), #5eead4);
-    box-shadow: 0 12px 32px rgba(94, 234, 212, 0.25);
-    filter: brightness(1.08);
-  }
-`;
-
-// --- Стили для уникального текстового блока ---
-const LandingHowSection = styled.section`
-  position: relative;
-  margin: 6rem 0 0 0;
-  padding: 0;
-  background: #0f172a;
-  min-height: 420px;
-  box-shadow: 0 8px 40px rgba(59, 130, 246, 0.08);
-  border-radius: 36px;
-  overflow: hidden;
-`;
-const LandingHowPattern = styled.div`
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    135deg,
-    rgba(94, 234, 212, 0.04) 0 2px,
-    transparent 2px 40px
-  );
-  pointer-events: none;
-`;
-const LandingHowContent = styled.div`
-  display: flex;
-  align-items: flex-start;
-  gap: 2.5rem;
-  padding: 4.5rem 2.5rem 4.5rem 2.5rem;
-  position: relative;
-  z-index: 2;
-  @media (max-width: 900px) {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 2.5rem 1rem;
-  }
-`;
-const LandingHowAccentLine = styled.div`
-  width: 8px;
-  min-width: 8px;
-  height: 100%;
-  border-radius: 8px;
-  background: linear-gradient(180deg, #5eead4 0%, #0ea5e9 100%);
-  box-shadow: 0 0 24px #5eead4aa;
-`;
-const LandingHowTitle = styled.h2`
-  font-size: 2.3rem;
-  font-weight: 900;
-  color: #fff;
-  margin-bottom: 2.2rem;
-  line-height: 1.2;
-  letter-spacing: -1px;
-  text-shadow: 0 2px 10px #0ea5e9aa;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  @media (max-width: 600px) {
-    font-size: 1.4rem;
-  }
-`;
-const LandingHowText = styled.div`
-  font-size: 1.18rem;
-  color: #e0e7ef;
-  line-height: 1.85;
-  max-width: 800px;
-  font-weight: 500;
-  .how-accent {
-    color: #5eead4;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-  }
-  .how-quote {
-    display: block;
-    margin: 2.5rem 0 0 0;
-    font-size: 1.15rem;
-    color: #0ea5e9;
-    font-style: italic;
-    background: rgba(94, 234, 212, 0.07);
-    border-left: 5px solid #5eead4;
-    padding: 1.1rem 1.5rem;
-    border-radius: 0 18px 18px 0;
-    box-shadow: 0 2px 12px #5eead422;
-  }
-  b {
-    color: #fff;
-    font-weight: 800;
-  }
-  @media (max-width: 600px) {
-    font-size: 1rem;
-    padding: 0;
-  }
-`;
-
-// --- Стили для steps-листа ---
-const LandingHowSteps = styled.div`
-  display: flex;
-  gap: 2.2rem;
-  margin: 2.5rem 0 2.5rem 0;
-  justify-content: flex-start;
-  align-items: stretch;
-  flex-wrap: wrap;
-  @media (max-width: 900px) {
-    flex-direction: column;
-    gap: 1.2rem;
-    margin: 2rem 0 2rem 0;
-  }
-`;
-const LandingHowStepItem = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
-  box-shadow: 0 2px 12px #5eead422;
-  padding: 1.7rem 1.3rem 1.3rem 1.3rem;
-  min-width: 170px;
-  max-width: 210px;
-  flex: 1 1 170px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  border: 2px solid transparent;
-  transition: box-shadow 0.3s, border 0.3s;
-  cursor: pointer;
-  &:hover {
-    border: 2px solid #5eead4;
-    background: rgba(94, 234, 212, 0.13);
-  }
-`;
-const LandingHowStepIcon = styled.div`
-  font-size: 2.2rem;
-  color: #5eead4;
-  margin-bottom: 0.7rem;
-`;
-const LandingHowStepTitle = styled.h4`
-  font-size: 1.08rem;
-  color: var(--accent-color);
-  font-weight: 700;
-  margin-bottom: 0.4rem;
-`;
-const LandingHowStepDesc = styled.p`
-  color: #e0e7ef;
-  font-size: 0.98rem;
-  margin: 0;
-`;
-
-// --- Стили для блока LPWhatNeedSection ---
-const LPWhatNeedSection = styled.section`
-  position: relative;
-  padding: 0;
-  background: linear-gradient(
-    180deg,
-    var(--bg-secondary) 0%,
-    var(--bg-primary) 100%
-  );
-  min-height: 340px;
-  overflow: hidden;
-`;
-const LPWhatNeedContent = styled.div`
-  display: flex;
-  align-items: stretch;
-  flex-wrap: wrap;
-  gap: 2.5rem;
-  padding: 4rem 2.5rem 4rem 2.5rem;
-  position: relative;
-  z-index: 2;
-  @media (max-width: 900px) {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 2.5rem 1rem;
-  }
-`;
-const LPWhatNeedAccentLine = styled.div`
-  width: 8px;
-  min-width: 8px;
-  height: 100%;
-  border-radius: 8px;
-  background: linear-gradient(180deg, #5eead4 0%, #0ea5e9 100%);
-  box-shadow: 0 0 24px #5eead4aa;
-`;
-const LPWhatNeedTitle = styled.h2`
-  font-size: 2.2rem;
-  font-weight: 900;
-  color: #fff;
-  margin-bottom: 2.2rem;
-  line-height: 1.2;
-  letter-spacing: -1px;
-  text-align: center;
-  text-shadow: 0 2px 10px #0ea5e9aa;
-  @media (max-width: 600px) {
-    font-size: 1.3rem;
-  }
-`;
-const LPWhatNeedSubTitle = styled.h3`
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: #5eead4;
-  margin-bottom: 1.1rem;
-  margin-top: 1.7rem;
-  line-height: 1.3;
-  @media (max-width: 600px) {
-    font-size: 1.05rem;
-    margin-top: 1.1rem;
-  }
-`;
-const LPWhatNeedText = styled.p`
-  font-size: 1.08rem;
-  color: #f1f5f9;
-  line-height: 1.8;
-  margin-bottom: 0.7rem;
-  font-weight: 500;
-  @media (max-width: 600px) {
-    font-size: 0.98rem;
-  }
-`;
-
-// --- Стили для иллюстрации и анимации ---
-const LPWhatNeedIllustration = styled(motion.div)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 240px;
-  margin-left: 2.5rem;
-  @media (max-width: 900px) {
-    margin: 2.5rem 0 0 0;
-    min-width: 0;
-    width: 100%;
-  }
-`;
-
-// --- Современные карточки для LPWhatNeedSection ---
-const LPWhatNeedCards = styled.div`
-  gap: 2.5rem;
-  margin-top: 4.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  @media (max-width: 900px) {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-`;
-const LPWhatNeedCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.13);
-  backdrop-filter: blur(18px);
-  border-radius: 28px;
-  box-shadow: 0 4px 24px rgba(59, 130, 246, 0.1);
-  border: 1.5px solid rgba(94, 234, 212, 0.13);
-  padding: 2.2rem 2rem 2rem 2rem;
-  flex: 1 1 0;
-  min-width: 260px;
-  max-width: 520px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  transition: box-shadow 0.3s, border 0.3s, background 0.3s;
-  z-index: 1;
-
-  height: 582px;
-`;
-const LPWhatNeedCardIcon = styled.div`
-  font-size: 2.7rem;
-  margin-bottom: 1.2rem;
-  color: #5eead4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(94, 234, 212, 0.08);
-  border-radius: 18px;
-  width: 64px;
-  height: 64px;
-  box-shadow: 0 2px 12px #5eead422;
-`;
-const LPWhatNeedCardTitle = styled.h3`
-  font-size: 1.22rem;
-  font-weight: 800;
-  color: #5eead4;
-  margin-bottom: 1.1rem;
-  margin-top: 0.2rem;
-  line-height: 1.3;
-`;
-const LPWhatNeedCardText = styled.p`
-  font-size: 1.08rem;
-  color: #f1f5f9;
-  line-height: 1.8;
-  margin-bottom: 0.7rem;
-  font-weight: 500;
-`;
-
-// --- Уникальный блок сравнения ---
-const LPUniqueCompareSection = styled.section`
-  position: relative;
-  padding: 6rem 0;
-  min-height: 400px;
-  overflow: hidden;
-  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #5eead4, transparent);
-  }
-`;
-
-const LPUniqueCompareBg = styled.div`
-  position: absolute;
-  inset: 0;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(94, 234, 212, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
-    repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0px 2px, transparent 2px 40px);
-  pointer-events: none;
-  z-index: 0;
-`;
-
-const LPUniqueCompareContent = styled.div`
-  position: relative;
-  z-index: 2;
-  padding: 0 2.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const LPUniqueCompareTitle = styled(motion.h2)`
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 900;
-  color: #fff;
-  margin-bottom: 4rem;
-  text-align: center;
-  letter-spacing: -1px;
-  line-height: 1.3;
-  background: linear-gradient(135deg, #fff 0%, #5eead4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 2px 10px rgba(14, 165, 233, 0.3);
-  
-  span {
-    font-size: 1.2em;
-    margin-right: 0.5rem;
-    display: inline-block;
-    vertical-align: middle;
-  }
-`;
-
-const LPUniqueCompareSplit = styled.div`
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 2rem;
-  width: 100%;
-  margin-bottom: 3rem;
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-`;
-
-const LPUniqueCompareVs = styled.div`
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: #5eead4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: rgba(94, 234, 212, 0.1);
-    z-index: -1;
-    animation: pulse 2s infinite ease-in-out;
-  }
-  
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
-const LPUniqueCompareCol = styled(motion.div)`
-  background: rgba(30, 41, 59, 0.5);
-  border: 1px solid rgba(94, 234, 212, 0.1);
-  border-radius: 24px;
-  padding: 2.5rem;
-  backdrop-filter: blur(12px);
-  transition: all 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-5px);
-    border-color: rgba(94, 234, 212, 0.3);
-    box-shadow: 0 20px 40px rgba(94, 234, 212, 0.1);
-  }
-`;
-
-const LPUniqueCompareColTitle = styled.h3`
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #5eead4;
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  
-  &::before {
-    content: '';
-    display: block;
-    width: 8px;
-    height: 8px;
-    background: #5eead4;
-    border-radius: 50%;
-  }
-`;
-
-const LPUniqueCompareColDesc = styled.p`
-  font-size: 1.1rem;
-  color: #94a3b8;
-  line-height: 1.8;
-  
-  span {
-    font-size: 1.4em;
-    margin-right: 0.5rem;
-    vertical-align: middle;
-  }
-`;
-
-const LPUniqueCompareText = styled.h3`
-  font-size: 2rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 3rem 0 2rem;
-  text-align: center;
-  background: linear-gradient(135deg, #5eead4 0%, #0ea5e9 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-`;
-
-const LPUniqueCompareDesc = styled.p`
-  font-size: 1.125rem;
-  color: #94a3b8;
-  line-height: 1.8;
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto 3rem;
-`;
-
-const LPUniqueCompareListTitle = styled.h4`
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 2rem 0 1.5rem;
-  text-align: center;
-`;
-
-const LPUniqueCompareList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
-  width: 100%;
-  margin-bottom: 3rem;
-`;
-
-const LPUniqueCompareListItem = styled(motion.div)`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  background: rgba(30, 41, 59, 0.3);
-  border: 1px solid rgba(94, 234, 212, 0.05);
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: rgba(94, 234, 212, 0.08);
-    border-color: rgba(94, 234, 212, 0.2);
-    transform: translateX(5px);
-  }
-`;
-
-const LPUniqueCompareListIcon = styled.span`
-  font-size: 1.2rem;
-  color: #5eead4;
-  flex-shrink: 0;
-`;
-
-const LPUniqueCompareFeatures = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  width: 100%;
-  margin-top: 2rem;
-`;
-
-const LPUniqueCompareFeature = styled(motion.div)`
-  background: rgba(30, 41, 59, 0.4);
-  border: 1px solid rgba(94, 234, 212, 0.1);
-  border-radius: 16px;
-  padding: 1.5rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: rgba(30, 41, 59, 0.6);
-    border-color: rgba(94, 234, 212, 0.2);
-    transform: translateY(-5px);
-  }
-`;
-
-const LPUniqueCompareFeatureIcon = styled.span`
-  font-size: 2rem;
-  line-height: 1;
-`;
-
-const LPUniqueCompareFeatureText = styled.p`
-  font-size: 1rem;
-  color: #94a3b8;
-  line-height: 1.6;
 `;
 
 // Добавляем стили для нового блока
@@ -4727,9 +2674,9 @@ const LPConversionBenefitsSection = styled(motion.section)`
     var(--bg-primary) 0%,
     var(--bg-secondary) 100%
   );
-  overflow: hidden;
+  overflow: hidden;LPUniqueCompareText
   z-index: 1;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -4737,7 +2684,12 @@ const LPConversionBenefitsSection = styled(motion.section)`
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(94, 234, 212, 0.2), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(94, 234, 212, 0.2),
+      transparent
+    );
     z-index: 1;
   }
 `;
@@ -4775,7 +2727,7 @@ const ConversionBenefitsTitle = styled(motion.h2)`
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2.2rem;
   }
@@ -4821,11 +2773,11 @@ const ConversionBenefitsItem = styled(motion.div)`
   gap: 1rem;
   width: calc(50% - 0.75rem);
   max-width: 500px;
-  
+
   @media (max-width: 900px) {
     width: 100%;
   }
-  
+
   &:hover {
     border-color: rgba(94, 234, 212, 0.3);
     transform: translateY(-5px);
@@ -4899,7 +2851,7 @@ const ConversionBenefitsBgCircle = styled.div`
   border-radius: 50%;
   filter: blur(80px);
   z-index: 0;
-  
+
   &.circle-left {
     width: 400px;
     height: 400px;
@@ -4911,7 +2863,7 @@ const ConversionBenefitsBgCircle = styled.div`
     top: 10%;
     left: -200px;
   }
-  
+
   &.circle-right {
     width: 500px;
     height: 500px;
@@ -4935,7 +2887,7 @@ const LPWhyEffectiveSection = styled(motion.section)`
   );
   overflow: hidden;
   z-index: 1;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -4943,7 +2895,12 @@ const LPWhyEffectiveSection = styled(motion.section)`
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(94, 234, 212, 0.2), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(94, 234, 212, 0.2),
+      transparent
+    );
     z-index: 1;
   }
 `;
@@ -4981,7 +2938,7 @@ const LPWhyEffectiveTitle = styled(motion.h2)`
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2.2rem;
   }
@@ -5030,7 +2987,7 @@ const LPWhyEffectiveBgCircle = styled.div`
   border-radius: 50%;
   filter: blur(80px);
   z-index: 0;
-  
+
   &.circle-left {
     width: 400px;
     height: 400px;
@@ -5042,7 +2999,7 @@ const LPWhyEffectiveBgCircle = styled.div`
     top: 10%;
     left: -200px;
   }
-  
+
   &.circle-right {
     width: 500px;
     height: 500px;
@@ -5062,7 +3019,7 @@ const LPBusinessBenefitSection = styled(motion.section)`
   background: var(--bg-primary);
   overflow: hidden;
   z-index: 1;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -5070,7 +3027,12 @@ const LPBusinessBenefitSection = styled(motion.section)`
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(94, 234, 212, 0.1), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(94, 234, 212, 0.1),
+      transparent
+    );
     z-index: 1;
   }
 `;
@@ -5095,7 +3057,7 @@ const LPBusinessBenefitSubtitle = styled(motion.h3)`
   margin-bottom: 1.5rem;
   position: relative;
   text-align: center;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -5107,7 +3069,7 @@ const LPBusinessBenefitSubtitle = styled(motion.h3)`
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1.6rem;
   }
@@ -5126,7 +3088,7 @@ const LPBusinessBenefitList = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
   margin: 2rem 0;
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
@@ -5143,7 +3105,7 @@ const LPBusinessBenefitItem = styled(motion.div)`
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  
+
   &:before {
     content: '';
     position: absolute;
@@ -5154,7 +3116,7 @@ const LPBusinessBenefitItem = styled(motion.div)`
     background: ${props => props.color || 'var(--accent-color)'};
     opacity: 0.7;
   }
-  
+
   &:after {
     content: '';
     position: absolute;
@@ -5162,8 +3124,20 @@ const LPBusinessBenefitItem = styled(motion.div)`
     right: 0;
     width: 80px;
     height: 80px;
-    background: radial-gradient(circle, 
-      rgba(${props => props.color ? props.color.replace('#', '').match(/.{2}/g).map(hex => parseInt(hex, 16)).join(', ') : '94, 234, 212'}, 0.08) 0%,
+    background: radial-gradient(
+      circle,
+      rgba(
+          ${props =>
+            props.color
+              ? props.color
+                  .replace('#', '')
+                  .match(/.{2}/g)
+                  .map(hex => parseInt(hex, 16))
+                  .join(', ')
+              : '94, 234, 212'},
+          0.08
+        )
+        0%,
       transparent 70%
     );
     border-radius: 50%;
@@ -5180,11 +3154,22 @@ const LPBusinessBenefitIconWrapper = styled.div`
   justify-content: center;
   font-size: 1.8rem;
   color: ${props => props.color || 'var(--accent-color)'};
-  box-shadow: 0 0 20px rgba(${props => props.color ? props.color.replace('#', '').match(/.{2}/g).map(hex => parseInt(hex, 16)).join(', ') : '94, 234, 212'}, 0.3);
+  box-shadow: 0 0 20px
+    rgba(
+      ${props =>
+        props.color
+          ? props.color
+              .replace('#', '')
+              .match(/.{2}/g)
+              .map(hex => parseInt(hex, 16))
+              .join(', ')
+          : '94, 234, 212'},
+      0.3
+    );
   flex-shrink: 0;
   position: relative;
   z-index: 1;
-  
+
   &:before {
     content: '';
     position: absolute;
@@ -5234,6 +3219,972 @@ const LPBusinessBenefitDecoration = styled.div`
   border-radius: 50%;
   border: 1px dashed rgba(94, 234, 212, 0.2);
   opacity: 0.5;
+`;
+
+const LPEffectivenessBanner = styled(motion.div)`
+  background: rgba(94, 234, 212, 0.1);
+  border: 1px solid rgba(94, 234, 212, 0.3);
+  border-radius: 24px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 3rem;
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  margin: 0 auto;
+
+  &:hover {
+    background: rgba(94, 234, 212, 0.15);
+    box-shadow: 0 10px 30px rgba(94, 234, 212, 0.15);
+  }
+`;
+
+const LPEffectivenessBannerIcon = styled.div`
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+`;
+
+const LPEffectivenessBannerText = styled.p`
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin: 0;
+`;
+
+const LPEffectivenessText = styled(motion.p)`
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #94a3b8;
+  text-align: center;
+  max-width: 900px;
+  margin: 60px auto;
+`;
+
+const LPEffectivenessGraphic = styled(motion.div)`
+  width: 100%;
+  margin-bottom: 5rem;
+`;
+
+const LPEffectivenessConversionFlow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+`;
+
+const LPEffectivenessConversionStep = styled(motion.div)`
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid
+    ${props => (props.color ? `${props.color}33` : 'rgba(255, 255, 255, 0.1)')};
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  width: 220px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  }
+`;
+
+const LPEffectivenessStepNumber = styled.div`
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: ${props => props.color || '#5eead4'};
+`;
+
+const LPEffectivenessStepTitle = styled.h3`
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 0.5rem;
+  text-align: center;
+`;
+
+const LPEffectivenessStepIcon = styled.div`
+  font-size: 3rem;
+  color: ${props => props.color || '#5eead4'};
+  margin-top: 1rem;
+  filter: drop-shadow(
+    0 0 10px
+      ${props => (props.color ? `${props.color}66` : 'rgba(94, 234, 212, 0.4)')}
+  );
+`;
+
+const LPEffectivenessStepConnector = styled.div`
+  position: absolute;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #5eead4, #0ea5e9);
+  right: -60px;
+  top: 50%;
+  z-index: 1;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #0ea5e9;
+  }
+
+  @media (max-width: 900px) {
+    display: none;
+  }
+`;
+
+const LPEffectivenessStatsTitle = styled(motion.h3)`
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #fff;
+`;
+
+const LPEffectivenessStats = styled.div`
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 5rem;
+`;
+
+const LPEffectivenessStatCard = styled(motion.div)`
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 280px;
+  border: 1px solid
+    ${props => (props.color ? `${props.color}33` : 'rgba(255, 255, 255, 0.1)')};
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease;
+`;
+
+const LPEffectivenessStatValue = styled.div`
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: ${props => props.color || '#5eead4'};
+  margin-bottom: 1rem;
+  filter: drop-shadow(
+    0 0 10px
+      ${props => (props.color ? `${props.color}66` : 'rgba(94, 234, 212, 0.4)')}
+  );
+`;
+
+const LPEffectivenessStatLabel = styled.div`
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #f1f5f9;
+`;
+
+const LPEffectivenessStatIcon = styled.div`
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 1.2rem;
+  color: ${props => props.color || '#5eead4'};
+  opacity: 0.5;
+`;
+
+const LPEffectivenessStatShine = styled.div`
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: skewX(-15deg);
+  animation: shine 6s infinite linear;
+
+  @keyframes shine {
+    0% {
+      left: -100%;
+    }
+    20%,
+    100% {
+      left: 100%;
+    }
+  }
+`;
+
+const LPEffectivenessAdvantages = styled(motion.div)`
+  width: 100%;
+  max-width: 900px;
+  margin: 60px auto;
+`;
+
+const LPEffectivenessAdvantagesTitle = styled.h3`
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2rem;
+  text-align: center;
+`;
+
+const LPEffectivenessAdvantagesList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+`;
+
+const LPEffectivenessAdvantagesItem = styled(motion.div)`
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+`;
+
+const LPEffectivenessAdvantagesCheck = styled.div`
+  color: #5eead4;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+`;
+
+const LPEffectivenessAdvantagesText = styled.div`
+  font-size: 1.1rem;
+  color: #94a3b8;
+  line-height: 1.5;
+
+  strong {
+    color: #f1f5f9;
+    font-weight: 600;
+  }
+`;
+
+const LPEffectivenessQuote = styled(motion.div)`
+  background: rgba(94, 234, 212, 0.08);
+  border: 1px solid rgba(94, 234, 212, 0.2);
+  border-radius: 24px;
+  padding: 2rem;
+  margin: 0 auto 4rem auto;
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+`;
+
+const LPEffectivenessQuoteIcon = styled.div`
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+`;
+
+const LPEffectivenessQuoteText = styled.p`
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-style: italic;
+  color: #f1f5f9;
+  margin: 0;
+  line-height: 1.7;
+`;
+
+const LPEffectivenessCTA = styled(motion.button)`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #0f172a;
+  background: linear-gradient(135deg, #5eead4 0%, #0ea5e9 100%);
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(94, 234, 212, 0.3);
+  transition: all 0.3s ease;
+
+  margin: 60px auto;
+`;
+
+const LPEffectivenessCTAArrow = styled.span`
+  font-size: 1.1rem;
+`;
+
+const LPCreationDivider = styled.div`
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(94, 234, 212, 0.1),
+    transparent
+  );
+  z-index: 1;
+`;
+
+const LPCreationBackground = styled.div`
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+`;
+
+const LPCreationPattern = styled.div`
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 30px 30px;
+  background-position: 0 0;
+  z-index: 0;
+  opacity: 0.3;
+`;
+
+const LPCreationSection = styled(motion.section)`
+  position: relative;
+  padding: 6rem 2rem;
+  background: var(--bg-primary);
+  overflow: hidden;
+  z-index: 1;
+`;
+
+const LPCreationContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+`;
+
+const LPCreationTitle = styled(motion.h2)`
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: var(--accent-color);
+  -webkit-text-fill-color: var(--accent-color);
+  filter: drop-shadow(0 2px 4px rgba(94, 234, 212, 0.3));
+  position: relative;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+  }
+`;
+
+const LPCreationContent = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+  align-items: start;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+`;
+
+const LPCreationSteps = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`;
+
+const LPCreationStep = styled(motion.div)`
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(94, 234, 212, 0.1),
+      rgba(14, 165, 233, 0.1)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateX(10px);
+    border-color: rgba(94, 234, 212, 0.2);
+    box-shadow: 0 10px 30px rgba(94, 234, 212, 0.1);
+
+    &::before {
+      opacity: 1;
+    }
+
+    .step-icon {
+      transform: scale(1.1);
+      color: #5eead4;
+    }
+  }
+`;
+
+const LPCreationStepHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+`;
+
+const LPCreationStepNumber = styled.span`
+  font-size: 3rem;
+  font-weight: 800;
+  font-family: 'SF Mono', monospace;
+  background: linear-gradient(135deg, #5eead4, #0ea5e9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+`;
+
+const LPCreationStepIcon = styled.div`
+  font-size: 2rem;
+  color: #94a3b8;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 10px rgba(94, 234, 212, 0.2));
+`;
+
+const LPCreationStepTitle = styled.h3`
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+`;
+
+const LPCreationStepText = styled.p`
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #94a3b8;
+`;
+
+const LPCreationVisual = styled.div`
+  position: relative;
+  padding: 2rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at center,
+      rgba(94, 234, 212, 0.1),
+      transparent 70%
+    );
+    border-radius: 30px;
+    filter: blur(30px);
+  }
+`;
+
+const LPCreationCards = styled(motion.div)`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+`;
+
+const LPCreationCard = styled(motion.div)`
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+
+  &:nth-child(even) {
+    transform: translateY(2rem);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      45deg,
+      rgba(94, 234, 212, 0.1),
+      rgba(14, 165, 233, 0.1)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+`;
+
+const LPCreationCardIcon = styled.div`
+  font-size: 2.5rem;
+  color: #5eead4;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 10px rgba(94, 234, 212, 0.3));
+`;
+
+const LPCreationCardTitle = styled.h4`
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+`;
+
+const LPCreationCardText = styled.p`
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #94a3b8;
+`;
+
+const RequirementsCard = styled(motion.div)`
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ff4d4d, #f9cb28);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
+`;
+
+const RequirementsTitle = styled.h3`
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+`;
+
+const RequirementsText = styled.p`
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #94a3b8;
+`;
+
+const RequirementsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+`;
+
+const OfferContainer = styled(Container)`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 4rem 2rem;
+
+  @media (max-width: 968px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+`;
+
+const OfferBlock = styled.div`
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+`;
+
+const BlockTitle = styled.h3`
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--accent-color), #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+`;
+
+const OfferList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+`;
+
+const OfferItem = styled.li`
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 1.1rem;
+  color: #94a3b8;
+  line-height: 1.6;
+`;
+
+const OfferIcon = styled.div`
+  color: var(--accent-color);
+  font-size: 1.5rem;
+  margin-top: 0.2rem;
+`;
+
+const LPOfferDivider = styled.div`
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(94, 234, 212, 0.1),
+    transparent
+  );
+  z-index: 1;
+`;
+
+const LPOfferSection = () => {
+  return (
+    <Section>
+      <LPOfferDivider />
+      <Container>
+        <Title
+          as="h2"
+          style={{
+            color: 'var(--accent-color)',
+            WebkitTextFillColor: 'var(--accent-color)',
+            marginBottom: '3rem',
+            textAlign: 'center',
+          }}
+        >
+          Отримайте ефективний Landing Page під ключ — швидко та вигідно
+        </Title>
+        <OfferCard
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <RequirementsTitle style={{ color: 'var(--text-primary)' }}>
+            Чому варто замовити лендінг у професіоналів
+          </RequirementsTitle>
+          <RequirementsText>
+            Самостійно створити лендінг — можна. Але створити той, що дійсно
+            продає, — справа для команди з досвідом. Ми знаємо, як вивести
+            клієнта на цільову дію, як структурувати контент, де поставити
+            кнопку й що написати в заголовку. Ваш сайт — це обличчя бізнесу, і
+            воно має працювати на вас.
+          </RequirementsText>
+          <RequirementsText style={{ marginTop: '1.5rem' }}>
+            Ми пропонуємо як повністю індивідуальну розробку, так і адаптацію
+            шаблонів під ваш бізнес. Обидва варіанти мають свої переваги — все
+            залежить від бюджету, задач і термінів. У будь-якому випадку ви
+            отримаєте сучасний, адаптивний та конверсійний лендінг.
+          </RequirementsText>
+        </OfferCard>
+
+        <OfferContainer>
+          <OfferBlock>
+            <BlockTitle>Що ви отримаєте:</BlockTitle>
+            <OfferList>
+              <OfferItem>
+                <OfferIcon>
+                  <FaRocket />
+                </OfferIcon>
+                <span>
+                  Професійний односторінковий сайт, оптимізований під ваші цілі
+                  та аудиторію
+                </span>
+              </OfferItem>
+              <OfferItem>
+                <OfferIcon>
+                  <FaChartLine />
+                </OfferIcon>
+                <span>
+                  Збільшення конверсії та продажів завдяки правильній структурі
+                  та УТП
+                </span>
+              </OfferItem>
+              <OfferItem>
+                <OfferIcon>
+                  <FaMobile />
+                </OfferIcon>
+                <span>
+                  Адаптивний дизайн, що відмінно виглядає на всіх пристроях
+                </span>
+              </OfferItem>
+              <OfferItem>
+                <OfferIcon>
+                  <FaBolt />
+                </OfferIcon>
+                <span>Швидке завантаження та оптимальна продуктивність</span>
+              </OfferItem>
+            </OfferList>
+          </OfferBlock>
+
+          <OfferBlock>
+            <BlockTitle>Наші фішки:</BlockTitle>
+            <OfferList>
+              <OfferItem>
+                <OfferIcon>
+                  <FaBrain />
+                </OfferIcon>
+                <span>
+                  Унікальний дизайн, створений під ваш бренд та цільову
+                  аудиторію
+                </span>
+              </OfferItem>
+              <OfferItem>
+                <OfferIcon>
+                  <FaCog />
+                </OfferIcon>
+                <span>Інтеграція з CRM та системами аналітики</span>
+              </OfferItem>
+              <OfferItem>
+                <OfferIcon>
+                  <FaShieldAlt />
+                </OfferIcon>
+                <span>Захист від спаму та безпека даних</span>
+              </OfferItem>
+              <OfferItem>
+                <OfferIcon>
+                  <FaTools />
+                </OfferIcon>
+                <span>Технічна підтримка та консультації після запуску</span>
+              </OfferItem>
+            </OfferList>
+          </OfferBlock>
+        </OfferContainer>
+      </Container>
+    </Section>
+  );
+};
+
+const OfferCard = styled(motion.div)`
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 24px;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 4rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      45deg,
+      rgba(94, 234, 212, 0.05),
+      rgba(14, 165, 233, 0.05)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+`;
+
+const Section = styled.section`
+  position: relative;
+  overflow: hidden;
+`;
+
+const LPRequirementsDivider = styled.div`
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(94, 234, 212, 0.1),
+    transparent
+  );
+  z-index: 1;
+`;
+
+const LPRequirementsSection = () => {
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 },
+    },
+  };
+
+  return (
+    <Section>
+      <LPRequirementsDivider />
+      <Container>
+        <Title
+          as="h2"
+          style={{
+            color: 'var(--accent-color)',
+            WebkitTextFillColor: 'var(--accent-color)',
+            marginBottom: '3rem',
+            textAlign: 'center',
+          }}
+        >
+          Що потрібно для створення односторінкового сайту, який продає?
+        </Title>
+        <RequirementsGrid>
+          <RequirementsCard
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+          >
+            <RequirementsTitle>Чітка структура та сильне УТП</RequirementsTitle>
+            <RequirementsText>
+              Успішний лендинг починається зі сценарію, що веде користувача до
+              конкретної дії: залишити заявку, здійснити покупку або записатися
+              на консультацію. Унікальна торгова пропозиція (УТП) повинна одразу
+              захоплювати увагу, бути зрозумілою та цінною для вашого клієнта.
+            </RequirementsText>
+          </RequirementsCard>
+
+          <RequirementsCard
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+          >
+            <RequirementsTitle>
+              Тригери довіри та правильний заклик до дії
+            </RequirementsTitle>
+            <RequirementsText>
+              Щоб користувач не сумнівався, важливо додати елементи довіри:
+              реальні відгуки, кейси, фото, сертифікати, гарантії. Це суттєво
+              підвищує рівень впевненості. А завершальним кроком має стати
+              сильний заклик до дії (CTA): яскрава кнопка з чітким посилом, що
+              мотивує натиснути.
+            </RequirementsText>
+          </RequirementsCard>
+
+          <RequirementsCard
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+          >
+            <RequirementsTitle>Оптимізація та простота</RequirementsTitle>
+            <RequirementsText>
+              Важливо не перенавантажувати сторінку — мінімум зайвих елементів,
+              максимум фокус на цілі. А ще — технічна оптимізація: швидке
+              завантаження, адаптивність, зручна навігація на будь-якому
+              пристрої.
+            </RequirementsText>
+          </RequirementsCard>
+        </RequirementsGrid>
+      </Container>
+    </Section>
+  );
+};
+
+const LPEffectivenessDivider = styled.div`
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(94, 234, 212, 0.1),
+    transparent
+  );
+  z-index: 1;
+`;
+
+const LPEffectivenessSection = styled(motion.section)`
+  position: relative;
+  background: var(--bg-primary);
+  overflow: hidden;
+  z-index: 1;
 `;
 
 export default LandingPage;
