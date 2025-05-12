@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaShoppingCart, FaCheckCircle, FaStore, FaSearch, FaMobile, FaCreditCard, FaChartLine, FaTags, FaHeadset, FaRocket, FaPercent, FaCode, FaCog, FaLink, FaShieldAlt, FaExpand, FaSitemap, FaPencilRuler, FaClock, FaPlus } from 'react-icons/fa';
+import { FaShoppingCart, FaStore, FaSearch, FaMobile, FaChartLine, FaTags, FaHeadset, FaRocket, FaCode, FaCog, FaLink, FaShieldAlt, FaExpand, FaSitemap, FaPencilRuler, FaClock, FaPlus } from 'react-icons/fa';
 import { AnimatePresence } from 'framer-motion';
 
 // Анимации

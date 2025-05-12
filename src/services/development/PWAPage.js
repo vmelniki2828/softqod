@@ -310,18 +310,6 @@ const OrbitingCircleInner = styled(motion.div)`
   z-index: 0;
 `;
 
-const OrbitingDot = styled(motion.div)`
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: linear-gradient(135deg, #60a5fa 0%, #5eead4 100%);
-  border-radius: 50%;
-  top: ${props => props.top}%;
-  left: ${props => props.left}%;
-  box-shadow: 0 0 20px rgba(94, 234, 212, 0.5);
-  z-index: 10;
-`;
-
 const HeroBenefitsList = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -981,7 +969,6 @@ const PWAWhyUsSection = styled(motion.section)`
 // Основной компонент
 const PWAPage = () => {
   const [stars, setStars] = useState([]);
-  const [orbitingDots, setOrbitingDots] = useState([]);
   const [backgroundShapes, setBackgroundShapes] = useState([]);
   // Добавляем состояние для аккордеона FAQ
   const [expandedFaqs, setExpandedFaqs] = useState([]);
@@ -1010,7 +997,7 @@ const PWAPage = () => {
         left: Math.random() * 100
       });
     }
-    setOrbitingDots(dots);
+
     
     // Генерация фоновых форм
     const shapes = [];
@@ -1087,18 +1074,7 @@ const PWAPage = () => {
       transition: { duration: 0.8, ease: "easeOut" }
     }
   };
-  
-  const phoneVariants = {
-    initial: { rotateY: 0 },
-    animate: {
-      rotateY: 360,
-      transition: {
-        duration: 20,
-        repeat: Infinity,
-        ease: "linear"
-      }
-    }
-  };
+
 
   return (
     <Container>

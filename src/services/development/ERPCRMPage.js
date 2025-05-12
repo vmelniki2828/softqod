@@ -6,41 +6,17 @@ import {
   FaChartLine, 
   FaCogs,
   FaProjectDiagram,
-  FaCheck,
   FaTools,
   FaExchangeAlt,
   FaChartBar,
   FaUserCog,
   FaFileInvoice,
-  FaWarehouse,
-  FaShoppingCart,
-  FaMoneyBillWave,
   FaShieldAlt,
-  FaServer,
   FaLaptopCode,
   FaUsers,
   FaSyncAlt,
-  FaMobile,
   FaClipboardCheck,
   FaPlus,
-  FaHandshake,
-  FaTasks,
-  FaHeadset,
-  FaStar,
-  FaStarHalfAlt,
-  FaFacebook,
-  FaLinkedin,
-  FaTwitter,
-  FaInstagram,
-  FaMapMarkerAlt,
-  FaPhone,
-  FaEnvelope,
-  FaFacebookF,
-  FaLinkedinIn,
-  FaPhoneAlt,
-  FaClock,
-  FaTruck,
-  FaIndustry
 } from 'react-icons/fa';
 
 // Анимации
@@ -72,32 +48,6 @@ const floatVertical = keyframes`
   100% { transform: translateY(0); }
 `;
 
-const pulseRing = keyframes`
-  0% { transform: scale(0.8); opacity: 0.8; }
-  50% { transform: scale(1.1); opacity: 0.4; }
-  100% { transform: scale(0.8); opacity: 0.8; }
-`;
-
-const circleFloat = keyframes`
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0); }
-`;
-
-const spinGlow = keyframes`
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
-`;
-
-const fadeInScale = keyframes`
-  0% { opacity: 0; transform: scale(0.95); }
-  100% { opacity: 1; transform: scale(1); }
-`;
-
-const shimmerEffect = keyframes`
-  0% { background-position: -100% 0; }
-  100% { background-position: 100% 0; }
-`;
 
 // Стилизованные компоненты
 const Container = styled.div`
@@ -349,18 +299,6 @@ const OrbitingCircleInner = styled(motion.div)`
   z-index: 0;
 `;
 
-const OrbitingDot = styled(motion.div)`
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: linear-gradient(135deg, #4a90e2 0%, #2962ff 100%);
-  border-radius: 50%;
-  top: ${props => props.top}%;
-  left: ${props => props.left}%;
-  box-shadow: 0 0 20px rgba(74, 144, 226, 0.5);
-  z-index: 10;
-`;
-
 const HeroBenefitsList = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -531,19 +469,6 @@ const FeatureItem = styled(motion.li)`
   }
 `;
 
-const InfoSummary = styled(motion.p)`
-  font-size: 1.4rem;
-  font-weight: 500;
-  line-height: 1.8;
-  margin: 2.5rem 0;
-  color: var(--text-primary);
-  border-left: 4px solid var(--accent-color);
-  padding: 1.5rem 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 0 12px 12px 0;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-`;
-
 const BackgroundShape = styled(motion.div)`
   position: absolute;
   border-radius: 50%;
@@ -664,13 +589,6 @@ const BenefitIcon = styled.div`
   }
 `;
 
-const BenefitNumber = styled.span`
-  font-size: 3rem;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.08);
-  font-family: sans-serif;
-`;
-
 const BenefitContent = styled.div`
   position: relative;
   z-index: 1;
@@ -687,38 +605,6 @@ const BenefitCardDescription = styled.p`
   font-size: 1.05rem;
   line-height: 1.7;
   color: var(--text-secondary);
-`;
-
-const CtaButton = styled(motion.button)`
-  padding: 1.2rem 3rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  background: linear-gradient(90deg, var(--accent-color), rgba(41, 98, 255, 0.9));
-  color: white;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  display: block;
-  margin: 0 auto;
-  box-shadow: 0 8px 20px rgba(74, 144, 226, 0.2);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-  width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: all 0.6s ease;
-  }
-  
-  &:hover::before {
-    left: 100%;
-  }
 `;
 
 const BenefitsDecoration = styled.div`
@@ -815,14 +701,6 @@ const ServicesContent = styled.div`
   }
 `;
 
-const ServicesIntro = styled(motion.p)`
-  font-size: 1.3rem;
-  line-height: 1.8;
-  color: var(--text-secondary);
-  margin-bottom: 3rem;
-  position: relative;
-  z-index: 1;
-`;
   
 const ServicesHeading = styled(motion.h3)`
   font-size: 1.8rem;
@@ -833,90 +711,11 @@ const ServicesHeading = styled(motion.h3)`
   z-index: 1;
 `;
 
-const ServicesList = styled(motion.ul)`
-  list-style: none;
-  padding: 0;
-  margin: 0 0 3rem 0;
-  position: relative;
-  z-index: 1;
-`;
-
-const ServiceItem = styled(motion.li)`
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.03);
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.07);
-    transform: translateX(10px);
-  }
-`;
-
-const ServiceIcon = styled.div`
-  margin-right: 1rem;
-  position: relative;
-`;
-
-const ServiceCircle = styled.div`
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent-color) 0%, #2962ff 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  &::before {
-    content: '';
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
-  }
-`;
-
 const ServiceText = styled.p`
   font-size: 1.15rem;
   line-height: 1.6;
   color: var(--text-secondary);
   flex: 1;
-`;
-
-const ServiceSummary = styled(motion.p)`
-  font-size: 1.5rem;
-  font-weight: 500;
-  line-height: 1.7;
-  color: var(--text-primary);
-  padding: 2rem;
-  background: linear-gradient(90deg, rgba(74, 144, 226, 0.1), rgba(41, 98, 255, 0.1));
-  border-radius: 12px;
-  margin: 2rem 0 3rem;
-  position: relative;
-  z-index: 1;
-
-  &::before {
-    content: '"';
-    position: absolute;
-    top: 10px;
-    left: 15px;
-    font-size: 4rem;
-    color: rgba(74, 144, 226, 0.2);
-    font-family: serif;
-  }
-  
-  &::after {
-    content: '"';
-    position: absolute;
-    bottom: 10px;
-    right: 15px;
-    font-size: 4rem;
-    color: rgba(74, 144, 226, 0.2);
-    font-family: serif;
-  }
 `;
 
 const ServiceActions = styled(motion.div)`
@@ -1189,424 +988,6 @@ const FaqAnswer = styled.div`
   `}
 `;
 
-// ... existing code ...
-
-const TestimonialsSection = styled(motion.section)`
-  position: relative;
-  padding: 8rem 2rem;
-  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-  overflow: hidden;
-`;
-
-const TestimonialsWaveTop = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background: var(--bg-secondary);
-  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 100%);
-  z-index: 1;
-`;
-
-const TestimonialsContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-`;
-
-const TestimonialsTitle = styled(motion.h2)`
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--accent-color);
-  margin-bottom: 4rem;
-  position: relative;
-  display: inline-block;
-  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 0;
-    width: 120px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent-color), transparent);
-    border-radius: 4px;
-  }
-`;
-
-const TestimonialsCarousel = styled(motion.div)`
-  display: flex;
-  gap: 2rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-`;
-
-const TestimonialCard = styled(motion.div)`
-  flex: 0 0 100%;
-  scroll-snap-align: start;
-  background: rgba(16, 24, 39, 0.6);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: linear-gradient(135deg, rgba(74, 144, 226, 0.05) 0%, transparent 50%);
-    z-index: 0;
-  }
-`;
-
-const TestimonialQuote = styled.div`
-  font-size: 2rem;
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 2rem;
-`;
-
-const TestimonialText = styled.p`
-  font-size: 1.2rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-`;
-
-const TestimonialAuthor = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-`;
-
-const TestimonialAvatar = styled.img`
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-`;
-
-const TestimonialAuthorInfo = styled.div`
-  flex: 1;
-`;
-
-const TestimonialAuthorName = styled.h3`
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--text-primary);
-`;
-
-const TestimonialAuthorRole = styled.p`
-  font-size: 1rem;
-  color: var(--text-secondary);
-`;
-
-const TestimonialRating = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-`;
-
-const TestimonialCTA = styled(motion.div)`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 2rem;
-`;
-
-const TestimonialCtaText = styled(motion.p)`
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--accent-color);
-`;
-
-const TestimonialCtaButton = styled(motion.a)`
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  background: linear-gradient(90deg, var(--accent-color), rgba(41, 98, 255, 0.9));
-  color: white;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  display: block;
-  box-shadow: 0 8px 20px rgba(74, 144, 226, 0.2);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: all 0.6s ease;
-  }
-  
-  &:hover::before {
-    left: 100%;
-  }
-`;
-
-const TestimonialsWaveBottom = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background: var(--bg-secondary);
-  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 100%);
-  z-index: 1;
-`;
-
-const TestimonialsCTA = styled(motion.div)`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 2rem;
-`;
-
-const TestimonialsCtaText = styled(motion.p)`
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--accent-color);
-`;
-
-const TestimonialsCtaButton = styled(motion.a)`
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  background: linear-gradient(90deg, var(--accent-color), rgba(41, 98, 255, 0.9));
-  color: white;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  display: block;
-  box-shadow: 0 8px 20px rgba(74, 144, 226, 0.2);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: all 0.6s ease;
-  }
-  
-  &:hover::before {
-    left: 100%;
-  }
-`;
-
-// Footer Styled Components
-const Footer = styled.footer`
-  position: relative;
-  background: linear-gradient(180deg, #0c1021 0%, #060a17 100%);
-  color: #fff;
-  overflow: hidden;
-  margin-top: 4rem;
-`;
-
-const FooterWave = styled.svg`
-  width: 100%;
-  height: auto;
-  display: block;
-  transform: translateY(1px);
-`;
-
-const FooterContent = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 3rem 2rem;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 4rem;
-  z-index: 2;
-  position: relative;
-  
-  @media (max-width: 992px) {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-`;
-
-const FooterLogoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
-const FooterLogo = styled.div`
-  font-size: 2.5rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #4a90e2, #a265ff);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
-`;
-
-const FooterTagline = styled.p`
-  font-size: 1rem;
-  opacity: 0.7;
-  margin-bottom: 2rem;
-  max-width: 300px;
-  line-height: 1.6;
-`;
-
-const FooterSocial = styled.div`
-  display: flex;
-  gap: 1rem;
-`;
-
-const FooterSocialLink = styled.a`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: var(--accent-color);
-    transform: translateY(-3px);
-  }
-`;
-
-const FooterNavigation = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  @media (max-width: 576px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const FooterColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const FooterColumnTitle = styled.h4`
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  color: #fff;
-  position: relative;
-  
-  &:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -0.5rem;
-    width: 30px;
-    height: 2px;
-    background: var(--accent-color);
-  }
-`;
-
-const FooterLink = styled.a`
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 0.7rem;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-  position: relative;
-  text-decoration: none;
-  
-  &:before {
-    content: '›';
-    opacity: 0;
-    margin-right: 5px;
-    transition: all 0.3s ease;
-  }
-  
-  &:hover {
-    color: #fff;
-    transform: translateX(5px);
-    
-    &:before {
-      opacity: 1;
-    }
-  }
-`;
-
-const FooterContactItem = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.95rem;
-  
-  svg {
-    min-width: 18px;
-    color: var(--accent-color);
-  }
-`;
-
-const FooterBottom = styled.div`
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 1.5rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: flex-start;
-  }
-`;
-
-const FooterCopyright = styled.p`
-  font-size: 0.9rem;
-  opacity: 0.6;
-`;
-
-const FooterBottomLinks = styled.div`
-  display: flex;
-  gap: 1.5rem;
-`;
-
-const FooterBottomLink = styled.a`
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
-  text-decoration: none;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    color: #fff;
-  }
-`;
 
 const FaqCta = styled(motion.div)`
   display: flex;
@@ -1698,7 +1079,6 @@ const FaqCtaButton = styled(motion.button)`
 
 const ERPCRMPage = () => {
   const [stars, setStars] = useState([]);
-  const [orbitingDots, setOrbitingDots] = useState([]);
   const [backgroundShapes, setBackgroundShapes] = useState([]);
   // Состояние для аккордеона FAQ
   const [expandedFaqs, setExpandedFaqs] = useState([]);
@@ -1727,7 +1107,6 @@ const ERPCRMPage = () => {
         left: Math.random() * 100
       });
     }
-    setOrbitingDots(dots);
     
     // Генерация фоновых форм
     const shapes = [];
@@ -1804,18 +1183,7 @@ const ERPCRMPage = () => {
       transition: { duration: 0.8, ease: "easeOut" }
     }
   };
-  
-  const systemVariants = {
-    initial: { rotateY: 0 },
-    animate: {
-      rotateY: 360,
-      transition: {
-        duration: 20,
-        repeat: Infinity,
-        ease: "linear"
-      }
-    }
-  };
+
 
   return (
     <Container>
