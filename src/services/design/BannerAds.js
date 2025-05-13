@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -14,7 +14,6 @@ import {
     FaUsers,
     FaMobile,
     FaDesktop,
-    FaGlobe,
     FaRocket,
     FaCoins,
     FaBrain,
@@ -27,7 +26,6 @@ import {
     FaGraduationCap,
     FaGamepad,
     FaFilter,
-    FaImage,
     FaListAlt,
     FaMoneyBillWave,
     FaExpand,
@@ -40,7 +38,6 @@ import {
     FaSitemap,
     FaHandshake,
     FaBuilding,
-    FaQuestion
 } from 'react-icons/fa';
 
 const PageContainer = styled.div`
@@ -167,12 +164,6 @@ const SliderIntro = styled.p`
   color: var(--text-secondary);
 `;
 
-const ServicesList = styled.div`
-  margin: 3rem 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-`;
 
 const ServiceCard = styled(motion.div)`
   background: rgba(255, 255, 255, 0.05);
@@ -250,31 +241,6 @@ const Slide = styled(motion.div)`
   align-items: center;
   justify-content: center;
   padding: 1rem;
-`;
-
-const SlideImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
-
-const SlideContent = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 2rem;
-  z-index: 5;
-`;
-
-const SlideTitle = styled.h3`
-  font-size: 2rem;
-  margin-bottom: 1rem;
-`;
-
-const SlideDescription = styled.p`
-  font-size: 1.2rem;
-  opacity: 0.9;
 `;
 
 const SliderControls = styled.div`
@@ -1044,58 +1010,6 @@ const HexDescription = styled.p`
   flex: 1;
 `;
 
-const FeatureList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-`;
-
-const FeatureItem = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 2rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: rgba(255, 255, 255, 0.05);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  }
-`;
-
-const FeatureIconWrapper = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--accent-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  color: white;
-  flex-shrink: 0;
-`;
-
-const FeatureContent = styled.div`
-  flex: 1;
-`;
-
-const FeatureItemTitle = styled.h4`
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: var(--text-primary);
-`;
-
-const FeatureItemText = styled.p`
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
-`;
 
 // Новые стили для финального блока CTA
 const FinalCTASection = styled.section`
