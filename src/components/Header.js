@@ -260,7 +260,7 @@ const HeaderNavigation = () => {
               <FaPaintBrush />
               Рекламные Банера
             </DropdownItem>
-            <DropdownItem to="/design/brandbook">
+            <DropdownItem to="/services/design/brandbook">
               <FaBook />
               Бренд Бук
             </DropdownItem>
