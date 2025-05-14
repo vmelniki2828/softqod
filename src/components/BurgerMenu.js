@@ -442,7 +442,10 @@ const BurgerMenu = ({ isOpen, onClose }) => {
             }}
             transition={{ duration: 0.3 }}
           >
-            <MenuBlockLink href="#banners" onClick={(e) => handleLinkClick(e, "#banners")}>
+            <MenuBlockLink 
+              to="/services/design/bannerads"
+              onClick={(e) => handleLinkClick(e, "/services/design/bannerads")}
+            >
               <MenuBlockIconSmall>
                 <FaPaintBrush />
               </MenuBlockIconSmall>
@@ -454,7 +457,10 @@ const BurgerMenu = ({ isOpen, onClose }) => {
               </MenuBlockIconSmall>
               Моушен дизайн
             </MenuBlockLink>
-            <MenuBlockLink href="#brandbook" onClick={(e) => handleLinkClick(e, "#brandbook")}>
+            <MenuBlockLink 
+              to="/services/design/brandbook"
+              onClick={(e) => handleLinkClick(e, "/services/design/brandbook")}
+            >
               <MenuBlockIconSmall>
                 <FaBook />
               </MenuBlockIconSmall>
