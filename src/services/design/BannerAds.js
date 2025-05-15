@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  FaArrowRight,
-  FaLightbulb,
-  FaPalette,
-  FaChartLine,
-  FaRobot,
-  FaChevronLeft,
-  FaChevronRight,
-  FaCheck,
-  FaClock,
-  FaUsers,
-  FaMobile,
-  FaDesktop,
+import { 
+    FaArrowRight, 
+    FaLightbulb, 
+    FaPalette, 
+    FaChartLine, 
+    FaRobot,
+    FaChevronLeft,
+    FaChevronRight,
+    FaCheck,
+    FaClock,
+    FaUsers,
+    FaMobile,
+    FaDesktop,
   FaRocket,
   FaCoins,
   FaBrain,
@@ -116,7 +116,7 @@ const HeroTitle = styled(motion.h1)`
   text-fill-color: transparent;
   
   span {
-    position: relative;
+  position: relative;
     display: inline-block;
     color: var(--accent-color-light);
     -webkit-text-fill-color: currentColor;
@@ -454,7 +454,7 @@ const FeatureCard = styled(motion.div)`
 
   &:hover {
     transform: translateY(-5px);
-
+    
     &::before {
       transform: scaleX(1);
     }
@@ -522,10 +522,10 @@ const ServiceCard = styled(motion.div)`
 
   &::before {
     content: '';
-    position: absolute;
+  position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
+  left: 0;
+  right: 0;
     height: 5px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
   }
@@ -628,7 +628,7 @@ const ProcessTitle = styled.h2`
   color: var(--text-primary);
   position: relative;
   z-index: 1;
-
+  
   &::after {
     content: '';
     position: absolute;
@@ -2541,7 +2541,7 @@ const BannerAds = () => {
           </HeroBanner>
         </HeroContainer>
       </HeroSection>
-      
+
       <SliderTitle style={{ marginTop: '4rem', marginBottom: '2rem' }}>
         Чому варто використовувати ШІ для створення банерів
       </SliderTitle>
@@ -2566,17 +2566,17 @@ const BannerAds = () => {
           }}
         >
           {features.slice(0, 3).map((feature, index) => (
-            <FeatureCard
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <FeatureIcon>{feature.icon}</FeatureIcon>
-              <FeatureTitle>{feature.title}</FeatureTitle>
-              <FeatureDescription>{feature.description}</FeatureDescription>
-            </FeatureCard>
-          ))}
+          <FeatureCard
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+          >
+            <FeatureIcon>{feature.icon}</FeatureIcon>
+            <FeatureTitle>{feature.title}</FeatureTitle>
+            <FeatureDescription>{feature.description}</FeatureDescription>
+          </FeatureCard>
+        ))}
         </div>
 
         <div
@@ -2630,14 +2630,14 @@ const BannerAds = () => {
           </Slider>
         </SliderContainer>
 
-        <SliderControls>
-          <SliderButton onClick={prevSlide}>
-            <FaChevronLeft />
-          </SliderButton>
-          <SliderButton onClick={nextSlide}>
-            <FaChevronRight />
-          </SliderButton>
-        </SliderControls>
+          <SliderControls>
+            <SliderButton onClick={prevSlide}>
+              <FaChevronLeft />
+            </SliderButton>
+            <SliderButton onClick={nextSlide}>
+              <FaChevronRight />
+            </SliderButton>
+          </SliderControls>
 
         <SliderIntro style={{ marginTop: '2rem', fontStyle: 'italic' }}>
           Кожен банер проходить ручну перевірку та доопрацювання дизайнером для
@@ -2933,8 +2933,8 @@ const BannerAds = () => {
 
         <CTAButton whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           Замовити банер
-          <FaArrowRight />
-        </CTAButton>
+        <FaArrowRight />
+      </CTAButton>
       </FinalCTASection>
 
       <div style={{ height: '6rem' }}></div>
@@ -3032,5 +3032,5 @@ const BannerAds = () => {
   );
 };
 
-export default BannerAds;
+export default BannerAds; 
 
