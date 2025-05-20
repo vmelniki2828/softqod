@@ -41,7 +41,6 @@ import {
 } from 'react-icons/fa';
 
 const PageContainer = styled.div`
-  padding: 2rem;
   max-width: 1400px;
   margin: 0 auto;
 `;
@@ -1239,6 +1238,7 @@ const TabContainer = styled.div`
 const TabsHeader = styled.div`
   display: flex;
   justify-content: center;
+  gap: 1rem;
   margin-bottom: 3rem;
   border-radius: 15px;
   background: rgba(0, 0, 0, 0.1);
