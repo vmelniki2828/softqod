@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaSwatchbook,
   FaArrowRight,
-  FaChevronRight,
+  FaChevronRight, 
   FaUsers,
   FaLightbulb,
   FaRocket,
@@ -26,7 +26,6 @@ import {
 } from 'react-icons/fa';
 
 const PageContainer = styled.div`
-  padding: 2rem;
   max-width: 1400px;
   margin: 0 auto;
 `;
@@ -3970,6 +3969,9 @@ const BrandbookPage = () => {
                     layout
                     initial={{ borderRadius: 16 }}
                     key={`faq-${index}`}
+                    transition={{
+                      layout: { duration: 0.4, ease: "easeOut" }
+                    }}
                   >
                     <FaqQuestion
                       layout
@@ -3990,10 +3992,16 @@ const BrandbookPage = () => {
                     <AnimatePresence>
                       {expandedFaqs.includes(index) && (
                         <FaqAnswer
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3 }}
+                          initial={{ opacity: 0, height: 0, overflow: "hidden" }}
+                          animate={{ opacity: 1, height: "auto", overflow: "visible" }}
+                          exit={{ opacity: 0, height: 0, overflow: "hidden" }}
+                          transition={{ 
+                            type: "spring",
+                            damping: 25,
+                            stiffness: 120,
+                            duration: 0.6,
+                            opacity: { duration: 0.35 }
+                          }}
                         >
                           {faq.answer}
                         </FaqAnswer>
