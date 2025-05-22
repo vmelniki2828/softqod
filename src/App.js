@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -26,6 +31,7 @@ import AIPage from 'services/development/AIPage';
 import BannerAds from './services/design/BannerAds';
 import AIBannerMarketing from 'services/marketing/AIBannerMarketing';
 import BrandbookPage from 'services/design/BrandbookPage';
+import WebDesign from 'services/design/WebDesign';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -87,31 +93,77 @@ const App = () => {
           >
             <Header />
             <Routes>
-              <Route path="/" element={
-                <>
-                  <Hero />
-                  <Services />
-                  <Benefits />
-                  <Cases />
-                  <Contact />
-                </>
-              } />
+              <Route
+                path="/"
+                element={
+                  <>
+                    <Hero />
+                    <Services />
+                    <Benefits />
+                    <Cases />
+                    <Contact />
+                  </>
+                }
+              />
               <Route path="/services/development/pwa" element={<PWAPage />} />
-              <Route path="/services/development/automation" element={<BusinessAutomationPage />} />
-              <Route path="/services/development/erp" element={<ERPCRMPage />} />
-              <Route path="/services/development/ecommerce" element={<EcommercePage />} />
-              <Route path="/services/development/landing" element={<LandingPage />} />
-              <Route path="/services/development/mobile" element={<MobileAppsPage />} />
-              <Route path="/services/development/API" element={<APIDevelopmentPage />} />
-              <Route path="/services/development/bigdata" element={<BigDataPage />} />
-              <Route path="/services/development/journals" element={<ElectronicJournalsPage />} />
-              <Route path="/services/development/education" element={<OnlineEducationPage />} />
-              <Route path="/services/development/document" element={<DocumentManagementPage />} />
-              <Route path="/services/development/corporate" element={<CorporateWebsitePage />} />
+              <Route
+                path="/services/development/automation"
+                element={<BusinessAutomationPage />}
+              />
+              <Route
+                path="/services/development/erp"
+                element={<ERPCRMPage />}
+              />
+              <Route
+                path="/services/development/ecommerce"
+                element={<EcommercePage />}
+              />
+              <Route
+                path="/services/development/landing"
+                element={<LandingPage />}
+              />
+              <Route
+                path="/services/development/mobile"
+                element={<MobileAppsPage />}
+              />
+              <Route
+                path="/services/development/API"
+                element={<APIDevelopmentPage />}
+              />
+              <Route
+                path="/services/development/bigdata"
+                element={<BigDataPage />}
+              />
+              <Route
+                path="/services/development/journals"
+                element={<ElectronicJournalsPage />}
+              />
+              <Route
+                path="/services/development/education"
+                element={<OnlineEducationPage />}
+              />
+              <Route
+                path="/services/development/document"
+                element={<DocumentManagementPage />}
+              />
+              <Route
+                path="/services/development/corporate"
+                element={<CorporateWebsitePage />}
+              />
               <Route path="/services/development/AI" element={<AIPage />} />
               <Route path="/services/design/banners" element={<BannerAds />} />
-              <Route path="/services/design/brandbook" element={<BrandbookPage />} />
-              <Route path="/services/marketing/banners" element={<AIBannerMarketing />} />
+              <Route
+                path="/services/design/brandbook"
+                element={<BrandbookPage />}
+              />
+              <Route
+                path="/services/design/webdesign"
+                element={<WebDesign />}
+              />
+              <Route
+                path="/services/marketing/banners"
+                element={<AIBannerMarketing />}
+              />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
             <Footer />

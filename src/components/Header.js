@@ -264,7 +264,7 @@ const HeaderNavigation = () => {
               <FaBook />
               Бренд Бук
             </DropdownItem>
-            <DropdownItem to="/design/web">
+            <DropdownItem to="/services/design/webdesign">
               <FaDesktop />
               Веб Дизайн
             </DropdownItem>
