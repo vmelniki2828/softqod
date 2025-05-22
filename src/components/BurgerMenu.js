@@ -197,7 +197,7 @@ const MenuBlockIconSmall = styled.div`
   padding: 0.5rem;
   flex-shrink: 0;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-  
+
   svg {
     width: 16px;
     height: 16px;
@@ -306,7 +306,7 @@ const BurgerMenu = ({ isOpen, onClose }) => {
           >
             <MenuBlockLink
               to="/services/development/pwa"
-              onClick={(e) => handleLinkClick(e, "/services/development/pwa")}
+              onClick={e => handleLinkClick(e, '/services/development/pwa')}
             >
               <MenuBlockIconSmall>
                 <FaLaptopCode />
@@ -315,7 +315,7 @@ const BurgerMenu = ({ isOpen, onClose }) => {
             </MenuBlockLink>
             <MenuBlockLink
               to="/services/development/API"
-              onClick={(e) => handleLinkClick(e, "/services/development/API")}
+              onClick={e => handleLinkClick(e, '/services/development/API')}
             >
               <MenuBlockIconSmall>
                 <FaCode />
@@ -324,7 +324,7 @@ const BurgerMenu = ({ isOpen, onClose }) => {
             </MenuBlockLink>
             <MenuBlockLink
               to="/services/development/bigdata"
-              onClick={(e) => handleLinkClick(e, "/services/development/bigdata")}
+              onClick={e => handleLinkClick(e, '/services/development/bigdata')}
             >
               <MenuBlockIconSmall>
                 <FaChartLine />
@@ -333,7 +333,9 @@ const BurgerMenu = ({ isOpen, onClose }) => {
             </MenuBlockLink>
             <MenuBlockLink
               to="/services/development/automation"
-              onClick={(e) => handleLinkClick(e, "/services/development/automation")}
+              onClick={e =>
+                handleLinkClick(e, '/services/development/automation')
+              }
             >
               <MenuBlockIconSmall>
                 <FaCogs />
@@ -342,7 +344,9 @@ const BurgerMenu = ({ isOpen, onClose }) => {
             </MenuBlockLink>
             <MenuBlockLink
               to="/services/development/journals"
-              onClick={(e) => handleLinkClick(e, "/services/development/journals")}
+              onClick={e =>
+                handleLinkClick(e, '/services/development/journals')
+              }
             >
               <MenuBlockIconSmall>
                 <FaBookOpen />
@@ -351,7 +355,9 @@ const BurgerMenu = ({ isOpen, onClose }) => {
             </MenuBlockLink>
             <MenuBlockLink
               to="/services/development/education"
-              onClick={(e) => handleLinkClick(e, "/services/development/education")}
+              onClick={e =>
+                handleLinkClick(e, '/services/development/education')
+              }
             >
               <MenuBlockIconSmall>
                 <FaGraduationCap />
@@ -360,7 +366,9 @@ const BurgerMenu = ({ isOpen, onClose }) => {
             </MenuBlockLink>
             <MenuBlockLink
               to="/services/development/document"
-              onClick={(e) => handleLinkClick(e, "/services/development/document")}
+              onClick={e =>
+                handleLinkClick(e, '/services/development/document')
+              }
             >
               <MenuBlockIconSmall>
                 <FaFileAlt />
@@ -369,7 +377,7 @@ const BurgerMenu = ({ isOpen, onClose }) => {
             </MenuBlockLink>
             <MenuBlockLink
               to="/services/development/erp"
-              onClick={(e) => handleLinkClick(e, "/services/development/erp")}
+              onClick={e => handleLinkClick(e, '/services/development/erp')}
             >
               <MenuBlockIconSmall>
                 <FaDatabase />
@@ -378,7 +386,9 @@ const BurgerMenu = ({ isOpen, onClose }) => {
             </MenuBlockLink>
             <MenuBlockLink
               to="/services/development/corporate"
-              onClick={(e) => handleLinkClick(e, "/services/development/corporate")}
+              onClick={e =>
+                handleLinkClick(e, '/services/development/corporate')
+              }
             >
               <MenuBlockIconSmall>
                 <FaBuilding />
@@ -387,7 +397,9 @@ const BurgerMenu = ({ isOpen, onClose }) => {
             </MenuBlockLink>
             <MenuBlockLink
               to="/services/development/ecommerce"
-              onClick={(e) => handleLinkClick(e, "/services/development/ecommerce")}
+              onClick={e =>
+                handleLinkClick(e, '/services/development/ecommerce')
+              }
             >
               <MenuBlockIconSmall>
                 <FaStore />
@@ -396,7 +408,7 @@ const BurgerMenu = ({ isOpen, onClose }) => {
             </MenuBlockLink>
             <MenuBlockLink
               to="/services/development/landing"
-              onClick={(e) => handleLinkClick(e, "/services/development/landing")}
+              onClick={e => handleLinkClick(e, '/services/development/landing')}
             >
               <MenuBlockIconSmall>
                 <FaGlobe />
@@ -405,7 +417,7 @@ const BurgerMenu = ({ isOpen, onClose }) => {
             </MenuBlockLink>
             <MenuBlockLink
               to="/services/development/mobile"
-              onClick={(e) => handleLinkClick(e, "/services/development/mobile")}
+              onClick={e => handleLinkClick(e, '/services/development/mobile')}
             >
               <MenuBlockIconSmall>
                 <FaMobile />
@@ -414,7 +426,7 @@ const BurgerMenu = ({ isOpen, onClose }) => {
             </MenuBlockLink>
             <MenuBlockLink
               to="/services/development/AI"
-              onClick={(e) => handleLinkClick(e, "/services/development/AI")}
+              onClick={e => handleLinkClick(e, '/services/development/AI')}
             >
               <MenuBlockIconSmall>
                 <FaRobot />
@@ -442,91 +454,124 @@ const BurgerMenu = ({ isOpen, onClose }) => {
             }}
             transition={{ duration: 0.3 }}
           >
-            <MenuBlockLink 
+            <MenuBlockLink
               to="/services/design/bannerads"
-              onClick={(e) => handleLinkClick(e, "/services/design/bannerads")}
+              onClick={e => handleLinkClick(e, '/services/design/bannerads')}
             >
               <MenuBlockIconSmall>
                 <FaPaintBrush />
               </MenuBlockIconSmall>
               Рекламные Банера
             </MenuBlockLink>
-            <MenuBlockLink href="#motion" onClick={(e) => handleLinkClick(e, "#motion")}>
+            <MenuBlockLink
+              href="#motion"
+              onClick={e => handleLinkClick(e, '#motion')}
+            >
               <MenuBlockIconSmall>
                 <FaVideo />
               </MenuBlockIconSmall>
               Моушен дизайн
             </MenuBlockLink>
-            <MenuBlockLink 
+            <MenuBlockLink
               to="/services/design/brandbook"
-              onClick={(e) => handleLinkClick(e, "/services/design/brandbook")}
+              onClick={e => handleLinkClick(e, '/services/design/brandbook')}
             >
               <MenuBlockIconSmall>
                 <FaBook />
               </MenuBlockIconSmall>
               Бренд Бук
             </MenuBlockLink>
-            <MenuBlockLink href="#web-design" onClick={(e) => handleLinkClick(e, "#web-design")}>
+            <MenuBlockLink
+              to="/services/design/webdesign"
+              onClick={e => handleLinkClick(e, '/services/design/webdesign')}
+            >
               <MenuBlockIconSmall>
                 <FaDesktop />
               </MenuBlockIconSmall>
               Веб дизайн
             </MenuBlockLink>
-            <MenuBlockLink href="#ui-ux" onClick={(e) => handleLinkClick(e, "#ui-ux")}>
+            <MenuBlockLink
+              href="#ui-ux"
+              onClick={e => handleLinkClick(e, '#ui-ux')}
+            >
               <MenuBlockIconSmall>
                 <FaPalette />
               </MenuBlockIconSmall>
               UX/UI дизайн
             </MenuBlockLink>
-            <MenuBlockLink href="#illustrations" onClick={(e) => handleLinkClick(e, "#illustrations")}>
+            <MenuBlockLink
+              href="#illustrations"
+              onClick={e => handleLinkClick(e, '#illustrations')}
+            >
               <MenuBlockIconSmall>
                 <FaPaintBrush />
               </MenuBlockIconSmall>
               Иллюстрации и иконографика
             </MenuBlockLink>
-            <MenuBlockLink href="#3d" onClick={(e) => handleLinkClick(e, "#3d")}>
+            <MenuBlockLink href="#3d" onClick={e => handleLinkClick(e, '#3d')}>
               <MenuBlockIconSmall>
                 <FaCube />
               </MenuBlockIconSmall>
               3D моделирование и визуализация
             </MenuBlockLink>
-            <MenuBlockLink href="#infographics" onClick={(e) => handleLinkClick(e, "#infographics")}>
+            <MenuBlockLink
+              href="#infographics"
+              onClick={e => handleLinkClick(e, '#infographics')}
+            >
               <MenuBlockIconSmall>
                 <FaChartPie />
               </MenuBlockIconSmall>
               Инфографика
             </MenuBlockLink>
-            <MenuBlockLink href="#package" onClick={(e) => handleLinkClick(e, "#package")}>
+            <MenuBlockLink
+              href="#package"
+              onClick={e => handleLinkClick(e, '#package')}
+            >
               <MenuBlockIconSmall>
                 <FaBox />
               </MenuBlockIconSmall>
               Пакетный дизайн
             </MenuBlockLink>
-            <MenuBlockLink href="#typography" onClick={(e) => handleLinkClick(e, "#typography")}>
+            <MenuBlockLink
+              href="#typography"
+              onClick={e => handleLinkClick(e, '#typography')}
+            >
               <MenuBlockIconSmall>
                 <FaFont />
               </MenuBlockIconSmall>
               Типографика и леттеринг
             </MenuBlockLink>
-            <MenuBlockLink href="#social" onClick={(e) => handleLinkClick(e, "#social")}>
+            <MenuBlockLink
+              href="#social"
+              onClick={e => handleLinkClick(e, '#social')}
+            >
               <MenuBlockIconSmall>
                 <FaInstagram />
               </MenuBlockIconSmall>
               Социальные медиа дизайн
             </MenuBlockLink>
-            <MenuBlockLink href="#animation" onClick={(e) => handleLinkClick(e, "#animation")}>
+            <MenuBlockLink
+              href="#animation"
+              onClick={e => handleLinkClick(e, '#animation')}
+            >
               <MenuBlockIconSmall>
                 <FaVideo />
               </MenuBlockIconSmall>
               Анимация и видео дизайн
             </MenuBlockLink>
-            <MenuBlockLink href="#branding" onClick={(e) => handleLinkClick(e, "#branding")}>
+            <MenuBlockLink
+              href="#branding"
+              onClick={e => handleLinkClick(e, '#branding')}
+            >
               <MenuBlockIconSmall>
                 <FaPencilRuler />
               </MenuBlockIconSmall>
               Разработка фирменного стиля
             </MenuBlockLink>
-            <MenuBlockLink href="#retouch" onClick={(e) => handleLinkClick(e, "#retouch")}>
+            <MenuBlockLink
+              href="#retouch"
+              onClick={e => handleLinkClick(e, '#retouch')}
+            >
               <MenuBlockIconSmall>
                 <FaCamera />
               </MenuBlockIconSmall>
@@ -553,67 +598,100 @@ const BurgerMenu = ({ isOpen, onClose }) => {
             }}
             transition={{ duration: 0.3 }}
           >
-            <MenuBlockLink href="#banner-ads" onClick={(e) => handleLinkClick(e, "#banner-ads")}>
+            <MenuBlockLink
+              href="#banner-ads"
+              onClick={e => handleLinkClick(e, '#banner-ads')}
+            >
               <MenuBlockIconSmall>
                 <FaImage />
               </MenuBlockIconSmall>
               Банерная реклама на сайтах
             </MenuBlockLink>
-            <MenuBlockLink href="#smm" onClick={(e) => handleLinkClick(e, "#smm")}>
+            <MenuBlockLink
+              href="#smm"
+              onClick={e => handleLinkClick(e, '#smm')}
+            >
               <MenuBlockIconSmall>
                 <FaUsers />
               </MenuBlockIconSmall>
               SMM
             </MenuBlockLink>
-            <MenuBlockLink href="#context-ads" onClick={(e) => handleLinkClick(e, "#context-ads")}>
+            <MenuBlockLink
+              href="#context-ads"
+              onClick={e => handleLinkClick(e, '#context-ads')}
+            >
               <MenuBlockIconSmall>
                 <FaChartBar />
               </MenuBlockIconSmall>
               Контекстная реклама
             </MenuBlockLink>
-            <MenuBlockLink href="#seo" onClick={(e) => handleLinkClick(e, "#seo")}>
+            <MenuBlockLink
+              href="#seo"
+              onClick={e => handleLinkClick(e, '#seo')}
+            >
               <MenuBlockIconSmall>
                 <FaSearch />
               </MenuBlockIconSmall>
               Seo Оптимизация
             </MenuBlockLink>
-            <MenuBlockLink href="#target-ads" onClick={(e) => handleLinkClick(e, "#target-ads")}>
+            <MenuBlockLink
+              href="#target-ads"
+              onClick={e => handleLinkClick(e, '#target-ads')}
+            >
               <MenuBlockIconSmall>
                 <FaBullhorn />
               </MenuBlockIconSmall>
               Таргетированная реклама
             </MenuBlockLink>
-            <MenuBlockLink href="#marketing-strategy" onClick={(e) => handleLinkClick(e, "#marketing-strategy")}>
+            <MenuBlockLink
+              href="#marketing-strategy"
+              onClick={e => handleLinkClick(e, '#marketing-strategy')}
+            >
               <MenuBlockIconSmall>
                 <FaChartLine />
               </MenuBlockIconSmall>
               Маркетинговая стратегия
             </MenuBlockLink>
-            <MenuBlockLink href="#marketing-audit" onClick={(e) => handleLinkClick(e, "#marketing-audit")}>
+            <MenuBlockLink
+              href="#marketing-audit"
+              onClick={e => handleLinkClick(e, '#marketing-audit')}
+            >
               <MenuBlockIconSmall>
                 <FaChartBar />
               </MenuBlockIconSmall>
               Маркетинговый аудит
             </MenuBlockLink>
-            <MenuBlockLink href="#email" onClick={(e) => handleLinkClick(e, "#email")}>
+            <MenuBlockLink
+              href="#email"
+              onClick={e => handleLinkClick(e, '#email')}
+            >
               <MenuBlockIconSmall>
                 <FaEnvelope />
               </MenuBlockIconSmall>
               E-mail рассылки
             </MenuBlockLink>
-            <MenuBlockLink href="#competitors" onClick={(e) => handleLinkClick(e, "#competitors")}>
+            <MenuBlockLink
+              href="#competitors"
+              onClick={e => handleLinkClick(e, '#competitors')}
+            >
               <MenuBlockIconSmall>
                 <FaSearch />
               </MenuBlockIconSmall>
               Анализ конкурентов
             </MenuBlockLink>
-            <MenuBlockLink href="#web-analytics" onClick={(e) => handleLinkClick(e, "#web-analytics")}>
+            <MenuBlockLink
+              href="#web-analytics"
+              onClick={e => handleLinkClick(e, '#web-analytics')}
+            >
               <MenuBlockIconSmall>
                 <FaChartArea />
               </MenuBlockIconSmall>
               Веб аналитика
             </MenuBlockLink>
-            <MenuBlockLink href="#content-plan" onClick={(e) => handleLinkClick(e, "#content-plan")}>
+            <MenuBlockLink
+              href="#content-plan"
+              onClick={e => handleLinkClick(e, '#content-plan')}
+            >
               <MenuBlockIconSmall>
                 <FaClipboardList />
               </MenuBlockIconSmall>
