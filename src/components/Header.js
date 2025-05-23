@@ -268,7 +268,7 @@ const HeaderNavigation = () => {
               <FaDesktop />
               Веб Дизайн
             </DropdownItem>
-            <DropdownItem to="/design/ui-ux">
+            <DropdownItem to="/services/design/uxuidesign">
               <FaPalette />
               UX/UI дизайн
             </DropdownItem>

@@ -32,6 +32,7 @@ import BannerAds from './services/design/BannerAds';
 import AIBannerMarketing from 'services/marketing/AIBannerMarketing';
 import BrandbookPage from 'services/design/BrandbookPage';
 import WebDesign from 'services/design/WebDesign';
+import UxUiDesign from 'services/design/UxUiDesign';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -159,6 +160,10 @@ const App = () => {
               <Route
                 path="/services/design/webdesign"
                 element={<WebDesign />}
+              />
+              <Route
+                path="/services/design/uxuidesign"
+                element={<UxUiDesign />}
               />
               <Route
                 path="/services/marketing/banners"

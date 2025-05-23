@@ -491,8 +491,8 @@ const BurgerMenu = ({ isOpen, onClose }) => {
               Веб дизайн
             </MenuBlockLink>
             <MenuBlockLink
-              href="#ui-ux"
-              onClick={e => handleLinkClick(e, '#ui-ux')}
+              to="/services/design/uxuidesign"
+              onClick={e => handleLinkClick(e, '/services/design/uxuidesign')}
             >
               <MenuBlockIconSmall>
                 <FaPalette />
