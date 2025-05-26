@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaArrowRight,
   FaChevronRight,
@@ -22,6 +22,7 @@ import {
   FaPalette,
   FaCheck,
   FaUser,
+  FaPlus
 } from 'react-icons/fa';
 
 // Page container
@@ -245,7 +246,7 @@ const FeatureText = styled.p`
 `;
 
 // Animation effects for UX/UI Design preview
-const float = keyframes`
+const uiElementFloat = keyframes`
   0% { transform: translateY(0) rotate(0); }
   50% { transform: translateY(-15px) rotate(2deg); }
   100% { transform: translateY(0) rotate(0); }
@@ -260,6 +261,24 @@ const breathe = keyframes`
   0% { transform: scale(1); }
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
+`;
+
+// Animations for FAQ
+const floatVertical = keyframes`
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+`;
+
+const faqPulse = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+`;
+
+const shimmerEffect = keyframes`
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; }
 `;
 
 // UX/UI Design preview components
@@ -316,7 +335,7 @@ const UxUiPhone = styled(UxUiElement)`
   top: 50px;
   left: 30px;
   z-index: 1;
-  animation: ${float} 6s infinite ease-in-out;
+  animation: ${uiElementFloat} 6s infinite ease-in-out;
 
   &::before {
     content: '';
@@ -337,7 +356,7 @@ const UxUiTablet = styled(UxUiElement)`
   top: 20px;
   right: 40px;
   z-index: 2;
-  animation: ${float} 8s infinite ease-in-out reverse;
+  animation: ${uiElementFloat} 8s infinite ease-in-out reverse;
 
   &::before {
     content: '';
@@ -359,7 +378,7 @@ const UxUiLaptop = styled(UxUiElement)`
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
-  animation: ${float} 7s infinite ease-in-out;
+  animation: ${uiElementFloat} 7s infinite ease-in-out;
 
   &::before {
     content: '';
@@ -452,7 +471,7 @@ const ColorPalette = styled(DesignElement)`
   display: flex;
   justify-content: space-between;
   padding: 5px;
-  animation: ${float} 5s infinite ease-in-out;
+  animation: ${uiElementFloat} 5s infinite ease-in-out;
 
   .color {
     width: 20px;
@@ -478,7 +497,7 @@ const UxWidget = styled(DesignElement)`
   right: 10px;
   flex-direction: column;
   gap: 5px;
-  animation: ${float} 6s infinite ease-in-out reverse;
+  animation: ${uiElementFloat} 6s infinite ease-in-out reverse;
 
   .icon {
     color: var(--accent-color);
@@ -515,6 +534,52 @@ const Cursor = styled(motion.div)`
 
 // Main component
 const UxUiDesign = () => {
+  // FAQ state
+  const [expandedFaqs, setExpandedFaqs] = useState([]);
+
+  // FAQ data
+  const faqData = [
+    {
+      question: '1. У чому різниця між UX і UI дизайном?',
+      answer: 'UX (User Experience) відповідає за логіку, структуру і зручність використання інтерфейсу. UI (User Interface) — за візуальне оформлення: кольори, шрифти, стилі, кнопки. Обидва напрями працюють разом для досягнення ідеального користувацького досвіду.'
+    },
+    {
+      question: '2. Чи обов\'язково робити UX-дослідження?',
+      answer: 'Так. Без аналізу поведінки користувачів і цілей проєкту дизайн може вийти естетичним, але неефективним. UX-дослідження — основа функціональності.'
+    },
+    {
+      question: '3. Скільки триває розробка UX/UI дизайну?',
+      answer: 'У середньому від 2 до 6 тижнів, залежно від обсягу проєкту. Якщо потрібно швидше — розглядаємо варіант поетапної роботи або прискореного запуску MVP.'
+    },
+    {
+      question: '4. Чи адаптуєте ви дизайн під мобільні пристрої?',
+      answer: 'Так, мобільна адаптація — стандартна частина кожного проєкту. Ми створюємо responsive-дизайн для усіх ключових типів пристроїв.'
+    },
+    {
+      question: '5. Ви працюєте з готовим сайтом чи тільки з нуля?',
+      answer: 'Можемо провести UX-аудит вже існуючого ресурсу, запропонувати редизайн або працювати з чистого аркуша. Усе залежить від ваших цілей.'
+    },
+    {
+      question: '6. Який результат я отримаю після завершення проєкту?',
+      answer: 'Ви отримаєте готові дизайн-макети у Figma (або іншому зручному форматі), гайдлайн для розробників і за потреби — консультацію під час впровадження.'
+    },
+    {
+      question: '7. Що потрібно, щоб розпочати співпрацю?',
+      answer: 'Надішліть короткий опис вашого проєкту або зв\'яжіться з нами для брифінгу. Ми уточнимо задачі, запропонуємо підхід і розрахуємо вартість.'
+    }
+  ];
+
+  // Function to toggle FAQ
+  const toggleFaq = index => {
+    setExpandedFaqs(prev => {
+      if (prev.includes(index)) {
+        return prev.filter(i => i !== index);
+      } else {
+        return [...prev, index];
+      }
+    });
+  };
+
   return (
     <PageContainer>
       <HeroSection>
@@ -1031,6 +1096,426 @@ const UxUiDesign = () => {
           </BenefitsBackground>
         </BusinessBenefitsContainer>
       </BusinessBenefitsSection>
+
+      {/* Solutions Examples Section */}
+      <SolutionsSection>
+        <SolutionsContainer>
+          <SolutionsHeader>
+            <SolutionsTitle>
+              Приклади рішень у UX/UI дизайні — типові задачі, які ми закриваємо
+            </SolutionsTitle>
+            <SolutionsSubtitle>
+              Ми створюємо дизайн для різних ніш і форматів бізнесу. Ось які задачі найчастіше вирішуємо:
+            </SolutionsSubtitle>
+          </SolutionsHeader>
+          
+          <SolutionsGrid>
+            <SolutionCard 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              whileHover={{ y: -10 }}
+            >
+              <SolutionCardInner>
+                <SolutionType>UX/UI для корпоративних сайтів</SolutionType>
+                <SolutionFeatures>
+                  <SolutionFeature>
+                    <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
+                    <SolutionFeatureText>Чітка структура</SolutionFeatureText>
+                  </SolutionFeature>
+                  <SolutionFeature>
+                    <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
+                    <SolutionFeatureText>Сильні візуальні акценти</SolutionFeatureText>
+                  </SolutionFeature>
+                  <SolutionFeature>
+                    <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
+                    <SolutionFeatureText>Зрозуміла навігація для різних цільових груп</SolutionFeatureText>
+                  </SolutionFeature>
+                </SolutionFeatures>
+                <SolutionResult>
+                  <ResultLabel>Результат:</ResultLabel>
+                  <ResultText>репутація бренду + довіра з першого кліку</ResultText>
+                </SolutionResult>
+                <SolutionIllustration className="corporate">
+                  <IllustrationImage></IllustrationImage>
+                  <IllustrationElements>
+                    <IllustElement className="header"></IllustElement>
+                    <IllustElement className="hero"></IllustElement>
+                    <IllustElement className="content-1"></IllustElement>
+                    <IllustElement className="content-2"></IllustElement>
+                    <IllustElement className="cta"></IllustElement>
+                  </IllustrationElements>
+                </SolutionIllustration>
+              </SolutionCardInner>
+            </SolutionCard>
+            
+            <SolutionCard 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              whileHover={{ y: -10 }}
+            >
+              <SolutionCardInner>
+                <SolutionType>UX/UI для інтернет-магазинів</SolutionType>
+                <SolutionFeatures>
+                  <SolutionFeature>
+                    <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
+                    <SolutionFeatureText>Зручний каталог</SolutionFeatureText>
+                  </SolutionFeature>
+                  <SolutionFeature>
+                    <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
+                    <SolutionFeatureText>Оптимізований чек-аут</SolutionFeatureText>
+                  </SolutionFeature>
+                  <SolutionFeature>
+                    <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
+                    <SolutionFeatureText>Мобільна адаптація з фокусом на швидкість</SolutionFeatureText>
+                  </SolutionFeature>
+                </SolutionFeatures>
+                <SolutionResult>
+                  <ResultLabel>Результат:</ResultLabel>
+                  <ResultText>зростання конверсії та зменшення покинутого кошика</ResultText>
+                </SolutionResult>
+                <SolutionIllustration className="ecommerce">
+                  <IllustrationImage></IllustrationImage>
+                  <IllustrationElements>
+                    <IllustElement className="product-grid"></IllustElement>
+                    <IllustElement className="product-card"></IllustElement>
+                    <IllustElement className="product-detail"></IllustElement>
+                    <IllustElement className="cart"></IllustElement>
+                    <IllustElement className="checkout"></IllustElement>
+                  </IllustrationElements>
+                </SolutionIllustration>
+              </SolutionCardInner>
+            </SolutionCard>
+            
+            <SolutionCard 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              whileHover={{ y: -10 }}
+            >
+              <SolutionCardInner>
+                <SolutionType>UX/UI для стартапів та MVP</SolutionType>
+                <SolutionFeatures>
+                  <SolutionFeature>
+                    <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
+                    <SolutionFeatureText>Швидкий прототип для тестування</SolutionFeatureText>
+                  </SolutionFeature>
+                  <SolutionFeature>
+                    <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
+                    <SolutionFeatureText>Мінімалістичний UI з логікою MVP</SolutionFeatureText>
+                  </SolutionFeature>
+                  <SolutionFeature>
+                    <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
+                    <SolutionFeatureText>Можливість масштабування</SolutionFeatureText>
+                  </SolutionFeature>
+                </SolutionFeatures>
+                <SolutionResult>
+                  <ResultLabel>Результат:</ResultLabel>
+                  <ResultText>швидкий вихід на ринок із якісним першим враженням</ResultText>
+                </SolutionResult>
+                <SolutionIllustration className="startup">
+                  <IllustrationImage></IllustrationImage>
+                  <IllustrationElements>
+                    <IllustElement className="wireframe"></IllustElement>
+                    <IllustElement className="prototype"></IllustElement>
+                    <IllustElement className="ui-components"></IllustElement>
+                    <IllustElement className="feedback"></IllustElement>
+                  </IllustrationElements>
+                </SolutionIllustration>
+              </SolutionCardInner>
+            </SolutionCard>
+            
+            <SolutionCard 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              whileHover={{ y: -10 }}
+            >
+              <SolutionCardInner>
+                <SolutionType>UX/UI для мобільних застосунків</SolutionType>
+                <SolutionFeatures>
+                  <SolutionFeature>
+                    <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
+                    <SolutionFeatureText>Іконки, жести, мікроанімація</SolutionFeatureText>
+                  </SolutionFeature>
+                  <SolutionFeature>
+                    <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
+                    <SolutionFeatureText>UX-моделі під iOS/Android</SolutionFeatureText>
+                  </SolutionFeature>
+                  <SolutionFeature>
+                    <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
+                    <SolutionFeatureText>Тестування сценаріїв користувачів</SolutionFeatureText>
+                  </SolutionFeature>
+                </SolutionFeatures>
+                <SolutionResult>
+                  <ResultLabel>Результат:</ResultLabel>
+                  <ResultText>залученість користувачів та позитивний досвід</ResultText>
+                </SolutionResult>
+                <SolutionIllustration className="mobile">
+                  <IllustrationImage></IllustrationImage>
+                  <IllustrationElements>
+                    <IllustElement className="phone"></IllustElement>
+                    <IllustElement className="screens"></IllustElement>
+                    <IllustElement className="gestures"></IllustElement>
+                    <IllustElement className="components"></IllustElement>
+                  </IllustrationElements>
+                </SolutionIllustration>
+              </SolutionCardInner>
+            </SolutionCard>
+          </SolutionsGrid>
+          
+          <SolutionsCta>
+            <SolutionsCtaText>
+              Отримайте UX/UI рішення, яке підходить саме вашому бізнесу
+            </SolutionsCtaText>
+            <SolutionsCtaButton
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Обговорити проєкт
+            </SolutionsCtaButton>
+          </SolutionsCta>
+        </SolutionsContainer>
+      </SolutionsSection>
+
+      {/* Testimonials Section */}
+      <TestimonialsSection>
+        <TestimonialsContainer>
+          <TestimonialsHeader>
+            <TestimonialsTitle>
+              Що кажуть клієнти про наш UX/UI дизайн
+            </TestimonialsTitle>
+            <TestimonialsDescription>
+              Ми працюємо з бізнесами, яким важливий не просто красивий інтерфейс, а результат. 
+              Ось що нам пишуть після запуску:
+            </TestimonialsDescription>
+          </TestimonialsHeader>
+          
+          <TestimonialsSlider>
+            <Testimonial
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              whileHover={{ y: -10, transition: { duration: 0.2 } }}
+            >
+              <TestimonialInner>
+                <TestimonialQuoteMark>❝</TestimonialQuoteMark>
+                <TestimonialContent>
+                  <TestimonialText>
+                    Після редизайну сайту час перебування користувачів зріс у 1,5 раза. 
+                    Дизайн виглядає сучасно, але найголовніше — все логічно і працює як треба.
+                  </TestimonialText>
+                </TestimonialContent>
+                <TestimonialAuthor>
+                  <TestimonialAvatar>
+                    <FaUser />
+                  </TestimonialAvatar>
+                  <TestimonialAuthorInfo>
+                    <TestimonialAuthorName>Засновник IT-компанії</TestimonialAuthorName>
+                    <TestimonialMeter>
+                      <TestimonialMeterFill style={{width: '90%'}} />
+                    </TestimonialMeter>
+                  </TestimonialAuthorInfo>
+                </TestimonialAuthor>
+                <TestimonialDecoration className="circle" />
+                <TestimonialDecoration className="line" />
+                <TestimonialDecoration className="dot-1" />
+                <TestimonialDecoration className="dot-2" />
+              </TestimonialInner>
+            </Testimonial>
+
+            <Testimonial
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              whileHover={{ y: -10, transition: { duration: 0.2 } }}
+            >
+              <TestimonialInner>
+                <TestimonialQuoteMark>❝</TestimonialQuoteMark>
+                <TestimonialContent>
+                  <TestimonialText>
+                    Було приємно працювати: швидко зрозуміли, чого ми хочемо, і запропонували 
+                    рішення, про які ми самі не подумали. Новий дизайн реально спростив 
+                    клієнтам шлях до заявки.
+                  </TestimonialText>
+                </TestimonialContent>
+                <TestimonialAuthor>
+                  <TestimonialAvatar>
+                    <FaUser />
+                  </TestimonialAvatar>
+                  <TestimonialAuthorInfo>
+                    <TestimonialAuthorName>Керівник відділу маркетингу у сфері послуг</TestimonialAuthorName>
+                    <TestimonialMeter>
+                      <TestimonialMeterFill style={{width: '95%'}} />
+                    </TestimonialMeter>
+                  </TestimonialAuthorInfo>
+                </TestimonialAuthor>
+                <TestimonialDecoration className="circle" />
+                <TestimonialDecoration className="line" />
+                <TestimonialDecoration className="dot-1" />
+                <TestimonialDecoration className="dot-2" />
+              </TestimonialInner>
+            </Testimonial>
+
+            <Testimonial
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              whileHover={{ y: -10, transition: { duration: 0.2 } }}
+            >
+              <TestimonialInner>
+                <TestimonialQuoteMark>❝</TestimonialQuoteMark>
+                <TestimonialContent>
+                  <TestimonialText>
+                    Ми отримали не просто макети, а повну дизайн-систему. Команда чітко 
+                    дотримувалась дедлайнів і дала технічну підтримку після передачі проєкту.
+                  </TestimonialText>
+                </TestimonialContent>
+                <TestimonialAuthor>
+                  <TestimonialAvatar>
+                    <FaUser />
+                  </TestimonialAvatar>
+                  <TestimonialAuthorInfo>
+                    <TestimonialAuthorName>СЕО eCommerce-бренду</TestimonialAuthorName>
+                    <TestimonialMeter>
+                      <TestimonialMeterFill style={{width: '85%'}} />
+                    </TestimonialMeter>
+                  </TestimonialAuthorInfo>
+                </TestimonialAuthor>
+                <TestimonialDecoration className="circle" />
+                <TestimonialDecoration className="line" />
+                <TestimonialDecoration className="dot-1" />
+                <TestimonialDecoration className="dot-2" />
+              </TestimonialInner>
+            </Testimonial>
+          </TestimonialsSlider>
+          
+          <TestimonialsBackground>
+            <TestimonialsBgWave className="wave-1" />
+            <TestimonialsBgWave className="wave-2" />
+            <TestimonialsBgDot className="bg-dot-1" />
+            <TestimonialsBgDot className="bg-dot-2" />
+            <TestimonialsBgDot className="bg-dot-3" />
+          </TestimonialsBackground>
+          
+          <TestimonialsCta>
+            <TestimonialsCtaButton
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Приєднатися до клієнтів <FaArrowRight />
+            </TestimonialsCtaButton>
+          </TestimonialsCta>
+        </TestimonialsContainer>
+      </TestimonialsSection>
+
+      {/* FAQ Section */}
+      <FaqSection
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <FaqWaveTop />
+        
+        <FaqContainer>
+          <FaqGlowCircle className="circle-1" />
+          <FaqGlowCircle className="circle-2" />
+
+          <FaqTitle
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            FAQ
+          </FaqTitle>
+
+          <FaqList
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
+          >
+            {faqData.map((faq, index) => (
+              <FaqItem
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.3 + index * 0.1, ease: "easeOut" }}
+              >
+                <AnimatePresence>
+                  <FaqItemContent
+                    layout
+                    initial={{ borderRadius: 16 }}
+                    key={`faq-${index}`}
+                    transition={{
+                      layout: { duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }
+                    }}
+                  >
+                    <FaqQuestion
+                      layout
+                      onClick={() => toggleFaq(index)}
+                      whileHover={{ color: 'var(--accent-color)', scale: 1.01, transition: { duration: 0.3, ease: "easeOut" } }}
+                    >
+                      <FaqQuestionText>{faq.question}</FaqQuestionText>
+                      <FaqToggle
+                        animate={{
+                          rotate: expandedFaqs.includes(index) ? 45 : 0,
+                        }}
+                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                      >
+                        <FaPlus />
+                      </FaqToggle>
+                    </FaqQuestion>
+
+                    <AnimatePresence>
+                      {expandedFaqs.includes(index) && (
+                        <FaqAnswer
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ 
+                            opacity: 1, 
+                            height: "auto"
+                          }}
+                          exit={{ 
+                            opacity: 0, 
+                            height: 0
+                          }}
+                          transition={{ 
+                            duration: 0.4,
+                            ease: [0.04, 0.62, 0.23, 0.98]
+                          }}
+                        >
+                          <div style={{ opacity: expandedFaqs.includes(index) ? 1 : 0, transition: 'opacity 0.3s ease', transitionDelay: '0.15s' }}>
+                            {faq.answer}
+                          </div>
+                        </FaqAnswer>
+                      )}
+                    </AnimatePresence>
+                  </FaqItemContent>
+                </AnimatePresence>
+              </FaqItem>
+            ))}
+          </FaqList>
+          
+          <FaqCta>
+            <FaqCtaText>
+              Маєте додаткові запитання щодо UX/UI дизайну?
+            </FaqCtaText>
+            <FaqCtaButton
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Зв'язатися з нами <FaArrowRight />
+            </FaqCtaButton>
+          </FaqCta>
+        </FaqContainer>
+      </FaqSection>
     </PageContainer>
   );
 };
@@ -2598,6 +3083,1208 @@ const BenefitsBgLine = styled.div`
     bottom: 25%;
     right: 5%;
     transform: rotate(-8deg);
+  }
+`;
+
+// Styles for Solutions Section
+const SolutionsSection = styled.section`
+  padding: 8rem 0;
+  position: relative;
+  background: linear-gradient(
+    to bottom,
+    var(--bg-primary) 0%,
+    rgba(16, 24, 39, 0.98) 100%
+  );
+  overflow: hidden;
+`;
+
+const SolutionsContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+`;
+
+const SolutionsHeader = styled.div`
+  text-align: center;
+  margin-bottom: 5rem;
+`;
+
+const SolutionsTitle = styled.h2`
+  font-size: 3.2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  position: relative;
+  display: inline-block;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 5px;
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
+      var(--accent-color-light)
+    );
+    border-radius: 3px;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2.6rem;
+  }
+`;
+
+const SolutionsSubtitle = styled.p`
+  font-size: 1.2rem;
+  line-height: 1.7;
+  max-width: 750px;
+  margin: 2rem auto 0;
+  color: var(--text-secondary);
+`;
+
+const SolutionsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  margin-bottom: 5rem;
+  
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+`;
+
+const SolutionCard = styled(motion.div)`
+  height: 100%;
+`;
+
+const SolutionCardInner = styled.div`
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 2.5rem;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border-color: rgba(var(--accent-color-rgb), 0.2);
+  }
+`;
+
+const SolutionType = styled.h3`
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  position: relative;
+  padding-bottom: 0.8rem;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 2px;
+  }
+`;
+
+const SolutionFeatures = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+`;
+
+const SolutionFeature = styled.div`
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+`;
+
+const SolutionFeatureIcon = styled.div`
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  margin-top: 2px;
+`;
+
+const SolutionFeatureText = styled.p`
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+`;
+
+const SolutionResult = styled.div`
+  padding: 1.2rem 1.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  margin-top: auto;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    background: var(--accent-color-light);
+    border-radius: 2px 0 0 2px;
+  }
+`;
+
+const ResultLabel = styled.span`
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-bottom: 0.3rem;
+`;
+
+const ResultText = styled.p`
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  
+  span {
+    color: var(--accent-color);
+    font-weight: 700;
+  }
+`;
+
+const SolutionIllustration = styled.div`
+  position: relative;
+  height: 180px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  
+  &.corporate {
+    background: linear-gradient(135deg, rgba(0, 46, 114, 0.4) 0%, rgba(0, 32, 84, 0.2) 100%);
+  }
+  
+  &.ecommerce {
+    background: linear-gradient(135deg, rgba(123, 0, 255, 0.4) 0%, rgba(91, 0, 187, 0.2) 100%);
+  }
+  
+  &.startup {
+    background: linear-gradient(135deg, rgba(0, 196, 112, 0.4) 0%, rgba(0, 148, 85, 0.2) 100%);
+  }
+  
+  &.mobile {
+    background: linear-gradient(135deg, rgba(0, 138, 255, 0.4) 0%, rgba(0, 97, 180, 0.2) 100%);
+  }
+`;
+
+const IllustrationImage = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.15;
+  background-size: cover;
+  background-position: center;
+  mix-blend-mode: luminosity;
+`;
+
+const IllustrationElements = styled.div`
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+`;
+
+const illustPulse = keyframes`
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+`;
+
+const IllustElement = styled.div`
+  position: absolute;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  animation: ${illustPulse} 3s infinite ease-in-out;
+  
+  /* Corporate website elements */
+  &.header {
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    height: 15px;
+    animation-delay: 0s;
+  }
+  
+  &.hero {
+    top: 40px;
+    left: 15px;
+    right: 15px;
+    height: 50px;
+    animation-delay: 0.2s;
+  }
+  
+  &.content-1 {
+    top: 100px;
+    left: 15px;
+    width: 60%;
+    height: 25px;
+    animation-delay: 0.4s;
+  }
+  
+  &.content-2 {
+    top: 100px;
+    right: 15px;
+    width: 30%;
+    height: 65px;
+    animation-delay: 0.6s;
+  }
+  
+  &.cta {
+    bottom: 15px;
+    left: 15px;
+    width: 120px;
+    height: 20px;
+    animation-delay: 0.8s;
+  }
+  
+  /* E-commerce elements */
+  &.product-grid {
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    height: 15px;
+    animation-delay: 0s;
+  }
+  
+  &.product-card {
+    top: 40px;
+    left: 15px;
+    width: 40%;
+    height: 80px;
+    animation-delay: 0.2s;
+  }
+  
+  &.product-detail {
+    top: 40px;
+    right: 15px;
+    width: 45%;
+    height: 40px;
+    animation-delay: 0.4s;
+  }
+  
+  &.cart {
+    bottom: 15px;
+    right: 15px;
+    width: 45%;
+    height: 30px;
+    animation-delay: 0.6s;
+  }
+  
+  &.checkout {
+    bottom: 55px;
+    right: 15px;
+    width: 25%;
+    height: 15px;
+    animation-delay: 0.8s;
+  }
+  
+  /* Startup elements */
+  &.wireframe {
+    top: 15px;
+    left: 15px;
+    width: 45%;
+    height: 70px;
+    animation-delay: 0s;
+  }
+  
+  &.prototype {
+    top: 15px;
+    right: 15px;
+    width: 40%;
+    height: 35px;
+    animation-delay: 0.2s;
+  }
+  
+  &.ui-components {
+    bottom: 15px;
+    left: 15px;
+    width: 35%;
+    height: 35px;
+    animation-delay: 0.4s;
+  }
+  
+  &.feedback {
+    bottom: 60px;
+    right: 15px;
+    width: 40%;
+    height: 60px;
+    animation-delay: 0.6s;
+  }
+  
+  /* Mobile app elements */
+  &.phone {
+    top: 15px;
+    left: 15px;
+    width: 60px;
+    height: 120px;
+    border-radius: 10px;
+    animation-delay: 0s;
+  }
+  
+  &.screens {
+    top: 15px;
+    left: 90px;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0.2s;
+  }
+  
+  &.gestures {
+    bottom: 15px;
+    left: 90px;
+    width: 60px;
+    height: 40px;
+    animation-delay: 0.4s;
+  }
+  
+  &.components {
+    top: 15px;
+    right: 15px;
+    width: 80px;
+    height: 120px;
+    animation-delay: 0.6s;
+  }
+`;
+
+const SolutionsCta = styled.div`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+`;
+
+const SolutionsCtaText = styled.h3`
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  max-width: 750px;
+  
+  @media (max-width: 768px) {
+    font-size: 1.7rem;
+  }
+`;
+
+const SolutionsCtaButton = styled(motion.button)`
+  padding: 1.2rem 2.5rem;
+  background: linear-gradient(
+    90deg,
+    var(--accent-color) 0%,
+    var(--accent-color-light) 100%
+  );
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(var(--accent-color-rgb), 0.3);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 15px 30px rgba(var(--accent-color-rgb), 0.5);
+  }
+`;
+
+// Styles for Testimonials Section
+const TestimonialsSection = styled.section`
+  padding: 8rem 0;
+  position: relative;
+  background: linear-gradient(
+    to bottom,
+    rgba(16, 24, 39, 0.98) 0%,
+    var(--bg-primary) 100%
+  );
+  overflow: hidden;
+  margin-top: 4rem; // Добавляю дополнительный отступ сверху
+`;
+
+const TestimonialsContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+`;
+
+const TestimonialsHeader = styled.div`
+  text-align: center;
+  margin-bottom: 5rem;
+`;
+
+const TestimonialsTitle = styled.h2`
+  font-size: 3.2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  position: relative;
+  display: inline-block;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 5px;
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
+      var(--accent-color-light)
+    );
+    border-radius: 3px;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2.6rem;
+  }
+`;
+
+const TestimonialsDescription = styled.p`
+  font-size: 1.2rem;
+  line-height: 1.7;
+  max-width: 750px;
+  margin: 2rem auto 0;
+  color: var(--text-secondary);
+`;
+
+const TestimonialsSlider = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 3; // Увеличиваю z-index, чтобы карточки были поверх декоративных элементов
+  
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const Testimonial = styled(motion.div)`
+  height: 100%;
+  position: relative;
+`;
+
+const TestimonialInner = styled.div`
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 5rem 2.5rem 2.5rem;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border-color: rgba(var(--accent-color-rgb), 0.2);
+  }
+`;
+
+const testimonialFloat = keyframes`
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(5px, 5px) rotate(5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+`;
+
+const TestimonialDecoration = styled.div`
+  position: absolute;
+  z-index: -1;
+  
+  &.circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(var(--accent-color-rgb), 0.03) 0%,
+      transparent 70%
+    );
+    top: -30px;
+    right: -30px;
+    filter: blur(5px);
+  }
+  
+  &.line {
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(var(--accent-color-rgb), 0.2),
+      transparent
+    );
+    bottom: 80px;
+    left: -20px;
+    transform: rotate(45deg);
+  }
+  
+  &.dot-1 {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(var(--accent-color-rgb), 0.2);
+    bottom: 40px;
+    right: 40px;
+    animation: ${testimonialFloat} 8s infinite ease-in-out;
+  }
+  
+  &.dot-2 {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(var(--accent-color-rgb), 0.15);
+    top: 60px;
+    left: 30px;
+    animation: ${testimonialFloat} 6s infinite ease-in-out reverse;
+  }
+`;
+
+const TestimonialQuoteMark = styled.div`
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(var(--accent-color-rgb), 0.1);
+`;
+
+const TestimonialContent = styled.div`
+  margin-bottom: 1.5rem;
+`;
+
+const TestimonialText = styled.p`
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  position: relative;
+  z-index: 1;
+`;
+
+const TestimonialAuthor = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+`;
+
+const TestimonialAvatar = styled.div`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent-color-rgb), 0.1) 0%,
+    rgba(var(--accent-color-rgb), 0.3) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  font-size: 1.5rem;
+  flex-shrink: 0;
+`;
+
+const TestimonialAuthorInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+
+const TestimonialAuthorName = styled.div`
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+`;
+
+const TestimonialMeter = styled.div`
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+`;
+
+const TestimonialMeterFill = styled.div`
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--accent-color),
+    var(--accent-color-light)
+  );
+  border-radius: 2px;
+`;
+
+const waveAnimation = keyframes`
+  0% { transform: translateX(0) translateZ(0) scaleY(1); }
+  50% { transform: translateX(-25%) translateZ(0) scaleY(0.8); }
+  100% { transform: translateX(-50%) translateZ(0) scaleY(1); }
+`;
+
+const floatDot = keyframes`
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(15px, -15px); }
+  100% { transform: translate(0, 0); }
+`;
+
+const TestimonialsBackground = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; // Уменьшаю z-index фона, чтобы контент был над ним
+  overflow: hidden;
+  pointer-events: none; // Добавляю pointer-events: none, чтобы фон не мешал взаимодействию
+`;
+
+const TestimonialsBgWave = styled.div`
+  position: absolute;
+  width: 200%;
+  height: 300px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(var(--accent-color-rgb), 0.03) 0%,
+    transparent 70%
+  );
+  opacity: 0.3;
+  animation: ${waveAnimation} 20s infinite linear;
+  
+  &.wave-1 {
+    bottom: -100px;
+    border-radius: 100%;
+  }
+  
+  &.wave-2 {
+    bottom: -200px;
+    border-radius: 100%;
+    animation-duration: 25s;
+    animation-direction: reverse;
+    opacity: 0.2;
+  }
+`;
+
+const TestimonialsBgDot = styled.div`
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(var(--accent-color-rgb), 0.1);
+  animation: ${floatDot} 15s infinite ease-in-out;
+  
+  &.bg-dot-1 {
+    width: 15px;
+    height: 15px;
+    top: 15%;
+    right: 20%;
+    animation-delay: 0s;
+  }
+  
+  &.bg-dot-2 {
+    width: 20px;
+    height: 20px;
+    bottom: 30%;
+    left: 15%;
+    animation-delay: 5s;
+  }
+  
+  &.bg-dot-3 {
+    width: 10px;
+    height: 10px;
+    top: 60%;
+    right: 30%;
+    animation-delay: 10s;
+  }
+`;
+
+const TestimonialsCta = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+`;
+
+const TestimonialsCtaButton = styled(motion.button)`
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.2rem 2.2rem;
+  background: linear-gradient(
+    90deg,
+    var(--accent-color) 0%,
+    var(--accent-color-light) 100%
+  );
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(var(--accent-color-rgb), 0.3);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 15px 30px rgba(var(--accent-color-rgb), 0.5);
+  }
+  
+  svg {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover svg {
+    transform: translateX(5px);
+  }
+`;
+
+// Styles for FAQ Section
+const FaqSection = styled(motion.section)`
+  position: relative;
+  padding: 8rem 0;
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,
+    rgba(16, 24, 39, 0.9) 100%
+  );
+  overflow: hidden;
+  z-index: 0;
+  margin: 0;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      ellipse at top right,
+      rgba(var(--accent-color-rgb), 0.08) 0%,
+      transparent 70%
+    );
+    z-index: -1;
+  }
+`;
+
+const FaqWaveTop = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(to top left, transparent 49%, var(--bg-primary) 51%);
+  z-index: 1;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+`;
+
+const FaqContainer = styled.div`
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  padding: 0 2rem;
+`;
+
+const FaqGlowCircle = styled.div`
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+
+  &.circle-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(
+      circle,
+      rgba(var(--accent-color-rgb), 0.05) 0%,
+      transparent 70%
+    );
+    top: 10%;
+    left: -200px;
+    animation: ${floatVertical} 15s infinite ease-in-out;
+  }
+
+  &.circle-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(
+      circle,
+      rgba(var(--accent-color-rgb), 0.05) 0%,
+      transparent 70%
+    );
+    bottom: 5%;
+    right: -200px;
+    animation: ${floatVertical} 18s infinite ease-in-out reverse;
+  }
+`;
+
+const FaqTitle = styled(motion.h2)`
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--accent-color);
+  margin-bottom: 3rem;
+  text-align: center;
+  position: relative;
+  text-shadow: 0 2px 10px rgba(var(--accent-color-rgb), 0.2);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 5rem;
+    color: rgba(var(--accent-color-rgb), 0.03);
+    font-weight: 900;
+    letter-spacing: 5px;
+    z-index: -1;
+    white-space: nowrap;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-color),
+      transparent
+    );
+    border-radius: 4px;
+    animation: ${faqPulse} 2s infinite ease-in-out;
+  }
+`;
+
+const FaqList = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+`;
+
+const FaqItem = styled(motion.div)`
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(16, 24, 39, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+
+  &:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 15px rgba(var(--accent-color-rgb), 0.1);
+    border-color: rgba(var(--accent-color-rgb), 0.1);
+    transform: translateY(-3px);
+  }
+`;
+
+const FaqItemContent = styled(motion.div)`
+  overflow: hidden;
+`;
+
+const FaqQuestion = styled(motion.div)`
+  padding: 1.8rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      var(--accent-color),
+      rgba(var(--accent-color-light-rgb), 0.5)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 0 3px 3px 0;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 2rem;
+    right: 2rem;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.05),
+      transparent
+    );
+  }
+`;
+
+const FaqQuestionText = styled.h3`
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  flex: 1;
+  transform: translateZ(5px);
+
+  ${FaqQuestion}:hover & {
+    color: var(--accent-color);
+    transform: translateZ(10px);
+  }
+`;
+
+const FaqToggle = styled(motion.div)`
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  margin-left: 1rem;
+  flex-shrink: 0;
+  background: rgba(var(--accent-color-rgb), 0.05);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(var(--accent-color-rgb), 0.1);
+    box-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.2);
+  }
+`;
+
+const FaqAnswer = styled(motion.div)`
+  padding: 0;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  position: relative;
+  overflow: hidden;
+
+  > div {
+    padding: 0 2rem 1.8rem;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    right: 2rem;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+  }
+
+  strong {
+    color: var(--accent-color);
+    font-weight: 600;
+  }
+
+  ul {
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    position: relative;
+
+    &::before {
+      content: '•';
+      color: var(--accent-color);
+      position: absolute;
+      left: -1rem;
+    }
+  }
+
+  p {
+    margin-bottom: 0.8rem;
+  }
+
+  .highlight {
+    background: linear-gradient(
+      90deg,
+      rgba(var(--accent-color-rgb), 0.1),
+      rgba(var(--accent-color-light-rgb), 0.1)
+    );
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin: 0 0.2rem;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.05),
+        transparent
+      );
+      background-size: 200% 100%;
+      animation: ${shimmerEffect} 2s infinite;
+    }
+  }
+`;
+
+const FaqCta = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  background: rgba(16, 24, 39, 0.4);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
+      var(--accent-color-light)
+    );
+    z-index: 1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba(var(--accent-color-rgb), 0.05) 0%,
+      transparent 50%
+    );
+    z-index: -1;
+  }
+`;
+
+const FaqCtaText = styled.p`
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: center;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+`;
+
+const FaqCtaButton = styled(motion.button)`
+  padding: 1rem 2rem;
+  background: linear-gradient(
+    90deg,
+    var(--accent-color) 0%,
+    var(--accent-color-light) 100%
+  );
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  box-shadow: 0 10px 25px rgba(var(--accent-color-rgb), 0.3);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 15px 30px rgba(var(--accent-color-rgb), 0.5);
+  }
+
+  svg {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover svg {
+    transform: translateX(5px);
   }
 `;
 
