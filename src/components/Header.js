@@ -193,8 +193,6 @@ const DesktopMenuButton = styled(motion.button)`
   }
 `;
 
-
-
 const HeaderNavigation = () => {
   const location = useLocation();
   const [activeBlock, setActiveBlock] = useState(null);
@@ -205,7 +203,13 @@ const HeaderNavigation = () => {
         onMouseEnter={() => setActiveBlock('development')}
         onMouseLeave={() => setActiveBlock(null)}
       >
-        <NavLink className={location.pathname.startsWith('/services/development') ? 'active' : ''}>
+        <NavLink
+          className={
+            location.pathname.startsWith('/services/development')
+              ? 'active'
+              : ''
+          }
+        >
           Разработка
         </NavLink>
         {activeBlock === 'development' && (
@@ -246,7 +250,11 @@ const HeaderNavigation = () => {
         onMouseEnter={() => setActiveBlock('design')}
         onMouseLeave={() => setActiveBlock(null)}
       >
-        <NavLink className={location.pathname.startsWith('/services/design') ? 'active' : ''}>
+        <NavLink
+          className={
+            location.pathname.startsWith('/services/design') ? 'active' : ''
+          }
+        >
           Дизайн
         </NavLink>
         {activeBlock === 'design' && (
@@ -272,7 +280,7 @@ const HeaderNavigation = () => {
               <FaPalette />
               UX/UI дизайн
             </DropdownItem>
-            <DropdownItem to="/design/typography">
+            <DropdownItem to="/services/design/typography_lettering">
               <FaFont />
               Типографика и леттеринг
             </DropdownItem>
@@ -287,7 +295,11 @@ const HeaderNavigation = () => {
         onMouseEnter={() => setActiveBlock('marketing')}
         onMouseLeave={() => setActiveBlock(null)}
       >
-        <NavLink className={location.pathname.startsWith('/services/marketing') ? 'active' : ''}>
+        <NavLink
+          className={
+            location.pathname.startsWith('/services/marketing') ? 'active' : ''
+          }
+        >
           Маркетинг
         </NavLink>
         {activeBlock === 'marketing' && (
@@ -330,7 +342,7 @@ const HeaderNavigation = () => {
 
 const Header = () => {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
-  
+
   // Обработчик закрытия меню
   const handleCloseMenu = () => {
     setIsOverlayOpen(false);
@@ -349,7 +361,7 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector('header');
-      
+
       // Управление стилем overflow для body при открытии/закрытии меню
       if (isOverlayOpen) {
         document.body.style.overflow = 'hidden';
@@ -359,7 +371,7 @@ const Header = () => {
           document.body.style.overflow = '';
         }, 50);
       }
-      
+
       if (window.scrollY > 50) {
         header.style.background = 'rgba(6, 20, 27, 0.95)';
         header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
@@ -371,7 +383,7 @@ const Header = () => {
 
     handleScroll();
     window.addEventListener('scroll', handleScroll);
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       // Гарантируем, что overflow сбрасывается при размонтировании
@@ -403,10 +415,7 @@ const Header = () => {
         </DesktopMenuButton>
       </HeaderContent>
 
-      <BurgerMenu
-        isOpen={isOverlayOpen}
-        onClose={handleCloseMenu}
-      />
+      <BurgerMenu isOpen={isOverlayOpen} onClose={handleCloseMenu} />
     </HeaderContainer>
   );
 };

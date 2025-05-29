@@ -533,8 +533,10 @@ const BurgerMenu = ({ isOpen, onClose }) => {
               Пакетный дизайн
             </MenuBlockLink>
             <MenuBlockLink
-              href="#typography"
-              onClick={e => handleLinkClick(e, '#typography')}
+              to="/services/design/typography_lettering"
+              onClick={e =>
+                handleLinkClick(e, '/services/design/typography_lettering')
+              }
             >
               <MenuBlockIconSmall>
                 <FaFont />
