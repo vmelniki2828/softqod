@@ -7,44 +7,31 @@ import {
   FaUsers,
   FaLightbulb,
   FaRocket,
-  FaPaintBrush,
   FaFont,
   FaPencilAlt,
   FaPalette,
   FaRegEye,
   FaCheck,
   FaPlus,
-  FaQuoteRight,
-  FaGlobe,
-  FaCrop,
   FaLayerGroup,
-  FaChartLine,
-  FaSitemap,
   FaCommentAlt,
   FaIdCard,
   FaHeart,
   FaLongArrowAltRight,
   FaSearch,
-  FaUser,
   FaChartBar,
   FaMobileAlt,
   FaPrint,
-  FaStar,
   FaDesktop,
   FaLink,
-  FaRegLightbulb,
-  FaTh,
   FaFingerprint,
   FaAlignLeft,
   FaEyeSlash,
   FaBrain,
   FaFileAlt,
   FaArrowDown,
-  FaCode,
-  FaBookOpen
 } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import { MdFormatSize, MdTextFields } from 'react-icons/md';
+import { MdTextFields } from 'react-icons/md';
 
 // Анимации
 const float = keyframes`
@@ -3346,151 +3333,6 @@ const AnalysisPointText = styled.p`
   color: var(--text-primary);
 `;
 
-const BrandAnalysisVisual = styled.div`
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  margin-top: 3rem;
-`;
-
-const AnalysisCard = styled.div`
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 16px;
-  padding: 2rem;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-`;
-
-const AnalysisCardIcon = styled.div`
-  width: 36px;
-  height: 36px;
-  border-radius: 12px;
-  background: linear-gradient(
-    135deg,
-    var(--accent-color) 0%,
-    var(--accent-color-light) 100%
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.1rem;
-  flex-shrink: 0;
-`;
-
-const AnalysisCardLine = styled.div`
-  width: 100%;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.1);
-`;
-
-const AnalysisCardGraph = styled.div`
-  width: 100%;
-  height: 100%;
-  position: relative;
-`;
-
-const AnalysisCardBar = styled.div`
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: linear-gradient(
-    135deg,
-    var(--accent-color) 0%,
-    var(--accent-color-light) 100%
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.1rem;
-  flex-shrink: 0;
-`;
-
-const AnalysisConnection = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    rgba(var(--accent-color-rgb), 0.2),
-    rgba(var(--accent-color-rgb), 0.3),
-    rgba(var(--accent-color-rgb), 0.2)
-  );
-  z-index: 1;
-`;
-
-const StyleSelectorVisual = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const StylePointer = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    rgba(var(--accent-color-rgb), 0.2),
-    rgba(var(--accent-color-rgb), 0.3),
-    rgba(var(--accent-color-rgb), 0.2)
-  );
-  z-index: 1;
-`;
-
-const StyleCircle = styled.div`
-  width: 100%;
-  height: 100%;
-  position: relative;
-`;
-
-const StyleCircleInner = styled.div`
-  width: 100%;
-  height: 100%;
-  position: relative;
-`;
-
-const StyleCircleText = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--text-primary);
-`;
-
-const StyleConnector = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    rgba(var(--accent-color-rgb), 0.2),
-    rgba(var(--accent-color-rgb), 0.3),
-    rgba(var(--accent-color-rgb), 0.2)
-  );
-  z-index: 1;
-`;
-
 const StyleOptions = styled.div`
   display: flex;
   justify-content: space-between;
@@ -3888,19 +3730,6 @@ const IntegrationIcon = styled.div`
   justify-content: center;
   color: var(--accent-color);
   font-size: 1.3rem;
-`;
-
-const AnalysisCardDots = styled.div`
-  display: flex;
-  gap: 5px;
-  margin-top: 10px;
-`;
-
-const AnalysisCardDot = styled.div`
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(var(--accent-color-rgb), 0.5);
 `;
 
 // Добавляю определение стиля MethodologyStepCenter
@@ -5022,175 +4851,6 @@ const WorkflowGrid = styled.div`
     grid-row: 1 / -1;
   }
 `;
-
-const WorkflowContent = () => {
-  return (
-    <WorkflowSection>
-      <WorkflowContainer>
-        <WorkflowHeader>
-          <WorkflowHeadingAccent>Процес</WorkflowHeadingAccent>
-          <WorkflowTitle>Як ми працюємо — приклад підходу до кожного проєкту</WorkflowTitle>
-          <WorkflowDescription>
-            Кожен бренд — це окрема історія, тому ми не використовуємо шаблони. Наш підхід — це поєднання аналітики, 
-            дизайнерської експертизи та уваги до деталей. Ми не просто підбираємо шрифти — ми формуємо типографічну 
-            систему, яка працює на ідентичність бренду.
-          </WorkflowDescription>
-        </WorkflowHeader>
-        
-        <WorkflowProcess>
-          <WorkflowStep $delay="0.1s">
-            <StepNumber $active={true}>
-              <div className="number">1</div>
-            </StepNumber>
-            <StepContent>
-              <StepTitle>
-                <div className="icon"><FaSearch /></div>
-                Брифінг та початкове занурення
-              </StepTitle>
-              <StepDescription>
-                Починаємо з глибокого розуміння вашого бізнесу: хто ви, чим відрізняєтесь, яка ваша аудиторія, 
-                у якому стилі ви хочете з нею спілкуватися. Ми вивчаємо продукти, послуги, місію бренду, 
-                вже наявні візуальні елементи.
-              </StepDescription>
-              <StepVisual className="briefing">
-                <div className="tag"><span className="dot"></span>Місія бренду</div>
-                <div className="tag"><span className="dot"></span>Цільова аудиторія</div>
-                <div className="tag"><span className="dot"></span>Стиль комунікації</div>
-                <div className="tag"><span className="dot"></span>Візуальні елементи</div>
-                <div className="tag"><span className="dot"></span>Продукти/послуги</div>
-              </StepVisual>
-              <StepAccent>01</StepAccent>
-            </StepContent>
-          </WorkflowStep>
-          
-          <WorkflowStep $delay="0.2s">
-            <StepNumber>
-              <div className="number">2</div>
-            </StepNumber>
-            <StepContent>
-              <StepTitle>
-                <div className="icon"><FaChartBar /></div>
-                Аналіз ринку та конкурентів
-              </StepTitle>
-              <StepDescription>
-                Досліджуємо середовище, в якому працює ваш бренд. Вивчаємо візуальні рішення конкурентів, 
-                шрифтові тренди у вашій ніші, аналізуємо типові підходи, щоб уникнути повторів 
-                та створити відмінність.
-              </StepDescription>
-              <StepVisual className="market">
-                <div className="competitor">Конкурент А</div>
-                <div className="competitor">Конкурент Б</div>
-                <div className="competitor">Конкурент В</div>
-              </StepVisual>
-              <StepAccent>02</StepAccent>
-            </StepContent>
-          </WorkflowStep>
-          
-          <WorkflowStep $delay="0.3s">
-            <StepNumber>
-              <div className="number">3</div>
-            </StepNumber>
-            <StepContent>
-              <StepTitle>
-                <div className="icon"><FaLightbulb /></div>
-                Розробка концепції
-              </StepTitle>
-              <StepDescription>
-                На цьому етапі ми пропонуємо декілька напрямків: типографічні пари, стильові референси, 
-                варіанти летерингу. Якщо потрібно — створюємо начерки рукописних рішень, 
-                які підкреслюють індивідуальність.
-              </StepDescription>
-              <StepVisual className="concept">
-                <div className="font-sample">Aa</div>
-                <div className="font-sample">Bb</div>
-                <div className="font-sample">Cc</div>
-                <div className="font-sample">Dd</div>
-              </StepVisual>
-              <StepAccent>03</StepAccent>
-            </StepContent>
-          </WorkflowStep>
-          
-          <WorkflowStep $delay="0.4s">
-            <StepNumber>
-              <div className="number">4</div>
-            </StepNumber>
-            <StepContent>
-              <StepTitle>
-                <div className="icon"><FaDesktop /></div>
-                Дизайн і тестування
-              </StepTitle>
-              <StepDescription>
-                Створюємо фінальну версію типографіки або летерингу, перевіряємо, як вона виглядає в реальних 
-                сценаріях: у логотипі, на сайті, в макетах, у соціальних мережах. Враховуємо адаптивність, 
-                читабельність на різних носіях.
-              </StepDescription>
-              <StepVisual className="testing">
-                <div className="device"><FaDesktop /></div>
-                <div className="device"><FaMobileAlt /></div>
-                <div className="device"><FaPrint /></div>
-              </StepVisual>
-              <StepAccent>04</StepAccent>
-            </StepContent>
-          </WorkflowStep>
-          
-          <WorkflowStep $delay="0.5s">
-            <StepNumber>
-              <div className="number">5</div>
-            </StepNumber>
-            <StepContent>
-              <StepTitle>
-                <div className="icon"><FaLayerGroup /></div>
-                Узгодження і підготовка фінальних матеріалів
-              </StepTitle>
-              <StepDescription>
-                Після затвердження ми передаємо всі необхідні файли — у форматах для друку та цифрового використання. 
-                За запитом — готуємо міні-гайдлайн або інструкції з правильного використання шрифтів чи летерингу.
-              </StepDescription>
-              <StepVisual className="delivery">
-                <div className="file">
-                  <div className="icon"><FaFont /></div>
-                  <div className="label">.OTF</div>
-                </div>
-                <div className="file">
-                  <div className="icon"><FaPencilAlt /></div>
-                  <div className="label">.AI</div>
-                </div>
-                <div className="file">
-                  <div className="icon"><FaLayerGroup /></div>
-                  <div className="label">Гайдлайн</div>
-                </div>
-              </StepVisual>
-              <StepAccent>05</StepAccent>
-            </StepContent>
-          </WorkflowStep>
-        </WorkflowProcess>
-        
-        <WorkflowCta>
-          <WorkflowCtaText>Наша мета — зробити так, щоб кожна літера працювала на імідж бренду.</WorkflowCtaText>
-          <WorkflowCtaButton
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Замовити консультацію <FaArrowRight />
-          </WorkflowCtaButton>
-        </WorkflowCta>
-        
-        <WorkflowBackground>
-          <WorkflowCircle className="circle1" />
-          <WorkflowCircle className="circle2" />
-          <WorkflowGrid>
-            {[...Array(19)].map((_, i) => (
-              <div key={`h-${i}`} className="grid-line-h" style={{ gridRow: i + 1 }} />
-            ))}
-            {[...Array(19)].map((_, i) => (
-              <div key={`v-${i}`} className="grid-line-v" style={{ gridColumn: i + 1 }} />
-            ))}
-          </WorkflowGrid>
-        </WorkflowBackground>
-      </WorkflowContainer>
-    </WorkflowSection>
-  );
-};
 
 // Order Process Section Styles
 const OrderProcessSection = styled.section`
