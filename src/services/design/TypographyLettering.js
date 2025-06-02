@@ -38,6 +38,10 @@ import {
   FaAlignLeft,
   FaEyeSlash,
   FaBrain,
+  FaFileAlt,
+  FaArrowDown,
+  FaCode,
+  FaBookOpen
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { MdFormatSize, MdTextFields } from 'react-icons/md';
@@ -490,6 +494,48 @@ const LetteringElement = styled(motion.div)`
 `;
 
 const TypographyLettering = () => {
+  // FAQ state
+  const [expandedFaqs, setExpandedFaqs] = useState([]);
+
+  // FAQ data
+  const faqData = [
+    {
+      question: '1. Чи можна використовувати один шрифт для всіх носіїв бренду?',
+      answer: 'Ні, зазвичай створюється типографічна система з кількох шрифтів — основного, акцентного та допоміжного. Вони виконують різні функції: заголовки, тіла текстів, підписи тощо. Це забезпечує гнучкість і зберігає єдність стилю.'
+    },
+    {
+      question: '2. Чи потрібно купувати ліцензії на шрифти?',
+      answer: 'Так, якщо ви використовуєте комерційні шрифти. Ми завжди підбираємо шрифти з урахуванням прав на використання — з відкритих бібліотек або з чіткою ліцензією. Безкоштовні шрифти — не завжди якісні або унікальні.'
+    },
+    {
+      question: '3. У чому перевага кастомного летерингу порівняно з логотипом на основі шрифту?',
+      answer: 'Кастомний летеринг створюється з нуля і враховує форму, ритм і унікальність назви бренду. Це забезпечує абсолютну ексклюзивність. Шрифтова основа — це швидше, але не завжди достатньо відмінно від конкурентів.'
+    },
+    {
+      question: '4. Чи можу я отримати шрифт у форматі для встановлення на комп\'ютер?',
+      answer: 'Так, якщо розробляється кастомний шрифт або обрана типографіка включає завантажувані файли. Ви отримаєте файли у форматах OTF/TTF/WOFF + інструкції з установлення та використання.'
+    },
+    {
+      question: '5. Чи можна замовити лише летеринг без повного фірмового стилю?',
+      answer: 'Звісно. Летеринг — це окрема послуга. Він може бути використаний як акцент на упаковці, постері, мерчі або навіть у соціальних мережах. Ми адаптуємо результат під ваші задачі.'
+    },
+    {
+      question: '6. Скільки часу займає створення типографіки або летерингу?',
+      answer: 'У середньому — від 5 до 15 робочих днів, залежно від складності. Простий підбір типографіки — швидше. Унікальний летеринг або система зі шрифтами для різних носіїв — потребують більше часу для дослідження й опрацювання деталей.'
+    }
+  ];
+
+  // Function to toggle FAQ
+  const toggleFaq = index => {
+    setExpandedFaqs(prev => {
+      if (prev.includes(index)) {
+        return prev.filter(i => i !== index);
+      } else {
+        return [...prev, index];
+      }
+    });
+  };
+  
   return (
     <PageContainer>
       <HeroSection>
@@ -1677,6 +1723,304 @@ const TypographyLettering = () => {
           </WorkflowBackground>
         </WorkflowContainer>
       </WorkflowSection>
+      
+      {/* Order Process Section - How to Order */}
+      <OrderProcessSection>
+        <OrderProcessContainer>
+          <OrderProcessHeader>
+            <OrderProcessTitle>Як замовити послугу</OrderProcessTitle>
+            <OrderProcessSubtitle>Етапи співпраці</OrderProcessSubtitle>
+            <OrderProcessDescription>
+              Ми зробили процес максимально зручним для клієнта — без зайвої бюрократії, 
+              але з повним контролем якості на кожному етапі.
+            </OrderProcessDescription>
+          </OrderProcessHeader>
+          
+          <OrderProcessSteps>
+            <ProcessStepContainer
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <ProcessStepNumber>
+                <div className="number">1</div>
+                <div className="indicator"><FaPencilAlt /></div>
+              </ProcessStepNumber>
+              <ProcessStepContent>
+                <ProcessStepTitle>
+                  <div className="icon"><FaPencilAlt /></div>
+                  Заявка
+                </ProcessStepTitle>
+                <ProcessStepDescription>
+                  Залишаєте запит через форму на сайті або надсилаєте листа з коротким описом задачі. 
+                  Ми відповідаємо протягом одного робочого дня.
+                </ProcessStepDescription>
+                <ProcessStepDecoration>01</ProcessStepDecoration>
+              </ProcessStepContent>
+              <ProcessStepArrow>
+                <FaArrowDown />
+              </ProcessStepArrow>
+            </ProcessStepContainer>
+            
+            <ProcessStepContainer
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <ProcessStepNumber>
+                <div className="number">2</div>
+                <div className="indicator"><FaCommentAlt /></div>
+              </ProcessStepNumber>
+              <ProcessStepContent>
+                <ProcessStepTitle>
+                  <div className="icon"><FaCommentAlt /></div>
+                  Обговорення задачі
+                </ProcessStepTitle>
+                <ProcessStepDescription>
+                  Ми ставимо уточнювальні запитання, обговорюємо очікування, стиль, обсяг роботи. 
+                  За потреби — надсилаємо короткий бриф для заповнення.
+                </ProcessStepDescription>
+                <ProcessStepDecoration>02</ProcessStepDecoration>
+              </ProcessStepContent>
+              <ProcessStepArrow>
+                <FaArrowDown />
+              </ProcessStepArrow>
+            </ProcessStepContainer>
+            
+            <ProcessStepContainer
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <ProcessStepNumber>
+                <div className="number">3</div>
+                <div className="indicator"><FaFileAlt /></div>
+              </ProcessStepNumber>
+              <ProcessStepContent>
+                <ProcessStepTitle>
+                  <div className="icon"><FaFileAlt /></div>
+                  Комерційна пропозиція
+                </ProcessStepTitle>
+                <ProcessStepDescription>
+                  Формуємо чітку пропозицію із вартістю, термінами та обсягом. 
+                  Ви розумієте, що саме отримаєте, скільки це коштує і коли буде готово.
+                </ProcessStepDescription>
+                <ProcessStepDecoration>03</ProcessStepDecoration>
+              </ProcessStepContent>
+              <ProcessStepArrow>
+                <FaArrowDown />
+              </ProcessStepArrow>
+            </ProcessStepContainer>
+            
+            <ProcessStepContainer
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <ProcessStepNumber>
+                <div className="number">4</div>
+                <div className="indicator"><FaRocket /></div>
+              </ProcessStepNumber>
+              <ProcessStepContent>
+                <ProcessStepTitle>
+                  <div className="icon"><FaRocket /></div>
+                  Початок роботи
+                </ProcessStepTitle>
+                <ProcessStepDescription>
+                  Після узгодження умов ми підписуємо договір або підтвердження про старт. 
+                  Починається етап розробки: дослідження, концепції, ескізи.
+                </ProcessStepDescription>
+                <ProcessStepDecoration>04</ProcessStepDecoration>
+              </ProcessStepContent>
+              <ProcessStepArrow>
+                <FaArrowDown />
+              </ProcessStepArrow>
+            </ProcessStepContainer>
+            
+            <ProcessStepContainer
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              <ProcessStepNumber>
+                <div className="number">5</div>
+                <div className="indicator"><FaRegEye /></div>
+              </ProcessStepNumber>
+              <ProcessStepContent>
+                <ProcessStepTitle>
+                  <div className="icon"><FaRegEye /></div>
+                  Проміжне погодження
+                </ProcessStepTitle>
+                <ProcessStepDescription>
+                  На етапі чорнових рішень ми показуємо проміжні варіанти, щоб узгодити напрямок і внести 
+                  правки до фіналізації. Ви залучені до процесу.
+                </ProcessStepDescription>
+                <ProcessStepDecoration>05</ProcessStepDecoration>
+              </ProcessStepContent>
+              <ProcessStepArrow>
+                <FaArrowDown />
+              </ProcessStepArrow>
+            </ProcessStepContainer>
+            
+            <ProcessStepContainer
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+            >
+              <ProcessStepNumber>
+                <div className="number">6</div>
+                <div className="indicator"><FaCheck /></div>
+              </ProcessStepNumber>
+              <ProcessStepContent>
+                <ProcessStepTitle>
+                  <div className="icon"><FaCheck /></div>
+                  Завершення та передача результату
+                </ProcessStepTitle>
+                <ProcessStepDescription>
+                  Ви отримуєте всі файли у зручних форматах, а також пояснення щодо їх використання. 
+                  Після завершення — залишаєтесь із візуальним активом, що працює на бренд.
+                </ProcessStepDescription>
+                <ProcessStepDecoration>06</ProcessStepDecoration>
+              </ProcessStepContent>
+            </ProcessStepContainer>
+          </OrderProcessSteps>
+          
+          <OrderProcessCta>
+            <OrderProcessCtaText>
+              Також ми завжди на зв'язку — у разі потреби можемо адаптувати матеріали 
+              або допрацювати нові носії на основі обраної типографіки.
+            </OrderProcessCtaText>
+            <OrderProcessCtaButton
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Замовити типографіку <FaArrowRight />
+            </OrderProcessCtaButton>
+          </OrderProcessCta>
+          
+          <OrderProcessBackground>
+            <OrderProcessBgLines className="line-1" />
+            <OrderProcessBgLines className="line-2" />
+            <OrderProcessBgLines className="line-3" />
+            <OrderProcessBgDot className="dot-1" />
+            <OrderProcessBgDot className="dot-2" />
+            <OrderProcessBgDot className="dot-3" />
+          </OrderProcessBackground>
+        </OrderProcessContainer>
+      </OrderProcessSection>
+      
+      {/* FAQ Section */}
+      <FaqSection>
+        <FaqWaveTop />
+        
+        <FaqContainer>
+          <FaqGlowCircle className="circle-1" />
+          <FaqGlowCircle className="circle-2" />
+
+          <FaqTitle
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            FAQ
+          </FaqTitle>
+
+          <FaqList
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            {faqData.map((faq, index) => (
+              <FaqItem
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+              >
+                <FaqItemContent
+                  layout
+                  initial={{ borderRadius: 16 }}
+                  key={`faq-${index}`}
+                  transition={{
+                    layout: { 
+                      type: "spring", 
+                      bounce: 0.2,
+                      duration: 0.6
+                    }
+                  }}
+                >
+                  <FaqQuestion
+                    layout
+                    onClick={() => toggleFaq(index)}
+                    whileHover={{ color: 'var(--accent-color)' }}
+                  >
+                    <FaqQuestionText>{faq.question}</FaqQuestionText>
+                    <FaqToggle
+                      animate={{
+                        rotate: expandedFaqs.includes(index) ? 45 : 0,
+                        backgroundColor: expandedFaqs.includes(index) 
+                          ? 'rgba(var(--accent-color-rgb), 0.15)' 
+                          : 'rgba(var(--accent-color-rgb), 0.05)'
+                      }}
+                      transition={{ 
+                        duration: 0.4,
+                        ease: [0.4, 0, 0.2, 1]
+                      }}
+                    >
+                      <FaPlus />
+                    </FaqToggle>
+                  </FaqQuestion>
+
+                  <AnimatePresence>
+                    {expandedFaqs.includes(index) && (
+                      <FaqAnswer
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ 
+                          type: "spring",
+                          damping: 40,
+                          stiffness: 60,
+                          mass: 1,
+                          opacity: { duration: 0.5, ease: "easeInOut" },
+                          height: { duration: 0.4, ease: "easeInOut" }
+                        }}
+                      >
+                        {faq.answer}
+                      </FaqAnswer>
+                    )}
+                  </AnimatePresence>
+                </FaqItemContent>
+              </FaqItem>
+            ))}
+          </FaqList>
+          
+          <FaqCta
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.2 }}
+          >
+            <FaqCtaText>
+              Маєте додаткові запитання щодо типографіки або летерингу?
+            </FaqCtaText>
+            <FaqCtaButton
+              whileHover={{
+                scale: 1.03,
+                boxShadow: '0 10px 30px rgba(var(--accent-color-rgb), 0.3)',
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Зв'язатися з нами <FaArrowRight />
+            </FaqCtaButton>
+          </FaqCta>
+        </FaqContainer>
+      </FaqSection>
       
       {/* Additional sections will follow here */}
     </PageContainer>
@@ -4847,3 +5191,805 @@ const WorkflowContent = () => {
     </WorkflowSection>
   );
 };
+
+// Order Process Section Styles
+const OrderProcessSection = styled.section`
+  padding: 8rem 0;
+  position: relative;
+  background: linear-gradient(
+    to bottom,
+    var(--bg-primary) 0%,
+    rgba(20, 27, 43, 0.98) 100%
+  );
+  overflow: hidden;
+`;
+
+const OrderProcessContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+`;
+
+const OrderProcessHeader = styled.div`
+  text-align: center;
+  margin-bottom: 5rem;
+`;
+
+const OrderProcessTitle = styled.h2`
+  font-size: 3.2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 5px;
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
+      var(--accent-color-light)
+    );
+    border-radius: 3px;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2.6rem;
+  }
+`;
+
+const OrderProcessSubtitle = styled.h3`
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+`;
+
+const OrderProcessDescription = styled.p`
+  font-size: 1.2rem;
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 2rem auto 0;
+  color: var(--text-secondary);
+`;
+
+const glowPulse = keyframes`
+  0% { opacity: 0.1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 0.1; }
+`;
+
+const StepIndicatorPulse = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+`;
+
+const OrderProcessSteps = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 5rem 0;
+  position: relative;
+`;
+
+const ProcessStepContainer = styled(motion.div)`
+  display: flex;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  min-height: 180px;
+  
+  &:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(var(--accent-color-rgb), 0.1);
+  }
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    min-height: auto;
+  }
+`;
+
+const ProcessStepNumber = styled.div`
+  width: 120px;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent-color-rgb), 0.1) 0%,
+    rgba(var(--accent-color-rgb), 0.2) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 80px;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(
+      circle at center,
+      rgba(var(--accent-color-rgb), 0.2) 0%,
+      transparent 70%
+    );
+    animation: ${glowPulse} 3s infinite ease-in-out;
+  }
+  
+  .number {
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: rgba(var(--accent-color-rgb), 0.5);
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .indicator {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 15px rgba(var(--accent-color-rgb), 0.4);
+    animation: ${StepIndicatorPulse} 2s infinite ease-in-out;
+    opacity: 0.9;
+    z-index: 2;
+  }
+`;
+
+const ProcessStepContent = styled.div`
+  flex-grow: 1;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+`;
+
+const ProcessStepTitle = styled.h4`
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  
+  .icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(var(--accent-color-rgb), 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+`;
+
+const ProcessStepDescription = styled.p`
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+`;
+
+const ProcessStepDecoration = styled.div`
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  font-size: 5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.02);
+  z-index: 0;
+  pointer-events: none;
+`;
+
+const floatArrow = keyframes`
+  0% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+`;
+
+const ProcessStepArrow = styled.div`
+  position: absolute;
+  right: 20px;
+  font-size: 1.5rem;
+  color: rgba(var(--accent-color-rgb), 0.2);
+  animation: ${floatArrow} 2s infinite ease-in-out;
+  
+  @media (max-width: 768px) {
+    bottom: 20px;
+    right: 20px;
+  }
+`;
+
+const OrderProcessCta = styled.div`
+  margin-top: 5rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
+      var(--accent-color-light)
+    );
+  }
+  
+  @media (max-width: 768px) {
+    padding: 2rem 1.5rem;
+  }
+`;
+
+const OrderProcessCtaText = styled.p`
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+const OrderProcessCtaButton = styled(motion.button)`
+  padding: 1.2rem 2.5rem;
+  background: linear-gradient(
+    90deg,
+    var(--accent-color) 0%,
+    var(--accent-color-light) 100%
+  );
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(var(--accent-color-rgb), 0.3);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0 auto;
+  
+  &:hover {
+    box-shadow: 0 15px 30px rgba(var(--accent-color-rgb), 0.6);
+    transform: translateY(-3px);
+  }
+  
+  svg {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover svg {
+    transform: translateX(5px);
+  }
+`;
+
+const OrderProcessBackground = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+`;
+
+const OrderProcessBgLines = styled.div`
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--accent-color-rgb), 0.1),
+    transparent
+  );
+  
+  &.line-1 {
+    width: 80%;
+    top: 20%;
+    left: 10%;
+    transform: rotate(-2deg);
+  }
+  
+  &.line-2 {
+    width: 60%;
+    top: 50%;
+    right: 5%;
+    transform: rotate(2deg);
+  }
+  
+  &.line-3 {
+    width: 70%;
+    bottom: 30%;
+    left: 15%;
+    transform: rotate(1deg);
+  }
+`;
+
+const OrderProcessBgDot = styled.div`
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(var(--accent-color-rgb), 0.2);
+  
+  &.dot-1 {
+    top: 15%;
+    left: 5%;
+  }
+  
+  &.dot-2 {
+    top: 60%;
+    right: 8%;
+  }
+  
+  &.dot-3 {
+    bottom: 10%;
+    left: 30%;
+  }
+`;
+
+// Animations for FAQ
+const floatVertical = keyframes`
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+`;
+
+const pulseFaq = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+`;
+
+const shimmerEffect = keyframes`
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; }
+`;
+
+// FAQ Section Styles
+const FaqSection = styled.section`
+  position: relative;
+  padding: 8rem 0;
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,
+    rgba(16, 24, 39, 0.9) 100%
+  );
+  overflow: hidden;
+  z-index: 0;
+  margin: 0;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      ellipse at top right,
+      rgba(94, 234, 212, 0.08) 0%,
+      transparent 70%
+    );
+    z-index: -1;
+  }
+`;
+
+const FaqWaveTop = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(to top left, transparent 49%, var(--bg-primary) 51%);
+  z-index: 1;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+`;
+
+const FaqContainer = styled.div`
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  padding: 0 2rem;
+`;
+
+const FaqGlowCircle = styled.div`
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+
+  &.circle-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(
+      circle,
+      rgba(var(--accent-color-rgb), 0.05) 0%,
+      transparent 70%
+    );
+    top: 10%;
+    left: -200px;
+    animation: ${floatVertical} 15s infinite ease-in-out;
+  }
+
+  &.circle-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(
+      circle,
+      rgba(var(--accent-color-rgb), 0.05) 0%,
+      transparent 70%
+    );
+    bottom: 5%;
+    right: -200px;
+    animation: ${floatVertical} 18s infinite ease-in-out reverse;
+  }
+`;
+
+const FaqTitle = styled(motion.h2)`
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--accent-color);
+  margin-bottom: 3rem;
+  text-align: center;
+  position: relative;
+  text-shadow: 0 2px 10px rgba(var(--accent-color-rgb), 0.2);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 5rem;
+    color: rgba(var(--accent-color-rgb), 0.03);
+    font-weight: 900;
+    letter-spacing: 5px;
+    z-index: -1;
+    white-space: nowrap;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-color),
+      transparent
+    );
+    border-radius: 4px;
+    animation: ${pulseFaq} 2s infinite ease-in-out;
+  }
+`;
+
+const FaqList = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+`;
+
+const FaqItem = styled(motion.div)`
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(16, 24, 39, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+
+  &:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 15px rgba(var(--accent-color-rgb), 0.1);
+    border-color: rgba(var(--accent-color-rgb), 0.1);
+    transform: translateY(-3px);
+  }
+`;
+
+const FaqItemContent = styled(motion.div)`
+  overflow: hidden;
+`;
+
+const FaqQuestion = styled(motion.div)`
+  padding: 1.8rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      var(--accent-color),
+      rgba(59, 130, 246, 0.5)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 0 3px 3px 0;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 2rem;
+    right: 2rem;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.05),
+      transparent
+    );
+  }
+`;
+
+const FaqQuestionText = styled.h3`
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  flex: 1;
+  transform: translateZ(5px);
+
+  ${FaqQuestion}:hover & {
+    color: var(--accent-color);
+    transform: translateZ(10px);
+  }
+`;
+
+const FaqToggle = styled(motion.div)`
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  margin-left: 1rem;
+  flex-shrink: 0;
+  background: rgba(var(--accent-color-rgb), 0.05);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(var(--accent-color-rgb), 0.1);
+    box-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.2);
+  }
+`;
+
+const FaqAnswer = styled(motion.div)`
+  padding: 0 2rem 1.8rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  overflow: hidden;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    right: 2rem;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+  }
+
+  strong {
+    color: var(--accent-color);
+    font-weight: 600;
+  }
+
+  ul {
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    position: relative;
+
+    &::before {
+      content: '•';
+      color: var(--accent-color);
+      position: absolute;
+      left: -1rem;
+    }
+  }
+
+  p {
+    margin-bottom: 0.8rem;
+  }
+
+  .highlight {
+    background: linear-gradient(
+      90deg,
+      rgba(var(--accent-color-rgb), 0.1),
+      rgba(59, 130, 246, 0.1)
+    );
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin: 0 0.2rem;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.05),
+        transparent
+      );
+      background-size: 200% 100%;
+      animation: ${shimmerEffect} 2s infinite;
+    }
+  }
+`;
+
+const FaqCta = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  background: rgba(16, 24, 39, 0.4);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
+      var(--accent-color-light)
+    );
+    z-index: 1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba(var(--accent-color-rgb), 0.05) 0%,
+      transparent 50%
+    );
+    z-index: -1;
+  }
+`;
+
+const FaqCtaText = styled.p`
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: center;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+`;
+
+const FaqCtaButton = styled(motion.button)`
+  padding: 1rem 2rem;
+  background: linear-gradient(
+    90deg,
+    var(--accent-color) 0%,
+    var(--accent-color-light) 100%
+  );
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  box-shadow: 0 10px 25px rgba(var(--accent-color-rgb), 0.3);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 15px 30px rgba(var(--accent-color-rgb), 0.5);
+  }
+
+  svg {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover svg {
+    transform: translateX(5px);
+  }
+`;
