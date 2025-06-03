@@ -562,8 +562,8 @@ const BurgerMenu = ({ isOpen, onClose }) => {
               Анимация и видео дизайн
             </MenuBlockLink>
             <MenuBlockLink
-              href="#branding"
-              onClick={e => handleLinkClick(e, '#branding')}
+              to="/services/design/branding"
+              onClick={e => handleLinkClick(e, '/services/design/branding')}
             >
               <MenuBlockIconSmall>
                 <FaPencilRuler />

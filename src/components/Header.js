@@ -284,7 +284,7 @@ const HeaderNavigation = () => {
               <FaFont />
               Типографика и леттеринг
             </DropdownItem>
-            <DropdownItem to="/design/branding">
+            <DropdownItem to="/services/design/branding">
               <FaPencilRuler />
               Разработка фирменного стиля
             </DropdownItem>
