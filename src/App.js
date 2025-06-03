@@ -34,6 +34,7 @@ import BrandbookPage from 'services/design/BrandbookPage';
 import WebDesign from 'services/design/WebDesign';
 import UxUiDesign from 'services/design/UxUiDesign';
 import TypographyLettering from 'services/design/TypographyLettering';
+import Branding from 'services/design/Branding';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -170,6 +171,7 @@ const App = () => {
                 path="/services/design/typography_lettering"
                 element={<TypographyLettering />}
               />
+              <Route path="/services/design/branding" element={<Branding />} />
               <Route
                 path="/services/marketing/banners"
                 element={<AIBannerMarketing />}
