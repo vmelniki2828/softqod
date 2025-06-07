@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { 
     FaArrowRight, 
     FaChartLine, 
@@ -12,42 +12,28 @@ import {
     FaChevronRight,
     FaRegLightbulb,
     FaRegChartBar,
-  FaCheckCircle,
-  FaRocket,
-  FaChartBar,
-  FaEye,
-  FaAd,
-  FaRegComments,
-  FaPercent,
-  FaUsers,
-  FaMousePointer,
-  FaLightbulb,
-  FaCheck,
-  FaPlay,
-  FaFileAlt,
-  FaArrowUp,
-  FaArrowDown,
-  FaSearchDollar,
-  FaSyncAlt,
-  FaClipboardCheck,
-  FaQuoteRight,
-  FaComment,
-  FaBriefcase,
-  FaCalendarAlt,
-  FaGlobeEurope,
-  FaShoppingCart,
-  FaHeartbeat,
-  FaUtensils,
-  FaEllipsisH,
-  FaComments,
-  FaHeadset,
-  FaQuoteLeft,
-  FaSearch,
-  FaPlane,
-  FaGraduationCap,
-  FaHandshake,
-  FaChartPie,
-  FaPlus
+    FaCheckCircle,
+    FaRocket,
+    FaChartBar,
+    FaEye,
+    FaAd,
+    FaRegComments,
+    FaPercent,
+    FaUsers,
+    FaMousePointer,
+    FaLightbulb,
+    FaArrowUp,
+    FaAlignCenter,
+    FaMobileAlt,
+    FaWindowRestore,
+    FaWindowMaximize,
+    FaColumns,
+    FaPuzzlePiece,
+    FaRegWindowRestore,
+    FaCog,
+    FaImage,
+    FaImages,
+    FaTimes
 } from 'react-icons/fa';
 
 const PageContainer = styled.div`
@@ -2208,25 +2194,16 @@ const AdvantageIcon = styled.div`
 
 // Визуальные элементы для секции
 const PlacementVisual = styled(motion.div)`
-  margin-top: 80px;
+  margin: 5rem 0;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   position: relative;
   height: 450px;
 
   @media (max-width: 768px) {
-    height: 350px;
+    height: 400px;
   }
-`;
-
-const PlacementVisualSecond = styled(motion.div)`
-  margin-top: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  height: 500px;
 `;
 
 const WebsiteMockup = styled(motion.div)`
@@ -3019,869 +2996,568 @@ const HighTrafficContentBanner = styled(InContentBanner)`
   }
 `;
 
-// Визуальные элементы для секции
-const PlacementVisualAlt = styled(motion.div)`
-  margin: 5rem 0;
+// Создадим новые компоненты для демонстрации устройств
+const DeviceShowcase = styled(motion.div)`
+  width: 85%;
+  height: 400px;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  height: 450px;
-
+  perspective: 1000px;
+  
   @media (max-width: 768px) {
-    height: 400px;
+    height: 350px;
   }
 `;
 
-// Стили для секции реализации баннерных кампаний
-const ImplementationSection = styled.section`
-  padding: 7rem 0;
+const DeviceContainer = styled(motion.div)`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+`;
+
+const DesktopDevice = styled(motion.div)`
+  width: 70%;
+  height: 75%;
+  background: #1a1a24;
+  border-radius: 10px;
+  border: 15px solid #333;
+  border-bottom-width: 40px;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(
-    180deg,
-    var(--bg-primary) 0%,
-    rgba(var(--bg-primary-rgb), 0.95) 100%
-  );
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 10px;
+    background: #222;
+    border-radius: 5px;
+  }
+`;
 
+const TabletDevice = styled(motion.div)`
+  width: 50%;
+  height: 70%;
+  background: #1a1a24;
+  border-radius: 20px;
+  border: 15px solid #333;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    border: 2px solid #222;
+    border-radius: 50%;
+  }
+`;
+
+const MobileDevice = styled(motion.div)`
+  width: 25%;
+  height: 75%;
+  background: #1a1a24;
+  border-radius: 30px;
+  border: 10px solid #333;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 5px;
+    background: #222;
+    border-radius: 5px;
+  }
+  
   &::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(var(--accent-color-rgb), 0.4) 50%,
-      transparent 100%
-    );
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 10px;
+    background: #222;
+    border-radius: 10px;
   }
 `;
 
-const ImplBackgroundGradient = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(
-    circle at 20% 30%,
-    rgba(var(--accent-color-rgb), 0.07) 0%,
-    transparent 70%
-  ),
-  radial-gradient(
-    circle at 80% 80%,
-    rgba(var(--accent-color-rgb), 0.07) 0%,
-    transparent 70%
-  );
-  z-index: 0;
-`;
-
-const ImplBackgroundGrid = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: linear-gradient(
-    rgba(var(--accent-color-rgb), 0.03) 1px,
-    transparent 1px
-  ),
-  linear-gradient(
-    90deg,
-    rgba(var(--accent-color-rgb), 0.03) 1px,
-    transparent 1px
-  );
-  background-size: 40px 40px;
-  background-position: center center;
-  z-index: 0;
-  opacity: 0.7;
-  pointer-events: none;
-`;
-
-const ImplementationContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
+const DeviceScreen = styled.div`
+  width: 100%;
+  height: 100%;
+  background: #1e2030;
   position: relative;
-  z-index: 2;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 `;
 
-const ImplementationTitle = styled.h2`
-  font-size: 2.8rem;
-  font-weight: 800;
-  margin-bottom: 2.5rem;
-  text-align: center;
+const DeviceHeader = styled.div`
+  height: 30px;
+  background: #13141f;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+`;
+
+const DeviceContent = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+`;
+
+const ContentLine = styled.div`
+  height: 12px;
+  background: #2c2c3a;
+  border-radius: 3px;
+  width: ${props => props.width || '100%'};
+  margin: ${props => props.margin || '0'};
+  opacity: ${props => props.opacity || '1'};
+`;
+
+const DeviceContentBlock = styled.div`
+  height: ${props => props.height || '50px'};
+  background: #282838;
+  border-radius: 5px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+`;
+
+// Баннеры для разных устройств и позиций
+const HeaderBanner = styled(motion.div)`
+  width: 100%;
+  height: 60px;
   background: linear-gradient(
     135deg,
-    var(--text-primary) 0%,
-    var(--accent-color) 100%
+    rgba(var(--accent-color-rgb), 0.4) 0%,
+    rgba(var(--accent-color-rgb), 0.2) 100%
   );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  position: relative;
-
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: var(--accent-color);
-    border-radius: 2px;
-  }
-`;
-
-const ImplementationDescription = styled.p`
-  font-size: 1.2rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
-  max-width: 900px;
-  margin: 0 auto 4rem;
-  text-align: center;
-  position: relative;
-`;
-
-const ImplementationGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-bottom: 4rem;
-  
-  @media (max-width: 1024px) {
-    grid-template-columns: 1fr;
-    max-width: 600px;
-    margin: 0 auto 4rem;
-  }
-`;
-
-const StepCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  position: relative;
-  transition: all 0.4s ease;
-  overflow: hidden;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: var(--accent-color);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  &:hover::after {
-    opacity: 1;
-  }
-`;
-
-const StepIconWrap = styled.div`
-  width: 70px;
-  height: 70px;
-  background: linear-gradient(135deg, var(--accent-color), rgba(var(--accent-color-rgb), 0.7));
-  border-radius: 18px;
+  border-radius: 5px;
+  margin-bottom: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
   color: white;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 10px 20px rgba(var(--accent-color-rgb), 0.25);
-`;
-
-const StepTitle = styled.h3`
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1.2rem;
-  color: var(--text-primary);
-`;
-
-const StepDescription = styled.p`
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
-`;
-
-const StepList = styled.div`
-  margin-top: auto;
-  margin-bottom: 1.5rem;
-`;
-
-const StepListTitle = styled.h4`
-  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
-`;
-
-const StepListItem = styled.div`
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 0.8rem;
-  
-  span {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: var(--text-secondary);
-  }
-`;
-
-const StepListIcon = styled.div`
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: rgba(var(--accent-color-rgb), 0.15);
-  color: var(--accent-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
-  margin-right: 0.8rem;
-  flex-shrink: 0;
-  margin-top: 2px;
-`;
-
-const ProgressIndicator = styled.div`
-  margin-top: auto;
-`;
-
-const ProgressBar = styled.div`
-  height: 4px;
-  width: ${props => props.width || '0%'};
-  background: linear-gradient(90deg, var(--accent-color), rgba(var(--accent-color-rgb), 0.7));
-  border-radius: 4px;
-  margin-bottom: 0.5rem;
-  transition: width 1s ease;
-`;
-
-const ProgressStage = styled.div`
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  opacity: 0.7;
-`;
-
-const AnimatedBanner = styled(motion.div)`
-  background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.15) 0%, rgba(var(--accent-color-rgb), 0.05) 100%);
-  border-radius: 20px;
-  padding: 3rem;
+  font-size: 0.9rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
-  min-height: 250px;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   
-  @media (max-width: 768px) {
-    padding: 2rem;
-  }
-`;
-
-const AnimatedBannerContent = styled.div`
-  position: relative;
-  z-index: 2;
-  max-width: 60%;
-  
-  @media (max-width: 768px) {
-    max-width: 100%;
-  }
-`;
-
-const AnimatedBannerTitle = styled.h3`
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 1.5rem;
-  
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-  }
-`;
-
-const AnimatedBannerButton = styled(motion.button)`
-  background: var(--accent-color);
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: 0 10px 20px rgba(var(--accent-color-rgb), 0.3);
-  transition: all 0.3s ease;
-`;
-
-const BannerDecoration = styled.div`
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(var(--accent-color-rgb), 0.4) 0%, rgba(var(--accent-color-rgb), 0.1) 50%, transparent 70%);
-  opacity: 0.6;
-  
-  &.circle1 {
-    width: 200px;
-    height: 200px;
-    top: -100px;
-    right: 10%;
-  }
-  
-  &.circle2 {
-    width: 300px;
-    height: 300px;
-    bottom: -150px;
-    right: -50px;
-  }
-  
-  &.circle3 {
-    width: 150px;
-    height: 150px;
-    top: 20%;
-    right: 30%;
-  }
-`;
-
-const BannerGraphics = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 40%;
-  z-index: 1;
-  
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
-const GraphElement = styled.div`
-  position: absolute;
-  
-  &.graph1 {
-    width: 150px;
-    height: 100px;
-    top: 20%;
-    right: 10%;
-    background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.2), transparent);
-    border-radius: 8px;
-    transform: rotate(-15deg);
-  }
-  
-  &.graph2 {
-    width: 80px;
-    height: 120px;
-    bottom: 20%;
-    right: 25%;
-    background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.2), transparent);
-    border-radius: 8px;
-    transform: rotate(10deg);
-  }
-  
-  &.graph3 {
-    width: 120px;
-    height: 80px;
-    top: 50%;
-    right: 30%;
-    background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.2), transparent);
-    border-radius: 8px;
-    transform: rotate(-5deg);
-  }
-`;
-
-// Удаляем второе объявление PlacementVisual и переименовываем его в DeviceShowcase
-const DeviceShowcase = styled(motion.div)`
-  margin: 5rem 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  height: 450px;
-
-  @media (max-width: 768px) {
-    height: 400px;
-  }
-`;
-
-const floatVertical = keyframes`
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-  100% { transform: translateY(0); }
-`;
-
-const pulseFaq = keyframes`
-  0% { opacity: 0.6; width: 60px; }
-  50% { opacity: 1; width: 90px; }
-  100% { opacity: 0.6; width: 60px; }
-`;
-
-const shimmerEffect = keyframes`
-  0% { background-position: -500px 0; }
-  100% { background-position: 500px 0; }
-`;
-
-// Стилизованные компоненты для секции FAQ
-const FaqSection = styled.section`
-  position: relative;
-  padding: 8rem 0;
-  background: linear-gradient(
-    180deg,
-    var(--bg-primary) 0%,
-    rgba(16, 24, 39, 0.9) 100%
-  );
-  overflow: hidden;
-  z-index: 0;
-  margin: 0;
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  margin-top: 4rem;
-
   &::before {
     content: '';
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(
-      ellipse at top right,
-      rgba(94, 234, 212, 0.08) 0%,
-      transparent 70%
+    background: linear-gradient(
+      90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.2), 
+      transparent
     );
-    z-index: -1;
+    transform: translateX(-100%);
+    animation: shimmer 2s infinite;
+  }
+  
+  &::after {
+    content: 'Реклама';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 0.6rem;
+    padding: 2px 5px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
   }
 `;
 
-const FaqWaveTop = styled.div`
+const DeviceSidebarBanner = styled(motion.div)`
+  width: 30%;
+  height: 85%;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    135deg,
+    rgba(120, 40, 200, 0.4) 0%,
+    rgba(120, 40, 200, 0.2) 100%
+  );
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.8rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  text-align: center;
+  
+  &::before {
+    content: '×';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 0.7rem;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 15px;
+    width: 70%;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+  }
+`;
+
+const InlineBanner = styled(motion.div)`
+  width: 100%;
+  height: 70px;
+  background: linear-gradient(
+    135deg,
+    rgba(220, 50, 50, 0.4) 0%,
+    rgba(220, 50, 50, 0.2) 100%
+  );
+  border-radius: 5px;
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  
+  &::after {
+    content: '→';
+    font-size: 1.2rem;
+  }
+  
+  &::before {
+    content: 'Реклама';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 0.6rem;
+    padding: 2px 5px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+`;
+
+const PopupBanner = styled(motion.div)`
+  width: 80%;
+  height: 65%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(
+    135deg,
+    rgba(50, 150, 220, 0.5) 0%,
+    rgba(50, 150, 220, 0.3) 100%
+  );
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  z-index: 100;
+  
+  &::before {
+    content: '×';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.9rem;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    width: 70%;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+  }
+`;
+
+const MobileFullBanner = styled(motion.div)`
+  width: 100%;
+  height: 20%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent-color-rgb), 0.4) 0%,
+    rgba(var(--accent-color-rgb), 0.2) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.8rem;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+  padding: 0 10px;
+  text-align: center;
+  
+  &::before {
+    content: '×';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 0.7rem;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+  }
+`;
+
+const FloatingCornerBanner = styled(motion.div)`
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(50, 180, 120, 0.5) 0%,
+    rgba(50, 180, 120, 0.3) 100%
+  );
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.7rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 50;
+  
+  &::before {
+    content: '×';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 0.6rem;
+    width: 12px;
+    height: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+  }
+`;
+
+const BannerOverlay = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 120px;
-  background: linear-gradient(
-    to top left,
-    transparent 49%,
-    var(--bg-primary) 51%
-  );
-  z-index: 1;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 90;
 `;
 
-const FaqContainer = styled.div`
-  max-width: 900px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-  padding: 0 2rem;
-`;
-
-const FaqGlowCircle = styled.div`
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  z-index: 0;
-
-  &.circle-1 {
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(
-      circle,
-      rgba(var(--accent-color-rgb), 0.05) 0%,
-      transparent 70%
-    );
-    top: 10%;
-    left: -200px;
-    animation: ${floatVertical} 15s infinite ease-in-out;
-  }
-
-  &.circle-2 {
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(
-      circle,
-      rgba(var(--accent-color-rgb), 0.05) 0%,
-      transparent 70%
-    );
-    bottom: 5%;
-    right: -200px;
-    animation: ${floatVertical} 18s infinite ease-in-out reverse;
-  }
-`;
-
-const FaqTitle = styled(motion.h2)`
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: var(--accent-color);
-  margin-bottom: 3rem;
-  text-align: center;
-  position: relative;
-  text-shadow: 0 2px 10px rgba(var(--accent-color-rgb), 0.2);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 5rem;
-    color: rgba(var(--accent-color-rgb), 0.03);
-    font-weight: 900;
-    letter-spacing: 5px;
-    z-index: -1;
-    white-space: nowrap;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--accent-color),
-      transparent
-    );
-    border-radius: 4px;
-    animation: ${pulseFaq} 2s infinite ease-in-out;
-  }
-`;
-
-const FaqList = styled(motion.div)`
+// Кнопки для демонстрации
+const DeviceDemoControls = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 4rem;
-`;
-
-const FaqItem = styled(motion.div)`
-  overflow: hidden;
-  border-radius: 16px;
-  background: rgba(16, 24, 39, 0.5);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
-  transform-style: preserve-3d;
-  perspective: 1000px;
-
-  &:hover {
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2),
-      0 0 15px rgba(var(--accent-color-rgb), 0.1);
-    border-color: rgba(var(--accent-color-rgb), 0.1);
-    transform: translateY(-3px);
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 1rem;
+  
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    gap: 0.7rem;
   }
 `;
 
-const FaqItemContent = styled(motion.div)`
-  overflow: hidden;
-`;
-
-const FaqQuestion = styled(motion.div)`
-  padding: 1.8rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+const DeviceDemoButton = styled.button`
+  background: #22222e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  color: var(--text-primary);
   cursor: pointer;
   transition: all 0.3s ease;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 5px;
-    height: 100%;
-    background: linear-gradient(
-      to bottom,
-      var(--accent-color),
-      rgba(59, 130, 246, 0.5)
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 0 3px 3px 0;
-  }
-
-  &:hover::before {
-    opacity: 1;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 2rem;
-    right: 2rem;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.05),
-      transparent
-    );
-  }
-`;
-
-const FaqQuestionText = styled.h3`
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  transition: all 0.3s ease;
-  flex: 1;
-  transform: translateZ(5px);
-
-  ${FaqQuestion}:hover & {
-    color: var(--accent-color);
-    transform: translateZ(10px);
-  }
-`;
-
-const FaqToggle = styled(motion.div)`
-  width: 28px;
-  height: 28px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: var(--accent-color);
-  margin-left: 1rem;
-  flex-shrink: 0;
-  background: rgba(var(--accent-color-rgb), 0.05);
-  border-radius: 50%;
-  transition: all 0.3s ease;
+  gap: 0.7rem;
+  font-weight: 500;
+  
+  svg {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+  }
 
   &:hover {
     background: rgba(var(--accent-color-rgb), 0.1);
-    box-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.2);
-  }
-`;
-
-const FaqAnswer = styled(motion.div)`
-  padding: 0 2rem 1.8rem;
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
-  overflow: hidden;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 2rem;
-    right: 2rem;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.1),
-      transparent
-    );
-  }
-
-  strong {
-    color: var(--accent-color);
-    font-weight: 600;
-  }
-
-  ul {
-    margin-top: 0.8rem;
-    margin-bottom: 0.8rem;
-    padding-left: 1.5rem;
-  }
-
-  li {
-    margin-bottom: 0.5rem;
-    position: relative;
-
-    &::before {
-      content: '•';
+    border-color: rgba(var(--accent-color-rgb), 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    
+    svg {
       color: var(--accent-color);
-      position: absolute;
-      left: -1rem;
     }
   }
 
-  p {
-    margin-bottom: 0.8rem;
-  }
-
-  .highlight {
-    background: linear-gradient(
-      90deg,
-      rgba(var(--accent-color-rgb), 0.1),
-      rgba(59, 130, 246, 0.1)
-    );
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    margin: 0 0.2rem;
-    position: relative;
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.05),
-        transparent
-      );
-      background-size: 200% 100%;
-      animation: ${shimmerEffect} 2s infinite;
+  &.active {
+    background: rgba(var(--accent-color-rgb), 0.15);
+    border-color: rgba(var(--accent-color-rgb), 0.3);
+    color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    
+    svg {
+      color: var(--accent-color);
     }
   }
-`;
-
-const FaqCta = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  background: rgba(16, 24, 39, 0.4);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  padding: 3rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(
-      90deg,
-      var(--accent-color),
-      var(--accent-color-light)
-    );
-    z-index: 1;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      135deg,
-      rgba(var(--accent-color-rgb), 0.05) 0%,
-      transparent 50%
-    );
-    z-index: -1;
+  
+  @media (max-width: 768px) {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
   }
 `;
 
-const FaqCtaText = styled.p`
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  text-align: center;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-`;
-
-const FaqCtaButton = styled(motion.button)`
-  padding: 1rem 2rem;
-  background: linear-gradient(
-    90deg,
-    var(--accent-color) 0%,
-    var(--accent-color-light) 100%
-  );
-  color: white;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  box-shadow: 0 10px 25px rgba(var(--accent-color-rgb), 0.3);
-  transition: all 0.3s ease;
-
-  &:hover {
-    box-shadow: 0 15px 30px rgba(var(--accent-color-rgb), 0.5);
+// Типы размещения баннеров
+const devicePlacementTypes = [
+  {
+    id: 'header',
+    title: 'Верхній банер',
+    icon: <FaWindowMaximize />,
+    description: 'Розміщення у верхній частині сторінки для максимальної видимості.',
+    advantages: [
+      'Висока видимість',
+      'Перший контакт з користувачем',
+      'Найкраще для брендингу'
+    ]
+  },
+  {
+    id: 'sidebar',
+    title: 'Сайдбар',
+    icon: <FaColumns />,
+    description: 'Вертикальне розміщення збоку від основного контенту.',
+    advantages: [
+      'Залишається видимим при прокрутці',
+      'Не перериває читання контенту',
+      'Ефективний для високих форматів'
+    ]
+  },
+  {
+    id: 'inline',
+    title: 'В контенті',
+    icon: <FaAlignCenter />,
+    description: 'Розміщення між блоками контенту для кращої інтеграції.',
+    advantages: [
+      'Природна інтеграція в контент',
+      'Висока увага користувача',
+      'Відповідність контексту сторінки'
+    ]
+  },
+  {
+    id: 'popup',
+    title: 'Поп-ап',
+    icon: <FaWindowRestore />,
+    description: 'Спливаюче вікно для привертання максимальної уваги.',
+    advantages: [
+      'Максимальна помітність',
+      'Неможливо пропустити',
+      'Високий показник конверсії'
+    ]
+  },
+  {
+    id: 'mobile',
+    title: 'Мобільний',
+    icon: <FaMobileAlt />,
+    description: 'Спеціальні формати для мобільних пристроїв.',
+    advantages: [
+      'Оптимізація під малі екрани',
+      'Таргетинг на мобільних користувачів',
+      'Адаптивні формати реклами'
+    ]
   }
-
-  svg {
-    font-size: 1.1rem;
-    transition: transform 0.3s ease;
-  }
-
-  &:hover svg {
-    transform: translateX(5px);
-  }
-`;
+];
 
 const AIBannerMarketing = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [activePlacementDemo, setActivePlacementDemo] = useState('thematic');
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [activeProcess, setActiveProcess] = useState(0);
+  const [activePlacement, setActivePlacement] = useState('thematic');
+  const [activePlacementDemo, setActivePlacementDemo] = useState('header');
   const bannerRef = useRef(null);
-  // Add FAQ state
-  const [expandedFaqs, setExpandedFaqs] = useState([]);
-
-  // FAQ data
-  const faqData = [
-    {
-      question: '1. Скільки часу потрібно для запуску банерної кампанії?',
-      answer: 'Залежно від складності завдання, підготовка займає від 2 до 5 робочих днів. Це включає аналіз ЦА, вибір сайтів, створення креативів і технічну підготовку до запуску.'
-    },
-    {
-      question: '2. Чи можна протестувати кілька банерів одночасно?',
-      answer: 'Так, ми практикуємо A/B-тестування, щоб визначити, який варіант банера має кращий CTR і нижчий CPC. Це дозволяє оптимізувати кампанію ще на етапі її старту.'
-    },
-    {
-      question: '3. Які типи бізнесу найкраще підходять для банерної реклами?',
-      answer: 'Банерна реклама ефективна як для широкого B2C-сегменту (рітейл, косметика, туризм), так і для вузьких B2B-напрямів. Особливо вона працює в нішах з візуальною складовою або з акційними пропозиціями.'
-    },
-    {
-      question: '4. Чи можливо обмежити показ банерів певними регіонами?',
-      answer: 'Так, ми можемо налаштувати геотаргетинг до рівня країни, області чи навіть конкретного міста. Це дозволяє зосередити бюджет лише на тих регіонах, де знаходиться ваша цільова аудиторія.'
-    },
-    {
-      question: '5. Що буде, якщо кампанія не дає очікуваних результатів?',
-      answer: 'Ми регулярно аналізуємо показники і за потреби вносимо зміни — замінюємо креативи, змінюємо майданчики або коригуємо таргетинг. Усі кампанії супроводжує фахівець, який відповідає за результат.'
-    },
-    {
-      question: '6. Чи можна запустити банерну рекламу без готового дизайну?',
-      answer: 'Так, ми повністю беремо на себе створення банерів — від концепту до фінального макету. Наші дизайнери адаптують креативи під обрану стратегію та забезпечують їх відповідність технічним вимогам платформ.'
-    },
-  ];
-
-  // Toggle FAQ function
-  const toggleFaq = (index) => {
-    setExpandedFaqs(prev => 
-      prev.includes(index) 
-        ? prev.filter(i => i !== index) 
-        : [...prev, index]
-    );
-  };
 
   useEffect(() => {
     const handleMouseMove = e => {
@@ -4100,48 +3776,327 @@ const AIBannerMarketing = () => {
     },
   ];
 
-  // Новые данные для секции размещения
-  const placementTypes = [
-    {
-      id: 'thematic',
-      title: 'Тематичні сайти',
-      description: 'Розміщення банерів на нішевих веб-сайтах дозволяє звертатися до вже зацікавленої аудиторії. Наприклад, реклама туристичних послуг на тревел-блогах або банери косметики на жіночих форумах працюють точково й ефективно. Тематичні майданчики мають високу релевантність, що збільшує ймовірність кліку та взаємодії з брендом.',
-      advantages: [
-        'Висока якість трафіку',
-        'Мінімальні втрати на нецільову аудиторію',
-        'Підвищений рівень довіри завдяки експертному контексту'
-      ],
-      icon: <FaBullseye />
-    },
-    {
-      id: 'news',
-      title: 'Новинні портали',
-      description: 'Новинні сайти мають один з найвищих показників щоденного трафіку. Завдяки постійному оновленню контенту, користувачі регулярно повертаються, а це дає змогу охопити широку, але при цьому активну аудиторію. Банери тут часто розміщуються у верхній частині сторінки або між блоками новин.',
-      advantages: [
-        'Висока частота показів',
-        'Швидкий приріст охоплення',
-        'Актуальність: реклама поруч з гарячими новинами'
-      ],
-      icon: <FaRegComments />
-    },
-    {
-      id: 'traffic',
-      title: 'Платформи з високим трафіком',
-      description: 'До цієї категорії належать великі агрегатори, енциклопедії, онлайн-журнали, форуми, а також сайти типу "питання-відповіді" (як-от Quora або місцеві аналоги). Розміщення на таких платформах дозволяє охопити широку аудиторію без прив\'язки до вузької тематики.',
-      advantages: [
-        'Масштабне охоплення',
-        'Оптимізація за CPM або CPC',
-        'Можливість A/B-тестування банерів на великій вибірці'
-      ],
-      icon: <FaUsers />
-    }
-  ];
-
   // Обработчик смены активной демонстрации
   const handlePlacementDemoChange = (type) => {
     setActivePlacementDemo(type);
   };
 
+  // Device demonstration components
+  const DeviceShowcase = styled(motion.div)`
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+    perspective: 1000px;
+    margin: 2rem 0 3rem;
+  `;
+
+  const DeviceContainer = styled(motion.div)`
+    position: relative;
+    transform-style: preserve-3d;
+  `;
+
+  const DesktopDevice = styled(motion.div)`
+    width: 600px;
+    height: 350px;
+    background: #f8f9fb;
+    border-radius: 6px;
+    border: 2px solid #444;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 30px;
+      background: #333;
+      border-radius: 4px;
+    }
+  `;
+
+  const TabletDevice = styled(motion.div)`
+    width: 350px;
+    height: 450px;
+    background: #f8f9fb;
+    border-radius: 20px;
+    border: 12px solid #333;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -22px;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 40px;
+      background: #555;
+      border-radius: 2px;
+    }
+  `;
+
+  const MobileDevice = styled(motion.div)`
+    width: 250px;
+    height: 450px;
+    background: #f8f9fb;
+    border-radius: 25px;
+    border: 10px solid #333;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 10px;
+      background: #444;
+      border-radius: 10px;
+    }
+  `;
+
+  const DeviceContent = styled.div`
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background: white;
+    overflow: hidden;
+  `;
+
+  const HeaderBanner = styled(motion.div)`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background: linear-gradient(135deg, #3a6eff, #6942ef);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+
+    &:after {
+      content: 'Реклама';
+      position: absolute;
+      top: 2px;
+      right: 5px;
+      font-size: 9px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  `;
+
+  const DeviceSidebarBanner = styled(motion.div)`
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 120px;
+    height: 300px;
+    background: linear-gradient(135deg, #8a63e8, #61a0ff);
+    color: white;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+
+    &:after {
+      content: 'Реклама';
+      position: absolute;
+      top: 2px;
+      right: 5px;
+      font-size: 9px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  `;
+
+  const InlineBanner = styled(motion.div)`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 100px;
+    background: linear-gradient(135deg, #ff7a45, #ff4088);
+    color: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+
+    &:after {
+      content: 'Реклама';
+      position: absolute;
+      top: 2px;
+      right: 5px;
+      font-size: 9px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  `;
+
+  const PopupBanner = styled(motion.div)`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 220px;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    z-index: 20;
+    border: 1px solid #eaeaea;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: linear-gradient(135deg, #3a6eff, #6942ef);
+      border-radius: 10px 10px 0 0;
+    }
+
+    &:after {
+      content: 'Реклама';
+      position: absolute;
+      top: 2px;
+      right: 5px;
+      font-size: 9px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  `;
+
+  const MobileFullBanner = styled(motion.div)`
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(135deg, #ff7a45, #ff4088);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    z-index: 10;
+
+    &:after {
+      content: 'Реклама';
+      position: absolute;
+      top: 2px;
+      right: 5px;
+      font-size: 9px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  `;
+
+  const FloatingCornerBanner = styled(motion.div)`
+    position: absolute;
+    bottom: 70px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 15;
+    color: #6942ef;
+    font-size: 24px;
+    border: 1px solid #eaeaea;
+  `;
+
+  const DeviceDemoControls = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  `;
+
+  const DeviceDemoButton = styled.button`
+    background: ${props => props.active ? 'var(--accent-color)' : 'rgba(var(--accent-color-rgb), 0.1)'};
+    color: ${props => props.active ? 'white' : 'var(--text-primary)'};
+    border: none;
+    border-radius: 30px;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:hover {
+      background: ${props => props.active ? 'var(--accent-color)' : 'rgba(var(--accent-color-rgb), 0.2)'};
+    }
+
+    svg {
+      font-size: 1.2rem;
+    }
+  `;
+
+  const devicePlacementTypes = [
+    {
+      id: 'header',
+      title: 'Хедер',
+      icon: <FaWindowMaximize />,
+      description: 'Горизонтальний банер розташований у верхній частині сторінки',
+      advantages: [
+        'Висока видимість при завантаженні сторінки',
+        'Охоплює всю ширину сторінки',
+        'Ідеально для брендової реклами'
+      ]
+    },
+    {
+      id: 'sidebar',
+      title: 'Сайдбар',
+      icon: <FaColumns />,
+      description: 'Вертикальний банер розташований збоку від основного контенту',
+      advantages: [
+        'Залишається видимим при прокрутці',
+        'Висока тривалість перегляду',
+        'Ефективний для цільових конверсій'
+      ]
+    },
+    {
+      id: 'inline',
+      title: 'Вбудований',
+      icon: <FaPuzzlePiece />,
+      description: 'Банер інтегрований безпосередньо в контент сторінки',
+      advantages: [
+        'Природна інтеграція з контентом',
+        'Високий рівень взаємодії',
   return (
     <PageContainer>
       <HeroWrapper>
@@ -4197,8 +4152,8 @@ const AIBannerMarketing = () => {
               </HeroDescription>
 
               <StatsRow
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
                 <StatColumn>
@@ -4218,8 +4173,8 @@ const AIBannerMarketing = () => {
               </StatsRow>
 
               <ButtonGroup
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <PrimaryButton
@@ -4571,8 +4526,229 @@ const AIBannerMarketing = () => {
             Успішна банерна реклама починається з правильного вибору платформи для розміщення. Не кожен сайт дає однакову ефективність, тому важливо аналізувати тематику, аудиторію, трафік і конкурентне середовище ресурсу. Вдале розміщення забезпечує високу видимість, релевантність і максимальну віддачу від кожного показу.
           </PlacementDescription>
 
+          <PlacementVisual
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <DeviceShowcase>
+              <DeviceContainer>
+                {activePlacementDemo === 'header' && (
+                  <DesktopDevice>
+                    <DeviceScreen>
+                      <DeviceHeader />
+                      <DeviceContent>
+                        <HeaderBanner
+                          animate={{ 
+                            opacity: [0.9, 1, 0.9],
+                            y: [0, -2, 0] 
+                          }}
+                          transition={{ 
+                            duration: 3,
+                            repeat: Infinity,
+                            repeatType: 'reverse' 
+                          }}
+                        >
+                          Рекламний банер у шапці сайту
+                        </HeaderBanner>
+                        <DeviceContentBlock height="40px">
+                          <ContentLine width="70%" opacity="0.8" />
+                          <ContentLine width="40%" opacity="0.6" />
+                        </DeviceContentBlock>
+                        <DeviceContentBlock>
+                          <ContentLine width="90%" opacity="0.8" />
+                          <ContentLine width="60%" opacity="0.6" />
+                          <ContentLine width="80%" opacity="0.7" />
+                        </DeviceContentBlock>
+                        <DeviceContentBlock>
+                          <ContentLine width="85%" opacity="0.8" />
+                          <ContentLine width="65%" opacity="0.6" />
+                          <ContentLine width="75%" opacity="0.7" />
+                        </DeviceContentBlock>
+                      </DeviceContent>
+                    </DeviceScreen>
+                  </DesktopDevice>
+                )}
+
+                {activePlacementDemo === 'sidebar' && (
+                  <DesktopDevice>
+                    <DeviceScreen>
+                      <DeviceHeader />
+                      <DeviceContent>
+                        <DeviceContentBlock height="40px">
+                          <ContentLine width="70%" opacity="0.8" />
+                          <ContentLine width="40%" opacity="0.6" />
+                        </DeviceContentBlock>
+                        <DeviceContentBlock>
+                          <ContentLine width="90%" opacity="0.8" />
+                          <ContentLine width="60%" opacity="0.6" />
+                          <ContentLine width="80%" opacity="0.7" />
+                        </DeviceContentBlock>
+                        <DeviceContentBlock>
+                          <ContentLine width="85%" opacity="0.8" />
+                          <ContentLine width="65%" opacity="0.6" />
+                          <ContentLine width="75%" opacity="0.7" />
+                        </DeviceContentBlock>
+                        <DeviceSidebarBanner
+                          animate={{ 
+                            opacity: [0.9, 1, 0.9],
+                            x: [0, 2, 0] 
+                          }}
+                          transition={{ 
+                            duration: 3,
+                            repeat: Infinity,
+                            repeatType: 'reverse' 
+                          }}
+                        >
+                          Вертикальний сайдбар банер
+                        </DeviceSidebarBanner>
+                      </DeviceContent>
+                    </DeviceScreen>
+                  </DesktopDevice>
+                )}
+
+                {activePlacementDemo === 'inline' && (
+                  <DesktopDevice>
+                    <DeviceScreen>
+                      <DeviceHeader />
+                      <DeviceContent>
+                        <DeviceContentBlock height="40px">
+                          <ContentLine width="70%" opacity="0.8" />
+                          <ContentLine width="40%" opacity="0.6" />
+                        </DeviceContentBlock>
+                        <DeviceContentBlock>
+                          <ContentLine width="90%" opacity="0.8" />
+                          <ContentLine width="60%" opacity="0.6" />
+                          <ContentLine width="80%" opacity="0.7" />
+                        </DeviceContentBlock>
+                        <InlineBanner
+                          animate={{ 
+                            opacity: [0.9, 1, 0.9],
+                            scale: [1, 1.01, 1] 
+                          }}
+                          transition={{ 
+                            duration: 2.5,
+                            repeat: Infinity,
+                            repeatType: 'reverse' 
+                          }}
+                        >
+                          Банер між контентом
+                        </InlineBanner>
+                        <DeviceContentBlock>
+                          <ContentLine width="85%" opacity="0.8" />
+                          <ContentLine width="65%" opacity="0.6" />
+                          <ContentLine width="75%" opacity="0.7" />
+                        </DeviceContentBlock>
+                      </DeviceContent>
+                    </DeviceScreen>
+                  </DesktopDevice>
+                )}
+
+                {activePlacementDemo === 'popup' && (
+                  <DesktopDevice>
+                    <DeviceScreen>
+                      <DeviceHeader />
+                      <DeviceContent>
+                        <DeviceContentBlock height="40px">
+                          <ContentLine width="70%" opacity="0.8" />
+                          <ContentLine width="40%" opacity="0.6" />
+                        </DeviceContentBlock>
+                        <DeviceContentBlock>
+                          <ContentLine width="90%" opacity="0.8" />
+                          <ContentLine width="60%" opacity="0.6" />
+                          <ContentLine width="80%" opacity="0.7" />
+                        </DeviceContentBlock>
+                        <DeviceContentBlock>
+                          <ContentLine width="85%" opacity="0.8" />
+                          <ContentLine width="65%" opacity="0.6" />
+                          <ContentLine width="75%" opacity="0.7" />
+                        </DeviceContentBlock>
+                        <BannerOverlay />
+                        <PopupBanner
+                          animate={{ 
+                            opacity: [0.95, 1, 0.95],
+                            scale: [1, 1.02, 1] 
+                          }}
+                          transition={{ 
+                            duration: 3,
+                            repeat: Infinity,
+                            repeatType: 'reverse' 
+                          }}
+                        >
+                          Поп-ап банер для максимальної уваги
+                        </PopupBanner>
+                      </DeviceContent>
+                    </DeviceScreen>
+                  </DesktopDevice>
+                )}
+
+                {activePlacementDemo === 'mobile' && (
+                  <MobileDevice>
+                    <DeviceScreen>
+                      <DeviceHeader />
+                      <DeviceContent>
+                        <DeviceContentBlock height="25px">
+                          <ContentLine width="70%" opacity="0.8" />
+                          <ContentLine width="40%" opacity="0.6" />
+                        </DeviceContentBlock>
+                        <DeviceContentBlock height="60px">
+                          <ContentLine width="90%" opacity="0.8" />
+                          <ContentLine width="60%" opacity="0.6" />
+                          <ContentLine width="80%" opacity="0.7" />
+                        </DeviceContentBlock>
+                        <DeviceContentBlock height="60px">
+                          <ContentLine width="85%" opacity="0.8" />
+                          <ContentLine width="65%" opacity="0.6" />
+                          <ContentLine width="75%" opacity="0.7" />
+                        </DeviceContentBlock>
+                        <MobileFullBanner
+                          animate={{ 
+                            opacity: [0.9, 1, 0.9]
+                          }}
+                          transition={{ 
+                            duration: 2.5,
+                            repeat: Infinity,
+                            repeatType: 'reverse' 
+                          }}
+                        >
+                          Мобільний банер
+                        </MobileFullBanner>
+                        <FloatingCornerBanner
+                          animate={{ 
+                            scale: [1, 1.05, 1],
+                            rotate: [0, 3, 0]
+                          }}
+                          transition={{ 
+                            duration: 3,
+                            repeat: Infinity,
+                            repeatType: 'reverse' 
+                          }}
+                        >
+                          Floating
+                        </FloatingCornerBanner>
+                      </DeviceContent>
+                    </DeviceScreen>
+                  </MobileDevice>
+                )}
+              </DeviceContainer>
+            </DeviceShowcase>
+          </PlacementVisual>
+
+          <DeviceDemoControls>
+            {devicePlacementTypes.map((type) => (
+              <DeviceDemoButton 
+                key={type.id}
+                className={activePlacementDemo === type.id ? 'active' : ''}
+                onClick={() => handlePlacementDemoChange(type.id)}
+              >
+                {type.icon}
+                <span>{type.title}</span>
+              </DeviceDemoButton>
+            ))}
+          </DeviceDemoControls>
+
           <PlacementCardsContainer>
-            {placementTypes.map((type, index) => (
+            {devicePlacementTypes.map((type, index) => (
               <PlacementCard
                 key={type.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -4600,1747 +4776,6 @@ const AIBannerMarketing = () => {
           </PlacementCardsContainer>
         </PlacementContainer>
       </PlacementSection>
-
-      {/* Секция реализации баннерных кампаний */}
-      <ImplementationSection>
-        <ImplBackgroundGradient />
-        <ImplBackgroundGrid />
-        
-        <ImplementationContainer>
-          <ImplementationTitle>
-            Наш процес створення ефективних банерів
-          </ImplementationTitle>
-          
-          <ImplementationDescription>
-            Кожен банер, який ми створюємо — це результат комплексного підходу, що поєднує аналітику, дизайн і технології. Ми не просто малюємо гарні картинки, а розробляємо стратегічні рішення, які приводять реальних клієнтів. Наша методологія передбачає глибоке розуміння вашого бізнесу та потреб цільової аудиторії.
-          </ImplementationDescription>
-          
-          <div className="process-timeline">
-            <div className="timeline-line"></div>
-            
-            <div className="timeline-node active">
-              <div className="node-number">01</div>
-              <div className="node-content">
-                <h3>Аналіз і стратегія</h3>
-                <p>Вивчаємо ваш бізнес, конкурентів та цільову аудиторію, щоб розробити унікальну стратегію розміщення</p>
-                <ul className="node-list">
-                  <li>
-                    <span className="check-icon">✓</span>
-                    Аналіз поведінки користувачів
-                  </li>
-                  <li>
-                    <span className="check-icon">✓</span>
-                    Дослідження конкурентів
-                  </li>
-                  <li>
-                    <span className="check-icon">✓</span>
-                    Вибір оптимальних форматів
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div className="timeline-node">
-              <div className="node-number">02</div>
-              <div className="node-content">
-                <h3>Креативний концепт</h3>
-                <p>Створюємо унікальні візуальні рішення, які привертають увагу та спонукають до дії</p>
-                <ul className="node-list">
-                  <li>
-                    <span className="check-icon">✓</span>
-                    Розробка привабливих дизайнів
-                  </li>
-                  <li>
-                    <span className="check-icon">✓</span>
-                    Тестування кількох варіантів
-                  </li>
-                  <li>
-                    <span className="check-icon">✓</span>
-                    Оптимізація для різних майданчиків
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div className="timeline-node">
-              <div className="node-number">03</div>
-              <div className="node-content">
-                <h3>Налаштування і запуск</h3>
-                <p>Налаштовуємо показ банерів на обраних майданчиках з точним таргетингом</p>
-                <ul className="node-list">
-                  <li>
-                    <span className="check-icon">✓</span>
-                    Інтеграція з рекламними мережами
-                  </li>
-                  <li>
-                    <span className="check-icon">✓</span>
-                    Налаштування таргетингу
-                  </li>
-                  <li>
-                    <span className="check-icon">✓</span>
-                    Вибір оптимальних стратегій показу
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div className="timeline-node">
-              <div className="node-number">04</div>
-              <div className="node-content">
-                <h3>Оптимізація і масштабування</h3>
-                <p>Постійно аналізуємо ефективність і коригуємо кампанію для досягнення максимальних результатів</p>
-                <ul className="node-list">
-                  <li>
-                    <span className="check-icon">✓</span>
-                    A/B-тестування варіантів
-                  </li>
-                  <li>
-                    <span className="check-icon">✓</span>
-                    Аналіз показників ефективності
-                  </li>
-                  <li>
-                    <span className="check-icon">✓</span>
-                    Масштабування успішних кампаній
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          
-          <div className="results-showcase">
-            <div className="result-card">
-              <div className="result-icon">
-                <FaChartLine />
-              </div>
-              <div className="result-value">+78%</div>
-              <div className="result-label">Середнє зростання CTR</div>
-            </div>
-            
-            <div className="result-card">
-              <div className="result-icon">
-                <FaUsers />
-              </div>
-              <div className="result-value">5.2M</div>
-              <div className="result-label">Охоплення щомісяця</div>
-            </div>
-            
-            <div className="result-card">
-              <div className="result-icon">
-                <FaRocket />
-              </div>
-              <div className="result-value">3.8x</div>
-              <div className="result-label">Середній ROI кампаній</div>
-            </div>
-          </div>
-          
-          <div className="cta-container">
-            <h3 className="cta-title">Готові запустити банерну рекламу, яка дійсно працює?</h3>
-            <p className="cta-description">Зв'яжіться з нами сьогодні, і ми розробимо індивідуальну стратегію, що відповідає вашим бізнес-цілям</p>
-            <div className="cta-buttons">
-              <button className="cta-button primary">Замовити консультацію</button>
-              <button className="cta-button secondary">Завантажити приклади робіт</button>
-            </div>
-          </div>
-        </ImplementationContainer>
-        
-        <style jsx>{`
-          .process-timeline {
-            position: relative;
-            margin: 5rem 0;
-            padding: 2rem 0;
-          }
-          
-          .timeline-line {
-            position: absolute;
-            left: 50px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--accent-color) 0%, rgba(var(--accent-color-rgb), 0.3) 100%);
-            z-index: 1;
-          }
-          
-          .timeline-node {
-            display: flex;
-            margin-bottom: 5rem;
-            position: relative;
-            z-index: 2;
-          }
-          
-          .timeline-node:last-child {
-            margin-bottom: 0;
-          }
-          
-          .node-number {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: rgba(var(--accent-color-rgb), 0.1);
-            border: 2px solid var(--accent-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--accent-color);
-            margin-right: 2rem;
-            flex-shrink: 0;
-            position: relative;
-            z-index: 2;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-          }
-          
-          .timeline-node.active .node-number {
-            background: rgba(var(--accent-color-rgb), 0.2);
-            box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.3);
-          }
-          
-          .node-content {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            padding: 2rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-          }
-          
-          .timeline-node:hover .node-content {
-            transform: translateX(10px);
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(var(--accent-color-rgb), 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-          }
-          
-          .node-content h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-          }
-          
-          .node-content p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-          }
-          
-          .node-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-          }
-          
-          .node-list li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.8rem;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-          }
-          
-          .check-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            background: rgba(var(--accent-color-rgb), 0.15);
-            color: var(--accent-color);
-            margin-right: 0.8rem;
-            flex-shrink: 0;
-            font-size: 0.8rem;
-          }
-          
-          .results-showcase {
-            display: flex;
-            justify-content: space-between;
-            margin: 5rem 0;
-            gap: 2rem;
-          }
-          
-          .result-card {
-            flex: 1;
-            background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.2) 0%, rgba(var(--accent-color-rgb), 0.05) 100%);
-            border-radius: 20px;
-            padding: 2.5rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(var(--accent-color-rgb), 0.1);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-          }
-          
-          .result-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            border-color: rgba(var(--accent-color-rgb), 0.3);
-          }
-          
-          .result-card::before {
-            content: '';
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(var(--accent-color-rgb), 0.3) 0%, transparent 70%);
-            top: -75px;
-            right: -75px;
-            opacity: 0.5;
-          }
-          
-          .result-icon {
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-          }
-          
-          .result-value {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-          }
-          
-          .result-label {
-            font-size: 1rem;
-            color: var(--text-secondary);
-          }
-          
-          .cta-container {
-            background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.15) 0%, rgba(var(--accent-color-rgb), 0.05) 100%);
-            border-radius: 20px;
-            padding: 3rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(var(--accent-color-rgb), 0.1);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-          }
-          
-          .cta-container::before,
-          .cta-container::after {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(var(--accent-color-rgb), 0.2) 0%, transparent 70%);
-          }
-          
-          .cta-container::before {
-            top: -100px;
-            left: -100px;
-          }
-          
-          .cta-container::after {
-            bottom: -100px;
-            right: -100px;
-          }
-          
-          .cta-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-          }
-          
-          .cta-description {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-          }
-          
-          .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-          }
-          
-          .cta-button {
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-          }
-          
-          .cta-button.primary {
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            box-shadow: 0 10px 20px rgba(var(--accent-color-rgb), 0.3);
-          }
-          
-          .cta-button.primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(var(--accent-color-rgb), 0.4);
-          }
-          
-          .cta-button.secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid rgba(var(--accent-color-rgb), 0.5);
-          }
-          
-          .cta-button.secondary:hover {
-            background: rgba(var(--accent-color-rgb), 0.05);
-            transform: translateY(-5px);
-          }
-          
-          @media (max-width: 768px) {
-            .timeline-line {
-              left: 25px;
-            }
-            
-            .timeline-node {
-              flex-direction: column;
-            }
-            
-            .node-number {
-              width: 50px;
-              height: 50px;
-              font-size: 1.2rem;
-              margin-bottom: 1rem;
-              margin-left: auto;
-              margin-right: auto;
-            }
-            
-            .results-showcase {
-              flex-direction: column;
-            }
-            
-            .cta-buttons {
-              flex-direction: column;
-            }
-            
-            .cta-title {
-              font-size: 1.5rem;
-            }
-          }
-        `}</style>
-      </ImplementationSection>
-
-      {/* Секция аналитики и результатов */}
-      <section className="analytics-section">
-        <div className="analytics-container">
-          <h2 className="analytics-title">Результати та аналітика</h2>
-          
-          <p className="analytics-description">
-            Успішна банерна реклама — це не тільки креатив і покази, а й точна аналітика. 
-            Ми працюємо з даними та метриками, які допомагають нам оптимізувати кампанії 
-            та досягати максимальної ефективності вкладених коштів.
-          </p>
-          
-          <div className="analytics-cards">
-            <div className="analytics-card">
-              <div className="card-icon">
-                <FaChartBar />
-              </div>
-              <h3>Ключові метрики</h3>
-              <div className="metrics-list">
-                <div className="metric-item">
-                  <span className="metric-name">CTR (Click-Through Rate)</span>
-                  <p className="metric-desc">
-                    Відношення кількості кліків до кількості показів. Основний показник ефективності банера, 
-                    що демонструє наскільки він привабливий для аудиторії.
-                  </p>
-                </div>
-                
-                <div className="metric-item">
-                  <span className="metric-name">CPM (Cost Per Mille)</span>
-                  <p className="metric-desc">
-                    Вартість за тисячу показів. Допомагає оцінити економічну ефективність 
-                    охоплення цільової аудиторії.
-                  </p>
-                </div>
-                
-                <div className="metric-item">
-                  <span className="metric-name">CPC (Cost Per Click)</span>
-                  <p className="metric-desc">
-                    Вартість одного кліка. Показує, скільки коштує залучення одного потенційного 
-                    клієнта на сайт.
-                  </p>
-                </div>
-                
-                <div className="metric-item">
-                  <span className="metric-name">CR (Conversion Rate)</span>
-                  <p className="metric-desc">
-                    Відсоток відвідувачів, які виконали цільову дію (замовлення, реєстрація тощо) 
-                    після переходу з банера.
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="analytics-card">
-              <div className="card-icon">
-                <FaChartLine />
-              </div>
-              <h3>Що ви отримуєте</h3>
-              <div className="benefits-list">
-                <div className="benefit-item">
-                  <div className="benefit-header">
-                    <span className="benefit-icon"><FaRegChartBar /></span>
-                    <span className="benefit-title">Регулярна звітність</span>
-                  </div>
-                  <p>
-                    Щотижневі або щомісячні звіти з детальним аналізом усіх ключових показників кампанії 
-                    та рекомендаціями щодо оптимізації.
-                  </p>
-                </div>
-                
-                <div className="benefit-item">
-                  <div className="benefit-header">
-                    <span className="benefit-icon"><FaSearchDollar /></span>
-                    <span className="benefit-title">Аналіз ROI</span>
-                  </div>
-                  <p>
-                    Розрахунок повернення інвестицій для кожного рекламного каналу та формату, 
-                    що дозволяє визначити найбільш прибуткові стратегії.
-                  </p>
-                </div>
-                
-                <div className="benefit-item">
-                  <div className="benefit-header">
-                    <span className="benefit-icon"><FaUsers /></span>
-                    <span className="benefit-title">Дані про аудиторію</span>
-                  </div>
-                  <p>
-                    Детальна інформація про демографію, інтереси та поведінку користувачів, 
-                    які взаємодіють з вашими банерами.
-                  </p>
-                </div>
-                
-                <div className="benefit-item">
-                  <div className="benefit-header">
-                    <span className="benefit-icon"><FaSyncAlt /></span>
-                    <span className="benefit-title">Оптимізація в реальному часі</span>
-                  </div>
-                  <p>
-                    Постійний моніторинг та коригування кампаній для досягнення максимальної 
-                    ефективності та мінімізації витрат.
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="analytics-card wide">
-              <div className="card-icon">
-                <FaClipboardCheck />
-              </div>
-              <h3>Наш аналітичний процес</h3>
-              
-              <div className="process-steps">
-                <div className="process-row">
-                  <div className="process-step">
-                    <div className="step-number">01</div>
-                    <div className="step-content">
-                      <h4>Налаштування відстеження</h4>
-                      <p>
-                        Інтеграція Google Analytics, Facebook Pixel та інших інструментів для точного 
-                        відстеження всіх взаємодій користувачів з банерами та сайтом.
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="process-step">
-                    <div className="step-number">02</div>
-                    <div className="step-content">
-                      <h4>Збір та аналіз даних</h4>
-                      <p>
-                        Систематичний збір даних про покази, кліки, конверсії та інші взаємодії 
-                        користувачів з рекламними матеріалами.
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="process-step">
-                    <div className="step-number">03</div>
-                    <div className="step-content">
-                      <h4>A/B тестування</h4>
-                      <p>
-                        Порівняння різних версій банерів для визначення найбільш ефективних 
-                        візуальних елементів, закликів до дії та розміщень.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="process-row second">
-                  <div className="process-step">
-                    <div className="step-number">04</div>
-                    <div className="step-content">
-                      <h4>Формування звітності</h4>
-                      <p>
-                        Створення зрозумілих і детальних звітів, що демонструють результати кампаній 
-                        та дають чітке розуміння ROI.
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="process-step">
-                    <div className="step-number">05</div>
-                    <div className="step-content">
-                      <h4>Оптимізація та масштабування</h4>
-                      <p>
-                        На основі зібраних даних вносимо корективи в кампанії та масштабуємо 
-                        найбільш успішні стратегії для максимізації результатів.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="analytics-quote">
-            <div className="quote-icon"><FaQuoteRight /></div>
-            <blockquote>
-              "Без аналітики реклама — це просто красиві картинки. З аналітикою — це потужний 
-              інструмент розвитку бізнесу, де кожна гривня працює на результат."
-            </blockquote>
-            <div className="quote-author">— Команда SoftQod</div>
-          </div>
-          
-          <div className="analytics-cta">
-            <p>Хочете дізнатися більше про те, як ми можемо допомогти вам досягти вимірюваних результатів з банерною рекламою?</p>
-            <div className="cta-buttons">
-              <button className="cta-btn primary">
-                <FaComment />
-                <span>Замовити консультацію</span>
-              </button>
-              <button className="cta-btn secondary">
-                <FaFileAlt />
-                <span>Отримати приклад звіту</span>
-              </button>
-            </div>
-          </div>
-        </div>
-        
-        <style jsx>{`
-          .analytics-section {
-            padding: 7rem 0;
-            background: linear-gradient(180deg, rgba(var(--bg-primary-rgb), 0.98) 0%, var(--bg-primary) 100%);
-            position: relative;
-            overflow: hidden;
-          }
-          
-          .analytics-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(
-              90deg,
-              transparent 0%,
-              rgba(var(--accent-color-rgb), 0.4) 50%,
-              transparent 100%
-            );
-          }
-          
-          .analytics-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 2;
-          }
-          
-          .analytics-title {
-            font-size: 2.8rem;
-            font-weight: 800;
-            margin-bottom: 2.5rem;
-            text-align: center;
-            background: linear-gradient(
-              135deg,
-              var(--text-primary) 0%,
-              var(--accent-color) 100%
-            );
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
-          }
-          
-          .analytics-title:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--accent-color);
-            border-radius: 2px;
-          }
-          
-          .analytics-description {
-            font-size: 1.2rem;
-            line-height: 1.7;
-            color: var(--text-secondary);
-            max-width: 900px;
-            margin: 0 auto 4rem;
-            text-align: center;
-            position: relative;
-          }
-          
-          .analytics-cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-bottom: 4rem;
-          }
-          
-          .analytics-card {
-            background: rgba(30, 30, 40, 0.7);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2.5rem;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-          }
-          
-          .analytics-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
-            border-color: rgba(var(--accent-color-rgb), 0.3);
-          }
-          
-          .analytics-card.wide {
-            grid-column: span 2;
-            margin-top: 1rem;
-          }
-          
-          .card-icon {
-            font-size: 2.2rem;
-            color: var(--accent-color);
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-          }
-          
-          .analytics-card h3 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 1.8rem;
-            color: var(--text-primary);
-            position: relative;
-          }
-          
-          .analytics-card h3:after {
-            content: '';
-            position: absolute;
-            bottom: -0.5rem;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--accent-color);
-            border-radius: 2px;
-          }
-          
-          .metrics-list {
-            display: grid;
-            gap: 1.5rem;
-          }
-          
-          .metric-item {
-            position: relative;
-          }
-          
-          .metric-name {
-            display: block;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-          }
-          
-          .metric-desc {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--text-secondary);
-          }
-          
-          .benefits-list {
-            display: grid;
-            gap: 1.8rem;
-          }
-          
-          .benefit-item {
-            position: relative;
-          }
-          
-          .benefit-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.8rem;
-          }
-          
-          .benefit-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            background: rgba(var(--accent-color-rgb), 0.15);
-            border-radius: 50%;
-            color: var(--accent-color);
-            font-size: 1rem;
-            margin-right: 1rem;
-          }
-          
-          .benefit-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-          }
-          
-          .benefit-item p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            padding-left: calc(36px + 1rem);
-          }
-          
-          .process-steps {
-            display: flex;
-            flex-direction: column;
-            margin-top: 2rem;
-            gap: 3rem;
-          }
-          
-          .process-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-          }
-          
-          .process-row.second {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            max-width: 66%;
-            margin: 0 auto;
-          }
-          
-          .process-step {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            transition: all 0.3s ease;
-          }
-          
-          .process-step:hover {
-            transform: translateY(-5px);
-          }
-          
-          .step-number {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            background: rgba(var(--accent-color-rgb), 0.15);
-            border: 2px solid var(--accent-color);
-            border-radius: 50%;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            margin-bottom: 1.2rem;
-            position: relative;
-            z-index: 2;
-            transition: all 0.3s ease;
-          }
-          
-          .process-step:hover .step-number {
-            background: rgba(var(--accent-color-rgb), 0.3);
-            box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.5);
-          }
-          
-          .step-content h4 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.8rem;
-            transition: all 0.3s ease;
-          }
-          
-          .process-step:hover .step-content h4 {
-            color: var(--accent-color);
-          }
-          
-          .analytics-quote {
-            background: rgba(var(--accent-color-rgb), 0.1);
-            border-left: 4px solid var(--accent-color);
-            padding: 2.5rem;
-            border-radius: 0 16px 16px 0;
-            margin: 4rem 0;
-            position: relative;
-          }
-          
-          .quote-icon {
-            position: absolute;
-            top: 2rem;
-            left: 2.5rem;
-            font-size: 2rem;
-            color: rgba(var(--accent-color-rgb), 0.3);
-          }
-          
-          .analytics-quote blockquote {
-            font-size: 1.3rem;
-            line-height: 1.6;
-            font-style: italic;
-            color: var(--text-primary);
-            margin: 0;
-            padding: 0 0 0 3.5rem;
-            position: relative;
-          }
-          
-          .quote-author {
-            margin-top: 1.5rem;
-            padding-left: 3.5rem;
-            font-weight: 600;
-            color: var(--accent-color);
-            font-size: 1.1rem;
-          }
-          
-          .analytics-cta {
-            text-align: center;
-            margin-top: 4rem;
-          }
-          
-          .analytics-cta p {
-            font-size: 1.3rem;
-            color: var(--text-primary);
-            margin-bottom: 2rem;
-          }
-          
-          .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-          }
-          
-          .cta-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-          }
-          
-          .cta-btn.primary {
-            background: var(--accent-color);
-            color: white;
-          }
-          
-          .cta-btn.secondary {
-            background: transparent;
-            border: 1px solid rgba(var(--accent-color-rgb), 0.5);
-            color: var(--text-primary);
-          }
-          
-          .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-          }
-          
-          .cta-btn.primary:hover {
-            background: rgba(var(--accent-color-rgb), 0.9);
-          }
-          
-          .cta-btn.secondary:hover {
-            background: rgba(var(--accent-color-rgb), 0.1);
-          }
-          
-          @media (max-width: 1024px) {
-            .analytics-cards {
-              grid-template-columns: 1fr;
-            }
-            
-            .analytics-card.wide {
-              grid-column: span 1;
-            }
-            
-            .process-steps {
-              grid-template-columns: 1fr;
-            }
-            
-            .cta-buttons {
-              flex-direction: column;
-              align-items: center;
-            }
-            
-            .cta-btn {
-              width: 100%;
-              justify-content: center;
-            }
-          }
-        `}</style>
-      </section>
-
-      {/* Блок с преимуществами */}
-      <section className="benefits-section">
-        <div className="benefits-container">
-          <h2 className="benefits-title">Чому варто замовити банерну рекламу саме у нас</h2>
-          
-          <p className="benefits-description">
-            У світі діджитал-реклами важливо не просто запускати банери, а досягати конкретних бізнес-цілей — 
-            продажів, заявок, охоплення. Ми пропонуємо не шаблонні рішення, а індивідуальний підхід, заснований 
-            на досвіді, перевірених методиках і сучасних технологіях. Наша команда глибоко занурюється в нішу 
-            клієнта, щоб створити ефективну, ROI-орієнтовану банерну кампанію.
-          </p>
-          
-          <div className="benefits-cards">
-            <div className="benefits-card">
-              <div className="card-header">
-                <div className="card-icon">
-                  <div className="icon-bg">
-                    <FaBriefcase />
-                  </div>
-                </div>
-                <h3>Досвід роботи з різними нішами</h3>
-              </div>
-              
-              <div className="card-content">
-                <p>
-                  Ми реалізували десятки проєктів у сферах e-commerce, фінансів, туризму, освіти, 
-                  b2b-послуг, медицини та ін. Завдяки цьому ми розуміємо специфіку поведінки цільової 
-                  аудиторії в кожному сегменті. Ми знаємо, які формати працюють краще в конкретних галузях, 
-                  як оформити оффер і креатив, щоб він викликав максимальний відгук.
-                </p>
-                
-                <div className="approach-list">
-                  <h4>Наш підхід — це:</h4>
-                  <ul>
-                    <li>
-                      <div className="list-marker">
-                        <FaSearch />
-                      </div>
-                      <div className="list-content">
-                        <strong>Глибокий конкурентний аналіз</strong>
-                        <p>Вивчаємо стратегії конкурентів, щоб створити унікальну пропозицію</p>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="list-marker">
-                        <FaCalendarAlt />
-                      </div>
-                      <div className="list-content">
-                        <strong>Врахування сезонності попиту</strong>
-                        <p>Адаптуємо рекламні кампанії до сезонних трендів і поведінки споживачів</p>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="list-marker">
-                        <FaGlobeEurope />
-                      </div>
-                      <div className="list-content">
-                        <strong>Адаптація банерів під мову та менталітет цільової аудиторії</strong>
-                        <p>Створюємо креативи, що резонують з вашою аудиторією на культурному рівні</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              
-              <div className="industries-container">
-                <div className="industries-row">
-                  <div className="industry-item">
-                    <div className="industry-icon">
-                      <FaShoppingCart />
-                    </div>
-                    <span>E-commerce</span>
-                  </div>
-                  <div className="industry-item">
-                    <div className="industry-icon">
-                      <FaChartLine />
-                    </div>
-                    <span>Фінанси</span>
-                  </div>
-                  <div className="industry-item">
-                    <div className="industry-icon">
-                      <FaPlane />
-                    </div>
-                    <span>Туризм</span>
-                  </div>
-                  <div className="industry-item">
-                    <div className="industry-icon">
-                      <FaGraduationCap />
-                    </div>
-                    <span>Освіта</span>
-                  </div>
-                </div>
-                <div className="industries-row">
-                  <div className="industry-item">
-                    <div className="industry-icon">
-                      <FaHandshake />
-                    </div>
-                    <span>B2B</span>
-                  </div>
-                  <div className="industry-item">
-                    <div className="industry-icon">
-                      <FaHeartbeat />
-                    </div>
-                    <span>Медицина</span>
-                  </div>
-                  <div className="industry-item">
-                    <div className="industry-icon">
-                      <FaUtensils />
-                    </div>
-                    <span>HoReCa</span>
-                  </div>
-                  <div className="industry-item">
-                    <div className="industry-icon">
-                      <FaEllipsisH />
-                    </div>
-                    <span>Інші сфери</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="benefits-card">
-              <div className="card-header">
-                <div className="card-icon">
-                  <div className="icon-bg">
-                    <FaChartPie />
-                  </div>
-                </div>
-                <h3>Прозора звітність і супровід</h3>
-              </div>
-              
-              <div className="card-content">
-                <p>
-                  Ми не приховуємо дані — кожен клієнт має повний доступ до звітів, статистики та дашбордів 
-                  у зручному форматі. Ви бачите, як працює кампанія в реальному часі, які майданчики приносять 
-                  результат, а які — потребують корекції. Наші спеціалісти супроводжують проект на кожному етапі, 
-                  надаючи рекомендації та вчасно реагуючи на зміни в поведінці користувачів.
-                </p>
-                
-                <div className="features-list">
-                  <h4>Що ви отримуєте:</h4>
-                  <div className="features-grid">
-                    <div className="feature-item">
-                      <div className="feature-icon">
-                        <FaChartBar />
-                      </div>
-                      <div className="feature-content">
-                        <h5>Звіти з метриками CTR, CPC, CPM</h5>
-                        <p>Детальна статистика ефективності кампаній, доступна в режимі реального часу</p>
-                      </div>
-                    </div>
-                    
-                    <div className="feature-item">
-                      <div className="feature-icon">
-                        <FaComments />
-                      </div>
-                      <div className="feature-content">
-                        <h5>Консультації щодо покращення результатів</h5>
-                        <p>Регулярні рекомендації від фахівців для оптимізації кампаній</p>
-                      </div>
-                    </div>
-                    
-                    <div className="feature-item">
-                      <div className="feature-icon">
-                        <FaHeadset />
-                      </div>
-                      <div className="feature-content">
-                        <h5>Постійний зв'язок з менеджером кампанії</h5>
-                        <p>Спеціаліст на зв'язку, який відповідає за успіх вашого проєкту</p>
-                      </div>
-                    </div>
-                    
-                    <div className="feature-item">
-                      <div className="feature-icon">
-                        <FaLightbulb />
-                      </div>
-                      <div className="feature-content">
-                        <h5>Креативні ідеї для банерів</h5>
-                        <p>Регулярне оновлення креативів для запобігання банерній сліпоті</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="testimonial">
-                <div className="testimonial-content">
-                  <FaQuoteLeft className="quote-icon" />
-                  <p>Працюючи з командою SoftQod, ми отримали не просто рекламу, а стратегічного партнера, який дійсно розуміє наш бізнес. Завдяки їхньому індивідуальному підходу та постійному аналізу, наша конверсія з банерної реклами зросла на 34%.</p>
-                </div>
-                <div className="testimonial-author">
-                  <div className="author-avatar"></div>
-                  <div className="author-info">
-                    <h5>Олена Петренко</h5>
-                    <p>Маркетинг-директор, Ecommerce Store</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="benefits-action">
-            <button className="action-btn">
-              <FaRocket />
-              <span>Почати проєкт з нами</span>
-            </button>
-            <span className="action-caption">Обговоримо ваші цілі та запропонуємо оптимальне рішення</span>
-          </div>
-        </div>
-        
-        <style jsx>{`
-          .benefits-section {
-            padding: 8rem 0;
-            background: linear-gradient(
-              180deg, 
-              var(--bg-primary) 0%,
-              rgba(var(--bg-primary-rgb), 0.95) 100%
-            );
-            position: relative;
-            overflow: hidden;
-          }
-          
-          .benefits-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(
-              90deg,
-              transparent 0%,
-              rgba(var(--accent-color-rgb), 0.4) 50%,
-              transparent 100%
-            );
-          }
-          
-          .benefits-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 2;
-          }
-          
-          .benefits-title {
-            font-size: 2.8rem;
-            font-weight: 800;
-            margin-bottom: 2.5rem;
-            text-align: center;
-            background: linear-gradient(
-              135deg,
-              var(--text-primary) 0%,
-              var(--accent-color) 100%
-            );
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
-          }
-          
-          .benefits-title:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--accent-color);
-            border-radius: 2px;
-          }
-          
-          .benefits-description {
-            font-size: 1.2rem;
-            line-height: 1.7;
-            color: var(--text-secondary);
-            max-width: 900px;
-            margin: 0 auto 4rem;
-            text-align: center;
-            position: relative;
-          }
-          
-          .benefits-cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
-            margin-bottom: 4rem;
-          }
-          
-          .benefits-card {
-            background: rgba(30, 30, 40, 0.7);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            overflow: hidden;
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-          }
-          
-          .benefits-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.4);
-            border-color: rgba(var(--accent-color-rgb), 0.3);
-          }
-          
-          .card-header {
-            padding: 2.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-          }
-          
-          .card-icon {
-            flex-shrink: 0;
-          }
-          
-          .icon-bg {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.2) 0%, rgba(var(--accent-color-rgb), 0.4) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--accent-color);
-          }
-          
-          .card-header h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin: 0;
-          }
-          
-          .card-content {
-            padding: 2.5rem;
-            flex: 1;
-          }
-          
-          .card-content > p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: var(--text-secondary);
-            margin-bottom: 2.5rem;
-          }
-          
-          .approach-list h4, .features-list h4 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-          }
-          
-          .approach-list ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-          }
-          
-          .approach-list li {
-            display: flex;
-            gap: 1.2rem;
-            align-items: flex-start;
-          }
-          
-          .list-marker {
-            width: 40px;
-            height: 40px;
-            background: rgba(var(--accent-color-rgb), 0.15);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-color);
-            font-size: 1.1rem;
-            flex-shrink: 0;
-          }
-          
-          .list-content {
-            flex: 1;
-          }
-          
-          .list-content strong {
-            display: block;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-          }
-          
-          .list-content p {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            margin: 0;
-          }
-          
-          .industries-container {
-            padding: 2rem 2.5rem;
-            background: rgba(0, 0, 0, 0.2);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: auto;
-          }
-          
-          .industries-row {
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-          }
-          
-          .industries-row:last-child {
-            margin-bottom: 0;
-          }
-          
-          .industry-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.8rem;
-            flex: 1;
-          }
-          
-          .industry-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: rgba(var(--accent-color-rgb), 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-color);
-            font-size: 1.3rem;
-          }
-          
-          .industry-item span {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-          }
-          
-          .features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-          }
-          
-          .feature-item {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-          }
-          
-          .feature-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(var(--accent-color-rgb), 0.15);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-color);
-            font-size: 1.1rem;
-            flex-shrink: 0;
-          }
-          
-          .feature-content {
-            flex: 1;
-          }
-          
-          .feature-content h5 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin: 0 0 0.5rem 0;
-          }
-          
-          .feature-content p {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            margin: 0;
-          }
-          
-          .testimonial {
-            padding: 2.5rem;
-            background: rgba(var(--accent-color-rgb), 0.1);
-            border-top: 1px solid rgba(var(--accent-color-rgb), 0.2);
-            margin-top: auto;
-          }
-          
-          .testimonial-content {
-            position: relative;
-            margin-bottom: 1.5rem;
-          }
-          
-          .quote-icon {
-            position: absolute;
-            top: 0;
-            left: 0;
-            font-size: 1.5rem;
-            color: rgba(var(--accent-color-rgb), 0.3);
-          }
-          
-          .testimonial-content p {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: var(--text-primary);
-            font-style: italic;
-            padding-left: 2.5rem;
-            margin: 0;
-          }
-          
-          .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-          }
-          
-          .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: #777;
-            background-image: url('https://i.pravatar.cc/100');
-            background-size: cover;
-            background-position: center;
-          }
-          
-          .author-info h5 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin: 0 0 0.3rem 0;
-          }
-          
-          .author-info p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin: 0;
-          }
-          
-          .benefits-action {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-          }
-          
-          .action-btn {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.2rem 2.5rem;
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(var(--accent-color-rgb), 0.3);
-          }
-          
-          .action-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(var(--accent-color-rgb), 0.4);
-            background: rgba(var(--accent-color-rgb), 0.9);
-          }
-          
-          .action-caption {
-            font-size: 1rem;
-            color: var(--text-secondary);
-          }
-          
-          @media (max-width: 1024px) {
-            .benefits-cards {
-              grid-template-columns: 1fr;
-            }
-            
-            .features-grid {
-              grid-template-columns: 1fr;
-            }
-            
-            .industries-row {
-              flex-wrap: wrap;
-              justify-content: center;
-            }
-            
-            .industry-item {
-              width: calc(50% - 1rem);
-              flex: none;
-            }
-          }
-          
-          @media (max-width: 768px) {
-            .card-header {
-              flex-direction: column;
-              text-align: center;
-              gap: 1rem;
-            }
-            
-            .approach-list li {
-              flex-direction: column;
-              align-items: center;
-              text-align: center;
-              gap: 0.8rem;
-            }
-            
-            .feature-item {
-              flex-direction: column;
-              align-items: center;
-              text-align: center;
-              gap: 0.8rem;
-            }
-            
-            .testimonial-author {
-              flex-direction: column;
-              text-align: center;
-            }
-          }
-        `}</style>
-      </section>
-
-      {/* FAQ Section */}
-      <FaqSection>
-        <FaqWaveTop />
-
-        <FaqContainer>
-          <FaqGlowCircle className="circle-1" />
-          <FaqGlowCircle className="circle-2" />
-
-          <FaqTitle
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            FAQ
-          </FaqTitle>
-
-          <FaqList
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            {faqData.map((faq, index) => (
-              <FaqItem
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-              >
-                <FaqItemContent
-                  layout
-                  initial={{ borderRadius: 16 }}
-                  transition={{
-                    layout: {
-                      type: 'spring',
-                      bounce: 0.2,
-                      duration: 0.6,
-                    },
-                  }}
-                >
-                  <FaqQuestion
-                    layout
-                    onClick={() => toggleFaq(index)}
-                    whileHover={{ color: 'var(--accent-color)' }}
-                  >
-                    <FaqQuestionText>{faq.question}</FaqQuestionText>
-                    <FaqToggle
-                      animate={{
-                        rotate: expandedFaqs.includes(index) ? 45 : 0,
-                        backgroundColor: expandedFaqs.includes(index)
-                          ? 'rgba(var(--accent-color-rgb), 0.15)'
-                          : 'rgba(var(--accent-color-rgb), 0.05)',
-                      }}
-                      transition={{
-                        duration: 0.4,
-                        ease: [0.4, 0, 0.2, 1],
-                      }}
-                    >
-                      <FaPlus />
-                    </FaqToggle>
-                  </FaqQuestion>
-
-                  <AnimatePresence>
-                    {expandedFaqs.includes(index) && (
-                      <FaqAnswer
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{
-                          type: 'spring',
-                          damping: 40,
-                          stiffness: 60,
-                          mass: 1,
-                          opacity: { duration: 0.5, ease: 'easeInOut' },
-                          height: { duration: 0.4, ease: 'easeInOut' },
-                        }}
-                      >
-                        {faq.answer}
-                      </FaqAnswer>
-                    )}
-                  </AnimatePresence>
-                </FaqItemContent>
-              </FaqItem>
-            ))}
-          </FaqList>
-
-          <FaqCta
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 1.2 }}
-          >
-            <FaqCtaText>
-              Маєте додаткові запитання щодо банерної реклами?
-            </FaqCtaText>
-            <FaqCtaButton
-              whileHover={{
-                scale: 1.03,
-                boxShadow: '0 10px 30px rgba(var(--accent-color-rgb), 0.3)',
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Зв'язатися з нами <FaArrowRight />
-            </FaqCtaButton>
-          </FaqCta>
-        </FaqContainer>
-      </FaqSection>
 
       <CTAButton whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
         Замовити банерну рекламу
