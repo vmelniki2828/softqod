@@ -313,7 +313,7 @@ const HeaderNavigation = () => {
               <FaBullhorn />
               Банерная реклама на сайтах
             </DropdownItem>
-            <DropdownItem to="/marketing/smm">
+            <DropdownItem to="/services/marketing/smm">
               <FaUsers />
               SMM
             </DropdownItem>
