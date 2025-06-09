@@ -23,9 +23,6 @@ import {
   FaSearch,
   FaPlus,
   FaRegEdit,
-  FaEye,
-  FaUserFriends,
-  FaExternalLinkAlt,
   FaShoppingCart,
   FaCheck
 } from 'react-icons/fa';
@@ -45,12 +42,6 @@ const breatheAnimation = keyframes`
 const shimmer = keyframes`
   0% { background-position: -468px 0; }
   100% { background-position: 468px 0; }
-`;
-
-const dotPulse = keyframes`
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(var(--accent-color-rgb), 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(var(--accent-color-rgb), 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(var(--accent-color-rgb), 0); }
 `;
 
 // Hero Section Components
@@ -376,23 +367,10 @@ const AdvantageIcon = styled.div`
 `;
 
 const Smm = () => {
-  const [activeTab, setActiveTab] = useState('instagram');
   const [activeTaskIndex, setActiveTaskIndex] = useState(0);
   const [activeServiceTab, setActiveServiceTab] = useState(0);
   const platformRef = useRef(null);
   const tasksSliderRef = useRef(null);
-  
-  // For results metrics
-  const [metricIndex, setMetricIndex] = useState(0);
-  const metrics = [
-    { value: "92%", label: "користувачів приймають рішення про покупку через соціальні мережі" },
-    { value: "3.6x", label: "ROI від інвестицій в соціальні мережі для брендів" },
-    { value: "54%", label: "споживачів досліджують бренди через соціальні мережі" },
-    { value: "78%", label: "користувачів готові купувати у брендів, на які підписані" },
-    { value: "68%", label: "підвищення лояльності від якісного SMM" },
-    { value: "71%", label: "клієнтів рекомендують бренди з якісним SMM" },
-    { value: "40%", label: "збільшення трафіку від правильної SMM-стратегії" }
-  ];
   
   // Add FAQ state and data
   const [expandedFaqs, setExpandedFaqs] = useState([]);
@@ -433,14 +411,6 @@ const Smm = () => {
         : [...prev, index]
     );
   };
-  
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setMetricIndex(prev => (prev + 1) % metrics.length);
-    }, 3000);
-    
-    return () => clearInterval(timer);
-  }, [metrics.length]);
   
   // Рендер точек для декоративной сетки
   const renderDots = () => {
@@ -2352,22 +2322,6 @@ const TargetingMockup = styled.div`
   }
 `;
 
-const ServicesCTA = styled(motion.div)`
-  text-align: center;
-  padding: 3rem;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-`;
-
-const ServicesCTAText = styled.p`
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 2rem;
-`;
-
 // Collaboration Section Styles
 const CollaborationSection = styled.section`
   position: relative;
@@ -3663,26 +3617,6 @@ const TeamConnectButton = styled(motion.button)`
   cursor: pointer;
   box-shadow: 0 10px 25px rgba(var(--accent-color-rgb), 0.3);
   transition: all 0.3s ease;
-`;
-
-const AdvantagesGlowCircle = styled.div`
-  position: absolute;
-  width: 350px;
-  height: 350px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    ${props => props.position === 'top-right' 
-      ? 'rgba(134, 87, 255, 0.1) 0%, transparent 70%'
-      : 'rgba(255, 107, 129, 0.1) 0%, transparent 70%'
-    }
-  );
-  filter: blur(80px);
-  ${props => props.position === 'top-right' 
-    ? 'top: -100px; right: -100px;'
-    : 'bottom: -100px; left: -100px;'
-  }
-  z-index: 0;
 `;
 
 // FAQ Section Styles
