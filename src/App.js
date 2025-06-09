@@ -35,6 +35,7 @@ import WebDesign from 'services/design/WebDesign';
 import UxUiDesign from 'services/design/UxUiDesign';
 import TypographyLettering from 'services/design/TypographyLettering';
 import Branding from 'services/design/Branding';
+import Smm from 'services/marketing/Smm';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -176,6 +177,7 @@ const App = () => {
                 path="/services/marketing/banners"
                 element={<AIBannerMarketing />}
               />
+              <Route path="/services/marketing/smm" element={<Smm />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
             <Footer />

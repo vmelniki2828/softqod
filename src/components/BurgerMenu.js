@@ -601,8 +601,8 @@ const BurgerMenu = ({ isOpen, onClose }) => {
             transition={{ duration: 0.3 }}
           >
             <MenuBlockLink
-              href="#banner-ads"
-              onClick={e => handleLinkClick(e, '#banner-ads')}
+              to="/services/marketing/banners"
+              onClick={e => handleLinkClick(e, '/services/marketing/banners')}
             >
               <MenuBlockIconSmall>
                 <FaImage />
@@ -610,8 +610,8 @@ const BurgerMenu = ({ isOpen, onClose }) => {
               Банерная реклама на сайтах
             </MenuBlockLink>
             <MenuBlockLink
-              href="#smm"
-              onClick={e => handleLinkClick(e, '#smm')}
+              to="/services/marketing/smm"
+              onClick={e => handleLinkClick(e, '/services/marketing/smm')}
             >
               <MenuBlockIconSmall>
                 <FaUsers />
