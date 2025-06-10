@@ -26,7 +26,9 @@ import {
   FaGoogle,
   FaFacebookF,
   FaComments,
-  FaBullhorn
+  FaBullhorn,
+  FaMoneyBillWave,
+  FaBolt
 } from 'react-icons/fa';
 
 const PageContainer = styled.div`
@@ -44,6 +46,17 @@ const breatheAnimation = keyframes`
 const shimmer = keyframes`
   0% { background-position: -468px 0; }
   100% { background-position: 468px 0; }
+`;
+
+const floatVertical = keyframes`
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+`;
+
+const shimmerEffect = keyframes`
+  0% { background-position: -500px 0; }
+  100% { background-position: 500px 0; }
 `;
 
 // Hero Section Components
@@ -658,6 +671,7 @@ const ContextualAdvertising = () => {
   
   // Add useState hook inside the component
   const [activeTab, setActiveTab] = useState(0);
+  const [expandedFaqs, setExpandedFaqs] = useState([]);
   
   // Advantages data
   const advantages = [
@@ -767,6 +781,30 @@ const ContextualAdvertising = () => {
       ]
     }
   ];
+  
+  // FAQ data
+  const faqData = [
+    {
+      question: '1. Скільки часу потрібно, щоб побачити перші результати від контекстної реклами?',
+      answer: 'Зазвичай перші кліки та переходи на сайт з\'являються вже в день запуску. Проте для повноцінної оцінки ефективності варто дочекатися хоча б 1–2 тижнів накопичення статистики.'
+    },
+    {
+      question: '2. Чи можна запускати контекстну рекламу без сайту?',
+      answer: 'Так, у деяких випадках можна направляти трафік на лендінг, сторінку в соцмережах або Google Мій бізнес. Проте сайт або посадкова сторінка значно покращують якість реклами та конверсію.'
+    },
+    {
+      question: '3. Чи варто запускати контекстну рекламу у "не сезон"?',
+      answer: 'Це залежить від ніші. У деяких сферах (наприклад, ремонт, навчання, подарунки) "не сезон" означає меншу конкуренцію та нижчу ціну за клік. Це може бути вигідною стратегією.'
+    },
+    {
+      question: '4. Як уникнути склікування бюджету конкурентами?',
+      answer: 'Google має вбудовані механізми захисту від фродового трафіку. Також можна використовувати додаткові сервіси захисту, обмеження по IP та геолокації. Ми застосовуємо комплексні методи протидії.'
+    },
+    {
+      question: '5. Чи можу я самостійно керувати рекламною кампанією після запуску?',
+      answer: 'Так, ми можемо налаштувати кампанію з урахуванням подальшого самостійного управління. Також проводимо інструктаж або передаємо повний пакет налаштувань з поясненнями.'
+    }
+  ];
 
   useEffect(() => {
     const handleMouseMove = e => {
@@ -814,6 +852,15 @@ const ContextualAdvertising = () => {
       }
     }
     return dots;
+  };
+
+  // Toggle FAQ function
+  const toggleFaq = (index) => {
+    setExpandedFaqs(prev => 
+      prev.includes(index) 
+        ? prev.filter(i => i !== index) 
+        : [...prev, index]
+    );
   };
 
   return (
@@ -2130,6 +2177,398 @@ const ContextualAdvertising = () => {
         </SuitableForContainer>
       </SuitableForSection>
 
+      {/* Our Approach Section */}
+      <ApproachSection>
+        <ApproachContainer>
+          <ApproachTitle>
+            Наш підхід до запуску реклами
+          </ApproachTitle>
+          
+          <ApproachIntro>
+            Ми не просто налаштовуємо контекстну рекламу — ми створюємо рішення, які працюють на результат. 
+            Наш підхід заснований на глибокому аналізі, тестуванні та постійній оптимізації.
+          </ApproachIntro>
+          
+          <ApproachTimeline>
+            <ApproachStage 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <ApproachStageNumber>
+                <ApproachStageNumberInner>01</ApproachStageNumberInner>
+              </ApproachStageNumber>
+              <ApproachStageLine $isLast={false} />
+              <ApproachStageContent>
+                <ApproachStageTitle>Занурення в бізнес</ApproachStageTitle>
+                <ApproachStageDescription>
+                  Спочатку ми занурюємось у бізнес-контекст клієнта: вивчаємо продукт, конкурентів, цільову аудиторію та її поведінкові патерни. 
+                  Глибоке розуміння продукту дозволяє нам знайти його унікальні переваги та правильно презентувати їх у рекламі.
+                </ApproachStageDescription>
+                <ApproachStageTags>
+                  <ApproachTag>Аналіз ніші</ApproachTag>
+                  <ApproachTag>Вивчення конкурентів</ApproachTag>
+                  <ApproachTag>Аудит цільової аудиторії</ApproachTag>
+                </ApproachStageTags>
+                <ApproachStageIcon>
+                  <FaSearchDollar />
+                </ApproachStageIcon>
+              </ApproachStageContent>
+            </ApproachStage>
+            
+            <ApproachStage 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <ApproachStageNumber>
+                <ApproachStageNumberInner>02</ApproachStageNumberInner>
+              </ApproachStageNumber>
+              <ApproachStageLine $isLast={false} />
+              <ApproachStageContent>
+                <ApproachStageTitle>Стратегія та планування</ApproachStageTitle>
+                <ApproachStageDescription>
+                  Далі — визначаємо чіткі KPI, розробляємо медіаплан і запускаємо кампанії через Google Ads. 
+                  Замість простого запуску реклами, ми розробляємо комплексну стратегію з 
+                  декількома сценаріями розвитку та чітким розподілом бюджету.
+                </ApproachStageDescription>
+                <ApproachStageTags>
+                  <ApproachTag>Медіапланування</ApproachTag>
+                  <ApproachTag>Визначення KPI</ApproachTag>
+                  <ApproachTag>Бюджетування</ApproachTag>
+                </ApproachStageTags>
+                <ApproachStageIcon>
+                  <FaChartLine />
+                </ApproachStageIcon>
+              </ApproachStageContent>
+            </ApproachStage>
+            
+            <ApproachStage 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <ApproachStageNumber>
+                <ApproachStageNumberInner>03</ApproachStageNumberInner>
+              </ApproachStageNumber>
+              <ApproachStageLine $isLast={false} />
+              <ApproachStageContent>
+                <ApproachStageTitle>Моніторинг та оптимізація</ApproachStageTitle>
+                <ApproachStageDescription>
+                  У процесі роботи ми щоденно моніторимо ефективність: переглядаємо клікабельність оголошень, якість трафіку, 
+                  конверсії та вартість залучення. За потреби оперативно вносимо коригування. 
+                  Після тестування декількох варіантів реклами залишаємо найрезультативніші.
+                </ApproachStageDescription>
+                <ApproachStageTags>
+                  <ApproachTag>Щоденний контроль</ApproachTag>
+                  <ApproachTag>A/B тестування</ApproachTag>
+                  <ApproachTag>Оптимізація ставок</ApproachTag>
+                </ApproachStageTags>
+                <ApproachStageIcon>
+                  <FaChartBar />
+                </ApproachStageIcon>
+              </ApproachStageContent>
+            </ApproachStage>
+            
+            <ApproachStage 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <ApproachStageNumber>
+                <ApproachStageNumberInner>04</ApproachStageNumberInner>
+              </ApproachStageNumber>
+              <ApproachStageLine $isLast={true} />
+              <ApproachStageContent>
+                <ApproachStageTitle>Звітність і масштабування</ApproachStageTitle>
+                <ApproachStageDescription>
+                  Ми забезпечуємо прозору звітність: клієнт бачить, куди витрачається бюджет, які кампанії працюють найкраще 
+                  і як змінюється віддача з часом. Наше завдання — не просто витратити рекламні кошти, а примножити їх, 
+                  тому ми постійно шукаємо нові можливості для масштабування успішних кампаній.
+                </ApproachStageDescription>
+                <ApproachStageTags>
+                  <ApproachTag>Прозора аналітика</ApproachTag>
+                  <ApproachTag>ROI-орієнтованість</ApproachTag>
+                  <ApproachTag>Масштабування успіху</ApproachTag>
+                </ApproachStageTags>
+                <ApproachStageIcon>
+                  <FaChartPie />
+                </ApproachStageIcon>
+              </ApproachStageContent>
+            </ApproachStage>
+          </ApproachTimeline>
+        
+          <ResultsSection>
+            <ResultsTitle>
+              Що ви отримаєте в результаті
+            </ResultsTitle>
+            
+            <ResultsIntro>
+              Запуск контекстної реклами з нами — це не просто набір оголошень у Google. 
+              Це системний підхід, що приносить вимірюваний результат і конкретні бізнес-переваги.
+            </ResultsIntro>
+            
+            <ResultsGrid>
+              <ResultCard
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                whileHover={{ y: -10, boxShadow: '0 15px 30px rgba(0, 0, 0, 0.15)' }}
+              >
+                <ResultIconContainer>
+                  <ResultIcon>
+                    <FaUsers />
+                  </ResultIcon>
+                  <ResultIconGlow />
+                </ResultIconContainer>
+                <ResultItemTitle>Цільовий трафік на сайт</ResultItemTitle>
+                <ResultItemDescription>
+                  Користувачі, які вже шукають ваші товари чи послуги, побачать ваші оголошення в потрібний момент. 
+                  Контекстна реклама забезпечує найвищу релевантність аудиторії.
+                </ResultItemDescription>
+                <ResultMetric>
+                  <ResultMetricValue>93%</ResultMetricValue>
+                  <ResultMetricLabel>релевантності аудиторії</ResultMetricLabel>
+                </ResultMetric>
+              </ResultCard>
+              
+              <ResultCard
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                whileHover={{ y: -10, boxShadow: '0 15px 30px rgba(0, 0, 0, 0.15)' }}
+              >
+                <ResultIconContainer>
+                  <ResultIcon>
+                    <FaChartLine />
+                  </ResultIcon>
+                  <ResultIconGlow />
+                </ResultIconContainer>
+                <ResultItemTitle>Зростання звернень і продажів</ResultItemTitle>
+                <ResultItemDescription>
+                  Завдяки точному таргетингу та ефективній структурі кампаній, ваші конверсії зростуть.
+                  Ми зосереджуємось на залученні клієнтів, готових до покупки.
+                </ResultItemDescription>
+                <ResultMetric>
+                  <ResultMetricValue>+45%</ResultMetricValue>
+                  <ResultMetricLabel>середнє зростання конверсій</ResultMetricLabel>
+                </ResultMetric>
+              </ResultCard>
+              
+              <ResultCard
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                whileHover={{ y: -10, boxShadow: '0 15px 30px rgba(0, 0, 0, 0.15)' }}
+              >
+                <ResultIconContainer>
+                  <ResultIcon>
+                    <FaBullhorn />
+                  </ResultIcon>
+                  <ResultIconGlow />
+                </ResultIconContainer>
+                <ResultItemTitle>Підвищення впізнаваності бренду</ResultItemTitle>
+                <ResultItemDescription>
+                  Особливо при використанні медійної реклами та YouTube, ваш бренд стане помітнішим для цільової аудиторії.
+                  Ми допомагаємо залишатися на виду.
+                </ResultItemDescription>
+                <ResultMetric>
+                  <ResultMetricValue>3.5x</ResultMetricValue>
+                  <ResultMetricLabel>зростання brand awareness</ResultMetricLabel>
+                </ResultMetric>
+              </ResultCard>
+              
+              <ResultCard
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                whileHover={{ y: -10, boxShadow: '0 15px 30px rgba(0, 0, 0, 0.15)' }}
+              >
+                <ResultIconContainer>
+                  <ResultIcon>
+                    <FaMoneyBillWave />
+                  </ResultIcon>
+                  <ResultIconGlow />
+                </ResultIconContainer>
+                <ResultItemTitle>Повний контроль над бюджетом</ResultItemTitle>
+                <ResultItemDescription>
+                  Ви самі визначаєте, скільки готові інвестувати. Ми забезпечуємо максимальну 
+                  ефективність кожної витраченої гривні на рекламу.
+                </ResultItemDescription>
+                <ResultMetric>
+                  <ResultMetricValue>100%</ResultMetricValue>
+                  <ResultMetricLabel>прозорості витрат</ResultMetricLabel>
+                </ResultMetric>
+              </ResultCard>
+              
+              <ResultCard
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                whileHover={{ y: -10, boxShadow: '0 15px 30px rgba(0, 0, 0, 0.15)' }}
+              >
+                <ResultIconContainer>
+                  <ResultIcon>
+                    <FaChartPie />
+                  </ResultIcon>
+                  <ResultIconGlow />
+                </ResultIconContainer>
+                <ResultItemTitle>Прозора аналітика</ResultItemTitle>
+                <ResultItemDescription>
+                  Наші звіти показують кожен клік, конверсію та прибутковість. Ви завжди знаєте, 
+                  що працює, а що потребує оптимізації в рекламних кампаніях.
+                </ResultItemDescription>
+                <ResultMetric>
+                  <ResultMetricValue>24/7</ResultMetricValue>
+                  <ResultMetricLabel>доступ до даних</ResultMetricLabel>
+                </ResultMetric>
+              </ResultCard>
+              
+              <ResultCard
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                whileHover={{ y: -10, boxShadow: '0 15px 30px rgba(0, 0, 0, 0.15)' }}
+              >
+                <ResultIconContainer>
+                  <ResultIcon>
+                    <FaBolt />
+                  </ResultIcon>
+                  <ResultIconGlow />
+                </ResultIconContainer>
+                <ResultItemTitle>Гнучкість і швидкість змін</ResultItemTitle>
+                <ResultItemDescription>
+                  Кампанії можна адаптувати в реальному часі до змін на ринку. Ми оперативно 
+                  реагуємо на нові тренди та коригуємо стратегію для кращих результатів.
+                </ResultItemDescription>
+                <ResultMetric>
+                  <ResultMetricValue>~24 год</ResultMetricValue>
+                  <ResultMetricLabel>на впровадження змін</ResultMetricLabel>
+                </ResultMetric>
+              </ResultCard>
+            </ResultsGrid>
+            
+            <ResultsNote>
+              <ResultsNoteHighlight>Наша мета — не просто запуск реклами, а стабільне зростання вашого бізнесу завдяки цифровим каналам.</ResultsNoteHighlight>
+              <ResultsAction
+                whileHover={{ 
+                  y: -5,
+                  boxShadow: '0 10px 25px rgba(var(--accent-color-rgb), 0.4)'
+                }}
+              >
+                Отримати безкоштовну консультацію
+                <FaArrowRight />
+              </ResultsAction>
+            </ResultsNote>
+          </ResultsSection>
+        </ApproachContainer>
+      </ApproachSection>
+
+      {/* FAQ Section */}
+      <FaqSection>
+        <FaqWaveTop />
+        
+        <FaqContainer>
+          <FaqGlowCircle className="circle-1" />
+          <FaqGlowCircle className="circle-2" />
+          
+          <FaqTitle
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            FAQ
+          </FaqTitle>
+          
+          <FaqList
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            {faqData.map((faq, index) => (
+              <FaqItem
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 * index }}
+              >
+                <FaqItemContent
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{
+                    duration: 0.3,
+                    delay: 0.1,
+                  }}
+                  layout
+                >
+                  <FaqQuestion
+                    layout
+                    onClick={() => toggleFaq(index)}
+                  >
+                    <FaqQuestionText>{faq.question}</FaqQuestionText>
+                    <FaqToggle
+                      animate={{
+                        rotate: expandedFaqs.includes(index) ? 45 : 0,
+                        backgroundColor: expandedFaqs.includes(index)
+                          ? 'rgba(var(--accent-color-rgb), 0.3)'
+                          : 'rgba(var(--accent-color-rgb), 0.1)',
+                      }}
+                      transition={{
+                        duration: 0.2,
+                      }}
+                    />
+                  </FaqQuestion>
+                  
+                  {expandedFaqs.includes(index) && (
+                    <FaqAnswer
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{
+                        duration: 0.3,
+                      }}
+                      layout
+                    >
+                      {faq.answer}
+                    </FaqAnswer>
+                  )}
+                </FaqItemContent>
+              </FaqItem>
+            ))}
+          </FaqList>
+          
+          <FaqCta
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <FaqCtaText>
+              Залишилися питання щодо контекстної реклами? Зв'яжіться з нами для безкоштовної консультації
+            </FaqCtaText>
+            <FaqCtaButton
+              whileHover={{ y: -5 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+            >
+              Отримати консультацію
+              <FaArrowRight />
+            </FaqCtaButton>
+          </FaqCta>
+        </FaqContainer>
+      </FaqSection>
     </PageContainer>
   );
 };
@@ -4024,6 +4463,993 @@ const SuitableForCtaButton = styled.button`
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(var(--accent-color-rgb), 0.3);
+  }
+`;
+
+// Styled Components for Approach Section
+const ApproachSection = styled.section`
+  padding: 7rem 0;
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,
+    rgba(var(--bg-primary-rgb), 0.98) 100%
+  );
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(var(--accent-color-rgb), 0.4) 50%,
+      transparent 100%
+    );
+  }
+`;
+
+const ApproachContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+`;
+
+const ApproachTitle = styled.h2`
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    var(--text-primary) 0%,
+    var(--accent-color) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 2px;
+  }
+`;
+
+const ApproachIntro = styled.p`
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  text-align: center;
+  position: relative;
+`;
+
+const ApproachTimeline = styled.div`
+  position: relative;
+  margin: 0 auto 5rem;
+  max-width: 900px;
+`;
+
+const ApproachStage = styled(motion.div)`
+  position: relative;
+  display: flex;
+  margin-bottom: 2.5rem;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const ApproachStageNumber = styled.div`
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.1) 0%, rgba(var(--accent-color-rgb), 0.05) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-color) 0%, rgba(var(--accent-color-rgb), 0.7) 100%);
+    opacity: 0.2;
+    z-index: -1;
+  }
+`;
+
+const ApproachStageNumberInner = styled.div`
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--accent-color);
+`;
+
+const ApproachStageLine = styled.div`
+  position: absolute;
+  top: 60px;
+  left: 30px;
+  width: 1px;
+  height: ${props => props.$isLast ? '0' : 'calc(100% - 30px)'};
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--accent-color-rgb), 0.3),
+    rgba(var(--accent-color-rgb), 0.1)
+  );
+  z-index: 1;
+`;
+
+const ApproachStageContent = styled.div`
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  margin-left: 2rem;
+  flex: 1;
+  position: relative;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(var(--accent-color-rgb), 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+`;
+
+const ApproachStageTitle = styled.h3`
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  padding-right: 50px;
+`;
+
+const ApproachStageDescription = styled.p`
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+`;
+
+const ApproachStageTags = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+`;
+
+const ApproachTag = styled.span`
+  padding: 0.5rem 1rem;
+  background: rgba(var(--accent-color-rgb), 0.07);
+  border-radius: 30px;
+  font-size: 0.85rem;
+  color: var(--accent-color);
+  font-weight: 500;
+  
+  &:hover {
+    background: rgba(var(--accent-color-rgb), 0.1);
+  }
+`;
+
+const ApproachStageIcon = styled.div`
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(var(--accent-color-rgb), 0.1);
+  color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+`;
+
+const ApproachQuote = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const ApproachQuoteContent = styled.div`
+  padding: 3rem;
+  position: relative;
+  
+  @media (max-width: 768px) {
+    padding: 2rem;
+  }
+`;
+
+const QuoteIcon = styled.div`
+  font-size: 8rem;
+  line-height: 1;
+  font-family: Georgia, serif;
+  color: rgba(var(--accent-color-rgb), 0.1);
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+`;
+
+const QuoteText = styled.p`
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  font-style: italic;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+  
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+`;
+
+const QuoteAuthor = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+`;
+
+const QuoteAuthorAvatar = styled.div`
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-color) 0%, rgba(var(--accent-color-rgb), 0.8) 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+`;
+
+const QuoteAuthorInfo = styled.div``;
+
+const QuoteAuthorName = styled.div`
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+`;
+
+const QuoteAuthorPosition = styled.div`
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+`;
+
+const ApproachQuoteGraph = styled.div`
+  background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.15) 0%, rgba(var(--accent-color-rgb), 0.05) 100%);
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  
+  @media (max-width: 768px) {
+    padding: 2rem;
+  }
+`;
+
+const GraphTitle = styled.h4`
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+`;
+
+const MetricsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const MetricItem = styled.div`
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+`;
+
+const MetricValue = styled.div`
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+`;
+
+const MetricName = styled.div`
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+`;
+
+const ApproachAction = styled(motion.button)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: var(--accent-color);
+  color: white;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: auto;
+  transition: all 0.3s ease;
+  
+  svg {
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover svg {
+    transform: translateX(5px);
+  }
+`;
+
+const ResultsSection = styled.section`
+  padding: 7rem 0;
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--bg-primary-rgb), 0.97) 0%,
+    var(--bg-primary) 100%
+  );
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(var(--accent-color-rgb), 0.4) 50%,
+      transparent 100%
+    );
+  }
+`;
+
+const ResultsTitle = styled.h2`
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    var(--text-primary) 0%,
+    var(--accent-color) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 2px;
+  }
+`;
+
+const ResultsIntro = styled.p`
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  text-align: center;
+  position: relative;
+`;
+
+const ResultsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const ResultCard = styled(motion.div)`
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: ${props => props.$accentColor || 'var(--accent-color)'};
+    border-radius: 4px 4px 0 0;
+  }
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    border-color: ${props => props.$accentColor ? `rgba(${hexToRgb(props.$accentColor)}, 0.2)` : 'rgba(var(--accent-color-rgb), 0.2)'};
+  }
+`;
+
+const ResultIconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+`;
+
+const ResultIcon = styled.div`
+  font-size: 2rem;
+  color: var(--accent-color);
+`;
+
+const ResultIconGlow = styled.div`
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: spin 15s linear infinite;
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+`;
+
+const ResultItemTitle = styled.h3`
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+`;
+
+const ResultItemDescription = styled.p`
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+`;
+
+const ResultMetric = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const ResultMetricValue = styled.span`
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-color);
+`;
+
+const ResultMetricLabel = styled.span`
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+`;
+
+const ResultsNote = styled.div`
+  margin-top: 5rem;
+  text-align: center;
+  padding: 3rem;
+  background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.1) 0%, rgba(var(--accent-color-rgb), 0.05) 100%);
+  border-radius: 16px;
+`;
+
+const ResultsNoteHighlight = styled.p`
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+`;
+
+const ResultsAction = styled(motion.button)`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2rem;
+  background: var(--accent-color);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  svg {
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover svg {
+    transform: translateX(5px);
+  }
+`;
+
+// FAQ Section Styled Components
+const pulseFaq = keyframes`
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+`;
+
+const FaqSection = styled.section`
+  position: relative;
+  padding: 8rem 0;
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,
+    rgba(16, 24, 39, 0.9) 100%
+  );
+  overflow: hidden;
+  z-index: 0;
+  margin: 0;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 4rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      ellipse at top right,
+      rgba(94, 234, 212, 0.08) 0%,
+      transparent 70%
+    );
+    z-index: -1;
+  }
+`;
+
+const FaqWaveTop = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(
+    to top left,
+    transparent 49%,
+    var(--bg-primary) 51%
+  );
+  z-index: 1;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+`;
+
+const FaqContainer = styled.div`
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+`;
+
+const FaqGlowCircle = styled.div`
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(var(--accent-color-rgb), 0.2) 0%,
+    rgba(var(--accent-color-rgb), 0.1) 40%,
+    transparent 70%
+  );
+  z-index: 0;
+  filter: blur(80px);
+  z-index: 0;
+
+  &.circle-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(
+      circle,
+      rgba(var(--accent-color-rgb), 0.05) 0%,
+      transparent 70%
+    );
+    top: 10%;
+    left: -200px;
+    animation: ${floatVertical} 15s infinite ease-in-out;
+  }
+
+  &.circle-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(
+      circle,
+      rgba(var(--accent-color-rgb), 0.05) 0%,
+      transparent 70%
+    );
+    bottom: 5%;
+    right: -200px;
+    animation: ${floatVertical} 18s infinite ease-in-out reverse;
+  }
+`;
+
+const FaqTitle = styled(motion.h2)`
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--accent-color);
+  margin-bottom: 3rem;
+  text-align: center;
+  position: relative;
+  text-shadow: 0 2px 10px rgba(var(--accent-color-rgb), 0.2);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 5rem;
+    color: rgba(var(--accent-color-rgb), 0.03);
+    font-weight: 900;
+    letter-spacing: 5px;
+    z-index: -1;
+    white-space: nowrap;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-color),
+      transparent
+    );
+    border-radius: 4px;
+    animation: ${pulseFaq} 2s infinite ease-in-out;
+  }
+`;
+
+const FaqList = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+`;
+
+const FaqItem = styled(motion.div)`
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(16, 24, 39, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+
+  &:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2),
+      0 0 15px rgba(var(--accent-color-rgb), 0.1);
+    border-color: rgba(var(--accent-color-rgb), 0.1);
+    transform: translateY(-3px);
+  }
+`;
+
+const FaqItemContent = styled(motion.div)`
+  overflow: hidden;
+`;
+
+const FaqQuestion = styled(motion.div)`
+  padding: 1.8rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      var(--accent-color),
+      rgba(59, 130, 246, 0.5)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 0 3px 3px 0;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 2rem;
+    right: 2rem;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.05),
+      transparent
+    );
+  }
+`;
+
+const FaqQuestionText = styled.h3`
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  flex: 1;
+  transform: translateZ(5px);
+
+  ${FaqQuestion}:hover & {
+    color: var(--accent-color);
+    transform: translateZ(10px);
+  }
+`;
+
+const FaqToggle = styled(motion.div)`
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  margin-left: 1rem;
+  flex-shrink: 0;
+  background: rgba(var(--accent-color-rgb), 0.05);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(var(--accent-color-rgb), 0.1);
+    box-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.2);
+  }
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    background: currentColor;
+  }
+  
+  &::before {
+    width: 12px;
+    height: 2px;
+  }
+  
+  &::after {
+    width: 2px;
+    height: 12px;
+  }
+`;
+
+const FaqAnswer = styled(motion.div)`
+  padding: 0 2rem 1.8rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  overflow: hidden;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    right: 2rem;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+  }
+
+  strong {
+    color: var(--accent-color);
+    font-weight: 600;
+  }
+
+  ul {
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    position: relative;
+
+    &::before {
+      content: '•';
+      color: var(--accent-color);
+      position: absolute;
+      left: -1rem;
+    }
+  }
+
+  p {
+    margin-bottom: 0.8rem;
+  }
+
+  .highlight {
+    background: linear-gradient(
+      90deg,
+      rgba(var(--accent-color-rgb), 0.1),
+      rgba(59, 130, 246, 0.1)
+    );
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin: 0 0.2rem;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.05),
+        transparent
+      );
+      background-size: 200% 100%;
+      animation: ${shimmerEffect} 2s infinite;
+    }
+  }
+`;
+
+const FaqCta = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  background: rgba(16, 24, 39, 0.4);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
+      var(--accent-color-light)
+    );
+    z-index: 1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba(var(--accent-color-rgb), 0.05) 0%,
+      transparent 50%
+    );
+    z-index: -1;
+  }
+`;
+
+const FaqCtaText = styled.p`
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: center;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+`;
+
+const FaqCtaButton = styled(motion.button)`
+  padding: 1rem 2rem;
+  background: linear-gradient(
+    90deg,
+    var(--accent-color) 0%,
+    var(--accent-color-light) 100%
+  );
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  box-shadow: 0 10px 25px rgba(var(--accent-color-rgb), 0.3);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 15px 30px rgba(var(--accent-color-rgb), 0.5);
+  }
+
+  svg {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover svg {
+    transform: translateX(5px);
   }
 `;
 
