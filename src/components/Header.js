@@ -317,7 +317,7 @@ const HeaderNavigation = () => {
               <FaUsers />
               SMM
             </DropdownItem>
-            <DropdownItem to="/marketing/context-ads">
+            <DropdownItem to="/services/marketing/context-ads">
               <FaChartBar />
               Контекстная реклама
             </DropdownItem>

@@ -36,6 +36,7 @@ import UxUiDesign from 'services/design/UxUiDesign';
 import TypographyLettering from 'services/design/TypographyLettering';
 import Branding from 'services/design/Branding';
 import Smm from 'services/marketing/Smm';
+import ContextualAdvertising from 'services/marketing/ContextualAdvertising';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -178,6 +179,10 @@ const App = () => {
                 element={<AIBannerMarketing />}
               />
               <Route path="/services/marketing/smm" element={<Smm />} />
+              <Route
+                path="/services/marketing/context-ads"
+                element={<ContextualAdvertising />}
+              />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
             <Footer />

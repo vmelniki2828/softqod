@@ -619,8 +619,8 @@ const BurgerMenu = ({ isOpen, onClose }) => {
               SMM
             </MenuBlockLink>
             <MenuBlockLink
-              href="#context-ads"
-              onClick={e => handleLinkClick(e, '#context-ads')}
+              to="/services/marketing/context-ads"
+              onClick={e => handleLinkClick(e, '/services/marketing/context-ads')}
             >
               <MenuBlockIconSmall>
                 <FaChartBar />
