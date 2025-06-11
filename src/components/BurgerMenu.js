@@ -620,7 +620,9 @@ const BurgerMenu = ({ isOpen, onClose }) => {
             </MenuBlockLink>
             <MenuBlockLink
               to="/services/marketing/context-ads"
-              onClick={e => handleLinkClick(e, '/services/marketing/context-ads')}
+              onClick={e =>
+                handleLinkClick(e, '/services/marketing/context-ads')
+              }
             >
               <MenuBlockIconSmall>
                 <FaChartBar />
@@ -628,8 +630,8 @@ const BurgerMenu = ({ isOpen, onClose }) => {
               Контекстная реклама
             </MenuBlockLink>
             <MenuBlockLink
-              href="#seo"
-              onClick={e => handleLinkClick(e, '#seo')}
+              to="/services/marketing/seo"
+              onClick={e => handleLinkClick(e, '/services/marketing/seo')}
             >
               <MenuBlockIconSmall>
                 <FaSearch />

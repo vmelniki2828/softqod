@@ -37,6 +37,7 @@ import TypographyLettering from 'services/design/TypographyLettering';
 import Branding from 'services/design/Branding';
 import Smm from 'services/marketing/Smm';
 import ContextualAdvertising from 'services/marketing/ContextualAdvertising';
+import SeoOptimization from 'services/marketing/SeoOptimization';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -182,6 +183,10 @@ const App = () => {
               <Route
                 path="/services/marketing/context-ads"
                 element={<ContextualAdvertising />}
+              />
+              <Route
+                path="/services/marketing/seo"
+                element={<SeoOptimization />}
               />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
