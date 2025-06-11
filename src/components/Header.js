@@ -321,7 +321,7 @@ const HeaderNavigation = () => {
               <FaChartBar />
               Контекстная реклама
             </DropdownItem>
-            <DropdownItem to="/marketing/seo">
+            <DropdownItem to="/services/marketing/seo">
               <FaSearch />
               Seo Оптимизация
             </DropdownItem>
