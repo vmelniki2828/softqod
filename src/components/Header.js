@@ -325,7 +325,7 @@ const HeaderNavigation = () => {
               <FaSearch />
               Seo Оптимизация
             </DropdownItem>
-            <DropdownItem to="/marketing/target-ads">
+          <DropdownItem to="/services/marketing/target">
               <FaBullhorn />
               Таргетированная реклама
             </DropdownItem>
