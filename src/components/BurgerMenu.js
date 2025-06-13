@@ -639,8 +639,10 @@ const BurgerMenu = ({ isOpen, onClose }) => {
               Seo Оптимизация
             </MenuBlockLink>
             <MenuBlockLink
-              href="#target-ads"
-              onClick={e => handleLinkClick(e, '#target-ads')}
+              to="/services/marketing/target"
+              onClick={e =>
+                handleLinkClick(e, '/services/marketing/target')
+              }
             >
               <MenuBlockIconSmall>
                 <FaBullhorn />
