@@ -39,6 +39,7 @@ import Smm from 'services/marketing/Smm';
 import ContextualAdvertising from 'services/marketing/ContextualAdvertising';
 import SeoOptimization from 'services/marketing/SeoOptimization';
 import TargetedAdvertising from 'services/marketing/TargetedAdvertising';
+import MarketingAudit from 'services/marketing/MarketingAudit';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -192,6 +193,10 @@ const App = () => {
               <Route
                 path="/services/marketing/target"
                 element={<TargetedAdvertising />}
+              />
+              <Route
+                path="/services/marketing/audit"
+                element={<MarketingAudit />}
               />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
