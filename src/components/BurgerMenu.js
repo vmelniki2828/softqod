@@ -640,9 +640,7 @@ const BurgerMenu = ({ isOpen, onClose }) => {
             </MenuBlockLink>
             <MenuBlockLink
               to="/services/marketing/target"
-              onClick={e =>
-                handleLinkClick(e, '/services/marketing/target')
-              }
+              onClick={e => handleLinkClick(e, '/services/marketing/target')}
             >
               <MenuBlockIconSmall>
                 <FaBullhorn />
@@ -650,8 +648,8 @@ const BurgerMenu = ({ isOpen, onClose }) => {
               Таргетированная реклама
             </MenuBlockLink>
             <MenuBlockLink
-              href="#marketing-strategy"
-              onClick={e => handleLinkClick(e, '#marketing-strategy')}
+              to="/services/marketing/audit"
+              onClick={e => handleLinkClick(e, '/services/marketing/audit')}
             >
               <MenuBlockIconSmall>
                 <FaChartLine />

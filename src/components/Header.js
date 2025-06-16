@@ -329,7 +329,7 @@ const HeaderNavigation = () => {
               <FaBullhorn />
               Таргетированная реклама
             </DropdownItem>
-            <DropdownItem to="/marketing/audit">
+            <DropdownItem to="/services/marketing/audit">
               <FaChartBar />
               Маркетинговый аудит
             </DropdownItem>
