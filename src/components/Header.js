@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import {
-  FaBars,
+  // FaBars,
   FaDesktop,
   FaMobile,
   FaDatabase,
@@ -21,7 +21,7 @@ import {
   FaFont,
   FaBook,
 } from 'react-icons/fa';
-import BurgerMenu from './BurgerMenu';
+// import BurgerMenu from './BurgerMenu';
 
 const HeaderContainer = styled(motion.header)`
   position: fixed;
@@ -177,21 +177,21 @@ const DropdownItem = styled(Link)`
   }
 `;
 
-const DesktopMenuButton = styled(motion.button)`
-  display: none;
-  background: none;
-  border: none;
-  color: var(--text-primary);
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0.5rem;
-  position: absolute;
-  right: 2rem;
+// const DesktopMenuButton = styled(motion.button)`
+//   display: none;
+//   background: none;
+//   border: none;
+//   color: var(--text-primary);
+//   font-size: 1.5rem;
+//   cursor: pointer;
+//   padding: 0.5rem;
+//   position: absolute;
+//   right: 2rem;
 
-  @media (min-width: 769px) {
-    display: block;
-  }
-`;
+//   @media (min-width: 769px) {
+//     display: block;
+//   }
+// `;
 
 const HeaderNavigation = () => {
   const location = useLocation();
@@ -341,55 +341,55 @@ const HeaderNavigation = () => {
 };
 
 const Header = () => {
-  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+  // const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
   // Обработчик закрытия меню
-  const handleCloseMenu = () => {
-    setIsOverlayOpen(false);
-    // Явно сбрасываем стиль overflow с небольшой задержкой
-    setTimeout(() => {
-      document.body.style.overflow = '';
-    }, 50);
-  };
+  // const handleCloseMenu = () => {
+  //   setIsOverlayOpen(false);
+  //   // Явно сбрасываем стиль overflow с небольшой задержкой
+  //   setTimeout(() => {
+  //     document.body.style.overflow = '';
+  //   }, 50);
+  // };
 
   // Обработчик открытия меню
-  const handleOpenMenu = () => {
-    setIsOverlayOpen(true);
-    document.body.style.overflow = 'hidden';
-  };
+  // const handleOpenMenu = () => {
+  //   setIsOverlayOpen(true);
+  //   document.body.style.overflow = 'hidden';
+  // };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const header = document.querySelector('header');
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const header = document.querySelector('header');
 
-      // Управление стилем overflow для body при открытии/закрытии меню
-      if (isOverlayOpen) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        // Вместо немедленного сброса, даем анимации немного времени на завершение
-        setTimeout(() => {
-          document.body.style.overflow = '';
-        }, 50);
-      }
+  //     // Управление стилем overflow для body при открытии/закрытии меню
+  //     if (isOverlayOpen) {
+  //       document.body.style.overflow = 'hidden';
+  //     } else {
+  //       // Вместо немедленного сброса, даем анимации немного времени на завершение
+  //       setTimeout(() => {
+  //         document.body.style.overflow = '';
+  //       }, 50);
+  //     }
 
-      if (window.scrollY > 50) {
-        header.style.background = 'rgba(6, 20, 27, 0.95)';
-        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
-      } else {
-        header.style.background = 'rgba(11, 30, 43, 0.85)';
-        header.style.boxShadow = 'none';
-      }
-    };
+  //     if (window.scrollY > 50) {
+  //       header.style.background = 'rgba(6, 20, 27, 0.95)';
+  //       header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+  //     } else {
+  //       header.style.background = 'rgba(11, 30, 43, 0.85)';
+  //       header.style.boxShadow = 'none';
+  //     }
+  //   };
 
-    handleScroll();
-    window.addEventListener('scroll', handleScroll);
+  //   handleScroll();
+  //   window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      // Гарантируем, что overflow сбрасывается при размонтировании
-      document.body.style.overflow = '';
-    };
-  }, [isOverlayOpen]);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //     // Гарантируем, что overflow сбрасывается при размонтировании
+  //     document.body.style.overflow = '';
+  //   };
+  // }, [isOverlayOpen]);
 
   return (
     <HeaderContainer
@@ -406,16 +406,16 @@ const Header = () => {
 
         <HeaderNavigation />
 
-        <DesktopMenuButton
+        {/* <DesktopMenuButton
           onClick={handleOpenMenu}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
           <FaBars />
-        </DesktopMenuButton>
+        </DesktopMenuButton> */}
       </HeaderContent>
-
-      <BurgerMenu isOpen={isOverlayOpen} onClose={handleCloseMenu} />
+{/* 
+      <BurgerMenu isOpen={isOverlayOpen} onClose={handleCloseMenu} /> */}
     </HeaderContainer>
   );
 };

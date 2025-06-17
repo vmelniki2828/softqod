@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-    FaArrowRight, 
-    FaChartLine, 
-    FaBullseye,
-    FaRegChartBar,
+import Modal from '../../components/Modal';
+import {
+  FaArrowRight,
+  FaChartLine,
+  FaBullseye,
+  FaRegChartBar,
   FaCheckCircle,
   FaRocket,
   FaChartBar,
@@ -15,7 +16,6 @@ import {
   FaUsers,
   FaMousePointer,
   FaLightbulb,
-  FaFileAlt,
   FaSearchDollar,
   FaSyncAlt,
   FaClipboardCheck,
@@ -36,11 +36,10 @@ import {
   FaGraduationCap,
   FaHandshake,
   FaChartPie,
-  FaPlus
+  FaPlus,
 } from 'react-icons/fa';
 
 const PageContainer = styled.div`
-  padding: 2rem;
   max-width: 1400px;
   margin: 0 auto;
 `;
@@ -61,76 +60,6 @@ const dotPulse = keyframes`
   0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(var(--accent-color-rgb), 0.7); }
   70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(var(--accent-color-rgb), 0); }
   100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(var(--accent-color-rgb), 0); }
-`;
-
-const CTAButton = styled(motion.button)`
-  background: var(--accent-color);
-  color: white;
-  border: none;
-  padding: 1.8rem 3.5rem;
-  border-radius: 50px;
-  font-size: 1.5rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin: 4rem auto;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 20px rgba(var(--accent-color-rgb), 0.3);
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  backdrop-filter: blur(10px);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      45deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.2) 50%,
-      transparent 100%
-    );
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-    z-index: -1;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    background: radial-gradient(
-      circle at 50% 50%,
-      rgba(var(--accent-color-rgb), 0.2) 0%,
-      transparent 70%
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: -2;
-  }
-
-  &:hover {
-    background: var(--accent-color-dark);
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(var(--accent-color-rgb), 0.4);
-
-    &::before {
-      transform: translateX(100%);
-    }
-
-    &::after {
-      opacity: 1;
-    }
-  }
 `;
 
 // Компоненты для нового дизайна героя
@@ -306,7 +235,6 @@ const HeroDescription = styled(motion.p)`
   }
 `;
 
-
 const ButtonGroup = styled(motion.div)`
   display: flex;
   gap: 1rem;
@@ -361,26 +289,11 @@ const PrimaryButton = styled(motion.button)`
   }
 `;
 
-const SecondaryButton = styled(motion.button)`
-  padding: 0.9rem 2rem;
-  background: transparent;
-  color: var(--text-primary);
-  border: 1px solid rgba(var(--accent-color-rgb), 0.5);
-  border-radius: 4px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(var(--accent-color-rgb), 0.05);
-    transform: translateY(-2px);
-  }
-`;
 
 const BannerContainer = styled.div`
   position: relative;
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -414,8 +327,8 @@ const BannerGradient = styled.div`
     135deg,
     rgba(var(--accent-color-rgb), 0.2) 0%,
     rgba(var(--accent-color-rgb), 0.05) 50%,
-      transparent 100%
-    );
+    transparent 100%
+  );
   opacity: 0.5;
   z-index: 0;
 `;
@@ -1107,7 +1020,7 @@ const PlacementTitle = styled.h2`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   position: relative;
-  
+
   &:after {
     content: '';
     position: absolute;
@@ -1170,7 +1083,7 @@ const PlacementCard = styled(motion.div)`
     transform: translateY(-10px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
     border-color: rgba(var(--accent-color-rgb), 0.2);
-    
+
     &::before {
       opacity: 1;
       transform: translateY(0);
@@ -1253,7 +1166,6 @@ const AdvantageIcon = styled.div`
   flex-shrink: 0;
 `;
 
-
 // Стили для секции реализации баннерных кампаний
 const ImplementationSection = styled.section`
   padding: 7rem 0;
@@ -1282,19 +1194,19 @@ const ImplementationSection = styled.section`
 `;
 
 const ImplBackgroundGradient = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: radial-gradient(
-    circle at 20% 30%,
-    rgba(var(--accent-color-rgb), 0.07) 0%,
-    transparent 70%
-  ),
-  radial-gradient(
-    circle at 80% 80%,
-    rgba(var(--accent-color-rgb), 0.07) 0%,
+      circle at 20% 30%,
+      rgba(var(--accent-color-rgb), 0.07) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(var(--accent-color-rgb), 0.07) 0%,
       transparent 70%
     );
   z-index: 0;
@@ -1307,14 +1219,14 @@ const ImplBackgroundGrid = styled.div`
   right: 0;
   bottom: 0;
   background-image: linear-gradient(
-    rgba(var(--accent-color-rgb), 0.03) 1px,
-    transparent 1px
-  ),
-  linear-gradient(
-    90deg,
-    rgba(var(--accent-color-rgb), 0.03) 1px,
-    transparent 1px
-  );
+      rgba(var(--accent-color-rgb), 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(var(--accent-color-rgb), 0.03) 1px,
+      transparent 1px
+    );
   background-size: 40px 40px;
   background-position: center center;
   z-index: 0;
@@ -1346,7 +1258,7 @@ const ImplementationTitle = styled.h2`
 
   &:after {
     content: '';
-  position: absolute;
+    position: absolute;
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
@@ -1497,7 +1409,7 @@ const FaqTitle = styled(motion.h2)`
     z-index: -1;
     white-space: nowrap;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -1602,7 +1514,7 @@ const FaqQuestionText = styled.h3`
   transform: translateZ(5px);
 
   ${FaqQuestion}:hover & {
-  color: var(--accent-color);
+    color: var(--accent-color);
     transform: translateZ(10px);
   }
 `;
@@ -1650,13 +1562,13 @@ const FaqAnswer = styled(motion.div)`
   }
 
   strong {
-  color: var(--accent-color);
+    color: var(--accent-color);
     font-weight: 600;
   }
 
   ul {
     margin-top: 0.8rem;
-  margin-bottom: 0.8rem;
+    margin-bottom: 0.8rem;
     padding-left: 1.5rem;
   }
 
@@ -1785,7 +1697,7 @@ const FaqCtaButton = styled(motion.button)`
   svg {
     font-size: 1.1rem;
     transition: transform 0.3s ease;
-    }
+  }
 
   &:hover svg {
     transform: translateX(5px);
@@ -1794,6 +1706,11 @@ const FaqCtaButton = styled(motion.button)`
 
 const AIBannerMarketing = () => {
   const bannerRef = useRef(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   // Add FAQ state
   const [expandedFaqs, setExpandedFaqs] = useState([]);
 
@@ -1801,36 +1718,40 @@ const AIBannerMarketing = () => {
   const faqData = [
     {
       question: '1. Скільки часу потрібно для запуску банерної кампанії?',
-      answer: 'Залежно від складності завдання, підготовка займає від 2 до 5 робочих днів. Це включає аналіз ЦА, вибір сайтів, створення креативів і технічну підготовку до запуску.'
+      answer:
+        'Залежно від складності завдання, підготовка займає від 2 до 5 робочих днів. Це включає аналіз ЦА, вибір сайтів, створення креативів і технічну підготовку до запуску.',
     },
     {
       question: '2. Чи можна протестувати кілька банерів одночасно?',
-      answer: 'Так, ми практикуємо A/B-тестування, щоб визначити, який варіант банера має кращий CTR і нижчий CPC. Це дозволяє оптимізувати кампанію ще на етапі її старту.'
+      answer:
+        'Так, ми практикуємо A/B-тестування, щоб визначити, який варіант банера має кращий CTR і нижчий CPC. Це дозволяє оптимізувати кампанію ще на етапі її старту.',
     },
     {
       question: '3. Які типи бізнесу найкраще підходять для банерної реклами?',
-      answer: 'Банерна реклама ефективна як для широкого B2C-сегменту (рітейл, косметика, туризм), так і для вузьких B2B-напрямів. Особливо вона працює в нішах з візуальною складовою або з акційними пропозиціями.'
+      answer:
+        'Банерна реклама ефективна як для широкого B2C-сегменту (рітейл, косметика, туризм), так і для вузьких B2B-напрямів. Особливо вона працює в нішах з візуальною складовою або з акційними пропозиціями.',
     },
     {
       question: '4. Чи можливо обмежити показ банерів певними регіонами?',
-      answer: 'Так, ми можемо налаштувати геотаргетинг до рівня країни, області чи навіть конкретного міста. Це дозволяє зосередити бюджет лише на тих регіонах, де знаходиться ваша цільова аудиторія.'
+      answer:
+        'Так, ми можемо налаштувати геотаргетинг до рівня країни, області чи навіть конкретного міста. Це дозволяє зосередити бюджет лише на тих регіонах, де знаходиться ваша цільова аудиторія.',
     },
     {
       question: '5. Що буде, якщо кампанія не дає очікуваних результатів?',
-      answer: 'Ми регулярно аналізуємо показники і за потреби вносимо зміни — замінюємо креативи, змінюємо майданчики або коригуємо таргетинг. Усі кампанії супроводжує фахівець, який відповідає за результат.'
+      answer:
+        'Ми регулярно аналізуємо показники і за потреби вносимо зміни — замінюємо креативи, змінюємо майданчики або коригуємо таргетинг. Усі кампанії супроводжує фахівець, який відповідає за результат.',
     },
     {
       question: '6. Чи можна запустити банерну рекламу без готового дизайну?',
-      answer: 'Так, ми повністю беремо на себе створення банерів — від концепту до фінального макету. Наші дизайнери адаптують креативи під обрану стратегію та забезпечують їх відповідність технічним вимогам платформ.'
+      answer:
+        'Так, ми повністю беремо на себе створення банерів — від концепту до фінального макету. Наші дизайнери адаптують креативи під обрану стратегію та забезпечують їх відповідність технічним вимогам платформ.',
     },
   ];
 
   // Toggle FAQ function
-  const toggleFaq = (index) => {
-    setExpandedFaqs(prev => 
-      prev.includes(index) 
-        ? prev.filter(i => i !== index) 
-        : [...prev, index]
+  const toggleFaq = index => {
+    setExpandedFaqs(prev =>
+      prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
     );
   };
 
@@ -1966,36 +1887,39 @@ const AIBannerMarketing = () => {
     {
       id: 'thematic',
       title: 'Тематичні сайти',
-      description: 'Розміщення банерів на нішевих веб-сайтах дозволяє звертатися до вже зацікавленої аудиторії. Наприклад, реклама туристичних послуг на тревел-блогах або банери косметики на жіночих форумах працюють точково й ефективно. Тематичні майданчики мають високу релевантність, що збільшує ймовірність кліку та взаємодії з брендом.',
+      description:
+        'Розміщення банерів на нішевих веб-сайтах дозволяє звертатися до вже зацікавленої аудиторії. Наприклад, реклама туристичних послуг на тревел-блогах або банери косметики на жіночих форумах працюють точково й ефективно. Тематичні майданчики мають високу релевантність, що збільшує ймовірність кліку та взаємодії з брендом.',
       advantages: [
         'Висока якість трафіку',
         'Мінімальні втрати на нецільову аудиторію',
-        'Підвищений рівень довіри завдяки експертному контексту'
+        'Підвищений рівень довіри завдяки експертному контексту',
       ],
-      icon: <FaBullseye />
+      icon: <FaBullseye />,
     },
     {
       id: 'news',
       title: 'Новинні портали',
-      description: 'Новинні сайти мають один з найвищих показників щоденного трафіку. Завдяки постійному оновленню контенту, користувачі регулярно повертаються, а це дає змогу охопити широку, але при цьому активну аудиторію. Банери тут часто розміщуються у верхній частині сторінки або між блоками новин.',
+      description:
+        'Новинні сайти мають один з найвищих показників щоденного трафіку. Завдяки постійному оновленню контенту, користувачі регулярно повертаються, а це дає змогу охопити широку, але при цьому активну аудиторію. Банери тут часто розміщуються у верхній частині сторінки або між блоками новин.',
       advantages: [
         'Висока частота показів',
         'Швидкий приріст охоплення',
-        'Актуальність: реклама поруч з гарячими новинами'
+        'Актуальність: реклама поруч з гарячими новинами',
       ],
-      icon: <FaRegComments />
+      icon: <FaRegComments />,
     },
     {
       id: 'traffic',
       title: 'Платформи з високим трафіком',
-      description: 'До цієї категорії належать великі агрегатори, енциклопедії, онлайн-журнали, форуми, а також сайти типу "питання-відповіді" (як-от Quora або місцеві аналоги). Розміщення на таких платформах дозволяє охопити широку аудиторію без прив\'язки до вузької тематики.',
+      description:
+        'До цієї категорії належать великі агрегатори, енциклопедії, онлайн-журнали, форуми, а також сайти типу "питання-відповіді" (як-от Quora або місцеві аналоги). Розміщення на таких платформах дозволяє охопити широку аудиторію без прив\'язки до вузької тематики.',
       advantages: [
         'Масштабне охоплення',
         'Оптимізація за CPM або CPC',
-        'Можливість A/B-тестування банерів на великій вибірці'
+        'Можливість A/B-тестування банерів на великій вибірці',
       ],
-      icon: <FaUsers />
-    }
+      icon: <FaUsers />,
+    },
   ];
 
   return (
@@ -2053,8 +1977,8 @@ const AIBannerMarketing = () => {
               </HeroDescription>
 
               <StatsRow
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
                 <StatColumn>
@@ -2074,24 +1998,18 @@ const AIBannerMarketing = () => {
               </StatsRow>
 
               <ButtonGroup
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <PrimaryButton
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  onClick={openModal}
                 >
                   Замовити банерну рекламу
                   <FaArrowRight />
                 </PrimaryButton>
-
-                <SecondaryButton
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Дізнатися більше
-                </SecondaryButton>
               </ButtonGroup>
             </HeroLeft>
 
@@ -2099,8 +2017,8 @@ const AIBannerMarketing = () => {
               <BannerContainer>
                 <MainBanner
                   ref={bannerRef}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.3 }}
                 >
                   <HeroBannerImage />
@@ -2202,11 +2120,11 @@ const AIBannerMarketing = () => {
             <BannerTypesGrid>
               {bannerTypes.map((type, index) => (
                 <BannerTypeCard
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1, duration: 0.5 }}
-          >
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                >
                   {type.name === 'Leaderboard' && (
                     <BannerTypeImageLeaderboard>
                       728×90
@@ -2402,9 +2320,9 @@ const AIBannerMarketing = () => {
             <BenefitsList>
               {benefits.map((benefit, index) => (
                 <BenefitItem
-              key={index}
+                  key={index}
                   initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
                 >
                   <InfoBenefitIcon>{benefit.icon}</InfoBenefitIcon>
@@ -2424,7 +2342,11 @@ const AIBannerMarketing = () => {
         <PlacementContainer>
           <PlacementTitle>Де розміщують банерну рекламу</PlacementTitle>
           <PlacementDescription>
-            Успішна банерна реклама починається з правильного вибору платформи для розміщення. Не кожен сайт дає однакову ефективність, тому важливо аналізувати тематику, аудиторію, трафік і конкурентне середовище ресурсу. Вдале розміщення забезпечує високу видимість, релевантність і максимальну віддачу від кожного показу.
+            Успішна банерна реклама починається з правильного вибору платформи
+            для розміщення. Не кожен сайт дає однакову ефективність, тому
+            важливо аналізувати тематику, аудиторію, трафік і конкурентне
+            середовище ресурсу. Вдале розміщення забезпечує високу видимість,
+            релевантність і максимальну віддачу від кожного показу.
           </PlacementDescription>
 
           <PlacementCardsContainer>
@@ -2437,7 +2359,9 @@ const AIBannerMarketing = () => {
                 whileHover={{ y: -10 }}
               >
                 <PlacementCardTitle>{type.title}</PlacementCardTitle>
-                <PlacementCardDescription>{type.description}</PlacementCardDescription>
+                <PlacementCardDescription>
+                  {type.description}
+                </PlacementCardDescription>
                 <AdvantagesList>
                   {type.advantages.map((advantage, i) => (
                     <AdvantageItem
@@ -2461,24 +2385,31 @@ const AIBannerMarketing = () => {
       <ImplementationSection>
         <ImplBackgroundGradient />
         <ImplBackgroundGrid />
-        
+
         <ImplementationContainer>
           <ImplementationTitle>
             Наш процес створення ефективних банерів
           </ImplementationTitle>
-          
+
           <ImplementationDescription>
-            Кожен банер, який ми створюємо — це результат комплексного підходу, що поєднує аналітику, дизайн і технології. Ми не просто малюємо гарні картинки, а розробляємо стратегічні рішення, які приводять реальних клієнтів. Наша методологія передбачає глибоке розуміння вашого бізнесу та потреб цільової аудиторії.
+            Кожен банер, який ми створюємо — це результат комплексного підходу,
+            що поєднує аналітику, дизайн і технології. Ми не просто малюємо
+            гарні картинки, а розробляємо стратегічні рішення, які приводять
+            реальних клієнтів. Наша методологія передбачає глибоке розуміння
+            вашого бізнесу та потреб цільової аудиторії.
           </ImplementationDescription>
-          
+
           <div className="process-timeline">
             <div className="timeline-line"></div>
-            
+
             <div className="timeline-node active">
               <div className="node-number">01</div>
               <div className="node-content">
                 <h3>Аналіз і стратегія</h3>
-                <p>Вивчаємо ваш бізнес, конкурентів та цільову аудиторію, щоб розробити унікальну стратегію розміщення</p>
+                <p>
+                  Вивчаємо ваш бізнес, конкурентів та цільову аудиторію, щоб
+                  розробити унікальну стратегію розміщення
+                </p>
                 <ul className="node-list">
                   <li>
                     <span className="check-icon">✓</span>
@@ -2495,12 +2426,15 @@ const AIBannerMarketing = () => {
                 </ul>
               </div>
             </div>
-            
+
             <div className="timeline-node">
               <div className="node-number">02</div>
               <div className="node-content">
                 <h3>Креативний концепт</h3>
-                <p>Створюємо унікальні візуальні рішення, які привертають увагу та спонукають до дії</p>
+                <p>
+                  Створюємо унікальні візуальні рішення, які привертають увагу
+                  та спонукають до дії
+                </p>
                 <ul className="node-list">
                   <li>
                     <span className="check-icon">✓</span>
@@ -2517,12 +2451,15 @@ const AIBannerMarketing = () => {
                 </ul>
               </div>
             </div>
-            
+
             <div className="timeline-node">
               <div className="node-number">03</div>
               <div className="node-content">
                 <h3>Налаштування і запуск</h3>
-                <p>Налаштовуємо показ банерів на обраних майданчиках з точним таргетингом</p>
+                <p>
+                  Налаштовуємо показ банерів на обраних майданчиках з точним
+                  таргетингом
+                </p>
                 <ul className="node-list">
                   <li>
                     <span className="check-icon">✓</span>
@@ -2539,12 +2476,15 @@ const AIBannerMarketing = () => {
                 </ul>
               </div>
             </div>
-            
+
             <div className="timeline-node">
               <div className="node-number">04</div>
               <div className="node-content">
                 <h3>Оптимізація і масштабування</h3>
-                <p>Постійно аналізуємо ефективність і коригуємо кампанію для досягнення максимальних результатів</p>
+                <p>
+                  Постійно аналізуємо ефективність і коригуємо кампанію для
+                  досягнення максимальних результатів
+                </p>
                 <ul className="node-list">
                   <li>
                     <span className="check-icon">✓</span>
@@ -2562,7 +2502,7 @@ const AIBannerMarketing = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="results-showcase">
             <div className="result-card">
               <div className="result-icon">
@@ -2571,7 +2511,7 @@ const AIBannerMarketing = () => {
               <div className="result-value">+78%</div>
               <div className="result-label">Середнє зростання CTR</div>
             </div>
-            
+
             <div className="result-card">
               <div className="result-icon">
                 <FaUsers />
@@ -2579,7 +2519,7 @@ const AIBannerMarketing = () => {
               <div className="result-value">5.2M</div>
               <div className="result-label">Охоплення щомісяця</div>
             </div>
-            
+
             <div className="result-card">
               <div className="result-icon">
                 <FaRocket />
@@ -2588,45 +2528,56 @@ const AIBannerMarketing = () => {
               <div className="result-label">Середній ROI кампаній</div>
             </div>
           </div>
-          
+
           <div className="cta-container">
-            <h3 className="cta-title">Готові запустити банерну рекламу, яка дійсно працює?</h3>
-            <p className="cta-description">Зв'яжіться з нами сьогодні, і ми розробимо індивідуальну стратегію, що відповідає вашим бізнес-цілям</p>
+            <h3 className="cta-title">
+              Готові запустити банерну рекламу, яка дійсно працює?
+            </h3>
+            <p className="cta-description">
+              Зв'яжіться з нами сьогодні, і ми розробимо індивідуальну
+              стратегію, що відповідає вашим бізнес-цілям
+            </p>
             <div className="cta-buttons">
-              <button className="cta-button primary">Замовити консультацію</button>
-              <button className="cta-button secondary">Завантажити приклади робіт</button>
+              <button className="cta-button primary" onClick={openModal}>
+                <FaComment />
+                <span>Замовити консультацію</span>
+              </button>
             </div>
           </div>
         </ImplementationContainer>
-        
+
         <style jsx>{`
           .process-timeline {
             position: relative;
             margin: 5rem 0;
             padding: 2rem 0;
           }
-          
+
           .timeline-line {
             position: absolute;
             left: 50px;
             top: 0;
             bottom: 0;
             width: 3px;
-            background: linear-gradient(to bottom, var(--accent-color) 0%, rgba(var(--accent-color-rgb), 0.3) 100%);
+            background: linear-gradient(
+              to bottom,
+              var(--accent-color) 0%,
+              rgba(var(--accent-color-rgb), 0.3) 100%
+            );
             z-index: 1;
           }
-          
+
           .timeline-node {
             display: flex;
             margin-bottom: 5rem;
             position: relative;
             z-index: 2;
           }
-          
+
           .timeline-node:last-child {
             margin-bottom: 0;
           }
-          
+
           .node-number {
             width: 100px;
             height: 100px;
@@ -2645,12 +2596,12 @@ const AIBannerMarketing = () => {
             z-index: 2;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
           }
-          
+
           .timeline-node.active .node-number {
             background: rgba(var(--accent-color-rgb), 0.2);
             box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.3);
           }
-          
+
           .node-content {
             flex: 1;
             background: rgba(255, 255, 255, 0.03);
@@ -2660,34 +2611,34 @@ const AIBannerMarketing = () => {
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
           }
-          
+
           .timeline-node:hover .node-content {
             transform: translateX(10px);
             background: rgba(255, 255, 255, 0.05);
             border-color: rgba(var(--accent-color-rgb), 0.3);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
           }
-          
+
           .node-content h3 {
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
             color: var(--text-primary);
           }
-          
+
           .node-content p {
             font-size: 1rem;
             line-height: 1.6;
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
           }
-          
+
           .node-list {
             list-style: none;
             padding: 0;
             margin: 0;
           }
-          
+
           .node-list li {
             display: flex;
             align-items: center;
@@ -2695,7 +2646,7 @@ const AIBannerMarketing = () => {
             font-size: 0.95rem;
             color: var(--text-secondary);
           }
-          
+
           .check-icon {
             display: inline-flex;
             align-items: center;
@@ -2709,17 +2660,21 @@ const AIBannerMarketing = () => {
             flex-shrink: 0;
             font-size: 0.8rem;
           }
-          
+
           .results-showcase {
             display: flex;
             justify-content: space-between;
             margin: 5rem 0;
             gap: 2rem;
           }
-          
+
           .result-card {
             flex: 1;
-            background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.2) 0%, rgba(var(--accent-color-rgb), 0.05) 100%);
+            background: linear-gradient(
+              135deg,
+              rgba(var(--accent-color-rgb), 0.2) 0%,
+              rgba(var(--accent-color-rgb), 0.05) 100%
+            );
             border-radius: 20px;
             padding: 2.5rem;
             text-align: center;
@@ -2730,48 +2685,60 @@ const AIBannerMarketing = () => {
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
           }
-          
+
           .result-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
             border-color: rgba(var(--accent-color-rgb), 0.3);
           }
-          
+
           .result-card::before {
             content: '';
             position: absolute;
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(var(--accent-color-rgb), 0.3) 0%, transparent 70%);
+            background: radial-gradient(
+              circle,
+              rgba(var(--accent-color-rgb), 0.3) 0%,
+              transparent 70%
+            );
             top: -75px;
             right: -75px;
             opacity: 0.5;
           }
-          
+
           .result-icon {
             font-size: 2.5rem;
             color: var(--accent-color);
             margin-bottom: 1rem;
           }
-          
+
           .result-value {
             font-size: 3.5rem;
             font-weight: 800;
             color: var(--text-primary);
             margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
+            background: linear-gradient(
+              135deg,
+              var(--text-primary) 0%,
+              var(--accent-color) 100%
+            );
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
           }
-          
+
           .result-label {
             font-size: 1rem;
             color: var(--text-secondary);
           }
-          
+
           .cta-container {
-            background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.15) 0%, rgba(var(--accent-color-rgb), 0.05) 100%);
+            background: linear-gradient(
+              135deg,
+              rgba(var(--accent-color-rgb), 0.15) 0%,
+              rgba(var(--accent-color-rgb), 0.05) 100%
+            );
             border-radius: 20px;
             padding: 3rem;
             text-align: center;
@@ -2781,7 +2748,7 @@ const AIBannerMarketing = () => {
             border: 1px solid rgba(var(--accent-color-rgb), 0.1);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
           }
-          
+
           .cta-container::before,
           .cta-container::after {
             content: '';
@@ -2789,26 +2756,30 @@ const AIBannerMarketing = () => {
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(var(--accent-color-rgb), 0.2) 0%, transparent 70%);
+            background: radial-gradient(
+              circle,
+              rgba(var(--accent-color-rgb), 0.2) 0%,
+              transparent 70%
+            );
           }
-          
+
           .cta-container::before {
             top: -100px;
             left: -100px;
           }
-          
+
           .cta-container::after {
             bottom: -100px;
             right: -100px;
           }
-          
+
           .cta-title {
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 1rem;
             color: var(--text-primary);
           }
-          
+
           .cta-description {
             font-size: 1.1rem;
             color: var(--text-secondary);
@@ -2817,54 +2788,58 @@ const AIBannerMarketing = () => {
             margin-left: auto;
             margin-right: auto;
           }
-          
+
           .cta-buttons {
             display: flex;
             gap: 1rem;
             justify-content: center;
           }
-          
+
           .cta-button {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
             padding: 1rem 2rem;
             border-radius: 8px;
+            font-size: 1.1rem;
             font-weight: 600;
-            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            border: none;
           }
-          
+
           .cta-button.primary {
             background: var(--accent-color);
             color: white;
             border: none;
             box-shadow: 0 10px 20px rgba(var(--accent-color-rgb), 0.3);
           }
-          
+
           .cta-button.primary:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(var(--accent-color-rgb), 0.4);
           }
-          
+
           .cta-button.secondary {
             background: transparent;
             color: var(--text-primary);
             border: 1px solid rgba(var(--accent-color-rgb), 0.5);
           }
-          
+
           .cta-button.secondary:hover {
             background: rgba(var(--accent-color-rgb), 0.05);
             transform: translateY(-5px);
           }
-          
+
           @media (max-width: 768px) {
             .timeline-line {
               left: 25px;
             }
-            
+
             .timeline-node {
               flex-direction: column;
             }
-            
+
             .node-number {
               width: 50px;
               height: 50px;
@@ -2873,15 +2848,15 @@ const AIBannerMarketing = () => {
               margin-left: auto;
               margin-right: auto;
             }
-            
+
             .results-showcase {
               flex-direction: column;
             }
-            
+
             .cta-buttons {
               flex-direction: column;
             }
-            
+
             .cta-title {
               font-size: 1.5rem;
             }
@@ -2893,13 +2868,14 @@ const AIBannerMarketing = () => {
       <section className="analytics-section">
         <div className="analytics-container">
           <h2 className="analytics-title">Результати та аналітика</h2>
-          
+
           <p className="analytics-description">
-            Успішна банерна реклама — це не тільки креатив і покази, а й точна аналітика. 
-            Ми працюємо з даними та метриками, які допомагають нам оптимізувати кампанії 
-            та досягати максимальної ефективності вкладених коштів.
+            Успішна банерна реклама — це не тільки креатив і покази, а й точна
+            аналітика. Ми працюємо з даними та метриками, які допомагають нам
+            оптимізувати кампанії та досягати максимальної ефективності
+            вкладених коштів.
           </p>
-          
+
           <div className="analytics-cards">
             <div className="analytics-card">
               <div className="card-icon">
@@ -2910,37 +2886,38 @@ const AIBannerMarketing = () => {
                 <div className="metric-item">
                   <span className="metric-name">CTR (Click-Through Rate)</span>
                   <p className="metric-desc">
-                    Відношення кількості кліків до кількості показів. Основний показник ефективності банера, 
-                    що демонструє наскільки він привабливий для аудиторії.
+                    Відношення кількості кліків до кількості показів. Основний
+                    показник ефективності банера, що демонструє наскільки він
+                    привабливий для аудиторії.
                   </p>
                 </div>
-                
+
                 <div className="metric-item">
                   <span className="metric-name">CPM (Cost Per Mille)</span>
                   <p className="metric-desc">
-                    Вартість за тисячу показів. Допомагає оцінити економічну ефективність 
-                    охоплення цільової аудиторії.
+                    Вартість за тисячу показів. Допомагає оцінити економічну
+                    ефективність охоплення цільової аудиторії.
                   </p>
                 </div>
-                
+
                 <div className="metric-item">
                   <span className="metric-name">CPC (Cost Per Click)</span>
                   <p className="metric-desc">
-                    Вартість одного кліка. Показує, скільки коштує залучення одного потенційного 
-                    клієнта на сайт.
+                    Вартість одного кліка. Показує, скільки коштує залучення
+                    одного потенційного клієнта на сайт.
                   </p>
                 </div>
-                
+
                 <div className="metric-item">
                   <span className="metric-name">CR (Conversion Rate)</span>
                   <p className="metric-desc">
-                    Відсоток відвідувачів, які виконали цільову дію (замовлення, реєстрація тощо) 
-                    після переходу з банера.
+                    Відсоток відвідувачів, які виконали цільову дію (замовлення,
+                    реєстрація тощо) після переходу з банера.
                   </p>
                 </div>
               </div>
             </div>
-            
+
             <div className="analytics-card">
               <div className="card-icon">
                 <FaChartLine />
@@ -2949,56 +2926,68 @@ const AIBannerMarketing = () => {
               <div className="benefits-list">
                 <div className="benefit-item">
                   <div className="benefit-header">
-                    <span className="benefit-icon"><FaRegChartBar /></span>
+                    <span className="benefit-icon">
+                      <FaRegChartBar />
+                    </span>
                     <span className="benefit-title">Регулярна звітність</span>
                   </div>
                   <p>
-                    Щотижневі або щомісячні звіти з детальним аналізом усіх ключових показників кампанії 
-                    та рекомендаціями щодо оптимізації.
+                    Щотижневі або щомісячні звіти з детальним аналізом усіх
+                    ключових показників кампанії та рекомендаціями щодо
+                    оптимізації.
                   </p>
                 </div>
-                
+
                 <div className="benefit-item">
                   <div className="benefit-header">
-                    <span className="benefit-icon"><FaSearchDollar /></span>
+                    <span className="benefit-icon">
+                      <FaSearchDollar />
+                    </span>
                     <span className="benefit-title">Аналіз ROI</span>
                   </div>
                   <p>
-                    Розрахунок повернення інвестицій для кожного рекламного каналу та формату, 
-                    що дозволяє визначити найбільш прибуткові стратегії.
+                    Розрахунок повернення інвестицій для кожного рекламного
+                    каналу та формату, що дозволяє визначити найбільш прибуткові
+                    стратегії.
                   </p>
                 </div>
-                
+
                 <div className="benefit-item">
                   <div className="benefit-header">
-                    <span className="benefit-icon"><FaUsers /></span>
+                    <span className="benefit-icon">
+                      <FaUsers />
+                    </span>
                     <span className="benefit-title">Дані про аудиторію</span>
                   </div>
                   <p>
-                    Детальна інформація про демографію, інтереси та поведінку користувачів, 
-                    які взаємодіють з вашими банерами.
+                    Детальна інформація про демографію, інтереси та поведінку
+                    користувачів, які взаємодіють з вашими банерами.
                   </p>
                 </div>
-                
+
                 <div className="benefit-item">
                   <div className="benefit-header">
-                    <span className="benefit-icon"><FaSyncAlt /></span>
-                    <span className="benefit-title">Оптимізація в реальному часі</span>
+                    <span className="benefit-icon">
+                      <FaSyncAlt />
+                    </span>
+                    <span className="benefit-title">
+                      Оптимізація в реальному часі
+                    </span>
                   </div>
                   <p>
-                    Постійний моніторинг та коригування кампаній для досягнення максимальної 
-                    ефективності та мінімізації витрат.
+                    Постійний моніторинг та коригування кампаній для досягнення
+                    максимальної ефективності та мінімізації витрат.
                   </p>
                 </div>
               </div>
             </div>
-            
+
             <div className="analytics-card wide">
               <div className="card-icon">
                 <FaClipboardCheck />
               </div>
               <h3>Наш аналітичний процес</h3>
-              
+
               <div className="process-steps">
                 <div className="process-row">
                   <div className="process-step">
@@ -3006,54 +2995,57 @@ const AIBannerMarketing = () => {
                     <div className="step-content">
                       <h4>Налаштування відстеження</h4>
                       <p>
-                        Інтеграція Google Analytics, Facebook Pixel та інших інструментів для точного 
-                        відстеження всіх взаємодій користувачів з банерами та сайтом.
+                        Інтеграція Google Analytics, Facebook Pixel та інших
+                        інструментів для точного відстеження всіх взаємодій
+                        користувачів з банерами та сайтом.
                       </p>
                     </div>
                   </div>
-                  
+
                   <div className="process-step">
                     <div className="step-number">02</div>
                     <div className="step-content">
                       <h4>Збір та аналіз даних</h4>
                       <p>
-                        Систематичний збір даних про покази, кліки, конверсії та інші взаємодії 
-                        користувачів з рекламними матеріалами.
+                        Систематичний збір даних про покази, кліки, конверсії та
+                        інші взаємодії користувачів з рекламними матеріалами.
                       </p>
                     </div>
                   </div>
-                  
+
                   <div className="process-step">
                     <div className="step-number">03</div>
                     <div className="step-content">
                       <h4>A/B тестування</h4>
                       <p>
-                        Порівняння різних версій банерів для визначення найбільш ефективних 
-                        візуальних елементів, закликів до дії та розміщень.
+                        Порівняння різних версій банерів для визначення найбільш
+                        ефективних візуальних елементів, закликів до дії та
+                        розміщень.
                       </p>
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="process-row second">
                   <div className="process-step">
                     <div className="step-number">04</div>
                     <div className="step-content">
                       <h4>Формування звітності</h4>
                       <p>
-                        Створення зрозумілих і детальних звітів, що демонструють результати кампаній 
-                        та дають чітке розуміння ROI.
+                        Створення зрозумілих і детальних звітів, що демонструють
+                        результати кампаній та дають чітке розуміння ROI.
                       </p>
                     </div>
                   </div>
-                  
+
                   <div className="process-step">
                     <div className="step-number">05</div>
                     <div className="step-content">
                       <h4>Оптимізація та масштабування</h4>
                       <p>
-                        На основі зібраних даних вносимо корективи в кампанії та масштабуємо 
-                        найбільш успішні стратегії для максимізації результатів.
+                        На основі зібраних даних вносимо корективи в кампанії та
+                        масштабуємо найбільш успішні стратегії для максимізації
+                        результатів.
                       </p>
                     </div>
                   </div>
@@ -3061,39 +3053,45 @@ const AIBannerMarketing = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="analytics-quote">
-            <div className="quote-icon"><FaQuoteRight /></div>
+            <div className="quote-icon">
+              <FaQuoteRight />
+            </div>
             <blockquote>
-              "Без аналітики реклама — це просто красиві картинки. З аналітикою — це потужний 
-              інструмент розвитку бізнесу, де кожна гривня працює на результат."
+              "Без аналітики реклама — це просто красиві картинки. З аналітикою
+              — це потужний інструмент розвитку бізнесу, де кожна гривня працює
+              на результат."
             </blockquote>
             <div className="quote-author">— Команда SoftQod</div>
           </div>
-          
+
           <div className="analytics-cta">
-            <p>Хочете дізнатися більше про те, як ми можемо допомогти вам досягти вимірюваних результатів з банерною рекламою?</p>
+            <p>
+              Хочете дізнатися більше про те, як ми можемо допомогти вам досягти
+              вимірюваних результатів з банерною рекламою?
+            </p>
             <div className="cta-buttons">
-              <button className="cta-btn primary">
+              <button className="cta-btn primary" onClick={openModal}>
                 <FaComment />
                 <span>Замовити консультацію</span>
-              </button>
-              <button className="cta-btn secondary">
-                <FaFileAlt />
-                <span>Отримати приклад звіту</span>
               </button>
             </div>
           </div>
         </div>
-        
+
         <style jsx>{`
           .analytics-section {
             padding: 7rem 0;
-            background: linear-gradient(180deg, rgba(var(--bg-primary-rgb), 0.98) 0%, var(--bg-primary) 100%);
+            background: linear-gradient(
+              180deg,
+              rgba(var(--bg-primary-rgb), 0.98) 0%,
+              var(--bg-primary) 100%
+            );
             position: relative;
             overflow: hidden;
           }
-          
+
           .analytics-section::before {
             content: '';
             position: absolute;
@@ -3108,7 +3106,7 @@ const AIBannerMarketing = () => {
               transparent 100%
             );
           }
-          
+
           .analytics-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -3116,7 +3114,7 @@ const AIBannerMarketing = () => {
             position: relative;
             z-index: 2;
           }
-          
+
           .analytics-title {
             font-size: 2.8rem;
             font-weight: 800;
@@ -3131,7 +3129,7 @@ const AIBannerMarketing = () => {
             -webkit-text-fill-color: transparent;
             position: relative;
           }
-          
+
           .analytics-title:after {
             content: '';
             position: absolute;
@@ -3143,7 +3141,7 @@ const AIBannerMarketing = () => {
             background: var(--accent-color);
             border-radius: 2px;
           }
-          
+
           .analytics-description {
             font-size: 1.2rem;
             line-height: 1.7;
@@ -3153,14 +3151,14 @@ const AIBannerMarketing = () => {
             text-align: center;
             position: relative;
           }
-          
+
           .analytics-cards {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             margin-bottom: 4rem;
           }
-          
+
           .analytics-card {
             background: rgba(30, 30, 40, 0.7);
             border-radius: 16px;
@@ -3171,25 +3169,25 @@ const AIBannerMarketing = () => {
             box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
           }
-          
+
           .analytics-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
             border-color: rgba(var(--accent-color-rgb), 0.3);
           }
-          
+
           .analytics-card.wide {
             grid-column: span 2;
             margin-top: 1rem;
           }
-          
+
           .card-icon {
             font-size: 2.2rem;
             color: var(--accent-color);
             margin-bottom: 1.5rem;
             opacity: 0.9;
           }
-          
+
           .analytics-card h3 {
             font-size: 1.6rem;
             font-weight: 700;
@@ -3197,7 +3195,7 @@ const AIBannerMarketing = () => {
             color: var(--text-primary);
             position: relative;
           }
-          
+
           .analytics-card h3:after {
             content: '';
             position: absolute;
@@ -3208,16 +3206,16 @@ const AIBannerMarketing = () => {
             background: var(--accent-color);
             border-radius: 2px;
           }
-          
+
           .metrics-list {
             display: grid;
             gap: 1.5rem;
           }
-          
+
           .metric-item {
             position: relative;
           }
-          
+
           .metric-name {
             display: block;
             font-size: 1.1rem;
@@ -3225,28 +3223,28 @@ const AIBannerMarketing = () => {
             color: var(--text-primary);
             margin-bottom: 0.5rem;
           }
-          
+
           .metric-desc {
             font-size: 1rem;
             line-height: 1.6;
             color: var(--text-secondary);
           }
-          
+
           .benefits-list {
             display: grid;
             gap: 1.8rem;
           }
-          
+
           .benefit-item {
             position: relative;
           }
-          
+
           .benefit-header {
             display: flex;
             align-items: center;
             margin-bottom: 0.8rem;
           }
-          
+
           .benefit-icon {
             display: flex;
             align-items: center;
@@ -3259,33 +3257,33 @@ const AIBannerMarketing = () => {
             font-size: 1rem;
             margin-right: 1rem;
           }
-          
+
           .benefit-title {
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--text-primary);
           }
-          
+
           .benefit-item p {
             font-size: 1rem;
             line-height: 1.6;
             color: var(--text-secondary);
             padding-left: calc(36px + 1rem);
           }
-          
+
           .process-steps {
             display: flex;
             flex-direction: column;
             margin-top: 2rem;
             gap: 3rem;
           }
-          
+
           .process-row {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
           }
-          
+
           .process-row.second {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -3293,7 +3291,7 @@ const AIBannerMarketing = () => {
             max-width: 66%;
             margin: 0 auto;
           }
-          
+
           .process-step {
             position: relative;
             display: flex;
@@ -3301,11 +3299,11 @@ const AIBannerMarketing = () => {
             align-items: flex-start;
             transition: all 0.3s ease;
           }
-          
+
           .process-step:hover {
             transform: translateY(-5px);
           }
-          
+
           .step-number {
             display: flex;
             align-items: center;
@@ -3323,12 +3321,12 @@ const AIBannerMarketing = () => {
             z-index: 2;
             transition: all 0.3s ease;
           }
-          
+
           .process-step:hover .step-number {
             background: rgba(var(--accent-color-rgb), 0.3);
             box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.5);
           }
-          
+
           .step-content h4 {
             font-size: 1.2rem;
             font-weight: 600;
@@ -3336,11 +3334,11 @@ const AIBannerMarketing = () => {
             margin-bottom: 0.8rem;
             transition: all 0.3s ease;
           }
-          
+
           .process-step:hover .step-content h4 {
             color: var(--accent-color);
           }
-          
+
           .analytics-quote {
             background: rgba(var(--accent-color-rgb), 0.1);
             border-left: 4px solid var(--accent-color);
@@ -3349,7 +3347,7 @@ const AIBannerMarketing = () => {
             margin: 4rem 0;
             position: relative;
           }
-          
+
           .quote-icon {
             position: absolute;
             top: 2rem;
@@ -3357,7 +3355,7 @@ const AIBannerMarketing = () => {
             font-size: 2rem;
             color: rgba(var(--accent-color-rgb), 0.3);
           }
-          
+
           .analytics-quote blockquote {
             font-size: 1.3rem;
             line-height: 1.6;
@@ -3367,7 +3365,7 @@ const AIBannerMarketing = () => {
             padding: 0 0 0 3.5rem;
             position: relative;
           }
-          
+
           .quote-author {
             margin-top: 1.5rem;
             padding-left: 3.5rem;
@@ -3375,24 +3373,24 @@ const AIBannerMarketing = () => {
             color: var(--accent-color);
             font-size: 1.1rem;
           }
-          
+
           .analytics-cta {
             text-align: center;
             margin-top: 4rem;
           }
-          
+
           .analytics-cta p {
             font-size: 1.3rem;
             color: var(--text-primary);
             margin-bottom: 2rem;
           }
-          
+
           .cta-buttons {
             display: flex;
             gap: 1.5rem;
             justify-content: center;
           }
-          
+
           .cta-btn {
             display: flex;
             align-items: center;
@@ -3405,49 +3403,49 @@ const AIBannerMarketing = () => {
             transition: all 0.3s ease;
             border: none;
           }
-          
+
           .cta-btn.primary {
             background: var(--accent-color);
             color: white;
           }
-          
+
           .cta-btn.secondary {
             background: transparent;
             border: 1px solid rgba(var(--accent-color-rgb), 0.5);
             color: var(--text-primary);
           }
-          
+
           .cta-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
           }
-          
+
           .cta-btn.primary:hover {
             background: rgba(var(--accent-color-rgb), 0.9);
           }
-          
+
           .cta-btn.secondary:hover {
             background: rgba(var(--accent-color-rgb), 0.1);
           }
-          
+
           @media (max-width: 1024px) {
             .analytics-cards {
               grid-template-columns: 1fr;
             }
-            
+
             .analytics-card.wide {
               grid-column: span 1;
             }
-            
+
             .process-steps {
               grid-template-columns: 1fr;
             }
-            
+
             .cta-buttons {
               flex-direction: column;
               align-items: center;
             }
-            
+
             .cta-btn {
               width: 100%;
               justify-content: center;
@@ -3459,15 +3457,19 @@ const AIBannerMarketing = () => {
       {/* Блок с преимуществами */}
       <section className="benefits-section">
         <div className="benefits-container">
-          <h2 className="benefits-title">Чому варто замовити банерну рекламу саме у нас</h2>
-          
+          <h2 className="benefits-title">
+            Чому варто замовити банерну рекламу саме у нас
+          </h2>
+
           <p className="benefits-description">
-            У світі діджитал-реклами важливо не просто запускати банери, а досягати конкретних бізнес-цілей — 
-            продажів, заявок, охоплення. Ми пропонуємо не шаблонні рішення, а індивідуальний підхід, заснований 
-            на досвіді, перевірених методиках і сучасних технологіях. Наша команда глибоко занурюється в нішу 
-            клієнта, щоб створити ефективну, ROI-орієнтовану банерну кампанію.
+            У світі діджитал-реклами важливо не просто запускати банери, а
+            досягати конкретних бізнес-цілей — продажів, заявок, охоплення. Ми
+            пропонуємо не шаблонні рішення, а індивідуальний підхід, заснований
+            на досвіді, перевірених методиках і сучасних технологіях. Наша
+            команда глибоко занурюється в нішу клієнта, щоб створити ефективну,
+            ROI-орієнтовану банерну кампанію.
           </p>
-          
+
           <div className="benefits-cards">
             <div className="benefits-card">
               <div className="card-header">
@@ -3478,15 +3480,17 @@ const AIBannerMarketing = () => {
                 </div>
                 <h3>Досвід роботи з різними нішами</h3>
               </div>
-              
+
               <div className="card-content">
                 <p>
-                  Ми реалізували десятки проєктів у сферах e-commerce, фінансів, туризму, освіти, 
-                  b2b-послуг, медицини та ін. Завдяки цьому ми розуміємо специфіку поведінки цільової 
-                  аудиторії в кожному сегменті. Ми знаємо, які формати працюють краще в конкретних галузях, 
-                  як оформити оффер і креатив, щоб він викликав максимальний відгук.
+                  Ми реалізували десятки проєктів у сферах e-commerce, фінансів,
+                  туризму, освіти, b2b-послуг, медицини та ін. Завдяки цьому ми
+                  розуміємо специфіку поведінки цільової аудиторії в кожному
+                  сегменті. Ми знаємо, які формати працюють краще в конкретних
+                  галузях, як оформити оффер і креатив, щоб він викликав
+                  максимальний відгук.
                 </p>
-                
+
                 <div className="approach-list">
                   <h4>Наш підхід — це:</h4>
                   <ul>
@@ -3496,7 +3500,10 @@ const AIBannerMarketing = () => {
                       </div>
                       <div className="list-content">
                         <strong>Глибокий конкурентний аналіз</strong>
-                        <p>Вивчаємо стратегії конкурентів, щоб створити унікальну пропозицію</p>
+                        <p>
+                          Вивчаємо стратегії конкурентів, щоб створити унікальну
+                          пропозицію
+                        </p>
                       </div>
                     </li>
                     <li>
@@ -3505,7 +3512,10 @@ const AIBannerMarketing = () => {
                       </div>
                       <div className="list-content">
                         <strong>Врахування сезонності попиту</strong>
-                        <p>Адаптуємо рекламні кампанії до сезонних трендів і поведінки споживачів</p>
+                        <p>
+                          Адаптуємо рекламні кампанії до сезонних трендів і
+                          поведінки споживачів
+                        </p>
                       </div>
                     </li>
                     <li>
@@ -3513,14 +3523,20 @@ const AIBannerMarketing = () => {
                         <FaGlobeEurope />
                       </div>
                       <div className="list-content">
-                        <strong>Адаптація банерів під мову та менталітет цільової аудиторії</strong>
-                        <p>Створюємо креативи, що резонують з вашою аудиторією на культурному рівні</p>
+                        <strong>
+                          Адаптація банерів під мову та менталітет цільової
+                          аудиторії
+                        </strong>
+                        <p>
+                          Створюємо креативи, що резонують з вашою аудиторією на
+                          культурному рівні
+                        </p>
                       </div>
                     </li>
                   </ul>
                 </div>
               </div>
-              
+
               <div className="industries-container">
                 <div className="industries-row">
                   <div className="industry-item">
@@ -3576,7 +3592,7 @@ const AIBannerMarketing = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="benefits-card">
               <div className="card-header">
                 <div className="card-icon">
@@ -3586,15 +3602,17 @@ const AIBannerMarketing = () => {
                 </div>
                 <h3>Прозора звітність і супровід</h3>
               </div>
-              
+
               <div className="card-content">
                 <p>
-                  Ми не приховуємо дані — кожен клієнт має повний доступ до звітів, статистики та дашбордів 
-                  у зручному форматі. Ви бачите, як працює кампанія в реальному часі, які майданчики приносять 
-                  результат, а які — потребують корекції. Наші спеціалісти супроводжують проект на кожному етапі, 
-                  надаючи рекомендації та вчасно реагуючи на зміни в поведінці користувачів.
+                  Ми не приховуємо дані — кожен клієнт має повний доступ до
+                  звітів, статистики та дашбордів у зручному форматі. Ви бачите,
+                  як працює кампанія в реальному часі, які майданчики приносять
+                  результат, а які — потребують корекції. Наші спеціалісти
+                  супроводжують проект на кожному етапі, надаючи рекомендації та
+                  вчасно реагуючи на зміни в поведінці користувачів.
                 </p>
-                
+
                 <div className="features-list">
                   <h4>Що ви отримуєте:</h4>
                   <div className="features-grid">
@@ -3604,47 +3622,64 @@ const AIBannerMarketing = () => {
                       </div>
                       <div className="feature-content">
                         <h5>Звіти з метриками CTR, CPC, CPM</h5>
-                        <p>Детальна статистика ефективності кампаній, доступна в режимі реального часу</p>
+                        <p>
+                          Детальна статистика ефективності кампаній, доступна в
+                          режимі реального часу
+                        </p>
                       </div>
                     </div>
-                    
+
                     <div className="feature-item">
                       <div className="feature-icon">
                         <FaComments />
                       </div>
                       <div className="feature-content">
                         <h5>Консультації щодо покращення результатів</h5>
-                        <p>Регулярні рекомендації від фахівців для оптимізації кампаній</p>
+                        <p>
+                          Регулярні рекомендації від фахівців для оптимізації
+                          кампаній
+                        </p>
                       </div>
                     </div>
-                    
+
                     <div className="feature-item">
                       <div className="feature-icon">
                         <FaHeadset />
                       </div>
                       <div className="feature-content">
                         <h5>Постійний зв'язок з менеджером кампанії</h5>
-                        <p>Спеціаліст на зв'язку, який відповідає за успіх вашого проєкту</p>
+                        <p>
+                          Спеціаліст на зв'язку, який відповідає за успіх вашого
+                          проєкту
+                        </p>
                       </div>
                     </div>
-                    
+
                     <div className="feature-item">
                       <div className="feature-icon">
                         <FaLightbulb />
                       </div>
                       <div className="feature-content">
                         <h5>Креативні ідеї для банерів</h5>
-                        <p>Регулярне оновлення креативів для запобігання банерній сліпоті</p>
+                        <p>
+                          Регулярне оновлення креативів для запобігання банерній
+                          сліпоті
+                        </p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              
+
               <div className="testimonial">
                 <div className="testimonial-content">
                   <FaQuoteLeft className="quote-icon" />
-                  <p>Працюючи з командою SoftQod, ми отримали не просто рекламу, а стратегічного партнера, який дійсно розуміє наш бізнес. Завдяки їхньому індивідуальному підходу та постійному аналізу, наша конверсія з банерної реклами зросла на 34%.</p>
+                  <p>
+                    Працюючи з командою SoftQod, ми отримали не просто рекламу,
+                    а стратегічного партнера, який дійсно розуміє наш бізнес.
+                    Завдяки їхньому індивідуальному підходу та постійному
+                    аналізу, наша конверсія з банерної реклами зросла на 34%.
+                  </p>
                 </div>
                 <div className="testimonial-author">
                   <div className="author-avatar"></div>
@@ -3656,28 +3691,20 @@ const AIBannerMarketing = () => {
               </div>
             </div>
           </div>
-          
-          <div className="benefits-action">
-            <button className="action-btn">
-              <FaRocket />
-              <span>Почати проєкт з нами</span>
-            </button>
-            <span className="action-caption">Обговоримо ваші цілі та запропонуємо оптимальне рішення</span>
-          </div>
         </div>
-        
+
         <style jsx>{`
           .benefits-section {
             padding: 8rem 0;
             background: linear-gradient(
-              180deg, 
+              180deg,
               var(--bg-primary) 0%,
               rgba(var(--bg-primary-rgb), 0.95) 100%
             );
             position: relative;
             overflow: hidden;
           }
-          
+
           .benefits-section::before {
             content: '';
             position: absolute;
@@ -3692,7 +3719,7 @@ const AIBannerMarketing = () => {
               transparent 100%
             );
           }
-          
+
           .benefits-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -3700,7 +3727,7 @@ const AIBannerMarketing = () => {
             position: relative;
             z-index: 2;
           }
-          
+
           .benefits-title {
             font-size: 2.8rem;
             font-weight: 800;
@@ -3715,7 +3742,7 @@ const AIBannerMarketing = () => {
             -webkit-text-fill-color: transparent;
             position: relative;
           }
-          
+
           .benefits-title:after {
             content: '';
             position: absolute;
@@ -3727,7 +3754,7 @@ const AIBannerMarketing = () => {
             background: var(--accent-color);
             border-radius: 2px;
           }
-          
+
           .benefits-description {
             font-size: 1.2rem;
             line-height: 1.7;
@@ -3737,14 +3764,14 @@ const AIBannerMarketing = () => {
             text-align: center;
             position: relative;
           }
-          
+
           .benefits-cards {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2.5rem;
             margin-bottom: 4rem;
           }
-          
+
           .benefits-card {
             background: rgba(30, 30, 40, 0.7);
             border-radius: 16px;
@@ -3755,13 +3782,13 @@ const AIBannerMarketing = () => {
             display: flex;
             flex-direction: column;
           }
-          
+
           .benefits-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.4);
             border-color: rgba(var(--accent-color-rgb), 0.3);
           }
-          
+
           .card-header {
             padding: 2.5rem;
             display: flex;
@@ -3769,49 +3796,54 @@ const AIBannerMarketing = () => {
             gap: 1.5rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
           }
-          
+
           .card-icon {
             flex-shrink: 0;
           }
-          
+
           .icon-bg {
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.2) 0%, rgba(var(--accent-color-rgb), 0.4) 100%);
+            background: linear-gradient(
+              135deg,
+              rgba(var(--accent-color-rgb), 0.2) 0%,
+              rgba(var(--accent-color-rgb), 0.4) 100%
+            );
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
             color: var(--accent-color);
           }
-          
+
           .card-header h3 {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--text-primary);
             margin: 0;
           }
-          
+
           .card-content {
             padding: 2.5rem;
             flex: 1;
           }
-          
+
           .card-content > p {
             font-size: 1.1rem;
             line-height: 1.7;
             color: var(--text-secondary);
             margin-bottom: 2.5rem;
           }
-          
-          .approach-list h4, .features-list h4 {
+
+          .approach-list h4,
+          .features-list h4 {
             font-size: 1.3rem;
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 1.5rem;
           }
-          
+
           .approach-list ul {
             list-style: none;
             padding: 0;
@@ -3820,13 +3852,13 @@ const AIBannerMarketing = () => {
             flex-direction: column;
             gap: 1.5rem;
           }
-          
+
           .approach-list li {
             display: flex;
             gap: 1.2rem;
             align-items: flex-start;
           }
-          
+
           .list-marker {
             width: 40px;
             height: 40px;
@@ -3839,11 +3871,11 @@ const AIBannerMarketing = () => {
             font-size: 1.1rem;
             flex-shrink: 0;
           }
-          
+
           .list-content {
             flex: 1;
           }
-          
+
           .list-content strong {
             display: block;
             font-size: 1.1rem;
@@ -3851,32 +3883,32 @@ const AIBannerMarketing = () => {
             color: var(--text-primary);
             margin-bottom: 0.5rem;
           }
-          
+
           .list-content p {
             font-size: 1rem;
             color: var(--text-secondary);
             line-height: 1.5;
             margin: 0;
           }
-          
+
           .industries-container {
             padding: 2rem 2.5rem;
             background: rgba(0, 0, 0, 0.2);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             margin-top: auto;
           }
-          
+
           .industries-row {
             display: flex;
             justify-content: space-between;
             gap: 1rem;
             margin-bottom: 1.5rem;
           }
-          
+
           .industries-row:last-child {
             margin-bottom: 0;
           }
-          
+
           .industry-item {
             display: flex;
             flex-direction: column;
@@ -3884,7 +3916,7 @@ const AIBannerMarketing = () => {
             gap: 0.8rem;
             flex: 1;
           }
-          
+
           .industry-icon {
             width: 48px;
             height: 48px;
@@ -3896,25 +3928,25 @@ const AIBannerMarketing = () => {
             color: var(--accent-color);
             font-size: 1.3rem;
           }
-          
+
           .industry-item span {
             font-size: 0.9rem;
             font-weight: 500;
             color: var(--text-secondary);
           }
-          
+
           .features-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
           }
-          
+
           .feature-item {
             display: flex;
             gap: 1rem;
             align-items: flex-start;
           }
-          
+
           .feature-icon {
             width: 40px;
             height: 40px;
@@ -3927,37 +3959,37 @@ const AIBannerMarketing = () => {
             font-size: 1.1rem;
             flex-shrink: 0;
           }
-          
+
           .feature-content {
             flex: 1;
           }
-          
+
           .feature-content h5 {
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--text-primary);
             margin: 0 0 0.5rem 0;
           }
-          
+
           .feature-content p {
             font-size: 0.95rem;
             color: var(--text-secondary);
             line-height: 1.5;
             margin: 0;
           }
-          
+
           .testimonial {
             padding: 2.5rem;
             background: rgba(var(--accent-color-rgb), 0.1);
             border-top: 1px solid rgba(var(--accent-color-rgb), 0.2);
             margin-top: auto;
           }
-          
+
           .testimonial-content {
             position: relative;
             margin-bottom: 1.5rem;
           }
-          
+
           .quote-icon {
             position: absolute;
             top: 0;
@@ -3965,7 +3997,7 @@ const AIBannerMarketing = () => {
             font-size: 1.5rem;
             color: rgba(var(--accent-color-rgb), 0.3);
           }
-          
+
           .testimonial-content p {
             font-size: 1.05rem;
             line-height: 1.7;
@@ -3974,13 +4006,13 @@ const AIBannerMarketing = () => {
             padding-left: 2.5rem;
             margin: 0;
           }
-          
+
           .testimonial-author {
             display: flex;
             align-items: center;
             gap: 1rem;
           }
-          
+
           .author-avatar {
             width: 50px;
             height: 50px;
@@ -3990,20 +4022,20 @@ const AIBannerMarketing = () => {
             background-size: cover;
             background-position: center;
           }
-          
+
           .author-info h5 {
             font-size: 1rem;
             font-weight: 600;
             color: var(--text-primary);
             margin: 0 0 0.3rem 0;
           }
-          
+
           .author-info p {
             font-size: 0.9rem;
             color: var(--text-secondary);
             margin: 0;
           }
-          
+
           .benefits-action {
             text-align: center;
             display: flex;
@@ -4011,7 +4043,7 @@ const AIBannerMarketing = () => {
             align-items: center;
             gap: 1rem;
           }
-          
+
           .action-btn {
             display: flex;
             align-items: center;
@@ -4027,59 +4059,59 @@ const AIBannerMarketing = () => {
             transition: all 0.3s ease;
             box-shadow: 0 10px 25px rgba(var(--accent-color-rgb), 0.3);
           }
-          
+
           .action-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 30px rgba(var(--accent-color-rgb), 0.4);
             background: rgba(var(--accent-color-rgb), 0.9);
           }
-          
+
           .action-caption {
             font-size: 1rem;
             color: var(--text-secondary);
           }
-          
+
           @media (max-width: 1024px) {
             .benefits-cards {
               grid-template-columns: 1fr;
             }
-            
+
             .features-grid {
               grid-template-columns: 1fr;
             }
-            
+
             .industries-row {
               flex-wrap: wrap;
               justify-content: center;
             }
-            
+
             .industry-item {
               width: calc(50% - 1rem);
               flex: none;
             }
           }
-          
+
           @media (max-width: 768px) {
             .card-header {
               flex-direction: column;
               text-align: center;
               gap: 1rem;
             }
-            
+
             .approach-list li {
               flex-direction: column;
               align-items: center;
               text-align: center;
               gap: 0.8rem;
             }
-            
+
             .feature-item {
               flex-direction: column;
               align-items: center;
               text-align: center;
               gap: 0.8rem;
             }
-            
+
             .testimonial-author {
               flex-direction: column;
               text-align: center;
@@ -4191,19 +4223,16 @@ const AIBannerMarketing = () => {
                 boxShadow: '0 10px 30px rgba(var(--accent-color-rgb), 0.3)',
               }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               Зв'язатися з нами <FaArrowRight />
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
       </FaqSection>
-
-      <CTAButton whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-        Замовити банерну рекламу
-        <FaArrowRight />
-      </CTAButton>
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
     </PageContainer>
   );
 };
 
-export default AIBannerMarketing; 
+export default AIBannerMarketing;

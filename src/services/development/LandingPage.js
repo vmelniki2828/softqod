@@ -74,9 +74,6 @@ const Container = styled.div`
   color: var(--text-primary);
   position: relative;
   overflow: hidden;
-  padding-bottom: 100px;
-  padding-right: 20px;
-  padding-left: 20px;
 `;
 
 const HeroSection = styled(motion.div)`

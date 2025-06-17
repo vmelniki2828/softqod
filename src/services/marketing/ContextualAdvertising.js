@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import Modal from '../../components/Modal';
 import { 
   FaArrowRight, 
   FaChartLine, 
@@ -256,22 +257,6 @@ const PrimaryButton = styled(motion.button)`
 
   &:hover::before {
     animation: ${shimmer} 1s ease-out;
-  }
-`;
-
-const SecondaryButton = styled(motion.button)`
-  padding: 0.9rem 2rem;
-  background: transparent;
-  color: var(--text-primary);
-  border: 1px solid rgba(var(--accent-color-rgb), 0.5);
-  border-radius: 4px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(var(--accent-color-rgb), 0.05);
-    transform: translateY(-2px);
   }
 `;
 
@@ -672,6 +657,7 @@ const ContextualAdvertising = () => {
   // Add useState hook inside the component
   const [activeTab, setActiveTab] = useState(0);
   const [expandedFaqs, setExpandedFaqs] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   // Advantages data
   const advantages = [
@@ -863,6 +849,10 @@ const ContextualAdvertising = () => {
     );
   };
 
+  // Modal functions
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <PageContainer>
       <HeroWrapper>
@@ -936,15 +926,10 @@ const ContextualAdvertising = () => {
                 <PrimaryButton
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={openModal}
                 >
                   Замовити контекстну рекламу <FaArrowRight />
                 </PrimaryButton>
-                <SecondaryButton
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Наші кейси
-                </SecondaryButton>
               </ButtonGroup>
             </HeroLeft>
 
@@ -1614,7 +1599,7 @@ const ContextualAdvertising = () => {
                 Наша команда створить і запустить для вас кампанію, яка приведе цільових клієнтів 
                 та забезпечить максимальну окупність інвестицій
               </CalloutDescription>
-              <CalloutButton>
+              <CalloutButton onClick={openModal}>
                 Замовити консультацію
                 <FaArrowRight />
               </CalloutButton>
@@ -2064,7 +2049,10 @@ const ContextualAdvertising = () => {
             <KpiActionText>
               Хочете отримати детальний аналіз ефективності вашої рекламної кампанії?
             </KpiActionText>
-            <KpiActionButton whileHover={{ y: -5, boxShadow: '0 10px 25px rgba(var(--accent-color-rgb), 0.4)' }}>
+            <KpiActionButton 
+              whileHover={{ y: -5, boxShadow: '0 10px 25px rgba(var(--accent-color-rgb), 0.4)' }}
+              onClick={openModal}
+            >
               Замовити аудит ефективності
               <FaArrowRight />
             </KpiActionButton>
@@ -2169,7 +2157,7 @@ const ContextualAdvertising = () => {
               <SuitableForCtaText>
                 Наші фахівці допоможуть вам з'ясувати, чи підійде контекстна реклама саме вашому бізнесу, та розроблять індивідуальну стратегію з урахуванням специфіки вашої ніші.
               </SuitableForCtaText>
-              <SuitableForCtaButton>
+              <SuitableForCtaButton onClick={openModal}>
                 Отримати безкоштовну консультацію
               </SuitableForCtaButton>
             </SuitableForCtaContent>
@@ -2465,6 +2453,7 @@ const ContextualAdvertising = () => {
                   y: -5,
                   boxShadow: '0 10px 25px rgba(var(--accent-color-rgb), 0.4)'
                 }}
+                onClick={openModal}
               >
                 Отримати безкоштовну консультацію
                 <FaArrowRight />
@@ -2562,6 +2551,7 @@ const ContextualAdvertising = () => {
             <FaqCtaButton
               whileHover={{ y: -5 }}
               transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+              onClick={openModal}
             >
               Отримати консультацію
               <FaArrowRight />
@@ -2569,6 +2559,8 @@ const ContextualAdvertising = () => {
           </FaqCta>
         </FaqContainer>
       </FaqSection>
+
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
     </PageContainer>
   );
 };
