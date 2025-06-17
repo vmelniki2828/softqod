@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import Modal from '../../components/Modal';
 import { 
   FaArrowRight, 
   FaChartLine, 
@@ -244,22 +245,6 @@ const PrimaryButton = styled(motion.button)`
   }
 `;
 
-const SecondaryButton = styled(motion.button)`
-  padding: 0.9rem 2rem;
-  background: transparent;
-  color: var(--text-primary);
-  border: 1px solid rgba(var(--accent-color-rgb), 0.5);
-  border-radius: 4px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(var(--accent-color-rgb), 0.05);
-    transform: translateY(-2px);
-  }
-`;
-
 const SocialPlatformsContainer = styled(motion.div)`
   position: relative;
   width: 100%;
@@ -369,8 +354,12 @@ const AdvantageIcon = styled.div`
 const Smm = () => {
   const [activeTaskIndex, setActiveTaskIndex] = useState(0);
   const [activeServiceTab, setActiveServiceTab] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const platformRef = useRef(null);
   const tasksSliderRef = useRef(null);
+  
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
   
   // Add FAQ state and data
   const [expandedFaqs, setExpandedFaqs] = useState([]);
@@ -597,15 +586,10 @@ const Smm = () => {
                 <PrimaryButton
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={openModal}
                 >
                   Замовити SMM <FaArrowRight />
                 </PrimaryButton>
-                <SecondaryButton
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Наші кейси
-                </SecondaryButton>
               </ButtonGroup>
             </HeroLeft>
 
@@ -1221,15 +1205,10 @@ const Smm = () => {
               <PrimaryButton
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={openModal}
               >
                 Замовити SMM <FaArrowRight />
               </PrimaryButton>
-              <SecondaryButton
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Дізнатися більше
-              </SecondaryButton>
             </CollabCTAButtons>
           </CollabCTA>
         </CollabContainer>
@@ -1428,6 +1407,7 @@ const Smm = () => {
             <ResultsCTAButton 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               Замовити SMM-стратегію <FaArrowRight />
             </ResultsCTAButton>
@@ -1550,6 +1530,7 @@ const Smm = () => {
               <TeamConnectButton 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={openModal}
               >
                 Зв'язатися з командою <FaArrowRight />
               </TeamConnectButton>
@@ -1661,12 +1642,15 @@ const Smm = () => {
                 boxShadow: '0 10px 30px rgba(var(--accent-color-rgb), 0.3)',
               }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               Зв'язатися з нами <FaArrowRight />
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
       </FaqSection>
+
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
       
     </PageContainer>
   );

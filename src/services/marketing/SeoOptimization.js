@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import Modal from '../../components/Modal';
 import {
   FaArrowRight,
   FaChartLine,
@@ -45,6 +46,7 @@ import {
 const PageContainer = styled.div`
   max-width: 1400px;
   margin: 0 auto;
+  padding-top: 100px;
 `;
 
 // Animations
@@ -109,7 +111,6 @@ const HeroWrapper = styled.section`
     var(--bg-primary) 0%,
     rgba(var(--bg-primary-rgb), 0.97) 100%
   );
-  margin-top: 100px;
 `;
 
 const GlowingCircle = styled.div`
@@ -301,26 +302,6 @@ const PrimaryButton = styled(motion.button)`
 
   &:hover::before {
     animation: ${shimmer} 1s ease-out;
-  }
-`;
-
-const SecondaryButton = styled(motion.button)`
-  padding: 0.9rem 2rem;
-  background: transparent;
-  color: var(--text-primary);
-  border: 1px solid rgba(var(--accent-color-rgb), 0.3);
-  border-radius: 4px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(var(--accent-color-rgb), 0.05);
-    border-color: var(--accent-color);
-    transform: translateY(-2px);
   }
 `;
 
@@ -3116,6 +3097,11 @@ const SeoOptimization = () => {
   const [activeDirection, setActiveDirection] = useState('technical');
   const [activeTool, setActiveTool] = useState(0);
   const [expandedFaqs, setExpandedFaqs] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Modal functions
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const seoTools = [
     {
@@ -3338,13 +3324,10 @@ const SeoOptimization = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <PrimaryButton whileHover={{ y: -5 }}>
+                <PrimaryButton whileHover={{ y: -5 }} onClick={openModal}>
                   Замовити аудит сайту
                   <FaArrowRight />
                 </PrimaryButton>
-                <SecondaryButton whileHover={{ y: -5 }}>
-                  Наші послуги
-                </SecondaryButton>
               </ButtonGroup>
               <KeyPoints>
                 <KeyPoint>
@@ -4585,6 +4568,7 @@ const SeoOptimization = () => {
             <PrimaryButton
               whileHover={{ y: -5 }}
               style={{ margin: '2rem auto 0' }}
+              onClick={openModal}
             >
               Замовити аналітичний аудит
               <FaArrowRight />
@@ -5077,7 +5061,7 @@ const SeoOptimization = () => {
               сайт і запропонуємо конкретні кроки для покращення його видимості
               в пошуку.
             </ApproachesCalloutText>
-            <CenteredButton whileHover={{ y: -5 }}>
+            <CenteredButton whileHover={{ y: -5 }} onClick={openModal}>
               Замовити консультацію
               <FaArrowRight />
             </CenteredButton>
@@ -5330,6 +5314,7 @@ const SeoOptimization = () => {
                 boxShadow: '0 10px 30px rgba(var(--accent-color-rgb), 0.3)',
               }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               Зв'язатися з нами <FaArrowRight />
             </FaqCtaButton>
@@ -5365,6 +5350,8 @@ const SeoOptimization = () => {
           </DotGrid>
         </HeroWrapper>
       </PageContainer>
+
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
     </PageContainer>
   );
 };

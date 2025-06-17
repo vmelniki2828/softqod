@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaArrowRight, FaBullseye, FaFacebook, FaInstagram, FaTiktok, FaLinkedin, FaUsers, FaRedo, FaUserFriends, FaEye, FaMousePointer, FaCheckCircle, FaChartLine, FaSearch, FaPlus } from 'react-icons/fa';
+import Modal from '../../components/Modal';
+import { FaArrowRight, FaBullseye, FaFacebook, FaInstagram, FaTiktok, FaLinkedin, FaUsers, FaRedo, FaUserFriends, FaEye, FaCheckCircle, FaChartLine, FaSearch, FaPlus } from 'react-icons/fa';
 
 const breatheAnimation = keyframes`
   0% { transform: scale(1); opacity: 0.8; }
@@ -220,26 +221,6 @@ const PrimaryButton = styled(motion.button)`
 
   &:hover::before {
     animation: ${shimmer} 1s ease-out;
-  }
-`;
-
-const SecondaryButton = styled(motion.button)`
-  padding: 0.9rem 2rem;
-  background: transparent;
-  color: var(--text-primary);
-  border: 1px solid rgba(var(--accent-color-rgb), 0.3);
-  border-radius: 4px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(var(--accent-color-rgb), 0.05);
-    border-color: var(--accent-color);
-    transform: translateY(-2px);
   }
 `;
 
@@ -807,7 +788,7 @@ const FloatingElement = styled(motion.div)`
   z-index: 2;
 `;
 
-const TargetedHero = () => {
+const TargetedHero = ({ openModal: openMainModal }) => {
   const [selectedCard, setSelectedCard] = useState(null);
 
   const socialMediaData = {
@@ -925,17 +906,11 @@ const TargetedHero = () => {
               <PrimaryButton
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={openMainModal}
               >
                 Запустити рекламу
                 <FaArrowRight />
               </PrimaryButton>
-              <SecondaryButton
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Консультація
-                <FaMousePointer />
-              </SecondaryButton>
             </ButtonGroup>
 
             <KeyPoints>
@@ -5017,7 +4992,7 @@ const FaqCtaButton = styled(motion.button)`
   }
 `;
 
-const TargetedFaq = () => {
+const TargetedFaq = ({ openModal: openMainModal }) => {
   const [expandedFaqs, setExpandedFaqs] = useState([]);
   
   const faqData = [
@@ -5154,6 +5129,7 @@ const TargetedFaq = () => {
               boxShadow: '0 10px 30px rgba(var(--accent-color-rgb), 0.3)',
             }}
             whileTap={{ scale: 0.98 }}
+            onClick={openMainModal}
           >
             Зв'язатися з нами <FaArrowRight />
           </FaqCtaButton>
@@ -5164,9 +5140,15 @@ const TargetedFaq = () => {
 };
 
 const TargetedAdvertising = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Modal functions
+  const openMainModal = () => setIsModalOpen(true);
+  const closeMainModal = () => setIsModalOpen(false);
+
   return (
     <>
-      <TargetedHero />
+      <TargetedHero openModal={openMainModal} />
       <WhatIsTargeted />
       <TargetingTypes />
       <LaunchSteps />
@@ -5175,7 +5157,9 @@ const TargetedAdvertising = () => {
       <BusinessTypes />
       <OurStrengths />
       <ResultsAchieved />
-      <TargetedFaq />
+      <TargetedFaq openModal={openMainModal} />
+      
+      <Modal isOpen={isModalOpen} onClose={closeMainModal} />
     </>
   );
 };
