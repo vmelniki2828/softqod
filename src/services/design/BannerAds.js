@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import Modal from '../../components/Modal';
 import { 
     FaArrowRight, 
     FaLightbulb, 
@@ -181,36 +182,6 @@ const PrimaryButton = styled(motion.button)`
     background: #ff7b00;
     transform: translateY(-2px);
     box-shadow: 0 15px 30px rgba(255, 123, 0, 0.4);
-  }
-  
-  svg {
-    font-size: 1.2rem;
-  }
-  
-  @media (max-width: 576px) {
-    width: 100%;
-    justify-content: center;
-  }
-`;
-
-const SecondaryButton = styled(motion.button)`
-  background: transparent;
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 50px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: white;
-    transform: translateY(-2px);
   }
   
   svg {
@@ -819,27 +790,6 @@ const ProcessDetailText = styled.span`
   font-weight: 600;
 `;
 
-const CTAButton = styled(motion.button)`
-  background: var(--accent-color);
-  color: white;
-  border: none;
-  padding: 1.2rem 2.5rem;
-  border-radius: 50px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 3rem auto;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: var(--accent-color-dark);
-    transform: translateY(-2px);
-  }
-`;
-
 const ExamplesSection = styled.section`
   margin: 6rem 0;
   padding: 4rem 0;
@@ -1089,7 +1039,7 @@ const AdvantageCard = styled(motion.div)`
     left: 0;
     width: 5px;
     height: 100%;
-    background: var(--accent-color);
+  background: var(--accent-color);
     opacity: 0.7;
     transition: all 0.3s ease;
   }
@@ -1129,7 +1079,7 @@ const AdvantageIcon = styled.div`
   }
 
   ${AdvantageCard}:hover & {
-    color: white;
+  color: white;
 
     &::after {
       opacity: 1;
@@ -1960,6 +1910,11 @@ const BannerAds = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [activeTab, setActiveTab] = useState('forWhom');
   const [expandedFaqs, setExpandedFaqs] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Modal functions
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const features = [
     {
@@ -2415,16 +2370,10 @@ const BannerAds = () => {
               <PrimaryButton
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={openModal}
               >
                 Замовити банер <FaArrowRight />
               </PrimaryButton>
-              
-              <SecondaryButton
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Наші роботи
-              </SecondaryButton>
             </HeroButtons>
             
             <HeroFeatures
@@ -2493,7 +2442,7 @@ const BannerAds = () => {
                   
                   <BannerFooter>
                     <BannerPrice><span>₴2000</span> ₴1000</BannerPrice>
-                    <BannerCta>Замовити</BannerCta>
+                    <BannerCta onClick={openModal}>Замовити</BannerCta>
                   </BannerFooter>
                 </BannerElements>
               </Banner3D>
@@ -2930,11 +2879,6 @@ const BannerAds = () => {
           Зв'яжіться з нами для консультації або залиште заявку — відповімо
           протягом 1 робочого дня.
         </FinalNote>
-
-        <CTAButton whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          Замовити банер
-        <FaArrowRight />
-      </CTAButton>
       </FinalCTASection>
 
       <div style={{ height: '6rem' }}></div>
@@ -3023,12 +2967,16 @@ const BannerAds = () => {
                 boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)',
               }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               Напишіть нам
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
-      </FaqSection>    </PageContainer>
+      </FaqSection>
+      
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
+    </PageContainer>
   );
 };
 

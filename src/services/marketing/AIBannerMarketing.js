@@ -2,11 +2,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import Modal from '../../components/Modal';
-import {
-  FaArrowRight,
-  FaChartLine,
-  FaBullseye,
-  FaRegChartBar,
+import { 
+    FaArrowRight, 
+    FaChartLine, 
+    FaBullseye,
+    FaRegChartBar,
   FaCheckCircle,
   FaRocket,
   FaChartBar,
@@ -118,7 +118,7 @@ const HeroRight = styled.div`
 `;
 
 const GlowingCircle = styled.div`
-  position: absolute;
+    position: absolute;
   width: ${props => props.size || '300px'};
   height: ${props => props.size || '300px'};
   border-radius: 50%;
@@ -140,19 +140,19 @@ const GlowingCircle = styled.div`
   );
   animation: ${breatheAnimation} ${props => props.duration || '8s'} ease-in-out
     infinite;
-  z-index: 0;
+    z-index: 0;
 `;
 
 const TiltedLine = styled.div`
-  position: absolute;
+    position: absolute;
   width: ${props => props.width || '150px'};
   height: 1px;
   background: linear-gradient(
     90deg,
-    transparent 0%,
+      transparent 0%,
     rgba(var(--accent-color-rgb), 0.6) 50%,
-    transparent 100%
-  );
+      transparent 100%
+    );
   top: ${props => props.top || 'auto'};
   left: ${props => props.left || 'auto'};
   right: ${props => props.right || 'auto'};
@@ -292,8 +292,8 @@ const PrimaryButton = styled(motion.button)`
 
 const BannerContainer = styled.div`
   position: relative;
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -327,8 +327,8 @@ const BannerGradient = styled.div`
     135deg,
     rgba(var(--accent-color-rgb), 0.2) 0%,
     rgba(var(--accent-color-rgb), 0.05) 50%,
-    transparent 100%
-  );
+      transparent 100%
+    );
   opacity: 0.5;
   z-index: 0;
 `;
@@ -1020,7 +1020,7 @@ const PlacementTitle = styled.h2`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   position: relative;
-
+  
   &:after {
     content: '';
     position: absolute;
@@ -1194,11 +1194,11 @@ const ImplementationSection = styled.section`
 `;
 
 const ImplBackgroundGradient = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   background: radial-gradient(
       circle at 20% 30%,
       rgba(var(--accent-color-rgb), 0.07) 0%,
@@ -1258,7 +1258,7 @@ const ImplementationTitle = styled.h2`
 
   &:after {
     content: '';
-    position: absolute;
+  position: absolute;
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
@@ -1409,7 +1409,7 @@ const FaqTitle = styled(motion.h2)`
     z-index: -1;
     white-space: nowrap;
   }
-
+  
   &::after {
     content: '';
     position: absolute;
@@ -1514,7 +1514,7 @@ const FaqQuestionText = styled.h3`
   transform: translateZ(5px);
 
   ${FaqQuestion}:hover & {
-    color: var(--accent-color);
+  color: var(--accent-color);
     transform: translateZ(10px);
   }
 `;
@@ -1562,13 +1562,13 @@ const FaqAnswer = styled(motion.div)`
   }
 
   strong {
-    color: var(--accent-color);
+  color: var(--accent-color);
     font-weight: 600;
   }
 
   ul {
     margin-top: 0.8rem;
-    margin-bottom: 0.8rem;
+  margin-bottom: 0.8rem;
     padding-left: 1.5rem;
   }
 
@@ -1697,7 +1697,7 @@ const FaqCtaButton = styled(motion.button)`
   svg {
     font-size: 1.1rem;
     transition: transform 0.3s ease;
-  }
+    }
 
   &:hover svg {
     transform: translateX(5px);
@@ -1977,8 +1977,8 @@ const AIBannerMarketing = () => {
               </HeroDescription>
 
               <StatsRow
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
                 <StatColumn>
@@ -1998,8 +1998,8 @@ const AIBannerMarketing = () => {
               </StatsRow>
 
               <ButtonGroup
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <PrimaryButton
@@ -2017,8 +2017,8 @@ const AIBannerMarketing = () => {
               <BannerContainer>
                 <MainBanner
                   ref={bannerRef}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.3 }}
                 >
                   <HeroBannerImage />
@@ -2120,11 +2120,11 @@ const AIBannerMarketing = () => {
             <BannerTypesGrid>
               {bannerTypes.map((type, index) => (
                 <BannerTypeCard
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                >
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1, duration: 0.5 }}
+          >
                   {type.name === 'Leaderboard' && (
                     <BannerTypeImageLeaderboard>
                       728×90
@@ -2320,9 +2320,9 @@ const AIBannerMarketing = () => {
             <BenefitsList>
               {benefits.map((benefit, index) => (
                 <BenefitItem
-                  key={index}
+              key={index}
                   initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
                 >
                   <InfoBenefitIcon>{benefit.icon}</InfoBenefitIcon>
@@ -4235,4 +4235,4 @@ const AIBannerMarketing = () => {
   );
 };
 
-export default AIBannerMarketing;
+export default AIBannerMarketing; 

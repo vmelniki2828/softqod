@@ -25,6 +25,7 @@ import {
   FaSearch,
   FaCode,
 } from 'react-icons/fa';
+import Modal from '../../components/Modal';
 
 // Анимации
 const pulse = keyframes`
@@ -550,13 +551,16 @@ const BackgroundShape = styled(motion.div)`
   z-index: 0;
 `;
 
-
 // Основной компонент
 const LandingPage = () => {
   const [stars, setStars] = useState([]);
   const [backgroundShapes, setBackgroundShapes] = useState([]);
   // Добавляем состояние для аккордеона FAQ
   const [expandedFaqs, setExpandedFaqs] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const handleMouseMove = useCallback((e, element) => {
     const rect = element.getBoundingClientRect();
@@ -791,6 +795,7 @@ const LandingPage = () => {
             zIndex: 1,
             position: 'relative',
           }}
+          onClick={openModal}
         >
           Дізнатися більше
         </motion.button>
@@ -1044,6 +1049,7 @@ const LandingPage = () => {
               boxShadow: '0 10px 25px rgba(94, 234, 212, 0.2)',
             }}
             whileTap={{ scale: 0.98 }}
+            onClick={openModal}
           >
             Замовити лендінг
           </ConversionBenefitsButton>
@@ -1408,6 +1414,7 @@ const LandingPage = () => {
               boxShadow: '0 15px 30px rgba(94, 234, 212, 0.3)',
             }}
             whileTap={{ scale: 0.98 }}
+            onClick={openModal}
           >
             Замовити ефективний лендінг
             <LPEffectivenessCTAArrow>
@@ -1751,6 +1758,7 @@ const LandingPage = () => {
                 boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)',
               }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               Напишіть нам
             </FaqCtaButton>
@@ -1759,6 +1767,9 @@ const LandingPage = () => {
 
         <FaqDecoration />
       </PWAFaqSection>
+
+      {/* Modal Window */}
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
     </Container>
   );
 };

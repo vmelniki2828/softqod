@@ -116,7 +116,7 @@ const Footer = () => {
                         softqod
                     </Logo>
                     <FooterText>
-                        Создаем инновационные цифровые решения для развития вашего бизнеса.
+                        Створюємо інноваційні цифрові рішення для розвитку вашого бізнесу.
                     </FooterText>
                 </FooterColumn>
 
@@ -139,8 +139,8 @@ const Footer = () => {
                         <IconWrapper>
                             <FaPhone />
                         </IconWrapper>
-                        <FooterLink href="tel:+79991234567">
-                            +7 (999) 123-45-67
+                        <FooterLink href="tel:+380671234567">
+                            +38 (067) 123-45-67
                         </FooterLink>
                     </ContactItem>
                     <ContactItem
@@ -151,13 +151,13 @@ const Footer = () => {
                             <FaMapMarkerAlt />
                         </IconWrapper>
                         <FooterText>
-                            г. Москва, ул. Примерная, д. 123
+                            м. Київ, вул. Хрещатик, буд. 22
                         </FooterText>
                     </ContactItem>
                 </FooterColumn>
             </Container>
             <Copyright>
-                © {new Date().getFullYear()} softqod. Все права защищены.
+                © {new Date().getFullYear()} softqod. Всі права захищені.
             </Copyright>
         </FooterSection>
     );

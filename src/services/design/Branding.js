@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import Modal from '../../components/Modal';
 import {
   FaArrowRight,
-  FaChevronRight,
   FaUsers,
   FaLightbulb,
   FaRocket,
@@ -197,7 +197,10 @@ const PrimaryButton = styled(motion.button)`
   transition: all 0.3s ease;
 
   &:hover {
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    background: var(--accent-color);
+    color: white;
+    box-shadow: 0 15px 35px rgba(var(--accent-color-rgb), 0.4);
+    transform: translateY(-2px);
   }
 
   svg {
@@ -207,35 +210,6 @@ const PrimaryButton = styled(motion.button)`
 
   &:hover svg {
     transform: translateX(5px);
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    justify-content: center;
-  }
-`;
-
-const SecondaryButton = styled(motion.button)`
-  padding: 1rem 2rem;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  backdrop-filter: blur(5px);
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.2);
-  }
-
-  svg {
-    font-size: 0.9rem;
   }
 
   @media (max-width: 768px) {
@@ -3438,6 +3412,13 @@ const FaqCtaButton = styled(motion.button)`
 `;
 
 const Branding = () => {
+  // Add modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  // Modal functions
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   // Add FAQ state
   const [expandedFaqs, setExpandedFaqs] = useState([]);
 
@@ -3519,16 +3500,10 @@ const Branding = () => {
               <PrimaryButton
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={openModal}
               >
                 Замовити розробку <FaArrowRight />
               </PrimaryButton>
-
-              <SecondaryButton
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Портфоліо робіт <FaChevronRight />
-              </SecondaryButton>
             </HeroButtons>
 
             <HeroFeatures
@@ -4626,6 +4601,7 @@ const Branding = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               Замовити фірмовий стиль <FaArrowRight />
             </OrderCta>
@@ -4736,6 +4712,7 @@ const Branding = () => {
                 boxShadow: '0 10px 30px rgba(var(--accent-color-rgb), 0.3)',
               }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               Зв'язатися з нами <FaArrowRight />
             </FaqCtaButton>
@@ -4744,6 +4721,9 @@ const Branding = () => {
       </FaqSection>
 
       {/* Дополнительные секции будут добавлены здесь */}
+      
+      {/* Modal Window */}
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
     </PageContainer>
   );
 };

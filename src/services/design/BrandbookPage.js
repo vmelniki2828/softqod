@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import Modal from '../../components/Modal';
 import {
   FaSwatchbook,
   FaArrowRight,
-  FaChevronRight, 
   FaUsers,
   FaLightbulb,
   FaRocket,
@@ -24,6 +24,43 @@ import {
   FaLaptopCode,
   FaPlus,
 } from 'react-icons/fa';
+
+// Animation keyframes
+const floatVertical = keyframes`
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+`;
+
+const pulse = keyframes`
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+`;
+
+const shimmerEffect = keyframes`
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+`;
 
 const PageContainer = styled.div`
   max-width: 1400px;
@@ -173,36 +210,6 @@ const PrimaryButton = styled(motion.button)`
     background: #ff7b00;
     transform: translateY(-2px);
     box-shadow: 0 15px 30px rgba(255, 123, 0, 0.4);
-  }
-
-  svg {
-    font-size: 1.2rem;
-  }
-
-  @media (max-width: 576px) {
-    width: 100%;
-    justify-content: center;
-  }
-`;
-
-const SecondaryButton = styled(motion.button)`
-  background: transparent;
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 50px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: white;
-    transform: translateY(-2px);
   }
 
   svg {
@@ -998,59 +1005,6 @@ const ProcessNoteText = styled.p`
   max-width: 800px;
   margin: 0 auto;
   font-weight: 500;
-`;
-
-const PortfolioButton = styled(motion.button)`
-  margin-top: 4rem;
-  background: linear-gradient(
-    90deg,
-    var(--accent-color) 0%,
-    var(--accent-color-dark) 100%
-  );
-  color: white;
-  border: none;
-  padding: 1.2rem 2.5rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  border-radius: 50px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  box-shadow: 0 15px 30px rgba(var(--accent-color-rgb), 0.3);
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  
-  svg {
-    font-size: 1.4rem;
-  }
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    transition: all 0.6s ease;
-  }
-  
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(var(--accent-color-rgb), 0.4);
-    
-    &::before {
-      left: 100%;
-    }
-  }
 `;
 
 // Восстанавливаем компоненты для секции FinalBrandbookSection
@@ -1940,37 +1894,6 @@ const NoteBox = styled(motion.div)`
   }
 `;
 
-// Анимация индикаторов
-const indicatorPulse = keyframes`
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-`;
-
-const CircleIndicators = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 0.8rem;
-  margin-top: 1rem;
-`;
-
-const Indicator = styled.div`
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--accent-color);
-  opacity: 0.5;
-  
-  &.active {
-    animation: ${indicatorPulse} 1.5s infinite;
-  }
-`;
-
 const AudienceSectionBackground = styled.div`
   position: absolute;
   top: 0;
@@ -1983,7 +1906,7 @@ const AudienceSectionBackground = styled.div`
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2V6h4V4H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     opacity: 0.3;
   }
   
@@ -2270,22 +2193,7 @@ const CTANote = styled(motion.div)`
 `;
 
 // Копируем стили для FAQ из BannerAds.js
-const shimmerEffect = keyframes`
-  0% { background-position: 0% 0%; }
-  100% { background-position: 100% 0%; }
-`;
 
-const floatVertical = keyframes`
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
-`;
-
-const pulse = keyframes`
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-`;
 
 const FaqSection = styled(motion.section)`
   position: relative;
@@ -2713,6 +2621,10 @@ const FaqCtaButton = styled(motion.button)`
 const BrandbookPage = () => {
   // Добавляем состояние для управления FAQ
   const [expandedFaqs, setExpandedFaqs] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   // Данные FAQ с новым контентом
   const faqData = [
@@ -2790,16 +2702,10 @@ const BrandbookPage = () => {
               <PrimaryButton
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={openModal}
               >
                 Замовити брендбук <FaArrowRight />
               </PrimaryButton>
-
-              <SecondaryButton
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Приклади робіт <FaChevronRight />
-              </SecondaryButton>
             </HeroButtons>
 
             <HeroFeatures
@@ -3368,19 +3274,6 @@ const BrandbookPage = () => {
               </BrandbookPreviewContainer>
             </HideOnMobile>
           </ShowcaseGrid>
-          
-          <div style={{ textAlign: 'center' }}>
-            <PortfolioButton
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Переглянути портфоліо брендбуків <FaArrowRight />
-            </PortfolioButton>
-          </div>
         </BrandbookShowcaseContainer>
       </FinalBrandbookSection>
 
@@ -3712,14 +3605,7 @@ const BrandbookPage = () => {
             >
               Брендбук — це універсальний інструмент, який потрібен не лише великим компаніям. Він корисний будь-якому бізнесу, що прагне виглядати цілісно та професійно.
             </AudienceDescription>
-            
-            <CircleIndicators>
-              <Indicator className="active"></Indicator>
-              <Indicator></Indicator>
-              <Indicator></Indicator>
-              <Indicator></Indicator>
-              <Indicator></Indicator>
-            </CircleIndicators>
+          
           </AudienceIntro>
           
           <CardGrid>
@@ -3916,6 +3802,7 @@ const BrandbookPage = () => {
             transition={{ duration: 0.7, delay: 0.4 }}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
+            onClick={openModal}
           >
             Замовити брендбук <FaArrowRight />
           </FinalCTAButton>
@@ -4025,12 +3912,14 @@ const BrandbookPage = () => {
                 boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)',
               }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               Напишіть нам
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
       </FaqSection>
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
     </PageContainer>
   );
 };
