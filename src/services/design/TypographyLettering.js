@@ -3,7 +3,6 @@ import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaArrowRight,
-  FaChevronRight,
   FaUsers,
   FaLightbulb,
   FaRocket,
@@ -32,6 +31,7 @@ import {
   FaArrowDown,
 } from 'react-icons/fa';
 import { MdTextFields } from 'react-icons/md';
+import Modal from '../../components/Modal';
 
 // Анимации
 const float = keyframes`
@@ -201,36 +201,6 @@ const PrimaryButton = styled(motion.button)`
     background: #ff7b00;
     transform: translateY(-2px);
     box-shadow: 0 15px 30px rgba(255, 123, 0, 0.4);
-  }
-
-  svg {
-    font-size: 1.2rem;
-  }
-
-  @media (max-width: 576px) {
-    width: 100%;
-    justify-content: center;
-  }
-`;
-
-const SecondaryButton = styled(motion.button)`
-  background: transparent;
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  padding: 0.9rem 1.9rem;
-  font-size: 1.05rem;
-  font-weight: 600;
-  border-radius: 50px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: white;
-    transform: translateY(-2px);
   }
 
   svg {
@@ -481,8 +451,15 @@ const LetteringElement = styled(motion.div)`
 `;
 
 const TypographyLettering = () => {
+  // Modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
   // FAQ state
   const [expandedFaqs, setExpandedFaqs] = useState([]);
+
+  // Modal functions
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   // FAQ data
   const faqData = [
@@ -557,16 +534,10 @@ const TypographyLettering = () => {
               <PrimaryButton
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={openModal}
               >
                 Замовити розробку <FaArrowRight />
               </PrimaryButton>
-
-              <SecondaryButton
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Переглянути роботи <FaChevronRight />
-              </SecondaryButton>
             </HeroButtons>
 
             <HeroFeatures
@@ -863,24 +834,6 @@ const TypographyLettering = () => {
             </BrandExamples>
           </motion.div>
 
-          <BrandMatchCta
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <BrandMatchCtaText>
-              Хотите узнать, какая типографика наилучшим образом подойдет для
-              вашего бренда?
-            </BrandMatchCtaText>
-
-            <BrandMatchButton
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Подобрать типографику <FaLongArrowAltRight />
-            </BrandMatchButton>
-          </BrandMatchCta>
         </ImportanceContainer>
       </TypographyImportanceSection>
 
@@ -1112,6 +1065,7 @@ const TypographyLettering = () => {
             <LetteringCtaButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={openModal}
             >
               Замовити летеринг <FaLongArrowAltRight />
             </LetteringCtaButton>
@@ -1355,23 +1309,6 @@ const TypographyLettering = () => {
               </IntegrationVisual>
             </MethodologyStepVisual>
           </MethodologyStepCenter>
-
-          <MethodologyCtaSection
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <MethodologyCtaText>
-              Готові створити ідеальну типографіку для вашого бренду?
-            </MethodologyCtaText>
-            <MethodologyCtaButton
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Обговорити проєкт <FaLongArrowAltRight />
-            </MethodologyCtaButton>
-          </MethodologyCtaSection>
           
           {/* Добавляю новый блок преимуществ */}
           <BenefitsSection>
@@ -1685,16 +1622,7 @@ const TypographyLettering = () => {
               </StepContent>
             </WorkflowStep>
           </WorkflowProcess>
-          
-          <WorkflowCta>
-            <WorkflowCtaText>Наша мета — зробити так, щоб кожна літера працювала на імідж бренду.</WorkflowCtaText>
-            <WorkflowCtaButton
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Замовити консультацію <FaArrowRight />
-            </WorkflowCtaButton>
-          </WorkflowCta>
+        
           
           <WorkflowBackground>
             <WorkflowCircle className="circle1" />
@@ -1878,18 +1806,7 @@ const TypographyLettering = () => {
             </ProcessStepContainer>
           </OrderProcessSteps>
           
-          <OrderProcessCta>
-            <OrderProcessCtaText>
-              Також ми завжди на зв'язку — у разі потреби можемо адаптувати матеріали 
-              або допрацювати нові носії на основі обраної типографіки.
-            </OrderProcessCtaText>
-            <OrderProcessCtaButton
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Замовити типографіку <FaArrowRight />
-            </OrderProcessCtaButton>
-          </OrderProcessCta>
+
           
           <OrderProcessBackground>
             <OrderProcessBgLines className="line-1" />
@@ -2002,6 +1919,7 @@ const TypographyLettering = () => {
                 boxShadow: '0 10px 30px rgba(var(--accent-color-rgb), 0.3)',
               }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               Зв'язатися з нами <FaArrowRight />
             </FaqCtaButton>
@@ -2009,6 +1927,7 @@ const TypographyLettering = () => {
         </FaqContainer>
       </FaqSection>
       
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
       {/* Additional sections will follow here */}
     </PageContainer>
   );
@@ -2461,85 +2380,6 @@ const BrandExampleTag = styled.div`
   padding: 0.5rem 1rem;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 20px;
-`;
-
-const BrandMatchCta = styled(motion.div)`
-  background: linear-gradient(
-    135deg,
-    rgba(var(--accent-color-rgb), 0.1) 0%,
-    rgba(var(--accent-color-rgb), 0.2) 100%
-  );
-  border-radius: 24px;
-  padding: 3rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(var(--accent-color-rgb), 0.2);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(
-      circle at center,
-      rgba(var(--accent-color-rgb), 0.1) 0%,
-      transparent 70%
-    );
-    filter: blur(30px);
-    opacity: 0.5;
-    z-index: -1;
-  }
-`;
-
-const BrandMatchCtaText = styled.h3`
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  max-width: 700px;
-
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-  }
-`;
-
-const BrandMatchButton = styled(motion.button)`
-  background: linear-gradient(
-    90deg,
-    var(--accent-color) 0%,
-    var(--accent-color-light) 100%
-  );
-  color: white;
-  font-size: 1.1rem;
-  font-weight: 600;
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  border: none;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  cursor: pointer;
-  box-shadow: 0 10px 25px rgba(var(--accent-color-rgb), 0.4);
-  transition: all 0.3s ease;
-
-  &:hover {
-    box-shadow: 0 15px 30px rgba(var(--accent-color-rgb), 0.6);
-  }
-
-  svg {
-    font-size: 1.1rem;
-    transition: transform 0.3s ease;
-  }
-
-  &:hover svg {
-    transform: translateX(5px);
-  }
 `;
 
 // Lettering Art Section Styles
@@ -3389,85 +3229,6 @@ const MethodologyStepVisual = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
-
-const MethodologyCtaSection = styled(motion.div)`
-  margin-top: 5rem;
-  padding: 3.5rem;
-  background: linear-gradient(
-    135deg,
-    rgba(var(--accent-color-rgb), 0.1) 0%,
-    rgba(var(--accent-color-rgb), 0.05) 100%
-  );
-  border-radius: 20px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(var(--accent-color-rgb), 0.1);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(
-      90deg,
-      var(--accent-color) 0%,
-      var(--accent-color-light) 100%
-    );
-  }
-
-  @media (max-width: 768px) {
-    padding: 2.5rem 1.5rem;
-  }
-`;
-
-const MethodologyCtaText = styled.h3`
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 2rem;
-
-  @media (max-width: 768px) {
-    font-size: 1.8rem;
-  }
-`;
-
-const MethodologyCtaButton = styled(motion.button)`
-  padding: 1.2rem 2.5rem;
-  background: linear-gradient(
-    90deg,
-    var(--accent-color) 0%,
-    var(--accent-color-light) 100%
-  );
-  color: white;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin: 0 auto;
-  box-shadow: 0 10px 25px rgba(var(--accent-color-rgb), 0.3);
-  transition: all 0.3s ease;
-
-  svg {
-    font-size: 1.1rem;
-    transition: transform 0.3s ease;
-  }
-
-  &:hover {
-    box-shadow: 0 15px 30px rgba(var(--accent-color-rgb), 0.5);
-
-    svg {
-      transform: translateX(5px);
-    }
-  }
 `;
 
 const IntegrationVisual = styled.div`
@@ -4735,56 +4496,6 @@ const StepVisual = styled.div`
   }
 `;
 
-const WorkflowCta = styled.div`
-  text-align: center;
-  margin-top: 5rem;
-`;
-
-const WorkflowCtaText = styled.p`
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 2rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-const WorkflowCtaButton = styled(motion.button)`
-  padding: 1.2rem 2.5rem;
-  background: linear-gradient(
-    90deg,
-    var(--accent-color) 0%,
-    var(--accent-color-light) 100%
-  );
-  color: white;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  box-shadow: 0 10px 25px rgba(var(--accent-color-rgb), 0.3);
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin: 0 auto;
-  
-  &:hover {
-    box-shadow: 0 15px 30px rgba(var(--accent-color-rgb), 0.6);
-    transform: translateY(-3px);
-  }
-  
-  svg {
-    font-size: 1.1rem;
-    transition: transform 0.3s ease;
-  }
-  
-  &:hover svg {
-    transform: translateX(5px);
-  }
-`;
-
 const WorkflowBackground = styled.div`
   position: absolute;
   top: 0;
@@ -4856,11 +4567,6 @@ const WorkflowGrid = styled.div`
 const OrderProcessSection = styled.section`
   padding: 8rem 0;
   position: relative;
-  background: linear-gradient(
-    to bottom,
-    var(--bg-primary) 0%,
-    rgba(20, 27, 43, 0.98) 100%
-  );
   overflow: hidden;
 `;
 
@@ -5093,80 +4799,6 @@ const ProcessStepArrow = styled.div`
   @media (max-width: 768px) {
     bottom: 20px;
     right: 20px;
-  }
-`;
-
-const OrderProcessCta = styled.div`
-  margin-top: 5rem;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 16px;
-  padding: 3rem;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(
-      90deg,
-      var(--accent-color),
-      var(--accent-color-light)
-    );
-  }
-  
-  @media (max-width: 768px) {
-    padding: 2rem 1.5rem;
-  }
-`;
-
-const OrderProcessCtaText = styled.p`
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 2rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-const OrderProcessCtaButton = styled(motion.button)`
-  padding: 1.2rem 2.5rem;
-  background: linear-gradient(
-    90deg,
-    var(--accent-color) 0%,
-    var(--accent-color-light) 100%
-  );
-  color: white;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  box-shadow: 0 10px 25px rgba(var(--accent-color-rgb), 0.3);
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin: 0 auto;
-  
-  &:hover {
-    box-shadow: 0 15px 30px rgba(var(--accent-color-rgb), 0.6);
-    transform: translateY(-3px);
-  }
-  
-  svg {
-    font-size: 1.1rem;
-    transition: transform 0.3s ease;
-  }
-  
-  &:hover svg {
-    transform: translateX(5px);
   }
 `;
 
@@ -5653,3 +5285,4 @@ const FaqCtaButton = styled(motion.button)`
     transform: translateX(5px);
   }
 `;
+

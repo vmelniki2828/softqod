@@ -14,6 +14,7 @@ import {
   FaBolt,
   FaPlus,
 } from 'react-icons/fa';
+import Modal from '../../components/Modal';
 
 // Анимации
 const pulse = keyframes`
@@ -1062,68 +1063,6 @@ const WorkflowSummary = styled(motion.p)`
     font-size: 4rem;
     color: rgba(94, 234, 212, 0.2);
     font-family: serif;
-  }
-`;
-
-const WorkflowActions = styled(motion.div)`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-  align-items: center;
-  margin-top: 3rem;
-  position: relative;
-  z-index: 1;
-`;
-
-const WorkflowButton = styled(motion.button)`
-  padding: 1.2rem 3rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  background: linear-gradient(
-    90deg,
-    var(--accent-color),
-    rgba(59, 130, 246, 0.9)
-  );
-  color: white;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 0 8px 25px rgba(94, 234, 212, 0.3);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    transition: all 0.6s ease;
-  }
-
-  &:hover::before {
-    left: 100%;
-  }
-`;
-
-const WorkflowLink = styled(motion.a)`
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    color: var(--accent-color);
   }
 `;
 
@@ -2197,6 +2136,13 @@ const FaqDecoration = styled.div`
 `;
 
 const BusinessAutomationPage = () => {
+  // Add modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  // Modal functions
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+  
   const [stars, setStars] = useState([]);
   // const [orbitingDots, setOrbitingDots] = useState([]);
   // Добавляем состояние для аккордеона FAQ
@@ -2382,31 +2328,20 @@ const BusinessAutomationPage = () => {
           ))}
         </HeroBenefitsList>
 
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.6 }}
-          whileHover={{
-            scale: 1.05,
-            boxShadow: '0 0 20px rgba(59, 130, 246, 0.7)',
-          }}
-          whileTap={{ scale: 0.95 }}
-          style={{
-            padding: '1rem 2.5rem',
-            fontSize: '1.2rem',
-            fontWeight: 'bold',
-            background: 'var(--accent-color)',
-            color: 'white',
-            border: 'none',
-            borderRadius: '12px',
-            cursor: 'pointer',
-            marginTop: '3rem',
-            zIndex: 1,
-            position: 'relative',
-          }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1 }}
+          style={{ display: 'flex', justifyContent: 'center', marginTop: '3rem' }}
         >
-          Дізнатися більше
-        </motion.button>
+          <CtaButton
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={openModal}
+          >
+            Дізнатися більше
+          </CtaButton>
+        </motion.div>
       </HeroSection>
 
       <InfoSection
@@ -2567,6 +2502,7 @@ const BusinessAutomationPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
+            onClick={openModal}
           >
             Почати оптимізацію бізнесу
           </CtaButton>
@@ -2660,31 +2596,6 @@ const BusinessAutomationPage = () => {
               Ми не просто впроваджуємо технології — ми створюємо комплексні
               рішення, які реально підвищують ефективність вашого бізнесу.
             </WorkflowSummary>
-
-            <WorkflowActions
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1 }}
-            >
-              <WorkflowButton
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: '0 0 25px rgba(94, 234, 212, 0.5)',
-                }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Замовити консультацію
-              </WorkflowButton>
-
-              <WorkflowLink
-                whileHover={{
-                  color: 'var(--accent-color)',
-                  textDecoration: 'underline',
-                }}
-              >
-                Дізнатися більше про процес
-              </WorkflowLink>
-            </WorkflowActions>
           </WorkflowContent>
 
           <ServicesBgDecoration />
@@ -2803,6 +2714,7 @@ const BusinessAutomationPage = () => {
             <PulsingButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               <span className="glow-effect"></span>
               Розпочати автоматизацію
@@ -3018,6 +2930,7 @@ const BusinessAutomationPage = () => {
                 boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)',
               }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               Зв'язатися з експертом
             </FaqCtaButton>
@@ -3026,6 +2939,9 @@ const BusinessAutomationPage = () => {
           <FaqDecoration />
         </FaqContainer>
       </FaqSection>
+
+      {/* Modal Window */}
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
     </Container>
   );
 };

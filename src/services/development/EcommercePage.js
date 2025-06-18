@@ -21,6 +21,7 @@ import {
   FaPlus,
 } from 'react-icons/fa';
 import { AnimatePresence } from 'framer-motion';
+import Modal from '../../components/Modal';
 
 // Анимации
 const pulse = keyframes`
@@ -1726,6 +1727,10 @@ const FaqAnswer = styled(motion.div)`
 const EcommercePage = () => {
   const [stars, setStars] = useState([]);
   const [expandedFaqs, setExpandedFaqs] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   useEffect(() => {
     // Генерация звезд для фона
@@ -1966,6 +1971,7 @@ const EcommercePage = () => {
             boxShadow: '0 0 20px rgba(59, 130, 246, 0.7)',
           }}
           whileTap={{ scale: 0.95 }}
+          onClick={openModal}
           style={{
             padding: '1rem 2.5rem',
             fontSize: '1.2rem',
@@ -2096,6 +2102,7 @@ const EcommercePage = () => {
             <PulsingButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               <span className="glow-effect"></span>
               Обговорити проєкт
@@ -2275,6 +2282,7 @@ const EcommercePage = () => {
                 boxShadow: '0 10px 25px rgba(94, 234, 212, 0.4)',
               }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               Замовити консультацію
             </FeaturesButton>
@@ -2588,6 +2596,7 @@ const EcommercePage = () => {
               boxShadow: '0 0 20px rgba(59, 130, 246, 0.7)',
             }}
             whileTap={{ scale: 0.95 }}
+            onClick={openModal}
             style={{
               padding: '1rem 2.5rem',
               fontSize: '1.2rem',
@@ -2778,6 +2787,7 @@ const EcommercePage = () => {
                     boxShadow: '0 0 20px rgba(59, 130, 246, 0.7)',
                   }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={openModal}
                   style={{
                     padding: '1rem 2.5rem',
                     fontSize: '1.2rem',
@@ -2914,12 +2924,16 @@ const EcommercePage = () => {
                 boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)',
               }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               Напишіть нам
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
       </EcommerceFaqSection>
+      
+      {/* Modal Window */}
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
     </PageContainer>
   );
 };

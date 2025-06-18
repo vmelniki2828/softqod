@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import Modal from '../../components/Modal';
 import {
   FaArrowRight,
-  FaChevronRight,
   FaUsers,
   FaLightbulb,
   FaRocket,
@@ -175,36 +175,6 @@ const PrimaryButton = styled(motion.button)`
     background: #ff7b00;
     transform: translateY(-2px);
     box-shadow: 0 15px 30px rgba(255, 123, 0, 0.4);
-  }
-
-  svg {
-    font-size: 1.2rem;
-  }
-
-  @media (max-width: 576px) {
-    width: 100%;
-    justify-content: center;
-  }
-`;
-
-const SecondaryButton = styled(motion.button)`
-  background: transparent;
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  padding: 0.9rem 1.9rem;
-  font-size: 1.05rem;
-  font-weight: 600;
-  border-radius: 50px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: white;
-    transform: translateY(-2px);
   }
 
   svg {
@@ -536,6 +506,10 @@ const Cursor = styled(motion.div)`
 const UxUiDesign = () => {
   // FAQ state
   const [expandedFaqs, setExpandedFaqs] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   // FAQ data
   const faqData = [
@@ -613,16 +587,10 @@ const UxUiDesign = () => {
               <PrimaryButton
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={openModal}
               >
                 Замовити UX/UI дизайн <FaArrowRight />
               </PrimaryButton>
-
-              <SecondaryButton
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Переглянути роботи <FaChevronRight />
-              </SecondaryButton>
             </HeroButtons>
 
             <HeroFeatures
@@ -1080,6 +1048,7 @@ const UxUiDesign = () => {
             <BenefitsCtaButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               Замовити UX/UI дизайн
             </BenefitsCtaButton>
@@ -1276,6 +1245,7 @@ const UxUiDesign = () => {
             <SolutionsCtaButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={openModal}
             >
               Обговорити проєкт
             </SolutionsCtaButton>
@@ -1410,6 +1380,7 @@ const UxUiDesign = () => {
             <TestimonialsCtaButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={openModal}
             >
               Приєднатися до клієнтів <FaArrowRight />
             </TestimonialsCtaButton>
@@ -1510,12 +1481,14 @@ const UxUiDesign = () => {
             <FaqCtaButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={openModal}
             >
               Зв'язатися з нами <FaArrowRight />
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
       </FaqSection>
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
     </PageContainer>
   );
 };

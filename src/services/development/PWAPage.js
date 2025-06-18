@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaMobile, FaRocket, FaChartLine, FaWifi, FaCog, FaShieldAlt, FaBell, FaCoins, FaPencilRuler, FaTools, FaBolt, FaBrain, FaPlus } from 'react-icons/fa';
+import Modal from '../../components/Modal';
 
 // Анимации
 const pulse = keyframes`
@@ -879,59 +880,6 @@ const PWAServiceSummary = styled(motion.p)`
   }
 `;
 
-const ServiceActions = styled(motion.div)`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-  align-items: center;
-  margin-top: 3rem;
-  position: relative;
-  z-index: 1;
-`;
-
-const ServiceButton = styled(motion.button)`
-  padding: 1.2rem 3rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.9));
-  color: white;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 0 8px 25px rgba(94, 234, 212, 0.3);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: all 0.6s ease;
-  }
-  
-  &:hover::before {
-    left: 100%;
-  }
-`;
-
-const ServiceLink = styled(motion.a)`
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    color: var(--accent-color);
-  }
-`;
-
 const ServicesBgDecoration = styled.div`
   position: absolute;
   width: 100%;
@@ -980,6 +928,13 @@ const PWAWhyUsSection = styled(motion.section)`
 
 // Основной компонент
 const PWAPage = () => {
+  // Add modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  // Modal functions
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+  
   const [stars, setStars] = useState([]);
   // const [orbitingDots, setOrbitingDots] = useState([]);
   const [backgroundShapes, setBackgroundShapes] = useState([]);
@@ -1223,6 +1178,7 @@ const PWAPage = () => {
           transition={{ duration: 0.8, delay: 1.6 }}
           whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(59, 130, 246, 0.7)' }}
           whileTap={{ scale: 0.95 }}
+          onClick={openModal}
           style={{
             padding: '1rem 2.5rem',
             fontSize: '1.2rem',
@@ -1406,6 +1362,7 @@ const PWAPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
+            onClick={openModal}
           >
             Замовити PWA-розробку
           </PWACtaButton>
@@ -1484,30 +1441,6 @@ const PWAPage = () => {
               Ми не просто робимо "додаток у браузері" — ми створюємо інструмент, який реально працює на результат.
             </PWAServiceSummary>
             
-            <ServiceActions
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1 }}
-            >
-              <ServiceButton
-                whileHover={{ 
-                  scale: 1.05, 
-                  boxShadow: '0 0 25px rgba(94, 234, 212, 0.5)' 
-                }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Замовити консультацію
-              </ServiceButton>
-              
-              <ServiceLink
-                whileHover={{ 
-                  color: 'var(--accent-color)',
-                  textDecoration: 'underline'
-                }}
-              >
-                Переглянути портфоліо
-              </ServiceLink>
-            </ServiceActions>
           </PWAServicesContent>
           
           <ServicesBgDecoration />
@@ -1590,6 +1523,7 @@ const PWAPage = () => {
             <PulsingButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               <span className="glow-effect"></span>
               Почати проєкт
@@ -1838,6 +1772,7 @@ const PWAPage = () => {
             <FaqCtaButton
               whileHover={{ scale: 1.03, boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)' }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               Напишіть нам
             </FaqCtaButton>
@@ -1846,6 +1781,9 @@ const PWAPage = () => {
         
         <FaqDecoration />
       </PWAFaqSection>
+      
+      {/* Modal Window */}
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
       
     </Container>
   );

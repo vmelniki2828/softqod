@@ -1,7 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaMobile, FaRocket, FaCheck, FaApple, FaAndroid, FaStore, FaSearch, FaPencilRuler, FaCode, FaBug, FaPlus } from 'react-icons/fa';
+import {
+  FaMobile,
+  FaRocket,
+  FaCheck,
+  FaApple,
+  FaAndroid,
+  FaStore,
+  FaSearch,
+  FaPencilRuler,
+  FaCode,
+  FaBug,
+  FaPlus,
+} from 'react-icons/fa';
+import Modal from '../../components/Modal';
 
 // Анимации
 const pulse = keyframes`
@@ -55,9 +68,13 @@ const Background = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--bg-primary) 0%,
+    var(--bg-secondary) 100%
+  );
   z-index: -1;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -65,8 +82,16 @@ const Background = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 20% 30%, rgba(94, 234, 212, 0.15) 0%, transparent 25%),
-                radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.15) 0%, transparent 25%);
+    background: radial-gradient(
+        circle at 20% 30%,
+        rgba(94, 234, 212, 0.15) 0%,
+        transparent 25%
+      ),
+      radial-gradient(
+        circle at 80% 70%,
+        rgba(59, 130, 246, 0.15) 0%,
+        transparent 25%
+      );
   }
 `;
 
@@ -76,7 +101,11 @@ const StarField = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at center, transparent 0%, var(--bg-primary) 100%);
+  background: radial-gradient(
+    circle at center,
+    transparent 0%,
+    var(--bg-primary) 100%
+  );
   z-index: -1;
 `;
 
@@ -98,7 +127,12 @@ const Title = styled(motion.h1)`
   text-align: center;
   margin-bottom: 2rem;
   color: transparent;
-  background: linear-gradient(90deg, var(--accent-color), #5eead4, var(--accent-color));
+  background: linear-gradient(
+    90deg,
+    var(--accent-color),
+    #5eead4,
+    var(--accent-color)
+  );
   background-size: 200% auto;
   background-clip: text;
   -webkit-background-clip: text;
@@ -112,7 +146,7 @@ const Title = styled(motion.h1)`
   @media (max-width: 768px) {
     font-size: 2.5rem;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -148,7 +182,7 @@ const PhoneContainer = styled(motion.div)`
   position: relative;
   perspective: 1000px;
   margin: 3rem auto;
-  
+
   @media (max-width: 768px) {
     width: 220px;
     height: 400px;
@@ -163,7 +197,11 @@ const Phone = styled(motion.div)`
   transform-style: preserve-3d;
   border-radius: 36px;
   box-shadow: 0 0 50px rgba(94, 234, 212, 0.3);
-  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--bg-secondary) 0%,
+    var(--bg-primary) 100%
+  );
   overflow: hidden;
   animation: ${glow} 4s infinite ease-in-out;
 
@@ -179,7 +217,7 @@ const Phone = styled(motion.div)`
     border-radius: 20px;
     z-index: 2;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -187,7 +225,11 @@ const Phone = styled(motion.div)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(94, 234, 212, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(94, 234, 212, 0.1) 0%,
+      rgba(59, 130, 246, 0.1) 100%
+    );
     z-index: 1;
   }
 `;
@@ -255,7 +297,7 @@ const PhoneAppIcon = styled(motion.div)`
 `;
 
 const OrbitingCircle = styled(motion.div)`
-    position: absolute;
+  position: absolute;
   width: 200%;
   height: 200%;
   left: -50%;
@@ -352,7 +394,11 @@ const CTAButton = styled(motion.button)`
 `;
 
 const BusinessSection = styled(motion.section)`
-  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--bg-secondary) 0%,
+    var(--bg-primary) 100%
+  );
   position: relative;
   padding: 8rem 2rem;
   overflow: hidden;
@@ -370,7 +416,7 @@ const BusinessSection = styled(motion.section)`
     clip-path: polygon(0 0, 100% 50%, 0 100%);
     transform: scaleX(2);
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -378,8 +424,16 @@ const BusinessSection = styled(motion.section)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 70% 20%, rgba(94, 234, 212, 0.1) 0%, transparent 30%),
-                radial-gradient(circle at 30% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 30%);
+    background: radial-gradient(
+        circle at 70% 20%,
+        rgba(94, 234, 212, 0.1) 0%,
+        transparent 30%
+      ),
+      radial-gradient(
+        circle at 30% 70%,
+        rgba(59, 130, 246, 0.1) 0%,
+        transparent 30%
+      );
     z-index: 1;
   }
 `;
@@ -455,11 +509,15 @@ const BackgroundShape = styled(motion.div)`
 
 // Стили для секции типов приложений
 const AppsSection = styled(motion.section)`
-  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,
+    var(--bg-secondary) 100%
+  );
   position: relative;
   padding: 8rem 2rem;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -489,7 +547,7 @@ const AppsTitle = styled(motion.h2)`
   text-align: center;
   width: 100%;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -498,7 +556,12 @@ const AppsTitle = styled(motion.h2)`
     transform: translateX(-50%);
     width: 120px;
     height: 4px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-color),
+      transparent
+    );
     border-radius: 4px;
   }
 `;
@@ -518,7 +581,7 @@ const AppsGrid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2.5rem;
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
@@ -533,7 +596,7 @@ const AppCard = styled(motion.div)`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -541,7 +604,11 @@ const AppCard = styled(motion.div)`
     height: 5px;
     top: 0;
     left: 0;
-    background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.8));
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
+      rgba(59, 130, 246, 0.8)
+    );
     opacity: 0.7;
   }
 
@@ -556,7 +623,11 @@ const AppIcon = styled.div`
   width: 70px;
   height: 70px;
   border-radius: 16px;
-  background: linear-gradient(135deg, var(--accent-color) 0%, rgba(59, 130, 246, 0.8) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent-color) 0%,
+    rgba(59, 130, 246, 0.8) 100%
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -580,7 +651,11 @@ const AppCardDescription = styled(motion.p)`
 `;
 
 const MobileStagesSection = styled(motion.section)`
-  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,
+    var(--bg-secondary) 100%
+  );
   position: relative;
   padding: 8rem 2rem;
   overflow: hidden;
@@ -589,17 +664,28 @@ const MobileStagesSection = styled(motion.section)`
 const MobileWhyUsSection = styled(motion.section)`
   position: relative;
   padding: 8rem 2rem;
-  background: linear-gradient(180deg, var(--bg-secondary) 0%, rgba(16, 24, 39, 1) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--bg-secondary) 0%,
+    rgba(16, 24, 39, 1) 100%
+  );
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    background: 
-      radial-gradient(circle at 20% 30%, rgba(94, 234, 212, 0.05) 0%, transparent 20%),
-      radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.05) 0%, transparent 20%);
+    background: radial-gradient(
+        circle at 20% 30%,
+        rgba(94, 234, 212, 0.05) 0%,
+        transparent 20%
+      ),
+      radial-gradient(
+        circle at 80% 70%,
+        rgba(59, 130, 246, 0.05) 0%,
+        transparent 20%
+      );
     top: 0;
     left: 0;
     z-index: 0;
@@ -633,7 +719,7 @@ const WhyUsTitle = styled(motion.h2)`
   position: relative;
   display: inline-block;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -659,7 +745,7 @@ const WhyUsCardsContainer = styled(motion.div)`
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2.5rem;
   margin-bottom: 4rem;
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
@@ -678,7 +764,7 @@ const WhyUsCard = styled(motion.div)`
   overflow: hidden;
   z-index: 1;
   height: 100%;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -686,17 +772,21 @@ const WhyUsCard = styled(motion.div)`
     left: 0;
     right: 0;
     height: 5px;
-    background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.8));
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
+      rgba(59, 130, 246, 0.8)
+    );
     z-index: 0;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s ease;
   }
-  
+
   &:hover::before {
     transform: scaleX(1);
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -708,7 +798,7 @@ const WhyUsCard = styled(motion.div)`
     opacity: 0;
     transition: opacity 0.4s ease;
   }
-  
+
   &:hover::after {
     opacity: 1;
   }
@@ -720,12 +810,16 @@ const WhyUsCardGlow = styled.div`
   height: 150%;
   top: -25%;
   left: -25%;
-  background: radial-gradient(circle, rgba(94, 234, 212, 0.06) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(94, 234, 212, 0.06) 0%,
+    transparent 70%
+  );
   opacity: 0;
   transition: opacity 0.3s ease, transform 0.5s ease;
   z-index: -1;
   transform: scale(0.8);
-  
+
   ${WhyUsCard}:hover & {
     opacity: 1;
     transform: scale(1);
@@ -746,11 +840,11 @@ const WhyUsIconWrapper = styled.div`
   position: relative;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  
+
   ${WhyUsCard}:hover & {
     transform: scale(1.1);
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -768,7 +862,7 @@ const WhyUsCardTitle = styled.h3`
   margin-bottom: 1.2rem;
   font-weight: 600;
   position: relative;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -795,12 +889,16 @@ const CardAccent = styled.div`
   width: 60px;
   height: 60px;
   border-radius: 0 0 20px 0;
-  background: linear-gradient(135deg, transparent 50%, rgba(94, 234, 212, 0.1) 50%);
+  background: linear-gradient(
+    135deg,
+    transparent 50%,
+    rgba(94, 234, 212, 0.1) 50%
+  );
   z-index: -1;
   opacity: 0;
   transition: opacity 0.3s ease, transform 0.3s ease;
   transform: scale(0);
-  
+
   ${WhyUsCard}:hover & {
     opacity: 1;
     transform: scale(1);
@@ -817,7 +915,11 @@ const PulsingButton = styled(motion.button)`
   padding: 1.2rem 3.5rem;
   font-size: 1.3rem;
   font-weight: 600;
-  background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.9));
+  background: linear-gradient(
+    90deg,
+    var(--accent-color),
+    rgba(59, 130, 246, 0.9)
+  );
   color: white;
   border: none;
   border-radius: 50px;
@@ -826,7 +928,7 @@ const PulsingButton = styled(motion.button)`
   overflow: hidden;
   z-index: 1;
   box-shadow: 0 8px 25px rgba(94, 234, 212, 0.3);
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -834,10 +936,14 @@ const PulsingButton = styled(motion.button)`
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.2) 0%,
+      transparent 60%
+    );
     z-index: -1;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -845,10 +951,15 @@ const PulsingButton = styled(motion.button)`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
     transition: all 0.6s ease;
   }
-  
+
   &:hover::after {
     left: 100%;
   }
@@ -862,8 +973,9 @@ const WhyUsBackgroundShapes = styled.div`
   height: 100%;
   overflow: hidden;
   z-index: 0;
-  
-  &::before, &::after {
+
+  &::before,
+  &::after {
     content: '';
     position: absolute;
     width: 400px;
@@ -871,24 +983,36 @@ const WhyUsBackgroundShapes = styled.div`
     border-radius: 50%;
     z-index: 0;
   }
-  
+
   &::before {
     top: 20%;
     left: -100px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(59, 130, 246, 0.03) 0%,
+      transparent 70%
+    );
     filter: blur(50px);
   }
-  
+
   &::after {
     bottom: 10%;
     right: -100px;
-    background: radial-gradient(circle, rgba(94, 234, 212, 0.03) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(94, 234, 212, 0.03) 0%,
+      transparent 70%
+    );
     filter: blur(50px);
   }
 `;
 
 const PricingSection = styled(motion.section)`
-  background: linear-gradient(180deg, rgba(16, 24, 39, 1) 0%, var(--bg-primary) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(16, 24, 39, 1) 0%,
+    var(--bg-primary) 100%
+  );
   position: relative;
   padding: 8rem 2rem;
   overflow: hidden;
@@ -973,7 +1097,7 @@ const FactorItem = styled(motion.div)`
   background: rgba(255, 255, 255, 0.03);
   border-radius: 16px;
   transition: all 0.3s ease;
-  
+
   &:hover {
     background: rgba(255, 255, 255, 0.06);
     transform: translateX(10px);
@@ -984,7 +1108,11 @@ const FactorIcon = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 12px;
-  background: linear-gradient(135deg, var(--accent-color) 0%, rgba(59, 130, 246, 0.8) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent-color) 0%,
+    rgba(59, 130, 246, 0.8) 100%
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1031,7 +1159,11 @@ const PricingButton = styled(motion.button)`
   padding: 1rem 2.5rem;
   font-size: 1.2rem;
   font-weight: 600;
-  background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.9));
+  background: linear-gradient(
+    90deg,
+    var(--accent-color),
+    rgba(59, 130, 246, 0.9)
+  );
   color: white;
   border: none;
   border-radius: 12px;
@@ -1039,7 +1171,7 @@ const PricingButton = styled(motion.button)`
   box-shadow: 0 8px 25px rgba(94, 234, 212, 0.3);
   transition: all 0.3s ease;
   margin: 0 auto;
-  
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(94, 234, 212, 0.4);
@@ -1053,27 +1185,36 @@ const PricingBgDecoration = styled.div`
   top: 0;
   left: 0;
   z-index: 0;
-  
-  &::before, &::after {
+
+  &::before,
+  &::after {
     content: '';
     position: absolute;
     border-radius: 50%;
     opacity: 0.1;
   }
-  
+
   &::before {
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      var(--accent-color) 0%,
+      transparent 70%
+    );
     top: -200px;
     right: -200px;
     filter: blur(80px);
   }
-  
+
   &::after {
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.8) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(59, 130, 246, 0.8) 0%,
+      transparent 70%
+    );
     bottom: -100px;
     left: -100px;
     filter: blur(60px);
@@ -1084,10 +1225,14 @@ const PricingBgDecoration = styled.div`
 const FaqSection = styled(motion.section)`
   position: relative;
   padding: 8rem 2rem;
-  background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(16, 24, 39, 0.9) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,
+    rgba(16, 24, 39, 0.9) 100%
+  );
   overflow: hidden;
   z-index: 0;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -1095,7 +1240,11 @@ const FaqSection = styled(motion.section)`
     right: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(ellipse at top right, rgba(94, 234, 212, 0.08) 0%, transparent 70%);
+    background: radial-gradient(
+      ellipse at top right,
+      rgba(94, 234, 212, 0.08) 0%,
+      transparent 70%
+    );
     z-index: -1;
   }
 `;
@@ -1106,7 +1255,11 @@ const FaqWaveTop = styled.div`
   left: 0;
   width: 100%;
   height: 120px;
-  background: linear-gradient(to top left, transparent 49%, var(--bg-primary) 51%);
+  background: linear-gradient(
+    to top left,
+    transparent 49%,
+    var(--bg-primary) 51%
+  );
   z-index: 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 `;
@@ -1123,20 +1276,28 @@ const FaqGlowCircle = styled.div`
   border-radius: 50%;
   filter: blur(80px);
   z-index: 0;
-  
+
   &.circle-1 {
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(94, 234, 212, 0.05) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(94, 234, 212, 0.05) 0%,
+      transparent 70%
+    );
     top: 10%;
     left: -200px;
     animation: ${pulse} 15s infinite ease-in-out;
   }
-  
+
   &.circle-2 {
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(59, 130, 246, 0.05) 0%,
+      transparent 70%
+    );
     bottom: 5%;
     right: -200px;
     animation: ${pulse} 18s infinite ease-in-out reverse;
@@ -1151,7 +1312,7 @@ const FaqTitle = styled(motion.h2)`
   text-align: center;
   position: relative;
   text-shadow: 0 2px 10px rgba(94, 234, 212, 0.2);
-  
+
   &::before {
     content: 'F.A.Q';
     position: absolute;
@@ -1165,7 +1326,7 @@ const FaqTitle = styled(motion.h2)`
     z-index: -1;
     white-space: nowrap;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -1174,7 +1335,12 @@ const FaqTitle = styled(motion.h2)`
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-color),
+      transparent
+    );
     border-radius: 4px;
     animation: ${pulse} 2s infinite ease-in-out;
   }
@@ -1197,7 +1363,7 @@ const FaqItem = styled(motion.div)`
   transition: all 0.3s ease;
   transform-style: preserve-3d;
   perspective: 1000px;
-  
+
   &:hover {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 15px rgba(94, 234, 212, 0.1);
     border-color: rgba(94, 234, 212, 0.1);
@@ -1217,7 +1383,7 @@ const FaqQuestion = styled(motion.div)`
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -1225,16 +1391,20 @@ const FaqQuestion = styled(motion.div)`
     left: 0;
     width: 5px;
     height: 100%;
-    background: linear-gradient(to bottom, var(--accent-color), rgba(59, 130, 246, 0.5));
+    background: linear-gradient(
+      to bottom,
+      var(--accent-color),
+      rgba(59, 130, 246, 0.5)
+    );
     opacity: 0;
     transition: opacity 0.3s ease;
     border-radius: 0 3px 3px 0;
   }
-  
+
   &:hover::before {
     opacity: 1;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -1242,7 +1412,12 @@ const FaqQuestion = styled(motion.div)`
     left: 2rem;
     right: 2rem;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.05),
+      transparent
+    );
   }
 `;
 
@@ -1253,7 +1428,7 @@ const FaqQuestionText = styled.h3`
   transition: all 0.3s ease;
   flex: 1;
   transform: translateZ(5px);
-  
+
   ${FaqQuestion}:hover & {
     color: var(--accent-color);
     transform: translateZ(10px);
@@ -1272,7 +1447,7 @@ const FaqToggle = styled(motion.div)`
   background: rgba(94, 234, 212, 0.05);
   border-radius: 50%;
   transition: all 0.3s ease;
-  
+
   &:hover {
     background: rgba(94, 234, 212, 0.1);
     box-shadow: 0 0 10px rgba(94, 234, 212, 0.2);
@@ -1286,7 +1461,7 @@ const FaqAnswer = styled(motion.div)`
   color: var(--text-secondary);
   overflow: hidden;
   position: relative;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -1294,16 +1469,25 @@ const FaqAnswer = styled(motion.div)`
     left: 2rem;
     right: 2rem;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
   }
-  
+
   strong {
     color: var(--accent-color);
     font-weight: 600;
   }
-  
+
   .highlight {
-    background: linear-gradient(90deg, rgba(94, 234, 212, 0.1), rgba(59, 130, 246, 0.1));
+    background: linear-gradient(
+      90deg,
+      rgba(94, 234, 212, 0.1),
+      rgba(59, 130, 246, 0.1)
+    );
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
     margin: 0 0.2rem;
@@ -1325,7 +1509,7 @@ const FaqCta = styled(motion.div)`
   position: relative;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -1333,10 +1517,14 @@ const FaqCta = styled(motion.div)`
     left: 0;
     width: 100%;
     height: 5px;
-    background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.8));
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
+      rgba(59, 130, 246, 0.8)
+    );
     z-index: 1;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -1344,7 +1532,11 @@ const FaqCta = styled(motion.div)`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(94, 234, 212, 0.05) 0%, transparent 50%);
+    background: linear-gradient(
+      135deg,
+      rgba(94, 234, 212, 0.05) 0%,
+      transparent 50%
+    );
     z-index: -1;
   }
 `;
@@ -1361,7 +1553,11 @@ const FaqCtaButton = styled(motion.button)`
   padding: 1.2rem 3rem;
   font-size: 1.2rem;
   font-weight: 600;
-  background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.9));
+  background: linear-gradient(
+    90deg,
+    var(--accent-color),
+    rgba(59, 130, 246, 0.9)
+  );
   color: white;
   border: none;
   border-radius: 50px;
@@ -1370,7 +1566,7 @@ const FaqCtaButton = styled(motion.button)`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -1378,14 +1574,19 @@ const FaqCtaButton = styled(motion.button)`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
     transition: all 0.6s ease;
   }
-  
+
   &:hover::before {
     left: 100%;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -1393,7 +1594,11 @@ const FaqCtaButton = styled(motion.button)`
     left: 0;
     width: 100%;
     height: 8px;
-    background: linear-gradient(90deg, rgba(59, 130, 246, 0.5), var(--accent-color));
+    background: linear-gradient(
+      90deg,
+      rgba(59, 130, 246, 0.5),
+      var(--accent-color)
+    );
     filter: blur(5px);
     opacity: 0.5;
   }
@@ -1409,7 +1614,7 @@ const FaqDecoration = styled.div`
   right: 10%;
   animation: ${rotate} 30s linear infinite;
   z-index: 0;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -1421,13 +1626,17 @@ const FaqDecoration = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  
+
   &::after {
     content: '';
     position: absolute;
     width: 50px;
     height: 50px;
-    background: radial-gradient(circle, rgba(94, 234, 212, 0.1) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(94, 234, 212, 0.1) 0%,
+      transparent 70%
+    );
     border-radius: 50%;
     top: 30%;
     left: 20%;
@@ -1456,7 +1665,8 @@ const MobileAppsPage = () => {
   const [backgroundShapes, setBackgroundShapes] = useState([]);
   // Добавляем состояние для аккордеона FAQ
   const [expandedFaqs, setExpandedFaqs] = useState([]);
-  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   useEffect(() => {
     // Генерация звезд для фона
     const generatedStars = [];
@@ -1467,11 +1677,11 @@ const MobileAppsPage = () => {
         opacity: Math.random() * 0.5 + 0.1,
         top: Math.random() * 100,
         left: Math.random() * 100,
-        duration: Math.random() * 3 + 1
+        duration: Math.random() * 3 + 1,
       });
     }
     setStars(generatedStars);
-    
+
     // Генерация фоновых форм
     const shapes = [];
     for (let i = 0; i < 5; i++) {
@@ -1481,7 +1691,7 @@ const MobileAppsPage = () => {
         top: Math.random() * 100,
         left: Math.random() * 100,
         duration: Math.random() * 20 + 10,
-        delay: Math.random() * 5
+        delay: Math.random() * 5,
       });
     }
     setBackgroundShapes(shapes);
@@ -1490,19 +1700,22 @@ const MobileAppsPage = () => {
   const benefitsData = [
     {
       icon: <FaMobile />,
-      title: "Нативна розробка",
-      description: "Створюємо унікальні додатки з максимальною продуктивністю для iOS та Android."
+      title: 'Нативна розробка',
+      description:
+        'Створюємо унікальні додатки з максимальною продуктивністю для iOS та Android.',
     },
     {
       icon: <FaRocket />,
-      title: "Крос-платформенні рішення",
-      description: "Економія часу та бюджету з додатками, що працюють на всіх платформах."
+      title: 'Крос-платформенні рішення',
+      description:
+        'Економія часу та бюджету з додатками, що працюють на всіх платформах.',
     },
     {
       icon: <FaCheck />,
-      title: "Підтримка та оновлення",
-      description: "Забезпечуємо стабільну роботу та випускаємо нові версії з додатковим функціоналом."
-    }
+      title: 'Підтримка та оновлення',
+      description:
+        'Забезпечуємо стабільну роботу та випускаємо нові версії з додатковим функціоналом.',
+    },
   ];
 
   const phoneVariants = {
@@ -1512,55 +1725,66 @@ const MobileAppsPage = () => {
       transition: {
         duration: 6,
         repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
+        ease: 'easeInOut',
+      },
+    },
   };
 
   const appTypes = [
     {
       icon: <FaApple />,
-      title: "Нативні додатки для iOS та Android",
-      description: "Нативна розробка дозволяє створювати максимально швидкі та стабільні додатки, що повністю використовують можливості операційних систем iOS та Android. Такі додатки відрізняються високою продуктивністю, якісною графікою та глибокою інтеграцією з пристроями користувача."
+      title: 'Нативні додатки для iOS та Android',
+      description:
+        'Нативна розробка дозволяє створювати максимально швидкі та стабільні додатки, що повністю використовують можливості операційних систем iOS та Android. Такі додатки відрізняються високою продуктивністю, якісною графікою та глибокою інтеграцією з пристроями користувача.',
     },
     {
       icon: <FaRocket />,
-      title: "Кросплатформенні додатки на Flutter та React Native",
-      description: "Кросплатформенні рішення дають змогу розробити один додаток для двох платформ одночасно, що економить час та бюджет. Технології Flutter і React Native забезпечують високу швидкість роботи, гарну якість інтерфейсу та простоту масштабування проєкту."
+      title: 'Кросплатформенні додатки на Flutter та React Native',
+      description:
+        'Кросплатформенні рішення дають змогу розробити один додаток для двох платформ одночасно, що економить час та бюджет. Технології Flutter і React Native забезпечують високу швидкість роботи, гарну якість інтерфейсу та простоту масштабування проєкту.',
     },
     {
       icon: <FaMobile />,
-      title: "Прогресивні вебдодатки (PWA)",
-      description: "Прогресивні вебдодатки поєднують переваги вебсайтів та нативних додатків. Вони працюють у браузері, не потребують встановлення, можуть працювати в офлайн-режимі та підтримують push-сповіщення. PWA — чудовий вибір для бізнесу, який хоче швидко запустити мобільний продукт із мінімальними витратами."
-    }
+      title: 'Прогресивні вебдодатки (PWA)',
+      description:
+        'Прогресивні вебдодатки поєднують переваги вебсайтів та нативних додатків. Вони працюють у браузері, не потребують встановлення, можуть працювати в офлайн-режимі та підтримують push-сповіщення. PWA — чудовий вибір для бізнесу, який хоче швидко запустити мобільний продукт із мінімальними витратами.',
+    },
   ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { 
+    visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
-  
+
   const itemVariants = {
     hidden: { y: 30, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
+      transition: { duration: 0.8, ease: 'easeOut' },
+    },
   };
 
   // Функция для переключения состояния аккордеона
-  const toggleFaq = (index) => {
+  const toggleFaq = index => {
     if (expandedFaqs.includes(index)) {
       setExpandedFaqs(expandedFaqs.filter(item => item !== index));
     } else {
       setExpandedFaqs([...expandedFaqs, index]);
     }
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -1573,17 +1797,17 @@ const MobileAppsPage = () => {
         <Background />
         <StarField>
           {stars.map(star => (
-            <Star 
-              key={star.id} 
-              size={star.size} 
-              opacity={star.opacity} 
-              top={star.top} 
-              left={star.left} 
-              duration={star.duration} 
+            <Star
+              key={star.id}
+              size={star.size}
+              opacity={star.opacity}
+              top={star.top}
+              left={star.left}
+              duration={star.duration}
             />
           ))}
         </StarField>
-        
+
         <Title
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -1591,15 +1815,20 @@ const MobileAppsPage = () => {
         >
           Розробка мобільних додатків на замовлення
         </Title>
-        
+
         <Subtitle
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          Створення мобільного додатку — це ефективний інструмент для бізнесу, який допомагає залучати нових клієнтів, підвищувати лояльність та збільшувати продажі. У сучасному світі понад 70% інтернет-трафіку надходить саме з мобільних пристроїв, тому наявність власного мобільного додатку для iOS або Android стає важливою конкурентною перевагою.
+          Створення мобільного додатку — це ефективний інструмент для бізнесу,
+          який допомагає залучати нових клієнтів, підвищувати лояльність та
+          збільшувати продажі. У сучасному світі понад 70% інтернет-трафіку
+          надходить саме з мобільних пристроїв, тому наявність власного
+          мобільного додатку для iOS або Android стає важливою конкурентною
+          перевагою.
         </Subtitle>
-        
+
         <PhoneContainer
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -1610,7 +1839,7 @@ const MobileAppsPage = () => {
           <Phone>
             <OrbitingCircle />
             <OrbitingCircleInner />
-            
+
             <PhoneScreen
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -1618,21 +1847,21 @@ const MobileAppsPage = () => {
             >
               <PhoneContent>
                 <IconCircle
-                  animate={{ 
+                  animate={{
                     scale: [1, 1.1, 1],
-                    rotateZ: [0, 10, -10, 0]
+                    rotateZ: [0, 10, -10, 0],
                   }}
                   transition={{
                     duration: 3,
                     repeat: Infinity,
-                    ease: "easeInOut"
+                    ease: 'easeInOut',
                   }}
                 >
                   <FaMobile />
                 </IconCircle>
                 <motion.h3
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.8, duration: 0.5 }}
                   style={{ marginBottom: '0.5rem' }}
                 >
@@ -1646,62 +1875,73 @@ const MobileAppsPage = () => {
                   iOS + Android
                 </motion.p>
               </PhoneContent>
-              
+
               <PhoneApps>
-                <PhoneAppIcon whileHover={{ scale: 1.2 }}><FaApple /></PhoneAppIcon>
-                <PhoneAppIcon whileHover={{ scale: 1.2 }}><FaAndroid /></PhoneAppIcon>
-                <PhoneAppIcon whileHover={{ scale: 1.2 }}><FaStore /></PhoneAppIcon>
+                <PhoneAppIcon whileHover={{ scale: 1.2 }}>
+                  <FaApple />
+                </PhoneAppIcon>
+                <PhoneAppIcon whileHover={{ scale: 1.2 }}>
+                  <FaAndroid />
+                </PhoneAppIcon>
+                <PhoneAppIcon whileHover={{ scale: 1.2 }}>
+                  <FaStore />
+                </PhoneAppIcon>
               </PhoneApps>
             </PhoneScreen>
           </Phone>
         </PhoneContainer>
-        
+
         <Subtitle
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.9 }}
         >
-          Наша компанія пропонує професійні послуги з розробки мобільних додатків "під ключ" — від аналітики і проєктування до запуску та підтримки. Ми створюємо нативні додатки, кросплатформенні рішення та прогресивні вебдодатки (PWA), які працюють швидко, стабільно та безпечно.
+          Наша компанія пропонує професійні послуги з розробки мобільних
+          додатків "під ключ" — від аналітики і проєктування до запуску та
+          підтримки. Ми створюємо нативні додатки, кросплатформенні рішення та
+          прогресивні вебдодатки (PWA), які працюють швидко, стабільно та
+          безпечно.
         </Subtitle>
-        
+
         <HeroBenefitsList
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.3 }}
         >
           {benefitsData.map((benefit, index) => (
-            <HeroBenefitItem
-              key={index}
-              whileHover={{ scale: 1.02 }}
-            >
-              <HeroBenefitIcon>
-                {benefit.icon}
-              </HeroBenefitIcon>
+            <HeroBenefitItem key={index} whileHover={{ scale: 1.02 }}>
+              <HeroBenefitIcon>{benefit.icon}</HeroBenefitIcon>
               <HeroBenefitContent>
                 <HeroBenefitTitle>{benefit.title}</HeroBenefitTitle>
-                <HeroBenefitDescription>{benefit.description}</HeroBenefitDescription>
+                <HeroBenefitDescription>
+                  {benefit.description}
+                </HeroBenefitDescription>
               </HeroBenefitContent>
             </HeroBenefitItem>
           ))}
         </HeroBenefitsList>
-        
+
         <CTAButton
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.6 }}
-          whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(59, 130, 246, 0.7)' }}
+          whileHover={{
+            scale: 1.05,
+            boxShadow: '0 0 20px rgba(59, 130, 246, 0.7)',
+          }}
           whileTap={{ scale: 0.95 }}
+          onClick={openModal}
         >
           Замовити консультацію
         </CTAButton>
       </HeroSection>
-      
+
       <BusinessSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        {backgroundShapes.map((shape) => (
+        {backgroundShapes.map(shape => (
           <BackgroundShape
             key={shape.id}
             style={{
@@ -1719,11 +1959,11 @@ const MobileAppsPage = () => {
               duration: shape.duration,
               repeat: Infinity,
               delay: shape.delay,
-              ease: "linear"
+              ease: 'linear',
             }}
           />
         ))}
-        
+
         <BusinessContainer>
           <BusinessTitle
             initial={{ opacity: 0, x: -20 }}
@@ -1732,35 +1972,44 @@ const MobileAppsPage = () => {
           >
             Чому вашому бізнесу потрібно мобільний додаток
           </BusinessTitle>
-          
+
           <BusinessContent>
             <BusinessText
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Мобільний додаток відкриває для бізнесу нові можливості взаємодії з клієнтами та ринку просування. Він дозволяє бути на зв'язку з аудиторією 24/7, надсилати push-сповіщення про акції, новини та спеціальні пропозиції, а також збирати аналітику для покращення сервісу.
+              Мобільний додаток відкриває для бізнесу нові можливості взаємодії
+              з клієнтами та ринку просування. Він дозволяє бути на зв'язку з
+              аудиторією 24/7, надсилати push-сповіщення про акції, новини та
+              спеціальні пропозиції, а також збирати аналітику для покращення
+              сервісу.
             </BusinessText>
-            
+
             <BusinessText
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Крім того, наявність мобільного додатку сприяє зміцненню бренду. Яскравий та зручний інтерфейс, бездоганна функціональність і швидка робота допомагають формувати позитивний імідж компанії. Бізнеси, що пропонують мобільний досвід, значно випереджають конкурентів за рівнем залученості клієнтів та обсягом продажів.
+              Крім того, наявність мобільного додатку сприяє зміцненню бренду.
+              Яскравий та зручний інтерфейс, бездоганна функціональність і
+              швидка робота допомагають формувати позитивний імідж компанії.
+              Бізнеси, що пропонують мобільний досвід, значно випереджають
+              конкурентів за рівнем залученості клієнтів та обсягом продажів.
             </BusinessText>
-            
+
             <BusinessHighlight
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Інвестуючи у розробку мобільного додатку, ви отримуєте потужний маркетинговий інструмент, який працює на ваш успіх кожного дня.
+              Інвестуючи у розробку мобільного додатку, ви отримуєте потужний
+              маркетинговий інструмент, який працює на ваш успіх кожного дня.
             </BusinessHighlight>
           </BusinessContent>
         </BusinessContainer>
       </BusinessSection>
-      
+
       <AppsSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -1769,20 +2018,23 @@ const MobileAppsPage = () => {
         <AppsContainer>
           <AppsTitle
             initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
             Які мобільні додатки ми створюємо
           </AppsTitle>
-          
+
           <AppsDescription
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Наша команда розробляє мобільні рішення для бізнесу будь-якої складності — від стартапів до великих корпорацій. Ми створюємо додатки, що ідеально підходять для вашої цільової аудиторії та бізнес-цілей.
+            Наша команда розробляє мобільні рішення для бізнесу будь-якої
+            складності — від стартапів до великих корпорацій. Ми створюємо
+            додатки, що ідеально підходять для вашої цільової аудиторії та
+            бізнес-цілей.
           </AppsDescription>
-          
+
           <AppsGrid
             variants={containerVariants}
             initial="hidden"
@@ -1802,7 +2054,7 @@ const MobileAppsPage = () => {
           </AppsGrid>
         </AppsContainer>
       </AppsSection>
-      
+
       <MobileStagesSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -1817,8 +2069,9 @@ const MobileAppsPage = () => {
             width: '400px',
             height: '400px',
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(94, 234, 212, 0.1) 0%, transparent 70%)',
-            filter: 'blur(60px)'
+            background:
+              'radial-gradient(circle, rgba(94, 234, 212, 0.1) 0%, transparent 70%)',
+            filter: 'blur(60px)',
           }}
         />
         <div
@@ -1829,17 +2082,18 @@ const MobileAppsPage = () => {
             width: '300px',
             height: '300px',
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%)',
-            filter: 'blur(50px)'
+            background:
+              'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%)',
+            filter: 'blur(50px)',
           }}
         />
-        
+
         <div
           style={{
             maxWidth: '1400px',
             margin: '0 auto',
             position: 'relative',
-            zIndex: 2
+            zIndex: 2,
           }}
         >
           <motion.h2
@@ -1853,11 +2107,11 @@ const MobileAppsPage = () => {
               marginBottom: '6rem',
               position: 'relative',
               textAlign: 'center',
-              textShadow: '0 5px 15px rgba(0, 0, 0, 0.2)'
+              textShadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
             }}
           >
             Етапи розробки мобільного додатку
-            <motion.div 
+            <motion.div
               style={{
                 position: 'absolute',
                 bottom: '-20px',
@@ -1865,17 +2119,18 @@ const MobileAppsPage = () => {
                 transform: 'translateX(-50%)',
                 width: '150px',
                 height: '4px',
-                background: 'linear-gradient(90deg, transparent, var(--accent-color), transparent)',
-                borderRadius: '4px'
+                background:
+                  'linear-gradient(90deg, transparent, var(--accent-color), transparent)',
+                borderRadius: '4px',
               }}
               animate={{
                 width: ['0%', '150px'],
-                opacity: [0, 1]
+                opacity: [0, 1],
               }}
               transition={{ duration: 1, delay: 0.3 }}
             />
           </motion.h2>
-          
+
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -1885,21 +2140,23 @@ const MobileAppsPage = () => {
               maxWidth: '1000px',
               textAlign: 'center',
               margin: '0 auto 4rem',
-              color: 'var(--text-secondary)'
+              color: 'var(--text-secondary)',
             }}
           >
-            Процес створення мобільного додатку складається з кількох важливих етапів, кожен з яких впливає на якість кінцевого продукту та його успіх серед користувачів.
+            Процес створення мобільного додатку складається з кількох важливих
+            етапів, кожен з яких впливає на якість кінцевого продукту та його
+            успіх серед користувачів.
           </motion.p>
-          
+
           <motion.div
             variants={{
               hidden: { opacity: 0 },
-              visible: { 
+              visible: {
                 opacity: 1,
                 transition: {
-                  staggerChildren: 0.3
-                }
-              }
+                  staggerChildren: 0.3,
+                },
+              },
             }}
             initial="hidden"
             animate="visible"
@@ -1907,45 +2164,50 @@ const MobileAppsPage = () => {
               display: 'flex',
               flexDirection: 'column',
               gap: '3rem',
-              alignItems: 'center'
+              alignItems: 'center',
             }}
           >
             {[
               {
                 icon: <FaSearch />,
-                title: "Аналіз та планування",
-                description: "Ми вивчаємо ваш бізнес, аудиторію, конкурентів і формулюємо чіткі вимоги до майбутнього додатку. Створюємо технічне завдання та обираємо оптимальні технології."
+                title: 'Аналіз та планування',
+                description:
+                  'Ми вивчаємо ваш бізнес, аудиторію, конкурентів і формулюємо чіткі вимоги до майбутнього додатку. Створюємо технічне завдання та обираємо оптимальні технології.',
               },
               {
                 icon: <FaPencilRuler />,
-                title: "Дизайн UX/UI",
-                description: "Проєктуємо логічну структуру додатку, створюємо прототипи та дизайн, який забезпечує зручність використання й привабливий вигляд."
+                title: 'Дизайн UX/UI',
+                description:
+                  'Проєктуємо логічну структуру додатку, створюємо прототипи та дизайн, який забезпечує зручність використання й привабливий вигляд.',
               },
               {
                 icon: <FaCode />,
-                title: "Розробка",
-                description: "Наші програмісти реалізують функціонал, інтегрують необхідні сервіси, забезпечують безпеку та оптимізацію продуктивності додатку."
+                title: 'Розробка',
+                description:
+                  'Наші програмісти реалізують функціонал, інтегрують необхідні сервіси, забезпечують безпеку та оптимізацію продуктивності додатку.',
               },
               {
                 icon: <FaBug />,
-                title: "Тестування",
-                description: "Проводимо комплексне тестування для виявлення та виправлення помилок. Гарантуємо стабільну роботу додатку на різних пристроях та версіях операційних систем."
+                title: 'Тестування',
+                description:
+                  'Проводимо комплексне тестування для виявлення та виправлення помилок. Гарантуємо стабільну роботу додатку на різних пристроях та версіях операційних систем.',
               },
               {
                 icon: <FaRocket />,
-                title: "Запуск і підтримка",
-                description: "Публікуємо додаток у App Store та Google Play, надаємо технічну підтримку, розвиваємо та оновлюємо продукт відповідно до нових потреб бізнесу."
-              }
+                title: 'Запуск і підтримка',
+                description:
+                  'Публікуємо додаток у App Store та Google Play, надаємо технічну підтримку, розвиваємо та оновлюємо продукт відповідно до нових потреб бізнесу.',
+              },
             ].map((step, index) => (
               <React.Fragment key={index}>
                 <motion.div
                   variants={{
                     hidden: { x: -50, opacity: 0 },
-                    visible: { 
-                      x: 0, 
+                    visible: {
+                      x: 0,
                       opacity: 1,
-                      transition: { duration: 0.8, ease: "easeOut" }
-                    }
+                      transition: { duration: 0.8, ease: 'easeOut' },
+                    },
                   }}
                   style={{
                     display: 'flex',
@@ -1959,13 +2221,13 @@ const MobileAppsPage = () => {
                     backdropFilter: 'blur(5px)',
                     borderRadius: '20px',
                     border: '1px solid rgba(255, 255, 255, 0.05)',
-                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
+                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
                   }}
                   whileHover={{
                     scale: 1.02,
                     transition: { duration: 0.3 },
                     boxShadow: '0 15px 40px rgba(0, 0, 0, 0.2)',
-                    border: '1px solid rgba(94, 234, 212, 0.2)'
+                    border: '1px solid rgba(94, 234, 212, 0.2)',
                   }}
                 >
                   {/* Номер этапа */}
@@ -1980,19 +2242,20 @@ const MobileAppsPage = () => {
                       fontWeight: '900',
                       color: 'rgba(94, 234, 212, 0.8)',
                       textShadow: '0 2px 10px rgba(94, 234, 212, 0.4)',
-                      flexShrink: 0
+                      flexShrink: 0,
                     }}
                   >
                     {index + 1}
                   </motion.div>
-                  
+
                   {/* Иконка */}
                   <motion.div
                     style={{
                       width: '120px',
                       height: '120px',
                       borderRadius: '50%',
-                      background: 'linear-gradient(135deg, var(--accent-color) 0%, rgba(59, 130, 246, 0.8) 100%)',
+                      background:
+                        'linear-gradient(135deg, var(--accent-color) 0%, rgba(59, 130, 246, 0.8) 100%)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -2000,12 +2263,12 @@ const MobileAppsPage = () => {
                       color: 'white',
                       boxShadow: '0 10px 30px rgba(94, 234, 212, 0.4)',
                       position: 'relative',
-                      flexShrink: 0
+                      flexShrink: 0,
                     }}
                     whileHover={{
                       boxShadow: '0 15px 40px rgba(94, 234, 212, 0.6)',
                       scale: 1.05,
-                      transition: { duration: 0.3 }
+                      transition: { duration: 0.3 },
                     }}
                   >
                     {/* Пульсирующий круг вокруг иконки */}
@@ -2017,22 +2280,22 @@ const MobileAppsPage = () => {
                         right: 0,
                         bottom: 0,
                         borderRadius: '50%',
-                        border: '2px solid rgba(94, 234, 212, 0.5)'
+                        border: '2px solid rgba(94, 234, 212, 0.5)',
                       }}
                       animate={{
                         scale: [1, 1.2, 1],
-                        opacity: [0.5, 0, 0.5]
+                        opacity: [0.5, 0, 0.5],
                       }}
                       transition={{
                         duration: 3,
                         repeat: Infinity,
-                        ease: "easeInOut"
+                        ease: 'easeInOut',
                       }}
                     />
-                    
+
                     {step.icon}
                   </motion.div>
-                  
+
                   {/* Текстовый блок */}
                   <motion.div
                     style={{
@@ -2046,7 +2309,7 @@ const MobileAppsPage = () => {
                       height: '160px',
                       display: 'flex',
                       flexDirection: 'column',
-                      justifyContent: 'center'
+                      justifyContent: 'center',
                     }}
                   >
                     <h3
@@ -2055,34 +2318,35 @@ const MobileAppsPage = () => {
                         fontWeight: 700,
                         marginBottom: '0.8rem',
                         color: '#FFFFFF',
-                        textShadow: '0 2px 5px rgba(0, 0, 0, 0.5)'
+                        textShadow: '0 2px 5px rgba(0, 0, 0, 0.5)',
                       }}
                     >
                       {step.title}
                     </h3>
-                    
+
                     <p
                       style={{
                         fontSize: '1rem',
                         lineHeight: 1.5,
                         color: '#FFFFFF',
                         overflow: 'hidden',
-                        textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)'
+                        textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)',
                       }}
                     >
                       {step.description}
                     </p>
                   </motion.div>
                 </motion.div>
-                
+
                 {/* Вертикальная линия между блоками */}
                 {index < 4 && (
-                  <motion.div 
+                  <motion.div
                     style={{
                       width: '4px',
                       height: '5rem',
-                      background: 'linear-gradient(to bottom, var(--accent-color), rgba(59, 130, 246, 0.1))',
-                      borderRadius: '4px'
+                      background:
+                        'linear-gradient(to bottom, var(--accent-color), rgba(59, 130, 246, 0.1))',
+                      borderRadius: '4px',
                     }}
                     initial={{ height: 0 }}
                     animate={{ height: '5rem' }}
@@ -2092,13 +2356,16 @@ const MobileAppsPage = () => {
               </React.Fragment>
             ))}
           </motion.div>
-          
+
           <motion.button
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.6 }}
-            whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(59, 130, 246, 0.7)' }}
-        whileTap={{ scale: 0.95 }}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: '0 0 20px rgba(59, 130, 246, 0.7)',
+            }}
+            whileTap={{ scale: 0.95 }}
             style={{
               padding: '1rem 2.5rem',
               fontSize: '1.2rem',
@@ -2111,21 +2378,22 @@ const MobileAppsPage = () => {
               margin: '5rem auto 0',
               zIndex: 1,
               position: 'relative',
-              display: 'block'
+              display: 'block',
             }}
+            onClick={openModal}
           >
             Замовити розробку
           </motion.button>
         </div>
       </MobileStagesSection>
-      
+
       <MobileWhyUsSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
         <WhyUsDiagonal />
-        
+
         <WhyUsContainer>
           <WhyUsTitle
             initial={{ opacity: 0, x: -20 }}
@@ -2134,15 +2402,17 @@ const MobileAppsPage = () => {
           >
             Переваги роботи з нашою командою
           </WhyUsTitle>
-          
+
           <WhyUsSubtitle
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Замовляючи розробку мобільного додатку у нас, ви отримуєте не просто виконавця, а надійного технологічного партнера, який зацікавлений у вашому успіху.
+            Замовляючи розробку мобільного додатку у нас, ви отримуєте не просто
+            виконавця, а надійного технологічного партнера, який зацікавлений у
+            вашому успіху.
           </WhyUsSubtitle>
-          
+
           <WhyUsCardsContainer
             variants={containerVariants}
             initial="hidden"
@@ -2150,11 +2420,11 @@ const MobileAppsPage = () => {
           >
             <WhyUsCard
               variants={itemVariants}
-              whileHover={{ 
+              whileHover={{
                 y: -15,
                 boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
                 rotateY: 5,
-                rotateX: -5
+                rotateX: -5,
               }}
             >
               <WhyUsCardGlow />
@@ -2163,52 +2433,61 @@ const MobileAppsPage = () => {
               </WhyUsIconWrapper>
               <WhyUsCardTitle>Досвідчена команда розробників</WhyUsCardTitle>
               <WhyUsCardDescription>
-                Ми працюємо у сфері мобільної розробки багато років і маємо успішні кейси у різних нішах — від e-commerce і фінансів до освіти та медицини.
+                Ми працюємо у сфері мобільної розробки багато років і маємо
+                успішні кейси у різних нішах — від e-commerce і фінансів до
+                освіти та медицини.
               </WhyUsCardDescription>
               <CardAccent />
             </WhyUsCard>
-            
+
             <WhyUsCard
               variants={itemVariants}
-              whileHover={{ 
+              whileHover={{
                 y: -15,
                 boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
                 rotateY: 5,
-                rotateX: -5
+                rotateX: -5,
               }}
             >
               <WhyUsCardGlow />
               <WhyUsIconWrapper>
                 <FaPencilRuler />
               </WhyUsIconWrapper>
-              <WhyUsCardTitle>Індивідуальний підхід до кожного проєкту</WhyUsCardTitle>
+              <WhyUsCardTitle>
+                Індивідуальний підхід до кожного проєкту
+              </WhyUsCardTitle>
               <WhyUsCardDescription>
-                Кожен бізнес унікальний, тому ми пропонуємо рішення, які враховують ваші цілі, потреби цільової аудиторії та бюджет.
+                Кожен бізнес унікальний, тому ми пропонуємо рішення, які
+                враховують ваші цілі, потреби цільової аудиторії та бюджет.
               </WhyUsCardDescription>
               <CardAccent />
             </WhyUsCard>
-            
+
             <WhyUsCard
               variants={itemVariants}
-              whileHover={{ 
+              whileHover={{
                 y: -15,
                 boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
                 rotateY: 5,
-                rotateX: -5
+                rotateX: -5,
               }}
             >
               <WhyUsCardGlow />
               <WhyUsIconWrapper>
                 <FaRocket />
               </WhyUsIconWrapper>
-              <WhyUsCardTitle>Гарантія якості та дотримання термінів</WhyUsCardTitle>
+              <WhyUsCardTitle>
+                Гарантія якості та дотримання термінів
+              </WhyUsCardTitle>
               <WhyUsCardDescription>
-                Ми суворо контролюємо якість на кожному етапі розробки та завжди дотримуємося узгоджених термінів. Ваш проєкт буде реалізований вчасно та відповідатиме всім сучасним стандартам.
+                Ми суворо контролюємо якість на кожному етапі розробки та завжди
+                дотримуємося узгоджених термінів. Ваш проєкт буде реалізований
+                вчасно та відповідатиме всім сучасним стандартам.
               </WhyUsCardDescription>
               <CardAccent />
             </WhyUsCard>
           </WhyUsCardsContainer>
-          
+
           <WhyUsAction
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -2217,22 +2496,23 @@ const MobileAppsPage = () => {
             <PulsingButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               Замовити розробку
             </PulsingButton>
           </WhyUsAction>
         </WhyUsContainer>
-        
+
         <WhyUsBackgroundShapes />
       </MobileWhyUsSection>
-      
+
       <PricingSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
         <PricingBgDecoration />
-        
+
         <PricingContainer>
           <PricingTitle
             initial={{ opacity: 0, x: -20 }}
@@ -2241,16 +2521,19 @@ const MobileAppsPage = () => {
           >
             Вартість мобільного додатку
           </PricingTitle>
-          
+
           <PricingContent>
             <PricingText
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Ціна розробки мобільного додатку залежить від кількох факторів: складності функціоналу, вибору платформи, технологій та термінів реалізації. Ми пропонуємо гнучкі рішення, які дозволяють підібрати оптимальний варіант під ваш бюджет і потреби.
+              Ціна розробки мобільного додатку залежить від кількох факторів:
+              складності функціоналу, вибору платформи, технологій та термінів
+              реалізації. Ми пропонуємо гнучкі рішення, які дозволяють підібрати
+              оптимальний варіант під ваш бюджет і потреби.
             </PricingText>
-            
+
             <PricingFactorsTitle
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -2258,7 +2541,7 @@ const MobileAppsPage = () => {
             >
               Основні фактори, що впливають на вартість:
             </PricingFactorsTitle>
-            
+
             <PricingFactorsList
               variants={containerVariants}
               initial="hidden"
@@ -2267,24 +2550,27 @@ const MobileAppsPage = () => {
               {[
                 {
                   icon: <FaMobile />,
-                  title: "Тип додатку",
-                  description: "Нативний, кросплатформенний чи PWA."
+                  title: 'Тип додатку',
+                  description: 'Нативний, кросплатформенний чи PWA.',
                 },
                 {
                   icon: <FaCode />,
-                  title: "Складність функціоналу",
-                  description: "Додаткові можливості, такі як інтеграція з платіжними системами, геолокація, відео/аудіо функції тощо."
+                  title: 'Складність функціоналу',
+                  description:
+                    'Додаткові можливості, такі як інтеграція з платіжними системами, геолокація, відео/аудіо функції тощо.',
                 },
                 {
                   icon: <FaPencilRuler />,
-                  title: "Дизайн та UX/UI",
-                  description: "Унікальний дизайн може збільшити вартість, але він завжди сприяє кращому користувацькому досвіду."
+                  title: 'Дизайн та UX/UI',
+                  description:
+                    'Унікальний дизайн може збільшити вартість, але він завжди сприяє кращому користувацькому досвіду.',
                 },
                 {
                   icon: <FaRocket />,
-                  title: "Термін реалізації",
-                  description: "Чим швидше потрібно завершити проєкт, тим більше можуть бути витрати на ресурси."
-                }
+                  title: 'Термін реалізації',
+                  description:
+                    'Чим швидше потрібно завершити проєкт, тим більше можуть бути витрати на ресурси.',
+                },
               ].map((factor, index) => (
                 <FactorItem
                   key={index}
@@ -2299,19 +2585,22 @@ const MobileAppsPage = () => {
                 </FactorItem>
               ))}
             </PricingFactorsList>
-            
+
             <PricingCTA
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <PricingCTAText>
-                Для точного розрахунку вартості вашого мобільного додатку ми пропонуємо безкоштовну консультацію, під час якої ми визначимо обсяг робіт та створимо індивідуальну пропозицію.
+                Для точного розрахунку вартості вашого мобільного додатку ми
+                пропонуємо безкоштовну консультацію, під час якої ми визначимо
+                обсяг робіт та створимо індивідуальну пропозицію.
               </PricingCTAText>
-              
+
               <PricingButton
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={openModal}
               >
                 Отримати консультацію
               </PricingButton>
@@ -2319,18 +2608,18 @@ const MobileAppsPage = () => {
           </PricingContent>
         </PricingContainer>
       </PricingSection>
-      
+
       <FaqSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
         <FaqWaveTop />
-        
+
         <FaqContainer>
           <FaqGlowCircle className="circle-1" />
           <FaqGlowCircle className="circle-2" />
-          
+
           <FaqTitle
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -2338,7 +2627,7 @@ const MobileAppsPage = () => {
           >
             FAQ
           </FaqTitle>
-          
+
           <FaqList
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -2346,51 +2635,63 @@ const MobileAppsPage = () => {
           >
             {[
               {
-                question: "Скільки часу займає розробка мобільного додатку?",
-                answer: "Час на розробку мобільного додатку залежить від складності проекту та функцій, які ви хочете реалізувати. Зазвичай, розробка займає від 2 до 6 місяців для стандартних додатків, але для складних рішень цей термін може бути довшим."
+                question: 'Скільки часу займає розробка мобільного додатку?',
+                answer:
+                  'Час на розробку мобільного додатку залежить від складності проекту та функцій, які ви хочете реалізувати. Зазвичай, розробка займає від 2 до 6 місяців для стандартних додатків, але для складних рішень цей термін може бути довшим.',
               },
               {
-                question: "Чим відрізняється нативний додаток від кросплатформеного?",
-                answer: "Нативний додаток розробляється окремо для кожної операційної системи (iOS чи Android), що дозволяє досягти високої продуктивності та інтеграції з функціями пристроїв. Кросплатформенні додатки розробляються за допомогою технологій, які дозволяють використовувати один код для двох платформ, що економить час і бюджет, але може бути менш оптимальним за швидкістю та стабільністю."
+                question:
+                  'Чим відрізняється нативний додаток від кросплатформеного?',
+                answer:
+                  'Нативний додаток розробляється окремо для кожної операційної системи (iOS чи Android), що дозволяє досягти високої продуктивності та інтеграції з функціями пристроїв. Кросплатформенні додатки розробляються за допомогою технологій, які дозволяють використовувати один код для двох платформ, що економить час і бюджет, але може бути менш оптимальним за швидкістю та стабільністю.',
               },
               {
-                question: "Що таке прогресивний вебдодаток (PWA)?",
-                answer: "Прогресивний вебдодаток — це вебдодаток, який поєднує переваги вебсайтів і нативних додатків. PWA може працювати офлайн, отримувати push-сповіщення і запускатися на будь-якому пристрої без необхідності встановлення."
+                question: 'Що таке прогресивний вебдодаток (PWA)?',
+                answer:
+                  'Прогресивний вебдодаток — це вебдодаток, який поєднує переваги вебсайтів і нативних додатків. PWA може працювати офлайн, отримувати push-сповіщення і запускатися на будь-якому пристрої без необхідності встановлення.',
               },
               {
-                question: "Які переваги має мобільний додаток для мого бізнесу?",
-                answer: "Мобільний додаток дозволяє вашому бізнесу бути доступним для клієнтів 24/7, сприяє збільшенню лояльності, покращує користувацький досвід і дозволяє проводити ефективні маркетингові кампанії. Додаток також допомагає зібрати аналітику для покращення сервісу та розширення бізнесу."
+                question:
+                  'Які переваги має мобільний додаток для мого бізнесу?',
+                answer:
+                  'Мобільний додаток дозволяє вашому бізнесу бути доступним для клієнтів 24/7, сприяє збільшенню лояльності, покращує користувацький досвід і дозволяє проводити ефективні маркетингові кампанії. Додаток також допомагає зібрати аналітику для покращення сервісу та розширення бізнесу.',
               },
               {
-                question: "Які додаткові функції можна додати до мобільного додатку?",
-                answer: "До мобільного додатку можна додавати різноманітні функції, такі як геолокація, push-сповіщення, інтеграція з платіжними системами, чат-боти, соціальні мережі, офлайн-режим, підтримка мультимедіа (відео, фото) і багато інших, залежно від ваших потреб."
+                question:
+                  'Які додаткові функції можна додати до мобільного додатку?',
+                answer:
+                  'До мобільного додатку можна додавати різноманітні функції, такі як геолокація, push-сповіщення, інтеграція з платіжними системами, чат-боти, соціальні мережі, офлайн-режим, підтримка мультимедіа (відео, фото) і багато інших, залежно від ваших потреб.',
               },
               {
-                question: "Як я можу отримати точну вартість розробки мобільного додатку?",
-                answer: "Для точного розрахунку вартості потрібно обговорити деталі проєкту: його складність, бажану платформу, функціонал та терміни. Ми пропонуємо безкоштовну консультацію, під час якої ми зберемо всю необхідну інформацію і надамо вам індивідуальну пропозицію."
-              }
+                question:
+                  'Як я можу отримати точну вартість розробки мобільного додатку?',
+                answer:
+                  'Для точного розрахунку вартості потрібно обговорити деталі проєкту: його складність, бажану платформу, функціонал та терміни. Ми пропонуємо безкоштовну консультацію, під час якої ми зберемо всю необхідну інформацію і надамо вам індивідуальну пропозицію.',
+              },
             ].map((faq, index) => (
               <FaqItem
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 + (index * 0.1) }}
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
               >
                 <FaqItemContent>
                   <FaqQuestion onClick={() => toggleFaq(index)}>
                     <FaqQuestionText>{faq.question}</FaqQuestionText>
                     <FaqToggle
-                      animate={{ rotate: expandedFaqs.includes(index) ? 45 : 0 }}
+                      animate={{
+                        rotate: expandedFaqs.includes(index) ? 45 : 0,
+                      }}
                       transition={{ duration: 0.3 }}
                     >
                       <FaPlus />
                     </FaqToggle>
                   </FaqQuestion>
-                  
+
                   {expandedFaqs.includes(index) && (
                     <FaqAnswer
                       initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
+                      animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3 }}
                     >
@@ -2401,7 +2702,7 @@ const MobileAppsPage = () => {
               </FaqItem>
             ))}
           </FaqList>
-          
+
           <FaqCta
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -2409,18 +2710,24 @@ const MobileAppsPage = () => {
           >
             <FaqCtaText>Не знайшли відповідь на своє питання?</FaqCtaText>
             <FaqCtaButton
-              whileHover={{ scale: 1.03, boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)' }}
+              whileHover={{
+                scale: 1.03,
+                boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)',
+              }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               Напишіть нам
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
-        
+
         <FaqDecoration />
       </FaqSection>
+
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
     </PageContainer>
   );
 };
 
-export default MobileAppsPage; 
+export default MobileAppsPage;

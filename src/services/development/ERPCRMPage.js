@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import Modal from '../../components/Modal';
 import { 
   FaDatabase, 
   FaChartLine, 
@@ -936,18 +937,6 @@ const ServiceButton = styled(motion.button)`
   }
 `;
 
-const ServiceLink = styled(motion.a)`
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-  color: var(--accent-color);
-  }
-`;
-
 // Секция FAQ
 const FaqSection = styled(motion.section)`
   position: relative;
@@ -1261,6 +1250,11 @@ const ERPCRMPage = () => {
   // Состояние для аккордеона FAQ
   const [expandedFaqs, setExpandedFaqs] = useState([]);
   
+  // Modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+  
   useEffect(() => {
     // Генерация звезд для фона
     const generatedStars = [];
@@ -1498,6 +1492,7 @@ const ERPCRMPage = () => {
           transition={{ duration: 0.8, delay: 1.6 }}
           whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(41, 98, 255, 0.7)' }}
           whileTap={{ scale: 0.95 }}
+          onClick={openModal}
           style={{
             padding: '1rem 2.5rem',
             fontSize: '1.2rem',
@@ -1945,18 +1940,11 @@ const ERPCRMPage = () => {
                   boxShadow: '0 0 25px rgba(74, 144, 226, 0.5)' 
                 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={openModal}
               >
                 Замовити консультацію
               </ServiceButton>
-              
-              <ServiceLink
-                whileHover={{ 
-                  color: 'var(--accent-color)',
-                  textDecoration: 'underline'
-                }}
-              >
-                Портфоліо проєктів
-              </ServiceLink>
+            
             </ServiceActions>
 
           </ServicesContent>
@@ -2618,12 +2606,16 @@ const ERPCRMPage = () => {
             <FaqCtaButton
               whileHover={{ scale: 1.03, boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)' }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               Напишіть нам
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
       </FaqSection>
+
+      {/* Modal Window */}
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
 
     </Container>
   );
