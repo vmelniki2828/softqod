@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -9,6 +9,8 @@ import {
   FaComment,
   FaPaperPlane,
 } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG } from '../config/emailjs';
 
 const shimmer = keyframes`
   0% {
@@ -430,6 +432,31 @@ const SuccessMessage = styled(motion.div)`
   }
 `;
 
+const ErrorMessage = styled(motion.div)`
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  color: #ef4444;
+  font-size: 0.9rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  &::before {
+    content: '⚠️';
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    padding: 0.6rem 0.8rem;
+  }
+`;
+
 const Modal = ({
   isOpen,
   onClose,
@@ -437,13 +464,14 @@ const Modal = ({
   subtitle = "Залиште заявку і ми зв'яжемося з вами найближчим часом",
 }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
+    from_name: '',
+    from_email: '',
     phone: '',
-    comment: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState('');
+  const formRef = useRef(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -467,20 +495,59 @@ const Modal = ({
 
   const handleSubmit = async e => {
     e.preventDefault();
+
+    // Валідація обов'язкових полів
+    const requiredFields = ['from_name', 'from_email', 'message'];
+    const emptyFields = requiredFields.filter(field => !formData[field].trim());
+
+    if (emptyFields.length > 0) {
+      setError(
+        "Будь ласка, заповніть всі обов'язкові поля (Ім'я, Email, Повідомлення)"
+      );
+      return;
+    }
+
+    // Валідація email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.from_email)) {
+      setError('Будь ласка, введіть коректний email адрес');
+      return;
+    }
+
     setIsSubmitting(true);
+    setError('');
 
-    // Симуляція відправки форми
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      // Відправка форми через EmailJS
+      const result = await emailjs.sendForm(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        formRef.current,
+        EMAILJS_CONFIG.USER_ID
+      );
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      console.log('Email sent successfully:', result);
+      setIsSubmitted(true);
 
-    // Скидання форми через 3 секунди
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', phone: '', comment: '' });
-      onClose();
-    }, 3000);
+      // Очищуємо форму після успішної відправки
+      setTimeout(() => {
+        setFormData({
+          from_name: '',
+          from_email: '',
+          phone: '',
+        });
+        console.log(EMAILJS_CONFIG.SERVICE_ID);
+        setIsSubmitted(false);
+        onClose();
+      }, 2000);
+    } catch (err) {
+      console.error('Email sending failed:', err);
+      setError(
+        "Помилка відправки повідомлення. Спробуйте ще раз або зв'яжіться з нами безпосередньо."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleOverlayClick = e => {
@@ -530,7 +597,7 @@ const Modal = ({
                   <ModalTitle>{title}</ModalTitle>
                   <ModalSubtitle>{subtitle}</ModalSubtitle>
                 </ModalHeader>
-                <ModalForm onSubmit={handleSubmit}>
+                <ModalForm ref={formRef} onSubmit={handleSubmit}>
                   <FormGroup>
                     <FormLabel>
                       <FaUser /> Ім'я *
@@ -541,8 +608,8 @@ const Modal = ({
                       </InputIcon>
                       <FormInput
                         type="text"
-                        name="name"
-                        value={formData.name}
+                        name="from_name"
+                        value={formData.from_name}
                         onChange={handleInputChange}
                         placeholder="Введіть ваше ім'я"
                         required
@@ -560,8 +627,8 @@ const Modal = ({
                       </InputIcon>
                       <FormInput
                         type="email"
-                        name="email"
-                        value={formData.email}
+                        name="from_email"
+                        value={formData.from_email}
                         onChange={handleInputChange}
                         placeholder="your@email.com"
                         required
@@ -589,20 +656,32 @@ const Modal = ({
 
                   <FormGroup>
                     <FormLabel>
-                      <FaComment /> Коментар
+                      <FaComment /> Повідомлення *
                     </FormLabel>
                     <div style={{ position: 'relative' }}>
                       <TextareaIcon>
                         <FaComment />
                       </TextareaIcon>
                       <FormTextarea
-                        name="comment"
-                        value={formData.comment}
+                        name="message"
+                        value={formData.message}
                         onChange={handleInputChange}
                         placeholder="Розкажіть про ваш проєкт або поставте запитання..."
+                        required
                       />
                     </div>
                   </FormGroup>
+
+                  {error && (
+                    <ErrorMessage
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {error}
+                    </ErrorMessage>
+                  )}
 
                   <SubmitButton
                     type="submit"

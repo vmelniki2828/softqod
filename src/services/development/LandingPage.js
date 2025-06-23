@@ -1776,14 +1776,7 @@ const LandingPage = () => {
 
 // Добавляем стили для новой секции
 const PWACtaSection = styled(motion.section)`
-  position: relative;
   padding: 8rem 2rem;
-  background: linear-gradient(
-    180deg,
-    rgba(16, 24, 39, 1) 0%,
-    var(--bg-primary) 100%
-  );
-  overflow: hidden;
 `;
 
 const CtaWaveTop = styled.div`
@@ -3837,6 +3830,8 @@ const RequirementsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
+  padding-right: 40px;
+  padding-left: 40px;
   margin-top: 3rem;
 `;
 
@@ -4042,6 +4037,8 @@ const OfferCard = styled(motion.div)`
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: 4rem;
+  margin-right: 40px;
+  margin-left: 40px;
 
   &::before {
     content: '';

@@ -453,7 +453,7 @@ const LetteringElement = styled(motion.div)`
 const TypographyLettering = () => {
   // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
   // FAQ state
   const [expandedFaqs, setExpandedFaqs] = useState([]);
 
@@ -464,29 +464,39 @@ const TypographyLettering = () => {
   // FAQ data
   const faqData = [
     {
-      question: '1. Чи можна використовувати один шрифт для всіх носіїв бренду?',
-      answer: 'Ні, зазвичай створюється типографічна система з кількох шрифтів — основного, акцентного та допоміжного. Вони виконують різні функції: заголовки, тіла текстів, підписи тощо. Це забезпечує гнучкість і зберігає єдність стилю.'
+      question:
+        '1. Чи можна використовувати один шрифт для всіх носіїв бренду?',
+      answer:
+        'Ні, зазвичай створюється типографічна система з кількох шрифтів — основного, акцентного та допоміжного. Вони виконують різні функції: заголовки, тіла текстів, підписи тощо. Це забезпечує гнучкість і зберігає єдність стилю.',
     },
     {
       question: '2. Чи потрібно купувати ліцензії на шрифти?',
-      answer: 'Так, якщо ви використовуєте комерційні шрифти. Ми завжди підбираємо шрифти з урахуванням прав на використання — з відкритих бібліотек або з чіткою ліцензією. Безкоштовні шрифти — не завжди якісні або унікальні.'
+      answer:
+        'Так, якщо ви використовуєте комерційні шрифти. Ми завжди підбираємо шрифти з урахуванням прав на використання — з відкритих бібліотек або з чіткою ліцензією. Безкоштовні шрифти — не завжди якісні або унікальні.',
     },
     {
-      question: '3. У чому перевага кастомного летерингу порівняно з логотипом на основі шрифту?',
-      answer: 'Кастомний летеринг створюється з нуля і враховує форму, ритм і унікальність назви бренду. Це забезпечує абсолютну ексклюзивність. Шрифтова основа — це швидше, але не завжди достатньо відмінно від конкурентів.'
+      question:
+        '3. У чому перевага кастомного летерингу порівняно з логотипом на основі шрифту?',
+      answer:
+        'Кастомний летеринг створюється з нуля і враховує форму, ритм і унікальність назви бренду. Це забезпечує абсолютну ексклюзивність. Шрифтова основа — це швидше, але не завжди достатньо відмінно від конкурентів.',
     },
     {
-      question: '4. Чи можу я отримати шрифт у форматі для встановлення на комп\'ютер?',
-      answer: 'Так, якщо розробляється кастомний шрифт або обрана типографіка включає завантажувані файли. Ви отримаєте файли у форматах OTF/TTF/WOFF + інструкції з установлення та використання.'
+      question:
+        "4. Чи можу я отримати шрифт у форматі для встановлення на комп'ютер?",
+      answer:
+        'Так, якщо розробляється кастомний шрифт або обрана типографіка включає завантажувані файли. Ви отримаєте файли у форматах OTF/TTF/WOFF + інструкції з установлення та використання.',
     },
     {
-      question: '5. Чи можна замовити лише летеринг без повного фірмового стилю?',
-      answer: 'Звісно. Летеринг — це окрема послуга. Він може бути використаний як акцент на упаковці, постері, мерчі або навіть у соціальних мережах. Ми адаптуємо результат під ваші задачі.'
+      question:
+        '5. Чи можна замовити лише летеринг без повного фірмового стилю?',
+      answer:
+        'Звісно. Летеринг — це окрема послуга. Він може бути використаний як акцент на упаковці, постері, мерчі або навіть у соціальних мережах. Ми адаптуємо результат під ваші задачі.',
     },
     {
       question: '6. Скільки часу займає створення типографіки або летерингу?',
-      answer: 'У середньому — від 5 до 15 робочих днів, залежно від складності. Простий підбір типографіки — швидше. Унікальний летеринг або система зі шрифтами для різних носіїв — потребують більше часу для дослідження й опрацювання деталей.'
-    }
+      answer:
+        'У середньому — від 5 до 15 робочих днів, залежно від складності. Простий підбір типографіки — швидше. Унікальний летеринг або система зі шрифтами для різних носіїв — потребують більше часу для дослідження й опрацювання деталей.',
+    },
   ];
 
   // Function to toggle FAQ
@@ -499,7 +509,7 @@ const TypographyLettering = () => {
       }
     });
   };
-  
+
   return (
     <PageContainer>
       <HeroSection>
@@ -643,7 +653,7 @@ const TypographyLettering = () => {
           >
             <SectionHeading>
               <SectionHeadingGlow />
-              Значение типографики для брендинга
+              Значення типографіки для брендингу
             </SectionHeading>
           </motion.div>
 
@@ -658,25 +668,24 @@ const TypographyLettering = () => {
                 <SubHeadingIcon>
                   <FaFont />
                 </SubHeadingIcon>
-                <SubHeadingText>Что такое типографика?</SubHeadingText>
+                <SubHeadingText>Що таке типографіка?</SubHeadingText>
               </SubHeading>
 
               <DefinitionText>
-                Типографика — это искусство и техника размещения, выбора и
-                оформления текста для передачи идей и создания впечатления. Это
-                то, как текст
+                Типографіка — це мистецтво та техніка розміщення, вибору та
+                оформлення тексту для передачі ідей та створення враження. Це
+                те, як текст
                 <HighlightText>
-                  {' '}
-                  выглядит, чувствуется и воспринимается
+                  виглядає, відчувається та сприймається
                 </HighlightText>
-                , и это неотъемлемая часть дизайна и коммуникации.
+                , і це невід'ємна частина дизайну та комунікації.
               </DefinitionText>
 
               <DefinitionText>
-                Хорошая типографика создает иерархию, устанавливает тон,
-                настроение и атмосферу, а также создает
-                <HighlightText> узнаваемый бренд-образ</HighlightText> для вашей
-                компании, чтобы быть легко узнаваемой для аудитории.
+                Хороша типографія створює ієрархію, встановлює тон, настрій та
+                атмосферу, а також створює
+                <HighlightText> відомий бренд-образ</HighlightText> для вашої
+                компанії, щоб бути легко впізнаваною для аудиторії.
               </DefinitionText>
 
               <FontExamplesWrapper
@@ -703,17 +712,14 @@ const TypographyLettering = () => {
                 <SubHeadingIcon>
                   <FaPalette />
                 </SubHeadingIcon>
-                <SubHeadingText>Влияние на бренд</SubHeadingText>
+                <SubHeadingText>Вплив на бренд</SubHeadingText>
               </SubHeading>
 
               <InfluenceText>
-                Правильно подобранная типографика делает больше, чем просто
-                передает информацию. Она формирует восприятие вашего бренда и
-                может влиять на
-                <HighlightText>
-                  {' '}
-                  принятие решений вашими клиентами
-                </HighlightText>
+                Правильно підібрана типографіка робить більше, ніж просто
+                передає інформацію. Вона формує сприйняття вашого бренду та може
+                впливати на
+                <HighlightText>прийняття рішень вашими клієнтами</HighlightText>
                 .
               </InfluenceText>
 
@@ -728,7 +734,7 @@ const TypographyLettering = () => {
                     <FaCommentAlt />
                   </InfluenceIcon>
                   <InfluenceItemText>
-                    Формирует невербальную коммуникацию вашего бренда
+                    Формує невербальну комунікацію вашого бренду
                   </InfluenceItemText>
                 </InfluenceItem>
 
@@ -742,7 +748,7 @@ const TypographyLettering = () => {
                     <FaIdCard />
                   </InfluenceIcon>
                   <InfluenceItemText>
-                    Создает и укрепляет идентичность бренда
+                    Створює та зміцнює ідентичність бренду
                   </InfluenceItemText>
                 </InfluenceItem>
 
@@ -756,7 +762,7 @@ const TypographyLettering = () => {
                     <FaLayerGroup />
                   </InfluenceIcon>
                   <InfluenceItemText>
-                    Выстраивает информационную иерархию и улучшает читабельность
+                    Вибудовує інформаційну ієрархію та покращує читабельність
                   </InfluenceItemText>
                 </InfluenceItem>
 
@@ -770,15 +776,15 @@ const TypographyLettering = () => {
                     <FaHeart />
                   </InfluenceIcon>
                   <InfluenceItemText>
-                    Вызывает эмоциональный отклик у аудитории
+                    Викликає емоційний відгук у аудиторії
                   </InfluenceItemText>
                 </InfluenceItem>
               </InfluenceList>
 
               <InfluenceConclusion>
-                Выбор типографики — это стратегическое решение, которое должно
-                отражать ценности и позиционирование вашего бренда, резонировать
-                с целевой аудиторией и выделять вас среди конкурентов.
+                Вибір типографіки - це стратегічне рішення, яке має відображати
+                цінності та позиціонування вашого бренду, резонувати з цільовою
+                аудиторією та виділяти вас серед конкурентів.
               </InfluenceConclusion>
             </InfluenceBlock>
           </TypographyExplainer>
@@ -796,7 +802,7 @@ const TypographyLettering = () => {
                 transition={{ duration: 0.3 }}
               >
                 <BrandExampleTitle className="tech">TECHIFY</BrandExampleTitle>
-                <BrandExampleTag>Технологичный</BrandExampleTag>
+                <BrandExampleTag>Технологічний</BrandExampleTag>
               </BrandExample>
 
               <BrandExample
@@ -807,7 +813,7 @@ const TypographyLettering = () => {
                 <BrandExampleTitle className="creative">
                   Creative
                 </BrandExampleTitle>
-                <BrandExampleTag>Креативный</BrandExampleTag>
+                <BrandExampleTag>Креативний</BrandExampleTag>
               </BrandExample>
 
               <BrandExample
@@ -818,7 +824,7 @@ const TypographyLettering = () => {
                 <BrandExampleTitle className="luxury">
                   LUXURIO
                 </BrandExampleTitle>
-                <BrandExampleTag>Премиальный</BrandExampleTag>
+                <BrandExampleTag>Преміальний</BrandExampleTag>
               </BrandExample>
 
               <BrandExample
@@ -829,11 +835,10 @@ const TypographyLettering = () => {
                 <BrandExampleTitle className="friendly">
                   Friendly
                 </BrandExampleTitle>
-                <BrandExampleTag>Дружелюбный</BrandExampleTag>
+                <BrandExampleTag>Доброзичливий</BrandExampleTag>
               </BrandExample>
             </BrandExamples>
           </motion.div>
-
         </ImportanceContainer>
       </TypographyImportanceSection>
 
@@ -1106,14 +1111,14 @@ const TypographyLettering = () => {
                   Аналіз бренду та цільової аудиторії
                 </MethodologyStepTitle>
               </MethodologyStepHeader>
-              
+
               <MethodologyStepContent>
                 <MethodologyStepIcon>
                   <AnalysisIcon>
                     <FaSearch />
                   </AnalysisIcon>
                 </MethodologyStepIcon>
-                
+
                 <MethodologyStepText>
                   Перш ніж створювати типографічну систему або летеринг, ми
                   вивчаємо бренд: його позиціонування, цінності, цільову
@@ -1122,7 +1127,7 @@ const TypographyLettering = () => {
                   <HighlightText>доречні, а не випадкові</HighlightText>{' '}
                   елементи.
                 </MethodologyStepText>
-                
+
                 <AnalysisPoints>
                   <AnalysisPoint>
                     <AnalysisPointIcon>
@@ -1130,14 +1135,14 @@ const TypographyLettering = () => {
                     </AnalysisPointIcon>
                     <AnalysisPointText>Аналіз аудиторії</AnalysisPointText>
                   </AnalysisPoint>
-                  
+
                   <AnalysisPoint>
                     <AnalysisPointIcon>
                       <FaChartBar />
                     </AnalysisPointIcon>
                     <AnalysisPointText>Аналіз конкурентів</AnalysisPointText>
                   </AnalysisPoint>
-                  
+
                   <AnalysisPoint>
                     <AnalysisPointIcon>
                       <FaFont />
@@ -1147,7 +1152,7 @@ const TypographyLettering = () => {
                 </AnalysisPoints>
               </MethodologyStepContent>
             </MethodologyStep>
-            
+
             <MethodologyStep>
               <MethodologyStepHeader>
                 <MethodologyStepNumber>02</MethodologyStepNumber>
@@ -1155,21 +1160,21 @@ const TypographyLettering = () => {
                   Підбір стилю: класика, мінімалізм, експеримент
                 </MethodologyStepTitle>
               </MethodologyStepHeader>
-              
+
               <MethodologyStepContent>
                 <MethodologyStepIcon>
                   <StyleSelectionIcon>
                     <FaPalette />
                   </StyleSelectionIcon>
                 </MethodologyStepIcon>
-                
+
                 <MethodologyStepText>
                   Залежно від завдань ми обираємо стилістику: гротески чи
                   антиква, мінімалізм чи вибагливий дизайн. Класичні рішення
                   додають солідності, експериментальні — виділяють серед
                   конкурентів.
                 </MethodologyStepText>
-                
+
                 <StyleOptions>
                   <StyleOption>
                     <StyleOptionTitle>Класика</StyleOptionTitle>
@@ -1179,7 +1184,7 @@ const TypographyLettering = () => {
                     </StyleOptionDescription>
                     <StyleOptionSample className="classic">A</StyleOptionSample>
                   </StyleOption>
-                  
+
                   <StyleOption>
                     <StyleOptionTitle>Мінімалізм</StyleOptionTitle>
                     <StyleOptionDivider />
@@ -1188,7 +1193,7 @@ const TypographyLettering = () => {
                     </StyleOptionDescription>
                     <StyleOptionSample className="minimal">A</StyleOptionSample>
                   </StyleOption>
-                  
+
                   <StyleOption>
                     <StyleOptionTitle>Експеримент</StyleOptionTitle>
                     <StyleOptionDivider />
@@ -1201,7 +1206,7 @@ const TypographyLettering = () => {
                     </StyleOptionSample>
                   </StyleOption>
                 </StyleOptions>
-                
+
                 <MethodologyStepText className="note">
                   Стиль визначається не модою, а ціллю: яку реакцію має
                   викликати візуальне рішення.
@@ -1209,7 +1214,7 @@ const TypographyLettering = () => {
               </MethodologyStepContent>
             </MethodologyStep>
           </MethodologySteps>
-          
+
           <MethodologyStepCenter>
             <MethodologyStepHeader>
               <MethodologyStepNumber>03</MethodologyStepNumber>
@@ -1217,23 +1222,22 @@ const TypographyLettering = () => {
                 Узгодження з загальним дизайном бренду
               </MethodologyStepTitle>
             </MethodologyStepHeader>
-            
+
             <MethodologyStepContent>
               <MethodologyStepIcon>
                 <IntegrationIcon>
                   <FaLink />
                 </IntegrationIcon>
               </MethodologyStepIcon>
-              
+
               <MethodologyStepText>
-                Типографіка та летеринг не існують ізольовано. Вони
-                вплітаються в айдентику — логотип, кольори, макети. Ми
-                добиваємося
+                Типографіка та летеринг не існують ізольовано. Вони вплітаються
+                в айдентику — логотип, кольори, макети. Ми добиваємося
                 <HighlightText> повної візуальної цілісності</HighlightText>.
-                Все виглядає злагоджено, логічно і стильно на всіх носіях —
-                від веб-сайту до офлайнових матеріалів.
+                Все виглядає злагоджено, логічно і стильно на всіх носіях — від
+                веб-сайту до офлайнових матеріалів.
               </MethodologyStepText>
-              
+
               <IntegrationPoints>
                 <IntegrationDevice
                   initial={{ opacity: 0, y: 20 }}
@@ -1251,7 +1255,7 @@ const TypographyLettering = () => {
                   </IntegrationDeviceScreen>
                   <IntegrationDeviceLabel>Веб</IntegrationDeviceLabel>
                 </IntegrationDevice>
-                
+
                 <IntegrationDevice
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -1266,7 +1270,7 @@ const TypographyLettering = () => {
                   </IntegrationDeviceScreen>
                   <IntegrationDeviceLabel>Поліграфія</IntegrationDeviceLabel>
                 </IntegrationDevice>
-                
+
                 <IntegrationDevice
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -1285,7 +1289,7 @@ const TypographyLettering = () => {
                 </IntegrationDevice>
               </IntegrationPoints>
             </MethodologyStepContent>
-            
+
             <MethodologyStepVisual>
               <IntegrationVisual>
                 <IntegrationCenterPiece>
@@ -1309,7 +1313,7 @@ const TypographyLettering = () => {
               </IntegrationVisual>
             </MethodologyStepVisual>
           </MethodologyStepCenter>
-          
+
           {/* Добавляю новый блок преимуществ */}
           <BenefitsSection>
             <BenefitsSectionBackground>
@@ -1324,7 +1328,7 @@ const TypographyLettering = () => {
               <BenefitsBgText className="text-2">Б</BenefitsBgText>
               <BenefitsBgText className="text-3">S</BenefitsBgText>
             </BenefitsSectionBackground>
-            
+
             <BenefitsContainer>
               <BenefitsHeader
                 initial={{ opacity: 0, y: 30 }}
@@ -1337,7 +1341,7 @@ const TypographyLettering = () => {
                 </BenefitsTitle>
                 <BenefitsTitleAccent />
               </BenefitsHeader>
-              
+
               <BenefitsGrid>
                 <BenefitCard
                   initial={{ opacity: 0, y: 30 }}
@@ -1352,38 +1356,50 @@ const TypographyLettering = () => {
                         <FaRegEye />
                       </BenefitIcon>
                     </BenefitIconContainer>
-                    
+
                     <BenefitCardContent>
-                      <BenefitCardTitle>Підвищення впізнаваності</BenefitCardTitle>
+                      <BenefitCardTitle>
+                        Підвищення впізнаваності
+                      </BenefitCardTitle>
                       <BenefitCardText>
-                        Унікальна типографіка робить бренд пізнаваним навіть без логотипа. 
-                        Вона створює візуальні асоціації, які закріплюються в пам'яті. 
-                        <HighlightText> Один шрифт — і користувач згадує вас.</HighlightText>
+                        Унікальна типографіка робить бренд пізнаваним навіть без
+                        логотипа. Вона створює візуальні асоціації, які
+                        закріплюються в пам'яті.
+                        <HighlightText>
+                          {' '}
+                          Один шрифт — і користувач згадує вас.
+                        </HighlightText>
                       </BenefitCardText>
                     </BenefitCardContent>
-                    
+
                     <BenefitIllustration className="recognition">
                       <BenefitIllustrationItem className="logo-hidden">
-                        <BenefitIllustrationLabel>Логотип</BenefitIllustrationLabel>
+                        <BenefitIllustrationLabel>
+                          Логотип
+                        </BenefitIllustrationLabel>
                         <FaEyeSlash />
                       </BenefitIllustrationItem>
                       <BenefitIllustrationDivider>+</BenefitIllustrationDivider>
                       <BenefitIllustrationItem className="typography">
-                        <BenefitIllustrationLabel>Типографіка</BenefitIllustrationLabel>
+                        <BenefitIllustrationLabel>
+                          Типографіка
+                        </BenefitIllustrationLabel>
                         <BenefitIllustrationTypo>Aa</BenefitIllustrationTypo>
                       </BenefitIllustrationItem>
                       <BenefitIllustrationDivider>=</BenefitIllustrationDivider>
                       <BenefitIllustrationItem className="recognition">
-                        <BenefitIllustrationLabel>Впізнаваність</BenefitIllustrationLabel>
+                        <BenefitIllustrationLabel>
+                          Впізнаваність
+                        </BenefitIllustrationLabel>
                         <FaBrain />
                       </BenefitIllustrationItem>
                     </BenefitIllustration>
-                    
+
                     <BenefitCardNumber>01</BenefitCardNumber>
                     <BenefitCardGlow className="glow-1" />
                   </BenefitCardInner>
                 </BenefitCard>
-                
+
                 <BenefitCard
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -1397,35 +1413,48 @@ const TypographyLettering = () => {
                         <FaFingerprint />
                       </BenefitIcon>
                     </BenefitIconContainer>
-                    
+
                     <BenefitCardContent>
                       <BenefitCardTitle>Унікальність бренду</BenefitCardTitle>
                       <BenefitCardText>
-                        Ми створюємо нетипові рішення — летеринг або кастомну типографіку, 
-                        яких немає у шаблонних генераторах. 
-                        <HighlightText> Ваш бренд отримує власну візуальну мову.</HighlightText>
+                        Ми створюємо нетипові рішення — летеринг або кастомну
+                        типографіку, яких немає у шаблонних генераторах.
+                        <HighlightText>
+                          {' '}
+                          Ваш бренд отримує власну візуальну мову.
+                        </HighlightText>
                       </BenefitCardText>
                     </BenefitCardContent>
-                    
+
                     <BenefitIllustration className="uniqueness">
                       <BenefitIllustrationCompare>
                         <BenefitIllustrationCompareItem className="template">
-                          <BenefitIllustrationLabel>Шаблон</BenefitIllustrationLabel>
-                          <BenefitIllustrationTemplate>Aa</BenefitIllustrationTemplate>
+                          <BenefitIllustrationLabel>
+                            Шаблон
+                          </BenefitIllustrationLabel>
+                          <BenefitIllustrationTemplate>
+                            Aa
+                          </BenefitIllustrationTemplate>
                         </BenefitIllustrationCompareItem>
-                        <BenefitIllustrationCompareVs>vs</BenefitIllustrationCompareVs>
+                        <BenefitIllustrationCompareVs>
+                          vs
+                        </BenefitIllustrationCompareVs>
                         <BenefitIllustrationCompareItem className="custom">
-                          <BenefitIllustrationLabel>Кастом</BenefitIllustrationLabel>
-                          <BenefitIllustrationCustom>Aa</BenefitIllustrationCustom>
+                          <BenefitIllustrationLabel>
+                            Кастом
+                          </BenefitIllustrationLabel>
+                          <BenefitIllustrationCustom>
+                            Aa
+                          </BenefitIllustrationCustom>
                         </BenefitIllustrationCompareItem>
                       </BenefitIllustrationCompare>
                     </BenefitIllustration>
-                    
+
                     <BenefitCardNumber>02</BenefitCardNumber>
                     <BenefitCardGlow className="glow-2" />
                   </BenefitCardInner>
                 </BenefitCard>
-                
+
                 <BenefitCard
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -1439,20 +1468,28 @@ const TypographyLettering = () => {
                         <FaAlignLeft />
                       </BenefitIcon>
                     </BenefitIconContainer>
-                    
+
                     <BenefitCardContent>
-                      <BenefitCardTitle>Краще візуальне сприйняття</BenefitCardTitle>
+                      <BenefitCardTitle>
+                        Краще візуальне сприйняття
+                      </BenefitCardTitle>
                       <BenefitCardText>
-                        Якісна типографіка підвищує читабельність, структурує контент, 
-                        направляє увагу. 
-                        <HighlightText> Це особливо критично в інтерфейсах, презентаціях, рекламі.</HighlightText>
+                        Якісна типографіка підвищує читабельність, структурує
+                        контент, направляє увагу.
+                        <HighlightText>
+                          {' '}
+                          Це особливо критично в інтерфейсах, презентаціях,
+                          рекламі.
+                        </HighlightText>
                       </BenefitCardText>
                     </BenefitCardContent>
-                    
+
                     <BenefitIllustration className="readability">
                       <BenefitReadabilityExample>
                         <BenefitReadabilityBefore>
-                          <BenefitIllustrationLabel>До</BenefitIllustrationLabel>
+                          <BenefitIllustrationLabel>
+                            До
+                          </BenefitIllustrationLabel>
                           <BenefitReadabilityBeforeContent>
                             <BenefitReadabilityLine className="line-1" />
                             <BenefitReadabilityLine className="line-2" />
@@ -1461,7 +1498,9 @@ const TypographyLettering = () => {
                           </BenefitReadabilityBeforeContent>
                         </BenefitReadabilityBefore>
                         <BenefitReadabilityAfter>
-                          <BenefitIllustrationLabel>Після</BenefitIllustrationLabel>
+                          <BenefitIllustrationLabel>
+                            Після
+                          </BenefitIllustrationLabel>
                           <BenefitReadabilityAfterContent>
                             <BenefitReadabilityTitle />
                             <BenefitReadabilitySubtitle />
@@ -1471,7 +1510,7 @@ const TypographyLettering = () => {
                         </BenefitReadabilityAfter>
                       </BenefitReadabilityExample>
                     </BenefitIllustration>
-                    
+
                     <BenefitCardNumber>03</BenefitCardNumber>
                     <BenefitCardGlow className="glow-3" />
                   </BenefitCardInner>
@@ -1487,14 +1526,18 @@ const TypographyLettering = () => {
         <WorkflowContainer>
           <WorkflowHeader>
             <WorkflowHeadingAccent>Процес</WorkflowHeadingAccent>
-            <WorkflowTitle>Як ми працюємо — приклад підходу до кожного проєкту</WorkflowTitle>
+            <WorkflowTitle>
+              Як ми працюємо — приклад підходу до кожного проєкту
+            </WorkflowTitle>
             <WorkflowDescription>
-              Кожен бренд — це окрема історія, тому ми не використовуємо шаблони. Наш підхід — це поєднання аналітики, 
-              дизайнерської експертизи та уваги до деталей. Ми не просто підбираємо шрифти — ми формуємо типографічну 
-              систему, яка працює на ідентичність бренду.
+              Кожен бренд — це окрема історія, тому ми не використовуємо
+              шаблони. Наш підхід — це поєднання аналітики, дизайнерської
+              експертизи та уваги до деталей. Ми не просто підбираємо шрифти —
+              ми формуємо типографічну систему, яка працює на ідентичність
+              бренду.
             </WorkflowDescription>
           </WorkflowHeader>
-          
+
           <WorkflowProcess>
             <WorkflowStep $delay="0.1s">
               <StepNumber $active={true}>
@@ -1502,38 +1545,54 @@ const TypographyLettering = () => {
               </StepNumber>
               <StepContent>
                 <StepTitle>
-                  <div className="icon"><FaSearch /></div>
+                  <div className="icon">
+                    <FaSearch />
+                  </div>
                   Брифінг та початкове занурення
                 </StepTitle>
                 <StepDescription>
-                  Починаємо з глибокого розуміння вашого бізнесу: хто ви, чим відрізняєтесь, яка ваша аудиторія, 
-                  у якому стилі ви хочете з нею спілкуватися. Ми вивчаємо продукти, послуги, місію бренду, 
+                  Починаємо з глибокого розуміння вашого бізнесу: хто ви, чим
+                  відрізняєтесь, яка ваша аудиторія, у якому стилі ви хочете з
+                  нею спілкуватися. Ми вивчаємо продукти, послуги, місію бренду,
                   вже наявні візуальні елементи.
                 </StepDescription>
                 <StepVisual className="briefing">
-                  <div className="tag"><span className="dot"></span>Місія бренду</div>
-                  <div className="tag"><span className="dot"></span>Цільова аудиторія</div>
-                  <div className="tag"><span className="dot"></span>Стиль комунікації</div>
-                  <div className="tag"><span className="dot"></span>Візуальні елементи</div>
-                  <div className="tag"><span className="dot"></span>Продукти/послуги</div>
+                  <div className="tag">
+                    <span className="dot"></span>Місія бренду
+                  </div>
+                  <div className="tag">
+                    <span className="dot"></span>Цільова аудиторія
+                  </div>
+                  <div className="tag">
+                    <span className="dot"></span>Стиль комунікації
+                  </div>
+                  <div className="tag">
+                    <span className="dot"></span>Візуальні елементи
+                  </div>
+                  <div className="tag">
+                    <span className="dot"></span>Продукти/послуги
+                  </div>
                 </StepVisual>
                 <StepAccent>01</StepAccent>
               </StepContent>
             </WorkflowStep>
-            
+
             <WorkflowStep $delay="0.2s">
               <StepNumber>
                 <div className="number">2</div>
               </StepNumber>
               <StepContent>
                 <StepTitle>
-                  <div className="icon"><FaChartBar /></div>
+                  <div className="icon">
+                    <FaChartBar />
+                  </div>
                   Аналіз ринку та конкурентів
                 </StepTitle>
                 <StepDescription>
-                  Досліджуємо середовище, в якому працює ваш бренд. Вивчаємо візуальні рішення конкурентів, 
-                  шрифтові тренди у вашій ніші, аналізуємо типові підходи, щоб уникнути повторів 
-                  та створити відмінність.
+                  Досліджуємо середовище, в якому працює ваш бренд. Вивчаємо
+                  візуальні рішення конкурентів, шрифтові тренди у вашій ніші,
+                  аналізуємо типові підходи, щоб уникнути повторів та створити
+                  відмінність.
                 </StepDescription>
                 <StepVisual className="market">
                   <div className="competitor">Конкурент А</div>
@@ -1543,20 +1602,23 @@ const TypographyLettering = () => {
                 <StepAccent>02</StepAccent>
               </StepContent>
             </WorkflowStep>
-            
+
             <WorkflowStep $delay="0.3s">
               <StepNumber>
                 <div className="number">3</div>
               </StepNumber>
               <StepContent>
                 <StepTitle>
-                  <div className="icon"><FaLightbulb /></div>
+                  <div className="icon">
+                    <FaLightbulb />
+                  </div>
                   Розробка концепції
                 </StepTitle>
                 <StepDescription>
-                  На цьому етапі ми пропонуємо декілька напрямків: типографічні пари, стильові референси, 
-                  варіанти летерингу. Якщо потрібно — створюємо начерки рукописних рішень, 
-                  які підкреслюють індивідуальність.
+                  На цьому етапі ми пропонуємо декілька напрямків: типографічні
+                  пари, стильові референси, варіанти летерингу. Якщо потрібно —
+                  створюємо начерки рукописних рішень, які підкреслюють
+                  індивідуальність.
                 </StepDescription>
                 <StepVisual className="concept">
                   <div className="font-sample">Aa</div>
@@ -1567,54 +1629,73 @@ const TypographyLettering = () => {
                 <StepAccent>03</StepAccent>
               </StepContent>
             </WorkflowStep>
-            
+
             <WorkflowStep $delay="0.4s">
               <StepNumber>
                 <div className="number">4</div>
               </StepNumber>
               <StepContent>
                 <StepTitle>
-                  <div className="icon"><FaDesktop /></div>
+                  <div className="icon">
+                    <FaDesktop />
+                  </div>
                   Дизайн і тестування
                 </StepTitle>
                 <StepDescription>
-                  Створюємо фінальну версію типографіки або летерингу, перевіряємо, як вона виглядає в реальних 
-                  сценаріях: у логотипі, на сайті, в макетах, у соціальних мережах. Враховуємо адаптивність, 
-                  читабельність на різних носіях.
+                  Створюємо фінальну версію типографіки або летерингу,
+                  перевіряємо, як вона виглядає в реальних сценаріях: у
+                  логотипі, на сайті, в макетах, у соціальних мережах.
+                  Враховуємо адаптивність, читабельність на різних носіях.
                 </StepDescription>
                 <StepVisual className="testing">
-                  <div className="device"><FaDesktop /></div>
-                  <div className="device"><FaMobileAlt /></div>
-                  <div className="device"><FaPrint /></div>
+                  <div className="device">
+                    <FaDesktop />
+                  </div>
+                  <div className="device">
+                    <FaMobileAlt />
+                  </div>
+                  <div className="device">
+                    <FaPrint />
+                  </div>
                 </StepVisual>
                 <StepAccent>04</StepAccent>
               </StepContent>
             </WorkflowStep>
-            
+
             <WorkflowStep $delay="0.5s">
               <StepNumber>
                 <div className="number">5</div>
               </StepNumber>
               <StepContent>
                 <StepTitle>
-                  <div className="icon"><FaLayerGroup /></div>
+                  <div className="icon">
+                    <FaLayerGroup />
+                  </div>
                   Узгодження і підготовка фінальних матеріалів
                 </StepTitle>
                 <StepDescription>
-                  Після затвердження ми передаємо всі необхідні файли — у форматах для друку та цифрового використання. 
-                  За запитом — готуємо міні-гайдлайн або інструкції з правильного використання шрифтів чи летерингу.
+                  Після затвердження ми передаємо всі необхідні файли — у
+                  форматах для друку та цифрового використання. За запитом —
+                  готуємо міні-гайдлайн або інструкції з правильного
+                  використання шрифтів чи летерингу.
                 </StepDescription>
                 <StepVisual className="delivery">
                   <div className="file">
-                    <div className="icon"><FaFont /></div>
+                    <div className="icon">
+                      <FaFont />
+                    </div>
                     <div className="label">.OTF</div>
                   </div>
                   <div className="file">
-                    <div className="icon"><FaPencilAlt /></div>
+                    <div className="icon">
+                      <FaPencilAlt />
+                    </div>
                     <div className="label">.AI</div>
                   </div>
                   <div className="file">
-                    <div className="icon"><FaLayerGroup /></div>
+                    <div className="icon">
+                      <FaLayerGroup />
+                    </div>
                     <div className="label">Гайдлайн</div>
                   </div>
                 </StepVisual>
@@ -1622,23 +1703,30 @@ const TypographyLettering = () => {
               </StepContent>
             </WorkflowStep>
           </WorkflowProcess>
-        
-          
+
           <WorkflowBackground>
             <WorkflowCircle className="circle1" />
             <WorkflowCircle className="circle2" />
             <WorkflowGrid>
               {[...Array(19)].map((_, i) => (
-                <div key={`h-${i}`} className="grid-line-h" style={{ gridRow: i + 1 }} />
+                <div
+                  key={`h-${i}`}
+                  className="grid-line-h"
+                  style={{ gridRow: i + 1 }}
+                />
               ))}
               {[...Array(19)].map((_, i) => (
-                <div key={`v-${i}`} className="grid-line-v" style={{ gridColumn: i + 1 }} />
+                <div
+                  key={`v-${i}`}
+                  className="grid-line-v"
+                  style={{ gridColumn: i + 1 }}
+                />
               ))}
             </WorkflowGrid>
           </WorkflowBackground>
         </WorkflowContainer>
       </WorkflowSection>
-      
+
       {/* Order Process Section - How to Order */}
       <OrderProcessSection>
         <OrderProcessContainer>
@@ -1646,11 +1734,11 @@ const TypographyLettering = () => {
             <OrderProcessTitle>Як замовити послугу</OrderProcessTitle>
             <OrderProcessSubtitle>Етапи співпраці</OrderProcessSubtitle>
             <OrderProcessDescription>
-              Ми зробили процес максимально зручним для клієнта — без зайвої бюрократії, 
-              але з повним контролем якості на кожному етапі.
+              Ми зробили процес максимально зручним для клієнта — без зайвої
+              бюрократії, але з повним контролем якості на кожному етапі.
             </OrderProcessDescription>
           </OrderProcessHeader>
-          
+
           <OrderProcessSteps>
             <ProcessStepContainer
               initial={{ opacity: 0, y: 20 }}
@@ -1660,16 +1748,21 @@ const TypographyLettering = () => {
             >
               <ProcessStepNumber>
                 <div className="number">1</div>
-                <div className="indicator"><FaPencilAlt /></div>
+                <div className="indicator">
+                  <FaPencilAlt />
+                </div>
               </ProcessStepNumber>
               <ProcessStepContent>
                 <ProcessStepTitle>
-                  <div className="icon"><FaPencilAlt /></div>
+                  <div className="icon">
+                    <FaPencilAlt />
+                  </div>
                   Заявка
                 </ProcessStepTitle>
                 <ProcessStepDescription>
-                  Залишаєте запит через форму на сайті або надсилаєте листа з коротким описом задачі. 
-                  Ми відповідаємо протягом одного робочого дня.
+                  Залишаєте запит через форму на сайті або надсилаєте листа з
+                  коротким описом задачі. Ми відповідаємо протягом одного
+                  робочого дня.
                 </ProcessStepDescription>
                 <ProcessStepDecoration>01</ProcessStepDecoration>
               </ProcessStepContent>
@@ -1677,7 +1770,7 @@ const TypographyLettering = () => {
                 <FaArrowDown />
               </ProcessStepArrow>
             </ProcessStepContainer>
-            
+
             <ProcessStepContainer
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1686,16 +1779,21 @@ const TypographyLettering = () => {
             >
               <ProcessStepNumber>
                 <div className="number">2</div>
-                <div className="indicator"><FaCommentAlt /></div>
+                <div className="indicator">
+                  <FaCommentAlt />
+                </div>
               </ProcessStepNumber>
               <ProcessStepContent>
                 <ProcessStepTitle>
-                  <div className="icon"><FaCommentAlt /></div>
+                  <div className="icon">
+                    <FaCommentAlt />
+                  </div>
                   Обговорення задачі
                 </ProcessStepTitle>
                 <ProcessStepDescription>
-                  Ми ставимо уточнювальні запитання, обговорюємо очікування, стиль, обсяг роботи. 
-                  За потреби — надсилаємо короткий бриф для заповнення.
+                  Ми ставимо уточнювальні запитання, обговорюємо очікування,
+                  стиль, обсяг роботи. За потреби — надсилаємо короткий бриф для
+                  заповнення.
                 </ProcessStepDescription>
                 <ProcessStepDecoration>02</ProcessStepDecoration>
               </ProcessStepContent>
@@ -1703,7 +1801,7 @@ const TypographyLettering = () => {
                 <FaArrowDown />
               </ProcessStepArrow>
             </ProcessStepContainer>
-            
+
             <ProcessStepContainer
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1712,16 +1810,21 @@ const TypographyLettering = () => {
             >
               <ProcessStepNumber>
                 <div className="number">3</div>
-                <div className="indicator"><FaFileAlt /></div>
+                <div className="indicator">
+                  <FaFileAlt />
+                </div>
               </ProcessStepNumber>
               <ProcessStepContent>
                 <ProcessStepTitle>
-                  <div className="icon"><FaFileAlt /></div>
+                  <div className="icon">
+                    <FaFileAlt />
+                  </div>
                   Комерційна пропозиція
                 </ProcessStepTitle>
                 <ProcessStepDescription>
-                  Формуємо чітку пропозицію із вартістю, термінами та обсягом. 
-                  Ви розумієте, що саме отримаєте, скільки це коштує і коли буде готово.
+                  Формуємо чітку пропозицію із вартістю, термінами та обсягом.
+                  Ви розумієте, що саме отримаєте, скільки це коштує і коли буде
+                  готово.
                 </ProcessStepDescription>
                 <ProcessStepDecoration>03</ProcessStepDecoration>
               </ProcessStepContent>
@@ -1729,7 +1832,7 @@ const TypographyLettering = () => {
                 <FaArrowDown />
               </ProcessStepArrow>
             </ProcessStepContainer>
-            
+
             <ProcessStepContainer
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1738,16 +1841,21 @@ const TypographyLettering = () => {
             >
               <ProcessStepNumber>
                 <div className="number">4</div>
-                <div className="indicator"><FaRocket /></div>
+                <div className="indicator">
+                  <FaRocket />
+                </div>
               </ProcessStepNumber>
               <ProcessStepContent>
                 <ProcessStepTitle>
-                  <div className="icon"><FaRocket /></div>
+                  <div className="icon">
+                    <FaRocket />
+                  </div>
                   Початок роботи
                 </ProcessStepTitle>
                 <ProcessStepDescription>
-                  Після узгодження умов ми підписуємо договір або підтвердження про старт. 
-                  Починається етап розробки: дослідження, концепції, ескізи.
+                  Після узгодження умов ми підписуємо договір або підтвердження
+                  про старт. Починається етап розробки: дослідження, концепції,
+                  ескізи.
                 </ProcessStepDescription>
                 <ProcessStepDecoration>04</ProcessStepDecoration>
               </ProcessStepContent>
@@ -1755,7 +1863,7 @@ const TypographyLettering = () => {
                 <FaArrowDown />
               </ProcessStepArrow>
             </ProcessStepContainer>
-            
+
             <ProcessStepContainer
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1764,16 +1872,21 @@ const TypographyLettering = () => {
             >
               <ProcessStepNumber>
                 <div className="number">5</div>
-                <div className="indicator"><FaRegEye /></div>
+                <div className="indicator">
+                  <FaRegEye />
+                </div>
               </ProcessStepNumber>
               <ProcessStepContent>
                 <ProcessStepTitle>
-                  <div className="icon"><FaRegEye /></div>
+                  <div className="icon">
+                    <FaRegEye />
+                  </div>
                   Проміжне погодження
                 </ProcessStepTitle>
                 <ProcessStepDescription>
-                  На етапі чорнових рішень ми показуємо проміжні варіанти, щоб узгодити напрямок і внести 
-                  правки до фіналізації. Ви залучені до процесу.
+                  На етапі чорнових рішень ми показуємо проміжні варіанти, щоб
+                  узгодити напрямок і внести правки до фіналізації. Ви залучені
+                  до процесу.
                 </ProcessStepDescription>
                 <ProcessStepDecoration>05</ProcessStepDecoration>
               </ProcessStepContent>
@@ -1781,7 +1894,7 @@ const TypographyLettering = () => {
                 <FaArrowDown />
               </ProcessStepArrow>
             </ProcessStepContainer>
-            
+
             <ProcessStepContainer
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1790,24 +1903,27 @@ const TypographyLettering = () => {
             >
               <ProcessStepNumber>
                 <div className="number">6</div>
-                <div className="indicator"><FaCheck /></div>
+                <div className="indicator">
+                  <FaCheck />
+                </div>
               </ProcessStepNumber>
               <ProcessStepContent>
                 <ProcessStepTitle>
-                  <div className="icon"><FaCheck /></div>
+                  <div className="icon">
+                    <FaCheck />
+                  </div>
                   Завершення та передача результату
                 </ProcessStepTitle>
                 <ProcessStepDescription>
-                  Ви отримуєте всі файли у зручних форматах, а також пояснення щодо їх використання. 
-                  Після завершення — залишаєтесь із візуальним активом, що працює на бренд.
+                  Ви отримуєте всі файли у зручних форматах, а також пояснення
+                  щодо їх використання. Після завершення — залишаєтесь із
+                  візуальним активом, що працює на бренд.
                 </ProcessStepDescription>
                 <ProcessStepDecoration>06</ProcessStepDecoration>
               </ProcessStepContent>
             </ProcessStepContainer>
           </OrderProcessSteps>
-          
 
-          
           <OrderProcessBackground>
             <OrderProcessBgLines className="line-1" />
             <OrderProcessBgLines className="line-2" />
@@ -1818,11 +1934,11 @@ const TypographyLettering = () => {
           </OrderProcessBackground>
         </OrderProcessContainer>
       </OrderProcessSection>
-      
+
       {/* FAQ Section */}
       <FaqSection>
         <FaqWaveTop />
-        
+
         <FaqContainer>
           <FaqGlowCircle className="circle-1" />
           <FaqGlowCircle className="circle-2" />
@@ -1852,11 +1968,11 @@ const TypographyLettering = () => {
                   initial={{ borderRadius: 16 }}
                   key={`faq-${index}`}
                   transition={{
-                    layout: { 
-                      type: "spring", 
+                    layout: {
+                      type: 'spring',
                       bounce: 0.2,
-                      duration: 0.6
-                    }
+                      duration: 0.6,
+                    },
                   }}
                 >
                   <FaqQuestion
@@ -1868,13 +1984,13 @@ const TypographyLettering = () => {
                     <FaqToggle
                       animate={{
                         rotate: expandedFaqs.includes(index) ? 45 : 0,
-                        backgroundColor: expandedFaqs.includes(index) 
-                          ? 'rgba(var(--accent-color-rgb), 0.15)' 
-                          : 'rgba(var(--accent-color-rgb), 0.05)'
+                        backgroundColor: expandedFaqs.includes(index)
+                          ? 'rgba(var(--accent-color-rgb), 0.15)'
+                          : 'rgba(var(--accent-color-rgb), 0.05)',
                       }}
-                      transition={{ 
+                      transition={{
                         duration: 0.4,
-                        ease: [0.4, 0, 0.2, 1]
+                        ease: [0.4, 0, 0.2, 1],
                       }}
                     >
                       <FaPlus />
@@ -1885,15 +2001,15 @@ const TypographyLettering = () => {
                     {expandedFaqs.includes(index) && (
                       <FaqAnswer
                         initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
+                        animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        transition={{ 
-                          type: "spring",
+                        transition={{
+                          type: 'spring',
                           damping: 40,
                           stiffness: 60,
                           mass: 1,
-                          opacity: { duration: 0.5, ease: "easeInOut" },
-                          height: { duration: 0.4, ease: "easeInOut" }
+                          opacity: { duration: 0.5, ease: 'easeInOut' },
+                          height: { duration: 0.4, ease: 'easeInOut' },
                         }}
                       >
                         {faq.answer}
@@ -1904,7 +2020,7 @@ const TypographyLettering = () => {
               </FaqItem>
             ))}
           </FaqList>
-          
+
           <FaqCta
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -1926,7 +2042,7 @@ const TypographyLettering = () => {
           </FaqCta>
         </FaqContainer>
       </FaqSection>
-      
+
       <Modal isOpen={isModalOpen} onClose={closeModal} />
       {/* Additional sections will follow here */}
     </PageContainer>
@@ -3098,7 +3214,7 @@ const MethodologySteps = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   margin-bottom: 2rem;
-  
+
   @media (max-width: 992px) {
     grid-template-columns: 1fr;
     gap: 4rem;
@@ -3511,7 +3627,7 @@ const MethodologyStepCenter = styled.div`
   padding: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  
+
   @media (max-width: 992px) {
     grid-column: 1;
     margin: 2rem auto 0;
@@ -3546,7 +3662,7 @@ const BenefitsBgGradient = styled.div`
   filter: blur(80px);
   z-index: 0;
   opacity: 0.15;
-  
+
   &.gradient-1 {
     width: 600px;
     height: 600px;
@@ -3559,7 +3675,7 @@ const BenefitsBgGradient = styled.div`
     right: -200px;
     animation: ${float} 20s infinite ease-in-out;
   }
-  
+
   &.gradient-2 {
     width: 500px;
     height: 500px;
@@ -3577,8 +3693,9 @@ const BenefitsBgGradient = styled.div`
 const BenefitsBgElement = styled.div`
   position: absolute;
   z-index: 0;
-  
-  &.line-1, &.line-2 {
+
+  &.line-1,
+  &.line-2 {
     width: 100%;
     height: 1px;
     background: linear-gradient(
@@ -3588,36 +3705,38 @@ const BenefitsBgElement = styled.div`
       transparent
     );
   }
-  
+
   &.line-1 {
     top: 30%;
     transform: rotate(5deg);
   }
-  
+
   &.line-2 {
     bottom: 20%;
     transform: rotate(-5deg);
   }
-  
-  &.dot-1, &.dot-2, &.dot-3 {
+
+  &.dot-1,
+  &.dot-2,
+  &.dot-3 {
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background: rgba(var(--accent-color-rgb), 0.1);
   }
-  
+
   &.dot-1 {
     top: 20%;
     left: 10%;
     animation: ${float} 15s infinite ease-in-out;
   }
-  
+
   &.dot-2 {
     top: 70%;
     right: 15%;
     animation: ${float} 18s infinite ease-in-out;
   }
-  
+
   &.dot-3 {
     top: 40%;
     left: 50%;
@@ -3631,17 +3750,17 @@ const BenefitsBgText = styled.div`
   font-weight: 900;
   color: rgba(var(--accent-color-rgb), 0.02);
   z-index: 0;
-  
+
   &:first-child {
     top: 5%;
     left: 10%;
   }
-  
+
   &.text-2 {
     bottom: 10%;
     right: 10%;
   }
-  
+
   &.text-3 {
     top: 40%;
     right: 30%;
@@ -3669,7 +3788,7 @@ const BenefitsTitle = styled.h2`
   color: var(--text-primary);
   margin-bottom: 1rem;
   position: relative;
-  
+
   @media (max-width: 768px) {
     font-size: 2.8rem;
   }
@@ -3691,11 +3810,11 @@ const BenefitsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2.5rem;
-  
+
   @media (max-width: 1100px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
@@ -3718,7 +3837,7 @@ const BenefitCardInner = styled.div`
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  
+
   &:hover {
     background: rgba(255, 255, 255, 0.05);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
@@ -3737,19 +3856,31 @@ const BenefitCardGlow = styled.div`
   opacity: 0;
   transition: opacity 0.5s ease;
   z-index: -1;
-  
+
   &.glow-1 {
-    background: radial-gradient(circle at center, rgba(255, 123, 0, 0.15) 0%, transparent 70%);
+    background: radial-gradient(
+      circle at center,
+      rgba(255, 123, 0, 0.15) 0%,
+      transparent 70%
+    );
   }
-  
+
   &.glow-2 {
-    background: radial-gradient(circle at center, rgba(0, 178, 255, 0.15) 0%, transparent 70%);
+    background: radial-gradient(
+      circle at center,
+      rgba(0, 178, 255, 0.15) 0%,
+      transparent 70%
+    );
   }
-  
+
   &.glow-3 {
-    background: radial-gradient(circle at center, rgba(0, 208, 132, 0.15) 0%, transparent 70%);
+    background: radial-gradient(
+      circle at center,
+      rgba(0, 208, 132, 0.15) 0%,
+      transparent 70%
+    );
   }
-  
+
   ${BenefitCardInner}:hover & {
     opacity: 1;
   }
@@ -3766,31 +3897,55 @@ const BenefitIconContainer = styled.div`
   transition: all 0.3s ease;
   position: relative;
   z-index: 1;
-  
+
   &.recognition {
-    background: linear-gradient(135deg, rgba(255, 123, 0, 0.1) 0%, rgba(255, 123, 0, 0.3) 100%);
-    
+    background: linear-gradient(
+      135deg,
+      rgba(255, 123, 0, 0.1) 0%,
+      rgba(255, 123, 0, 0.3) 100%
+    );
+
     ${BenefitCardInner}:hover & {
-      background: linear-gradient(135deg, rgba(255, 123, 0, 0.8) 0%, rgba(255, 123, 0, 1) 100%);
+      background: linear-gradient(
+        135deg,
+        rgba(255, 123, 0, 0.8) 0%,
+        rgba(255, 123, 0, 1) 100%
+      );
     }
   }
-  
+
   &.uniqueness {
-    background: linear-gradient(135deg, rgba(0, 178, 255, 0.1) 0%, rgba(0, 178, 255, 0.3) 100%);
-    
+    background: linear-gradient(
+      135deg,
+      rgba(0, 178, 255, 0.1) 0%,
+      rgba(0, 178, 255, 0.3) 100%
+    );
+
     ${BenefitCardInner}:hover & {
-      background: linear-gradient(135deg, rgba(0, 178, 255, 0.8) 0%, rgba(0, 178, 255, 1) 100%);
+      background: linear-gradient(
+        135deg,
+        rgba(0, 178, 255, 0.8) 0%,
+        rgba(0, 178, 255, 1) 100%
+      );
     }
   }
-  
+
   &.readability {
-    background: linear-gradient(135deg, rgba(0, 208, 132, 0.1) 0%, rgba(0, 208, 132, 0.3) 100%);
-    
+    background: linear-gradient(
+      135deg,
+      rgba(0, 208, 132, 0.1) 0%,
+      rgba(0, 208, 132, 0.3) 100%
+    );
+
     ${BenefitCardInner}:hover & {
-      background: linear-gradient(135deg, rgba(0, 208, 132, 0.8) 0%, rgba(0, 208, 132, 1) 100%);
+      background: linear-gradient(
+        135deg,
+        rgba(0, 208, 132, 0.8) 0%,
+        rgba(0, 208, 132, 1) 100%
+      );
     }
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -3804,7 +3959,7 @@ const BenefitIconContainer = styled.div`
     z-index: -1;
     transition: all 0.3s ease;
   }
-  
+
   ${BenefitCardInner}:hover &::after {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   }
@@ -3814,7 +3969,7 @@ const BenefitIcon = styled.div`
   font-size: 2rem;
   color: var(--accent-color);
   transition: all 0.3s ease;
-  
+
   ${BenefitCardInner}:hover & {
     color: white;
     transform: scale(1.1);
@@ -3833,7 +3988,7 @@ const BenefitCardTitle = styled.h3`
   margin-bottom: 1rem;
   color: var(--text-primary);
   transition: color 0.3s ease;
-  
+
   ${BenefitCardInner}:hover & {
     color: var(--accent-color-light);
   }
@@ -3854,7 +4009,7 @@ const BenefitCardNumber = styled.div`
   color: rgba(255, 255, 255, 0.03);
   transition: all 0.4s ease;
   line-height: 1;
-  
+
   ${BenefitCardInner}:hover & {
     transform: scale(1.2) translateY(-5px);
     color: rgba(var(--accent-color-rgb), 0.07);
@@ -3878,16 +4033,16 @@ const BenefitIllustrationItem = styled.div`
   padding: 0.8rem;
   width: 80px;
   height: 80px;
-  
+
   &.logo-hidden {
     color: rgba(255, 255, 255, 0.3);
     font-size: 1.8rem;
   }
-  
+
   &.typography {
     color: var(--accent-color);
   }
-  
+
   &.recognition {
     color: rgba(255, 123, 0, 0.8);
     font-size: 1.8rem;
@@ -3927,11 +4082,11 @@ const BenefitIllustrationCompareItem = styled.div`
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.03);
   width: 40%;
-  
+
   &.template {
     opacity: 0.5;
   }
-  
+
   &.custom {
     background: rgba(0, 178, 255, 0.05);
     border: 1px solid rgba(0, 178, 255, 0.1);
@@ -4011,19 +4166,19 @@ const BenefitReadabilityLine = styled.div`
   height: 4px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 2px;
-  
+
   &.line-1 {
     width: 100%;
   }
-  
+
   &.line-2 {
     width: 90%;
   }
-  
+
   &.line-3 {
     width: 95%;
   }
-  
+
   &.line-4 {
     width: 85%;
   }
@@ -4082,7 +4237,7 @@ const WorkflowHeadingAccent = styled.div`
   white-space: nowrap;
   color: var(--accent-color);
   pointer-events: none;
-  
+
   @media (max-width: 768px) {
     font-size: 8rem;
   }
@@ -4094,7 +4249,7 @@ const WorkflowTitle = styled.h2`
   margin-bottom: 1.5rem;
   color: var(--text-primary);
   position: relative;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -4110,7 +4265,7 @@ const WorkflowTitle = styled.h2`
     );
     border-radius: 3px;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2.6rem;
   }
@@ -4130,7 +4285,7 @@ const WorkflowProcess = styled.div`
   gap: 2rem;
   position: relative;
   margin-top: 4rem;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -4149,13 +4304,13 @@ const WorkflowProcess = styled.div`
     transform: translateX(-50%);
     z-index: 1;
   }
-  
+
   @media (max-width: 992px) {
     &::before {
       left: 50px;
     }
   }
-  
+
   @media (max-width: 576px) {
     &::before {
       left: 35px;
@@ -4183,17 +4338,17 @@ const WorkflowStep = styled(motion.div)`
   animation: ${stepAppear} 0.6s ease-out forwards;
   animation-delay: ${props => props.$delay || '0s'};
   opacity: 0;
-  
+
   &:nth-child(even) {
     direction: rtl;
   }
-  
+
   @media (max-width: 992px) {
     grid-template-columns: 100px 1fr;
     direction: ltr !important;
     gap: 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     grid-template-columns: 70px 1fr;
     gap: 1rem;
@@ -4206,7 +4361,7 @@ const StepNumber = styled.div`
   align-items: center;
   justify-content: flex-start;
   text-align: center;
-  
+
   .number {
     display: flex;
     align-items: center;
@@ -4216,12 +4371,16 @@ const StepNumber = styled.div`
     border-radius: 50%;
     font-size: 1.8rem;
     font-weight: 800;
-    background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color-light) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--accent-color) 0%,
+      var(--accent-color-light) 100%
+    );
     color: white;
     margin-bottom: 1rem;
     position: relative;
     z-index: 3;
-    
+
     &::before {
       content: '';
       position: absolute;
@@ -4229,10 +4388,10 @@ const StepNumber = styled.div`
       height: 86px;
       border-radius: 50%;
       border: 2px dashed rgba(var(--accent-color-rgb), 0.3);
-      animation: ${props => props.$active ? pulseDot : 'none'} 2s infinite;
+      animation: ${props => (props.$active ? pulseDot : 'none')} 2s infinite;
     }
   }
-  
+
   .dot {
     width: 16px;
     height: 16px;
@@ -4241,26 +4400,26 @@ const StepNumber = styled.div`
     margin-top: 1rem;
     box-shadow: 0 0 0 5px rgba(var(--accent-color-rgb), 0.2);
   }
-  
+
   @media (max-width: 992px) {
     .number {
       width: 60px;
       height: 60px;
       font-size: 1.5rem;
-      
+
       &::before {
         width: 74px;
         height: 74px;
       }
     }
   }
-  
+
   @media (max-width: 576px) {
     .number {
       width: 50px;
       height: 50px;
       font-size: 1.3rem;
-      
+
       &::before {
         width: 62px;
         height: 62px;
@@ -4280,14 +4439,14 @@ const StepContent = styled.div`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  
+
   &:hover {
     background: rgba(255, 255, 255, 0.05);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     border-color: rgba(var(--accent-color-rgb), 0.2);
     transform: translateY(-5px);
   }
-  
+
   @media (max-width: 576px) {
     padding: 1.5rem;
   }
@@ -4301,7 +4460,7 @@ const StepTitle = styled.h3`
   display: flex;
   align-items: center;
   gap: 1rem;
-  
+
   .icon {
     display: flex;
     align-items: center;
@@ -4314,10 +4473,10 @@ const StepTitle = styled.h3`
     font-size: 1.2rem;
     flex-shrink: 0;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.3rem;
-    
+
     .icon {
       width: 36px;
       height: 36px;
@@ -4341,7 +4500,7 @@ const StepAccent = styled.div`
   font-weight: 900;
   color: rgba(var(--accent-color-rgb), 0.03);
   pointer-events: none;
-  
+
   @media (max-width: 576px) {
     font-size: 6rem;
     bottom: -20px;
@@ -4354,12 +4513,12 @@ const StepVisual = styled.div`
   display: flex;
   gap: 1rem;
   overflow: hidden;
-  
+
   &.briefing {
     display: flex;
     flex-wrap: wrap;
     gap: 0.8rem;
-    
+
     .tag {
       padding: 0.5rem 1rem;
       background: rgba(255, 255, 255, 0.05);
@@ -4369,26 +4528,36 @@ const StepVisual = styled.div`
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      
+
       .dot {
         width: 8px;
         height: 8px;
         border-radius: 50%;
       }
-      
-      &:nth-child(1) .dot { background: #FF7E5F; }
-      &:nth-child(2) .dot { background: #FEB47B; }
-      &:nth-child(3) .dot { background: #7BA7FE; }
-      &:nth-child(4) .dot { background: #B47BFE; }
-      &:nth-child(5) .dot { background: #7BFEBA; }
+
+      &:nth-child(1) .dot {
+        background: #ff7e5f;
+      }
+      &:nth-child(2) .dot {
+        background: #feb47b;
+      }
+      &:nth-child(3) .dot {
+        background: #7ba7fe;
+      }
+      &:nth-child(4) .dot {
+        background: #b47bfe;
+      }
+      &:nth-child(5) .dot {
+        background: #7bfeba;
+      }
     }
   }
-  
+
   &.market {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.8rem;
-    
+
     .competitor {
       aspect-ratio: 1/1;
       border-radius: 10px;
@@ -4401,7 +4570,7 @@ const StepVisual = styled.div`
       font-size: 0.9rem;
       position: relative;
       overflow: hidden;
-      
+
       &::before {
         content: '';
         position: absolute;
@@ -4410,19 +4579,25 @@ const StepVisual = styled.div`
         width: 100%;
         height: 4px;
       }
-      
-      &:nth-child(1)::before { background: #FF7E5F; }
-      &:nth-child(2)::before { background: #FEB47B; }
-      &:nth-child(3)::before { background: #7BA7FE; }
+
+      &:nth-child(1)::before {
+        background: #ff7e5f;
+      }
+      &:nth-child(2)::before {
+        background: #feb47b;
+      }
+      &:nth-child(3)::before {
+        background: #7ba7fe;
+      }
     }
   }
-  
+
   &.concept {
     display: flex;
     gap: 1rem;
     overflow-x: auto;
     padding-bottom: 0.5rem;
-    
+
     .font-sample {
       min-width: 150px;
       height: 80px;
@@ -4432,18 +4607,26 @@ const StepVisual = styled.div`
       align-items: center;
       justify-content: center;
       font-size: 1.5rem;
-      
-      &:nth-child(1) { font-family: 'Times New Roman', serif; }
-      &:nth-child(2) { font-family: 'Arial', sans-serif; }
-      &:nth-child(3) { font-family: 'Courier New', monospace; }
-      &:nth-child(4) { font-style: italic; }
+
+      &:nth-child(1) {
+        font-family: 'Times New Roman', serif;
+      }
+      &:nth-child(2) {
+        font-family: 'Arial', sans-serif;
+      }
+      &:nth-child(3) {
+        font-family: 'Courier New', monospace;
+      }
+      &:nth-child(4) {
+        font-style: italic;
+      }
     }
   }
-  
+
   &.testing {
     display: flex;
     gap: 0.8rem;
-    
+
     .device {
       flex: 1;
       height: 80px;
@@ -4456,12 +4639,12 @@ const StepVisual = styled.div`
       color: var(--accent-color);
     }
   }
-  
+
   &.delivery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.8rem;
-    
+
     .file {
       aspect-ratio: 1/1;
       border-radius: 10px;
@@ -4471,25 +4654,25 @@ const StepVisual = styled.div`
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      
+
       .icon {
         font-size: 1.5rem;
         color: var(--accent-color);
       }
-      
+
       .label {
         font-size: 0.8rem;
         color: var(--text-secondary);
       }
     }
   }
-  
+
   @media (max-width: 576px) {
     &.concept .font-sample {
       min-width: 120px;
       height: 60px;
     }
-    
+
     &.testing .device {
       height: 60px;
     }
@@ -4509,7 +4692,7 @@ const WorkflowCircle = styled.div`
   position: absolute;
   border-radius: 50%;
   filter: blur(60px);
-  
+
   &.circle1 {
     width: 500px;
     height: 500px;
@@ -4521,7 +4704,7 @@ const WorkflowCircle = styled.div`
     top: 10%;
     right: -200px;
   }
-  
+
   &.circle2 {
     width: 600px;
     height: 600px;
@@ -4547,14 +4730,14 @@ const WorkflowGrid = styled.div`
   opacity: 0.03;
   z-index: 0;
   pointer-events: none;
-  
+
   .grid-line-h {
     height: 1px;
     background: var(--text-secondary);
     width: 100%;
     grid-column: 1 / -1;
   }
-  
+
   .grid-line-v {
     width: 1px;
     background: var(--text-secondary);
@@ -4589,7 +4772,7 @@ const OrderProcessTitle = styled.h2`
   margin-bottom: 1.5rem;
   color: var(--text-primary);
   position: relative;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -4605,7 +4788,7 @@ const OrderProcessTitle = styled.h2`
     );
     border-radius: 3px;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2.6rem;
   }
@@ -4655,14 +4838,14 @@ const ProcessStepContainer = styled(motion.div)`
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
   min-height: 180px;
-  
+
   &:hover {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
     transform: translateY(-5px);
     background: rgba(255, 255, 255, 0.03);
     border-color: rgba(var(--accent-color-rgb), 0.1);
   }
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
     min-height: auto;
@@ -4682,12 +4865,12 @@ const ProcessStepNumber = styled.div`
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
-  
+
   @media (max-width: 768px) {
     width: 100%;
     height: 80px;
   }
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -4700,7 +4883,7 @@ const ProcessStepNumber = styled.div`
     );
     animation: ${glowPulse} 3s infinite ease-in-out;
   }
-  
+
   .number {
     font-size: 4.5rem;
     font-weight: 900;
@@ -4709,7 +4892,7 @@ const ProcessStepNumber = styled.div`
     position: relative;
     z-index: 1;
   }
-  
+
   .indicator {
     position: absolute;
     width: 40px;
@@ -4737,7 +4920,7 @@ const ProcessStepContent = styled.div`
   flex-direction: column;
   justify-content: center;
   position: relative;
-  
+
   @media (max-width: 768px) {
     padding: 1.5rem;
   }
@@ -4751,7 +4934,7 @@ const ProcessStepTitle = styled.h4`
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  
+
   .icon {
     width: 36px;
     height: 36px;
@@ -4795,7 +4978,7 @@ const ProcessStepArrow = styled.div`
   font-size: 1.5rem;
   color: rgba(var(--accent-color-rgb), 0.2);
   animation: ${floatArrow} 2s infinite ease-in-out;
-  
+
   @media (max-width: 768px) {
     bottom: 20px;
     right: 20px;
@@ -4820,21 +5003,21 @@ const OrderProcessBgLines = styled.div`
     rgba(var(--accent-color-rgb), 0.1),
     transparent
   );
-  
+
   &.line-1 {
     width: 80%;
     top: 20%;
     left: 10%;
     transform: rotate(-2deg);
   }
-  
+
   &.line-2 {
     width: 60%;
     top: 50%;
     right: 5%;
     transform: rotate(2deg);
   }
-  
+
   &.line-3 {
     width: 70%;
     bottom: 30%;
@@ -4849,17 +5032,17 @@ const OrderProcessBgDot = styled.div`
   height: 8px;
   border-radius: 50%;
   background: rgba(var(--accent-color-rgb), 0.2);
-  
+
   &.dot-1 {
     top: 15%;
     left: 5%;
   }
-  
+
   &.dot-2 {
     top: 60%;
     right: 8%;
   }
-  
+
   &.dot-3 {
     bottom: 10%;
     left: 30%;
@@ -4924,7 +5107,11 @@ const FaqWaveTop = styled.div`
   left: 0;
   width: 100%;
   height: 120px;
-  background: linear-gradient(to top left, transparent 49%, var(--bg-primary) 51%);
+  background: linear-gradient(
+    to top left,
+    transparent 49%,
+    var(--bg-primary) 51%
+  );
   z-index: 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 `;
@@ -5031,7 +5218,8 @@ const FaqItem = styled(motion.div)`
   perspective: 1000px;
 
   &:hover {
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 15px rgba(var(--accent-color-rgb), 0.1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2),
+      0 0 15px rgba(var(--accent-color-rgb), 0.1);
     border-color: rgba(var(--accent-color-rgb), 0.1);
     transform: translateY(-3px);
   }
@@ -5285,4 +5473,3 @@ const FaqCtaButton = styled(motion.button)`
     transform: translateX(5px);
   }
 `;
-

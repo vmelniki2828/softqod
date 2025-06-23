@@ -15,6 +15,8 @@ import Cases from './components/Cases';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Loader from './components/Loader';
+import ScrollToTop from './components/ScrollToTop';
+import ScrollToTopButton from './components/ScrollToTopButton';
 import PWAPage from './services/development/PWAPage';
 import BusinessAutomationPage from 'services/development/BusinessAutomationPage';
 import ERPCRMPage from 'services/development/ERPCRMPage';
@@ -87,6 +89,7 @@ const App = () => {
 
   return (
     <Router>
+      <ScrollToTop />
       <GlobalStyle />
       <AnimatePresence mode="wait">
         {isLoading ? (
@@ -201,6 +204,7 @@ const App = () => {
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
             <Footer />
+            <ScrollToTopButton />
           </motion.div>
         )}
       </AnimatePresence>

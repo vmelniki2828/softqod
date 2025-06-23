@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import Modal from '../../components/Modal';
-import { 
-  FaDatabase, 
-  FaChartLine, 
+import {
+  FaDatabase,
+  FaChartLine,
   FaCogs,
   FaProjectDiagram,
   FaTools,
@@ -12,12 +12,11 @@ import {
   FaChartBar,
   FaUserCog,
   FaFileInvoice,
-  FaShieldAlt,
   FaLaptopCode,
   FaUsers,
   FaSyncAlt,
   FaClipboardCheck,
-  FaPlus
+  FaPlus,
 } from 'react-icons/fa';
 
 // Анимации
@@ -105,9 +104,13 @@ const Background = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--bg-primary) 0%,
+    var(--bg-secondary) 100%
+  );
   z-index: -1;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -115,8 +118,16 @@ const Background = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 20% 30%, rgba(74, 144, 226, 0.15) 0%, transparent 25%),
-                radial-gradient(circle at 80% 70%, rgba(41, 98, 255, 0.15) 0%, transparent 25%);
+    background: radial-gradient(
+        circle at 20% 30%,
+        rgba(74, 144, 226, 0.15) 0%,
+        transparent 25%
+      ),
+      radial-gradient(
+        circle at 80% 70%,
+        rgba(41, 98, 255, 0.15) 0%,
+        transparent 25%
+      );
   }
 `;
 
@@ -126,7 +137,11 @@ const StarField = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at center, transparent 0%, var(--bg-primary) 100%);
+  background: radial-gradient(
+    circle at center,
+    transparent 0%,
+    var(--bg-primary) 100%
+  );
   z-index: -1;
 `;
 
@@ -148,7 +163,12 @@ const Title = styled(motion.h1)`
   text-align: center;
   margin-bottom: 2rem;
   color: transparent;
-  background: linear-gradient(90deg, var(--accent-color), #4a90e2, var(--accent-color));
+  background: linear-gradient(
+    90deg,
+    var(--accent-color),
+    #4a90e2,
+    var(--accent-color)
+  );
   background-size: 200% auto;
   background-clip: text;
   -webkit-background-clip: text;
@@ -162,7 +182,7 @@ const Title = styled(motion.h1)`
   @media (max-width: 768px) {
     font-size: 2.5rem;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -197,7 +217,7 @@ const SystemContainer = styled(motion.div)`
   height: 480px;
   position: relative;
   margin: 0 auto;
-  
+
   @media (max-width: 768px) {
     width: 260px;
     height: 400px;
@@ -211,7 +231,11 @@ const SystemBox = styled(motion.div)`
   transform-style: preserve-3d;
   border-radius: 36px;
   box-shadow: 0 0 50px rgba(74, 144, 226, 0.3);
-  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--bg-secondary) 0%,
+    var(--bg-primary) 100%
+  );
   overflow: hidden;
   animation: ${glow} 4s infinite ease-in-out;
 
@@ -227,7 +251,7 @@ const SystemBox = styled(motion.div)`
     border-radius: 20px;
     z-index: 2;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -235,7 +259,11 @@ const SystemBox = styled(motion.div)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(41, 98, 255, 0.1) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(74, 144, 226, 0.1) 0%,
+      rgba(41, 98, 255, 0.1) 100%
+    );
     z-index: 1;
   }
 `;
@@ -398,7 +426,11 @@ const HeroBenefitDescription = styled.p`
 
 // Информационная секция
 const InfoSection = styled(motion.section)`
-  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--bg-secondary) 0%,
+    var(--bg-primary) 100%
+  );
   position: relative;
   padding: 8rem 2rem;
   overflow: hidden;
@@ -416,7 +448,7 @@ const InfoSection = styled(motion.section)`
     clip-path: polygon(0 0, 100% 50%, 0 100%);
     transform: scaleX(2);
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -424,8 +456,16 @@ const InfoSection = styled(motion.section)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 70% 20%, rgba(74, 144, 226, 0.1) 0%, transparent 30%),
-                radial-gradient(circle at 30% 70%, rgba(41, 98, 255, 0.1) 0%, transparent 30%);
+    background: radial-gradient(
+        circle at 70% 20%,
+        rgba(74, 144, 226, 0.1) 0%,
+        transparent 30%
+      ),
+      radial-gradient(
+        circle at 30% 70%,
+        rgba(41, 98, 255, 0.1) 0%,
+        transparent 30%
+      );
     z-index: 1;
   }
 `;
@@ -498,7 +538,7 @@ const FeatureItem = styled(motion.li)`
     background: rgba(255, 255, 255, 0.1);
     transform: translateX(10px);
   }
-  
+
   &::before {
     content: '—';
     position: absolute;
@@ -531,11 +571,15 @@ const BackgroundShape = styled(motion.div)`
 
 // Секция преимуществ
 const BenefitsSection = styled(motion.section)`
-  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,
+    var(--bg-secondary) 100%
+  );
   position: relative;
   padding: 8rem 2rem;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -563,7 +607,7 @@ const BenefitsTitle = styled(motion.h2)`
   position: relative;
   display: inline-block;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -581,7 +625,7 @@ const BenefitCardContainer = styled(motion.div)`
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   margin-bottom: 4rem;
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
@@ -596,7 +640,7 @@ const BenefitCard = styled(motion.div)`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -604,7 +648,11 @@ const BenefitCard = styled(motion.div)`
     height: 100%;
     top: 0;
     left: 0;
-    background: linear-gradient(135deg, rgba(74, 144, 226, 0.05) 0%, transparent 50%);
+    background: linear-gradient(
+      135deg,
+      rgba(74, 144, 226, 0.05) 0%,
+      transparent 50%
+    );
     z-index: 0;
   }
 `;
@@ -620,7 +668,11 @@ const BenefitIcon = styled.div`
   width: 60px;
   height: 60px;
   border-radius: 14px;
-  background: linear-gradient(135deg, var(--accent-color) 0%, rgba(41, 98, 255, 0.8) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent-color) 0%,
+    rgba(41, 98, 255, 0.8) 100%
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -629,13 +681,17 @@ const BenefitIcon = styled.div`
   box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
   position: relative;
   z-index: 1;
-  
+
   &::after {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      transparent 100%
+    );
     border-radius: inherit;
     z-index: -1;
   }
@@ -692,7 +748,7 @@ const BenefitCardDescription = styled.p`
 //     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
 //     transition: all 0.6s ease;
 //   }
-  
+
 //   &:hover::before {
 //     left: 100%;
 //   }
@@ -704,11 +760,15 @@ const BenefitsDecoration = styled.div`
   right: 5%;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(74, 144, 226, 0.1) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(74, 144, 226, 0.1) 0%,
+    transparent 70%
+  );
   border-radius: 50%;
   filter: blur(40px);
   z-index: 0;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -716,7 +776,11 @@ const BenefitsDecoration = styled.div`
     left: -30%;
     width: 200px;
     height: 200px;
-    background: radial-gradient(circle, rgba(41, 98, 255, 0.1) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(41, 98, 255, 0.1) 0%,
+      transparent 70%
+    );
     border-radius: 50%;
     filter: blur(40px);
   }
@@ -726,7 +790,11 @@ const BenefitsDecoration = styled.div`
 const ServicesSection = styled(motion.section)`
   position: relative;
   padding: 8rem 2rem;
-  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--bg-secondary) 0%,
+    var(--bg-primary) 100%
+  );
   overflow: hidden;
 `;
 
@@ -778,13 +846,17 @@ const ServicesContent = styled.div`
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(74, 144, 226, 0.05) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(74, 144, 226, 0.05) 0%,
+      transparent 70%
+    );
     top: -200px;
     right: -200px;
     border-radius: 50%;
@@ -800,7 +872,7 @@ const ServicesContent = styled.div`
 //   position: relative;
 //   z-index: 1;
 // `;
-  
+
 const ServicesHeading = styled(motion.h3)`
   font-size: 1.8rem;
   font-weight: 600;
@@ -846,7 +918,7 @@ const ServicesHeading = styled(motion.h3)`
 //   display: flex;
 //   align-items: center;
 //   justify-content: center;
-  
+
 //   &::before {
 //     content: '';
 //     width: 10px;
@@ -884,7 +956,7 @@ const ServiceText = styled.p`
 //     color: rgba(74, 144, 226, 0.2);
 //     font-family: serif;
 //   }
-  
+
 //   &::after {
 //     content: '"';
 //     position: absolute;
@@ -911,7 +983,11 @@ const ServiceButton = styled(motion.button)`
   padding: 1.2rem 3rem;
   font-size: 1.2rem;
   font-weight: 600;
-  background: linear-gradient(90deg, var(--accent-color), rgba(41, 98, 255, 0.9));
+  background: linear-gradient(
+    90deg,
+    var(--accent-color),
+    rgba(41, 98, 255, 0.9)
+  );
   color: white;
   border: none;
   border-radius: 12px;
@@ -920,7 +996,7 @@ const ServiceButton = styled(motion.button)`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -928,10 +1004,15 @@ const ServiceButton = styled(motion.button)`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
     transition: all 0.6s ease;
   }
-  
+
   &:hover::before {
     left: 100%;
   }
@@ -941,10 +1022,14 @@ const ServiceButton = styled(motion.button)`
 const FaqSection = styled(motion.section)`
   position: relative;
   padding: 8rem 2rem;
-  background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(16, 24, 39, 0.9) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,
+    rgba(16, 24, 39, 0.9) 100%
+  );
   overflow: hidden;
   z-index: 0;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -952,7 +1037,11 @@ const FaqSection = styled(motion.section)`
     right: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(ellipse at top right, rgba(74, 144, 226, 0.08) 0%, transparent 70%);
+    background: radial-gradient(
+      ellipse at top right,
+      rgba(74, 144, 226, 0.08) 0%,
+      transparent 70%
+    );
     z-index: -1;
   }
 `;
@@ -963,7 +1052,11 @@ const FaqWaveTop = styled.div`
   left: 0;
   width: 100%;
   height: 120px;
-  background: linear-gradient(to top left, transparent 49%, var(--bg-primary) 51%);
+  background: linear-gradient(
+    to top left,
+    transparent 49%,
+    var(--bg-primary) 51%
+  );
   z-index: 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 `;
@@ -980,20 +1073,28 @@ const FaqGlowCircle = styled.div`
   border-radius: 50%;
   filter: blur(80px);
   z-index: 0;
-  
+
   &.circle-1 {
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(74, 144, 226, 0.05) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(74, 144, 226, 0.05) 0%,
+      transparent 70%
+    );
     top: 10%;
     left: -200px;
     animation: ${floatVertical} 15s infinite ease-in-out;
   }
-  
+
   &.circle-2 {
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(41, 98, 255, 0.05) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(41, 98, 255, 0.05) 0%,
+      transparent 70%
+    );
     bottom: 5%;
     right: -200px;
     animation: ${floatVertical} 18s infinite ease-in-out reverse;
@@ -1003,12 +1104,12 @@ const FaqGlowCircle = styled.div`
 const FaqTitle = styled(motion.h2)`
   font-size: 3.5rem;
   font-weight: 800;
-    color: var(--accent-color);
+  color: var(--accent-color);
   margin-bottom: 3rem;
   text-align: center;
   position: relative;
   text-shadow: 0 2px 10px rgba(74, 144, 226, 0.2);
-  
+
   &::before {
     content: 'FAQ';
     position: absolute;
@@ -1022,7 +1123,7 @@ const FaqTitle = styled(motion.h2)`
     z-index: -1;
     white-space: nowrap;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -1031,7 +1132,12 @@ const FaqTitle = styled(motion.h2)`
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-color),
+      transparent
+    );
     border-radius: 4px;
     animation: ${pulse} 2s infinite ease-in-out;
   }
@@ -1074,7 +1180,7 @@ const FaqQuestion = styled(motion.div)`
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -1082,16 +1188,20 @@ const FaqQuestion = styled(motion.div)`
     left: 0;
     width: 5px;
     height: 100%;
-    background: linear-gradient(to bottom, var(--accent-color), rgba(41, 98, 255, 0.5));
+    background: linear-gradient(
+      to bottom,
+      var(--accent-color),
+      rgba(41, 98, 255, 0.5)
+    );
     opacity: 0;
     transition: opacity 0.3s ease;
     border-radius: 0 3px 3px 0;
   }
-  
+
   &:hover::before {
     opacity: 1;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -1099,7 +1209,12 @@ const FaqQuestion = styled(motion.div)`
     left: 2rem;
     right: 2rem;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.05),
+      transparent
+    );
   }
 `;
 
@@ -1110,9 +1225,9 @@ const FaqQuestionText = styled.h3`
   transition: all 0.3s ease;
   flex: 1;
   transform: translateZ(5px);
-  
+
   ${FaqQuestion}:hover & {
-  color: var(--accent-color);
+    color: var(--accent-color);
     transform: translateZ(10px);
   }
 `;
@@ -1146,14 +1261,15 @@ const FaqAnswer = styled.div`
   max-height: 0;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-  
-  ${props => props.isOpen && `
+
+  ${props =>
+    props.isOpen &&
+    `
     opacity: 1;
     max-height: 1000px;
     padding-top: 15px;
   `}
 `;
-
 
 const FaqCta = styled(motion.div)`
   display: flex;
@@ -1169,7 +1285,7 @@ const FaqCta = styled(motion.div)`
   position: relative;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -1177,10 +1293,14 @@ const FaqCta = styled(motion.div)`
     left: 0;
     width: 100%;
     height: 5px;
-    background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.8));
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
+      rgba(59, 130, 246, 0.8)
+    );
     z-index: 1;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -1188,7 +1308,11 @@ const FaqCta = styled(motion.div)`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(94, 234, 212, 0.05) 0%, transparent 50%);
+    background: linear-gradient(
+      135deg,
+      rgba(94, 234, 212, 0.05) 0%,
+      transparent 50%
+    );
     z-index: -1;
   }
 `;
@@ -1205,7 +1329,11 @@ const FaqCtaButton = styled(motion.button)`
   padding: 1.2rem 3rem;
   font-size: 1.2rem;
   font-weight: 600;
-  background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.9));
+  background: linear-gradient(
+    90deg,
+    var(--accent-color),
+    rgba(59, 130, 246, 0.9)
+  );
   color: white;
   border: none;
   border-radius: 50px;
@@ -1214,7 +1342,7 @@ const FaqCtaButton = styled(motion.button)`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -1222,14 +1350,19 @@ const FaqCtaButton = styled(motion.button)`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
     transition: all 0.6s ease;
   }
-  
+
   &:hover::before {
     left: 100%;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -1237,7 +1370,11 @@ const FaqCtaButton = styled(motion.button)`
     left: 0;
     width: 100%;
     height: 8px;
-    background: linear-gradient(90deg, rgba(59, 130, 246, 0.5), var(--accent-color));
+    background: linear-gradient(
+      90deg,
+      rgba(59, 130, 246, 0.5),
+      var(--accent-color)
+    );
     filter: blur(5px);
     opacity: 0.5;
   }
@@ -1249,12 +1386,12 @@ const ERPCRMPage = () => {
   const [backgroundShapes, setBackgroundShapes] = useState([]);
   // Состояние для аккордеона FAQ
   const [expandedFaqs, setExpandedFaqs] = useState([]);
-  
+
   // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-  
+
   useEffect(() => {
     // Генерация звезд для фона
     const generatedStars = [];
@@ -1265,22 +1402,22 @@ const ERPCRMPage = () => {
         opacity: Math.random() * 0.5 + 0.1,
         top: Math.random() * 100,
         left: Math.random() * 100,
-        duration: Math.random() * 3 + 1
+        duration: Math.random() * 3 + 1,
       });
     }
     setStars(generatedStars);
-    
+
     // Генерация вращающихся точек
     const dots = [];
     for (let i = 0; i < 5; i++) {
       dots.push({
         id: i,
         top: Math.random() * 100,
-        left: Math.random() * 100
+        left: Math.random() * 100,
       });
     }
     // setOrbitingDots(dots);
-    
+
     // Генерация фоновых форм
     const shapes = [];
     for (let i = 0; i < 5; i++) {
@@ -1290,73 +1427,61 @@ const ERPCRMPage = () => {
         top: Math.random() * 100,
         left: Math.random() * 100,
         duration: Math.random() * 20 + 10,
-        delay: Math.random() * 5
+        delay: Math.random() * 5,
       });
     }
     setBackgroundShapes(shapes);
   }, []);
-  
+
   // Функция для переключения состояния аккордеона
-  const toggleFaq = (index) => {
+  const toggleFaq = index => {
     if (expandedFaqs.includes(index)) {
       setExpandedFaqs(expandedFaqs.filter(item => item !== index));
     } else {
       setExpandedFaqs([...expandedFaqs, index]);
     }
   };
-  
+
   const benefitsData = [
     {
       icon: <FaDatabase />,
-      title: "Централизованное управление",
-      description: "Все данные и процессы компании в единой системе, доступной для всех отделов"
+      title: 'Централізоване управління',
+      description:
+        'Усі дані та процеси компанії в єдиній системі, доступній для всіх відділів',
     },
     {
       icon: <FaChartLine />,
-      title: "Повышение эффективности",
-      description: "Автоматизация рутинных задач и оптимизация бизнес-процессов"
+      title: 'Підвищення ефективності',
+      description:
+        'Автоматизація рутинних завдань та оптимізація бізнес-процесів',
     },
     {
       icon: <FaUsers />,
-      title: "Улучшение клиентского сервиса",
-      description: "Полная история взаимодействия с клиентами и быстрый доступ к данным"
+      title: 'Поліпшення клієнтського сервісу',
+      description:
+        'Повна історія взаємодії з клієнтами та швидкий доступ до даних',
     },
-    {
-      icon: <FaChartBar />,
-      title: "Аналитика в реальном времени",
-      description: "Мониторинг ключевых показателей и генерация отчетов для принятия решений"
-    },
-    {
-      icon: <FaShieldAlt />,
-      title: "Надежная защита данных",
-      description: "Многоуровневая система безопасности и контроля доступа к информации"
-    },
-    {
-      icon: <FaExchangeAlt />,
-      title: "Гибкая интеграция",
-      description: "Возможность подключения к существующим системам и сторонним сервисам"
-    }
   ];
-  
+
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { 
+    visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
-  
+
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
+      transition: { duration: 0.8, ease: 'easeOut' },
+    },
   };
-  
+
   // const systemVariants = {
   //   initial: { rotateY: 0 },
   //   animate: {
@@ -1379,34 +1504,35 @@ const ERPCRMPage = () => {
         <Background />
         <StarField>
           {stars.map(star => (
-            <Star 
-              key={star.id} 
-              size={star.size} 
-              opacity={star.opacity} 
-              top={star.top} 
-              left={star.left} 
-              duration={star.duration} 
+            <Star
+              key={star.id}
+              size={star.size}
+              opacity={star.opacity}
+              top={star.top}
+              left={star.left}
+              duration={star.duration}
             />
           ))}
         </StarField>
-        
+
         <Title
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          ERP и CRM системы
+          ERP та CRM системи
         </Title>
-        
+
         <Subtitle
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          Комплексные решения для управления бизнесом и взаимоотношениями с клиентами.
-          Оптимизируйте процессы, автоматизируйте рутину и увеличивайте прибыль.
+          Комплексні рішення для управління бізнесом та взаємовідносинами з
+          клієнтами. Оптимізуйте процеси, автоматизуйте рутину та збільшуйте
+          прибуток.
         </Subtitle>
-        
+
         <SystemContainer
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -1419,7 +1545,7 @@ const ERPCRMPage = () => {
           >
             <OrbitingCircle />
             <OrbitingCircleInner />
-            
+
             <SystemInterface
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -1427,21 +1553,21 @@ const ERPCRMPage = () => {
             >
               <SystemContent>
                 <IconCircle
-                  animate={{ 
+                  animate={{
                     scale: [1, 1.1, 1],
-                    rotateZ: [0, 10, -10, 0]
+                    rotateZ: [0, 10, -10, 0],
                   }}
                   transition={{
                     duration: 3,
                     repeat: Infinity,
-                    ease: "easeInOut"
+                    ease: 'easeInOut',
                   }}
                 >
                   <FaDatabase />
                 </IconCircle>
                 <motion.h3
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.8, duration: 0.5 }}
                   style={{ marginBottom: '0.5rem' }}
                 >
@@ -1452,45 +1578,51 @@ const ERPCRMPage = () => {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 2, duration: 0.5 }}
                 >
-                  Управление и аналитика
+                  Управління та аналітика
                 </motion.p>
               </SystemContent>
-              
+
               <SystemModules>
-                <ModuleIcon whileHover={{ scale: 1.2 }}><FaUserCog /></ModuleIcon>
-                <ModuleIcon whileHover={{ scale: 1.2 }}><FaChartBar /></ModuleIcon>
-                <ModuleIcon whileHover={{ scale: 1.2 }}><FaFileInvoice /></ModuleIcon>
+                <ModuleIcon whileHover={{ scale: 1.2 }}>
+                  <FaUserCog />
+                </ModuleIcon>
+                <ModuleIcon whileHover={{ scale: 1.2 }}>
+                  <FaChartBar />
+                </ModuleIcon>
+                <ModuleIcon whileHover={{ scale: 1.2 }}>
+                  <FaFileInvoice />
+                </ModuleIcon>
               </SystemModules>
             </SystemInterface>
           </SystemBox>
         </SystemContainer>
-        
+
         <HeroBenefitsList
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.3 }}
         >
           {benefitsData.slice(0, 3).map((benefit, index) => (
-            <HeroBenefitItem
-              key={index}
-              whileHover={{ scale: 1.02 }}
-            >
-              <HeroBenefitIcon>
-                {benefit.icon}
-              </HeroBenefitIcon>
+            <HeroBenefitItem key={index} whileHover={{ scale: 1.02 }}>
+              <HeroBenefitIcon>{benefit.icon}</HeroBenefitIcon>
               <HeroBenefitContent>
                 <HeroBenefitTitle>{benefit.title}</HeroBenefitTitle>
-                <HeroBenefitDescription>{benefit.description}</HeroBenefitDescription>
+                <HeroBenefitDescription>
+                  {benefit.description}
+                </HeroBenefitDescription>
               </HeroBenefitContent>
             </HeroBenefitItem>
           ))}
         </HeroBenefitsList>
-        
+
         <motion.button
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.6 }}
-          whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(41, 98, 255, 0.7)' }}
+          whileHover={{
+            scale: 1.05,
+            boxShadow: '0 0 20px rgba(41, 98, 255, 0.7)',
+          }}
           whileTap={{ scale: 0.95 }}
           onClick={openModal}
           style={{
@@ -1504,19 +1636,19 @@ const ERPCRMPage = () => {
             cursor: 'pointer',
             marginTop: '3rem',
             zIndex: 1,
-            position: 'relative'
+            position: 'relative',
           }}
         >
-          Узнать больше
+          Дізнатись більше
         </motion.button>
       </HeroSection>
-      
+
       <InfoSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        {backgroundShapes.map((shape) => (
+        {backgroundShapes.map(shape => (
           <BackgroundShape
             key={shape.id}
             style={{
@@ -1534,11 +1666,11 @@ const ERPCRMPage = () => {
               duration: shape.duration,
               repeat: Infinity,
               delay: shape.delay,
-              ease: "linear"
+              ease: 'linear',
             }}
           />
         ))}
-        
+
         <InfoContainer>
           <InfoTitle
             initial={{ opacity: 0, x: -20 }}
@@ -1548,54 +1680,61 @@ const ERPCRMPage = () => {
           >
             Що таке ERP та CRM системи?
           </InfoTitle>
-          
+
           <InfoContent>
             <motion.h3
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              style={{ 
-                fontSize: '1.8rem', 
-                color: 'var(--accent-color)', 
+              style={{
+                fontSize: '1.8rem',
+                color: 'var(--accent-color)',
                 marginBottom: '0.5rem',
-                fontWeight: '600' 
+                fontWeight: '600',
               }}
             >
               ERP: управління ресурсами компанії
             </motion.h3>
-            
+
             <InfoText
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               style={{ marginBottom: '0.5rem' }}
             >
-              ERP (Enterprise Resource Planning) — це система комплексного управління всіма ресурсами підприємства: фінансами, виробництвом, закупівлями, складом, персоналом.
-              Мета ERP — створити єдиний інформаційний простір, що дозволяє керівництву бачити повну картину бізнес-процесів і оперативно приймати рішення.
+              ERP (Enterprise Resource Planning) — це система комплексного
+              управління всіма ресурсами підприємства: фінансами, виробництвом,
+              закупівлями, складом, персоналом. Мета ERP — створити єдиний
+              інформаційний простір, що дозволяє керівництву бачити повну
+              картину бізнес-процесів і оперативно приймати рішення.
             </InfoText>
-            
+
             <InfoText
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              style={{ marginTop: '0.5rem', marginBottom: '0.5rem', fontWeight: '600' }}
+              style={{
+                marginTop: '0.5rem',
+                marginBottom: '0.5rem',
+                fontWeight: '600',
+              }}
             >
               Основні можливості ERP систем:
             </InfoText>
-            
+
             <FeaturesList style={{ marginBottom: '1rem' }}>
               {[
                 'Автоматизація обліку та управління фінансами',
                 'Управління постачаннями та запасами',
                 'Планування виробництва',
                 'Управління персоналом',
-                'Аналітика та звітність в реальному часі'
+                'Аналітика та звітність в реальному часі',
               ].map((feature, index) => (
                 <FeatureItem
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 + (index * 0.15) }}
+                  transition={{ duration: 0.5, delay: 0.4 + index * 0.15 }}
                   whileHover={{ x: 10 }}
                   style={{ marginBottom: '0.5rem' }}
                 >
@@ -1603,54 +1742,60 @@ const ERPCRMPage = () => {
                 </FeatureItem>
               ))}
             </FeaturesList>
-            
+
             <motion.h3
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              style={{ 
-                fontSize: '1.8rem', 
-                color: 'var(--accent-color)', 
+              style={{
+                fontSize: '1.8rem',
+                color: 'var(--accent-color)',
                 marginTop: '1rem',
                 marginBottom: '0.5rem',
-                fontWeight: '600' 
+                fontWeight: '600',
               }}
             >
               CRM: управління відносинами з клієнтами
             </motion.h3>
-            
+
             <InfoText
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.9 }}
               style={{ marginBottom: '0.5rem' }}
             >
-              CRM (Customer Relationship Management) — це система для організації ефективної взаємодії з клієнтами.
-              Вона допомагає відстежувати історію контактів, покращувати якість обслуговування, управляти продажами та маркетингом.
+              CRM (Customer Relationship Management) — це система для
+              організації ефективної взаємодії з клієнтами. Вона допомагає
+              відстежувати історію контактів, покращувати якість обслуговування,
+              управляти продажами та маркетингом.
             </InfoText>
-            
+
             <InfoText
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.0 }}
-              style={{ marginTop: '0.5rem', marginBottom: '0.5rem', fontWeight: '600' }}
+              style={{
+                marginTop: '0.5rem',
+                marginBottom: '0.5rem',
+                fontWeight: '600',
+              }}
             >
               Функції CRM систем:
             </InfoText>
-            
+
             <FeaturesList>
               {[
                 'Ведення клієнтської бази',
                 'Управління лідами та угодами',
                 'Автоматизація продажів',
                 'Аналіз ефективності роботи відділу продажу',
-                'Маркетингові кампанії та комунікація'
+                'Маркетингові кампанії та комунікація',
               ].map((feature, index) => (
                 <FeatureItem
                   key={index + 5}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 1.0 + (index * 0.15) }}
+                  transition={{ duration: 0.5, delay: 1.0 + index * 0.15 }}
                   whileHover={{ x: 10 }}
                   style={{ marginBottom: '0.5rem' }}
                 >
@@ -1661,7 +1806,7 @@ const ERPCRMPage = () => {
           </InfoContent>
         </InfoContainer>
       </InfoSection>
-      
+
       <BenefitsSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -1675,30 +1820,33 @@ const ERPCRMPage = () => {
           >
             Які проблеми вирішують ERP та CRM системи?
           </BenefitsTitle>
-          
+
           <InfoText
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             style={{ marginBottom: '2rem' }}
           >
-            ERP та CRM системи допомагають вирішити ключові завдання, що заважають компаніям рости, розвиватися та ефективно працювати. Вони усувають хаос у бізнес-процесах, дозволяють зосередитися на розвитку компанії та підвищенні прибутковості.
+            ERP та CRM системи допомагають вирішити ключові завдання, що
+            заважають компаніям рости, розвиватися та ефективно працювати. Вони
+            усувають хаос у бізнес-процесах, дозволяють зосередитися на розвитку
+            компанії та підвищенні прибутковості.
           </InfoText>
-          
+
           <motion.h3
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            style={{ 
-              fontSize: '1.8rem', 
-              color: 'var(--accent-color)', 
+            style={{
+              fontSize: '1.8rem',
+              color: 'var(--accent-color)',
               marginBottom: '1rem',
-              fontWeight: '600' 
+              fontWeight: '600',
             }}
           >
             Основні проблеми, які вирішує ERP система:
           </motion.h3>
-          
+
           <BenefitCardContainer
             variants={containerVariants}
             initial="hidden"
@@ -1706,33 +1854,37 @@ const ERPCRMPage = () => {
           >
             {[
               {
-                title: "Відсутність єдиної бази даних",
-                description: "Інформація про фінанси, закупівлі, складські залишки та виробництво розкидана по різних системах або ведеться вручну. ERP об'єднує всі дані в єдину базу, забезпечуючи прозорість і доступність інформації для керівництва.",
-                icon: <FaDatabase />
+                title: 'Відсутність єдиної бази даних',
+                description:
+                  "Інформація про фінанси, закупівлі, складські залишки та виробництво розкидана по різних системах або ведеться вручну. ERP об'єднує всі дані в єдину базу, забезпечуючи прозорість і доступність інформації для керівництва.",
+                icon: <FaDatabase />,
               },
               {
-                title: "Неузгодженість між відділами",
-                description: "Відсутність взаємодії між підрозділами призводить до помилок, затримок і фінансових втрат. ERP системи синхронізують роботу всіх відділів у реальному часі.",
-                icon: <FaProjectDiagram />
+                title: 'Неузгодженість між відділами',
+                description:
+                  'Відсутність взаємодії між підрозділами призводить до помилок, затримок і фінансових втрат. ERP системи синхронізують роботу всіх відділів у реальному часі.',
+                icon: <FaProjectDiagram />,
               },
               {
-                title: "Низька швидкість прийняття рішень",
-                description: "Через нестачу актуальної аналітики керівники змушені ухвалювати рішення \"наосліп\". ERP надає аналітичні звіти в один клік, що дозволяє швидко реагувати на зміни на ринку.",
-                icon: <FaChartLine />
+                title: 'Низька швидкість прийняття рішень',
+                description:
+                  'Через нестачу актуальної аналітики керівники змушені ухвалювати рішення "наосліп". ERP надає аналітичні звіти в один клік, що дозволяє швидко реагувати на зміни на ринку.',
+                icon: <FaChartLine />,
               },
               {
-                title: "Труднощі в плануванні ресурсів",
-                description: "Виробничі збої, нестача матеріалів або перевитрати бюджету — наслідки відсутності планування. ERP автоматизує ці процеси, допомагаючи більш точно прогнозувати потреби.",
-                icon: <FaCogs />
-              }
+                title: 'Труднощі в плануванні ресурсів',
+                description:
+                  'Виробничі збої, нестача матеріалів або перевитрати бюджету — наслідки відсутності планування. ERP автоматизує ці процеси, допомагаючи більш точно прогнозувати потреби.',
+                icon: <FaCogs />,
+              },
             ].map((benefit, index) => (
               <BenefitCard
                 key={index}
                 variants={itemVariants}
-                whileHover={{ 
-                  y: -10, 
+                whileHover={{
+                  y: -10,
                   boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3)',
-                  borderColor: 'rgba(74, 144, 226, 0.4)'
+                  borderColor: 'rgba(74, 144, 226, 0.4)',
                 }}
               >
                 <BenefitIconWrapper>
@@ -1740,27 +1892,29 @@ const ERPCRMPage = () => {
                 </BenefitIconWrapper>
                 <BenefitContent>
                   <BenefitCardTitle>{benefit.title}</BenefitCardTitle>
-                  <BenefitCardDescription>{benefit.description}</BenefitCardDescription>
+                  <BenefitCardDescription>
+                    {benefit.description}
+                  </BenefitCardDescription>
                 </BenefitContent>
               </BenefitCard>
             ))}
           </BenefitCardContainer>
-          
+
           <motion.h3
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            style={{ 
-              fontSize: '1.8rem', 
-              color: 'var(--accent-color)', 
+            style={{
+              fontSize: '1.8rem',
+              color: 'var(--accent-color)',
               marginTop: '2rem',
               marginBottom: '1rem',
-              fontWeight: '600' 
+              fontWeight: '600',
             }}
           >
             Основні проблеми, які вирішує CRM система:
           </motion.h3>
-          
+
           <BenefitCardContainer
             variants={containerVariants}
             initial="hidden"
@@ -1768,33 +1922,38 @@ const ERPCRMPage = () => {
           >
             {[
               {
-                title: "Втрата клієнтів через неякісне обслуговування",
-                description: "Без CRM важко зберігати історію взаємодії з клієнтом, відстежувати його потреби та пропонувати актуальні рішення. CRM фіксує всі контакти, завдання та угоди, підвищуючи рівень обслуговування.",
-                icon: <FaUsers />
+                title: 'Втрата клієнтів через неякісне обслуговування',
+                description:
+                  'Без CRM важко зберігати історію взаємодії з клієнтом, відстежувати його потреби та пропонувати актуальні рішення. CRM фіксує всі контакти, завдання та угоди, підвищуючи рівень обслуговування.',
+                icon: <FaUsers />,
               },
               {
-                title: "Неефективний продаж і маркетинг",
-                description: "Без структурованої роботи з лідами компанія втрачає потенційні доходи. CRM допомагає автоматизувати воронку продажів, управляти лідами, аналізувати конверсію та підвищувати ефективність маркетингових кампаній.",
-                icon: <FaChartBar />
+                title: 'Неефективний продаж і маркетинг',
+                description:
+                  'Без структурованої роботи з лідами компанія втрачає потенційні доходи. CRM допомагає автоматизувати воронку продажів, управляти лідами, аналізувати конверсію та підвищувати ефективність маркетингових кампаній.',
+                icon: <FaChartBar />,
               },
               {
-                title: "Незрозуміла ефективність менеджерів",
-                description: "Коли відсутня централізована система обліку діяльності менеджерів з продажу, складно оцінити їхню продуктивність. CRM дозволяє бачити кількість дзвінків, листів, зустрічей та фактичні результати кожного співробітника.",
-                icon: <FaUserCog />
+                title: 'Незрозуміла ефективність менеджерів',
+                description:
+                  'Коли відсутня централізована система обліку діяльності менеджерів з продажу, складно оцінити їхню продуктивність. CRM дозволяє бачити кількість дзвінків, листів, зустрічей та фактичні результати кожного співробітника.',
+                icon: <FaUserCog />,
               },
               {
-                title: "Відсутність системного підходу до розвитку клієнтської бази",
-                description: "CRM формує повноцінний профіль клієнта, допомагаючи краще розуміти його потреби і пропонувати відповідні товари або послуги, що збільшує обсяг повторних продажів.",
-                icon: <FaExchangeAlt />
-              }
+                title:
+                  'Відсутність системного підходу до розвитку клієнтської бази',
+                description:
+                  'CRM формує повноцінний профіль клієнта, допомагаючи краще розуміти його потреби і пропонувати відповідні товари або послуги, що збільшує обсяг повторних продажів.',
+                icon: <FaExchangeAlt />,
+              },
             ].map((benefit, index) => (
               <BenefitCard
                 key={index + 4}
                 variants={itemVariants}
-                whileHover={{ 
-                  y: -10, 
+                whileHover={{
+                  y: -10,
                   boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3)',
-                  borderColor: 'rgba(74, 144, 226, 0.4)'
+                  borderColor: 'rgba(74, 144, 226, 0.4)',
                 }}
               >
                 <BenefitIconWrapper>
@@ -1802,13 +1961,15 @@ const ERPCRMPage = () => {
                 </BenefitIconWrapper>
                 <BenefitContent>
                   <BenefitCardTitle>{benefit.title}</BenefitCardTitle>
-                  <BenefitCardDescription>{benefit.description}</BenefitCardDescription>
+                  <BenefitCardDescription>
+                    {benefit.description}
+                  </BenefitCardDescription>
                 </BenefitContent>
               </BenefitCard>
             ))}
           </BenefitCardContainer>
         </BenefitsContainer>
-        
+
         <BenefitsDecoration />
       </BenefitsSection>
 
@@ -1818,7 +1979,7 @@ const ERPCRMPage = () => {
         transition={{ duration: 0.8 }}
       >
         <ServicesWave />
-        
+
         <ServicesContainer>
           <ServicesTitle
             initial={{ opacity: 0, x: -20 }}
@@ -1827,7 +1988,7 @@ const ERPCRMPage = () => {
           >
             Наші рішення для вашого бізнесу
           </ServicesTitle>
-          
+
           <ServicesContent>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -1842,13 +2003,14 @@ const ERPCRMPage = () => {
               >
                 Впровадження ERP систем
               </ServicesHeading>
-              
+
               <ServiceText style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>
-                Ми підбираємо і налаштовуємо ERP системи під ваші завдання: від управління фінансами до автоматизації виробництва.
-                Працюємо як із готовими рішеннями, так і з індивідуальними розробками.
+                Ми підбираємо і налаштовуємо ERP системи під ваші завдання: від
+                управління фінансами до автоматизації виробництва. Працюємо як
+                із готовими рішеннями, так і з індивідуальними розробками.
               </ServiceText>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -1862,13 +2024,14 @@ const ERPCRMPage = () => {
               >
                 Впровадження CRM систем
               </ServicesHeading>
-              
+
               <ServiceText style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>
-                Допомагаємо налаштувати ефективну роботу з клієнтами: автоматизація продажів, облік угод, 
-                створення клієнтських баз, аналітика маркетингових кампаній.
+                Допомагаємо налаштувати ефективну роботу з клієнтами:
+                автоматизація продажів, облік угод, створення клієнтських баз,
+                аналітика маркетингових кампаній.
               </ServiceText>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -1882,13 +2045,14 @@ const ERPCRMPage = () => {
               >
                 Інтеграція ERP та CRM
               </ServicesHeading>
-              
+
               <ServiceText style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>
-                Об'єднуємо ERP та CRM системи для створення єдиного цифрового середовища, 
-                де бізнес-процеси та взаємодія з клієнтами працюють як єдиний механізм.
+                Об'єднуємо ERP та CRM системи для створення єдиного цифрового
+                середовища, де бізнес-процеси та взаємодія з клієнтами працюють
+                як єдиний механізм.
               </ServiceText>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -1901,13 +2065,13 @@ const ERPCRMPage = () => {
               >
                 Індивідуальні рішення
               </ServicesHeading>
-              
+
               <ServiceText style={{ fontSize: '1.2rem' }}>
-                Розробляємо системи під конкретні потреби бізнесу: особливості логістики, 
-                виробничі процеси, нестандартні схеми продажів тощо.
+                Розробляємо системи під конкретні потреби бізнесу: особливості
+                логістики, виробничі процеси, нестандартні схеми продажів тощо.
               </ServiceText>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -1921,39 +2085,41 @@ const ERPCRMPage = () => {
               >
                 Консалтинг з цифрової трансформації
               </ServicesHeading>
-              
+
               <ServiceText style={{ fontSize: '1.2rem' }}>
-                Допомагаємо бізнесу визначити оптимальну стратегію автоматизації та цифровізації.
-                Проводимо аудит існуючих процесів, розробляємо дорожню карту впровадження ERP/CRM
-                та супроводжуємо на всіх етапах цифрової трансформації.
+                Допомагаємо бізнесу визначити оптимальну стратегію автоматизації
+                та цифровізації. Проводимо аудит існуючих процесів, розробляємо
+                дорожню карту впровадження ERP/CRM та супроводжуємо на всіх
+                етапах цифрової трансформації.
               </ServiceText>
             </motion.div>
-            
+
             <ServiceActions
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
             >
               <ServiceButton
-                whileHover={{ 
-                  scale: 1.05, 
-                  boxShadow: '0 0 25px rgba(74, 144, 226, 0.5)' 
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: '0 0 25px rgba(74, 144, 226, 0.5)',
                 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={openModal}
               >
                 Замовити консультацію
               </ServiceButton>
-            
             </ServiceActions>
-
           </ServicesContent>
         </ServicesContainer>
         <ServicesWave xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-          <path fill="#ffffff" d="M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,176C672,160,768,160,864,160C960,160,1056,160,1152,160C1248,160,1344,160,1440,160L1440,320L0,320Z"></path>
+          <path
+            fill="#ffffff"
+            d="M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,176C672,160,768,160,864,160C960,160,1056,160,1152,160C1248,160,1344,160,1440,160L1440,320L0,320Z"
+          ></path>
         </ServicesWave>
       </ServicesSection>
-      
+
       {/* Блок с преимуществами сотрудничества */}
       <motion.section
         initial={{ opacity: 0 }}
@@ -1962,8 +2128,9 @@ const ERPCRMPage = () => {
         style={{
           position: 'relative',
           padding: '8rem 2rem',
-          background: 'linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%)',
-          overflow: 'hidden'
+          background:
+            'linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%)',
+          overflow: 'hidden',
         }}
       >
         <div
@@ -1973,17 +2140,18 @@ const ERPCRMPage = () => {
             left: 0,
             width: '100%',
             height: '150px',
-            background: 'linear-gradient(to top, transparent, var(--bg-secondary))',
-            zIndex: 1
+            background:
+              'linear-gradient(to top, transparent, var(--bg-secondary))',
+            zIndex: 1,
           }}
         ></div>
-        
+
         <div
           style={{
             maxWidth: '1200px',
             margin: '0 auto',
             position: 'relative',
-            zIndex: 2
+            zIndex: 2,
           }}
         >
           <motion.h2
@@ -1997,21 +2165,21 @@ const ERPCRMPage = () => {
               marginBottom: '4rem',
               position: 'relative',
               display: 'inline-block',
-              textShadow: '0 5px 15px rgba(0, 0, 0, 0.2)'
+              textShadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
             }}
           >
             Переваги співпраці з нами
           </motion.h2>
-          
+
           <motion.ul
             variants={{
               hidden: { opacity: 0 },
-              visible: { 
+              visible: {
                 opacity: 1,
                 transition: {
-                  staggerChildren: 0.2
-                }
-              }
+                  staggerChildren: 0.2,
+                },
+              },
             }}
             initial="hidden"
             animate="visible"
@@ -2021,35 +2189,36 @@ const ERPCRMPage = () => {
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
               gap: '2rem',
-              width: '100%'
+              width: '100%',
             }}
           >
             {[
               {
                 icon: <FaTools />,
-                title: "Досвід у різних галузях",
-                description: "Від роздрібної торгівлі до виробництва та сервісу"
+                title: 'Досвід у різних галузях',
+                description:
+                  'Від роздрібної торгівлі до виробництва та сервісу',
               },
               {
                 icon: <FaUserCog />,
-                title: "Індивідуальний підхід",
-                description: "Підбираємо рішення під конкретні цілі компанії"
+                title: 'Індивідуальний підхід',
+                description: 'Підбираємо рішення під конкретні цілі компанії',
               },
               {
                 icon: <FaClipboardCheck />,
-                title: "Комплексний підхід",
-                description: "Аналіз, впровадження, навчання, підтримка"
+                title: 'Комплексний підхід',
+                description: 'Аналіз, впровадження, навчання, підтримка',
               },
             ].map((advantage, index) => (
               <motion.li
                 key={index}
                 variants={{
                   hidden: { y: 20, opacity: 0 },
-                  visible: { 
-                    y: 0, 
+                  visible: {
+                    y: 0,
                     opacity: 1,
-                    transition: { duration: 0.8, ease: "easeOut" }
-                  }
+                    transition: { duration: 0.8, ease: 'easeOut' },
+                  },
                 }}
                 style={{
                   background: 'rgba(16, 24, 39, 0.6)',
@@ -2060,12 +2229,12 @@ const ERPCRMPage = () => {
                   transition: 'all 0.3s ease',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '1rem'
+                  gap: '1rem',
                 }}
-                whileHover={{ 
-                  y: -10, 
+                whileHover={{
+                  y: -10,
                   boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3)',
-                  borderColor: 'rgba(74, 144, 226, 0.4)'
+                  borderColor: 'rgba(74, 144, 226, 0.4)',
                 }}
               >
                 <div
@@ -2073,35 +2242,36 @@ const ERPCRMPage = () => {
                     width: '60px',
                     height: '60px',
                     borderRadius: '14px',
-                    background: 'linear-gradient(135deg, var(--accent-color) 0%, rgba(41, 98, 255, 0.8) 100%)',
+                    background:
+                      'linear-gradient(135deg, var(--accent-color) 0%, rgba(41, 98, 255, 0.8) 100%)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     fontSize: '1.8rem',
                     color: 'white',
                     boxShadow: '0 8px 20px rgba(74, 144, 226, 0.3)',
-                    marginBottom: '1rem'
+                    marginBottom: '1rem',
                   }}
                 >
                   {advantage.icon}
                 </div>
-                
+
                 <h3
                   style={{
                     fontSize: '1.4rem',
                     fontWeight: 600,
                     marginBottom: '0.5rem',
-                    color: 'var(--text-primary)'
+                    color: 'var(--text-primary)',
                   }}
                 >
                   {advantage.title}
                 </h3>
-                
+
                 <p
                   style={{
                     fontSize: '1.05rem',
                     lineHeight: 1.7,
-                    color: 'var(--text-secondary)'
+                    color: 'var(--text-secondary)',
                   }}
                 >
                   {advantage.description}
@@ -2109,25 +2279,25 @@ const ERPCRMPage = () => {
               </motion.li>
             ))}
           </motion.ul>
-          
+
           {/* Последние два элемента по центру */}
-          <motion.div 
+          <motion.div
             style={{
               display: 'flex',
               justifyContent: 'center',
               gap: '2rem',
               marginTop: '2rem',
-              flexWrap: 'wrap'
+              flexWrap: 'wrap',
             }}
             variants={{
               hidden: { opacity: 0 },
-              visible: { 
+              visible: {
                 opacity: 1,
                 transition: {
                   staggerChildren: 0.2,
-                  delayChildren: 0.6
-                }
-              }
+                  delayChildren: 0.6,
+                },
+              },
             }}
             initial="hidden"
             animate="visible"
@@ -2135,24 +2305,25 @@ const ERPCRMPage = () => {
             {[
               {
                 icon: <FaChartLine />,
-                title: "Гарантія результату",
-                description: "Підвищення ефективності бізнесу після впровадження"
+                title: 'Гарантія результату',
+                description:
+                  'Підвищення ефективності бізнесу після впровадження',
               },
               {
                 icon: <FaSyncAlt />,
-                title: "Супровід і розвиток системи",
-                description: "Адаптація до змін у бізнесі"
-              }
+                title: 'Супровід і розвиток системи',
+                description: 'Адаптація до змін у бізнесі',
+              },
             ].map((advantage, index) => (
               <motion.div
                 key={index}
                 variants={{
                   hidden: { y: 20, opacity: 0 },
-                  visible: { 
-                    y: 0, 
+                  visible: {
+                    y: 0,
                     opacity: 1,
-                    transition: { duration: 0.8, ease: "easeOut" }
-                  }
+                    transition: { duration: 0.8, ease: 'easeOut' },
+                  },
                 }}
                 style={{
                   background: 'rgba(16, 24, 39, 0.6)',
@@ -2166,12 +2337,12 @@ const ERPCRMPage = () => {
                   gap: '1rem',
                   width: 'calc(33% - 1rem)',
                   minWidth: '350px',
-                  maxWidth: '450px'
+                  maxWidth: '450px',
                 }}
-                whileHover={{ 
-                  y: -10, 
+                whileHover={{
+                  y: -10,
                   boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3)',
-                  borderColor: 'rgba(74, 144, 226, 0.4)'
+                  borderColor: 'rgba(74, 144, 226, 0.4)',
                 }}
               >
                 <div
@@ -2179,35 +2350,36 @@ const ERPCRMPage = () => {
                     width: '60px',
                     height: '60px',
                     borderRadius: '14px',
-                    background: 'linear-gradient(135deg, var(--accent-color) 0%, rgba(41, 98, 255, 0.8) 100%)',
+                    background:
+                      'linear-gradient(135deg, var(--accent-color) 0%, rgba(41, 98, 255, 0.8) 100%)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     fontSize: '1.8rem',
                     color: 'white',
                     boxShadow: '0 8px 20px rgba(74, 144, 226, 0.3)',
-                    marginBottom: '1rem'
+                    marginBottom: '1rem',
                   }}
                 >
                   {advantage.icon}
                 </div>
-                
+
                 <h3
                   style={{
                     fontSize: '1.4rem',
                     fontWeight: 600,
                     marginBottom: '0.5rem',
-                    color: 'var(--text-primary)'
+                    color: 'var(--text-primary)',
                   }}
                 >
                   {advantage.title}
                 </h3>
-                
+
                 <p
                   style={{
                     fontSize: '1.05rem',
                     lineHeight: 1.7,
-                    color: 'var(--text-secondary)'
+                    color: 'var(--text-secondary)',
                   }}
                 >
                   {advantage.description}
@@ -2226,8 +2398,9 @@ const ERPCRMPage = () => {
         style={{
           position: 'relative',
           padding: '10rem 2rem',
-          background: 'linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%)',
-          overflow: 'hidden'
+          background:
+            'linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%)',
+          overflow: 'hidden',
         }}
       >
         {/* Декоративные элементы фона */}
@@ -2239,8 +2412,9 @@ const ERPCRMPage = () => {
             width: '400px',
             height: '400px',
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(74, 144, 226, 0.1) 0%, transparent 70%)',
-            filter: 'blur(60px)'
+            background:
+              'radial-gradient(circle, rgba(74, 144, 226, 0.1) 0%, transparent 70%)',
+            filter: 'blur(60px)',
           }}
         />
         <div
@@ -2251,17 +2425,18 @@ const ERPCRMPage = () => {
             width: '300px',
             height: '300px',
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(41, 98, 255, 0.1) 0%, transparent 70%)',
-            filter: 'blur(50px)'
+            background:
+              'radial-gradient(circle, rgba(41, 98, 255, 0.1) 0%, transparent 70%)',
+            filter: 'blur(50px)',
           }}
         />
-        
+
         <div
           style={{
             maxWidth: '1400px',
             margin: '0 auto',
             position: 'relative',
-            zIndex: 2
+            zIndex: 2,
           }}
         >
           <motion.h2
@@ -2275,11 +2450,11 @@ const ERPCRMPage = () => {
               marginBottom: '6rem',
               position: 'relative',
               textAlign: 'center',
-              textShadow: '0 5px 15px rgba(0, 0, 0, 0.2)'
+              textShadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
             }}
           >
             Етапи нашої роботи
-            <motion.div 
+            <motion.div
               style={{
                 position: 'absolute',
                 bottom: '-20px',
@@ -2287,26 +2462,27 @@ const ERPCRMPage = () => {
                 transform: 'translateX(-50%)',
                 width: '150px',
                 height: '4px',
-                background: 'linear-gradient(90deg, transparent, var(--accent-color), transparent)',
-                borderRadius: '4px'
+                background:
+                  'linear-gradient(90deg, transparent, var(--accent-color), transparent)',
+                borderRadius: '4px',
               }}
               animate={{
                 width: ['0%', '150px'],
-                opacity: [0, 1]
+                opacity: [0, 1],
               }}
               transition={{ duration: 1, delay: 0.3 }}
             />
           </motion.h2>
-          
+
           <motion.div
             variants={{
               hidden: { opacity: 0 },
-              visible: { 
+              visible: {
                 opacity: 1,
                 transition: {
-                  staggerChildren: 0.3
-                }
-              }
+                  staggerChildren: 0.3,
+                },
+              },
             }}
             initial="hidden"
             animate="visible"
@@ -2314,45 +2490,50 @@ const ERPCRMPage = () => {
               display: 'flex',
               flexDirection: 'column',
               gap: '3rem',
-              alignItems: 'center'
+              alignItems: 'center',
             }}
           >
             {[
               {
                 icon: <FaClipboardCheck />,
-                title: "Аналіз потреб бізнесу",
-                description: "Вивчаємо особливості діяльності компанії, проблемні зони та очікувані результати."
+                title: 'Аналіз потреб бізнесу',
+                description:
+                  'Вивчаємо особливості діяльності компанії, проблемні зони та очікувані результати.',
               },
               {
                 icon: <FaCogs />,
-                title: "Вибір оптимального рішення",
-                description: "Пропонуємо рішення — готові продукти або індивідуальну розробку."
+                title: 'Вибір оптимального рішення',
+                description:
+                  'Пропонуємо рішення — готові продукти або індивідуальну розробку.',
               },
               {
                 icon: <FaLaptopCode />,
-                title: "Впровадження системи",
-                description: "Налаштовуємо, адаптуємо та інтегруємо систему в існуючі процеси компанії."
+                title: 'Впровадження системи',
+                description:
+                  'Налаштовуємо, адаптуємо та інтегруємо систему в існуючі процеси компанії.',
               },
               {
                 icon: <FaUsers />,
-                title: "Тестування та навчання персоналу",
-                description: "Перевіряємо роботу системи на практиці, навчаємо співробітників роботі з новими інструментами."
+                title: 'Тестування та навчання персоналу',
+                description:
+                  'Перевіряємо роботу системи на практиці, навчаємо співробітників роботі з новими інструментами.',
               },
               {
                 icon: <FaSyncAlt />,
-                title: "Підтримка та розвиток",
-                description: "Забезпечуємо технічну підтримку та модернізацію системи відповідно до змін вашого бізнесу."
-              }
+                title: 'Підтримка та розвиток',
+                description:
+                  'Забезпечуємо технічну підтримку та модернізацію системи відповідно до змін вашого бізнесу.',
+              },
             ].map((step, index) => (
               <React.Fragment key={index}>
                 <motion.div
                   variants={{
                     hidden: { x: -50, opacity: 0 },
-                    visible: { 
-                      x: 0, 
+                    visible: {
+                      x: 0,
                       opacity: 1,
-                      transition: { duration: 0.8, ease: "easeOut" }
-                    }
+                      transition: { duration: 0.8, ease: 'easeOut' },
+                    },
                   }}
                   style={{
                     display: 'flex',
@@ -2366,13 +2547,13 @@ const ERPCRMPage = () => {
                     backdropFilter: 'blur(5px)',
                     borderRadius: '20px',
                     border: '1px solid rgba(255, 255, 255, 0.05)',
-                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
+                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
                   }}
                   whileHover={{
                     scale: 1.02,
                     transition: { duration: 0.3 },
                     boxShadow: '0 15px 40px rgba(0, 0, 0, 0.2)',
-                    border: '1px solid rgba(74, 144, 226, 0.2)'
+                    border: '1px solid rgba(74, 144, 226, 0.2)',
                   }}
                 >
                   {/* Номер этапа */}
@@ -2387,19 +2568,20 @@ const ERPCRMPage = () => {
                       fontWeight: '900',
                       color: 'rgba(74, 144, 226, 0.8)',
                       textShadow: '0 2px 10px rgba(74, 144, 226, 0.4)',
-                      flexShrink: 0
+                      flexShrink: 0,
                     }}
                   >
                     {index + 1}
                   </motion.div>
-                  
+
                   {/* Иконка */}
                   <motion.div
                     style={{
                       width: '120px',
                       height: '120px',
                       borderRadius: '50%',
-                      background: 'linear-gradient(135deg, var(--accent-color) 0%, rgba(41, 98, 255, 0.8) 100%)',
+                      background:
+                        'linear-gradient(135deg, var(--accent-color) 0%, rgba(41, 98, 255, 0.8) 100%)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -2407,12 +2589,12 @@ const ERPCRMPage = () => {
                       color: 'white',
                       boxShadow: '0 10px 30px rgba(74, 144, 226, 0.4)',
                       position: 'relative',
-                      flexShrink: 0
+                      flexShrink: 0,
                     }}
                     whileHover={{
                       boxShadow: '0 15px 40px rgba(74, 144, 226, 0.6)',
                       scale: 1.05,
-                      transition: { duration: 0.3 }
+                      transition: { duration: 0.3 },
                     }}
                   >
                     {/* Пульсирующий круг вокруг иконки */}
@@ -2424,22 +2606,22 @@ const ERPCRMPage = () => {
                         right: 0,
                         bottom: 0,
                         borderRadius: '50%',
-                        border: '2px solid rgba(74, 144, 226, 0.5)'
+                        border: '2px solid rgba(74, 144, 226, 0.5)',
                       }}
                       animate={{
                         scale: [1, 1.2, 1],
-                        opacity: [0.5, 0, 0.5]
+                        opacity: [0.5, 0, 0.5],
                       }}
                       transition={{
                         duration: 3,
                         repeat: Infinity,
-                        ease: "easeInOut"
+                        ease: 'easeInOut',
                       }}
                     />
-                    
+
                     {step.icon}
                   </motion.div>
-                  
+
                   {/* Текстовый блок */}
                   <motion.div
                     style={{
@@ -2453,7 +2635,7 @@ const ERPCRMPage = () => {
                       height: '160px',
                       display: 'flex',
                       flexDirection: 'column',
-                      justifyContent: 'center'
+                      justifyContent: 'center',
                     }}
                   >
                     <h3
@@ -2462,34 +2644,35 @@ const ERPCRMPage = () => {
                         fontWeight: 700,
                         marginBottom: '0.8rem',
                         color: '#FFFFFF',
-                        textShadow: '0 2px 5px rgba(0, 0, 0, 0.5)'
+                        textShadow: '0 2px 5px rgba(0, 0, 0, 0.5)',
                       }}
                     >
                       {step.title}
                     </h3>
-                    
+
                     <p
                       style={{
                         fontSize: '1rem',
                         lineHeight: 1.5,
                         color: '#FFFFFF',
                         overflow: 'hidden',
-                        textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)'
+                        textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)',
                       }}
                     >
                       {step.description}
                     </p>
                   </motion.div>
                 </motion.div>
-                
+
                 {/* Вертикальная линия между блоками */}
                 {index < 4 && (
-                  <motion.div 
+                  <motion.div
                     style={{
                       width: '4px',
                       height: '5rem',
-                      background: 'linear-gradient(to bottom, var(--accent-color), rgba(41, 98, 255, 0.1))',
-                      borderRadius: '4px'
+                      background:
+                        'linear-gradient(to bottom, var(--accent-color), rgba(41, 98, 255, 0.1))',
+                      borderRadius: '4px',
                     }}
                     initial={{ height: 0 }}
                     animate={{ height: '5rem' }}
@@ -2508,19 +2691,19 @@ const ERPCRMPage = () => {
         transition={{ duration: 0.8 }}
       >
         <FaqWaveTop />
-        
+
         <FaqContainer>
           <FaqGlowCircle className="circle-1" />
           <FaqGlowCircle className="circle-2" />
-          
+
           <FaqTitle
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-           FAQ
+            FAQ
           </FaqTitle>
-          
+
           <FaqList
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -2528,35 +2711,42 @@ const ERPCRMPage = () => {
           >
             {[
               {
-                question: "Чем отличается ERP от CRM системы?",
-                answer: "ERP система управляет всеми внутренними процессами компании (финансы, производство, логистика и т.д.), а CRM фокусируется на взаимоотношениях с клиентами, продажах и маркетинге. Во многих случаях эти системы интегрируются для создания комплексного решения."
+                question: 'Чем отличается ERP от CRM системы?',
+                answer:
+                  'ERP система управляет всеми внутренними процессами компании (финансы, производство, логистика и т.д.), а CRM фокусируется на взаимоотношениях с клиентами, продажах и маркетинге. Во многих случаях эти системы интегрируются для создания комплексного решения.',
               },
               {
-                question: "Сколько времени занимает внедрение ERP/CRM?",
-                answer: "Сроки внедрения зависят от масштаба бизнеса и сложности процессов. Для малого бизнеса это может занять от 1 до 3 месяцев, для среднего — от 3 до 6 месяцев, для крупного — от 6 месяцев до года."
+                question: 'Сколько времени занимает внедрение ERP/CRM?',
+                answer:
+                  'Сроки внедрения зависят от масштаба бизнеса и сложности процессов. Для малого бизнеса это может занять от 1 до 3 месяцев, для среднего — от 3 до 6 месяцев, для крупного — от 6 месяцев до года.',
               },
               {
-                question: "Можно ли интегрировать ERP/CRM с нашими существующими программами?",
-                answer: "Да, современные системы имеют открытый API и возможности интеграции с бухгалтерскими программами, сайтами, маркетплейсами, системами аналитики и многими другими решениями."
+                question:
+                  'Можно ли интегрировать ERP/CRM с нашими существующими программами?',
+                answer:
+                  'Да, современные системы имеют открытый API и возможности интеграции с бухгалтерскими программами, сайтами, маркетплейсами, системами аналитики и многими другими решениями.',
               },
               {
-                question: "Какой бюджет потребуется на внедрение?",
-                answer: "Стоимость зависит от выбранного решения (готовый продукт или разработка с нуля), количества пользователей, необходимых модулей и сложности интеграций. Мы составляем детальный расчет после анализа потребностей бизнеса."
+                question: 'Какой бюджет потребуется на внедрение?',
+                answer:
+                  'Стоимость зависит от выбранного решения (готовый продукт или разработка с нуля), количества пользователей, необходимых модулей и сложности интеграций. Мы составляем детальный расчет после анализа потребностей бизнеса.',
               },
               {
-                question: "Как выбрать подходящую систему для бизнеса?",
-                answer: "Выбор зависит от размера компании, отрасли, бюджета и специфических требований. Мы проводим аудит бизнес-процессов и на его основе рекомендуем оптимальное решение — готовое или индивидуальное."
+                question: 'Как выбрать подходящую систему для бизнеса?',
+                answer:
+                  'Выбор зависит от размера компании, отрасли, бюджета и специфических требований. Мы проводим аудит бизнес-процессов и на его основе рекомендуем оптимальное решение — готовое или индивидуальное.',
               },
               {
-                question: "Нужно ли специальное оборудование для ERP/CRM?",
-                answer: "Большинство современных систем работают в облаке и не требуют установки сложного оборудования. Для локальных решений может потребоваться собственный сервер."
-              }
+                question: 'Нужно ли специальное оборудование для ERP/CRM?',
+                answer:
+                  'Большинство современных систем работают в облаке и не требуют установки сложного оборудования. Для локальных решений может потребоваться собственный сервер.',
+              },
             ].map((faq, index) => (
               <FaqItem
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 + (index * 0.1) }}
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
               >
                 <AnimatePresence>
                   <FaqItemContent
@@ -2571,18 +2761,20 @@ const ERPCRMPage = () => {
                     >
                       <FaqQuestionText>{faq.question}</FaqQuestionText>
                       <FaqToggle
-                        animate={{ rotate: expandedFaqs.includes(index) ? 45 : 0 }}
+                        animate={{
+                          rotate: expandedFaqs.includes(index) ? 45 : 0,
+                        }}
                         transition={{ duration: 0.3 }}
                       >
                         <FaPlus />
                       </FaqToggle>
                     </FaqQuestion>
-                    
+
                     <AnimatePresence>
                       {expandedFaqs.includes(index) && (
                         <FaqAnswer
                           initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
+                          animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.3 }}
                           isOpen={expandedFaqs.includes(index)}
@@ -2604,7 +2796,10 @@ const ERPCRMPage = () => {
           >
             <FaqCtaText>Не знайшли відповідь на своє питання?</FaqCtaText>
             <FaqCtaButton
-              whileHover={{ scale: 1.03, boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)' }}
+              whileHover={{
+                scale: 1.03,
+                boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)',
+              }}
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
             >
@@ -2616,9 +2811,8 @@ const ERPCRMPage = () => {
 
       {/* Modal Window */}
       <Modal isOpen={isModalOpen} onClose={closeModal} />
-
     </Container>
   );
 };
 
-export default ERPCRMPage; 
+export default ERPCRMPage;

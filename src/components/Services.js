@@ -17,12 +17,24 @@ const ServicesSection = styled.section`
   background: var(--bg-primary);
   position: relative;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0.5rem;
+  }
 `;
 
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 `;
 
 const SectionTitle = styled(motion.h2)`
@@ -44,8 +56,29 @@ const SectionTitle = styled(motion.h2)`
     border-radius: 2px;
   }
 
+  @media (max-width: 1024px) {
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+  }
+
   @media (max-width: 768px) {
     font-size: 2rem;
+    margin-bottom: 2.5rem;
+
+    &::after {
+      width: 80px;
+      height: 2px;
+      bottom: -8px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+
+    &::after {
+      width: 60px;
+    }
   }
 `;
 
@@ -54,6 +87,20 @@ const SliderContainer = styled.div`
   width: 100%;
   height: 500px;
   perspective: 1000px;
+
+  @media (max-width: 1024px) {
+    height: 550px;
+  }
+
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: 450px;
+    perspective: none;
+  }
+
+  @media (max-width: 480px) {
+    min-height: 400px;
+  }
 `;
 
 const SliderWrapper = styled(motion.div)`
@@ -63,6 +110,16 @@ const SliderWrapper = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    position: relative;
+    height: auto;
+    padding: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+  }
 `;
 
 const ServiceTitle = styled(motion.h3)`
@@ -71,6 +128,21 @@ const ServiceTitle = styled(motion.h3)`
   margin-bottom: 1rem;
   position: relative;
   display: inline-block;
+
+  @media (max-width: 1024px) {
+    font-size: 1.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+  }
 `;
 
 const ServiceCard = styled(motion.div)`
@@ -118,6 +190,26 @@ const ServiceCard = styled(motion.div)`
     transform-origin: right;
     transition: transform 0.3s ease;
   }
+
+  @media (max-width: 1024px) {
+    max-width: 700px;
+    padding: 2rem;
+    gap: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    padding: 1.5rem;
+    border-radius: 15px;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.2rem;
+    border-radius: 12px;
+    gap: 0.8rem;
+  }
 `;
 
 const IconWrapper = styled(motion.div)`
@@ -125,6 +217,23 @@ const IconWrapper = styled(motion.div)`
   color: var(--accent-color);
   margin-bottom: 1rem;
   display: inline-block;
+
+  @media (max-width: 1024px) {
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+    margin-bottom: 0.6rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const ServiceDescription = styled(motion.p)`
@@ -132,6 +241,24 @@ const ServiceDescription = styled(motion.p)`
   line-height: 1.8;
   font-size: 1.1rem;
   margin-bottom: 2rem;
+
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
 `;
 
 const ServiceBenefits = styled(motion.ul)`
@@ -142,8 +269,17 @@ const ServiceBenefits = styled(motion.ul)`
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 
+  @media (max-width: 1024px) {
+    gap: 0.8rem;
+  }
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.5rem;
   }
 `;
 
@@ -163,11 +299,48 @@ const BenefitItem = styled(motion.li)`
     color: var(--accent-color);
     font-weight: bold;
     font-size: 1.2rem;
+    flex-shrink: 0;
   }
 
   &:hover {
     background: rgba(74, 144, 226, 0.15);
     transform: translateX(5px);
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 0.95rem;
+    gap: 0.6rem;
+    padding: 0.4rem;
+
+    &::before {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    gap: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    justify-content: flex-start;
+    text-align: left;
+
+    &:hover {
+      transform: translateX(3px);
+    }
+
+    &::before {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+
+    &::before {
+      font-size: 0.9rem;
+    }
   }
 `;
 
@@ -197,20 +370,52 @@ const NavigationButton = styled(motion.button)`
   }
 
   &.prev {
-    left: -70px;
+    left: 70px;
   }
 
   &.next {
-    right: -70px;
+    right: 70px;
+  }
+
+  @media (max-width: 1024px) {
+    width: 45px;
+    height: 45px;
+
+    &.prev {
+      left: 5px;
+    }
+
+    &.next {
+      right: 5px;
+    }
   }
 
   @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+    top: 20px;
+    transform: none;
+
     &.prev {
       left: 10px;
     }
 
     &.next {
       right: 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 36px;
+    height: 36px;
+    top: 15px;
+
+    &.prev {
+      left: 5px;
+    }
+
+    &.next {
+      right: 5px;
     }
   }
 `;
@@ -220,11 +425,22 @@ const DotsContainer = styled.div`
   justify-content: center;
   gap: 1rem;
   margin-top: 2rem;
+
+  @media (max-width: 768px) {
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
 `;
 
 const Dot = styled(motion.button)`
-  width: 1px;
-  height: 1px;
+  width: 12px;
+  height: 30px;
+  border-radius: 50%;
   background: var(--border-color);
   border: none;
   cursor: pointer;
@@ -234,78 +450,88 @@ const Dot = styled(motion.button)`
     background: var(--accent-color);
     transform: scale(1.2);
   }
+
+  @media (max-width: 768px) {
+    width: 10px;
+    height: 30px;
+  }
+
+  @media (max-width: 480px) {
+    width: 8px;
+    height: 30px;
+  }
 `;
 
 const services = [
   {
     icon: <FaRocket />,
-    title: 'Скорость и эффективность',
+    title: 'Швидкість та ефективність',
     description:
-      'Мы понимаем, что время - это деньги. Наши решения помогут вам быстрее достичь целей и получить результат.',
+      'Ми розуміємо, що час - це гроші. Наші рішення допоможуть вам швидше досягти цілей і отримати результат.',
     benefits: [
-      'Быстрый старт проекта',
-      'Оптимизированные процессы',
-      'Сокращение времени на разработку',
-      'Мгновенная обратная связь',
+      'Швидкий старт проєкту',
+      'Оптимізовані процеси',
+      'Скорочення часу на розробку',
+      'Миттєвий зворотний зв\'язок',
     ],
   },
   {
     icon: <FaChartLine />,
-    title: 'Рост бизнеса',
+    title: 'Зростання бізнесу',
     description:
-      'Наши решения направлены на увеличение прибыли и расширение вашего бизнеса.',
+      'Наші рішення спрямовані на збільшення прибутку та розширення вашого бізнесу.',
     benefits: [
-      'Увеличение конверсии',
-      'Расширение клиентской базы',
-      'Повышение лояльности клиентов',
-      'Оптимизация затрат',
+      'Збільшення конверсії',
+      'Розширення клієнтської бази',
+      'Підвищення лояльності клієнтів',
+      'Оптимізація витрат',
     ],
   },
   {
     icon: <FaUsers />,
-    title: 'Клиентоориентированность',
+    title: 'Клієнтоорієнтованість',
     description:
-      'Ваши клиенты - наш приоритет. Мы создаем решения, которые делают их счастливыми.',
+      'Ваші клієнти - наш пріоритет. Ми створюємо рішення, які роблять їх щасливими.',
     benefits: [
-      'Улучшение пользовательского опыта',
-      'Персонализированные решения',
-      'Постоянная поддержка',
-      'Быстрое решение проблем',
+      'Покращення користувацького досвіду',
+      'Персоналізовані рішення',
+      'Постійна підтримка',
+      'Швидке вирішення проблем',
     ],
   },
   {
     icon: <FaShieldAlt />,
-    title: 'Надежность и безопасность',
-    description: 'Мы гарантируем стабильную работу и защиту ваших данных.',
+    title: 'Надійність та безпека',
+    description: 'Ми гарантуємо стабільну роботу та захист ваших даних.',
     benefits: [
-      'Защита от кибератак',
-      'Резервное копирование данных',
-      'Стабильная работа 24/7',
-      'Соблюдение стандартов безопасности',
+      'Захист від кібератак',
+      'Резервне копіювання даних',
+      'Стабільна робота 24/7',
+      'Дотримання стандартів безпеки',
     ],
   },
   {
     icon: <FaClock />,
-    title: 'Долгосрочные решения',
+    title: 'Довгострокові рішення',
     description:
-      'Мы создаем решения, которые будут работать и развиваться вместе с вашим бизнесом.',
+      'Ми створюємо рішення, які будуть працювати і розвиватися разом з вашим бізнесом.',
     benefits: [
-      'Масштабируемость решений',
-      'Долгосрочная поддержка',
-      'Регулярные обновления',
-      'Адаптация под новые требования',
+      'Масштабованість рішень',
+      'Довгострокова підтримка',
+      'Регулярні оновлення',
+      'Адаптація під нові вимоги',
     ],
   },
   {
     icon: <FaHandshake />,
     title: 'Партнерство',
     description:
-      'Мы становимся частью вашей команды и работаем на общий успех.',
+      'Ми стаємо частиною вашої команди і працюємо на спільний успіх.',
     benefits: [
-      'Прозрачное сотрудничество',
-      'Гибкие условия работы',
-      'Экспертная поддержка',
-      'Совместное развитие',
+      'Прозора співпраця',
+      'Гнучкі умови роботи',
+      'Експертна підтримка',
+      'Спільний розвиток',
     ],
   },
 ];
@@ -347,7 +573,7 @@ const Services = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          Ценности наших услуг
+          Цінності наших послуг
         </SectionTitle>
 
         <SliderContainer
