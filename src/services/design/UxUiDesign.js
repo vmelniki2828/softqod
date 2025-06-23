@@ -3501,11 +3501,6 @@ const SolutionsCtaButton = styled(motion.button)`
 const TestimonialsSection = styled.section`
   padding: 8rem 0;
   position: relative;
-  background: linear-gradient(
-    to bottom,
-    rgba(16, 24, 39, 0.98) 0%,
-    var(--bg-primary) 100%
-  );
   overflow: hidden;
   margin-top: 4rem; // Добавляю дополнительный отступ сверху
 `;

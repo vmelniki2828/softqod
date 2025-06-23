@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import Modal from './Modal';
 
 const HeroSection = styled.section`
   min-height: 100vh;
-  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 6rem 0 0 0;
+  position: relative;
   background: var(--bg-primary);
   overflow: hidden;
+  padding: 2rem;
+
+  @media (max-width: 768px) {
+    min-height: 90vh;
+    padding: 1.5rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    min-height: 85vh;
+    padding: 1rem 0.5rem;
+  }
 `;
 
 const GradientBackground = styled(motion.div)`
@@ -19,7 +29,11 @@ const GradientBackground = styled(motion.div)`
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 50% 50%, var(--accent-color) 0%, transparent 40%);
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--accent-color) 0%,
+    transparent 40%
+  );
   opacity: 0.15;
   z-index: 1;
 `;
@@ -36,122 +50,166 @@ const FloatingCircle = styled(motion.div)`
 
 const Container = styled.div`
   max-width: 1200px;
-  width: 100%;
   margin: 0 auto;
-  position: relative;
-  z-index: 2;
-  padding: 0 2rem;
-`;
-
-const Content = styled.div`
+  width: 100%;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
-  min-height: 100vh;
-  padding: 2rem 0;
+  position: relative;
+  z-index: 1;
 
-  @media (max-width: 968px) {
+  @media (max-width: 1024px) {
+    gap: 3rem;
+  }
+
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    text-align: center;
     gap: 2rem;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1.5rem;
   }
 `;
 
-const TextContent = styled.div`
-  max-width: 600px;
-  
-  @media (max-width: 968px) {
-    margin: 0 auto;
-    padding-top: 2rem;
+const Content = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    gap: 1.2rem;
+    order: 2;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
   }
 `;
 
-const Title = styled.h1`
-  font-size: 4rem;
-  font-weight: 800;
-  color: var(--text-primary);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  margin-bottom: 1.5rem;
+const Title = styled(motion.h1)`
+  font-size: 3.5rem;
+  font-weight: 700;
   line-height: 1.2;
-  letter-spacing: 1px;
-  
+  color: var(--text-primary);
+  margin: 0;
+
+  span {
+    background: linear-gradient(45deg, var(--accent-color), #6aadff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 3rem;
+  }
+
   @media (max-width: 768px) {
     font-size: 2.5rem;
+    line-height: 1.3;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    line-height: 1.4;
   }
 `;
 
-const Subtitle = styled.p`
-  font-size: 1.5rem;
+const Description = styled(motion.p)`
+  font-size: 1.3rem;
   color: var(--text-secondary);
-  margin-bottom: 2rem;
   line-height: 1.6;
-  max-width: 600px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-`;
+  margin: 0;
 
-const ButtonGroup = styled.div`
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 3rem;
-  
-  @media (max-width: 968px) {
-    justify-content: center;
-    flex-wrap: wrap;
+  @media (max-width: 1024px) {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    line-height: 1.4;
   }
 `;
 
-const PrimaryButton = styled(motion.button)`
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--bg-primary);
-  background: var(--accent-color);
+const CTAButton = styled(motion.button)`
+  background: linear-gradient(45deg, var(--accent-color), #6aadff);
+  color: white;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
-  
-  &:hover {
-    background: #6AADFF;
-    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.5);
-    transform: translateY(-2px);
-  }
-`;
-
-const SecondaryButton = styled(motion.button)`
   padding: 1rem 2rem;
   font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  background: transparent;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
+  font-weight: 600;
+  border-radius: 50px;
   cursor: pointer;
+  align-self: flex-start;
+  box-shadow: 0 10px 30px rgba(74, 144, 226, 0.3);
   transition: all 0.3s ease;
-  
+
   &:hover {
-    background: var(--bg-secondary);
-    border-color: var(--accent-color);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(74, 144, 226, 0.4);
+  }
+
+  @media (max-width: 768px) {
+    align-self: center;
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+    border-radius: 40px;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
   }
 `;
 
-const StatsContainer = styled(motion.div)`
+const VisualSection = styled(motion.div)`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    order: 1;
+  }
+`;
+
+
+const StatsSection = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  
+  margin-top: 3rem;
+
   @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
   }
 `;
 
 const StatItem = styled(motion.div)`
   text-align: center;
+
+  @media (max-width: 480px) {
+    text-align: center;
+  }
 `;
 
 const StatNumber = styled.div`
@@ -159,15 +217,34 @@ const StatNumber = styled.div`
   font-weight: 700;
   color: var(--accent-color);
   margin-bottom: 0.5rem;
-  
+
+  @media (max-width: 1024px) {
+    font-size: 2.2rem;
+  }
+
   @media (max-width: 768px) {
     font-size: 2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
   }
 `;
 
 const StatLabel = styled.div`
-  color: var(--text-primary);
+  color: var(--text-secondary);
   font-size: 1rem;
+  font-weight: 500;
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const AnimatedShape = styled(motion.div)`
@@ -178,7 +255,7 @@ const AnimatedShape = styled(motion.div)`
   position: relative;
   margin-left: auto;
   box-shadow: 0 0 50px rgba(74, 144, 226, 0.2);
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -190,7 +267,7 @@ const AnimatedShape = styled(motion.div)`
     border-radius: inherit;
     opacity: 0.3;
   }
-  
+
   @media (max-width: 968px) {
     width: 280px;
     height: 280px;
@@ -199,6 +276,16 @@ const AnimatedShape = styled(motion.div)`
 `;
 
 const Hero = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <HeroSection>
       <GradientBackground
@@ -208,7 +295,7 @@ const Hero = () => {
         transition={{
           duration: 5,
           repeat: Infinity,
-          ease: "easeInOut"
+          ease: 'easeInOut',
         }}
       />
       <FloatingCircle
@@ -222,7 +309,7 @@ const Hero = () => {
         transition={{
           duration: 15,
           repeat: Infinity,
-          ease: "easeInOut"
+          ease: 'easeInOut',
         }}
       />
       <FloatingCircle
@@ -236,79 +323,82 @@ const Hero = () => {
         transition={{
           duration: 12,
           repeat: Infinity,
-          ease: "easeInOut"
+          ease: 'easeInOut',
         }}
       />
       <Container>
         <Content>
-          <TextContent>
-            <Title
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              Создаем цифровые решения для вашего бизнеса
-            </Title>
-            <Subtitle
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Мы помогаем компаниям развиваться в цифровой среде с помощью современных технологий и креативных решений. Наша команда экспертов создает инновационные проекты, которые приносят реальные результаты.
-            </Subtitle>
-            <ButtonGroup>
-              <PrimaryButton
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Обсудить проект
-              </PrimaryButton>
-              <SecondaryButton
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Наши услуги
-              </SecondaryButton>
-            </ButtonGroup>
-            <StatsContainer
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              <StatItem>
-                <StatNumber>10+</StatNumber>
-                <StatLabel>Лет опыта</StatLabel>
-              </StatItem>
-              <StatItem>
-                <StatNumber>100+</StatNumber>
-                <StatLabel>Успешных проектов</StatLabel>
-              </StatItem>
-              <StatItem>
-                <StatNumber>50+</StatNumber>
-                <StatLabel>Экспертов</StatLabel>
-              </StatItem>
-            </StatsContainer>
-          </TextContent>
+          <Title
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Створюємо цифрові рішення для вашого бізнесу
+          </Title>
+          <Description
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Ми допомагаємо компаніям розвиватися в цифровому середовищі за
+            допомогою сучасних технологій та креативних рішень. Наша команда
+            експертів створює інноваційні проєкти, які приносять реальні
+            результати.
+          </Description>
+          <CTAButton
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={openModal}
+          >
+            Обговорити проєкт
+          </CTAButton>
+          <StatsSection
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <StatItem>
+              <StatNumber>10+</StatNumber>
+              <StatLabel>Років досвіду</StatLabel>
+            </StatItem>
+            <StatItem>
+              <StatNumber>100+</StatNumber>
+              <StatLabel>Успішних проєктів</StatLabel>
+            </StatItem>
+            <StatItem>
+              <StatNumber>50+</StatNumber>
+              <StatLabel>Експертів</StatLabel>
+            </StatItem>
+          </StatsSection>
+        </Content>
+        <VisualSection>
           <AnimatedShape
             initial={{ rotate: 0 }}
             animate={{
               rotate: 360,
-              borderRadius: ["30% 70% 70% 30% / 30% 30% 70% 70%", "70% 30% 30% 70% / 70% 70% 30% 30%"],
+              borderRadius: [
+                '30% 70% 70% 30% / 30% 30% 70% 70%',
+                '70% 30% 30% 70% / 70% 70% 30% 30%',
+              ],
             }}
             transition={{
               duration: 20,
               repeat: Infinity,
-              ease: "linear"
+              ease: 'linear',
             }}
           />
-        </Content>
+        </VisualSection>
       </Container>
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        title="Обговорити проєкт"
+        subtitle="Розкажіть про ваш проєкт і ми зв'яжемося з вами найближчим часом"
+      />
     </HeroSection>
   );
 };

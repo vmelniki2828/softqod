@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import Modal from '../../components/Modal';
 import {
   FaArrowRight,
-  FaChevronRight,
   FaUsers,
   FaLightbulb,
   FaRocket,
@@ -115,7 +115,7 @@ const HeroTitle = styled(motion.h1)`
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
-  
+
   span {
     position: relative;
     display: inline-block;
@@ -123,7 +123,7 @@ const HeroTitle = styled(motion.h1)`
     -webkit-text-fill-color: currentColor;
     text-fill-color: currentColor;
     margin: 0 0.2rem;
-    
+
     &::after {
       content: '';
       position: absolute;
@@ -135,7 +135,7 @@ const HeroTitle = styled(motion.h1)`
       border-radius: 2px;
     }
   }
-  
+
   @media (max-width: 768px) {
     font-size: 3rem;
   }
@@ -147,7 +147,7 @@ const HeroDescription = styled(motion.p)`
   margin-bottom: 2.3rem;
   opacity: 0.9;
   max-width: 500px;
-  
+
   @media (max-width: 992px) {
     max-width: 100%;
   }
@@ -157,7 +157,7 @@ const HeroButtons = styled(motion.div)`
   display: flex;
   gap: 1.5rem;
   margin-top: 1rem;
-  
+
   @media (max-width: 576px) {
     flex-direction: column;
     width: 100%;
@@ -178,47 +178,17 @@ const PrimaryButton = styled(motion.button)`
   align-items: center;
   gap: 0.5rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-  
+
   &:hover {
     background: #ff7b00;
     transform: translateY(-2px);
     box-shadow: 0 15px 30px rgba(255, 123, 0, 0.4);
   }
-  
-  svg {
-    font-size: 1.2rem;
-  }
-  
-  @media (max-width: 576px) {
-    width: 100%;
-    justify-content: center;
-  }
-`;
 
-const SecondaryButton = styled(motion.button)`
-  background: transparent;
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  padding: 0.9rem 1.9rem;
-  font-size: 1.05rem;
-  font-weight: 600;
-  border-radius: 50px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: white;
-    transform: translateY(-2px);
-  }
-  
   svg {
     font-size: 1.2rem;
   }
-  
+
   @media (max-width: 576px) {
     width: 100%;
     justify-content: center;
@@ -229,7 +199,7 @@ const HeroFeatures = styled(motion.div)`
   display: flex;
   gap: 1.5rem;
   margin-top: 2.5rem;
-  
+
   @media (max-width: 992px) {
     justify-content: center;
     flex-wrap: wrap;
@@ -410,7 +380,7 @@ const AboutGrid = styled.div`
   gap: 4rem;
   align-items: center;
   margin-top: 3rem;
-  
+
   @media (max-width: 992px) {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -419,7 +389,7 @@ const AboutGrid = styled.div`
 
 const AboutContent = styled.div`
   order: 1;
-  
+
   @media (max-width: 992px) {
     order: 2;
   }
@@ -431,7 +401,7 @@ const AboutTitle = styled(motion.h2)`
   margin-bottom: 2.5rem;
   color: var(--text-primary);
   position: relative;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -460,7 +430,7 @@ const Highlight = styled.span`
   font-weight: 600;
   position: relative;
   padding: 0 0.2rem;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -508,7 +478,7 @@ const FunctionIconContainer = styled.div`
   position: relative;
   flex-shrink: 0;
   box-shadow: 0 8px 16px rgba(var(--accent-color-rgb), 0.25);
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -544,7 +514,7 @@ const VisualContainer = styled(motion.div)`
   width: 100%;
   order: 2;
   perspective: 1200px;
-  
+
   @media (max-width: 992px) {
     order: 1;
     height: 400px;
@@ -569,7 +539,7 @@ const DeviceFrame = styled(motion.div)`
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
   background: #21252b;
   transform-style: preserve-3d;
-  
+
   &.desktop {
     width: 75%;
     height: 65%;
@@ -579,7 +549,7 @@ const DeviceFrame = styled(motion.div)`
     border-radius: 1rem;
     animation: ${floatDevice} 12s infinite ease-in-out;
     z-index: 3;
-    
+
     &::before {
       content: '';
       position: absolute;
@@ -591,7 +561,7 @@ const DeviceFrame = styled(motion.div)`
       border-radius: 4px;
     }
   }
-  
+
   &.tablet {
     width: 35%;
     height: 45%;
@@ -601,7 +571,7 @@ const DeviceFrame = styled(motion.div)`
     z-index: 2;
     animation: ${floatDevice} 14s infinite ease-in-out reverse;
     animation-delay: 1s;
-    
+
     &::before {
       content: '';
       position: absolute;
@@ -613,7 +583,7 @@ const DeviceFrame = styled(motion.div)`
       border-radius: 50%;
     }
   }
-  
+
   &.mobile {
     width: 18%;
     height: 35%;
@@ -623,7 +593,7 @@ const DeviceFrame = styled(motion.div)`
     z-index: 1;
     animation: ${floatDevice} 10s infinite ease-in-out;
     animation-delay: 2s;
-    
+
     &::before {
       content: '';
       position: absolute;
@@ -659,22 +629,28 @@ const DeviceHeader = styled.div`
   align-items: center;
   padding: 0 1rem;
   justify-content: space-between;
-  
+
   .dot-container {
     display: flex;
     gap: 0.5rem;
   }
-  
+
   .dot {
     width: 0.7rem;
     height: 0.7rem;
     border-radius: 50%;
-    
-    &.red { background: #ff5f57; }
-    &.yellow { background: #febc2e; }
-    &.green { background: #28c840; }
+
+    &.red {
+      background: #ff5f57;
+    }
+    &.yellow {
+      background: #febc2e;
+    }
+    &.green {
+      background: #28c840;
+    }
   }
-  
+
   .address-bar {
     flex: 1;
     margin: 0 1rem;
@@ -686,7 +662,7 @@ const DeviceHeader = styled.div`
     padding: 0 0.75rem;
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.7rem;
-    
+
     svg {
       margin-right: 0.5rem;
     }
@@ -699,12 +675,12 @@ const DeviceContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  
+
   .menu {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
-    
+
     .menu-dot {
       width: 1.5rem;
       height: 0.25rem;
@@ -712,14 +688,14 @@ const DeviceContent = styled.div`
       border-radius: 1rem;
     }
   }
-  
+
   .hero {
     height: 40%;
     background: rgba(var(--accent-color-rgb), 0.3);
     border-radius: 0.5rem;
     overflow: hidden;
     position: relative;
-    
+
     .hero-overlay {
       position: absolute;
       top: 0;
@@ -730,7 +706,7 @@ const DeviceContent = styled.div`
       flex-direction: column;
       justify-content: center;
       padding: 0 2rem;
-      
+
       .title-bar {
         width: 30%;
         height: 0.5rem;
@@ -738,7 +714,7 @@ const DeviceContent = styled.div`
         border-radius: 0.25rem;
         margin-bottom: 0.5rem;
       }
-      
+
       .subtitle-bar {
         width: 50%;
         height: 0.25rem;
@@ -746,7 +722,7 @@ const DeviceContent = styled.div`
         border-radius: 0.25rem;
       }
     }
-    
+
     .dots {
       position: absolute;
       bottom: 0.5rem;
@@ -755,13 +731,13 @@ const DeviceContent = styled.div`
       display: flex;
       justify-content: center;
       gap: 0.3rem;
-      
+
       .dot {
         width: 0.3rem;
         height: 0.3rem;
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.5);
-        
+
         &.active {
           background: rgba(255, 255, 255, 0.9);
           animation: ${dotMove} 4s infinite ease-in-out;
@@ -769,18 +745,18 @@ const DeviceContent = styled.div`
       }
     }
   }
-  
+
   .content {
     flex: 1;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.5rem;
-    
+
     .card {
       background: rgba(255, 255, 255, 0.1);
       border-radius: 0.5rem;
       padding: 0.5rem;
-      
+
       .card-icon {
         width: 1.5rem;
         height: 1.5rem;
@@ -793,17 +769,17 @@ const DeviceContent = styled.div`
         font-size: 0.8rem;
         color: white;
       }
-      
+
       .card-line {
         height: 0.25rem;
         background: rgba(255, 255, 255, 0.3);
         border-radius: 0.15rem;
         margin-bottom: 0.25rem;
-        
+
         &.wide {
           width: 100%;
         }
-        
+
         &.narrow {
           width: 60%;
         }
@@ -822,14 +798,14 @@ const BackgroundCircle = styled.div`
     var(--accent-color-light) 0%,
     var(--accent-color) 100%
   );
-  
+
   &.top-right {
     width: 500px;
     height: 500px;
     top: -250px;
     right: -250px;
   }
-  
+
   &.bottom-left {
     width: 400px;
     height: 400px;
@@ -861,7 +837,7 @@ const ImportanceTitle = styled(motion.h2)`
   color: var(--text-primary);
   text-align: center;
   position: relative;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -899,11 +875,11 @@ const StatsContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-bottom: 5rem;
-  
+
   @media (max-width: 992px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   @media (max-width: 576px) {
     grid-template-columns: 1fr;
   }
@@ -919,24 +895,24 @@ const StatCard = styled(motion.div)`
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
     border-color: rgba(var(--accent-color-rgb), 0.2);
     animation: ${statsHover} 2s infinite ease-in-out;
-    
+
     .stat-value {
       color: var(--accent-color-light);
     }
-    
+
     .stat-icon {
       background: var(--accent-color);
       color: white;
       transform: scale(1.1) rotate(10deg);
     }
   }
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -952,7 +928,7 @@ const StatCard = styled(motion.div)`
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  
+
   &:hover::before {
     opacity: 1;
   }
@@ -998,7 +974,7 @@ const BenefitsContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
   align-items: center;
-  
+
   @media (max-width: 992px) {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -1049,7 +1025,7 @@ const BenefitProgress = styled.div`
   height: calc(100% + 1rem);
   background: rgba(var(--accent-color-rgb), 0.5);
   z-index: 1;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -1086,7 +1062,7 @@ const ImageContainer = styled(motion.div)`
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  
+
   @media (max-width: 992px) {
     max-width: 500px;
     margin: 0 auto;
@@ -1116,15 +1092,15 @@ const MockHeader = styled.div`
   color: white;
   font-weight: bold;
   font-size: 1.2rem;
-  
+
   .logo {
     margin-right: auto;
   }
-  
+
   .nav {
     display: flex;
     gap: 1rem;
-    
+
     .nav-item {
       width: 2rem;
       height: 0.8rem;
@@ -1156,7 +1132,7 @@ const MockUserCursor = styled.div`
   z-index: 20;
   animation: ${userFlow} 10s infinite ease-in-out;
   pointer-events: none;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -1181,7 +1157,7 @@ const MockHero = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 0 10%;
-  
+
   .title {
     width: 40%;
     height: 2rem;
@@ -1189,7 +1165,7 @@ const MockHero = styled.div`
     border-radius: 0.5rem;
     margin-bottom: 1rem;
   }
-  
+
   .subtitle {
     width: 60%;
     height: 1rem;
@@ -1197,7 +1173,7 @@ const MockHero = styled.div`
     border-radius: 0.5rem;
     margin-bottom: 2rem;
   }
-  
+
   .cta {
     width: 10rem;
     height: 2.5rem;
@@ -1211,7 +1187,7 @@ const MockHero = styled.div`
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(var(--accent-color-rgb), 0.3);
-    
+
     &:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(var(--accent-color-rgb), 0.5);
@@ -1234,7 +1210,7 @@ const MockContent = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  
+
   .card {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 0.5rem;
@@ -1245,7 +1221,7 @@ const MockContent = styled.div`
     opacity: 0;
     animation: ${fadeInUp} 0.5s forwards;
     animation-delay: ${props => props.delay || '0s'};
-    
+
     .icon {
       width: 3rem;
       height: 3rem;
@@ -1258,7 +1234,7 @@ const MockContent = styled.div`
       color: var(--accent-color);
       font-size: 1.5rem;
     }
-    
+
     .title {
       width: 80%;
       height: 0.8rem;
@@ -1266,14 +1242,14 @@ const MockContent = styled.div`
       border-radius: 0.4rem;
       margin-bottom: 0.8rem;
     }
-    
+
     .text {
       width: 100%;
       height: 0.6rem;
       background: rgba(255, 255, 255, 0.1);
       border-radius: 0.3rem;
       margin-bottom: 0.5rem;
-      
+
       &:last-child {
         width: 70%;
       }
@@ -1325,7 +1301,7 @@ const ServicesTitle = styled(motion.h2)`
   color: var(--text-primary);
   text-align: center;
   position: relative;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -1355,29 +1331,29 @@ const ServicesDescription = styled(motion.p)`
 const ServicesGrid = styled.div`
   display: grid;
   gap: 2.5rem;
-  
+
   /* First row: 3 cards */
   .row-1 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
     margin-bottom: 2.5rem;
-    
+
     @media (max-width: 992px) {
       grid-template-columns: repeat(2, 1fr);
     }
-    
+
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
     }
   }
-  
+
   /* Second row: 2 cards */
   .row-2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;
-    
+
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
     }
@@ -1407,7 +1383,7 @@ const ServiceCard = styled(motion.div)`
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -1424,36 +1400,36 @@ const ServiceCard = styled(motion.div)`
     opacity: 0;
     transition: opacity 0.5s ease;
   }
-  
+
   &:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     border-color: rgba(var(--accent-color-rgb), 0.2);
-    
+
     &::before {
       opacity: 1;
     }
-    
+
     .service-icon {
       background: var(--accent-color);
       color: white;
       transform: rotate(10deg) scale(1.1);
       box-shadow: 0 10px 25px rgba(var(--accent-color-rgb), 0.4);
-      
+
       svg {
         animation: ${rotate} 10s linear infinite;
       }
-      
+
       &::after {
         animation: ${pulse} 2s infinite;
       }
     }
-    
+
     .decoration-dot {
       transform: scale(1.2);
       opacity: 0.8;
     }
-    
+
     .service-title {
       color: var(--accent-color-light);
     }
@@ -1473,7 +1449,7 @@ const ServiceIcon = styled.div`
   margin-bottom: 1.5rem;
   transition: all 0.3s ease;
   position: relative;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -1496,22 +1472,22 @@ const DecorationDot = styled.div`
   background: var(--accent-color);
   opacity: 0.2;
   transition: all 0.5s ease;
-  
+
   &.top-right {
     top: 20px;
     right: 20px;
   }
-  
+
   &.middle-right {
     top: 50%;
     right: 15px;
   }
-  
+
   &.bottom-right {
     bottom: 20px;
     right: 30px;
   }
-  
+
   &.bottom-left {
     bottom: 15px;
     left: 20px;
@@ -1546,7 +1522,7 @@ const ServiceFeatureItem = styled.li`
   margin-bottom: 0.8rem;
   color: var(--text-secondary);
   font-size: 0.95rem;
-  
+
   svg {
     color: var(--accent-color);
     font-size: 1rem;
@@ -1577,11 +1553,11 @@ const ServiceIllustration = styled.div`
   z-index: -1;
   opacity: 0.05;
   transition: opacity 0.3s ease;
-  
+
   svg {
     width: 100%;
     height: 100%;
-    
+
     path {
       stroke: var(--accent-color);
       stroke-width: 1;
@@ -1597,7 +1573,11 @@ const ServiceIllustration = styled.div`
 // Benefits section
 const AdvantagesSection = styled.section`
   padding: 8rem 0;
-  background: linear-gradient(to bottom, rgba(18, 26, 41, 0.97) 0%, var(--bg-primary) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 26, 41, 0.97) 0%,
+    var(--bg-primary) 100%
+  );
   position: relative;
   overflow: hidden;
 `;
@@ -1623,7 +1603,7 @@ const AdvantagesTitle = styled(motion.h2)`
   color: var(--text-primary);
   position: relative;
   display: inline-block;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -1660,13 +1640,13 @@ const BenefitsGlow = styled.div`
   filter: blur(50px);
   z-index: -1;
   animation: ${glowAnimation} 15s infinite ease-in-out;
-  
+
   &.top-left {
     top: -100px;
     left: -100px;
     animation-delay: 0s;
   }
-  
+
   &.top-right {
     top: -80px;
     right: -80px;
@@ -1674,7 +1654,7 @@ const BenefitsGlow = styled.div`
     height: 200px;
     animation-delay: 5s;
   }
-  
+
   &.bottom-left {
     bottom: -120px;
     left: -150px;
@@ -1689,11 +1669,11 @@ const BenefitsGrid = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, auto);
   gap: 2rem;
-  
+
   @media (max-width: 992px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
@@ -1724,7 +1704,7 @@ const BenefitCard = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -1740,23 +1720,23 @@ const BenefitCard = styled(motion.div)`
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  
+
   &:hover {
     transform: translateY(-10px);
     border-color: rgba(var(--accent-color-rgb), 0.2);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    
+
     &::before {
       animation: ${shimmerAnimation} 2s infinite;
       opacity: 1;
     }
-    
+
     .benefit-icon {
       animation: ${floatAnimation} 3s infinite ease-in-out;
       color: var(--accent-color-light);
       background: rgba(var(--accent-color-rgb), 0.15);
     }
-    
+
     .benefit-number {
       color: var(--accent-color-light);
     }
@@ -1834,7 +1814,7 @@ const ButtonGlow = styled.div`
   opacity: 0.5;
   z-index: 2;
   transition: opacity 0.3s ease;
-  
+
   &:hover {
     opacity: 1;
   }
@@ -1890,7 +1870,7 @@ const CTAContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
@@ -1901,7 +1881,7 @@ const CTAContent = styled.div`
   position: relative;
   width: 50%;
   z-index: 3;
-  
+
   @media (max-width: 768px) {
     width: 100%;
     margin-bottom: 50px;
@@ -1915,14 +1895,14 @@ const CTATitle = styled.h2`
   margin-bottom: 1.5rem;
   color: white;
   position: relative;
-  
+
   .highlight {
     color: transparent;
     background: linear-gradient(90deg, var(--accent-color) 0%, #8a4dff 100%);
     -webkit-background-clip: text;
     background-clip: text;
     position: relative;
-    
+
     &::after {
       content: '';
       position: absolute;
@@ -1934,7 +1914,7 @@ const CTATitle = styled.h2`
       border-radius: 1.5px;
     }
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2.8rem;
   }
@@ -1946,7 +1926,7 @@ const CTADescription = styled.p`
   margin-bottom: 2rem;
   color: rgba(255, 255, 255, 0.8);
   max-width: 90%;
-  
+
   @media (max-width: 768px) {
     font-size: 1.1rem;
     max-width: 100%;
@@ -1969,7 +1949,7 @@ const CTAButton = styled(motion.button)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  
+
   &:focus {
     outline: none;
   }
@@ -1996,8 +1976,11 @@ const GridBackground = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
   z-index: 0;
   opacity: 0.3;
@@ -2009,7 +1992,7 @@ const CTAImageContainer = styled(motion.div)`
   width: 450px;
   height: 320px;
   margin-top: 3rem;
-  
+
   @media (max-width: 768px) {
     width: 100%;
     height: 250px;
@@ -2035,7 +2018,7 @@ const CTADeviceDesktop = styled.div`
   overflow: hidden;
   z-index: 3;
   animation: ${deviceFloatAnimation} 6s ease-in-out infinite;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -2051,7 +2034,7 @@ const CTADeviceDesktop = styled.div`
       rgba(var(--accent-color-rgb), 0.1) 100%
     );
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -2077,7 +2060,7 @@ const CTADeviceTablet = styled.div`
   overflow: hidden;
   z-index: 2;
   animation: ${deviceFloatAnimation} 7s ease-in-out infinite reverse;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -2103,7 +2086,7 @@ const CTADeviceMobile = styled.div`
   overflow: hidden;
   z-index: 2;
   animation: ${deviceFloatAnimation} 5s ease-in-out infinite;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -2131,7 +2114,7 @@ const CTADeviceScreen = styled.div`
   width: 100%;
   height: 500%;
   animation: ${screenAnimation} 20s infinite cubic-bezier(0.65, 0, 0.35, 1);
-  
+
   .screen {
     width: 100%;
     height: 20%;
@@ -2141,37 +2124,37 @@ const CTADeviceScreen = styled.div`
     justify-content: center;
     padding: 10%;
   }
-  
+
   .bar {
     height: 4px;
     background: var(--accent-color);
     border-radius: 2px;
     margin-bottom: 10%;
   }
-  
+
   .wide {
     width: 80%;
   }
-  
+
   .medium {
     width: 60%;
   }
-  
+
   .narrow {
     width: 40%;
   }
-  
+
   .dot-container {
     display: flex;
     gap: 5px;
     margin-top: 10%;
-    
+
     .dot {
       width: 5px;
       height: 5px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.3);
-      
+
       &.active {
         background: var(--accent-color);
       }
@@ -2236,7 +2219,11 @@ const FaqWaveTop = styled.div`
   left: 0;
   width: 100%;
   height: 120px;
-  background: linear-gradient(to top left, transparent 49%, var(--bg-primary) 51%);
+  background: linear-gradient(
+    to top left,
+    transparent 49%,
+    var(--bg-primary) 51%
+  );
   z-index: 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 `;
@@ -2343,7 +2330,8 @@ const FaqItem = styled(motion.div)`
   perspective: 1000px;
 
   &:hover {
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 15px rgba(var(--accent-color-rgb), 0.1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2),
+      0 0 15px rgba(var(--accent-color-rgb), 0.1);
     border-color: rgba(var(--accent-color-rgb), 0.1);
     transform: translateY(-3px);
   }
@@ -2625,36 +2613,53 @@ const WebDesign = () => {
   // State for FAQ section
   const [expandedFaqs, setExpandedFaqs] = useState([]);
 
+  // State for modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Modal functions
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   // FAQ data
   const faqData = [
     {
       question: '1. Що таке веб-дизайн і чому він важливий для бренду?',
-      answer: 'Веб-дизайн — це процес створення зовнішнього вигляду та функціональності сайту. Він формує перше враження про бренд, впливає на довіру користувачів і спонукає до взаємодії з вашим продуктом або послугою.'
+      answer:
+        'Веб-дизайн — це процес створення зовнішнього вигляду та функціональності сайту. Він формує перше враження про бренд, впливає на довіру користувачів і спонукає до взаємодії з вашим продуктом або послугою.',
     },
     {
       question: '2. Які елементи формують унікальний цифровий образ бренду?',
-      answer: 'Це фірмові кольори, типографіка, логотип, ілюстрації, стиль інтерфейсу, структура сайту та загальна візуальна мова, яка підкреслює індивідуальність вашого бренду.'
+      answer:
+        'Це фірмові кольори, типографіка, логотип, ілюстрації, стиль інтерфейсу, структура сайту та загальна візуальна мова, яка підкреслює індивідуальність вашого бренду.',
     },
     {
-      question: '3. У чому різниця між шаблонним та індивідуальним веб-дизайном?',
-      answer: 'Шаблонний дизайн — це готові рішення з обмеженими можливостями налаштування. Індивідуальний веб-дизайн створюється з нуля під потреби конкретного бізнесу, забезпечуючи максимальну відповідність бренду та унікальність.'
+      question:
+        '3. У чому різниця між шаблонним та індивідуальним веб-дизайном?',
+      answer:
+        'Шаблонний дизайн — це готові рішення з обмеженими можливостями налаштування. Індивідуальний веб-дизайн створюється з нуля під потреби конкретного бізнесу, забезпечуючи максимальну відповідність бренду та унікальність.',
     },
     {
       question: '4. Як веб-дизайн впливає на поведінку користувачів?',
-      answer: 'Добре продуманий дизайн полегшує навігацію, прискорює прийняття рішень, підвищує час перебування на сайті та знижує рівень відмов, що прямо впливає на конверсії.'
+      answer:
+        'Добре продуманий дизайн полегшує навігацію, прискорює прийняття рішень, підвищує час перебування на сайті та знижує рівень відмов, що прямо впливає на конверсії.',
     },
     {
       question: '5. Скільки часу займає створення унікального веб-дизайну?',
-      answer: 'Залежно від складності проєкту, розробка унікального дизайну може тривати від 2 до 8 тижнів. На це впливає кількість сторінок, функціонал, участь замовника в процесі.'
+      answer:
+        'Залежно від складності проєкту, розробка унікального дизайну може тривати від 2 до 8 тижнів. На це впливає кількість сторінок, функціонал, участь замовника в процесі.',
     },
     {
-      question: '6. Чи враховується мобільна адаптація під час створення дизайну?',
-      answer: 'Так, адаптивний дизайн є обов\'язковим стандартом. Сайт має бути зручним і функціональним на всіх пристроях — смартфонах, планшетах та ПК.'
+      question:
+        '6. Чи враховується мобільна адаптація під час створення дизайну?',
+      answer:
+        "Так, адаптивний дизайн є обов'язковим стандартом. Сайт має бути зручним і функціональним на всіх пристроях — смартфонах, планшетах та ПК.",
     },
     {
-      question: '7. Як підтримувати цілісність цифрового образу бренду після запуску сайту?',
-      answer: 'Важливо дотримуватися гайдлайну бренду, використовувати єдину стилістику в усіх цифрових каналах, оновлювати контент відповідно до tone of voice бренду та регулярно проводити аудит UX/UI.'
-    }
+      question:
+        '7. Як підтримувати цілісність цифрового образу бренду після запуску сайту?',
+      answer:
+        'Важливо дотримуватися гайдлайну бренду, використовувати єдину стилістику в усіх цифрових каналах, оновлювати контент відповідно до tone of voice бренду та регулярно проводити аудит UX/UI.',
+    },
   ];
 
   // Toggle FAQ function
@@ -2680,15 +2685,18 @@ const WebDesign = () => {
             >
               Веб-дизайн: створення <span>унікального</span> цифрового образу
             </HeroTitle>
-            
+
             <HeroDescription
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              Професійний веб-дизайн — це не просто красива картинка, а ефективний інструмент комунікації. Якісний дизайн формує перше враження, підвищує довіру та безпосередньо впливає на результативність сайту.
+              Професійний веб-дизайн — це не просто красива картинка, а
+              ефективний інструмент комунікації. Якісний дизайн формує перше
+              враження, підвищує довіру та безпосередньо впливає на
+              результативність сайту.
             </HeroDescription>
-            
+
             <HeroButtons
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -2697,40 +2705,40 @@ const WebDesign = () => {
               <PrimaryButton
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={openModal}
               >
                 Замовити дизайн <FaArrowRight />
               </PrimaryButton>
-              
-              <SecondaryButton
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Переглянути роботи <FaChevronRight />
-              </SecondaryButton>
             </HeroButtons>
-            
+
             <HeroFeatures
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <FeatureItem>
-                <HeroFeatureIcon><FaDesktop /></HeroFeatureIcon>
+                <HeroFeatureIcon>
+                  <FaDesktop />
+                </HeroFeatureIcon>
                 <FeatureText>Адаптивність</FeatureText>
               </FeatureItem>
-              
+
               <FeatureItem>
-                <HeroFeatureIcon><FaPaintBrush /></HeroFeatureIcon>
+                <HeroFeatureIcon>
+                  <FaPaintBrush />
+                </HeroFeatureIcon>
                 <FeatureText>Креативність</FeatureText>
               </FeatureItem>
-              
+
               <FeatureItem>
-                <HeroFeatureIcon><FaChartLine /></HeroFeatureIcon>
+                <HeroFeatureIcon>
+                  <FaChartLine />
+                </HeroFeatureIcon>
                 <FeatureText>Конверсійність</FeatureText>
               </FeatureItem>
             </HeroFeatures>
           </HeroContent>
-          
+
           <BrandbookPreview
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -2776,68 +2784,84 @@ const WebDesign = () => {
                   <p style={{ fontSize: '0.9rem' }}>Digital presence</p>
                 </div>
               </WebDesignCover>
-              
+
               <DeviceElement>
-                <FaDesktop style={{ fontSize: '1.5rem', color: 'var(--accent-color)' }} />
+                <FaDesktop
+                  style={{ fontSize: '1.5rem', color: 'var(--accent-color)' }}
+                />
               </DeviceElement>
-              
+
               <MobileElement>
-                <FaMobileAlt style={{ fontSize: '1.5rem', color: 'var(--accent-color)' }} />
+                <FaMobileAlt
+                  style={{ fontSize: '1.5rem', color: 'var(--accent-color)' }}
+                />
               </MobileElement>
-              
+
               <TabletElement>
-                <FaTabletAlt style={{ fontSize: '1.5rem', color: 'var(--accent-color)' }} />
+                <FaTabletAlt
+                  style={{ fontSize: '1.5rem', color: 'var(--accent-color)' }}
+                />
               </TabletElement>
             </WebDesignContainer>
           </BrandbookPreview>
         </HeroContainer>
       </HeroSection>
-      
+
       {/* What is Web Design section */}
       <AboutSection>
         <BackgroundCircle className="top-right" />
         <BackgroundCircle className="bottom-left" />
-        
+
         <AboutContainer>
           <AboutTitle
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7 }}
           >
             Що таке веб-дизайн?
           </AboutTitle>
-          
+
           <AboutGrid>
             <AboutContent>
               <AboutDescription
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.7, delay: 0.2 }}
               >
-                Веб-дизайн — це процес створення зовнішнього вигляду та інтерфейсу сайту, що поєднує в собі <Highlight>візуальну привабливість</Highlight> і <Highlight>зручність для користувача</Highlight>. Його головна мета — зробити взаємодію з ресурсом простою, приємною та ефективною.
+                Веб-дизайн — це процес створення зовнішнього вигляду та
+                інтерфейсу сайту, що поєднує в собі{' '}
+                <Highlight>візуальну привабливість</Highlight> і{' '}
+                <Highlight>зручність для користувача</Highlight>. Його головна
+                мета — зробити взаємодію з ресурсом простою, приємною та
+                ефективною.
               </AboutDescription>
-              
+
               <AboutDescription
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.7, delay: 0.3 }}
               >
-                Сучасний веб-дизайн виконує кілька ключових функцій: підвищує впізнаваність бренду, формує довіру до компанії та забезпечує позитивний користувацький досвід (UX). Актуальні тенденції включають адаптивність (підлаштування під різні пристрої), мінімалізм у дизайні, а також використання анімацій та інтерактивних елементів для залучення уваги.
+                Сучасний веб-дизайн виконує кілька ключових функцій: підвищує
+                впізнаваність бренду, формує довіру до компанії та забезпечує
+                позитивний користувацький досвід (UX). Актуальні тенденції
+                включають адаптивність (підлаштування під різні пристрої),
+                мінімалізм у дизайні, а також використання анімацій та
+                інтерактивних елементів для залучення уваги.
               </AboutDescription>
-              
+
               <FunctionsList
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.7, delay: 0.4 }}
               >
                 <FunctionCard
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
+                  viewport={{ once: true, margin: '-100px' }}
                   transition={{ duration: 0.5, delay: 0.5 }}
                 >
                   <FunctionIconContainer delay="0s">
@@ -2846,15 +2870,16 @@ const WebDesign = () => {
                   <FunctionContent>
                     <FunctionTitle>Брендинг та впізнаваність</FunctionTitle>
                     <FunctionText>
-                      Якісний веб-дизайн підкреслює унікальність вашого бренду, відображає його цінності та виділяє серед конкурентів.
+                      Якісний веб-дизайн підкреслює унікальність вашого бренду,
+                      відображає його цінності та виділяє серед конкурентів.
                     </FunctionText>
                   </FunctionContent>
                 </FunctionCard>
-                
+
                 <FunctionCard
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
+                  viewport={{ once: true, margin: '-100px' }}
                   transition={{ duration: 0.5, delay: 0.6 }}
                 >
                   <FunctionIconContainer delay="0.5s">
@@ -2863,15 +2888,17 @@ const WebDesign = () => {
                   <FunctionContent>
                     <FunctionTitle>Користувацький досвід (UX)</FunctionTitle>
                     <FunctionText>
-                      Зручність навігації, інтуїтивно зрозумілий інтерфейс та логічна структура забезпечують комфортну взаємодію відвідувачів із сайтом.
+                      Зручність навігації, інтуїтивно зрозумілий інтерфейс та
+                      логічна структура забезпечують комфортну взаємодію
+                      відвідувачів із сайтом.
                     </FunctionText>
                   </FunctionContent>
                 </FunctionCard>
-                
+
                 <FunctionCard
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
+                  viewport={{ once: true, margin: '-100px' }}
                   transition={{ duration: 0.5, delay: 0.7 }}
                 >
                   <FunctionIconContainer delay="1s">
@@ -2880,17 +2907,19 @@ const WebDesign = () => {
                   <FunctionContent>
                     <FunctionTitle>Досягнення бізнес-цілей</FunctionTitle>
                     <FunctionText>
-                      Ефективний дизайн спрямовує користувачів до цільових дій: замовлень, заповнення форм, підписок, дзвінків та інших конверсійних дій.
+                      Ефективний дизайн спрямовує користувачів до цільових дій:
+                      замовлень, заповнення форм, підписок, дзвінків та інших
+                      конверсійних дій.
                     </FunctionText>
                   </FunctionContent>
                 </FunctionCard>
               </FunctionsList>
             </AboutContent>
-            
+
             <VisualContainer
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.7, delay: 0.2 }}
             >
               <DeviceFrame className="desktop">
@@ -2950,7 +2979,7 @@ const WebDesign = () => {
                   </DeviceContent>
                 </DeviceScreen>
               </DeviceFrame>
-              
+
               <DeviceFrame className="tablet">
                 <DeviceScreen>
                   <DeviceHeader>
@@ -2975,7 +3004,7 @@ const WebDesign = () => {
                   </DeviceContent>
                 </DeviceScreen>
               </DeviceFrame>
-              
+
               <DeviceFrame className="mobile">
                 <DeviceScreen>
                   <DeviceHeader>
@@ -2996,36 +3025,37 @@ const WebDesign = () => {
           </AboutGrid>
         </AboutContainer>
       </AboutSection>
-      
+
       {/* Why Web Design is Important section */}
       <ImportanceSection>
         <BackgroundCircle className="top-right" />
         <BackgroundCircle className="bottom-left" />
-        
+
         <ImportanceContainer>
           <ImportanceTitle
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7 }}
           >
             Чому веб-дизайн важливий для вашого бізнесу?
           </ImportanceTitle>
-          
+
           <IntroText
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            Сайт — це часто перше, з чим стикається потенційний клієнт. Якісний дизайн формує довіру і перетворює відвідувачів на клієнтів.
+            Сайт — це часто перше, з чим стикається потенційний клієнт. Якісний
+            дизайн формує довіру і перетворює відвідувачів на клієнтів.
           </IntroText>
-          
+
           <StatsContainer>
             <StatCard
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               <StatIcon className="stat-icon">
@@ -3037,11 +3067,11 @@ const WebDesign = () => {
                 Час, за який формується перше враження про сайт та компанію
               </StatDescription>
             </StatCard>
-            
+
             <StatCard
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
               <StatIcon className="stat-icon">
@@ -3053,11 +3083,11 @@ const WebDesign = () => {
                 Залишають сайт, якщо дизайн непривабливий або застарілий
               </StatDescription>
             </StatCard>
-            
+
             <StatCard
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
               <StatIcon className="stat-icon">
@@ -3070,13 +3100,13 @@ const WebDesign = () => {
               </StatDescription>
             </StatCard>
           </StatsContainer>
-          
+
           <BenefitsContainer>
             <BenefitsList>
               <BenefitItem
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
                 <BenefitIconContainer>
@@ -3086,15 +3116,18 @@ const WebDesign = () => {
                 <BenefitContent>
                   <BenefitTitle>Перше враження</BenefitTitle>
                   <BenefitText>
-                    Якщо дизайн виглядає застарілим або незручним, користувач швидко залишить сторінку. Якісний веб-дизайн формує позитивне перше враження та підвищує рівень довіри до компанії.
+                    Якщо дизайн виглядає застарілим або незручним, користувач
+                    швидко залишить сторінку. Якісний веб-дизайн формує
+                    позитивне перше враження та підвищує рівень довіри до
+                    компанії.
                   </BenefitText>
                 </BenefitContent>
               </BenefitItem>
-              
+
               <BenefitItem
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
                 <BenefitIconContainer>
@@ -3104,15 +3137,18 @@ const WebDesign = () => {
                 <BenefitContent>
                   <BenefitTitle>Користувацький досвід</BenefitTitle>
                   <BenefitText>
-                    Зручна навігація, логічна структура та швидке завантаження сторінок напряму впливають на поведінку користувачів і конверсію. Інтуїтивний інтерфейс утримує увагу та підштовхує до цільових дій.
+                    Зручна навігація, логічна структура та швидке завантаження
+                    сторінок напряму впливають на поведінку користувачів і
+                    конверсію. Інтуїтивний інтерфейс утримує увагу та підштовхує
+                    до цільових дій.
                   </BenefitText>
                 </BenefitContent>
               </BenefitItem>
-              
+
               <BenefitItem
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.5, delay: 0.7 }}
                 style={{ marginBottom: 0 }}
               >
@@ -3122,16 +3158,19 @@ const WebDesign = () => {
                 <BenefitContent>
                   <BenefitTitle>SEO-просування</BenefitTitle>
                   <BenefitText>
-                    Пошукові системи враховують показники взаємодії з сайтом: час перебування, глибину перегляду, мобільну оптимізацію. Сучасний дизайн — це ще й внесок у SEO-просування та органічну видимість.
+                    Пошукові системи враховують показники взаємодії з сайтом:
+                    час перебування, глибину перегляду, мобільну оптимізацію.
+                    Сучасний дизайн — це ще й внесок у SEO-просування та
+                    органічну видимість.
                   </BenefitText>
                 </BenefitContent>
               </BenefitItem>
             </BenefitsList>
-            
+
             <ImageContainer
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.7, delay: 0.4 }}
             >
               <MockWebsiteContainer>
@@ -3182,54 +3221,61 @@ const WebDesign = () => {
           </BenefitsContainer>
         </ImportanceContainer>
       </ImportanceSection>
-      
+
       {/* Our Web Design Services section */}
       <ServicesSection>
         <BackgroundCircle className="top-right" />
         <BackgroundCircle className="bottom-left" />
-        
+
         <ServicesContainer>
           <ServicesTitle
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7 }}
           >
             Наші послуги у сфері веб-дизайну
           </ServicesTitle>
-          
+
           <ServicesDescription
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            Ми пропонуємо повний спектр послуг з дизайну сайтів — від створення концепції до повної реалізації проєкту, враховуючи всі сучасні тенденції та вимоги.
+            Ми пропонуємо повний спектр послуг з дизайну сайтів — від створення
+            концепції до повної реалізації проєкту, враховуючи всі сучасні
+            тенденції та вимоги.
           </ServicesDescription>
-          
+
           <ServicesGrid>
             <div className="row-1">
               <ServiceCard
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
                 <DecorationDot className="top-right" />
                 <DecorationDot className="middle-right" />
                 <DecorationDot className="bottom-right" />
                 <DecorationDot className="bottom-left" />
-                
+
                 <ServiceIcon className="service-icon">
                   <FaPaintBrush />
                 </ServiceIcon>
-                
-                <ServiceTitle className="service-title">Створення дизайну сайту з нуля</ServiceTitle>
-                
+
+                <ServiceTitle className="service-title">
+                  Створення дизайну сайту з нуля
+                </ServiceTitle>
+
                 <ServiceText>
-                  Ми розробляємо індивідуальний дизайн, який відображає цінності вашого бренду. Починаємо з концепції, формуємо структуру (Wireframes) і створюємо візуальний стиль, який гармонійно поєднує естетику з функціональністю.
+                  Ми розробляємо індивідуальний дизайн, який відображає цінності
+                  вашого бренду. Починаємо з концепції, формуємо структуру
+                  (Wireframes) і створюємо візуальний стиль, який гармонійно
+                  поєднує естетику з функціональністю.
                 </ServiceText>
-                
+
                 <ServiceFeatures>
                   <ServiceFeatureItem>
                     <FaCheckCircle /> Розробка концепції та прототипів
@@ -3238,13 +3284,14 @@ const WebDesign = () => {
                     <FaCheckCircle /> Створення унікального візуального стилю
                   </ServiceFeatureItem>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> UX/UI проектування всіх елементів інтерфейсу
+                    <FaCheckCircle /> UX/UI проектування всіх елементів
+                    інтерфейсу
                   </ServiceFeatureItem>
                   <ServiceFeatureItem>
                     <FaCheckCircle /> Підготовка макетів для розробників
                   </ServiceFeatureItem>
                 </ServiceFeatures>
-                
+
                 <ServiceIllustration delay="0.3s">
                   <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20,20 L80,20 L80,80 L20,80 Z" />
@@ -3255,28 +3302,33 @@ const WebDesign = () => {
                   </svg>
                 </ServiceIllustration>
               </ServiceCard>
-              
+
               <ServiceCard
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
                 <DecorationDot className="top-right" />
                 <DecorationDot className="middle-right" />
                 <DecorationDot className="bottom-right" />
                 <DecorationDot className="bottom-left" />
-                
+
                 <ServiceIcon className="service-icon">
                   <FaMagic />
                 </ServiceIcon>
-                
-                <ServiceTitle className="service-title">Рестайлінг існуючих сайтів</ServiceTitle>
-                
+
+                <ServiceTitle className="service-title">
+                  Рестайлінг існуючих сайтів
+                </ServiceTitle>
+
                 <ServiceText>
-                  Ваш сайт виглядає застаріло або не приносить результатів? Ми оновимо дизайн відповідно до сучасних вимог, поліпшимо структуру, зробимо інтерфейс більш зручним і привабливим для користувача.
+                  Ваш сайт виглядає застаріло або не приносить результатів? Ми
+                  оновимо дизайн відповідно до сучасних вимог, поліпшимо
+                  структуру, зробимо інтерфейс більш зручним і привабливим для
+                  користувача.
                 </ServiceText>
-                
+
                 <ServiceFeatures>
                   <ServiceFeatureItem>
                     <FaCheckCircle /> Аналіз недоліків поточного дизайну
@@ -3291,7 +3343,7 @@ const WebDesign = () => {
                     <FaCheckCircle /> Оптимізація конверсійних шляхів
                   </ServiceFeatureItem>
                 </ServiceFeatures>
-                
+
                 <ServiceIllustration delay="0.5s">
                   <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10,30 L10,70 L45,70 L45,30 Z" />
@@ -3305,28 +3357,33 @@ const WebDesign = () => {
                   </svg>
                 </ServiceIllustration>
               </ServiceCard>
-              
+
               <ServiceCard
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
                 <DecorationDot className="top-right" />
                 <DecorationDot className="middle-right" />
                 <DecorationDot className="bottom-right" />
                 <DecorationDot className="bottom-left" />
-                
+
                 <ServiceIcon className="service-icon">
                   <FaMobileAlt />
                 </ServiceIcon>
-                
-                <ServiceTitle className="service-title">Адаптивний дизайн</ServiceTitle>
-                
+
+                <ServiceTitle className="service-title">
+                  Адаптивний дизайн
+                </ServiceTitle>
+
                 <ServiceText>
-                  Створюємо інтерфейси, які коректно відображаються на смартфонах, планшетах і десктопах. Це гарантує зручність користування з будь-якого пристрою та позитивно впливає на поведенкові фактори.
+                  Створюємо інтерфейси, які коректно відображаються на
+                  смартфонах, планшетах і десктопах. Це гарантує зручність
+                  користування з будь-якого пристрою та позитивно впливає на
+                  поведенкові фактори.
                 </ServiceText>
-                
+
                 <ServiceFeatures>
                   <ServiceFeatureItem>
                     <FaCheckCircle /> Оптимізація для всіх типів пристроїв
@@ -3335,13 +3392,14 @@ const WebDesign = () => {
                     <FaCheckCircle /> Гнучкі макети та елементи інтерфейсу
                   </ServiceFeatureItem>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> Адаптація контенту для різних роздільних здатностей
+                    <FaCheckCircle /> Адаптація контенту для різних роздільних
+                    здатностей
                   </ServiceFeatureItem>
                   <ServiceFeatureItem>
                     <FaCheckCircle /> Тестування на всіх популярних пристроях
                   </ServiceFeatureItem>
                 </ServiceFeatures>
-                
+
                 <ServiceIllustration delay="0.7s">
                   <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10,10 L60,10 L60,70 L10,70 Z" />
@@ -3357,29 +3415,33 @@ const WebDesign = () => {
                 </ServiceIllustration>
               </ServiceCard>
             </div>
-            
+
             <div className="row-2">
               <ServiceCard
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <DecorationDot className="top-right" />
                 <DecorationDot className="middle-right" />
                 <DecorationDot className="bottom-right" />
                 <DecorationDot className="bottom-left" />
-                
+
                 <ServiceIcon className="service-icon">
                   <FaShoppingCart />
                 </ServiceIcon>
-                
-                <ServiceTitle className="service-title">Дизайн для eCommerce</ServiceTitle>
-                
+
+                <ServiceTitle className="service-title">
+                  Дизайн для eCommerce
+                </ServiceTitle>
+
                 <ServiceText>
-                  Розробляємо UX/UI-дизайн для інтернет-магазинів з урахуванням поведінки покупців. Оптимізуємо шлях користувача до покупки, щоб збільшити конверсію та середній чек.
+                  Розробляємо UX/UI-дизайн для інтернет-магазинів з урахуванням
+                  поведінки покупців. Оптимізуємо шлях користувача до покупки,
+                  щоб збільшити конверсію та середній чек.
                 </ServiceText>
-                
+
                 <ServiceFeatures>
                   <ServiceFeatureItem>
                     <FaCheckCircle /> Проектування зручних каталогів та фільтрів
@@ -3394,7 +3456,7 @@ const WebDesign = () => {
                     <FaCheckCircle /> Інтеграція з платіжними системами
                   </ServiceFeatureItem>
                 </ServiceFeatures>
-                
+
                 <ServiceIllustration delay="0.9s">
                   <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10,20 L30,20 L35,40 L80,40 L75,70 L25,70 Z" />
@@ -3407,28 +3469,33 @@ const WebDesign = () => {
                   </svg>
                 </ServiceIllustration>
               </ServiceCard>
-              
+
               <ServiceCard
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.5, delay: 0.7 }}
               >
                 <DecorationDot className="top-right" />
                 <DecorationDot className="middle-right" />
                 <DecorationDot className="bottom-right" />
                 <DecorationDot className="bottom-left" />
-                
+
                 <ServiceIcon className="service-icon">
                   <FaLayerGroup />
                 </ServiceIcon>
-                
-                <ServiceTitle className="service-title">Додаткові послуги</ServiceTitle>
-                
+
+                <ServiceTitle className="service-title">
+                  Додаткові послуги
+                </ServiceTitle>
+
                 <ServiceText>
-                  Пропонуємо дизайн лендінгів, блогів, корпоративних сайтів, а також підготовку графічних елементів: банерів, іконок, презентацій. Працюємо з готовими CMS або в парі з розробниками.
+                  Пропонуємо дизайн лендінгів, блогів, корпоративних сайтів, а
+                  також підготовку графічних елементів: банерів, іконок,
+                  презентацій. Працюємо з готовими CMS або в парі з
+                  розробниками.
                 </ServiceText>
-                
+
                 <ServiceFeatures>
                   <ServiceFeatureItem>
                     <FaCheckCircle /> Дизайн банерів та рекламних матеріалів
@@ -3443,7 +3510,7 @@ const WebDesign = () => {
                     <FaCheckCircle /> UX-аудит існуючих проектів
                   </ServiceFeatureItem>
                 </ServiceFeatures>
-                
+
                 <ServiceIllustration delay="1.1s">
                   <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20,20 L40,20 L40,40 L20,40 Z" />
@@ -3459,30 +3526,30 @@ const WebDesign = () => {
           </ServicesGrid>
         </ServicesContainer>
       </ServicesSection>
-      
+
       {/* Benefits of Working With Us section */}
       <AdvantagesSection>
         <BenefitsGlow className="top-left" />
         <BenefitsGlow className="top-right" />
         <BenefitsGlow className="bottom-left" />
-        
+
         <AdvantagesContainer>
           <BenefitsHeader>
             <AdvantagesTitle
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.7 }}
             >
               Переваги співпраці з нами
             </AdvantagesTitle>
           </BenefitsHeader>
-          
+
           <BenefitsGrid>
             <BenefitCard
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               <BenefitIconWrapper>
@@ -3493,18 +3560,19 @@ const WebDesign = () => {
               </BenefitIconWrapper>
               <AdvantageTitle>Досвідчена команда</AdvantageTitle>
               <BenefitDescription>
-                Наші дизайнери мають практичний досвід у створенні проєктів для різних ніш — від малого бізнесу до eCommerce-платформ.
+                Наші дизайнери мають практичний досвід у створенні проєктів для
+                різних ніш — від малого бізнесу до eCommerce-платформ.
               </BenefitDescription>
               <BenefitTag>
                 <FaLightbulb />
                 Експертність
               </BenefitTag>
             </BenefitCard>
-            
+
             <BenefitCard
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <BenefitIconWrapper>
@@ -3515,18 +3583,19 @@ const WebDesign = () => {
               </BenefitIconWrapper>
               <AdvantageTitle>Сучасні інструменти та технології</AdvantageTitle>
               <BenefitDescription>
-                Ми працюємо з Figma, Adobe XD, Sketch, дотримуємося найновіших стандартів веб-дизайну та UI/UX.
+                Ми працюємо з Figma, Adobe XD, Sketch, дотримуємося найновіших
+                стандартів веб-дизайну та UI/UX.
               </BenefitDescription>
               <BenefitTag>
                 <FaRocket />
                 Інновації
               </BenefitTag>
             </BenefitCard>
-            
+
             <BenefitCard
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               <BenefitIconWrapper>
@@ -3537,18 +3606,19 @@ const WebDesign = () => {
               </BenefitIconWrapper>
               <AdvantageTitle>Індивідуальний підхід</AdvantageTitle>
               <BenefitDescription>
-                Кожен проєкт — унікальний. Ми враховуємо цілі бізнесу, специфіку ринку та вподобання цільової аудиторії.
+                Кожен проєкт — унікальний. Ми враховуємо цілі бізнесу, специфіку
+                ринку та вподобання цільової аудиторії.
               </BenefitDescription>
               <BenefitTag>
                 <FaBullseye />
                 Клієнтоорієнтованість
               </BenefitTag>
             </BenefitCard>
-            
+
             <BenefitCard
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
               <BenefitIconWrapper>
@@ -3559,18 +3629,19 @@ const WebDesign = () => {
               </BenefitIconWrapper>
               <AdvantageTitle>Гарантія унікального дизайну</AdvantageTitle>
               <BenefitDescription>
-                Жодних шаблонів — лише оригінальні рішення, створені спеціально під ваш бренд.
+                Жодних шаблонів — лише оригінальні рішення, створені спеціально
+                під ваш бренд.
               </BenefitDescription>
               <BenefitTag>
                 <FaPaintBrush />
                 Оригінальність
               </BenefitTag>
             </BenefitCard>
-            
+
             <BenefitCard
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
               <BenefitIconWrapper>
@@ -3581,18 +3652,19 @@ const WebDesign = () => {
               </BenefitIconWrapper>
               <AdvantageTitle>Відповідність UX/UI стандартам</AdvantageTitle>
               <BenefitDescription>
-                Дизайн не лише привабливий, а й зручний. Ми тестуємо прототипи та оптимізуємо інтерфейс для максимальної ефективності.
+                Дизайн не лише привабливий, а й зручний. Ми тестуємо прототипи
+                та оптимізуємо інтерфейс для максимальної ефективності.
               </BenefitDescription>
               <BenefitTag>
                 <FaChartLine />
                 Ефективність
               </BenefitTag>
             </BenefitCard>
-            
+
             <BenefitCard
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.5, delay: 0.6 }}
             >
               <BenefitIconWrapper>
@@ -3603,7 +3675,8 @@ const WebDesign = () => {
               </BenefitIconWrapper>
               <AdvantageTitle>Своєчасна доставка</AdvantageTitle>
               <BenefitDescription>
-                Дотримуємося узгоджених термінів та забезпечуємо плавний процес роботи. Ви завжди знаєте, на якому етапі знаходиться ваш проєкт.
+                Дотримуємося узгоджених термінів та забезпечуємо плавний процес
+                роботи. Ви завжди знаєте, на якому етапі знаходиться ваш проєкт.
               </BenefitDescription>
               <BenefitTag>
                 <FaClock />
@@ -3613,36 +3686,39 @@ const WebDesign = () => {
           </BenefitsGrid>
         </AdvantagesContainer>
       </AdvantagesSection>
-      
+
       {/* Call to Action Section */}
       <CTASection>
         <OrbitalCircle size="80px" top="15%" left="10%" delay={0} />
         <OrbitalCircle size="120px" top="60%" left="85%" delay={1} />
         <OrbitalCircle size="50px" top="80%" left="15%" delay={2} />
         <GridBackground />
-        
+
         <CTAContainer>
           <CTAContent>
             <CTATitle>
-              Замовте <span className="highlight">веб-дизайн</span>, який приносить результати
+              Замовте <span className="highlight">веб-дизайн</span>, який
+              приносить результати
             </CTATitle>
             <CTADescription>
-              Професійний веб-дизайн — це не просто витрата, а інвестиція у зростання вашого бізнесу. 
-              Добре спроектований сайт приваблює більше відвідувачів, конвертує більше лідів і допомагає 
-              вашому бізнесу виділитися серед конкурентів у цифровому просторі.
+              Професійний веб-дизайн — це не просто витрата, а інвестиція у
+              зростання вашого бізнесу. Добре спроектований сайт приваблює
+              більше відвідувачів, конвертує більше лідів і допомагає вашому
+              бізнесу виділитися серед конкурентів у цифровому просторі.
             </CTADescription>
-            <CTAButton 
+            <CTAButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
+              onClick={openModal}
             >
               Замовити безкоштовну консультацію
               <ButtonGlow />
             </CTAButton>
           </CTAContent>
-          
+
           <CTAImageContainer
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -3748,7 +3824,7 @@ const WebDesign = () => {
           </CTAImageContainer>
         </CTAContainer>
       </CTASection>
-      
+
       {/* FAQ Section */}
       <FaqSection
         initial={{ opacity: 0 }}
@@ -3756,7 +3832,7 @@ const WebDesign = () => {
         transition={{ duration: 0.8 }}
       >
         <FaqWaveTop />
-        
+
         <FaqContainer>
           <FaqGlowCircle className="circle-1" />
           <FaqGlowCircle className="circle-2" />
@@ -3787,11 +3863,11 @@ const WebDesign = () => {
                     initial={{ borderRadius: 16 }}
                     key={`faq-${index}`}
                     transition={{
-                      layout: { 
-                        type: "spring", 
+                      layout: {
+                        type: 'spring',
                         bounce: 0.2,
-                        duration: 0.6
-                      }
+                        duration: 0.6,
+                      },
                     }}
                   >
                     <FaqQuestion
@@ -3803,13 +3879,13 @@ const WebDesign = () => {
                       <FaqToggle
                         animate={{
                           rotate: expandedFaqs.includes(index) ? 45 : 0,
-                          backgroundColor: expandedFaqs.includes(index) 
-                            ? 'rgba(var(--accent-color-rgb), 0.15)' 
-                            : 'rgba(var(--accent-color-rgb), 0.05)'
+                          backgroundColor: expandedFaqs.includes(index)
+                            ? 'rgba(var(--accent-color-rgb), 0.15)'
+                            : 'rgba(var(--accent-color-rgb), 0.05)',
                         }}
-                        transition={{ 
+                        transition={{
                           duration: 0.4,
-                          ease: [0.4, 0, 0.2, 1]
+                          ease: [0.4, 0, 0.2, 1],
                         }}
                       >
                         <FaPlus />
@@ -3820,15 +3896,15 @@ const WebDesign = () => {
                       {expandedFaqs.includes(index) && (
                         <FaqAnswer
                           initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
+                          animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}
-                          transition={{ 
-                            type: "spring",
+                          transition={{
+                            type: 'spring',
                             damping: 40,
                             stiffness: 60,
                             mass: 1,
-                            opacity: { duration: 0.5, ease: "easeInOut" },
-                            height: { duration: 0.4, ease: "easeInOut" }
+                            opacity: { duration: 0.5, ease: 'easeInOut' },
+                            height: { duration: 0.4, ease: 'easeInOut' },
                           }}
                         >
                           {faq.answer}
@@ -3853,13 +3929,20 @@ const WebDesign = () => {
                 boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)',
               }}
               whileTap={{ scale: 0.98 }}
+              onClick={openModal}
             >
               Напишіть нам
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
       </FaqSection>
-      
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        title="Замовити веб-дизайн"
+        subtitle="Залиште заявку і ми зв'яжемося з вами для обговорення деталей проєкту"
+      />
     </PageContainer>
   );
 };

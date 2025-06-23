@@ -1,18 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { FaLightbulb, FaClock, FaUsers, FaHandshake } from 'react-icons/fa';
 
 const BenefitsSection = styled.section`
   padding: 6rem 2rem;
   background: var(--bg-primary);
   position: relative;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0.5rem;
+  }
 `;
 
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 `;
 
 const SectionTitle = styled(motion.h2)`
@@ -34,8 +47,29 @@ const SectionTitle = styled(motion.h2)`
     border-radius: 2px;
   }
 
+  @media (max-width: 1024px) {
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+  }
+
   @media (max-width: 768px) {
     font-size: 2rem;
+    margin-bottom: 2.5rem;
+
+    &::after {
+      width: 80px;
+      height: 2px;
+      bottom: -8px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+
+    &::after {
+      width: 60px;
+    }
   }
 `;
 
@@ -47,10 +81,19 @@ const BenefitsGrid = styled.div`
   
   @media (max-width: 1200px) {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 1.5rem;
   }
   
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
+    padding: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+    padding: 0.5rem;
   }
 `;
 
@@ -67,6 +110,21 @@ const Number = styled(motion.div)`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: transform 0.3s ease;
+
+  @media (max-width: 1024px) {
+    font-size: 3rem;
+    margin-bottom: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+  }
 `;
 
 const BenefitItem = styled(motion.div)`
@@ -108,6 +166,29 @@ const BenefitItem = styled(motion.div)`
       transform: scale(1.1);
     }
   }
+
+  @media (max-width: 1024px) {
+    padding: 2rem;
+    border-radius: 16px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.8rem;
+    border-radius: 15px;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+    border-radius: 12px;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
 `;
 
 const BenefitTitle = styled(motion.h3)`
@@ -127,6 +208,33 @@ const BenefitTitle = styled(motion.h3)`
     background: var(--accent-color);
     border-radius: 2px;
   }
+
+  @media (max-width: 1024px) {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+
+    &::after {
+      width: 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.7rem;
+
+    &::after {
+      width: 35px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+
+    &::after {
+      width: 30px;
+    }
+  }
 `;
 
 const BenefitDescription = styled(motion.p)`
@@ -134,29 +242,54 @@ const BenefitDescription = styled(motion.p)`
   line-height: 1.6;
   font-size: 1.1rem;
   margin-top: 1rem;
+
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+    margin-top: 0.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-top: 0.7rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-top: 0.6rem;
+  }
 `;
 
 const benefits = [
   {
-    number: '10+',
-    title: 'Лет опыта',
-    description: 'Более 10 лет успешной работы в сфере IT-разработки',
+    icon: <FaLightbulb />,
+    title: 'Інноваційні рішення',
+    description: 'Ми використовуємо найсучасніші технології для створення унікальних продуктів.',
+    stats: '100+',
+    statsLabel: 'Проєктів'
   },
   {
-    number: '100+',
-    title: 'Проектов',
-    description: 'Успешно реализованных проектов для клиентов',
+    icon: <FaClock />,
+    title: 'Швидка доставка',
+    description: 'Оптимізовані процеси розробки дозволяють нам швидко виконувати проєкти.',
+    stats: '2x',
+    statsLabel: 'Швидше'
   },
   {
-    number: '50+',
-    title: 'Специалистов',
-    description: 'Профессиональная команда экспертов',
+    icon: <FaUsers />,
+    title: 'Експертна команда',
+    description: 'Наша команда складається з досвідчених професіоналів у різних галузях.',
+    stats: '50+',
+    statsLabel: 'Експертів'
   },
   {
-    number: '24/7',
-    title: 'Поддержка',
-    description: 'Круглосуточная техническая поддержка',
-  },
+    icon: <FaHandshake />,
+    title: '24/7 Підтримка',
+    description: 'Ми завжди готові допомогти вам і відповісти на ваші запитання.',
+    stats: '24/7',
+    statsLabel: 'Підтримка'
+  }
 ];
 
 const Benefits = () => {
@@ -169,7 +302,7 @@ const Benefits = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          Почему мы?
+          Чому обирають нас
         </SectionTitle>
         <BenefitsGrid>
           {benefits.map((benefit, index) => (
@@ -186,7 +319,7 @@ const Benefits = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
               >
-                {benefit.number}
+                {benefit.stats}
               </Number>
               <BenefitTitle
                 initial={{ opacity: 0 }}

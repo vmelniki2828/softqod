@@ -15,6 +15,8 @@ import {
   FaPlus,
 } from 'react-icons/fa';
 import Modal from '../../components/Modal';
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG } from '../../config/emailjs';
 
 // Анимации
 const pulse = keyframes`
@@ -1642,6 +1644,41 @@ const FormCtaButton = styled(motion.button)`
   }
 `;
 
+// Styled components for form messages
+const FormMessage = styled(motion.div)`
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  border: 1px solid;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+`;
+
+const ErrorMessage = styled(FormMessage)`
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+  border-color: rgba(255, 107, 107, 0.2);
+  
+  &::before {
+    content: '⚠️';
+    margin-right: 0.5rem;
+  }
+`;
+
+const SuccessMessage = styled(FormMessage)`
+  color: #5eead4;
+  background: rgba(94, 234, 212, 0.1);
+  border-color: rgba(94, 234, 212, 0.2);
+  
+  &::before {
+    content: '✅';
+    margin-right: 0.5rem;
+  }
+`;
+
 const CtaFooterText = styled(motion.p)`
   font-size: 1rem;
   color: var(--text-secondary);
@@ -2143,9 +2180,17 @@ const BusinessAutomationPage = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   
+  // Business Automation form states
+  const [automationFormData, setAutomationFormData] = useState({
+    from_name: '',
+    phone: '',
+    from_email: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState('');
+  
   const [stars, setStars] = useState([]);
-  // const [orbitingDots, setOrbitingDots] = useState([]);
-  // Добавляем состояние для аккордеона FAQ
   const [expandedFaqs, setExpandedFaqs] = useState([]);
 
   useEffect(() => {
@@ -2202,6 +2247,90 @@ const BusinessAutomationPage = () => {
       setExpandedFaqs(expandedFaqs.filter(item => item !== index));
     } else {
       setExpandedFaqs([...expandedFaqs, index]);
+    }
+  };
+
+  // Business Automation form functions
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setAutomationFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    
+    // Скидаємо помилку при зміні полів
+    if (error) {
+      setError('');
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Валідація обов'язкових полів
+    const requiredFields = ['from_name', 'from_email'];
+    const emptyFields = requiredFields.filter(field => !automationFormData[field].trim());
+    
+    if (emptyFields.length > 0) {
+      setError('Будь ласка, заповніть всі обов\'язкові поля (Ім\'я, Email)');
+      return;
+    }
+    
+    // Валідація email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(automationFormData.from_email)) {
+      setError('Будь ласка, введіть коректний email адрес');
+      return;
+    }
+    
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      // Створюємо повідомлення для форми автоматизації
+      const templateParams = {
+        from_name: automationFormData.from_name,
+        from_email: automationFormData.from_email,
+        phone: automationFormData.phone || 'Не вказано',
+        service: 'Автоматизація та оптимізація бізнес-процесів',
+        message: `Заявка на консультацію з автоматизації бізнес-процесів від ${automationFormData.from_name}. Телефон: ${automationFormData.phone || 'Не вказано'}`
+      };
+
+      // Відправка через EmailJS
+      const result = await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        templateParams,
+        EMAILJS_CONFIG.USER_ID
+      );
+      
+      console.log('Business Automation form sent successfully:', result);
+      setIsSubmitted(true);
+      
+      // Логування для аналітики
+      console.log('Business Automation lead generated:', {
+        name: automationFormData.from_name,
+        email: automationFormData.from_email,
+        phone: automationFormData.phone,
+        timestamp: new Date().toISOString(),
+        service: 'Автоматизація та оптимізація бізнес-процесів'
+      });
+      
+      // Очищуємо форму після успішної відправки
+      setTimeout(() => {
+        setAutomationFormData({
+          from_name: '',
+          phone: '',
+          from_email: ''
+        });
+        setIsSubmitted(false);
+      }, 3000);
+      
+    } catch (err) {
+      console.error('Business Automation form sending failed:', err);
+      setError('Помилка відправки повідомлення. Спробуйте ще раз або зв\'яжіться з нами безпосередньо.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -2770,30 +2899,82 @@ const BusinessAutomationPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
+              onSubmit={handleSubmit}
             >
+              {/* Повідомлення про помилку */}
+              {error && (
+                <ErrorMessage
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {error}
+                </ErrorMessage>
+              )}
+
+              {/* Повідомлення про успішну відправку */}
+              {isSubmitted && (
+                <SuccessMessage
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  Дякуємо! Ваша заявка надіслана. Ми зв'яжемося з вами найближчим часом.
+                </SuccessMessage>
+              )}
+
               <CtaInputWrapper>
-                <CtaInput type="text" placeholder="Ваше ім'я" />
+                <CtaInput 
+                  type="text" 
+                  placeholder="Ваше ім'я *" 
+                  name="from_name"
+                  value={automationFormData.from_name}
+                  onChange={handleInputChange}
+                  disabled={isSubmitting}
+                  required
+                />
                 <CtaInputBg />
               </CtaInputWrapper>
 
               <CtaInputWrapper>
-                <CtaInput type="tel" placeholder="Телефон" />
+                <CtaInput 
+                  type="tel" 
+                  placeholder="Телефон" 
+                  name="phone"
+                  value={automationFormData.phone}
+                  onChange={handleInputChange}
+                  disabled={isSubmitting}
+                />
                 <CtaInputBg />
               </CtaInputWrapper>
 
               <CtaInputWrapper>
-                <CtaInput type="email" placeholder="Email" />
+                <CtaInput 
+                  type="email" 
+                  placeholder="Email *" 
+                  name="from_email"
+                  value={automationFormData.from_email}
+                  onChange={handleInputChange}
+                  disabled={isSubmitting}
+                  required
+                />
                 <CtaInputBg />
               </CtaInputWrapper>
 
               <FormCtaButton
-                whileHover={{
+                type="submit"
+                disabled={isSubmitting}
+                whileHover={!isSubmitting ? {
                   scale: 1.03,
                   boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)',
+                } : {}}
+                whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+                style={{
+                  opacity: isSubmitting ? 0.7 : 1,
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer'
                 }}
-                whileTap={{ scale: 0.98 }}
               >
-                Замовити консультацію
+                {isSubmitting ? 'Відправляємо...' : 'Замовити консультацію'}
               </FormCtaButton>
             </CtaForm>
 

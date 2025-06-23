@@ -255,7 +255,7 @@ const Contact = () => {
               </IconWrapper>
               <InfoContent>
                 <InfoTitle>Телефон</InfoTitle>
-                <InfoText>+7 (999) 123-45-67</InfoText>
+                <InfoText>+38 (067) 123-45-67</InfoText>
               </InfoContent>
             </ContactCard>
             <ContactCard
@@ -269,7 +269,7 @@ const Contact = () => {
               </IconWrapper>
               <InfoContent>
                 <InfoTitle>Адрес</InfoTitle>
-                <InfoText>г. Москва, ул. Примерная, д. 123</InfoText>
+                <InfoText>м. Київ, вул. Хрещатик, буд. 22</InfoText>
               </InfoContent>
             </ContactCard>
           </ContactInfo>

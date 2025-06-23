@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import {
-  // FaBars,
+  FaBars,
+  FaTimes,
   FaDesktop,
   FaMobile,
   FaDatabase,
@@ -20,6 +21,7 @@ import {
   FaPaintBrush,
   FaFont,
   FaBook,
+  FaCode,
 } from 'react-icons/fa';
 // import BurgerMenu from './BurgerMenu';
 
@@ -85,6 +87,127 @@ const Nav = styled.nav`
 
   @media (max-width: 768px) {
     display: none;
+  }
+`;
+
+const MobileMenuButton = styled(motion.button)`
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+const MobileMenuOverlay = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+const MobileMenu = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100vh;
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border-color);
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 2rem 1rem;
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+
+  @media (max-width: 480px) {
+    width: 280px;
+  }
+`;
+
+const MobileMenuHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+`;
+
+const MobileMenuTitle = styled.h3`
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  margin: 0;
+`;
+
+const CloseButton = styled(motion.button)`
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem;
+`;
+
+const MobileNavSection = styled.div`
+  margin-bottom: 2rem;
+`;
+
+const MobileNavTitle = styled.h4`
+  color: var(--accent-color);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+`;
+
+const MobileNavItem = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 0.75rem 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  font-size: 0.95rem;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    color: var(--accent-color);
+  }
+
+  &:hover {
+    background: var(--bg-primary);
+    color: var(--accent-color);
+    transform: translateX(5px);
+  }
+
+  &.active {
+    background: var(--bg-primary);
+    color: var(--accent-color);
   }
 `;
 
@@ -210,7 +333,7 @@ const HeaderNavigation = () => {
               : ''
           }
         >
-          Разработка
+          Розробка
         </NavLink>
         {activeBlock === 'development' && (
           <DropdownMenu
@@ -225,23 +348,23 @@ const HeaderNavigation = () => {
             </DropdownItem>
             <DropdownItem to="/services/development/automation">
               <FaCogs />
-              Автоматизация и оптимизация бизнес-процессов
+              Автоматизація та оптимізація бізнес-процесів
             </DropdownItem>
             <DropdownItem to="/services/development/erp">
               <FaDatabase />
-              ERP и CRM системы
+              ERP та CRM системи
             </DropdownItem>
             <DropdownItem to="/services/development/ecommerce">
               <FaStore />
-              Интернет-магазины
+              E-commerce
             </DropdownItem>
             <DropdownItem to="/services/development/landing">
               <FaGlobe />
-              Одностраничные сайты (landing page)
+              Landing page
             </DropdownItem>
             <DropdownItem to="/services/development/mobile">
               <FaMobile />
-              Мобильные приложения
+              Розробка мобільних додатків
             </DropdownItem>
           </DropdownMenu>
         )}
@@ -266,15 +389,15 @@ const HeaderNavigation = () => {
           >
             <DropdownItem to="/services/design/banners">
               <FaPaintBrush />
-              Рекламные Банера
+              Банерна реклама
             </DropdownItem>
             <DropdownItem to="/services/design/brandbook">
               <FaBook />
-              Бренд Бук
+              Брендбук
             </DropdownItem>
             <DropdownItem to="/services/design/webdesign">
               <FaDesktop />
-              Веб Дизайн
+              Веб-дизайн
             </DropdownItem>
             <DropdownItem to="/services/design/uxuidesign">
               <FaPalette />
@@ -282,11 +405,11 @@ const HeaderNavigation = () => {
             </DropdownItem>
             <DropdownItem to="/services/design/typography_lettering">
               <FaFont />
-              Типографика и леттеринг
+              Типографіка та леттеринг
             </DropdownItem>
             <DropdownItem to="/services/design/branding">
               <FaPencilRuler />
-              Разработка фирменного стиля
+              Брендинг та айдентика
             </DropdownItem>
           </DropdownMenu>
         )}
@@ -311,7 +434,7 @@ const HeaderNavigation = () => {
           >
             <DropdownItem to="/services/marketing/banners">
               <FaBullhorn />
-              Банерная реклама на сайтах
+              Банерна реклама ШІ
             </DropdownItem>
             <DropdownItem to="/services/marketing/smm">
               <FaUsers />
@@ -319,19 +442,19 @@ const HeaderNavigation = () => {
             </DropdownItem>
             <DropdownItem to="/services/marketing/context-ads">
               <FaChartBar />
-              Контекстная реклама
+              Контекстна реклама
             </DropdownItem>
             <DropdownItem to="/services/marketing/seo">
               <FaSearch />
-              Seo Оптимизация
+              SEO Оптимізація
             </DropdownItem>
-          <DropdownItem to="/services/marketing/target">
+            <DropdownItem to="/services/marketing/target">
               <FaBullhorn />
               Таргетированная реклама
             </DropdownItem>
             <DropdownItem to="/services/marketing/audit">
               <FaChartBar />
-              Маркетинговый аудит
+              Маркетинговий аудит
             </DropdownItem>
           </DropdownMenu>
         )}
@@ -341,55 +464,49 @@ const HeaderNavigation = () => {
 };
 
 const Header = () => {
-  // const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
-  // Обработчик закрытия меню
-  // const handleCloseMenu = () => {
-  //   setIsOverlayOpen(false);
-  //   // Явно сбрасываем стиль overflow с небольшой задержкой
-  //   setTimeout(() => {
-  //     document.body.style.overflow = '';
-  //   }, 50);
-  // };
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
-  // Обработчик открытия меню
-  // const handleOpenMenu = () => {
-  //   setIsOverlayOpen(true);
-  //   document.body.style.overflow = 'hidden';
-  // };
+  const handleCloseMenu = () => {
+    setIsMenuOpen(false);
+  };
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const header = document.querySelector('header');
+  useEffect(() => {
+    const handleScroll = () => {
+      const header = document.querySelector('header');
 
-  //     // Управление стилем overflow для body при открытии/закрытии меню
-  //     if (isOverlayOpen) {
-  //       document.body.style.overflow = 'hidden';
-  //     } else {
-  //       // Вместо немедленного сброса, даем анимации немного времени на завершение
-  //       setTimeout(() => {
-  //         document.body.style.overflow = '';
-  //       }, 50);
-  //     }
+      if (isMenuOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
 
-  //     if (window.scrollY > 50) {
-  //       header.style.background = 'rgba(6, 20, 27, 0.95)';
-  //       header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
-  //     } else {
-  //       header.style.background = 'rgba(11, 30, 43, 0.85)';
-  //       header.style.boxShadow = 'none';
-  //     }
-  //   };
+      if (window.scrollY > 50) {
+        header.style.background = 'rgba(6, 20, 27, 0.95)';
+        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+      } else {
+        header.style.background = 'rgba(11, 30, 43, 0.85)';
+        header.style.boxShadow = 'none';
+      }
+    };
 
-  //   handleScroll();
-  //   window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
 
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //     // Гарантируем, что overflow сбрасывается при размонтировании
-  //     document.body.style.overflow = '';
-  //   };
-  // }, [isOverlayOpen]);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
+  // Close menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   return (
     <HeaderContainer
@@ -406,16 +523,192 @@ const Header = () => {
 
         <HeaderNavigation />
 
-        {/* <DesktopMenuButton
-          onClick={handleOpenMenu}
+        <MobileMenuButton
+          onClick={handleMenuToggle}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
-          <FaBars />
-        </DesktopMenuButton> */}
+          {isMenuOpen ? <FaTimes /> : <FaBars />}
+        </MobileMenuButton>
       </HeaderContent>
-{/* 
-      <BurgerMenu isOpen={isOverlayOpen} onClose={handleCloseMenu} /> */}
+
+      <AnimatePresence>
+        {isMenuOpen && (
+          <>
+            <MobileMenuOverlay
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={handleCloseMenu}
+            />
+            <MobileMenu
+              initial={{ x: 300 }}
+              animate={{ x: 0 }}
+              exit={{ x: 300 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <MobileMenuHeader>
+                <MobileMenuTitle>Меню</MobileMenuTitle>
+                <CloseButton
+                  onClick={handleCloseMenu}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <FaTimes />
+                </CloseButton>
+              </MobileMenuHeader>
+
+              <MobileNavSection>
+                <MobileNavTitle>
+                  <FaCode />
+                  Розробка
+                </MobileNavTitle>
+                <MobileNavItem 
+                  to="/services/development/pwa"
+                  className={location.pathname === '/services/development/pwa' ? 'active' : ''}
+                >
+                  <FaLaptopCode />
+                  PWA (Progressive Web Apps)
+                </MobileNavItem>
+                <MobileNavItem 
+                  to="/services/development/automation"
+                  className={location.pathname === '/services/development/automation' ? 'active' : ''}
+                >
+                  <FaCogs />
+                  Автоматизація та оптимізація бізнес-процесів
+                </MobileNavItem>
+                <MobileNavItem 
+                  to="/services/development/erp"
+                  className={location.pathname === '/services/development/erp' ? 'active' : ''}
+                >
+                  <FaDatabase />
+                  ERP та CRM системи
+                </MobileNavItem>
+                <MobileNavItem 
+                  to="/services/development/ecommerce"
+                  className={location.pathname === '/services/development/ecommerce' ? 'active' : ''}
+                >
+                  <FaStore />
+                  E-commerce
+                </MobileNavItem>
+                <MobileNavItem 
+                  to="/services/development/landing"
+                  className={location.pathname === '/services/development/landing' ? 'active' : ''}
+                >
+                  <FaGlobe />
+                  Landing page
+                </MobileNavItem>
+                <MobileNavItem 
+                  to="/services/development/mobile"
+                  className={location.pathname === '/services/development/mobile' ? 'active' : ''}
+                >
+                  <FaMobile />
+                  Розробка мобільних додатків
+                </MobileNavItem>
+              </MobileNavSection>
+
+              <MobileNavSection>
+                <MobileNavTitle>
+                  <FaPaintBrush />
+                  Дизайн
+                </MobileNavTitle>
+                <MobileNavItem 
+                  to="/services/design/banners"
+                  className={location.pathname === '/services/design/banners' ? 'active' : ''}
+                >
+                  <FaPaintBrush />
+                  Банерна реклама
+                </MobileNavItem>
+                <MobileNavItem 
+                  to="/services/design/brandbook"
+                  className={location.pathname === '/services/design/brandbook' ? 'active' : ''}
+                >
+                  <FaBook />
+                  Брендбук
+                </MobileNavItem>
+                <MobileNavItem 
+                  to="/services/design/webdesign"
+                  className={location.pathname === '/services/design/webdesign' ? 'active' : ''}
+                >
+                  <FaDesktop />
+                  Веб-дизайн
+                </MobileNavItem>
+                <MobileNavItem 
+                  to="/services/design/uxuidesign"
+                  className={location.pathname === '/services/design/uxuidesign' ? 'active' : ''}
+                >
+                  <FaPalette />
+                  UX/UI дизайн
+                </MobileNavItem>
+                <MobileNavItem 
+                  to="/services/design/typography_lettering"
+                  className={location.pathname === '/services/design/typography_lettering' ? 'active' : ''}
+                >
+                  <FaFont />
+                  Типографіка та леттеринг
+                </MobileNavItem>
+                <MobileNavItem 
+                  to="/services/design/branding"
+                  className={location.pathname === '/services/design/branding' ? 'active' : ''}
+                >
+                  <FaPencilRuler />
+                  Брендинг та айдентика
+                </MobileNavItem>
+              </MobileNavSection>
+
+              <MobileNavSection>
+                <MobileNavTitle>
+                  <FaBullhorn />
+                  Маркетинг
+                </MobileNavTitle>
+                <MobileNavItem 
+                  to="/services/marketing/banners"
+                  className={location.pathname === '/services/marketing/banners' ? 'active' : ''}
+                >
+                  <FaBullhorn />
+                  Банерна реклама ШІ
+                </MobileNavItem>
+                <MobileNavItem 
+                  to="/services/marketing/smm"
+                  className={location.pathname === '/services/marketing/smm' ? 'active' : ''}
+                >
+                  <FaUsers />
+                  SMM
+                </MobileNavItem>
+                <MobileNavItem 
+                  to="/services/marketing/context-ads"
+                  className={location.pathname === '/services/marketing/context-ads' ? 'active' : ''}
+                >
+                  <FaChartBar />
+                  Контекстна реклама
+                </MobileNavItem>
+                <MobileNavItem 
+                  to="/services/marketing/seo"
+                  className={location.pathname === '/services/marketing/seo' ? 'active' : ''}
+                >
+                  <FaSearch />
+                  SEO Оптимізація
+                </MobileNavItem>
+                <MobileNavItem 
+                  to="/services/marketing/target"
+                  className={location.pathname === '/services/marketing/target' ? 'active' : ''}
+                >
+                  <FaBullhorn />
+                  Таргетированная реклама
+                </MobileNavItem>
+                <MobileNavItem 
+                  to="/services/marketing/audit"
+                  className={location.pathname === '/services/marketing/audit' ? 'active' : ''}
+                >
+                  <FaChartBar />
+                  Маркетинговий аудит
+                </MobileNavItem>
+              </MobileNavSection>
+            </MobileMenu>
+          </>
+        )}
+      </AnimatePresence>
     </HeaderContainer>
   );
 };
