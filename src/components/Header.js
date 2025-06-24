@@ -527,8 +527,9 @@ const Header = () => {
           onClick={handleMenuToggle}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
+          style={{ display: isMenuOpen ? 'none' : 'block' }}
         >
-          {isMenuOpen ? <FaTimes /> : <FaBars />}
+          <FaBars />
         </MobileMenuButton>
       </HeaderContent>
 

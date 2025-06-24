@@ -33,21 +33,10 @@ const floatVertical = keyframes`
   100% { transform: translateY(0); }
 `;
 
-const pulseRing = keyframes`
-  0% { transform: scale(0.8); opacity: 0.8; }
-  50% { transform: scale(1.1); opacity: 0.4; }
-  100% { transform: scale(0.8); opacity: 0.8; }
-`;
-
-const circleFloat = keyframes`
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0); }
-`;
-
-const spinGlow = keyframes`
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
+const float = keyframes`
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 `;
 
 const fadeInScale = keyframes`
@@ -69,6 +58,14 @@ const Container = styled.div`
   color: var(--text-primary);
   position: relative;
   overflow: hidden;
+  
+  @media (max-width: 992px) {
+    padding-top: 80px;
+  }
+  
+  @media (max-width: 576px) {
+    padding-top: 60px;
+  }
 `;
 
 const HeroSection = styled(motion.div)`
@@ -81,6 +78,16 @@ const HeroSection = styled(motion.div)`
   align-items: center;
   overflow: hidden;
   padding: 2rem;
+  
+  @media (max-width: 992px) {
+    padding: 1.5rem;
+    min-height: 90vh;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1rem;
+    min-height: 85vh;
+  }
 `;
 
 const Background = styled.div`
@@ -143,8 +150,18 @@ const Title = styled(motion.h1)`
   letter-spacing: -0.5px;
   text-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
+  @media (max-width: 992px) {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+
   @media (max-width: 768px) {
     font-size: 2.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 2rem;
+    margin-bottom: 1rem;
   }
   
   &::after {
@@ -157,6 +174,11 @@ const Title = styled(motion.h1)`
     height: 3px;
     background: var(--accent-color);
     border-radius: 3px;
+    
+    @media (max-width: 576px) {
+      width: 60px;
+      height: 2px;
+    }
   }
 `;
 
@@ -170,9 +192,20 @@ const Subtitle = styled(motion.p)`
   z-index: 1;
   line-height: 1.8;
 
+  @media (max-width: 992px) {
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+  }
+
   @media (max-width: 768px) {
     font-size: 1.2rem;
     padding: 0 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
   }
 `;
 
@@ -183,9 +216,19 @@ const PhoneContainer = styled(motion.div)`
   perspective: 1000px;
   margin: 0 auto;
   
+  @media (max-width: 992px) {
+    width: 250px;
+    height: 420px;
+  }
+  
   @media (max-width: 768px) {
     width: 220px;
     height: 400px;
+  }
+  
+  @media (max-width: 576px) {
+    width: 200px;
+    height: 350px;
   }
 `;
 
@@ -331,6 +374,22 @@ const HeroBenefitsList = styled(motion.div)`
   max-width: 1200px;
   z-index: 1;
   position: relative;
+  
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.2rem;
+    margin-top: 3rem;
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    margin-top: 2rem;
+  }
 `;
 
 const HeroBenefitItem = styled(motion.div)`
@@ -349,6 +408,11 @@ const HeroBenefitItem = styled(motion.div)`
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     transform: translateY(-5px);
   }
+  
+  @media (max-width: 576px) {
+    padding: 1.2rem;
+    gap: 0.8rem;
+  }
 `;
 
 const HeroBenefitIcon = styled.div`
@@ -363,6 +427,12 @@ const HeroBenefitIcon = styled.div`
   color: white;
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
   flex-shrink: 0;
+  
+  @media (max-width: 576px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
 `;
 
 const HeroBenefitContent = styled.div`
@@ -373,12 +443,20 @@ const HeroBenefitTitle = styled.h3`
   font-size: 1.1rem;
   color: white;
   margin-bottom: 0.5rem;
+  
+  @media (max-width: 576px) {
+    font-size: 1rem;
+  }
 `;
 
 const HeroBenefitDescription = styled.p`
   color: #9ca3af;
   font-size: 0.9rem;
   line-height: 1.4;
+  
+  @media (max-width: 576px) {
+    font-size: 0.85rem;
+  }
 `;
 
 const PWAInfoSection = styled(motion.section)`
@@ -387,6 +465,18 @@ const PWAInfoSection = styled(motion.section)`
   padding: 8rem 2rem;
   overflow: hidden;
   box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 992px) {
+    padding: 6rem 1.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 5rem 1rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 4rem 0.8rem;
+  }
 
   &::before {
     content: '';
@@ -425,6 +515,19 @@ const PWAInfoContainer = styled.div`
   padding: 3rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  
+  @media (max-width: 992px) {
+    padding: 2.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 2rem;
+    border-radius: 16px;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1.5rem;
+  }
 `;
 
 const PWAInfoTitle = styled(motion.h2)`
@@ -436,6 +539,21 @@ const PWAInfoTitle = styled(motion.h2)`
   display: inline-block;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
+  @media (max-width: 992px) {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -445,6 +563,11 @@ const PWAInfoTitle = styled(motion.h2)`
     height: 4px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
+    
+    @media (max-width: 576px) {
+      width: 60px;
+      height: 3px;
+    }
   }
 `;
 
@@ -460,6 +583,19 @@ const PWAInfoText = styled(motion.p)`
   line-height: 1.8;
   margin-bottom: 1.5rem;
   color: var(--text-secondary);
+  
+  @media (max-width: 992px) {
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 0.95rem;
+  }
 `;
 
 const PWAFeaturesList = styled(motion.ul)`
@@ -483,12 +619,31 @@ const PWAFeatureItem = styled(motion.li)`
     transform: translateX(10px);
   }
   
+  @media (max-width: 992px) {
+    font-size: 1.1rem;
+    padding: 0.9rem 0.9rem 0.9rem 2.2rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 0.8rem 0.8rem 0.8rem 2rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 0.95rem;
+    padding: 0.7rem 0.7rem 0.7rem 1.8rem;
+  }
+  
   &::before {
     content: '—';
     position: absolute;
     left: 1rem;
     color: var(--accent-color);
     font-weight: bold;
+    
+    @media (max-width: 576px) {
+      left: 0.8rem;
+    }
   }
 `;
 
@@ -500,9 +655,26 @@ const PWASummary = styled(motion.p)`
   color: var(--text-primary);
   border-left: 4px solid var(--accent-color);
   padding: 1.5rem 2rem;
-    background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 0 12px 12px 0;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  
+  @media (max-width: 992px) {
+    font-size: 1.3rem;
+    padding: 1.3rem 1.8rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    padding: 1.2rem 1.5rem;
+    margin: 2rem 0;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.1rem;
+    padding: 1rem 1.2rem;
+    margin: 1.5rem 0;
+  }
 `;
 
 const BackgroundShape = styled(motion.div)`
@@ -519,6 +691,18 @@ const PWABenefitsSection = styled(motion.section)`
   position: relative;
   padding: 8rem 2rem;
   overflow: hidden;
+  
+  @media (max-width: 992px) {
+    padding: 6rem 1.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 5rem 1rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 4rem 0.8rem;
+  }
   
   &::before {
     content: '';
@@ -542,11 +726,26 @@ const PWABenefitsContainer = styled.div`
 const PWABenefitsTitle = styled(motion.h2)`
   font-size: 3rem;
   font-weight: 700;
-    color: var(--accent-color);
+  color: var(--accent-color);
   margin-bottom: 4rem;
   position: relative;
   display: inline-block;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  
+  @media (max-width: 992px) {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+  }
   
   &::after {
     content: '';
@@ -557,6 +756,11 @@ const PWABenefitsTitle = styled(motion.h2)`
     height: 4px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
+    
+    @media (max-width: 576px) {
+      width: 80px;
+      height: 3px;
+    }
   }
 `;
 
@@ -566,8 +770,20 @@ const PWABenefitCardContainer = styled(motion.div)`
   gap: 2rem;
   margin-bottom: 4rem;
   
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    margin-bottom: 2rem;
   }
 `;
 
@@ -580,6 +796,18 @@ const PWABenefitCard = styled(motion.div)`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  
+  @media (max-width: 992px) {
+    padding: 1.8rem;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1.2rem;
+  }
   
   &::before {
     content: '';
@@ -598,6 +826,10 @@ const PWABenefitIconWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1.5rem;
+  
+  @media (max-width: 576px) {
+    margin-bottom: 1.2rem;
+  }
 `;
 
 const PWABenefitIcon = styled.div`
@@ -613,6 +845,18 @@ const PWABenefitIcon = styled.div`
   box-shadow: 0 8px 20px rgba(94, 234, 212, 0.3);
   position: relative;
   z-index: 1;
+  
+  @media (max-width: 992px) {
+    width: 55px;
+    height: 55px;
+    font-size: 1.6rem;
+  }
+  
+  @media (max-width: 576px) {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+  }
   
   &::after {
     content: '';
@@ -630,6 +874,14 @@ const PWABenefitNumber = styled.span`
   font-weight: 800;
   color: rgba(255, 255, 255, 0.08);
   font-family: sans-serif;
+  
+  @media (max-width: 992px) {
+    font-size: 2.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 2rem;
+  }
 `;
 
 const PWABenefitContent = styled.div`
@@ -642,12 +894,38 @@ const PWABenefitCardTitle = styled.h3`
   font-weight: 600;
   margin-bottom: 1rem;
   color: var(--text-primary);
+  
+  @media (max-width: 992px) {
+    font-size: 1.3rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
 `;
 
 const PWABenefitCardDescription = styled.p`
   font-size: 1.05rem;
   line-height: 1.7;
   color: var(--text-secondary);
+  
+  @media (max-width: 992px) {
+    font-size: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const PWACtaButton = styled(motion.button)`
@@ -665,6 +943,21 @@ const PWACtaButton = styled(motion.button)`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+
+  @media (max-width: 992px) {
+    padding: 1.1rem 2.8rem;
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 0.9rem 2rem;
+    font-size: 0.95rem;
+  }
 
   &::before {
     content: '';
@@ -691,7 +984,22 @@ const PWABenefitsDecoration = styled.div`
   background: radial-gradient(circle, rgba(94, 234, 212, 0.1) 0%, transparent 70%);
   border-radius: 50%;
   filter: blur(40px);
-    z-index: 0;
+  z-index: 0;
+  
+  @media (max-width: 992px) {
+    width: 250px;
+    height: 250px;
+  }
+  
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 200px;
+  }
+  
+  @media (max-width: 576px) {
+    width: 150px;
+    height: 150px;
+  }
   
   &::after {
     content: '';
@@ -703,6 +1011,16 @@ const PWABenefitsDecoration = styled.div`
     background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
     border-radius: 50%;
     filter: blur(40px);
+    
+    @media (max-width: 768px) {
+      width: 150px;
+      height: 150px;
+    }
+    
+    @media (max-width: 576px) {
+      width: 100px;
+      height: 100px;
+    }
   }
 `;
 
@@ -712,6 +1030,18 @@ const PWAServicesSection = styled(motion.section)`
   padding: 8rem 2rem;
   background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
   overflow: hidden;
+  
+  @media (max-width: 992px) {
+    padding: 6rem 1.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 5rem 1rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 4rem 0.8rem;
+  }
 `;
 
 const ServicesWave = styled.div`
@@ -723,6 +1053,14 @@ const ServicesWave = styled.div`
   background: var(--bg-secondary);
   clip-path: polygon(0 0, 100% 0, 100% 40%, 0 100%);
   z-index: 1;
+  
+  @media (max-width: 768px) {
+    height: 80px;
+  }
+  
+  @media (max-width: 576px) {
+    height: 60px;
+  }
 `;
 
 const PWAServicesContainer = styled.div`
@@ -741,6 +1079,21 @@ const PWAServicesTitle = styled(motion.h2)`
   display: inline-block;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
+  @media (max-width: 992px) {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -750,6 +1103,11 @@ const PWAServicesTitle = styled(motion.h2)`
     height: 4px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
+    
+    @media (max-width: 576px) {
+      width: 80px;
+      height: 3px;
+    }
   }
 `;
 
@@ -763,6 +1121,19 @@ const PWAServicesContent = styled.div`
   position: relative;
   overflow: hidden;
   
+  @media (max-width: 992px) {
+    padding: 2.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 2rem;
+    border-radius: 16px;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1.5rem;
+  }
+  
   &::before {
     content: '';
     position: absolute;
@@ -773,6 +1144,13 @@ const PWAServicesContent = styled.div`
     right: -200px;
     border-radius: 50%;
     z-index: 0;
+    
+    @media (max-width: 768px) {
+      width: 250px;
+      height: 250px;
+      top: -125px;
+      right: -125px;
+    }
   }
 `;
 
@@ -783,37 +1161,91 @@ const PWAServicesIntro = styled(motion.p)`
   margin-bottom: 3rem;
   position: relative;
   z-index: 1;
+  
+  @media (max-width: 992px) {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
 `;
   
 const ServicesHeading = styled(motion.h3)`
-    font-size: 1.8rem;
+  font-size: 1.8rem;
   font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
   position: relative;
   z-index: 1;
+  
+  @media (max-width: 992px) {
+    font-size: 1.6rem;
+    margin-bottom: 1.8rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
 `;
 
 const ServicesList = styled(motion.ul)`
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
   margin: 0 0 3rem 0;
   position: relative;
   z-index: 1;
+  
+  @media (max-width: 768px) {
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    margin-bottom: 2rem;
+  }
 `;
 
 const ServiceItem = styled(motion.li)`
-    display: flex;
+  display: flex;
   align-items: flex-start;
   margin-bottom: 1.5rem;
-    padding: 1rem;
-    border-radius: 12px;
+  padding: 1rem;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.03);
-    transition: all 0.3s ease;
+  transition: all 0.3s ease;
 
-    &:hover {
+  &:hover {
     background: rgba(255, 255, 255, 0.07);
-      transform: translateX(10px);
+    transform: translateX(10px);
+  }
+  
+  @media (max-width: 992px) {
+    padding: 0.9rem;
+    margin-bottom: 1.3rem;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 0.7rem;
+    margin-bottom: 1rem;
   }
 `;
 
@@ -831,12 +1263,32 @@ const ServiceCircle = styled.div`
   align-items: center;
   justify-content: center;
   
+  @media (max-width: 992px) {
+    width: 22px;
+    height: 22px;
+  }
+  
+  @media (max-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
+  
+  @media (max-width: 576px) {
+    width: 18px;
+    height: 18px;
+  }
+  
   &::before {
     content: '';
     width: 10px;
     height: 10px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.9);
+    
+    @media (max-width: 576px) {
+      width: 8px;
+      height: 8px;
+    }
   }
 `;
 
@@ -845,19 +1297,52 @@ const ServiceText = styled.p`
   line-height: 1.6;
   color: var(--text-secondary);
   flex: 1;
+  
+  @media (max-width: 992px) {
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 0.95rem;
+  }
 `;
 
 const PWAServiceSummary = styled(motion.p)`
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 1.7;
-    color: var(--text-primary);
+  color: var(--text-primary);
   padding: 2rem;
   background: linear-gradient(90deg, rgba(94, 234, 212, 0.1), rgba(59, 130, 246, 0.1));
   border-radius: 12px;
   margin: 2rem 0 3rem;
   position: relative;
   z-index: 1;
+
+  @media (max-width: 992px) {
+    font-size: 1.4rem;
+    padding: 1.8rem;
+    margin: 1.8rem 0 2.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+    padding: 1.5rem;
+    margin: 1.5rem 0 2rem;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.1rem;
+    padding: 1.2rem;
+    margin: 1.2rem 0 1.5rem;
+    line-height: 1.5;
+  }
 
   &::before {
     content: '"';
@@ -867,6 +1352,18 @@ const PWAServiceSummary = styled(motion.p)`
     font-size: 4rem;
     color: rgba(94, 234, 212, 0.2);
     font-family: serif;
+    
+    @media (max-width: 768px) {
+      font-size: 3rem;
+      top: 8px;
+      left: 12px;
+    }
+    
+    @media (max-width: 576px) {
+      font-size: 2.5rem;
+      top: 5px;
+      left: 10px;
+    }
   }
   
   &::after {
@@ -877,6 +1374,18 @@ const PWAServiceSummary = styled(motion.p)`
     font-size: 4rem;
     color: rgba(94, 234, 212, 0.2);
     font-family: serif;
+    
+    @media (max-width: 768px) {
+      font-size: 3rem;
+      bottom: 8px;
+      right: 12px;
+    }
+    
+    @media (max-width: 576px) {
+      font-size: 2.5rem;
+      bottom: 5px;
+      right: 10px;
+    }
   }
 `;
 
@@ -908,21 +1417,21 @@ const ServicesBgGlow = styled.div`
 // Добавляем стили для секции "Почему мы"
 const PWAWhyUsSection = styled(motion.section)`
   position: relative;
-  padding: 8rem 2rem;
-  background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(16, 24, 39, 1) 100%);
+  padding: 120px 0;
+  background: linear-gradient(
+    135deg,
+    #0f0c1a 0%,
+    #1a1625 50%,
+    #0f0c1a 100%
+  );
   overflow: hidden;
   
-  &::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: 
-      radial-gradient(circle at 20% 30%, rgba(94, 234, 212, 0.05) 0%, transparent 20%),
-      radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.05) 0%, transparent 20%);
-    top: 0;
-    left: 0;
-    z-index: 0;
+  @media (max-width: 992px) {
+    padding: 80px 0;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 60px 0;
   }
 `;
 
@@ -1792,9 +2301,23 @@ const PWAPage = () => {
 // Добавляем стили для новой секции
 const PWACtaSection = styled(motion.section)`
   position: relative;
-  padding: 8rem 2rem;
-  background: linear-gradient(180deg, rgba(16, 24, 39, 1) 0%, var(--bg-primary) 100%);
+  padding: 120px 0;
+  background: linear-gradient(
+    135deg,
+    var(--bg-dark) 0%,
+    #1e1b2e 40%,
+    #2a1f3d 100%
+  );
   overflow: hidden;
+  border-top: 1px solid rgba(147, 51, 234, 0.2);
+  
+  @media (max-width: 992px) {
+    padding: 80px 0;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 60px 0;
+  }
 `;
 
 const CtaWaveTop = styled.div`
@@ -1808,32 +2331,71 @@ const CtaWaveTop = styled.div`
 `;
 
 const CtaContainer = styled.div`
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
+  padding: 0 2rem;
   position: relative;
   z-index: 2;
+  
+  @media (max-width: 992px) {
+    max-width: 700px;
+    padding: 0 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 0 1rem;
+  }
 `;
 
 const CtaGlowCircle = styled.div`
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
-  z-index: 0;
+  background: radial-gradient(
+    circle,
+    rgba(94, 234, 212, 0.1) 0%,
+    transparent 70%
+  );
+  animation: ${glow} 4s infinite alternate;
   
   &.circle-1 {
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(94, 234, 212, 0.08) 0%, transparent 70%);
-    top: -100px;
-    right: -200px;
+    width: 400px;
+    height: 400px;
+    top: 10%;
+    left: -10%;
   }
   
   &.circle-2 {
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
-    bottom: -200px;
-    left: -200px;
+    width: 300px;
+    height: 300px;
+    bottom: 10%;
+    right: -10%;
+    animation-delay: 2s;
+  }
+  
+  @media (max-width: 992px) {
+    &.circle-1 {
+      width: 300px;
+      height: 300px;
+    }
+    
+    &.circle-2 {
+      width: 250px;
+      height: 250px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    &.circle-1 {
+      width: 200px;
+      height: 200px;
+      top: 5%;
+    }
+    
+    &.circle-2 {
+      width: 150px;
+      height: 150px;
+      bottom: 5%;
+    }
   }
 `;
 
@@ -1861,6 +2423,10 @@ const CtaContent = styled.div`
   @media (max-width: 768px) {
     padding: 2.5rem 1.5rem;
   }
+  
+  @media (max-width: 576px) {
+    padding: 2rem 1rem;
+  }
 `;
 
 const CtaTitle = styled(motion.h2)`
@@ -1873,6 +2439,11 @@ const CtaTitle = styled(motion.h2)`
   @media (max-width: 768px) {
     font-size: 2.2rem;
   }
+  
+  @media (max-width: 576px) {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const CtaText = styled(motion.p)`
@@ -1884,6 +2455,11 @@ const CtaText = styled(motion.p)`
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  
+  @media (max-width: 576px) {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const CtaHighlight = styled(motion.div)`
@@ -1896,6 +2472,12 @@ const CtaHighlight = styled(motion.div)`
   padding: 1.5rem;
   background: linear-gradient(90deg, rgba(94, 234, 212, 0.1), rgba(59, 130, 246, 0.1));
   border-radius: 12px;
+  
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+    margin: 2rem 0;
+    padding: 1.2rem;
+  }
 `;
 
 const CtaSubtext = styled(motion.p)`
@@ -1904,6 +2486,11 @@ const CtaSubtext = styled(motion.p)`
   color: var(--text-secondary);
   margin-bottom: 2.5rem;
   text-align: center;
+  
+  @media (max-width: 576px) {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const CtaForm = styled(motion.form)`
@@ -1911,9 +2498,14 @@ const CtaForm = styled(motion.form)`
   flex-direction: column;
   gap: 1.5rem;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto 2.5rem;
   position: relative;
   z-index: 2;
+  
+  @media (max-width: 576px) {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const CtaInputWrapper = styled.div`
@@ -1987,6 +2579,11 @@ const CtaButton = styled(motion.button)`
   &:hover::before {
     left: 100%;
   }
+  
+  @media (max-width: 576px) {
+    padding: 1rem;
+    font-size: 1.1rem;
+  }
 `;
 
 const CtaFooterText = styled(motion.p)`
@@ -1995,28 +2592,37 @@ const CtaFooterText = styled(motion.p)`
   opacity: 0.8;
   text-align: center;
   margin-top: 2.5rem;
+  
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
+    margin-top: 2rem;
+  }
 `;
 
 const CtaDecoration = styled.div`
   position: absolute;
-  width: 200px;
-  height: 200px;
-  border: 2px solid rgba(94, 234, 212, 0.1);
+  top: 50%;
+  right: -200px;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(94, 234, 212, 0.05) 50%,
+    transparent 70%
+  );
   border-radius: 50%;
-  top: -100px;
-  right: -100px;
+  transform: translateY(-50%);
+  animation: ${float} 6s infinite ease-in-out;
   
-  &::before {
-    content: '';
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border: 1px dashed rgba(94, 234, 212, 0.1);
-    border-radius: 50%;
-    top: -50px;
-    left: -50px;
-    z-index: 0;
-    animation: ${rotate} 30s linear infinite;
+  @media (max-width: 992px) {
+    right: -150px;
+    width: 250px;
+    height: 250px;
+  }
+  
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -2036,276 +2642,218 @@ const WhyUsDiagonal = styled.div`
 const WhyUsContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 2rem;
   position: relative;
   z-index: 2;
+  
+  @media (max-width: 992px) {
+    padding: 0 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 0 1rem;
+  }
 `;
 
 const WhyUsTitle = styled(motion.h2)`
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 700;
-  color: var(--accent-color);
-  margin-bottom: 4rem;
-  position: relative;
-  display: inline-block;
-  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1rem;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #e2e8f0 50%,
+    #cbd5e1 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
   
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 0;
-    width: 120px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent-color), transparent);
-    border-radius: 4px;
+  @media (max-width: 992px) {
+    font-size: 2.8rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 2.2rem;
+    line-height: 1.3;
   }
 `;
 
 const WhyUsCardsContainer = styled(motion.div)`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
-  margin-bottom: 2rem;
-  padding: 1.5rem 0.5rem;
+  margin-bottom: 4rem;
+  perspective: 1000px;
   
-  @media (max-width: 768px) {
-    padding-bottom: 2rem;
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
   }
 `;
 
 const WhyUsCard = styled(motion.div)`
-  background: rgba(16, 24, 39, 0.8);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(
+    135deg,
+    rgba(30, 27, 46, 0.8) 0%,
+    rgba(42, 31, 61, 0.6) 100%
+  );
+  border: 1px solid rgba(147, 51, 234, 0.2);
   border-radius: 20px;
-  padding: 2.5rem 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 2.5rem;
   position: relative;
-  transition: all 0.3s ease;
   overflow: hidden;
-  z-index: 1;
-  text-align: center;
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  width: calc(25% - 1.5rem);
-  min-width: 250px;
-  max-width: 300px;
-  
-  @media (max-width: 1200px) {
-    width: calc(33.333% - 1.5rem);
-  }
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
   
   @media (max-width: 992px) {
-    width: calc(50% - 1.5rem);
+    padding: 2rem;
   }
   
   @media (max-width: 576px) {
-    width: 100%;
-    max-width: 350px;
-  }
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.8));
-    z-index: 0;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-  }
-  
-  &:hover::before {
-    transform: scaleX(1);
-  }
-  
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 70%;
-    background: linear-gradient(to top, rgba(94, 234, 212, 0.03), transparent);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-  
-  &:hover::after {
-    opacity: 1;
+    padding: 1.5rem;
+    border-radius: 16px;
   }
 `;
 
 const WhyUsCardGlow = styled.div`
   position: absolute;
-  width: 150%;
-  height: 150%;
-  top: -25%;
-  left: -25%;
-  background: radial-gradient(circle, rgba(94, 234, 212, 0.06) 0%, transparent 70%);
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    var(--accent-color),
+    #06b6d4,
+    var(--accent-color)
+  );
+  border-radius: 22px;
   opacity: 0;
-  transition: opacity 0.3s ease, transform 0.5s ease;
   z-index: -1;
-  transform: scale(0.8);
+  transition: opacity 0.3s ease;
   
-  ${WhyUsCard}:hover & {
-    opacity: 1;
-    transform: scale(1);
+  @media (max-width: 576px) {
+    border-radius: 18px;
   }
 `;
 
 const WhyUsIconWrapper = styled.div`
-  font-size: 2.5rem;
-  color: var(--accent-color);
-  margin-bottom: 1.5rem;
   width: 80px;
   height: 80px;
+  background: linear-gradient(
+    135deg,
+    var(--accent-color) 0%,
+    #06b6d4 100%
+  );
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 20px;
-  position: relative;
-  animation: ${pulse} 3s infinite ease-in-out;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  transform: translateZ(20px);
-  transition: transform 0.3s ease;
+  margin-bottom: 1.5rem;
+  color: white;
+  font-size: 2rem;
   
-  ${WhyUsCard}:hover & {
-    transform: translateZ(30px) scale(1.1);
+  @media (max-width: 992px) {
+    width: 70px;
+    height: 70px;
+    font-size: 1.8rem;
   }
   
-  &::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    border: 1px dashed rgba(94, 234, 212, 0.3);
-    animation: ${pulse} 3s infinite ease-in-out 1.5s;
+  @media (max-width: 576px) {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
   }
 `;
 
 const WhyUsCardTitle = styled.h3`
-  font-size: 1.4rem;
-  color: var(--text-primary);
-  margin-bottom: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  position: relative;
-  transform: translateZ(10px);
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1rem;
+  color: white;
+  line-height: 1.3;
   
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-    border-radius: 2px;
+  @media (max-width: 992px) {
+    font-size: 1.3rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
   }
 `;
 
 const WhyUsCardDescription = styled.p`
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
-  margin-top: 1rem;
-  transform: translateZ(5px);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
 `;
 
 const CardAccent = styled.div`
   position: absolute;
   bottom: 0;
-  right: 0;
-  width: 60px;
-  height: 60px;
-  border-radius: 0 0 20px 0;
-  background: linear-gradient(135deg, transparent 50%, rgba(94, 234, 212, 0.1) 50%);
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  transform: scale(0);
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--accent-color) 50%,
+    transparent 100%
+  );
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
   
-  ${WhyUsCard}:hover & {
-    opacity: 1;
-    transform: scale(1);
+  @media (max-width: 576px) {
+    height: 3px;
   }
 `;
 
 const WhyUsAction = styled(motion.div)`
-  display: flex;
-  justify-content: center;
-  margin-top: 4rem;
+  text-align: center;
+  
+  @media (max-width: 576px) {
+    margin-top: 1rem;
+  }
 `;
 
 const PulsingButton = styled(motion.button)`
-  padding: 1.2rem 3.5rem;
-  font-size: 1.3rem;
-  font-weight: 600;
-  background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.9));
-  color: white;
+  padding: 1.2rem 3rem;
+  background: linear-gradient(
+    135deg,
+    var(--accent-color) 0%,
+    #06b6d4 100%
+  );
   border: none;
   border-radius: 50px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  z-index: 1;
-  box-shadow: 0 8px 25px rgba(94, 234, 212, 0.3);
+  transition: all 0.3s ease;
   
-  &::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
-    z-index: -1;
-    animation: ${pulseRing} 4s infinite;
-  }
-  
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: all 0.6s ease;
-  }
-  
-  &:hover::after {
-    left: 100%;
-  }
-  
-  .glow-effect {
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: conic-gradient(from 0deg, transparent, rgba(94, 234, 212, 0.3), transparent);
-    border-radius: 50%;
-    animation: ${spinGlow} 3s linear infinite;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  &:hover .glow-effect {
-    opacity: 1;
+  @media (max-width: 576px) {
+    padding: 1rem 2rem;
+    font-size: 1rem;
   }
 `;
 
@@ -2318,29 +2866,62 @@ const WhyUsBackgroundShapes = styled.div`
   overflow: hidden;
   z-index: 0;
   
-  &::before, &::after {
+  &::before {
     content: '';
     position: absolute;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    z-index: 0;
-  }
-  
-  &::before {
     top: 20%;
-    left: -100px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
-    filter: blur(50px);
-    animation: ${circleFloat} 8s ease-in-out infinite;
+    left: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(
+      circle,
+      rgba(94, 234, 212, 0.05) 0%,
+      transparent 70%
+    );
+    border-radius: 50%;
+    animation: ${float} 8s infinite ease-in-out;
   }
   
   &::after {
-    bottom: 10%;
-    right: -100px;
-    background: radial-gradient(circle, rgba(94, 234, 212, 0.03) 0%, transparent 70%);
-    filter: blur(50px);
-    animation: ${circleFloat} 8s ease-in-out infinite 4s;
+    content: '';
+    position: absolute;
+    bottom: 30%;
+    right: -15%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(
+      circle,
+      rgba(59, 130, 246, 0.05) 0%,
+      transparent 70%
+    );
+    border-radius: 50%;
+    animation: ${float} 10s infinite ease-in-out reverse;
+  }
+  
+  @media (max-width: 992px) {
+    &::before {
+      width: 200px;
+      height: 200px;
+    }
+    
+    &::after {
+      width: 250px;
+      height: 250px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    &::before {
+      width: 150px;
+      height: 150px;
+      left: -20%;
+    }
+    
+    &::after {
+      width: 180px;
+      height: 180px;
+      right: -25%;
+    }
   }
 `;
 
@@ -2525,21 +3106,16 @@ const FaqQuestionText = styled.h3`
 `;
 
 const FaqToggle = styled(motion.div)`
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-size: 1.2rem;
   color: var(--accent-color);
-  margin-left: 1rem;
-  flex-shrink: 0;
-  background: rgba(94, 234, 212, 0.05);
-  border-radius: 50%;
   transition: all 0.3s ease;
   
-  &:hover {
-    background: rgba(94, 234, 212, 0.1);
-    box-shadow: 0 0 10px rgba(94, 234, 212, 0.2);
+  @media (max-width: 992px) {
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1rem;
   }
 `;
 
