@@ -5,11 +5,23 @@ import { motion } from 'framer-motion';
 const CasesSection = styled.section`
   padding: 6rem 2rem;
   background: var(--bg-primary);
+  
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 3rem 0.5rem;
+  }
 `;
 
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
+  
+  @media (max-width: 768px) {
+    padding: 0 0.5rem;
+  }
 `;
 
 const SectionTitle = styled(motion.h2)`
@@ -20,6 +32,12 @@ const SectionTitle = styled(motion.h2)`
   
   @media (max-width: 768px) {
     font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -27,6 +45,15 @@ const CasesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    gap: 1rem;
+  }
 `;
 
 const CaseCard = styled(motion.div)`
@@ -38,6 +65,10 @@ const CaseCard = styled(motion.div)`
   
   &:hover {
     border-color: var(--accent-color);
+  }
+  
+  @media (max-width: 768px) {
+    border-radius: 8px;
   }
 `;
 
@@ -58,24 +89,61 @@ const CaseImage = styled.div`
     background: linear-gradient(to bottom, transparent 0%, rgba(45, 45, 45, 0.8) 100%);
     z-index: 1;
   }
+  
+  @media (max-width: 768px) {
+    height: 200px;
+  }
+  
+  @media (max-width: 576px) {
+    height: 180px;
+  }
 `;
 
 const CaseContent = styled.div`
   padding: 2rem;
   position: relative;
   z-index: 2;
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1rem;
+  }
 `;
 
 const CaseTitle = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 1rem;
   color: var(--text-primary);
+  
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
 `;
 
 const CaseDescription = styled.p`
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
   line-height: 1.6;
+  
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const CaseLink = styled(motion.a)`
@@ -88,6 +156,14 @@ const CaseLink = styled(motion.a)`
   
   &:hover {
     color: var(--text-primary);
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
   }
 `;
 

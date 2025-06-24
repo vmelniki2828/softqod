@@ -37,15 +37,20 @@ const glow = keyframes`
   100% { box-shadow: 0 0 5px rgba(74, 144, 226, 0.3); }
 `;
 
-const shimmer = keyframes`
-  0% { background-position: -100% 0; }
-  100% { background-position: 100% 0; }
-`;
-
 const floatVertical = keyframes`
   0% { transform: translateY(0); }
   50% { transform: translateY(-20px); }
   100% { transform: translateY(0); }
+`;
+
+const fadeInScale = keyframes`
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+`;
+
+const shimmerEffect = keyframes`
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 `;
 
 // const pulseRing = keyframes`
@@ -77,25 +82,41 @@ const floatVertical = keyframes`
 
 // Стилизованные компоненты
 const Container = styled.div`
-  width: 100%;
-  max-width: 100vw;
-  margin: 0 auto;
-  padding-top: 100px;
-  color: var(--text-primary);
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: white;
   position: relative;
   overflow: hidden;
+  
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 0 0.5rem;
+  }
 `;
 
-const HeroSection = styled(motion.div)`
-  position: relative;
+const HeroSection = styled(motion.section)`
   min-height: 100vh;
-  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
   overflow: hidden;
   padding: 2rem;
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem 1rem;
+    min-height: 90vh;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1rem 0.5rem;
+    min-height: 85vh;
+  }
 `;
 
 const Background = styled.div`
@@ -158,22 +179,13 @@ const Star = styled.div`
 `;
 
 const Title = styled(motion.h1)`
-  font-size: 4.5rem;
-  font-weight: 800;
-  text-align: center;
+  font-size: 4rem;
+  font-weight: 700;
   margin-bottom: 2rem;
-  color: transparent;
-  background: linear-gradient(
-    90deg,
-    var(--accent-color),
-    #4a90e2,
-    var(--accent-color)
-  );
-  background-size: 200% auto;
-  background-clip: text;
+  background: linear-gradient(135deg, #ffffff 0%, #4a90e2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: ${shimmer} 8s linear infinite;
+  background-clip: text;
   position: relative;
   z-index: 1;
   letter-spacing: -0.5px;
@@ -181,27 +193,38 @@ const Title = styled(motion.h1)`
 
   @media (max-width: 768px) {
     font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 2rem;
+    margin-bottom: 1rem;
   }
 
   &::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
     width: 100px;
-    height: 3px;
+    height: 4px;
     background: var(--accent-color);
     border-radius: 3px;
+    
+    @media (max-width: 576px) {
+      width: 80px;
+      height: 3px;
+      bottom: -10px;
+    }
   }
 `;
 
 const Subtitle = styled(motion.p)`
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  color: #9ca3af;
   max-width: 800px;
-  text-align: center;
-  margin: 0 auto 3rem;
-  color: var(--text-secondary);
+  margin-bottom: 3rem;
   position: relative;
   z-index: 1;
   line-height: 1.8;
@@ -209,6 +232,14 @@ const Subtitle = styled(motion.p)`
   @media (max-width: 768px) {
     font-size: 1.2rem;
     padding: 0 1rem;
+    margin-bottom: 2rem;
+    max-width: 90%;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
   }
 `;
 
@@ -221,6 +252,11 @@ const SystemContainer = styled(motion.div)`
   @media (max-width: 768px) {
     width: 260px;
     height: 400px;
+  }
+  
+  @media (max-width: 576px) {
+    width: 240px;
+    height: 360px;
   }
 `;
 
@@ -374,6 +410,18 @@ const HeroBenefitsList = styled(motion.div)`
   max-width: 1200px;
   z-index: 1;
   position: relative;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding: 0 1rem;
+  }
+  
+  @media (max-width: 576px) {
+    margin-top: 2rem;
+    padding: 0;
+  }
 `;
 
 const HeroBenefitItem = styled(motion.div)`
@@ -392,6 +440,11 @@ const HeroBenefitItem = styled(motion.div)`
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     transform: translateY(-5px);
   }
+  
+  @media (max-width: 576px) {
+    padding: 1.2rem;
+    gap: 0.8rem;
+  }
 `;
 
 const HeroBenefitIcon = styled.div`
@@ -406,22 +459,36 @@ const HeroBenefitIcon = styled.div`
   color: white;
   box-shadow: 0 0 20px rgba(41, 98, 255, 0.5);
   flex-shrink: 0;
-`;
-
-const HeroBenefitContent = styled.div`
-  flex: 1;
+  
+  @media (max-width: 576px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
 `;
 
 const HeroBenefitTitle = styled.h3`
   font-size: 1.1rem;
   color: white;
   margin-bottom: 0.5rem;
+  
+  @media (max-width: 576px) {
+    font-size: 1rem;
+  }
 `;
 
 const HeroBenefitDescription = styled.p`
   color: #9ca3af;
   font-size: 0.9rem;
   line-height: 1.4;
+  
+  @media (max-width: 576px) {
+    font-size: 0.85rem;
+  }
+`;
+
+const HeroBenefitContent = styled.div`
+  flex: 1;
 `;
 
 // Информационная секция
@@ -434,39 +501,24 @@ const InfoSection = styled(motion.section)`
   position: relative;
   padding: 8rem 2rem;
   overflow: hidden;
-  box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.2);
 
   &::before {
-    content: '';
-    position: absolute;
-    top: -80px;
-    left: 0;
-    right: 0;
-    height: 160px;
-    background: linear-gradient(to bottom, transparent, var(--bg-secondary));
-    z-index: 2;
-    clip-path: polygon(0 0, 100% 50%, 0 100%);
-    transform: scaleX(2);
-  }
-
-  &::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(
-        circle at 70% 20%,
-        rgba(74, 144, 226, 0.1) 0%,
-        transparent 30%
-      ),
-      radial-gradient(
-        circle at 30% 70%,
-        rgba(41, 98, 255, 0.1) 0%,
-        transparent 30%
-      );
-    z-index: 1;
+    background: radial-gradient(circle at 50% 50%, rgba(74, 144, 226, 0.1) 0%, transparent 70%);
+    z-index: 0;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 4rem 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 3rem 1rem;
   }
 `;
 
@@ -486,21 +538,23 @@ const InfoContainer = styled.div`
 const InfoTitle = styled(motion.h2)`
   font-size: 3rem;
   font-weight: 700;
-  color: var(--accent-color);
+  text-align: center;
   margin-bottom: 3rem;
+  background: linear-gradient(135deg, #ffffff 0%, #4a90e2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   position: relative;
-  display: inline-block;
-  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 0;
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent-color), transparent);
-    border-radius: 4px;
+  z-index: 1;
+  
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
   }
 `;
 
@@ -572,7 +626,7 @@ const BackgroundShape = styled(motion.div)`
 // Секция преимуществ
 const BenefitsSection = styled(motion.section)`
   background: linear-gradient(
-    180deg,
+    135deg,
     var(--bg-primary) 0%,
     var(--bg-secondary) 100%
   );
@@ -585,10 +639,18 @@ const BenefitsSection = styled(motion.section)`
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 150px;
-    background: linear-gradient(to top, transparent, var(--bg-primary));
-    z-index: 1;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 70%, rgba(41, 98, 255, 0.15) 0%, transparent 50%);
+    z-index: 0;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 4rem 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 3rem 1rem;
   }
 `;
 
@@ -602,21 +664,23 @@ const BenefitsContainer = styled.div`
 const BenefitsTitle = styled(motion.h2)`
   font-size: 3rem;
   font-weight: 700;
-  color: var(--accent-color);
-  margin-bottom: 4rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, #ffffff 0%, #4a90e2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   position: relative;
-  display: inline-block;
-  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 0;
-    width: 120px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent-color), transparent);
-    border-radius: 4px;
+  z-index: 1;
+  
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
   }
 `;
 
@@ -722,38 +786,6 @@ const BenefitCardDescription = styled.p`
   color: var(--text-secondary);
 `;
 
-// const CtaButton = styled(motion.button)`
-//   padding: 1.2rem 3rem;
-//   font-size: 1.2rem;
-//   font-weight: 600;
-//   background: linear-gradient(90deg, var(--accent-color), rgba(41, 98, 255, 0.9));
-//   color: white;
-//   border: none;
-//   border-radius: 12px;
-//   cursor: pointer;
-//   display: block;
-//   margin: 0 auto;
-//   box-shadow: 0 8px 20px rgba(74, 144, 226, 0.2);
-//   transition: all 0.3s ease;
-//   position: relative;
-//   overflow: hidden;
-
-//   &::before {
-//     content: '';
-//     position: absolute;
-//     top: 0;
-//     left: -100%;
-//   width: 100%;
-//     height: 100%;
-//     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-//     transition: all 0.6s ease;
-//   }
-
-//   &:hover::before {
-//     left: 100%;
-//   }
-// `;
-
 const BenefitsDecoration = styled.div`
   position: absolute;
   top: 10%;
@@ -789,13 +821,32 @@ const BenefitsDecoration = styled.div`
 // Секция услуг
 const ServicesSection = styled(motion.section)`
   position: relative;
-  padding: 8rem 2rem;
   background: linear-gradient(
-    180deg,
+    45deg,
     var(--bg-secondary) 0%,
     var(--bg-primary) 100%
   );
+  padding: 8rem 2rem;
   overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at 70% 30%, rgba(74, 144, 226, 0.1) 0%, transparent 60%);
+    z-index: 0;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 4rem 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 3rem 1rem;
+  }
 `;
 
 const ServicesWave = styled.div`
@@ -816,24 +867,26 @@ const ServicesContainer = styled.div`
   z-index: 2;
 `;
 
-const ServicesTitle = styled(motion.h2)`
+const SectionTitle = styled(motion.h2)`
   font-size: 3rem;
   font-weight: 700;
-  color: var(--accent-color);
-  margin-bottom: 4rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, #ffffff 0%, #4a90e2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   position: relative;
-  display: inline-block;
-  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 0;
-    width: 120px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent-color), transparent);
-    border-radius: 4px;
+  z-index: 1;
+  
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
   }
 `;
 
@@ -864,69 +917,25 @@ const ServicesContent = styled.div`
   }
 `;
 
-// const ServicesIntro = styled(motion.p)`
-//   font-size: 1.3rem;
-//   line-height: 1.8;
-//   color: var(--text-secondary);
-//   margin-bottom: 3rem;
-//   position: relative;
-//   z-index: 1;
-// `;
-
 const ServicesHeading = styled(motion.h3)`
-  font-size: 1.8rem;
+  font-size: 2.5rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: white;
   margin-bottom: 2rem;
+  text-align: center;
   position: relative;
   z-index: 1;
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+  }
 `;
-
-// const ServicesList = styled(motion.ul)`
-//   list-style: none;
-//   padding: 0;
-//   margin: 0 0 3rem 0;
-//   position: relative;
-//   z-index: 1;
-// `;
-
-// const ServiceItem = styled(motion.li)`
-//   display: flex;
-//   align-items: flex-start;
-//   margin-bottom: 1.5rem;
-//   padding: 1rem;
-//   border-radius: 12px;
-//   background: rgba(255, 255, 255, 0.03);
-//   transition: all 0.3s ease;
-
-//   &:hover {
-//     background: rgba(255, 255, 255, 0.07);
-//     transform: translateX(10px);
-//   }
-// `;
-
-// const ServiceIcon = styled.div`
-//   margin-right: 1rem;
-//   position: relative;
-// `;
-
-// const ServiceCircle = styled.div`
-//   width: 24px;
-//   height: 24px;
-//   border-radius: 50%;
-//   background: linear-gradient(135deg, var(--accent-color) 0%, #2962ff 100%);
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-
-//   &::before {
-//     content: '';
-//     width: 10px;
-//     height: 10px;
-//     border-radius: 50%;
-//     background: rgba(255, 255, 255, 0.9);
-//   }
-// `;
 
 const ServiceText = styled.p`
   font-size: 1.15rem;
@@ -934,39 +943,6 @@ const ServiceText = styled.p`
   color: var(--text-secondary);
   flex: 1;
 `;
-
-// const ServiceSummary = styled(motion.p)`
-//   font-size: 1.5rem;
-//   font-weight: 500;
-//   line-height: 1.7;
-//   color: var(--text-primary);
-//   padding: 2rem;
-//   background: linear-gradient(90deg, rgba(74, 144, 226, 0.1), rgba(41, 98, 255, 0.1));
-//   border-radius: 12px;
-//   margin: 2rem 0 3rem;
-//   position: relative;
-//   z-index: 1;
-
-//   &::before {
-//     content: '"';
-//     position: absolute;
-//     top: 10px;
-//     left: 15px;
-//     font-size: 4rem;
-//     color: rgba(74, 144, 226, 0.2);
-//     font-family: serif;
-//   }
-
-//   &::after {
-//     content: '"';
-//     position: absolute;
-//     bottom: 10px;
-//     right: 15px;
-//     font-size: 4rem;
-//     color: rgba(74, 144, 226, 0.2);
-//     font-family: serif;
-//   }
-// `;
 
 const ServiceActions = styled(motion.div)`
   display: flex;
@@ -1016,33 +992,48 @@ const ServiceButton = styled(motion.button)`
   &:hover::before {
     left: 100%;
   }
+  
+  @media (max-width: 768px) {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+  }
 `;
 
 // Секция FAQ
 const FaqSection = styled(motion.section)`
   position: relative;
-  padding: 8rem 2rem;
   background: linear-gradient(
     180deg,
     var(--bg-primary) 0%,
-    rgba(16, 24, 39, 0.9) 100%
+    var(--bg-secondary) 100%
   );
+  padding: 8rem 2rem;
   overflow: hidden;
-  z-index: 0;
 
   &::before {
     content: '';
     position: absolute;
     top: 0;
+    left: 0;
     right: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(
-      ellipse at top right,
-      rgba(74, 144, 226, 0.08) 0%,
-      transparent 70%
-    );
-    z-index: -1;
+    bottom: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(94, 234, 212, 0.1) 0%, transparent 50%);
+    z-index: 0;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 4rem 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 3rem 1rem;
   }
 `;
 
@@ -1065,7 +1056,16 @@ const FaqContainer = styled.div`
   max-width: 900px;
   margin: 0 auto;
   position: relative;
-  z-index: 2;
+  z-index: 1;
+  
+  @media (max-width: 768px) {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 0;
+  }
 `;
 
 const FaqGlowCircle = styled.div`
@@ -1079,7 +1079,7 @@ const FaqGlowCircle = styled.div`
     height: 400px;
     background: radial-gradient(
       circle,
-      rgba(74, 144, 226, 0.05) 0%,
+      rgba(94, 234, 212, 0.05) 0%,
       transparent 70%
     );
     top: 10%;
@@ -1092,7 +1092,7 @@ const FaqGlowCircle = styled.div`
     height: 500px;
     background: radial-gradient(
       circle,
-      rgba(41, 98, 255, 0.05) 0%,
+      rgba(59, 130, 246, 0.05) 0%,
       transparent 70%
     );
     bottom: 5%;
@@ -1108,20 +1108,45 @@ const FaqTitle = styled(motion.h2)`
   margin-bottom: 3rem;
   text-align: center;
   position: relative;
-  text-shadow: 0 2px 10px rgba(74, 144, 226, 0.2);
+  text-shadow: 0 2px 10px rgba(94, 234, 212, 0.2);
+  
+  @media (max-width: 992px) {
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
 
   &::before {
-    content: 'FAQ';
+    content: 'F.A.Q';
     position: absolute;
     top: -30px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 5rem;
-    color: rgba(74, 144, 226, 0.03);
+    color: rgba(94, 234, 212, 0.03);
     font-weight: 900;
     letter-spacing: 5px;
     z-index: -1;
     white-space: nowrap;
+    
+    @media (max-width: 768px) {
+      font-size: 4rem;
+      top: -25px;
+    }
+    
+    @media (max-width: 576px) {
+      font-size: 3rem;
+      top: -20px;
+    }
   }
 
   &::after {
@@ -1140,6 +1165,12 @@ const FaqTitle = styled(motion.h2)`
     );
     border-radius: 4px;
     animation: ${pulse} 2s infinite ease-in-out;
+    
+    @media (max-width: 576px) {
+      width: 60px;
+      height: 3px;
+      bottom: -10px;
+    }
   }
 `;
 
@@ -1148,6 +1179,16 @@ const FaqList = styled(motion.div)`
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 4rem;
+  
+  @media (max-width: 768px) {
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  
+  @media (max-width: 576px) {
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const FaqItem = styled(motion.div)`
@@ -1160,10 +1201,18 @@ const FaqItem = styled(motion.div)`
   transition: all 0.3s ease;
   transform-style: preserve-3d;
   perspective: 1000px;
+  
+  @media (max-width: 768px) {
+    border-radius: 12px;
+  }
+  
+  @media (max-width: 576px) {
+    border-radius: 8px;
+  }
 
   &:hover {
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 15px rgba(74, 144, 226, 0.1);
-    border-color: rgba(74, 144, 226, 0.1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 15px rgba(94, 234, 212, 0.1);
+    border-color: rgba(94, 234, 212, 0.1);
     transform: translateY(-3px);
   }
 `;
@@ -1180,6 +1229,14 @@ const FaqQuestion = styled(motion.div)`
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1.2rem 1rem;
+  }
 
   &::before {
     content: '';
@@ -1191,7 +1248,7 @@ const FaqQuestion = styled(motion.div)`
     background: linear-gradient(
       to bottom,
       var(--accent-color),
-      rgba(41, 98, 255, 0.5)
+      rgba(59, 130, 246, 0.5)
     );
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -1215,6 +1272,16 @@ const FaqQuestion = styled(motion.div)`
       rgba(255, 255, 255, 0.05),
       transparent
     );
+    
+    @media (max-width: 768px) {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+    
+    @media (max-width: 576px) {
+      left: 1rem;
+      right: 1rem;
+    }
   }
 `;
 
@@ -1225,6 +1292,14 @@ const FaqQuestionText = styled.h3`
   transition: all 0.3s ease;
   flex: 1;
   transform: translateZ(5px);
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1rem;
+  }
 
   ${FaqQuestion}:hover & {
     color: var(--accent-color);
@@ -1241,142 +1316,468 @@ const FaqToggle = styled(motion.div)`
   color: var(--accent-color);
   margin-left: 1rem;
   flex-shrink: 0;
-  background: rgba(74, 144, 226, 0.05);
+  background: rgba(94, 234, 212, 0.05);
   border-radius: 50%;
   transition: all 0.3s ease;
 
   &:hover {
-    background: rgba(74, 144, 226, 0.1);
-    box-shadow: 0 0 10px rgba(74, 144, 226, 0.2);
+    background: rgba(94, 234, 212, 0.1);
+    box-shadow: 0 0 10px rgba(94, 234, 212, 0.2);
   }
 `;
 
-const FaqAnswer = styled.div`
-  padding: 0 15px 15px;
-  font-size: 1rem;
-  line-height: 1.6;
+const FaqAnswer = styled(motion.div)`
+  padding: 0 2rem 1.8rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
   color: var(--text-secondary);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  opacity: 0;
-  max-height: 0;
   overflow: hidden;
-  transition: all 0.3s ease-in-out;
-
-  ${props =>
-    props.isOpen &&
-    `
-    opacity: 1;
-    max-height: 1000px;
-    padding-top: 15px;
-  `}
-`;
-
-const FaqCta = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  background: rgba(16, 24, 39, 0.4);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  padding: 3rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  margin-top: 3rem;
   position: relative;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  animation: ${fadeInScale} 0.4s ease forwards;
+  
+  @media (max-width: 768px) {
+    padding: 0 1.5rem 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 0 1rem 1.2rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
 
   &::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
+    left: 2rem;
+    right: 2rem;
+    height: 1px;
     background: linear-gradient(
       90deg,
-      var(--accent-color),
-      rgba(59, 130, 246, 0.8)
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
     );
-    z-index: 1;
+    
+    @media (max-width: 768px) {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+    
+    @media (max-width: 576px) {
+      left: 1rem;
+      right: 1rem;
+    }
   }
 
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  strong {
+    color: var(--accent-color);
+    font-weight: 600;
+  }
+
+  ul {
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    
+    @media (max-width: 576px) {
+      padding-left: 1rem;
+    }
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    position: relative;
+
+    &::before {
+      content: '•';
+      color: var(--accent-color);
+      position: absolute;
+      left: -1rem;
+      
+      @media (max-width: 576px) {
+        left: -0.8rem;
+      }
+    }
+  }
+
+  p {
+    margin-bottom: 0.8rem;
+    
+    @media (max-width: 576px) {
+      margin-bottom: 0.6rem;
+    }
+  }
+
+  .highlight {
     background: linear-gradient(
-      135deg,
-      rgba(94, 234, 212, 0.05) 0%,
-      transparent 50%
+      90deg,
+      rgba(94, 234, 212, 0.1),
+      rgba(59, 130, 246, 0.1)
     );
-    z-index: -1;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin: 0 0.2rem;
+    position: relative;
+    
+    @media (max-width: 576px) {
+      padding: 0.1rem 0.3rem;
+      margin: 0 0.1rem;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.05),
+        transparent
+      );
+      background-size: 200% 100%;
+      animation: ${shimmerEffect} 2s infinite;
+    }
+  }
+`;
+
+const HeroButton = styled(motion.button)`
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 3rem;
+  z-index: 1;
+  position: relative;
+  
+  @media (max-width: 768px) {
+    padding: 0.9rem 2rem;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    width: 100%;
+    max-width: 300px;
+  }
+`;
+
+const FaqCta = styled(motion.div)`
+  background: rgba(16, 24, 39, 0.8);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-top: 3rem;
+  text-align: center;
+  border: 1px solid rgba(94, 234, 212, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border-radius: 16px;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1.2rem;
+    border-radius: 12px;
   }
 `;
 
 const FaqCtaText = styled.p`
-  font-size: 1.5rem;
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
   font-weight: 500;
-  color: var(--text-primary);
-  text-align: center;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const FaqCtaButton = styled(motion.button)`
-  padding: 1.2rem 3rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  background: linear-gradient(
-    90deg,
-    var(--accent-color),
-    rgba(59, 130, 246, 0.9)
-  );
-  color: white;
+  background: linear-gradient(135deg, #5eead4, #06b6d4);
+  color: #0f172a;
   border: none;
-  border-radius: 50px;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(94, 234, 212, 0.2);
   transition: all 0.3s ease;
+  border: 2px solid transparent;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(94, 234, 212, 0.3);
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0.9rem 1.8rem;
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.85rem;
+    width: 100%;
+  }
+`;
+
+// ... existing code ...
+
+// Add responsive styles for "Етапи нашої роботи" section in JSX
+
+// ... existing code ...
+
+// Add styled components for work stages section
+const WorkStageCard = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem;
+  width: 1000px;
+  height: 180px;
+  background: rgba(16, 24, 39, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  
+  @media (max-width: 1024px) {
+    width: 90%;
+    max-width: 800px;
+    height: auto;
+    min-height: 160px;
+    padding: 1.8rem;
+  }
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    width: 95%;
+    height: auto;
+    text-align: center;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1.2rem;
+    gap: 1rem;
+    width: 100%;
+    margin: 0 1rem;
+  }
+
+  &:hover {
+    scale: 1.02;
+    transition: all 0.3s ease;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(74, 144, 226, 0.2);
+  }
+`;
+
+const WorkStageNumber = styled(motion.div)`
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(74, 144, 226, 0.8);
+  text-shadow: 0 2px 10px rgba(74, 144, 226, 0.4);
+  flex-shrink: 0;
+  
+  @media (max-width: 768px) {
+    width: 80px;
+    height: 80px;
+    font-size: 3rem;
+  }
+  
+  @media (max-width: 576px) {
+    width: 60px;
+    height: 60px;
+    font-size: 2.5rem;
+  }
+`;
+
+const WorkStageIcon = styled(motion.div)`
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-color) 0%, rgba(41, 98, 255, 0.8) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: white;
+  box-shadow: 0 10px 30px rgba(74, 144, 226, 0.4);
   position: relative;
+  flex-shrink: 0;
+  
+  @media (max-width: 768px) {
+    width: 100px;
+    height: 100px;
+    font-size: 2rem;
+  }
+  
+  @media (max-width: 576px) {
+    width: 80px;
+    height: 80px;
+    font-size: 1.8rem;
+  }
+
+  &:hover {
+    box-shadow: 0 15px 40px rgba(74, 144, 226, 0.6);
+    scale: 1.05;
+    transition: all 0.3s ease;
+  }
+`;
+
+const WorkStageContent = styled(motion.div)`
+  background: rgba(10, 15, 25, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  border: 1px solid rgba(74, 144, 226, 0.3);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  width: calc(100% - 250px);
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  @media (max-width: 1024px) {
+    width: calc(100% - 200px);
+    height: auto;
+    min-height: 120px;
+    padding: 1.3rem 1.8rem;
+  }
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    padding: 1.2rem;
+    border-radius: 16px;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+`;
+
+const WorkStageTitle = styled.h3`
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  color: #FFFFFF;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+`;
+
+const WorkStageDescription = styled.p`
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #FFFFFF;
   overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    transition: all 0.6s ease;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    line-height: 1.4;
   }
-
-  &:hover::before {
-    left: 100%;
+  
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
+    line-height: 1.3;
   }
+`;
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 8px;
-    background: linear-gradient(
-      90deg,
-      rgba(59, 130, 246, 0.5),
-      var(--accent-color)
-    );
-    filter: blur(5px);
-    opacity: 0.5;
+const WorkStageConnector = styled(motion.div)`
+  width: 4px;
+  height: 5rem;
+  background: linear-gradient(to bottom, var(--accent-color), rgba(41, 98, 255, 0.1));
+  border-radius: 2px;
+  margin: 0 auto;
+  
+  @media (max-width: 768px) {
+    height: 3rem;
+    width: 3px;
+  }
+  
+  @media (max-width: 576px) {
+    height: 2rem;
+    width: 2px;
+  }
+`;
+
+const WorkStagesTitle = styled(motion.h2)`
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--accent-color);
+  margin-bottom: 6rem;
+  position: relative;
+  text-align: center;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  
+  @media (max-width: 992px) {
+    font-size: 3.5rem;
+    margin-bottom: 5rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 3rem;
+    margin-bottom: 4rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+`;
+
+const WorkStagesContainer = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  
+  @media (max-width: 768px) {
+    gap: 2.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    gap: 2rem;
+    padding: 0 0.5rem;
   }
 `;
 
@@ -1615,7 +2016,7 @@ const ERPCRMPage = () => {
           ))}
         </HeroBenefitsList>
 
-        <motion.button
+        <HeroButton
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.6 }}
@@ -1625,22 +2026,9 @@ const ERPCRMPage = () => {
           }}
           whileTap={{ scale: 0.95 }}
           onClick={openModal}
-          style={{
-            padding: '1rem 2.5rem',
-            fontSize: '1.2rem',
-            fontWeight: 'bold',
-            background: 'var(--accent-color)',
-            color: 'white',
-            border: 'none',
-            borderRadius: '12px',
-            cursor: 'pointer',
-            marginTop: '3rem',
-            zIndex: 1,
-            position: 'relative',
-          }}
         >
           Дізнатись більше
-        </motion.button>
+        </HeroButton>
       </HeroSection>
 
       <InfoSection
@@ -1981,13 +2369,13 @@ const ERPCRMPage = () => {
         <ServicesWave />
 
         <ServicesContainer>
-          <ServicesTitle
+          <SectionTitle
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
             Наші рішення для вашого бізнесу
-          </ServicesTitle>
+          </SectionTitle>
 
           <ServicesContent>
             <motion.div
@@ -2439,19 +2827,10 @@ const ERPCRMPage = () => {
             zIndex: 2,
           }}
         >
-          <motion.h2
+          <WorkStagesTitle
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            style={{
-              fontSize: '4rem',
-              fontWeight: 800,
-              color: 'var(--accent-color)',
-              marginBottom: '6rem',
-              position: 'relative',
-              textAlign: 'center',
-              textShadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
-            }}
           >
             Етапи нашої роботи
             <motion.div
@@ -2472,9 +2851,9 @@ const ERPCRMPage = () => {
               }}
               transition={{ duration: 1, delay: 0.3 }}
             />
-          </motion.h2>
+          </WorkStagesTitle>
 
-          <motion.div
+          <WorkStagesContainer
             variants={{
               hidden: { opacity: 0 },
               visible: {
@@ -2486,12 +2865,6 @@ const ERPCRMPage = () => {
             }}
             initial="hidden"
             animate="visible"
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '3rem',
-              alignItems: 'center',
-            }}
           >
             {[
               {
@@ -2526,7 +2899,7 @@ const ERPCRMPage = () => {
               },
             ].map((step, index) => (
               <React.Fragment key={index}>
-                <motion.div
+                <WorkStageCard
                   variants={{
                     hidden: { x: -50, opacity: 0 },
                     visible: {
@@ -2535,69 +2908,18 @@ const ERPCRMPage = () => {
                       transition: { duration: 0.8, ease: 'easeOut' },
                     },
                   }}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    gap: '2rem',
-                    padding: '2rem',
-                    width: '1000px',
-                    height: '180px',
-                    background: 'rgba(16, 24, 39, 0.2)',
-                    backdropFilter: 'blur(5px)',
-                    borderRadius: '20px',
-                    border: '1px solid rgba(255, 255, 255, 0.05)',
-                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
-                  }}
-                  whileHover={{
-                    scale: 1.02,
-                    transition: { duration: 0.3 },
-                    boxShadow: '0 15px 40px rgba(0, 0, 0, 0.2)',
-                    border: '1px solid rgba(74, 144, 226, 0.2)',
-                  }}
                 >
-                  {/* Номер этапа */}
-                  <motion.div
-                    style={{
-                      width: '100px',
-                      height: '100px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '4rem',
-                      fontWeight: '900',
-                      color: 'rgba(74, 144, 226, 0.8)',
-                      textShadow: '0 2px 10px rgba(74, 144, 226, 0.4)',
-                      flexShrink: 0,
-                    }}
-                  >
+                  <WorkStageNumber>
                     {index + 1}
-                  </motion.div>
+                  </WorkStageNumber>
 
-                  {/* Иконка */}
-                  <motion.div
-                    style={{
-                      width: '120px',
-                      height: '120px',
-                      borderRadius: '50%',
-                      background:
-                        'linear-gradient(135deg, var(--accent-color) 0%, rgba(41, 98, 255, 0.8) 100%)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '2.5rem',
-                      color: 'white',
-                      boxShadow: '0 10px 30px rgba(74, 144, 226, 0.4)',
-                      position: 'relative',
-                      flexShrink: 0,
-                    }}
+                  <WorkStageIcon
                     whileHover={{
                       boxShadow: '0 15px 40px rgba(74, 144, 226, 0.6)',
                       scale: 1.05,
                       transition: { duration: 0.3 },
                     }}
                   >
-                    {/* Пульсирующий круг вокруг иконки */}
                     <motion.div
                       style={{
                         position: 'absolute',
@@ -2618,70 +2940,29 @@ const ERPCRMPage = () => {
                         ease: 'easeInOut',
                       }}
                     />
-
                     {step.icon}
-                  </motion.div>
+                  </WorkStageIcon>
 
-                  {/* Текстовый блок */}
-                  <motion.div
-                    style={{
-                      background: 'rgba(10, 15, 25, 0.85)',
-                      backdropFilter: 'blur(10px)',
-                      borderRadius: '20px',
-                      padding: '1.5rem 2rem',
-                      border: '1px solid rgba(74, 144, 226, 0.3)',
-                      boxShadow: '0 15px 40px rgba(0, 0, 0, 0.3)',
-                      width: 'calc(100% - 250px)',
-                      height: '160px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <h3
-                      style={{
-                        fontSize: '1.5rem',
-                        fontWeight: 700,
-                        marginBottom: '0.8rem',
-                        color: '#FFFFFF',
-                        textShadow: '0 2px 5px rgba(0, 0, 0, 0.5)',
-                      }}
-                    >
+                  <WorkStageContent>
+                    <WorkStageTitle>
                       {step.title}
-                    </h3>
-
-                    <p
-                      style={{
-                        fontSize: '1rem',
-                        lineHeight: 1.5,
-                        color: '#FFFFFF',
-                        overflow: 'hidden',
-                        textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)',
-                      }}
-                    >
+                    </WorkStageTitle>
+                    <WorkStageDescription>
                       {step.description}
-                    </p>
-                  </motion.div>
-                </motion.div>
+                    </WorkStageDescription>
+                  </WorkStageContent>
+                </WorkStageCard>
 
-                {/* Вертикальная линия между блоками */}
                 {index < 4 && (
-                  <motion.div
-                    style={{
-                      width: '4px',
-                      height: '5rem',
-                      background:
-                        'linear-gradient(to bottom, var(--accent-color), rgba(41, 98, 255, 0.1))',
-                      borderRadius: '4px',
-                    }}
-                    initial={{ height: 0 }}
-                    animate={{ height: '5rem' }}
-                    transition={{ duration: 0.8, delay: index * 0.3 + 0.5 }}
+                  <WorkStageConnector
+                    initial={{ opacity: 0, scaleY: 0 }}
+                    animate={{ opacity: 1, scaleY: 1 }}
+                    transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
                   />
                 )}
               </React.Fragment>
             ))}
-          </motion.div>
+          </WorkStagesContainer>
         </div>
       </motion.section>
 

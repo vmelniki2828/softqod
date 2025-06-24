@@ -47,24 +47,6 @@ const floatVertical = keyframes`
   100% { transform: translateY(0); }
 `;
 
-// Добавляем недостающие анимации
-const pulseRing = keyframes`
-  0% { transform: scale(0.8); opacity: 0.8; }
-  50% { transform: scale(1.1); opacity: 0.4; }
-  100% { transform: scale(0.8); opacity: 0.8; }
-`;
-
-const circleFloat = keyframes`
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0); }
-`;
-
-const spinGlow = keyframes`
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
-`;
-
 // Добавляем компоненты секции FAQ
 const fadeInScale = keyframes`
   0% { transform: scale(0.9); opacity: 0; }
@@ -85,6 +67,14 @@ const Container = styled.div`
   color: var(--text-primary);
   position: relative;
   overflow: hidden;
+  
+  @media (max-width: 992px) {
+    padding-top: 80px;
+  }
+  
+  @media (max-width: 576px) {
+    padding-top: 60px;
+  }
 `;
 
 const HeroSection = styled(motion.div)`
@@ -97,6 +87,16 @@ const HeroSection = styled(motion.div)`
   align-items: center;
   overflow: hidden;
   padding: 2rem;
+  
+  @media (max-width: 992px) {
+    padding: 1.5rem;
+    min-height: 90vh;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1rem;
+    min-height: 85vh;
+  }
 `;
 
 const Background = styled.div`
@@ -180,8 +180,18 @@ const Title = styled(motion.h1)`
   letter-spacing: -0.5px;
   text-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
+  @media (max-width: 992px) {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+
   @media (max-width: 768px) {
     font-size: 2.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 2rem;
+    margin-bottom: 1rem;
   }
 
   &::after {
@@ -194,6 +204,11 @@ const Title = styled(motion.h1)`
     height: 3px;
     background: var(--accent-color);
     border-radius: 3px;
+    
+    @media (max-width: 576px) {
+      width: 60px;
+      height: 2px;
+    }
   }
 `;
 
@@ -207,9 +222,20 @@ const Subtitle = styled(motion.p)`
   z-index: 1;
   line-height: 1.8;
 
+  @media (max-width: 992px) {
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+  }
+
   @media (max-width: 768px) {
     font-size: 1.2rem;
     padding: 0 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
   }
 `;
 
@@ -220,9 +246,19 @@ const PhoneContainer = styled(motion.div)`
   perspective: 1000px;
   margin: 0 auto;
 
+  @media (max-width: 992px) {
+    width: 260px;
+    height: 450px;
+  }
+
   @media (max-width: 768px) {
     width: 220px;
     height: 400px;
+  }
+  
+  @media (max-width: 576px) {
+    width: 180px;
+    height: 350px;
   }
 `;
 
@@ -263,10 +299,10 @@ const Phone = styled(motion.div)`
     bottom: 0;
     background: linear-gradient(
       135deg,
-      rgba(94, 234, 212, 0.1) 0%,
-      rgba(59, 130, 246, 0.1) 100%
+      rgba(94, 234, 212, 0.05) 0%,
+      transparent 50%
     );
-    z-index: 1;
+    z-index: 0;
   }
 `;
 
@@ -376,6 +412,18 @@ const HeroBenefitsList = styled(motion.div)`
   max-width: 1200px;
   z-index: 1;
   position: relative;
+  
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin: 3rem auto 0;
+    gap: 1rem;
+  }
+  
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+    margin: 2rem auto 0;
+    padding: 0 1rem;
+  }
 `;
 
 const HeroBenefitItem = styled(motion.div)`
@@ -389,77 +437,15 @@ const HeroBenefitItem = styled(motion.div)`
   gap: 1rem;
   transition: all 0.3s ease;
 
+  @media (max-width: 576px) {
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+
   &:hover {
     border-color: rgba(94, 234, 212, 0.3);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     transform: translateY(-5px);
-  }
-`;
-
-const BenefitItem = styled(motion.div)`
-  background: rgba(16, 24, 39, 0.8);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 2.5rem 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  transition: all 0.3s ease;
-  overflow: hidden;
-  z-index: 1;
-  text-align: center;
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  width: calc(33.333% - 1.5rem);
-  min-width: 280px;
-
-  @media (max-width: 1200px) {
-    width: calc(50% - 1.5rem);
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    max-width: 350px;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: linear-gradient(
-      90deg,
-      var(--accent-color),
-      rgba(59, 130, 246, 0.8)
-    );
-    z-index: 0;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-  }
-
-  &:hover::before {
-    transform: scaleX(1);
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 70%;
-    background: linear-gradient(to top, rgba(94, 234, 212, 0.03), transparent);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-
-  &:hover::after {
-    opacity: 1;
   }
 `;
 
@@ -475,6 +461,12 @@ const HeroBenefitIcon = styled.div`
   color: white;
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
   flex-shrink: 0;
+  
+  @media (max-width: 576px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
 `;
 
 const HeroBenefitContent = styled.div`
@@ -485,12 +477,21 @@ const HeroBenefitTitle = styled.h3`
   font-size: 1.1rem;
   color: white;
   margin-bottom: 0.5rem;
+  
+  @media (max-width: 576px) {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
 `;
 
 const HeroBenefitDescription = styled.p`
   color: #9ca3af;
   font-size: 0.9rem;
   line-height: 1.4;
+  
+  @media (max-width: 576px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const InfoSection = styled(motion.section)`
@@ -503,6 +504,14 @@ const InfoSection = styled(motion.section)`
   padding: 8rem 2rem;
   overflow: hidden;
   box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.2);
+  
+  @media (max-width: 992px) {
+    padding: 6rem 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 4rem 1rem;
+  }
 
   &::before {
     content: '';
@@ -549,6 +558,20 @@ const InfoContainer = styled.div`
   padding: 3rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  
+  @media (max-width: 992px) {
+    padding: 2.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 2rem;
+    border-radius: 16px;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1.5rem;
+    margin: 0 1rem;
+  }
 `;
 
 const InfoTitle = styled(motion.h2)`
@@ -559,6 +582,21 @@ const InfoTitle = styled(motion.h2)`
   position: relative;
   display: inline-block;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  
+  @media (max-width: 992px) {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
 
   &::after {
     content: '';
@@ -638,6 +676,14 @@ const BenefitsSection = styled(motion.section)`
   position: relative;
   padding: 8rem 2rem;
   overflow: hidden;
+  
+  @media (max-width: 992px) {
+    padding: 6rem 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 4rem 1rem;
+  }
 
   &::before {
     content: '';
@@ -656,6 +702,10 @@ const BenefitsContainer = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 2;
+  
+  @media (max-width: 576px) {
+    margin: 0 1rem;
+  }
 `;
 
 const BenefitsTitle = styled(motion.h2)`
@@ -666,6 +716,21 @@ const BenefitsTitle = styled(motion.h2)`
   position: relative;
   display: inline-block;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  
+  @media (max-width: 992px) {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
 
   &::after {
     content: '';
@@ -676,6 +741,12 @@ const BenefitsTitle = styled(motion.h2)`
     height: 4px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
+    
+    @media (max-width: 576px) {
+      width: 80px;
+      height: 3px;
+      bottom: -10px;
+    }
   }
 `;
 
@@ -687,6 +758,13 @@ const BenefitCardContainer = styled(motion.div)`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  @media (max-width: 576px) {
+    gap: 1rem;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -699,1035 +777,23 @@ const BenefitCard = styled(motion.div)`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(94, 234, 212, 0.05) 0%,
-      transparent 50%
-    );
-    z-index: 0;
-  }
-`;
-
-const BenefitIconWrapper = styled.div`
-  font-size: 2.5rem;
-  color: var(--accent-color);
-  margin-bottom: 1.5rem;
-  width: 80px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 20px;
-  position: relative;
-  animation: ${pulse} 3s infinite ease-in-out;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  transform: translateZ(20px);
-  transition: transform 0.3s ease;
-
-  ${BenefitItem}:hover & {
-    transform: translateZ(30px) scale(1.1);
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    border: 1px dashed rgba(94, 234, 212, 0.3);
-    animation: ${pulse} 3s infinite ease-in-out 1.5s;
-  }
-`;
-
-const BenefitContent = styled.div`
-  position: relative;
-  z-index: 1;
-`;
-
-const BenefitCardTitle = styled.h3`
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
-`;
-
-const BenefitCardDescription = styled.p`
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
-`;
-
-const CtaButton = styled(motion.button)`
-  padding: 1.2rem 3rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  background: linear-gradient(
-    90deg,
-    var(--accent-color),
-    rgba(59, 130, 246, 0.9)
-  );
-  color: white;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  display: block;
-  margin: 0 auto;
-  box-shadow: 0 8px 20px rgba(94, 234, 212, 0.2);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    transition: all 0.6s ease;
-  }
-
-  &:hover::before {
-    left: 100%;
-  }
-`;
-
-const BenefitsDecoration = styled.div`
-  position: absolute;
-  top: 10%;
-  right: 5%;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(
-    circle,
-    rgba(94, 234, 212, 0.1) 0%,
-    transparent 70%
-  );
-  border-radius: 50%;
-  filter: blur(40px);
-  z-index: 0;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -50%;
-    left: -30%;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(
-      circle,
-      rgba(59, 130, 246, 0.1) 0%,
-      transparent 70%
-    );
-    border-radius: 50%;
-    filter: blur(40px);
-  }
-`;
-
-const WorkflowSection = styled(motion.section)`
-  position: relative;
-  padding: 8rem 2rem;
-  background: linear-gradient(
-    180deg,
-    var(--bg-secondary) 0%,
-    var(--bg-primary) 100%
-  );
-  overflow: hidden;
-`;
-
-const ServicesWave = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background: var(--bg-secondary);
-  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 100%);
-  z-index: 1;
-`;
-
-const WorkflowContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-`;
-
-const WorkflowTitle = styled(motion.h2)`
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--accent-color);
-  margin-bottom: 4rem;
-  position: relative;
-  display: inline-block;
-  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 0;
-    width: 120px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent-color), transparent);
-    border-radius: 4px;
-  }
-`;
-
-const WorkflowContent = styled.div`
-  background: rgba(16, 24, 39, 0.7);
-  backdrop-filter: blur(15px);
-  border-radius: 24px;
-  padding: 3rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(
-      circle,
-      rgba(94, 234, 212, 0.05) 0%,
-      transparent 70%
-    );
-    top: -200px;
-    right: -200px;
-    border-radius: 50%;
-    z-index: 0;
-  }
-`;
-
-const WorkflowIntro = styled(motion.p)`
-  font-size: 1.3rem;
-  line-height: 1.8;
-  color: var(--text-secondary);
-  margin-bottom: 3rem;
-  position: relative;
-  z-index: 1;
-`;
-
-const WorkflowStepsList = styled(motion.ul)`
-  list-style: none;
-  padding: 0;
-  margin: 0 0 3rem 0;
-  position: relative;
-  z-index: 1;
-`;
-
-const WorkflowStep = styled(motion.li)`
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 2.5rem;
-  padding: 1.5rem;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.03);
-  transition: all 0.3s ease;
-  position: relative;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.07);
-    transform: translateX(10px);
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    left: 50px;
-    top: 100%;
-    height: calc(2.5rem - 10px);
-    width: 2px;
-    background: linear-gradient(
-      to bottom,
-      rgba(94, 234, 212, 0.3),
-      transparent
-    );
-    z-index: 0;
-  }
-
-  &:last-child::after {
-    display: none;
-  }
-`;
-
-const WorkflowStepNumber = styled.div`
-  position: absolute;
-  top: -15px;
-  left: -15px;
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(
-    135deg,
-    var(--accent-color) 0%,
-    rgba(59, 130, 246, 0.8) 100%
-  );
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1.2rem;
-  z-index: 2;
-  box-shadow: 0 5px 15px rgba(94, 234, 212, 0.3);
-`;
-
-const WorkflowStepIcon = styled.div`
-  margin-right: 1.5rem;
-  position: relative;
-`;
-
-const WorkflowStepCircle = styled.div`
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  color: var(--accent-color);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-
-  ${WorkflowStep}:hover & {
-    background: rgba(94, 234, 212, 0.1);
-    transform: scale(1.1);
-  }
-`;
-
-const WorkflowStepContent = styled.div`
-  flex: 1;
-`;
-
-const WorkflowStepTitle = styled.h3`
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 0.8rem;
-`;
-
-const WorkflowStepDescription = styled.p`
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
-`;
-
-const WorkflowSummary = styled(motion.p)`
-  font-size: 1.5rem;
-  font-weight: 500;
-  line-height: 1.7;
-  color: var(--text-primary);
-  padding: 2rem;
-  background: linear-gradient(
-    90deg,
-    rgba(94, 234, 212, 0.1),
-    rgba(59, 130, 246, 0.1)
-  );
-  border-radius: 12px;
-  margin: 2rem 0 3rem;
-  position: relative;
-  z-index: 1;
-
-  &::before {
-    content: '"';
-    position: absolute;
-    top: 10px;
-    left: 15px;
-    font-size: 4rem;
-    color: rgba(94, 234, 212, 0.2);
-    font-family: serif;
-  }
-
-  &::after {
-    content: '"';
-    position: absolute;
-    bottom: 10px;
-    right: 15px;
-    font-size: 4rem;
-    color: rgba(94, 234, 212, 0.2);
-    font-family: serif;
-  }
-`;
-
-const ServicesBgDecoration = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: radial-gradient(
-      circle at 20% 30%,
-      rgba(94, 234, 212, 0.03) 0%,
-      transparent 25%
-    ),
-    radial-gradient(
-      circle at 80% 70%,
-      rgba(59, 130, 246, 0.03) 0%,
-      transparent 25%
-    );
-  z-index: 0;
-`;
-
-const ServicesBgGlow = styled.div`
-  position: absolute;
-  bottom: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 500px;
-  height: 300px;
-  background: radial-gradient(
-    ellipse,
-    rgba(94, 234, 212, 0.1) 0%,
-    transparent 70%
-  );
-  border-radius: 50%;
-  filter: blur(50px);
-  z-index: 0;
-`;
-
-const WhyUsSection = styled(motion.section)`
-  position: relative;
-  padding: 8rem 2rem;
-  background: linear-gradient(
-    180deg,
-    var(--bg-primary) 0%,
-    rgba(16, 24, 39, 1) 100%
-  );
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(
-        circle at 20% 30%,
-        rgba(94, 234, 212, 0.05) 0%,
-        transparent 20%
-      ),
-      radial-gradient(
-        circle at 80% 70%,
-        rgba(59, 130, 246, 0.05) 0%,
-        transparent 20%
-      );
-    top: 0;
-    left: 0;
-    z-index: 0;
-  }
-`;
-
-const WhyUsDiagonal = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 150px;
-  clip-path: polygon(0 0, 100% 0, 0 100%);
-  background: linear-gradient(135deg, var(--bg-primary) 0%, transparent 70%);
-  opacity: 0.5;
-  z-index: 1;
-`;
-
-const WhyUsContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-`;
-
-const WhyUsTitle = styled(motion.h2)`
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--accent-color);
-  margin-bottom: 2rem;
-  position: relative;
-  display: inline-block;
-  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 0;
-    width: 120px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent-color), transparent);
-    border-radius: 4px;
-  }
-`;
-
-const WhyUsIntro = styled(motion.p)`
-  font-size: 1.3rem;
-  line-height: 1.8;
-  color: var(--text-secondary);
-  margin-bottom: 3rem;
-  max-width: 900px;
-`;
-
-const BenefitsList = styled(motion.div)`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  padding: 1.5rem 0.5rem;
-
-  @media (max-width: 768px) {
-    padding-bottom: 2rem;
-    gap: 1.5rem;
-  }
-`;
-
-const BenefitCardGlow = styled.div`
-  position: absolute;
-  width: 150%;
-  height: 150%;
-  top: -25%;
-  left: -25%;
-  background: radial-gradient(
-    circle,
-    rgba(94, 234, 212, 0.06) 0%,
-    transparent 70%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.5s ease;
-  z-index: -1;
-  transform: scale(0.8);
-
-  ${BenefitItem}:hover & {
-    opacity: 1;
-    transform: scale(1);
-  }
-`;
-
-const ResultsSummary = styled(motion.div)`
-  background: rgba(16, 24, 39, 0.6);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 2.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  margin: 4rem auto 2rem;
-  max-width: 900px;
-  position: relative;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 5px;
-    height: 100%;
-    background: linear-gradient(
-      to bottom,
-      var(--accent-color),
-      rgba(59, 130, 246, 0.6)
-    );
-    border-radius: 5px 0 0 5px;
-  }
-`;
-
-const ResultsTitle = styled.h3`
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--accent-color);
-  margin-bottom: 1.5rem;
-`;
-
-const ResultsText = styled.p`
-  font-size: 1.2rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
-`;
-
-const ResultsHighlight = styled.span`
-  color: var(--accent-color);
-  font-weight: 600;
-  font-size: 1.3rem;
-  background: linear-gradient(90deg, rgba(94, 234, 212, 0.1), transparent);
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-`;
-
-const WhyUsAction = styled(motion.div)`
-  display: flex;
-  justify-content: center;
-  margin-top: 4rem;
-`;
-
-const PulsingButton = styled(motion.button)`
-  padding: 1.2rem 3.5rem;
-  font-size: 1.3rem;
-  font-weight: 600;
-  background: linear-gradient(
-    90deg,
-    var(--accent-color),
-    rgba(59, 130, 246, 0.9)
-  );
-  color: white;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  box-shadow: 0 8px 25px rgba(94, 234, 212, 0.3);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(
-      circle,
-      rgba(255, 255, 255, 0.2) 0%,
-      transparent 60%
-    );
-    z-index: -1;
-    animation: ${pulseRing} 4s infinite;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.3),
-      transparent
-    );
-    transition: all 0.6s ease;
-  }
-
-  &:hover::after {
-    left: 100%;
-  }
-
-  .glow-effect {
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: conic-gradient(
-      from 0deg,
-      transparent,
-      rgba(94, 234, 212, 0.3),
-      transparent
-    );
-    border-radius: 50%;
-    animation: ${spinGlow} 3s linear infinite;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  &:hover .glow-effect {
-    opacity: 1;
-  }
-`;
-
-const WhyUsBackgroundShapes = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 0;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    z-index: 0;
-  }
-
-  &::before {
-    top: 20%;
-    left: -100px;
-    background: radial-gradient(
-      circle,
-      rgba(59, 130, 246, 0.03) 0%,
-      transparent 70%
-    );
-    filter: blur(50px);
-    animation: ${circleFloat} 8s ease-in-out infinite;
-  }
-
-  &::after {
-    bottom: 10%;
-    right: -100px;
-    background: radial-gradient(
-      circle,
-      rgba(94, 234, 212, 0.03) 0%,
-      transparent 70%
-    );
-    filter: blur(50px);
-    animation: ${circleFloat} 8s ease-in-out infinite 4s;
-  }
-`;
-
-const CardAccent = styled.div`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 60px;
-  height: 60px;
-  border-radius: 0 0 20px 0;
-  background: linear-gradient(
-    135deg,
-    transparent 50%,
-    rgba(94, 234, 212, 0.1) 50%
-  );
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  transform: scale(0);
-
-  ${BenefitItem}:hover & {
-    opacity: 1;
-    transform: scale(1);
-  }
-`;
-
-const CtaSection = styled(motion.section)`
-  position: relative;
-  padding: 8rem 2rem;
-  background: linear-gradient(
-    180deg,
-    rgba(16, 24, 39, 1) 0%,
-    var(--bg-primary) 100%
-  );
-  overflow: hidden;
-`;
-
-const CtaWaveTop = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background: linear-gradient(
-    to bottom right,
-    rgba(16, 24, 39, 1) 49%,
-    transparent 51%
-  );
-  z-index: 1;
-`;
-
-const CtaContainer = styled.div`
-  max-width: 900px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-`;
-
-const CtaGlowCircle = styled.div`
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  z-index: 0;
-
-  &.circle-1 {
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(
-      circle,
-      rgba(94, 234, 212, 0.08) 0%,
-      transparent 70%
-    );
-    top: -100px;
-    right: -200px;
-  }
-
-  &.circle-2 {
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(
-      circle,
-      rgba(59, 130, 246, 0.08) 0%,
-      transparent 70%
-    );
-    bottom: -200px;
-    left: -200px;
-  }
-`;
-
-const CtaContent = styled.div`
-  background: rgba(16, 24, 39, 0.7);
-  backdrop-filter: blur(20px);
-  border-radius: 24px;
-  padding: 3.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(
-      90deg,
-      var(--accent-color),
-      rgba(59, 130, 246, 0.8)
-    );
-    z-index: 1;
-  }
-
-  @media (max-width: 768px) {
-    padding: 2.5rem 1.5rem;
-  }
-`;
-
-const CtaTitle = styled(motion.h2)`
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: var(--accent-color);
-  margin-bottom: 2rem;
-  text-align: center;
-
-  @media (max-width: 768px) {
-    font-size: 2.2rem;
-  }
-`;
-
-const CtaText = styled(motion.p)`
-  font-size: 1.2rem;
-  line-height: 1.8;
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-  text-align: center;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-const CtaHighlight = styled(motion.div)`
-  font-size: 1.4rem;
-  font-weight: 600;
-  line-height: 1.5;
-  color: var(--text-primary);
-  text-align: center;
-  margin: 2.5rem 0;
-  padding: 1.5rem;
-  background: linear-gradient(
-    90deg,
-    rgba(94, 234, 212, 0.1),
-    rgba(59, 130, 246, 0.1)
-  );
-  border-radius: 12px;
-`;
-
-const CtaForm = styled(motion.form)`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  max-width: 600px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-`;
-
-const CtaInputWrapper = styled.div`
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-`;
-
-const CtaInputBg = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.03);
-  z-index: -1;
-  transition: all 0.3s ease;
-
-  ${CtaInputWrapper}:hover & {
-    background: rgba(255, 255, 255, 0.06);
-  }
-
-  ${CtaInputWrapper}:focus-within & {
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 0 2px rgba(94, 234, 212, 0.3);
-  }
-`;
-
-const CtaInput = styled.input`
-  width: 100%;
-  padding: 1.2rem 1.5rem;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: var(--text-primary);
-  font-size: 1.1rem;
-  z-index: 1;
-  position: relative;
-
-  &::placeholder {
-    color: rgba(255, 255, 255, 0.4);
-  }
-`;
-
-const FormCtaButton = styled(motion.button)`
-  padding: 1.3rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  background: linear-gradient(
-    90deg,
-    var(--accent-color),
-    rgba(59, 130, 246, 0.9)
-  );
-  color: white;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  margin-top: 1rem;
-  box-shadow: 0 8px 20px rgba(94, 234, 212, 0.2);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    transition: all 0.6s ease;
-  }
-
-  &:hover::before {
-    left: 100%;
-  }
-`;
-
-// Styled components for form messages
-const FormMessage = styled(motion.div)`
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  text-align: center;
-  font-weight: 500;
-  margin-bottom: 1rem;
-  border: 1px solid;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-`;
-
-const ErrorMessage = styled(FormMessage)`
-  color: #ff6b6b;
-  background: rgba(255, 107, 107, 0.1);
-  border-color: rgba(255, 107, 107, 0.2);
   
-  &::before {
-    content: '⚠️';
-    margin-right: 0.5rem;
+  @media (max-width: 768px) {
+    padding: 1.5rem;
   }
-`;
-
-const SuccessMessage = styled(FormMessage)`
-  color: #5eead4;
-  background: rgba(94, 234, 212, 0.1);
-  border-color: rgba(94, 234, 212, 0.2);
   
-  &::before {
-    content: '✅';
-    margin-right: 0.5rem;
+  @media (max-width: 576px) {
+    padding: 1rem;
+    border-radius: 12px;
   }
-`;
-
-const CtaFooterText = styled(motion.p)`
-  font-size: 1rem;
-  color: var(--text-secondary);
-  opacity: 0.8;
-  text-align: center;
-  margin-top: 2.5rem;
-`;
-
-const CtaDecoration = styled.div`
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border: 2px solid rgba(94, 234, 212, 0.1);
-  border-radius: 50%;
-  top: -100px;
-  right: -100px;
 
   &::before {
     content: '';
     position: absolute;
-    width: 300px;
-    height: 300px;
-    border: 1px dashed rgba(94, 234, 212, 0.1);
-    border-radius: 50%;
-    top: -50px;
-    left: -50px;
-    z-index: 0;
-    animation: ${rotate} 30s linear infinite;
-  }
-`;
-
-const FaqSection = styled(motion.section)`
-  position: relative;
-  padding: 8rem 2rem;
-  background: linear-gradient(
-    180deg,
-    var(--bg-primary) 0%,
-    rgba(16, 24, 39, 0.9) 100%
-  );
-  overflow: hidden;
-  z-index: 0;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
     width: 100%;
     height: 100%;
+    top: 0;
+    left: 0;
     background: radial-gradient(
       ellipse at top right,
       rgba(94, 234, 212, 0.08) 0%,
@@ -1800,6 +866,21 @@ const FaqTitle = styled(motion.h2)`
   text-align: center;
   position: relative;
   text-shadow: 0 2px 10px rgba(94, 234, 212, 0.2);
+  
+  @media (max-width: 992px) {
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
 
   &::before {
     content: 'F.A.Q';
@@ -1813,6 +894,16 @@ const FaqTitle = styled(motion.h2)`
     letter-spacing: 5px;
     z-index: -1;
     white-space: nowrap;
+    
+    @media (max-width: 768px) {
+      font-size: 4rem;
+      top: -25px;
+    }
+    
+    @media (max-width: 576px) {
+      font-size: 3rem;
+      top: -20px;
+    }
   }
 
   &::after {
@@ -1831,6 +922,12 @@ const FaqTitle = styled(motion.h2)`
     );
     border-radius: 4px;
     animation: ${pulse} 2s infinite ease-in-out;
+    
+    @media (max-width: 576px) {
+      width: 60px;
+      height: 3px;
+      bottom: -10px;
+    }
   }
 `;
 
@@ -1839,6 +936,16 @@ const FaqList = styled(motion.div)`
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 4rem;
+  
+  @media (max-width: 768px) {
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  
+  @media (max-width: 576px) {
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const FaqItem = styled(motion.div)`
@@ -1851,6 +958,14 @@ const FaqItem = styled(motion.div)`
   transition: all 0.3s ease;
   transform-style: preserve-3d;
   perspective: 1000px;
+  
+  @media (max-width: 768px) {
+    border-radius: 12px;
+  }
+  
+  @media (max-width: 576px) {
+    border-radius: 8px;
+  }
 
   &:hover {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 15px rgba(94, 234, 212, 0.1);
@@ -1871,6 +986,14 @@ const FaqQuestion = styled(motion.div)`
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1.2rem 1rem;
+  }
 
   &::before {
     content: '';
@@ -1906,6 +1029,16 @@ const FaqQuestion = styled(motion.div)`
       rgba(255, 255, 255, 0.05),
       transparent
     );
+    
+    @media (max-width: 768px) {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+    
+    @media (max-width: 576px) {
+      left: 1rem;
+      right: 1rem;
+    }
   }
 `;
 
@@ -1916,6 +1049,14 @@ const FaqQuestionText = styled.h3`
   transition: all 0.3s ease;
   flex: 1;
   transform: translateZ(5px);
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1rem;
+  }
 
   ${FaqQuestion}:hover & {
     color: var(--accent-color);
@@ -1950,6 +1091,18 @@ const FaqAnswer = styled(motion.div)`
   overflow: hidden;
   position: relative;
   animation: ${fadeInScale} 0.4s ease forwards;
+  
+  @media (max-width: 768px) {
+    padding: 0 1.5rem 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 0 1rem 1.2rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
 
   &::before {
     content: '';
@@ -1964,6 +1117,16 @@ const FaqAnswer = styled(motion.div)`
       rgba(255, 255, 255, 0.1),
       transparent
     );
+    
+    @media (max-width: 768px) {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+    
+    @media (max-width: 576px) {
+      left: 1rem;
+      right: 1rem;
+    }
   }
 
   strong {
@@ -1975,6 +1138,10 @@ const FaqAnswer = styled(motion.div)`
     margin-top: 0.8rem;
     margin-bottom: 0.8rem;
     padding-left: 1.5rem;
+    
+    @media (max-width: 576px) {
+      padding-left: 1rem;
+    }
   }
 
   li {
@@ -1986,11 +1153,19 @@ const FaqAnswer = styled(motion.div)`
       color: var(--accent-color);
       position: absolute;
       left: -1rem;
+      
+      @media (max-width: 576px) {
+        left: -0.8rem;
+      }
     }
   }
 
   p {
     margin-bottom: 0.8rem;
+    
+    @media (max-width: 576px) {
+      margin-bottom: 0.6rem;
+    }
   }
 
   .highlight {
@@ -2003,6 +1178,11 @@ const FaqAnswer = styled(motion.div)`
     border-radius: 4px;
     margin: 0 0.2rem;
     position: relative;
+    
+    @media (max-width: 576px) {
+      padding: 0.1rem 0.3rem;
+      margin: 0 0.1rem;
+    }
 
     &::before {
       content: '';
@@ -2037,6 +1217,25 @@ const FaqCta = styled(motion.div)`
   position: relative;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  isolation: isolate;
+  
+  @media (max-width: 768px) {
+    padding: 2.5rem 2rem;
+    gap: 1rem;
+    margin-top: 2rem;
+    border-radius: 16px;
+    backdrop-filter: none;
+    background: rgba(16, 24, 39, 0.8);
+  }
+  
+  @media (max-width: 576px) {
+    padding: 2rem 1.5rem;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+    border-radius: 12px;
+    backdrop-filter: none;
+    background: rgba(16, 24, 39, 0.9);
+  }
 
   &::before {
     content: '';
@@ -2051,6 +1250,7 @@ const FaqCta = styled(motion.div)`
       rgba(59, 130, 246, 0.8)
     );
     z-index: 1;
+    pointer-events: none;
   }
 
   &::after {
@@ -2066,6 +1266,7 @@ const FaqCta = styled(motion.div)`
       transparent 50%
     );
     z-index: -1;
+    pointer-events: none;
   }
 `;
 
@@ -2075,17 +1276,21 @@ const FaqCtaText = styled.p`
   color: var(--text-primary);
   text-align: center;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.1rem;
+  }
 `;
 
-const FaqCtaButton = styled(motion.button)`
+const FaqCtaButton = styled.button`
   padding: 1.2rem 3rem;
   font-size: 1.2rem;
   font-weight: 600;
-  background: linear-gradient(
-    90deg,
-    var(--accent-color),
-    rgba(59, 130, 246, 0.9)
-  );
+  background: linear-gradient(90deg, #06b6d4, #3b82f6);
   color: white;
   border: none;
   border-radius: 50px;
@@ -2093,42 +1298,43 @@ const FaqCtaButton = styled(motion.button)`
   box-shadow: 0 8px 20px rgba(94, 234, 212, 0.2);
   transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    transition: all 0.6s ease;
+  z-index: 9999;
+  display: block;
+  margin: 0 auto;
+  
+  /* Мобильные оптимизации */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+  pointer-events: auto;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(94, 234, 212, 0.4);
   }
 
-  &:hover::before {
-    left: 100%;
+  &:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 10px rgba(94, 234, 212, 0.3);
   }
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
+  
+  @media (max-width: 768px) {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
     width: 100%;
-    height: 8px;
-    background: linear-gradient(
-      90deg,
-      rgba(59, 130, 246, 0.5),
-      var(--accent-color)
-    );
-    filter: blur(5px);
-    opacity: 0.5;
+    max-width: 320px;
+    
+    /* Убираем hover на мобильных */
+    &:hover {
+      transform: none;
+      box-shadow: 0 8px 20px rgba(94, 234, 212, 0.2);
+    }
+  }
+  
+  @media (max-width: 576px) {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    max-width: 280px;
   }
 `;
 
@@ -2169,6 +1375,1271 @@ const FaqDecoration = styled.div`
     top: 30%;
     left: 20%;
     animation: ${pulse} 3s infinite ease-in-out;
+  }
+`;
+
+// CTA Button Component
+const CtaButton = styled(motion.button)`
+  padding: 1.3rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.9));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 1rem;
+  box-shadow: 0 8px 20px rgba(94, 234, 212, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.6s ease;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 1.1rem 2.5rem;
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+`;
+
+// Benefit Components
+const BenefitIconWrapper = styled.div`
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(
+    135deg,
+    var(--accent-color) 0%,
+    rgba(59, 130, 246, 0.8) 100%
+  );
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: white;
+  font-size: 2rem;
+  box-shadow: 0 10px 20px rgba(94, 234, 212, 0.3);
+  transition: transform 0.3s ease;
+  
+  @media (max-width: 768px) {
+    width: 70px;
+    height: 70px;
+    font-size: 1.8rem;
+  }
+  
+  @media (max-width: 576px) {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+`;
+
+const BenefitContent = styled.div`
+  flex: 1;
+`;
+
+const BenefitCardTitle = styled.h3`
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+`;
+
+const BenefitCardDescription = styled.p`
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
+  }
+`;
+
+const BenefitsDecoration = styled.div`
+  position: absolute;
+  top: 20%;
+  right: -150px;
+  width: 300px;
+  height: 300px;
+  border: 2px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: ${rotate} 20s linear infinite;
+  z-index: 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgba(94, 234, 212, 0.1);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ${rotate} 15s linear infinite reverse;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    top: 10%;
+    right: 20%;
+    animation: ${pulse} 2s infinite ease-in-out;
+  }
+`;
+
+// Workflow Section Components
+const WorkflowSection = styled(motion.section)`
+  background: linear-gradient(
+    180deg,
+    var(--bg-secondary) 0%,
+    var(--bg-primary) 100%
+  );
+  position: relative;
+  padding: 8rem 2rem;
+  overflow: hidden;
+  
+  @media (max-width: 992px) {
+    padding: 6rem 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 4rem 1rem;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at 30% 20%,
+        rgba(94, 234, 212, 0.08) 0%,
+        transparent 25%
+      ),
+      radial-gradient(
+        circle at 70% 80%,
+        rgba(59, 130, 246, 0.08) 0%,
+        transparent 25%
+      );
+    z-index: 1;
+  }
+`;
+
+const ServicesWave = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom right, var(--bg-primary) 49%, transparent 51%);
+  z-index: 2;
+`;
+
+const WorkflowContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3;
+  
+  @media (max-width: 992px) {
+    padding: 0 1rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 0 0.5rem;
+  }
+`;
+
+const WorkflowTitle = styled(motion.h2)`
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  
+  @media (max-width: 992px) {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+    border-radius: 4px;
+    
+    @media (max-width: 576px) {
+      width: 80px;
+      height: 3px;
+      bottom: -10px;
+    }
+  }
+`;
+
+const WorkflowContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  
+  @media (max-width: 768px) {
+    gap: 2rem;
+  }
+  
+  @media (max-width: 576px) {
+    gap: 1.5rem;
+  }
+`;
+
+const WorkflowIntro = styled(motion.p)`
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1rem;
+  }
+`;
+
+const WorkflowStepsList = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin: 3rem 0;
+  
+  @media (max-width: 768px) {
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+  
+  @media (max-width: 576px) {
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+`;
+
+const WorkflowStep = styled(motion.div)`
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  background: rgba(16, 24, 39, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  
+  @media (max-width: 768px) {
+    padding: 2rem;
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1.5rem;
+    gap: 1rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  &:hover {
+    border-color: rgba(94, 234, 212, 0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+  }
+`;
+
+const WorkflowStepNumber = styled.div`
+  width: 60px;
+  height: 60px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: 0 10px 20px rgba(94, 234, 212, 0.3);
+  
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+`;
+
+const WorkflowStepIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+`;
+
+const WorkflowStepCircle = styled.div`
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(94, 234, 212, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--accent-color);
+  
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+`;
+
+const WorkflowStepContent = styled.div`
+  flex: 1;
+`;
+
+const WorkflowStepTitle = styled.h3`
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+`;
+
+const WorkflowStepDescription = styled.p`
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  
+  @media (max-width: 576px) {
+    font-size: 1rem;
+  }
+`;
+
+const WorkflowSummary = styled(motion.p)`
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8;
+  color: var(--text-primary);
+  text-align: center;
+  max-width: 800px;
+  margin: 3rem auto 0;
+  padding: 2rem;
+  background: rgba(94, 234, 212, 0.05);
+  border-radius: 16px;
+  border-left: 4px solid var(--accent-color);
+  
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin: 2rem auto 0;
+    padding: 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1rem;
+    margin: 1.5rem auto 0;
+    padding: 1rem;
+  }
+`;
+
+const ServicesBgDecoration = styled.div`
+  position: absolute;
+  bottom: 10%;
+  left: -100px;
+  width: 200px;
+  height: 200px;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: ${rotate} 25s linear infinite;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 1px solid rgba(94, 234, 212, 0.1);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ${rotate} 20s linear infinite reverse;
+  }
+`;
+
+const ServicesBgGlow = styled.div`
+  position: absolute;
+  top: 30%;
+  right: -150px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.05) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: ${floatVertical} 12s infinite ease-in-out;
+  z-index: 0;
+`;
+
+// WhyUs Section Components
+const WhyUsSection = styled(motion.section)`
+  position: relative;
+  padding: 8rem 2rem;
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,
+    rgba(16, 24, 39, 1) 100%
+  );
+  overflow: hidden;
+  
+  @media (max-width: 992px) {
+    padding: 6rem 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 4rem 1rem;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at 20% 30%,
+        rgba(94, 234, 212, 0.05) 0%,
+        transparent 20%
+      ),
+      radial-gradient(
+        circle at 80% 70%,
+        rgba(59, 130, 246, 0.05) 0%,
+        transparent 20%
+      );
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+`;
+
+const WhyUsDiagonal = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  background: linear-gradient(135deg, var(--bg-primary) 0%, transparent 70%);
+  opacity: 0.5;
+  z-index: 1;
+`;
+
+const WhyUsContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  
+  @media (max-width: 992px) {
+    padding: 0 1rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 0 0.5rem;
+  }
+`;
+
+const WhyUsTitle = styled(motion.h2)`
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  
+  @media (max-width: 992px) {
+    font-size: 2.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), transparent);
+    border-radius: 4px;
+    
+    @media (max-width: 576px) {
+      width: 80px;
+      height: 3px;
+      bottom: -10px;
+    }
+  }
+`;
+
+const WhyUsIntro = styled(motion.p)`
+  font-size: 1.3rem;
+  color: var(--text-secondary);
+  margin-bottom: 4rem;
+  max-width: 800px;
+  line-height: 1.6;
+  
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+`;
+
+const BenefitsList = styled(motion.div)`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  @media (max-width: 576px) {
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+`;
+
+const BenefitItem = styled(motion.div)`
+  background: rgba(16, 24, 39, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  z-index: 1;
+  height: 100%;
+  
+  @media (max-width: 768px) {
+    padding: 2rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
+      rgba(59, 130, 246, 0.8)
+    );
+    z-index: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    background: linear-gradient(to top, rgba(94, 234, 212, 0.03), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+`;
+
+const BenefitCardGlow = styled.div`
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  background: radial-gradient(
+    circle,
+    rgba(94, 234, 212, 0.06) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.5s ease;
+  z-index: -1;
+  transform: scale(0.8);
+
+  ${BenefitItem}:hover & {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
+
+const CardAccent = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 0 0 20px 0;
+  background: linear-gradient(
+    135deg,
+    transparent 50%,
+    rgba(94, 234, 212, 0.1) 50%
+  );
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: scale(0.8);
+
+  ${BenefitItem}:hover & {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
+
+const ResultsSummary = styled(motion.div)`
+  background: rgba(16, 24, 39, 0.4);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 4rem;
+  text-align: center;
+  
+  @media (max-width: 768px) {
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+`;
+
+const ResultsTitle = styled.h3`
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-bottom: 1.5rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+`;
+
+const ResultsText = styled.p`
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  
+  @media (max-width: 576px) {
+    font-size: 1rem;
+  }
+`;
+
+const ResultsHighlight = styled.span`
+  color: var(--accent-color);
+  font-weight: 600;
+  background: linear-gradient(90deg, rgba(94, 234, 212, 0.1), rgba(59, 130, 246, 0.1));
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+`;
+
+const WhyUsAction = styled(motion.div)`
+  text-align: center;
+  
+  @media (max-width: 576px) {
+    margin-top: 1rem;
+  }
+`;
+
+const PulsingButton = styled(motion.button)`
+  padding: 1.2rem 3rem;
+  background: linear-gradient(
+    135deg,
+    var(--accent-color) 0%,
+    rgba(59, 130, 246, 0.9) 100%
+  );
+  border: none;
+  border-radius: 50px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(94, 234, 212, 0.3);
+  
+  @media (max-width: 768px) {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+
+  .glow-effect {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.6s ease;
+  }
+
+  &:hover .glow-effect {
+    left: 100%;
+  }
+`;
+
+const WhyUsBackgroundShapes = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(
+      circle,
+      rgba(94, 234, 212, 0.05) 0%,
+      transparent 70%
+    );
+    border-radius: 50%;
+    animation: ${floatVertical} 8s infinite ease-in-out;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 30%;
+    right: -15%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(
+      circle,
+      rgba(59, 130, 246, 0.05) 0%,
+      transparent 70%
+    );
+    border-radius: 50%;
+    animation: ${floatVertical} 10s infinite ease-in-out reverse;
+  }
+  
+  @media (max-width: 992px) {
+    &::before {
+      width: 200px;
+      height: 200px;
+    }
+    
+    &::after {
+      width: 250px;
+      height: 250px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    &::before {
+      width: 150px;
+      height: 150px;
+      left: -20%;
+    }
+    
+    &::after {
+      width: 180px;
+      height: 180px;
+      right: -25%;
+    }
+  }
+`;
+
+// CTA Section Components
+const CtaSection = styled(motion.section)`
+  position: relative;
+  padding: 120px 0;
+  background: linear-gradient(
+    135deg,
+    var(--bg-secondary) 0%,
+    #1e1b2e 40%,
+    #2a1f3d 100%
+  );
+  overflow: hidden;
+  border-top: 1px solid rgba(147, 51, 234, 0.2);
+  
+  @media (max-width: 992px) {
+    padding: 80px 0;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 60px 0;
+  }
+`;
+
+const CtaWaveTop = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom right, var(--bg-primary) 49%, transparent 51%);
+  z-index: 1;
+`;
+
+const CtaContainer = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+  
+  @media (max-width: 992px) {
+    max-width: 700px;
+    padding: 0 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 0 1rem;
+  }
+`;
+
+const CtaGlowCircle = styled.div`
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(94, 234, 212, 0.1) 0%,
+    transparent 70%
+  );
+  animation: ${glow} 4s infinite alternate;
+  
+  &.circle-1 {
+    width: 400px;
+    height: 400px;
+    top: 10%;
+    left: -10%;
+  }
+  
+  &.circle-2 {
+    width: 300px;
+    height: 300px;
+    bottom: 10%;
+    right: -10%;
+    animation-delay: 2s;
+  }
+  
+  @media (max-width: 992px) {
+    &.circle-1 {
+      width: 300px;
+      height: 300px;
+    }
+    
+    &.circle-2 {
+      width: 250px;
+      height: 250px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    &.circle-1 {
+      width: 200px;
+      height: 200px;
+      top: 5%;
+    }
+    
+    &.circle-2 {
+      width: 150px;
+      height: 150px;
+      bottom: 5%;
+    }
+  }
+`;
+
+const CtaContent = styled.div`
+  background: rgba(16, 24, 39, 0.7);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 3.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.8));
+    z-index: 1;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 2.5rem 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 2rem 1rem;
+  }
+`;
+
+const CtaTitle = styled(motion.h2)`
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 2rem;
+  text-align: center;
+  
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+`;
+
+const CtaText = styled(motion.p)`
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  
+  @media (max-width: 576px) {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+`;
+
+const CtaHighlight = styled(motion.div)`
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-primary);
+  text-align: center;
+  margin: 2.5rem 0;
+  padding: 1.5rem;
+  background: linear-gradient(90deg, rgba(94, 234, 212, 0.1), rgba(59, 130, 246, 0.1));
+  border-radius: 12px;
+  
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+    margin: 2rem 0;
+    padding: 1.2rem;
+  }
+`;
+
+const CtaForm = styled(motion.form)`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  position: relative;
+  z-index: 2;
+  
+  @media (max-width: 576px) {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+`;
+
+const CtaInputWrapper = styled.div`
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+`;
+
+const CtaInputBg = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  z-index: -1;
+  transition: all 0.3s ease;
+  
+  ${CtaInputWrapper}:hover & {
+    background: rgba(255, 255, 255, 0.06);
+  }
+  
+  ${CtaInputWrapper}:focus-within & {
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 2px rgba(94, 234, 212, 0.3);
+  }
+`;
+
+const CtaInput = styled.input`
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  z-index: 1;
+  position: relative;
+  
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+    transition: color 0.3s ease;
+  }
+  
+  &:focus::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
+  }
+`;
+
+const FormCtaButton = styled(motion.button)`
+  padding: 1.3rem 2rem;
+  background: linear-gradient(
+    135deg,
+    var(--accent-color) 0%,
+    rgba(59, 130, 246, 0.9) 100%
+  );
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.6s ease;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1.1rem 1.5rem;
+    font-size: 1.1rem;
+  }
+`;
+
+const CtaFooterText = styled(motion.p)`
+  font-size: 1rem;
+  color: var(--text-secondary);
+  opacity: 0.8;
+  text-align: center;
+  margin-top: 2.5rem;
+  
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
+    margin-top: 2rem;
+  }
+`;
+
+const CtaDecoration = styled.div`
+  position: absolute;
+  top: 50%;
+  right: -200px;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(94, 234, 212, 0.05) 50%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  transform: translateY(-50%);
+  animation: ${floatVertical} 6s infinite ease-in-out;
+  
+  @media (max-width: 992px) {
+    right: -150px;
+    width: 250px;
+    height: 250px;
+  }
+  
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+// Error and Success Messages
+const ErrorMessage = styled(motion.div)`
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  padding: 1rem;
+  color: #fca5a5;
+  text-align: center;
+  margin-bottom: 1rem;
+  
+  @media (max-width: 576px) {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+`;
+
+const SuccessMessage = styled(motion.div)`
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 8px;
+  padding: 1rem;
+  color: #86efac;
+  text-align: center;
+  margin-bottom: 1rem;
+  
+  @media (max-width: 576px) {
+    padding: 0.8rem;
+    font-size: 0.9rem;
   }
 `;
 
@@ -2334,6 +2805,13 @@ const BusinessAutomationPage = () => {
     }
   };
 
+  const handleMobileClick = (e) => {
+    console.log('Button clicked!', e.type, e.target);
+    e.preventDefault();
+    e.stopPropagation();
+    openModal();
+  };
+
   return (
     <Container>
       <HeroSection
@@ -2466,7 +2944,7 @@ const BusinessAutomationPage = () => {
           <CtaButton
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            onClick={openModal}
+            onClick={handleMobileClick}
           >
             Дізнатися більше
           </CtaButton>
@@ -2631,7 +3109,7 @@ const BusinessAutomationPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
-            onClick={openModal}
+            onClick={handleMobileClick}
           >
             Почати оптимізацію бізнесу
           </CtaButton>
@@ -2843,7 +3321,7 @@ const BusinessAutomationPage = () => {
             <PulsingButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-              onClick={openModal}
+              onClick={handleMobileClick}
             >
               <span className="glow-effect"></span>
               Розпочати автоматизацію
@@ -3106,12 +3584,9 @@ const BusinessAutomationPage = () => {
               Маєте додаткові запитання щодо автоматизації бізнес-процесів?
             </FaqCtaText>
             <FaqCtaButton
-              whileHover={{
-                scale: 1.05,
-                boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)',
-              }}
-              whileTap={{ scale: 0.98 }}
-              onClick={openModal}
+              onClick={handleMobileClick}
+              onTouchStart={handleMobileClick}
+              type="button"
             >
               Зв'язатися з експертом
             </FaqCtaButton>
@@ -3146,5 +3621,45 @@ const itemVariants = {
     transition: { duration: 0.8, ease: 'easeOut' },
   },
 };
+
+// Стили для блока FAQ
+const FaqSection = styled(motion.section)`
+  position: relative;
+  padding: 8rem 2rem;
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,
+    rgba(16, 24, 39, 0.9) 100%
+  );
+  overflow: hidden;
+  z-index: 0;
+  
+  @media (max-width: 992px) {
+    padding: 6rem 1.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 5rem 1rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 4rem 1rem;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      ellipse at top right,
+      rgba(94, 234, 212, 0.08) 0%,
+      transparent 70%
+    );
+    z-index: -1;
+  }
+`;
 
 export default BusinessAutomationPage;
