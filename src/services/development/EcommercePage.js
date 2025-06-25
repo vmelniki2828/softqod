@@ -72,6 +72,14 @@ const PageContainer = styled.div`
   color: var(--text-primary);
   position: relative;
   overflow: hidden;
+
+  @media (max-width: 1024px) {
+    padding-top: 80px;
+  }
+
+  @media (max-width: 768px) {
+    padding-top: 70px;
+  }
 `;
 
 const HeroSection = styled(motion.div)`
@@ -84,6 +92,21 @@ const HeroSection = styled(motion.div)`
   align-items: center;
   overflow: hidden;
   padding: 2rem;
+
+  @media (max-width: 1024px) {
+    min-height: 90vh;
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    min-height: 80vh;
+    padding: 1rem;
+  }
+
+  @media (max-width: 576px) {
+    min-height: 70vh;
+    padding: 0.8rem;
+  }
 `;
 
 const Background = styled.div`
@@ -167,8 +190,20 @@ const Title = styled(motion.h1)`
   letter-spacing: -0.5px;
   text-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
+  @media (max-width: 1024px) {
+    font-size: 3.5rem;
+    margin-bottom: 1.8rem;
+  }
+
   @media (max-width: 768px) {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+    letter-spacing: -0.3px;
   }
 
   &::after {
@@ -181,6 +216,16 @@ const Title = styled(motion.h1)`
     height: 3px;
     background: var(--accent-color);
     border-radius: 3px;
+
+    @media (max-width: 768px) {
+      width: 80px;
+      height: 2px;
+    }
+
+    @media (max-width: 576px) {
+      width: 60px;
+      height: 2px;
+    }
   }
 `;
 
@@ -194,9 +239,24 @@ const Subtitle = styled(motion.p)`
   z-index: 1;
   line-height: 1.8;
 
+  @media (max-width: 1024px) {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+  }
+
   @media (max-width: 768px) {
     font-size: 1.2rem;
     padding: 0 1rem;
+    margin: 0 auto 2rem;
+    max-width: 600px;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.1rem;
+    padding: 0 0.8rem;
+    margin: 0 auto 1.5rem;
+    line-height: 1.6;
   }
 `;
 
@@ -207,9 +267,27 @@ const PhoneContainer = styled(motion.div)`
   perspective: 1000px;
   margin: 0 auto;
 
+  @media (max-width: 1024px) {
+    width: 280px;
+    height: 460px;
+  }
+
   @media (max-width: 768px) {
-    width: 220px;
+    width: 280px;
+    height: 480px;
+    margin: 2rem auto;
+  }
+
+  @media (max-width: 576px) {
+    width: 260px;
+    height: 440px;
+    margin: 1.5rem auto;
+  }
+
+  @media (max-width: 480px) {
+    width: 240px;
     height: 400px;
+    margin: 1rem auto;
   }
 `;
 
@@ -255,6 +333,28 @@ const Phone = styled(motion.div)`
     );
     z-index: 1;
   }
+
+  @media (max-width: 768px) {
+    border-radius: 32px;
+    box-shadow: 0 0 40px rgba(94, 234, 212, 0.4);
+    
+    &::before {
+      top: 15px;
+      height: 20px;
+      width: 35%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    border-radius: 28px;
+    box-shadow: 0 0 30px rgba(94, 234, 212, 0.5);
+    
+    &::before {
+      top: 12px;
+      height: 18px;
+      width: 30%;
+    }
+  }
 `;
 
 const PhoneScreen = styled(motion.div)`
@@ -269,6 +369,22 @@ const PhoneScreen = styled(motion.div)`
   display: flex;
   flex-direction: column;
   z-index: 2;
+
+  @media (max-width: 768px) {
+    top: 8%;
+    left: 4%;
+    width: 92%;
+    height: 84%;
+    border-radius: 18px;
+  }
+
+  @media (max-width: 480px) {
+    top: 7%;
+    left: 3.5%;
+    width: 93%;
+    height: 86%;
+    border-radius: 16px;
+  }
 `;
 
 const StoreHeader = styled.div`
@@ -277,6 +393,14 @@ const StoreHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px) {
+    padding: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.6rem 0.8rem;
+  }
 `;
 
 const StoreLogo = styled.div`
@@ -288,6 +412,24 @@ const StoreLogo = styled.div`
 
   svg {
     margin-right: 8px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    
+    svg {
+      margin-right: 6px;
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    
+    svg {
+      margin-right: 4px;
+      font-size: 0.9rem;
+    }
   }
 `;
 
@@ -308,6 +450,33 @@ const StoreSearch = styled.div`
     color: rgba(255, 255, 255, 0.8);
     font-size: 0.8rem;
   }
+
+  @media (max-width: 768px) {
+    padding: 0.4rem 0.8rem;
+    border-radius: 16px;
+    
+    &::after {
+      font-size: 0.75rem;
+    }
+    
+    svg {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.3rem 0.6rem;
+    border-radius: 14px;
+    
+    &::after {
+      font-size: 0.7rem;
+    }
+    
+    svg {
+      font-size: 0.8rem;
+      margin-right: 3px;
+    }
+  }
 `;
 
 const StoreContent = styled.div`
@@ -318,6 +487,16 @@ const StoreContent = styled.div`
   padding: 1rem;
   background: #f8fafc;
   overflow-y: auto;
+
+  @media (max-width: 768px) {
+    gap: 0.7rem;
+    padding: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.6rem;
+    padding: 0.6rem;
+  }
 `;
 
 const ProductCard = styled(motion.div)`
@@ -329,6 +508,16 @@ const ProductCard = styled(motion.div)`
   align-items: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border: 1px solid #f1f5f9;
+
+  @media (max-width: 768px) {
+    padding: 0.7rem;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+    border-radius: 8px;
+  }
 `;
 
 const ProductImage = styled.div`
@@ -345,6 +534,27 @@ const ProductImage = styled.div`
     color: var(--accent-color);
     font-size: 1.5rem;
   }
+
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0.6rem;
+    
+    svg {
+      font-size: 1.3rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.5rem;
+    border-radius: 6px;
+    
+    svg {
+      font-size: 1.1rem;
+    }
+  }
 `;
 
 const ProductTitle = styled.div`
@@ -353,12 +563,32 @@ const ProductTitle = styled.div`
   font-size: 0.8rem;
   margin-bottom: 0.3rem;
   text-align: center;
+  line-height: 1.2;
+
+  @media (max-width: 768px) {
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
+    margin-bottom: 0.2rem;
+    line-height: 1.1;
+  }
 `;
 
 const ProductPrice = styled.div`
   color: var(--accent-color);
   font-weight: bold;
   font-size: 0.9rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const StoreFooter = styled.div`
@@ -367,6 +597,14 @@ const StoreFooter = styled.div`
   padding: 0.8rem;
   background: #f1f5f9;
   border-top: 1px solid #e2e8f0;
+
+  @media (max-width: 768px) {
+    padding: 0.7rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+  }
 `;
 
 const FooterItem = styled.div`
@@ -379,6 +617,24 @@ const FooterItem = styled.div`
   svg {
     margin-bottom: 4px;
     font-size: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.75rem;
+    
+    svg {
+      font-size: 1.1rem;
+      margin-bottom: 3px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
+    
+    svg {
+      font-size: 1rem;
+      margin-bottom: 2px;
+    }
   }
 `;
 
@@ -474,28 +730,20 @@ const EcommerceWhyUsSection = styled(motion.section)`
   background: linear-gradient(
     180deg,
     var(--bg-primary) 0%,
-    rgba(16, 24, 39, 1) 100%
+    rgba(16, 24, 39, 0.9) 100%
   );
   overflow: hidden;
 
-  &::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(
-        circle at 20% 30%,
-        rgba(94, 234, 212, 0.05) 0%,
-        transparent 20%
-      ),
-      radial-gradient(
-        circle at 80% 70%,
-        rgba(59, 130, 246, 0.05) 0%,
-        transparent 20%
-      );
-    top: 0;
-    left: 0;
-    z-index: 0;
+  @media (max-width: 1024px) {
+    padding: 6rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 3rem 0.8rem;
   }
 `;
 
@@ -532,6 +780,26 @@ const FaqCta = styled(motion.div)`
   position: relative;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 1024px) {
+    padding: 2.5rem;
+    gap: 1.3rem;
+    margin-top: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+    gap: 1.2rem;
+    margin-top: 2rem;
+    border-radius: 16px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 1.5rem;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    border-radius: 14px;
+  }
 
   &::before {
     content: '';
@@ -570,6 +838,18 @@ const FaqCtaText = styled.p`
   color: var(--text-primary);
   text-align: center;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 1024px) {
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const FaqCtaButton = styled(motion.button)`
@@ -589,6 +869,21 @@ const FaqCtaButton = styled(motion.button)`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+
+  @media (max-width: 1024px) {
+    padding: 1.1rem 2.8rem;
+    font-size: 1.15rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
 
   &::before {
     content: '';
@@ -628,23 +923,51 @@ const FaqCtaButton = styled(motion.button)`
 `;
 
 const WhyUsTitle = styled(motion.h2)`
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: 4rem;
+  font-weight: 800;
   color: var(--accent-color);
-  margin-bottom: 1.5rem;
+  margin-bottom: 6rem;
   position: relative;
-  display: inline-block;
+  text-align: center;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 1024px) {
+    font-size: 3.2rem;
+    margin-bottom: 5rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
 
   &::after {
     content: '';
     position: absolute;
-    bottom: -15px;
-    left: 0;
-    width: 120px;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
     height: 4px;
-    background: linear-gradient(90deg, var(--accent-color), transparent);
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
     border-radius: 4px;
+
+    @media (max-width: 768px) {
+      width: 120px;
+      height: 3px;
+      bottom: -15px;
+    }
+
+    @media (max-width: 576px) {
+      width: 100px;
+      height: 2px;
+      bottom: -10px;
+    }
   }
 `;
 
@@ -654,6 +977,25 @@ const WhyUsSubtitle = styled(motion.h3)`
   margin-bottom: 4rem;
   max-width: 800px;
   line-height: 1.6;
+
+  @media (max-width: 1024px) {
+    font-size: 1.3rem;
+    margin-bottom: 3rem;
+    max-width: 700px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 100%;
+    line-height: 1.5;
+  }
 `;
 
 const WhyUsCardsContainer = styled(motion.div)`
@@ -662,8 +1004,21 @@ const WhyUsCardsContainer = styled(motion.div)`
   gap: 2.5rem;
   margin-bottom: 4rem;
 
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (max-width: 576px) {
+    gap: 1.2rem;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -680,6 +1035,21 @@ const WhyUsCard = styled(motion.div)`
   overflow: hidden;
   z-index: 1;
   height: 100%;
+
+  @media (max-width: 1024px) {
+    padding: 2rem;
+    border-radius: 16px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.8rem;
+    border-radius: 14px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
 
   &::before {
     content: '';
@@ -757,6 +1127,27 @@ const WhyUsIconWrapper = styled.div`
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 
+  @media (max-width: 1024px) {
+    font-size: 2.2rem;
+    width: 65px;
+    height: 65px;
+    margin-bottom: 1.3rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1.2rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.8rem;
+    width: 55px;
+    height: 55px;
+    margin-bottom: 1rem;
+  }
+
   ${WhyUsCard}:hover & {
     transform: scale(1.1);
   }
@@ -779,6 +1170,21 @@ const WhyUsCardTitle = styled.h3`
   font-weight: 600;
   position: relative;
 
+  @media (max-width: 1024px) {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -788,6 +1194,16 @@ const WhyUsCardTitle = styled.h3`
     height: 2px;
     background: var(--accent-color);
     border-radius: 2px;
+
+    @media (max-width: 768px) {
+      width: 35px;
+      bottom: -8px;
+    }
+
+    @media (max-width: 576px) {
+      width: 30px;
+      bottom: -6px;
+    }
   }
 `;
 
@@ -796,6 +1212,24 @@ const WhyUsCardDescription = styled.p`
   line-height: 1.7;
   color: var(--text-secondary);
   margin-top: 1rem;
+
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 0.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-top: 0.7rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-top: 0.6rem;
+  }
 `;
 
 const CardAccent = styled.div`
@@ -815,6 +1249,16 @@ const CardAccent = styled.div`
   transition: opacity 0.3s ease, transform 0.3s ease;
   transform: scale(0);
 
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+  }
+
+  @media (max-width: 576px) {
+    width: 40px;
+    height: 40px;
+  }
+
   ${WhyUsCard}:hover & {
     opacity: 1;
     transform: scale(1);
@@ -825,6 +1269,14 @@ const WhyUsAction = styled(motion.div)`
   display: flex;
   justify-content: center;
   margin-top: 4rem;
+
+  @media (max-width: 768px) {
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 576px) {
+    margin-top: 2rem;
+  }
 `;
 
 const PulsingButton = styled(motion.button)`
@@ -844,6 +1296,21 @@ const PulsingButton = styled(motion.button)`
   overflow: hidden;
   z-index: 1;
   box-shadow: 0 8px 25px rgba(94, 234, 212, 0.3);
+
+  @media (max-width: 1024px) {
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.9rem 2.5rem;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
 
   &::before {
     content: '';
@@ -899,6 +1366,16 @@ const WhyUsBackgroundShapes = styled.div`
     height: 400px;
     border-radius: 50%;
     z-index: 0;
+
+    @media (max-width: 768px) {
+      width: 300px;
+      height: 300px;
+    }
+
+    @media (max-width: 576px) {
+      width: 200px;
+      height: 200px;
+    }
   }
 
   &::before {
@@ -910,6 +1387,14 @@ const WhyUsBackgroundShapes = styled.div`
       transparent 70%
     );
     filter: blur(50px);
+
+    @media (max-width: 768px) {
+      left: -75px;
+    }
+
+    @media (max-width: 576px) {
+      left: -50px;
+    }
   }
 
   &::after {
@@ -921,6 +1406,14 @@ const WhyUsBackgroundShapes = styled.div`
       transparent 70%
     );
     filter: blur(50px);
+
+    @media (max-width: 768px) {
+      right: -75px;
+    }
+
+    @media (max-width: 576px) {
+      right: -50px;
+    }
   }
 `;
 
@@ -933,6 +1426,18 @@ const EcommerceFeaturesSection = styled(motion.section)`
     var(--bg-primary) 100%
   );
   overflow: hidden;
+
+  @media (max-width: 1024px) {
+    padding: 6rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 3rem 0.8rem;
+  }
 `;
 
 const FeaturesWave = styled.div`
@@ -951,6 +1456,19 @@ const FeaturesContainer = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 2;
+
+  @media (max-width: 1024px) {
+    max-width: 900px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 0 0.5rem;
+  }
 `;
 
 const FeaturesGlowCircle = styled.div`
@@ -969,6 +1487,20 @@ const FeaturesGlowCircle = styled.div`
     );
     top: -100px;
     left: -200px;
+
+    @media (max-width: 768px) {
+      width: 350px;
+      height: 350px;
+      top: -75px;
+      left: -150px;
+    }
+
+    @media (max-width: 576px) {
+      width: 250px;
+      height: 250px;
+      top: -50px;
+      left: -100px;
+    }
   }
 
   &.circle-2 {
@@ -981,6 +1513,20 @@ const FeaturesGlowCircle = styled.div`
     );
     bottom: -200px;
     right: -200px;
+
+    @media (max-width: 768px) {
+      width: 400px;
+      height: 400px;
+      bottom: -150px;
+      right: -150px;
+    }
+
+    @media (max-width: 576px) {
+      width: 300px;
+      height: 300px;
+      bottom: -100px;
+      right: -100px;
+    }
   }
 `;
 
@@ -993,6 +1539,21 @@ const FeaturesTitle = styled(motion.h2)`
   display: inline-block;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
+  @media (max-width: 1024px) {
+    font-size: 2.5rem;
+    margin-bottom: 1.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -1002,10 +1563,18 @@ const FeaturesTitle = styled(motion.h2)`
     height: 4px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
-  }
 
-  @media (max-width: 768px) {
-    font-size: 2.5rem;
+    @media (max-width: 768px) {
+      width: 100px;
+      height: 3px;
+      bottom: -12px;
+    }
+
+    @media (max-width: 576px) {
+      width: 80px;
+      height: 2px;
+      bottom: -10px;
+    }
   }
 `;
 
@@ -1170,6 +1739,18 @@ const EcommerceStagesSection = styled(motion.section)`
     var(--bg-secondary) 100%
   );
   overflow: hidden;
+
+  @media (max-width: 1024px) {
+    padding: 8rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 6rem 1rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 4rem 0.8rem;
+  }
 `;
 
 const EcommercePricingSection = styled(motion.section)`
@@ -1182,6 +1763,18 @@ const EcommercePricingSection = styled(motion.section)`
   );
   overflow: hidden;
 
+  @media (max-width: 1024px) {
+    padding: 6rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 3rem 0.8rem;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -1191,6 +1784,14 @@ const EcommercePricingSection = styled(motion.section)`
     height: 150px;
     background: linear-gradient(to top, transparent, var(--bg-secondary));
     z-index: 1;
+
+    @media (max-width: 768px) {
+      height: 100px;
+    }
+
+    @media (max-width: 576px) {
+      height: 80px;
+    }
   }
 `;
 
@@ -1210,6 +1811,19 @@ const PricingContainer = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 2;
+
+  @media (max-width: 1024px) {
+    max-width: 900px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 0 0.5rem;
+  }
 `;
 
 const PricingTitle = styled(motion.h2)`
@@ -1221,6 +1835,21 @@ const PricingTitle = styled(motion.h2)`
   display: inline-block;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
+  @media (max-width: 1024px) {
+    font-size: 2.5rem;
+    margin-bottom: 1.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -1230,6 +1859,18 @@ const PricingTitle = styled(motion.h2)`
     height: 4px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
+
+    @media (max-width: 768px) {
+      width: 100px;
+      height: 3px;
+      bottom: -12px;
+    }
+
+    @media (max-width: 576px) {
+      width: 80px;
+      height: 2px;
+      bottom: -10px;
+    }
   }
 `;
 
@@ -1237,6 +1878,14 @@ const PricingContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
+
+  @media (max-width: 768px) {
+    gap: 2rem;
+  }
+
+  @media (max-width: 576px) {
+    gap: 1.5rem;
+  }
 `;
 
 const PricingCard = styled(motion.div)`
@@ -1248,6 +1897,21 @@ const PricingCard = styled(motion.div)`
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
+
+  @media (max-width: 1024px) {
+    padding: 2.5rem;
+    border-radius: 16px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+    border-radius: 14px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
 
   &::before {
     content: '';
@@ -1263,6 +1927,20 @@ const PricingCard = styled(motion.div)`
     right: -200px;
     border-radius: 50%;
     z-index: 0;
+
+    @media (max-width: 768px) {
+      width: 300px;
+      height: 300px;
+      top: -150px;
+      right: -150px;
+    }
+
+    @media (max-width: 576px) {
+      width: 200px;
+      height: 200px;
+      top: -100px;
+      right: -100px;
+    }
   }
 `;
 
@@ -1273,6 +1951,23 @@ const PricingText = styled(motion.p)`
   margin-bottom: 2rem;
   position: relative;
   z-index: 1;
+
+  @media (max-width: 1024px) {
+    font-size: 1.15rem;
+    margin-bottom: 1.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+  }
 `;
 
 const PricingFactorsContainer = styled(motion.div)`
@@ -1280,6 +1975,22 @@ const PricingFactorsContainer = styled(motion.div)`
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   margin: 3rem 0;
+
+  @media (max-width: 1024px) {
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin: 2rem 0;
+  }
+
+  @media (max-width: 576px) {
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
 `;
 
 const PricingFactor = styled(motion.div)`
@@ -1290,10 +2001,24 @@ const PricingFactor = styled(motion.div)`
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
 
+  @media (max-width: 768px) {
+    padding: 1.2rem;
+    border-radius: 14px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
   &:hover {
     transform: translateY(-10px);
     border-color: rgba(94, 234, 212, 0.2);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+
+    @media (max-width: 768px) {
+      transform: translateY(-5px);
+    }
   }
 `;
 
@@ -1313,24 +2038,66 @@ const PricingFactorIcon = styled.div`
   color: white;
   margin-bottom: 1rem;
   box-shadow: 0 8px 15px rgba(94, 234, 212, 0.2);
+
+  @media (max-width: 768px) {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+
+  @media (max-width: 576px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
 `;
 
 const PricingFactorTitle = styled.h3`
   font-size: 1.2rem;
   color: var(--text-primary);
   margin-bottom: 0.8rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const PricingFactorDescription = styled.p`
   font-size: 1rem;
   line-height: 1.6;
   color: var(--text-secondary);
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
 `;
 
 const PricingCTA = styled(motion.div)`
   display: flex;
   justify-content: center;
   margin-top: 3rem;
+
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 576px) {
+    margin-top: 1.5rem;
+  }
 `;
 
 const PriceDependenciesSection = styled(motion.div)`
@@ -1341,6 +2108,18 @@ const PriceDependenciesSection = styled(motion.div)`
   border: 1px solid rgba(255, 255, 255, 0.05);
   position: relative;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border-radius: 14px;
+  }
+
+  @media (max-width: 576px) {
+    margin: 1.5rem 0;
+    padding: 1.2rem;
+    border-radius: 12px;
+  }
 
   &:hover {
     border-color: rgba(94, 234, 212, 0.2);
@@ -1361,6 +2140,20 @@ const PriceDependenciesSection = styled(motion.div)`
     left: -150px;
     border-radius: 50%;
     z-index: 0;
+
+    @media (max-width: 768px) {
+      width: 200px;
+      height: 200px;
+      bottom: -100px;
+      left: -100px;
+    }
+
+    @media (max-width: 576px) {
+      width: 150px;
+      height: 150px;
+      bottom: -75px;
+      left: -75px;
+    }
   }
 `;
 
@@ -1371,6 +2164,16 @@ const PriceDependenciesTitle = styled.h3`
   position: relative;
   z-index: 1;
 
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -1380,6 +2183,18 @@ const PriceDependenciesTitle = styled.h3`
     height: 3px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 2px;
+
+    @media (max-width: 768px) {
+      width: 60px;
+      height: 2px;
+      bottom: -6px;
+    }
+
+    @media (max-width: 576px) {
+      width: 50px;
+      height: 2px;
+      bottom: -5px;
+    }
   }
 `;
 
@@ -1399,16 +2214,29 @@ const PriceDependencyItem = styled(motion.li)`
   line-height: 1.6;
   color: var(--text-secondary);
 
-  &:last-child {
-    margin-bottom: 0;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
   }
 
   &::before {
     content: '•';
     color: var(--accent-color);
-    font-size: 1.5rem;
-    margin-right: 0.8rem;
-    line-height: 1.3;
+    font-weight: bold;
+    margin-right: 1rem;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+
+    @media (max-width: 576px) {
+      margin-right: 0.8rem;
+    }
   }
 `;
 
@@ -1422,6 +2250,18 @@ const EcommerceFaqSection = styled(motion.section)`
   );
   overflow: hidden;
   z-index: 0;
+
+  @media (max-width: 1024px) {
+    padding: 6rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 3rem 0.8rem;
+  }
 
   &::before {
     content: '';
@@ -1459,6 +2299,19 @@ const FaqContainer = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 2;
+
+  @media (max-width: 1024px) {
+    max-width: 800px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 0 0.5rem;
+  }
 `;
 
 const FaqGlowCircle = styled.div`
@@ -1478,6 +2331,18 @@ const FaqGlowCircle = styled.div`
     top: 10%;
     left: -200px;
     animation: ${floatVertical} 15s infinite ease-in-out;
+
+    @media (max-width: 768px) {
+      width: 300px;
+      height: 300px;
+      left: -150px;
+    }
+
+    @media (max-width: 576px) {
+      width: 200px;
+      height: 200px;
+      left: -100px;
+    }
   }
 
   &.circle-2 {
@@ -1491,6 +2356,18 @@ const FaqGlowCircle = styled.div`
     bottom: 5%;
     right: -200px;
     animation: ${floatVertical} 18s infinite ease-in-out reverse;
+
+    @media (max-width: 768px) {
+      width: 350px;
+      height: 350px;
+      right: -150px;
+    }
+
+    @media (max-width: 576px) {
+      width: 250px;
+      height: 250px;
+      right: -100px;
+    }
   }
 `;
 
@@ -1502,6 +2379,21 @@ const FaqTitle = styled(motion.h2)`
   text-align: center;
   position: relative;
   text-shadow: 0 2px 10px rgba(94, 234, 212, 0.2);
+
+  @media (max-width: 1024px) {
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
 
   &::before {
     content: 'F.A.Q';
@@ -1515,6 +2407,24 @@ const FaqTitle = styled(motion.h2)`
     letter-spacing: 5px;
     z-index: -1;
     white-space: nowrap;
+
+    @media (max-width: 1024px) {
+      font-size: 4rem;
+      top: -25px;
+      letter-spacing: 4px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 3rem;
+      top: -20px;
+      letter-spacing: 3px;
+    }
+
+    @media (max-width: 576px) {
+      font-size: 2.5rem;
+      top: -15px;
+      letter-spacing: 2px;
+    }
   }
 
   &::after {
@@ -1533,6 +2443,18 @@ const FaqTitle = styled(motion.h2)`
     );
     border-radius: 4px;
     animation: ${pulse} 2s infinite ease-in-out;
+
+    @media (max-width: 768px) {
+      width: 60px;
+      height: 3px;
+      bottom: -12px;
+    }
+
+    @media (max-width: 576px) {
+      width: 50px;
+      height: 2px;
+      bottom: -10px;
+    }
   }
 `;
 
@@ -1541,6 +2463,16 @@ const FaqList = styled(motion.div)`
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 4rem;
+
+  @media (max-width: 768px) {
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 576px) {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const FaqItem = styled(motion.div)`
@@ -1554,10 +2486,22 @@ const FaqItem = styled(motion.div)`
   transform-style: preserve-3d;
   perspective: 1000px;
 
+  @media (max-width: 768px) {
+    border-radius: 12px;
+  }
+
+  @media (max-width: 576px) {
+    border-radius: 10px;
+  }
+
   &:hover {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 15px rgba(94, 234, 212, 0.1);
     border-color: rgba(94, 234, 212, 0.1);
     transform: translateY(-3px);
+
+    @media (max-width: 768px) {
+      transform: translateY(-2px);
+    }
   }
 `;
 
@@ -1573,6 +2517,14 @@ const FaqQuestion = styled(motion.div)`
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1.5rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 1.2rem 1rem;
+  }
 
   &::before {
     content: '';
@@ -1608,6 +2560,16 @@ const FaqQuestion = styled(motion.div)`
       rgba(255, 255, 255, 0.05),
       transparent
     );
+
+    @media (max-width: 768px) {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+
+    @media (max-width: 576px) {
+      left: 1rem;
+      right: 1rem;
+    }
   }
 `;
 
@@ -1618,6 +2580,14 @@ const FaqQuestionText = styled.h3`
   transition: all 0.3s ease;
   flex: 1;
   transform: translateZ(5px);
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1rem;
+  }
 
   ${FaqQuestion}:hover & {
     color: var(--accent-color);
@@ -1638,6 +2608,18 @@ const FaqToggle = styled(motion.div)`
   border-radius: 50%;
   transition: all 0.3s ease;
 
+  @media (max-width: 768px) {
+    width: 24px;
+    height: 24px;
+    margin-left: 0.8rem;
+  }
+
+  @media (max-width: 576px) {
+    width: 20px;
+    height: 20px;
+    margin-left: 0.6rem;
+  }
+
   &:hover {
     background: rgba(94, 234, 212, 0.1);
     box-shadow: 0 0 10px rgba(94, 234, 212, 0.2);
@@ -1652,6 +2634,18 @@ const FaqAnswer = styled(motion.div)`
   overflow: hidden;
   position: relative;
 
+  @media (max-width: 768px) {
+    padding: 0 1.5rem 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 576px) {
+    padding: 0 1rem 1.2rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -1665,6 +2659,16 @@ const FaqAnswer = styled(motion.div)`
       rgba(255, 255, 255, 0.1),
       transparent
     );
+
+    @media (max-width: 768px) {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+
+    @media (max-width: 576px) {
+      left: 1rem;
+      right: 1rem;
+    }
   }
 
   strong {
@@ -1676,6 +2680,10 @@ const FaqAnswer = styled(motion.div)`
     margin-top: 0.8rem;
     margin-bottom: 0.8rem;
     padding-left: 1.5rem;
+
+    @media (max-width: 576px) {
+      padding-left: 1.2rem;
+    }
   }
 
   li {
@@ -1728,7 +2736,19 @@ const EcommercePage = () => {
   const [stars, setStars] = useState([]);
   const [expandedFaqs, setExpandedFaqs] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== 'undefined' ? window.innerWidth : 1024
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
@@ -2334,14 +3354,14 @@ const EcommercePage = () => {
           }}
         >
           <motion.h2
-            initial={{ opacity: 0, y: -30 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             style={{
-              fontSize: '4rem',
+              fontSize: window.innerWidth <= 768 ? '2.5rem' : window.innerWidth <= 1024 ? '3.2rem' : '4rem',
               fontWeight: 800,
               color: 'var(--accent-color)',
-              marginBottom: '6rem',
+              marginBottom: window.innerWidth <= 768 ? '3rem' : '6rem',
               position: 'relative',
               textAlign: 'center',
               textShadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
@@ -2354,14 +3374,14 @@ const EcommercePage = () => {
                 bottom: '-20px',
                 left: '50%',
                 transform: 'translateX(-50%)',
-                width: '150px',
+                width: window.innerWidth <= 768 ? '100px' : '150px',
                 height: '4px',
                 background:
                   'linear-gradient(90deg, transparent, var(--accent-color), transparent)',
                 borderRadius: '4px',
               }}
               animate={{
-                width: ['0%', '150px'],
+                width: ['0%', window.innerWidth <= 768 ? '100px' : '150px'],
                 opacity: [0, 1],
               }}
               transition={{ duration: 1, delay: 0.3 }}
@@ -2373,11 +3393,12 @@ const EcommercePage = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             style={{
-              fontSize: '1.3rem',
-              maxWidth: '1000px',
+              fontSize: window.innerWidth <= 768 ? '1.1rem' : '1.3rem',
+              maxWidth: window.innerWidth <= 768 ? '90%' : '1000px',
               textAlign: 'center',
-              margin: '0 auto 4rem',
+              margin: window.innerWidth <= 768 ? '0 auto 2rem' : '0 auto 4rem',
               color: 'var(--text-secondary)',
+              padding: window.innerWidth <= 768 ? '0 1rem' : '0',
             }}
           >
             Ми працюємо поетапно, прозоро й системно — щоб ви розуміли, на якому
@@ -2441,90 +3462,173 @@ const EcommercePage = () => {
                   }}
                   style={{
                     display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    gap: '2rem',
-                    padding: '2rem',
-                    width: '1000px',
-                    height: '180px',
+                    alignItems: window.innerWidth <= 768 ? 'flex-start' : 'center',
+                    justifyContent: window.innerWidth <= 768 ? 'flex-start' : 'space-between',
+                    flexDirection: window.innerWidth <= 768 ? 'column' : 'row',
+                    gap: window.innerWidth <= 768 ? '1.5rem' : '2rem',
+                    padding: window.innerWidth <= 768 ? '1.5rem' : '2rem',
+                    width: window.innerWidth <= 768 ? '95%' : window.innerWidth <= 1024 ? '90%' : '1000px',
+                    maxWidth: window.innerWidth <= 768 ? '400px' : 'none',
+                    height: window.innerWidth <= 768 ? 'auto' : '180px',
+                    minHeight: window.innerWidth <= 768 ? '300px' : '180px',
                     background: 'rgba(16, 24, 39, 0.2)',
                     backdropFilter: 'blur(5px)',
                     borderRadius: '20px',
                     border: '1px solid rgba(255, 255, 255, 0.05)',
                     boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+                    margin: window.innerWidth <= 768 ? '0 auto' : '0',
                   }}
                   whileHover={{
-                    scale: 1.02,
+                    scale: window.innerWidth <= 768 ? 1.01 : 1.02,
                     transition: { duration: 0.3 },
                     boxShadow: '0 15px 40px rgba(0, 0, 0, 0.2)',
                     border: '1px solid rgba(94, 234, 212, 0.2)',
                   }}
                 >
-                  {/* Номер этапа */}
-                  <motion.div
-                    style={{
-                      width: '100px',
-                      height: '100px',
+                  {/* Верхняя строка на мобильном: номер и иконка */}
+                  {window.innerWidth <= 768 && (
+                    <div style={{
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '4rem',
-                      fontWeight: '900',
-                      color: 'rgba(94, 234, 212, 0.8)',
-                      textShadow: '0 2px 10px rgba(94, 234, 212, 0.4)',
-                      flexShrink: 0,
-                    }}
-                  >
-                    {index + 1}
-                  </motion.div>
+                      justifyContent: 'space-between',
+                      width: '100%',
+                      marginBottom: '1rem'
+                    }}>
+                      {/* Номер этапа */}
+                      <motion.div
+                        style={{
+                          width: '60px',
+                          height: '60px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '2.5rem',
+                          fontWeight: '900',
+                          color: 'rgba(94, 234, 212, 0.8)',
+                          textShadow: '0 2px 10px rgba(94, 234, 212, 0.4)',
+                          flexShrink: 0,
+                        }}
+                      >
+                        {index + 1}
+                      </motion.div>
 
-                  {/* Иконка */}
-                  <motion.div
-                    style={{
-                      width: '120px',
-                      height: '120px',
-                      borderRadius: '50%',
-                      background:
-                        'linear-gradient(135deg, var(--accent-color) 0%, rgba(59, 130, 246, 0.8) 100%)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '2.5rem',
-                      color: 'white',
-                      boxShadow: '0 10px 30px rgba(94, 234, 212, 0.4)',
-                      position: 'relative',
-                      flexShrink: 0,
-                    }}
-                    whileHover={{
-                      boxShadow: '0 15px 40px rgba(94, 234, 212, 0.6)',
-                      scale: 1.05,
-                      transition: { duration: 0.3 },
-                    }}
-                  >
-                    {/* Пульсирующий круг вокруг иконки */}
+                      {/* Иконка */}
+                      <motion.div
+                        style={{
+                          width: '80px',
+                          height: '80px',
+                          borderRadius: '50%',
+                          background:
+                            'linear-gradient(135deg, var(--accent-color) 0%, rgba(59, 130, 246, 0.8) 100%)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '1.8rem',
+                          color: 'white',
+                          boxShadow: '0 10px 30px rgba(94, 234, 212, 0.4)',
+                          position: 'relative',
+                          flexShrink: 0,
+                        }}
+                        whileHover={{
+                          boxShadow: '0 15px 40px rgba(94, 234, 212, 0.6)',
+                          scale: 1.05,
+                          transition: { duration: 0.3 },
+                        }}
+                      >
+                        {/* Пульсирующий круг вокруг иконки */}
+                        <motion.div
+                          style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            borderRadius: '50%',
+                            border: '2px solid rgba(94, 234, 212, 0.5)',
+                          }}
+                          animate={{
+                            scale: [1, 1.2, 1],
+                            opacity: [0.5, 0, 0.5],
+                          }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: 'easeInOut',
+                          }}
+                        />
+                        {step.icon}
+                      </motion.div>
+                    </div>
+                  )}
+
+                  {/* Десктопная версия номера */}
+                  {window.innerWidth > 768 && (
                     <motion.div
                       style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        borderRadius: '50%',
-                        border: '2px solid rgba(94, 234, 212, 0.5)',
+                        width: window.innerWidth <= 1024 ? '80px' : '100px',
+                        height: window.innerWidth <= 1024 ? '80px' : '100px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: window.innerWidth <= 1024 ? '3rem' : '4rem',
+                        fontWeight: '900',
+                        color: 'rgba(94, 234, 212, 0.8)',
+                        textShadow: '0 2px 10px rgba(94, 234, 212, 0.4)',
+                        flexShrink: 0,
                       }}
-                      animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.5, 0, 0.5],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: 'easeInOut',
-                      }}
-                    />
+                    >
+                      {index + 1}
+                    </motion.div>
+                  )}
 
-                    {step.icon}
-                  </motion.div>
+                  {/* Десктопная версия иконки */}
+                  {window.innerWidth > 768 && (
+                    <motion.div
+                      style={{
+                        width: window.innerWidth <= 1024 ? '100px' : '120px',
+                        height: window.innerWidth <= 1024 ? '100px' : '120px',
+                        borderRadius: '50%',
+                        background:
+                          'linear-gradient(135deg, var(--accent-color) 0%, rgba(59, 130, 246, 0.8) 100%)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: window.innerWidth <= 1024 ? '2rem' : '2.5rem',
+                        color: 'white',
+                        boxShadow: '0 10px 30px rgba(94, 234, 212, 0.4)',
+                        position: 'relative',
+                        flexShrink: 0,
+                      }}
+                      whileHover={{
+                        boxShadow: '0 15px 40px rgba(94, 234, 212, 0.6)',
+                        scale: 1.05,
+                        transition: { duration: 0.3 },
+                      }}
+                    >
+                      {/* Пульсирующий круг вокруг иконки */}
+                      <motion.div
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          right: 0,
+                          bottom: 0,
+                          borderRadius: '50%',
+                          border: '2px solid rgba(94, 234, 212, 0.5)',
+                        }}
+                        animate={{
+                          scale: [1, 1.2, 1],
+                          opacity: [0.5, 0, 0.5],
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: 'easeInOut',
+                        }}
+                      />
+                      {step.icon}
+                    </motion.div>
+                  )}
 
                   {/* Текстовый блок */}
                   <motion.div
@@ -2532,11 +3636,12 @@ const EcommercePage = () => {
                       background: 'rgba(10, 15, 25, 0.85)',
                       backdropFilter: 'blur(10px)',
                       borderRadius: '20px',
-                      padding: '1.5rem 2rem',
+                      padding: window.innerWidth <= 768 ? '1rem 1.5rem' : '1.5rem 2rem',
                       border: '1px solid rgba(94, 234, 212, 0.3)',
                       boxShadow: '0 15px 40px rgba(0, 0, 0, 0.3)',
-                      width: 'calc(100% - 250px)',
-                      height: '160px',
+                      width: window.innerWidth <= 768 ? '100%' : window.innerWidth <= 1024 ? 'calc(100% - 200px)' : 'calc(100% - 250px)',
+                      height: window.innerWidth <= 768 ? 'auto' : '160px',
+                      minHeight: window.innerWidth <= 768 ? '120px' : '160px',
                       display: 'flex',
                       flexDirection: 'column',
                       justifyContent: 'center',
@@ -2544,11 +3649,12 @@ const EcommercePage = () => {
                   >
                     <h3
                       style={{
-                        fontSize: '1.5rem',
+                        fontSize: window.innerWidth <= 768 ? '1.2rem' : window.innerWidth <= 1024 ? '1.3rem' : '1.5rem',
                         fontWeight: 700,
-                        marginBottom: '0.8rem',
+                        marginBottom: window.innerWidth <= 768 ? '0.5rem' : '0.8rem',
                         color: '#FFFFFF',
                         textShadow: '0 2px 5px rgba(0, 0, 0, 0.5)',
+                        lineHeight: window.innerWidth <= 768 ? '1.3' : '1.4',
                       }}
                     >
                       {step.title}
@@ -2556,8 +3662,8 @@ const EcommercePage = () => {
 
                     <p
                       style={{
-                        fontSize: '1rem',
-                        lineHeight: 1.5,
+                        fontSize: window.innerWidth <= 768 ? '0.9rem' : '1rem',
+                        lineHeight: window.innerWidth <= 768 ? 1.4 : 1.5,
                         color: '#FFFFFF',
                         overflow: 'hidden',
                         textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)',
@@ -2573,13 +3679,14 @@ const EcommercePage = () => {
                   <motion.div
                     style={{
                       width: '4px',
-                      height: '5rem',
+                      height: window.innerWidth <= 768 ? '3rem' : '5rem',
                       background:
                         'linear-gradient(to bottom, var(--accent-color), rgba(59, 130, 246, 0.1))',
                       borderRadius: '4px',
+                      margin: window.innerWidth <= 768 ? '0 auto' : '0',
                     }}
                     initial={{ height: 0 }}
-                    animate={{ height: '5rem' }}
+                    animate={{ height: window.innerWidth <= 768 ? '3rem' : '5rem' }}
                     transition={{ duration: 0.8, delay: index * 0.3 + 0.5 }}
                   />
                 )}
@@ -2598,15 +3705,15 @@ const EcommercePage = () => {
             whileTap={{ scale: 0.95 }}
             onClick={openModal}
             style={{
-              padding: '1rem 2.5rem',
-              fontSize: '1.2rem',
+              padding: window.innerWidth <= 768 ? '0.8rem 2rem' : '1rem 2.5rem',
+              fontSize: window.innerWidth <= 768 ? '1rem' : '1.2rem',
               fontWeight: 'bold',
               background: 'var(--accent-color)',
               color: 'white',
               border: 'none',
               borderRadius: '12px',
               cursor: 'pointer',
-              margin: '5rem auto 0',
+              margin: window.innerWidth <= 768 ? '3rem auto 0' : '5rem auto 0',
               zIndex: 1,
               position: 'relative',
               display: 'block',
@@ -2664,8 +3771,8 @@ const EcommercePage = () => {
                 animate="visible"
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(2, 1fr)',
-                  gap: '2rem',
+                  gridTemplateColumns: windowWidth <= 768 ? '1fr' : 'repeat(2, 1fr)',
+                  gap: windowWidth <= 480 ? '1rem' : windowWidth <= 768 ? '1.2rem' : '2rem',
                 }}
               >
                 <PricingFactor variants={itemVariants}>
