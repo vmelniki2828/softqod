@@ -809,7 +809,7 @@ const FaqWaveTop = styled.div`
   left: 0;
   width: 100%;
   height: 120px;
-  background: linear-gradient(
+    background: linear-gradient(
     to top left,
     transparent 49%,
     var(--bg-primary) 51%
@@ -829,7 +829,7 @@ const FaqGlowCircle = styled.div`
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-  z-index: 0;
+    z-index: 0;
 
   &.circle-1 {
     width: 400px;
@@ -879,7 +879,7 @@ const FaqTitle = styled(motion.h2)`
   
   @media (max-width: 576px) {
     font-size: 2rem;
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
   }
 
   &::before {
@@ -912,7 +912,7 @@ const FaqTitle = styled(motion.h2)`
     bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
+  width: 80px;
     height: 4px;
     background: linear-gradient(
       90deg,
@@ -1131,7 +1131,7 @@ const FaqAnswer = styled(motion.div)`
 
   strong {
     color: var(--accent-color);
-    font-weight: 600;
+  font-weight: 600;
   }
 
   ul {
@@ -1244,9 +1244,9 @@ const FaqCta = styled(motion.div)`
     left: 0;
     width: 100%;
     height: 5px;
-    background: linear-gradient(
-      90deg,
-      var(--accent-color),
+  background: linear-gradient(
+    90deg,
+    var(--accent-color),
       rgba(59, 130, 246, 0.8)
     );
     z-index: 1;
@@ -1393,7 +1393,7 @@ const CtaButton = styled(motion.button)`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -1404,7 +1404,7 @@ const CtaButton = styled(motion.button)`
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: all 0.6s ease;
   }
-  
+
   &:hover::before {
     left: 100%;
   }
@@ -1686,7 +1686,7 @@ const WorkflowStep = styled(motion.div)`
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
   position: relative;
-  
+
   @media (max-width: 768px) {
     padding: 2rem;
     gap: 1.5rem;
@@ -1729,7 +1729,7 @@ const WorkflowStepNumber = styled.div`
   @media (max-width: 576px) {
     width: 40px;
     height: 40px;
-    font-size: 1.2rem;
+  font-size: 1.2rem;
   }
 `;
 
@@ -1781,7 +1781,7 @@ const WorkflowStepTitle = styled.h3`
   
   @media (max-width: 576px) {
     font-size: 1.3rem;
-    margin-bottom: 0.8rem;
+  margin-bottom: 0.8rem;
   }
 `;
 
@@ -1978,7 +1978,7 @@ const WhyUsIntro = styled(motion.p)`
   
   @media (max-width: 768px) {
     font-size: 1.2rem;
-    margin-bottom: 3rem;
+  margin-bottom: 3rem;
   }
   
   @media (max-width: 576px) {
@@ -1995,13 +1995,13 @@ const BenefitsList = styled(motion.div)`
   
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 2rem;
+  gap: 2rem;
     margin-bottom: 3rem;
   }
   
   @media (max-width: 576px) {
     gap: 1.5rem;
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
   }
 `;
 
@@ -2018,7 +2018,7 @@ const BenefitItem = styled(motion.div)`
   overflow: hidden;
   z-index: 1;
   height: 100%;
-  
+
   @media (max-width: 768px) {
     padding: 2rem;
   }
@@ -2090,13 +2090,13 @@ const BenefitCardGlow = styled.div`
 `;
 
 const CardAccent = styled.div`
-  position: absolute;
+    position: absolute;
   bottom: 0;
   right: 0;
   width: 60px;
   height: 60px;
   border-radius: 0 0 20px 0;
-  background: linear-gradient(
+    background: linear-gradient(
     135deg,
     transparent 50%,
     rgba(94, 234, 212, 0.1) 50%
@@ -2225,7 +2225,7 @@ const WhyUsBackgroundShapes = styled.div`
   height: 100%;
   overflow: hidden;
   z-index: 0;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -2241,7 +2241,7 @@ const WhyUsBackgroundShapes = styled.div`
     border-radius: 50%;
     animation: ${floatVertical} 8s infinite ease-in-out;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -2337,11 +2337,11 @@ const CtaContainer = styled.div`
 const CtaGlowCircle = styled.div`
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
+    background: radial-gradient(
+      circle,
     rgba(94, 234, 212, 0.1) 0%,
-    transparent 70%
-  );
+      transparent 70%
+    );
   animation: ${glow} 4s infinite alternate;
   
   &.circle-1 {
@@ -2350,7 +2350,7 @@ const CtaGlowCircle = styled.div`
     top: 10%;
     left: -10%;
   }
-  
+
   &.circle-2 {
     width: 300px;
     height: 300px;
@@ -2395,7 +2395,7 @@ const CtaContent = styled.div`
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -2406,7 +2406,7 @@ const CtaContent = styled.div`
     background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.8));
     z-index: 1;
   }
-  
+
   @media (max-width: 768px) {
     padding: 2.5rem 1.5rem;
   }
@@ -2422,7 +2422,7 @@ const CtaTitle = styled(motion.h2)`
   color: var(--accent-color);
   margin-bottom: 2rem;
   text-align: center;
-  
+
   @media (max-width: 768px) {
     font-size: 2.2rem;
   }
@@ -2497,11 +2497,11 @@ const CtaInputBg = styled.div`
   background: rgba(255, 255, 255, 0.03);
   z-index: -1;
   transition: all 0.3s ease;
-  
+
   ${CtaInputWrapper}:hover & {
     background: rgba(255, 255, 255, 0.06);
   }
-  
+
   ${CtaInputWrapper}:focus-within & {
     background: rgba(255, 255, 255, 0.08);
     box-shadow: 0 0 0 2px rgba(94, 234, 212, 0.3);
@@ -2518,7 +2518,7 @@ const CtaInput = styled.input`
   font-size: 1.1rem;
   z-index: 1;
   position: relative;
-  
+
   &::placeholder {
     color: rgba(255, 255, 255, 0.4);
     transition: color 0.3s ease;
@@ -2550,7 +2550,7 @@ const FormCtaButton = styled(motion.button)`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -2561,7 +2561,7 @@ const FormCtaButton = styled(motion.button)`
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: all 0.6s ease;
   }
-  
+
   &:hover::before {
     left: 100%;
   }
@@ -2589,14 +2589,14 @@ const CtaDecoration = styled.div`
   position: absolute;
   top: 50%;
   right: -200px;
-  width: 300px;
-  height: 300px;
+    width: 300px;
+    height: 300px;
   background: linear-gradient(
     45deg,
     transparent 30%,
     rgba(94, 234, 212, 0.05) 50%,
-    transparent 70%
-  );
+      transparent 70%
+    );
   border-radius: 50%;
   transform: translateY(-50%);
   animation: ${floatVertical} 6s infinite ease-in-out;
@@ -2945,8 +2945,8 @@ const BusinessAutomationPage = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
             onClick={handleMobileClick}
-          >
-            Дізнатися більше
+        >
+          Дізнатися більше
           </CtaButton>
         </motion.div>
       </HeroSection>

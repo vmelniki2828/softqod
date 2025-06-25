@@ -75,6 +75,18 @@ const Container = styled.div`
   color: var(--text-primary);
   position: relative;
   overflow: hidden;
+
+  @media (max-width: 1024px) {
+    padding-top: 80px;
+  }
+
+  @media (max-width: 768px) {
+    padding-top: 70px;
+  }
+
+  @media (max-width: 576px) {
+    padding-top: 60px;
+  }
 `;
 
 const HeroSection = styled(motion.div)`
@@ -87,6 +99,25 @@ const HeroSection = styled(motion.div)`
   align-items: center;
   overflow: hidden;
   padding: 2rem;
+
+  @media (max-width: 1024px) {
+    min-height: 90vh;
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    min-height: 80vh;
+    padding: 1rem;
+  }
+
+  @media (max-width: 576px) {
+    min-height: 70vh;
+    padding: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+  }
 `;
 
 const Background = styled.div`
@@ -173,8 +204,27 @@ const Title = styled(motion.h1)`
   margin-left: auto;
   margin-right: auto;
 
+  @media (max-width: 1024px) {
+    font-size: 3.5rem;
+    margin-bottom: 1.8rem;
+  }
+
   @media (max-width: 768px) {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.3px;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+    letter-spacing: -0.2px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0;
   }
 
   &::after {
@@ -187,6 +237,18 @@ const Title = styled(motion.h1)`
     height: 3px;
     background: var(--accent-color);
     border-radius: 3px;
+
+    @media (max-width: 768px) {
+      width: 80px;
+      height: 2px;
+      bottom: -8px;
+    }
+
+    @media (max-width: 576px) {
+      width: 60px;
+      height: 2px;
+      bottom: -6px;
+    }
   }
 `;
 
@@ -200,22 +262,63 @@ const Subtitle = styled(motion.p)`
   z-index: 1;
   line-height: 1.8;
 
+  @media (max-width: 1024px) {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+  }
+
   @media (max-width: 768px) {
     font-size: 1.2rem;
     padding: 0 1rem;
+    margin: 0 auto 2rem;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.1rem;
+    padding: 0 0.8rem;
+    margin: 0 auto 1.5rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+    margin: 0 auto 1.2rem;
+    line-height: 1.4;
   }
 `;
 
 const PhoneContainer = styled(motion.div)`
-  width: 300px;
-  height: 500px;
+  width: 280px;
+  height: 400px;
   position: relative;
   perspective: 1000px;
   margin: 0 auto;
 
+  @media (max-width: 1024px) {
+    width: 260px;
+    height: 380px;
+  }
+
   @media (max-width: 768px) {
+    width: 240px;
+    height: 360px;
+    margin: 2rem auto;
+  }
+
+  @media (max-width: 576px) {
     width: 220px;
-    height: 400px;
+    height: 340px;
+    margin: 1.5rem auto;
+  }
+
+  @media (max-width: 480px) {
+    width: 200px;
+    height: 320px;
+    margin: 1rem auto;
   }
 `;
 
@@ -234,6 +337,16 @@ const Phone = styled(motion.div)`
   overflow: hidden;
   animation: ${glow} 4s infinite ease-in-out;
 
+  @media (max-width: 768px) {
+    border-radius: 32px;
+    box-shadow: 0 0 40px rgba(94, 234, 212, 0.4);
+  }
+
+  @media (max-width: 480px) {
+    border-radius: 28px;
+    box-shadow: 0 0 30px rgba(94, 234, 212, 0.5);
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -245,6 +358,18 @@ const Phone = styled(motion.div)`
     background: var(--bg-primary);
     border-radius: 20px;
     z-index: 2;
+
+    @media (max-width: 768px) {
+      top: 15px;
+      height: 20px;
+      width: 35%;
+    }
+
+    @media (max-width: 480px) {
+      top: 12px;
+      height: 18px;
+      width: 30%;
+    }
   }
 
   &::after {
@@ -265,64 +390,248 @@ const Phone = styled(motion.div)`
 
 const PhoneScreen = styled(motion.div)`
   position: absolute;
-  top: 10%;
-  left: 5%;
-  width: 90%;
-  height: 80%;
-  background: var(--accent-color);
+  top: 45px;
+  left: 15px;
+  right: 15px;
+  bottom: 30px;
+  background: #fff;
   border-radius: 20px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   z-index: 2;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    top: 35px;
+    left: 12px;
+    right: 12px;
+    bottom: 25px;
+    border-radius: 18px;
+  }
+
+  @media (max-width: 576px) {
+    top: 32px;
+    left: 10px;
+    right: 10px;
+    bottom: 22px;
+    border-radius: 16px;
+  }
+
+  @media (max-width: 480px) {
+    top: 28px;
+    left: 8px;
+    right: 8px;
+    bottom: 20px;
+    border-radius: 14px;
+  }
+`;
+
+const PhoneStatusBar = styled.div`
+  width: 100%;
+  height: 24px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: white;
+  flex-shrink: 0;
+
+  &::before {
+    content: '9:41';
+  }
+
+  &::after {
+    content: '100%';
+  }
+
+  @media (max-width: 768px) {
+    height: 20px;
+    padding: 0 10px;
+    font-size: 0.65rem;
+  }
+
+  @media (max-width: 480px) {
+    height: 18px;
+    padding: 0 8px;
+    font-size: 0.6rem;
+  }
 `;
 
 const PhoneContent = styled(motion.div)`
+  flex: 1;
+  padding: 1.5rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  color: white;
-  padding: 1rem;
+  justify-content: flex-start;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
   text-align: center;
+  min-height: 0;
+  position: relative;
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0.8rem 0 0.3rem 0;
+    line-height: 1.3;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.2rem 0.8rem;
+    
+    h3 {
+      font-size: 1rem;
+      margin: 0.6rem 0 0.3rem 0;
+    }
+    
+    p {
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    padding: 1rem 0.6rem;
+    
+    h3 {
+      font-size: 0.9rem;
+      margin: 0.5rem 0 0.2rem 0;
+    }
+    
+    p {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.8rem 0.5rem;
+    
+    h3 {
+      font-size: 0.85rem;
+      margin: 0.4rem 0 0.2rem 0;
+    }
+    
+    p {
+      font-size: 0.75rem;
+    }
+  }
 `;
 
 const IconCircle = styled(motion.div)`
-  width: 80px;
-  height: 80px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(5px);
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  font-size: 1.5rem;
+  color: white;
+  margin: 0 auto;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 56px;
+    height: 56px;
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 576px) {
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
 `;
 
 const PhoneApps = styled(motion.div)`
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  width: 100%;
+  max-width: 180px;
+  margin: 1rem auto 12px;
+  padding: 0 1rem;
+  justify-items: center;
+
+  @media (max-width: 768px) {
+    gap: 0.6rem;
+    max-width: 150px;
+    margin: 0.8rem auto 5px;
+    padding: 0 0.8rem;
+  }
+
+  @media (max-width: 576px) {
+    gap: 0.5rem;
+    max-width: 130px;
+    margin: 0.6rem auto 5px;
+    padding: 0 0.6rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.4rem;
+    max-width: 110px;
+    margin: 0.5rem auto 5px;
+    padding: 0 0.4rem;
+  }
 `;
 
 const AppIcon = styled(motion.div)`
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: ${props => props.color || 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)'};
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 0.9rem;
   color: white;
-  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 576px) {
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    font-size: 0.7rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+  }
 `;
 
 const OrbitingCircle = styled(motion.div)`
@@ -351,12 +660,37 @@ const OrbitingCircleInner = styled(motion.div)`
 
 const HeroBenefitsList = styled(motion.div)`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
   margin: 4rem auto 0;
   max-width: 1200px;
   z-index: 1;
   position: relative;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.3rem;
+    margin: 3rem auto 0;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin: 2.5rem auto 0;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 576px) {
+    gap: 1rem;
+    margin: 2rem auto 0;
+    padding: 0 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.8rem;
+    margin: 1.5rem auto 0;
+    padding: 0 0.5rem;
+  }
 `;
 
 const HeroBenefitItem = styled(motion.div)`
@@ -366,14 +700,41 @@ const HeroBenefitItem = styled(motion.div)`
   padding: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
   transition: all 0.3s ease;
+
+  @media (max-width: 1024px) {
+    padding: 1.3rem;
+    border-radius: 14px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.2rem;
+    border-radius: 12px;
+    gap: 0.8rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 1rem;
+    border-radius: 10px;
+    gap: 0.7rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.8rem;
+    border-radius: 8px;
+    gap: 0.6rem;
+  }
 
   &:hover {
     border-color: rgba(94, 234, 212, 0.3);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     transform: translateY(-5px);
+
+    @media (max-width: 768px) {
+      transform: translateY(-3px);
+    }
   }
 `;
 
@@ -389,6 +750,24 @@ const HeroBenefitIcon = styled.div`
   color: white;
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
   flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 576px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
 `;
 
 const HeroBenefitContent = styled.div`
@@ -399,56 +778,103 @@ const HeroBenefitTitle = styled.h3`
   font-size: 1.1rem;
   color: white;
   margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
 `;
 
 const HeroBenefitDescription = styled.p`
   color: #9ca3af;
   font-size: 0.9rem;
   line-height: 1.4;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.8rem;
+    line-height: 1.2;
+  }
 `;
 
 const PWAInfoSection = styled(motion.section)`
-  background: linear-gradient(
-    180deg,
-    var(--bg-secondary) 0%,
-    var(--bg-primary) 100%
-  );
   position: relative;
   padding: 8rem 2rem;
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,
+    rgba(16, 24, 39, 0.9) 100%
+  );
   overflow: hidden;
-  box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 1024px) {
+    padding: 6rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 3rem 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2.5rem 0.5rem;
+  }
 
   &::before {
     content: '';
     position: absolute;
-    top: -80px;
+    top: 0;
     left: 0;
-    right: 0;
-    height: 160px;
-    background: linear-gradient(to bottom, transparent, var(--bg-secondary));
-    z-index: 2;
-    clip-path: polygon(0 0, 100% 50%, 0 100%);
-    transform: scaleX(2);
+    width: 100%;
+    height: 150px;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, transparent 70%);
+    opacity: 0.5;
+    z-index: 1;
+
+    @media (max-width: 768px) {
+      height: 100px;
+    }
+
+    @media (max-width: 480px) {
+      height: 80px;
+    }
   }
 
   &::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     bottom: 0;
-    background: radial-gradient(
-        circle at 70% 20%,
+    right: 0;
+    width: 100%;
+    height: 200px;
+    clip-path: polygon(100% 100%, 0 100%, 100% 0);
+    background: linear-gradient(
+      -45deg,
         rgba(94, 234, 212, 0.1) 0%,
-        transparent 30%
-      ),
-      radial-gradient(
-        circle at 30% 70%,
-        rgba(59, 130, 246, 0.1) 0%,
-        transparent 30%
+      transparent 70%
       );
     z-index: 1;
+
+    @media (max-width: 768px) {
+      height: 150px;
+    }
+
+    @media (max-width: 480px) {
+      height: 100px;
+    }
   }
 `;
 
@@ -456,99 +882,265 @@ const PWAInfoContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
-  z-index: 3;
-  background: rgba(16, 24, 39, 0.4);
-  backdrop-filter: blur(10px);
-  border-radius: 24px;
-  padding: 3rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+
+  @media (max-width: 1024px) {
+    gap: 3rem;
+    max-width: 900px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 576px) {
+    gap: 2rem;
+    padding: 0 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
 `;
 
 const PWAInfoTitle = styled(motion.h2)`
   font-size: 3rem;
   font-weight: 700;
   color: var(--accent-color);
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   position: relative;
   display: inline-block;
-  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 1024px) {
+    font-size: 2.5rem;
+    margin-bottom: 1.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
 
   &::after {
     content: '';
     position: absolute;
     bottom: -15px;
     left: 0;
-    width: 100px;
+    width: 120px;
     height: 4px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
+
+  @media (max-width: 768px) {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      bottom: -12px;
+    }
+
+    @media (max-width: 576px) {
+      width: 80px;
+      height: 2px;
+      bottom: -10px;
+    }
   }
 `;
 
 const PWAInfoContent = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  color: var(--text-primary);
+  gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    gap: 1.2rem;
+  }
+
+  @media (max-width: 576px) {
+    gap: 1rem;
+  }
 `;
 
 const PWAInfoText = styled(motion.p)`
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   line-height: 1.8;
-  margin-bottom: 1.5rem;
   color: var(--text-secondary);
+
+  @media (max-width: 1024px) {
+  font-size: 1.2rem;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
 `;
 
 const PWAFeaturesList = styled(motion.ul)`
   list-style: none;
   padding: 0;
-  margin: 2rem 0;
+  margin: 0;
+
+  @media (max-width: 768px) {
+    text-align: left;
+  }
 `;
 
 const PWAFeatureItem = styled(motion.li)`
-  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
   color: var(--text-secondary);
-  margin-bottom: 1.2rem;
-  padding: 1rem 1rem 1rem 2.5rem;
-  position: relative;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  transition: all 0.3s ease;
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateX(10px);
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    margin-bottom: 0.7rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
   }
 
   &::before {
-    content: '—';
-    position: absolute;
-    left: 1rem;
+    content: '✓';
     color: var(--accent-color);
     font-weight: bold;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+
+    @media (max-width: 768px) {
+      margin-right: 0.8rem;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 576px) {
+      margin-right: 0.6rem;
+      font-size: 1rem;
+    }
   }
 `;
 
 const PWASummary = styled(motion.p)`
-  font-size: 1.4rem;
-  font-weight: 500;
-  line-height: 1.8;
-  margin: 2.5rem 0;
+  font-size: 1.1rem;
   color: var(--text-primary);
+  font-weight: 500;
+  padding: 1.5rem;
+  background: rgba(16, 24, 39, 0.6);
+  border-radius: 12px;
   border-left: 4px solid var(--accent-color);
-  padding: 1.5rem 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 0 12px 12px 0;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+    padding: 1.3rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    padding: 1.2rem;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    padding: 0.8rem;
+  }
 `;
 
 const BackgroundShape = styled(motion.div)`
   position: absolute;
+  width: 400px;
+  height: 400px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent-color) 0%, transparent 70%);
-  opacity: 0.1;
+  filter: blur(80px);
   z-index: 0;
+
+  @media (max-width: 768px) {
+    width: 300px;
+  height: 300px;
+  }
+
+  @media (max-width: 480px) {
+    width: 200px;
+    height: 200px;
+  }
+
+  &.shape-1 {
+  background: radial-gradient(
+      circle,
+    rgba(94, 234, 212, 0.1) 0%,
+    transparent 70%
+  );
+    top: 20%;
+    left: -200px;
+
+    @media (max-width: 768px) {
+      left: -150px;
+    }
+
+    @media (max-width: 480px) {
+      left: -100px;
+    }
+  }
+
+  &.shape-2 {
+    background: radial-gradient(
+      circle,
+      rgba(59, 130, 246, 0.1) 0%,
+      transparent 70%
+    );
+    bottom: 10%;
+    right: -200px;
+
+    @media (max-width: 768px) {
+      right: -150px;
+    }
+
+    @media (max-width: 480px) {
+      right: -100px;
+    }
+  }
 `;
 
 // Основной компонент
@@ -682,6 +1274,7 @@ const LandingPage = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 1.5, duration: 1 }}
             >
+              <PhoneStatusBar />
               <PhoneContent>
                 <IconCircle
                   animate={{
@@ -2043,6 +2636,22 @@ const PWAFaqSection = styled(motion.section)`
   overflow: hidden;
   z-index: 0;
 
+  @media (max-width: 1024px) {
+    padding: 6rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 3rem 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2.5rem 0.5rem;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -2072,6 +2681,14 @@ const FaqWaveTop = styled.div`
   );
   z-index: 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    height: 80px;
+  }
+
+  @media (max-width: 480px) {
+    height: 60px;
+  }
 `;
 
 const FaqContainer = styled.div`
@@ -2079,6 +2696,16 @@ const FaqContainer = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 2;
+
+  @media (max-width: 768px) {
+    margin: 0 1rem;
+    max-width: calc(100% - 2rem);
+  }
+
+  @media (max-width: 480px) {
+    margin: 0 0.5rem;
+    max-width: calc(100% - 1rem);
+  }
 `;
 
 const FaqGlowCircle = styled.div`
@@ -2098,6 +2725,18 @@ const FaqGlowCircle = styled.div`
     top: 10%;
     left: -200px;
     animation: ${floatVertical} 15s infinite ease-in-out;
+
+    @media (max-width: 768px) {
+      width: 300px;
+      height: 300px;
+      left: -150px;
+    }
+
+    @media (max-width: 480px) {
+      width: 200px;
+      height: 200px;
+      left: -100px;
+    }
   }
 
   &.circle-2 {
@@ -2111,6 +2750,18 @@ const FaqGlowCircle = styled.div`
     bottom: 5%;
     right: -200px;
     animation: ${floatVertical} 18s infinite ease-in-out reverse;
+
+    @media (max-width: 768px) {
+      width: 350px;
+      height: 350px;
+      right: -150px;
+    }
+
+    @media (max-width: 480px) {
+      width: 250px;
+      height: 250px;
+      right: -100px;
+    }
   }
 `;
 
@@ -2122,6 +2773,26 @@ const FaqTitle = styled(motion.h2)`
   text-align: center;
   position: relative;
   text-shadow: 0 2px 10px rgba(94, 234, 212, 0.2);
+
+  @media (max-width: 1024px) {
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
 
   &::before {
     content: 'F.A.Q';
@@ -2135,6 +2806,29 @@ const FaqTitle = styled(motion.h2)`
     letter-spacing: 5px;
     z-index: -1;
     white-space: nowrap;
+
+    @media (max-width: 1024px) {
+      font-size: 4rem;
+      top: -25px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 3rem;
+      top: -20px;
+      letter-spacing: 3px;
+    }
+
+    @media (max-width: 576px) {
+      font-size: 2.5rem;
+      top: -15px;
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 2rem;
+      top: -12px;
+      letter-spacing: 1px;
+    }
   }
 
   &::after {
@@ -2153,6 +2847,24 @@ const FaqTitle = styled(motion.h2)`
     );
     border-radius: 4px;
     animation: ${pulse} 2s infinite ease-in-out;
+
+    @media (max-width: 768px) {
+      width: 70px;
+      height: 3px;
+      bottom: -12px;
+    }
+
+    @media (max-width: 576px) {
+      width: 60px;
+      height: 3px;
+      bottom: -10px;
+    }
+
+    @media (max-width: 480px) {
+      width: 50px;
+      height: 2px;
+      bottom: -8px;
+    }
   }
 `;
 
@@ -2161,6 +2873,26 @@ const FaqList = styled(motion.div)`
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 4rem;
+
+  @media (max-width: 1024px) {
+    gap: 1.3rem;
+    margin-bottom: 3.5rem;
+  }
+
+  @media (max-width: 768px) {
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 576px) {
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const FaqItem = styled(motion.div)`
@@ -2174,10 +2906,34 @@ const FaqItem = styled(motion.div)`
   transform-style: preserve-3d;
   perspective: 1000px;
 
+  @media (max-width: 1024px) {
+    border-radius: 14px;
+  }
+
+  @media (max-width: 768px) {
+    border-radius: 12px;
+  }
+
+  @media (max-width: 576px) {
+    border-radius: 10px;
+  }
+
+  @media (max-width: 480px) {
+    border-radius: 8px;
+  }
+
   &:hover {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 15px rgba(94, 234, 212, 0.1);
     border-color: rgba(94, 234, 212, 0.1);
     transform: translateY(-3px);
+
+    @media (max-width: 768px) {
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 480px) {
+      transform: translateY(-1px);
+    }
   }
 `;
 
@@ -2194,6 +2950,22 @@ const FaqQuestion = styled(motion.div)`
   transition: all 0.3s ease;
   position: relative;
 
+  @media (max-width: 1024px) {
+    padding: 1.6rem 1.8rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.4rem 1.5rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 1.2rem 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem 1rem;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -2209,6 +2981,10 @@ const FaqQuestion = styled(motion.div)`
     opacity: 0;
     transition: opacity 0.3s ease;
     border-radius: 0 3px 3px 0;
+
+    @media (max-width: 480px) {
+      width: 3px;
+    }
   }
 
   &:hover::before {
@@ -2228,6 +3004,21 @@ const FaqQuestion = styled(motion.div)`
       rgba(255, 255, 255, 0.05),
       transparent
     );
+
+    @media (max-width: 768px) {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+
+    @media (max-width: 576px) {
+      left: 1.2rem;
+      right: 1.2rem;
+    }
+
+    @media (max-width: 480px) {
+      left: 1rem;
+      right: 1rem;
+    }
   }
 `;
 
@@ -2238,6 +3029,24 @@ const FaqQuestionText = styled.h3`
   transition: all 0.3s ease;
   flex: 1;
   transform: translateZ(5px);
+
+  @media (max-width: 1024px) {
+    font-size: 1.15rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
 
   ${FaqQuestion}:hover & {
     color: var(--accent-color);
@@ -2258,6 +3067,25 @@ const FaqToggle = styled(motion.div)`
   border-radius: 50%;
   transition: all 0.3s ease;
 
+  @media (max-width: 768px) {
+    width: 26px;
+    height: 26px;
+    margin-left: 0.8rem;
+  }
+
+  @media (max-width: 576px) {
+    width: 24px;
+    height: 24px;
+    margin-left: 0.6rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 22px;
+    height: 22px;
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+  }
+
   &:hover {
     background: rgba(94, 234, 212, 0.1);
     box-shadow: 0 0 10px rgba(94, 234, 212, 0.2);
@@ -2273,6 +3101,30 @@ const FaqAnswer = styled(motion.div)`
   position: relative;
   animation: ${fadeInScale} 0.4s ease forwards;
 
+  @media (max-width: 1024px) {
+    padding: 0 1.8rem 1.6rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem 1.4rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 576px) {
+    padding: 0 1.2rem 1.2rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1rem 1rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -2286,6 +3138,21 @@ const FaqAnswer = styled(motion.div)`
       rgba(255, 255, 255, 0.1),
       transparent
     );
+
+    @media (max-width: 768px) {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+
+    @media (max-width: 576px) {
+      left: 1.2rem;
+      right: 1.2rem;
+    }
+
+    @media (max-width: 480px) {
+      left: 1rem;
+      right: 1rem;
+    }
   }
 
   strong {
@@ -2297,22 +3164,46 @@ const FaqAnswer = styled(motion.div)`
     margin-top: 0.8rem;
     margin-bottom: 0.8rem;
     padding-left: 1.5rem;
+
+    @media (max-width: 576px) {
+      padding-left: 1.2rem;
+      margin-top: 0.6rem;
+      margin-bottom: 0.6rem;
+    }
+
+    @media (max-width: 480px) {
+      padding-left: 1rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
   }
 
   li {
     margin-bottom: 0.5rem;
     position: relative;
 
+    @media (max-width: 480px) {
+      margin-bottom: 0.4rem;
+    }
+
     &::before {
       content: '•';
       color: var(--accent-color);
       position: absolute;
       left: -1rem;
+
+      @media (max-width: 480px) {
+        left: -0.8rem;
+      }
     }
   }
 
   p {
     margin-bottom: 0.8rem;
+
+    @media (max-width: 480px) {
+      margin-bottom: 0.6rem;
+    }
   }
 
   .highlight {
@@ -2325,6 +3216,12 @@ const FaqAnswer = styled(motion.div)`
     border-radius: 4px;
     margin: 0 0.2rem;
     position: relative;
+
+    @media (max-width: 480px) {
+      padding: 0.1rem 0.3rem;
+      margin: 0 0.1rem;
+      border-radius: 3px;
+    }
 
     &::before {
       content: '';
@@ -2360,6 +3257,34 @@ const FaqCta = styled(motion.div)`
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
 
+  @media (max-width: 1024px) {
+    padding: 2.5rem;
+    gap: 1.3rem;
+    margin-top: 2.5rem;
+    border-radius: 18px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+    gap: 1.2rem;
+    margin-top: 2rem;
+    border-radius: 16px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 1.5rem;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    border-radius: 14px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.2rem;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+    border-radius: 12px;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -2373,6 +3298,10 @@ const FaqCta = styled(motion.div)`
       rgba(59, 130, 246, 0.8)
     );
     z-index: 1;
+
+    @media (max-width: 480px) {
+      height: 3px;
+    }
   }
 
   &::after {
@@ -2397,6 +3326,22 @@ const FaqCtaText = styled.p`
   color: var(--text-primary);
   text-align: center;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 1024px) {
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
 `;
 
 const FaqCtaButton = styled(motion.button)`
@@ -2416,6 +3361,32 @@ const FaqCtaButton = styled(motion.button)`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+
+  @media (max-width: 1024px) {
+    padding: 1.1rem 2.5rem;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border-radius: 40px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 0.9rem 1.8rem;
+    font-size: 0.95rem;
+    border-radius: 35px;
+    width: 100%;
+    max-width: 250px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    border-radius: 30px;
+    max-width: 220px;
+  }
 
   &::before {
     content: '';
@@ -2451,6 +3422,11 @@ const FaqCtaButton = styled(motion.button)`
     );
     filter: blur(5px);
     opacity: 0.5;
+
+    @media (max-width: 480px) {
+      height: 6px;
+      bottom: -1px;
+    }
   }
 `;
 
@@ -2465,6 +3441,20 @@ const FaqDecoration = styled.div`
   animation: ${rotate} 30s linear infinite;
   z-index: 0;
 
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 200px;
+    bottom: -100px;
+    right: 5%;
+  }
+
+  @media (max-width: 480px) {
+    width: 150px;
+    height: 150px;
+    bottom: -75px;
+    right: 0%;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -2475,6 +3465,16 @@ const FaqDecoration = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    @media (max-width: 768px) {
+      width: 100px;
+      height: 100px;
+    }
+
+    @media (max-width: 480px) {
+      width: 75px;
+      height: 75px;
+    }
   }
 
   &::after {
@@ -2491,6 +3491,16 @@ const FaqDecoration = styled.div`
     top: 30%;
     left: 20%;
     animation: ${pulse} 3s infinite ease-in-out;
+
+    @media (max-width: 768px) {
+      width: 35px;
+      height: 35px;
+    }
+
+    @media (max-width: 480px) {
+      width: 25px;
+      height: 25px;
+    }
   }
 `;
 
@@ -2504,6 +3514,22 @@ const LandingVsMultiSection = styled(motion.section)`
   );
   overflow: hidden;
 
+  @media (max-width: 1024px) {
+    padding: 6rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 3rem 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2.5rem 0.5rem;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -2513,6 +3539,14 @@ const LandingVsMultiSection = styled(motion.section)`
     height: 150px;
     background: linear-gradient(to top, transparent, var(--bg-secondary));
     z-index: 1;
+
+    @media (max-width: 768px) {
+      height: 100px;
+    }
+
+    @media (max-width: 480px) {
+      height: 80px;
+    }
   }
 `;
 
@@ -2527,6 +3561,30 @@ const LandingVsContainer = styled.div`
   padding: 3rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 1024px) {
+    max-width: 900px;
+    padding: 2.5rem;
+    border-radius: 20px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 0 1rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 0 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.2rem;
+    border-radius: 10px;
+    margin: 0 0.5rem;
+  }
 `;
 
 const LandingVsTitle = styled(motion.h2)`
@@ -2538,6 +3596,27 @@ const LandingVsTitle = styled(motion.h2)`
   position: relative;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
+  @media (max-width: 1024px) {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -2548,10 +3627,18 @@ const LandingVsTitle = styled(motion.h2)`
     height: 4px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
-  }
 
   @media (max-width: 768px) {
-    font-size: 2.2rem;
+      width: 100px;
+      height: 3px;
+      bottom: -12px;
+    }
+
+    @media (max-width: 576px) {
+      width: 80px;
+      height: 2px;
+      bottom: -10px;
+    }
   }
 `;
 
@@ -2565,6 +3652,36 @@ const LandingVsQuote = styled(motion.div)`
   margin-bottom: 3rem;
   position: relative;
   border: 1px solid rgba(94, 234, 212, 0.1);
+
+  @media (max-width: 1024px) {
+    font-size: 1.1rem;
+    padding: 1.8rem;
+    margin-bottom: 2.5rem;
+    border-radius: 14px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.95rem;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+    border-radius: 8px;
+  }
 
   &::before {
     content: '';
@@ -2589,6 +3706,16 @@ const QuoteIcon = styled.span`
   margin-right: 0.7rem;
   flex-shrink: 0;
   filter: drop-shadow(0 0 10px rgba(94, 234, 212, 0.3));
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+    margin-right: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    margin-right: 0.4rem;
+  }
 `;
 
 const LandingVsGrid = styled.div`
@@ -2596,9 +3723,25 @@ const LandingVsGrid = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
 
+  @media (max-width: 1024px) {
+    gap: 1.5rem;
+  }
+
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 576px) {
+    gap: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
   }
 `;
 
@@ -2610,10 +3753,38 @@ const VsCol = styled(motion.div)`
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
 
+  @media (max-width: 1024px) {
+    padding: 1.8rem;
+    border-radius: 14px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 1.2rem;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
   &:hover {
     transform: translateY(-5px);
     border-color: rgba(94, 234, 212, 0.3);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+    @media (max-width: 768px) {
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 480px) {
+      transform: translateY(-2px);
+    }
   }
 `;
 
@@ -2625,12 +3796,47 @@ const VsColTitle = styled.h3`
   display: flex;
   align-items: center;
   gap: 0.8rem;
+
+  @media (max-width: 1024px) {
+    font-size: 1.3rem;
+    margin-bottom: 1.3rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+    gap: 0.6rem;
+  }
+
+  @media (max-width: 576px) {
+  font-size: 1.1rem;
+    margin-bottom: 1rem;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    gap: 0.4rem;
+  }
 `;
 
 const VsColIcon = styled.span`
   font-size: 2rem;
   color: var(--accent-color);
   filter: drop-shadow(0 0 8px rgba(94, 234, 212, 0.4));
+
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.4rem;
+  }
+
+  @media (max-width: 480px) {
+  font-size: 1.2rem;
+  }
 `;
 
 const VsList = styled.ul`
@@ -2640,6 +3846,18 @@ const VsList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    gap: 0.8rem;
+  }
+
+  @media (max-width: 576px) {
+  gap: 0.7rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.6rem;
+  }
 `;
 
 const VsListItem = styled.li`
@@ -2648,6 +3866,29 @@ const VsListItem = styled.li`
   padding-left: 2rem;
   position: relative;
   line-height: 1.6;
+
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+    padding-left: 1.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    padding-left: 1.6rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
+    padding-left: 1.4rem;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    padding-left: 1.2rem;
+  line-height: 1.3;
+  }
 
   &::before {
     content: '';
@@ -2659,6 +3900,18 @@ const VsListItem = styled.li`
     background: var(--accent-color);
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(94, 234, 212, 0.5);
+
+  @media (max-width: 768px) {
+      width: 6px;
+      height: 6px;
+      top: 0.4rem;
+    }
+
+    @media (max-width: 480px) {
+      width: 5px;
+      height: 5px;
+      top: 0.35rem;
+    }
   }
 
   &:hover::before {
@@ -2675,8 +3928,24 @@ const LPConversionBenefitsSection = styled(motion.section)`
     var(--bg-primary) 0%,
     var(--bg-secondary) 100%
   );
-  overflow: hidden;LPUniqueCompareText
+  overflow: hidden;
   z-index: 1;
+
+  @media (max-width: 1024px) {
+    padding: 6rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 3rem 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2.5rem 0.5rem;
+  }
 
   &::before {
     content: '';
@@ -2706,6 +3975,30 @@ const ConversionBenefitsContainer = styled.div`
   padding: 3rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 1024px) {
+    max-width: 900px;
+    padding: 2.5rem;
+    border-radius: 20px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 0 1rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 0 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.2rem;
+    border-radius: 10px;
+    margin: 0 0.5rem;
+  }
 `;
 
 const ConversionBenefitsTitle = styled(motion.h2)`
@@ -2717,6 +4010,27 @@ const ConversionBenefitsTitle = styled(motion.h2)`
   text-align: center;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
+  @media (max-width: 1024px) {
+    font-size: 2.5rem;
+    margin-bottom: 1.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.2;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -2727,10 +4041,18 @@ const ConversionBenefitsTitle = styled(motion.h2)`
     height: 4px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
-  }
 
   @media (max-width: 768px) {
-    font-size: 2.2rem;
+      width: 100px;
+      height: 3px;
+      bottom: -12px;
+    }
+
+    @media (max-width: 576px) {
+      width: 80px;
+      height: 2px;
+      bottom: -10px;
+    }
   }
 `;
 
@@ -2743,6 +4065,31 @@ const ConversionBenefitsDescription = styled(motion.p)`
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
+
+  @media (max-width: 1024px) {
+    font-size: 1.1rem;
+    margin: 2rem 0;
+    max-width: 800px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 1.8rem 0;
+    max-width: 100%;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.95rem;
+    margin: 1.5rem 0;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    margin: 1.2rem 0;
+    line-height: 1.4;
+  }
 `;
 
 const ConversionBenefitsSubtitle = styled(motion.h3)`
@@ -2752,6 +4099,26 @@ const ConversionBenefitsSubtitle = styled(motion.h3)`
   margin: 3rem 0 2rem;
   text-align: center;
   position: relative;
+
+  @media (max-width: 1024px) {
+    font-size: 1.6rem;
+    margin: 2.5rem 0 1.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+    margin: 2rem 0 1.5rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.3rem;
+    margin: 1.8rem 0 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+    margin: 1.5rem 0 1rem;
+  }
 `;
 
 const ConversionBenefitsList = styled.div`
@@ -2760,6 +4127,26 @@ const ConversionBenefitsList = styled.div`
   gap: 1.5rem;
   justify-content: center;
   margin: 2rem 0;
+
+  @media (max-width: 1024px) {
+    gap: 1.3rem;
+    margin: 1.8rem 0;
+  }
+
+  @media (max-width: 768px) {
+    gap: 1.2rem;
+    margin: 1.5rem 0;
+  }
+
+  @media (max-width: 576px) {
+    gap: 1rem;
+    margin: 1.2rem 0;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.8rem;
+    margin: 1rem 0;
+  }
 `;
 
 const ConversionBenefitsItem = styled(motion.div)`
@@ -2775,13 +4162,47 @@ const ConversionBenefitsItem = styled(motion.div)`
   width: calc(50% - 0.75rem);
   max-width: 500px;
 
+  @media (max-width: 1024px) {
+    padding: 1.3rem;
+    border-radius: 14px;
+    gap: 0.8rem;
+  }
+
   @media (max-width: 900px) {
     width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.2rem;
+    border-radius: 12px;
+    gap: 0.7rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 1rem;
+    border-radius: 10px;
+    gap: 0.6rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.8rem;
+    border-radius: 8px;
+    gap: 0.5rem;
+    flex-direction: column;
+    text-align: center;
   }
 
   &:hover {
     border-color: rgba(94, 234, 212, 0.3);
     transform: translateY(-5px);
+
+    @media (max-width: 768px) {
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 480px) {
+      transform: translateY(-2px);
+    }
   }
 `;
 
@@ -2797,6 +4218,24 @@ const ConversionBenefitsIcon = styled.div`
   color: white;
   box-shadow: 0 0 20px rgba(94, 234, 212, 0.4);
   flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 576px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 35px;
+    height: 35px;
+    font-size: 1.1rem;
+  }
 `;
 
 const ConversionBenefitsText = styled.p`
@@ -2804,6 +4243,25 @@ const ConversionBenefitsText = styled.p`
   line-height: 1.6;
   color: var(--text-secondary);
   margin: 0;
+
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
 `;
 
 const ConversionBenefitsButton = styled(motion.button)`
@@ -2825,6 +4283,34 @@ const ConversionBenefitsButton = styled(motion.button)`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+
+  @media (max-width: 1024px) {
+    padding: 1.1rem 2.5rem;
+    font-size: 1.1rem;
+    margin: 2.5rem auto 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    margin: 2rem auto 0;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 0.9rem 1.8rem;
+    font-size: 0.95rem;
+    margin: 1.8rem auto 0;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    margin: 1.5rem auto 0;
+    width: 100%;
+    max-width: 250px;
+  }
 
   &::before {
     content: '';
@@ -2863,6 +4349,18 @@ const ConversionBenefitsBgCircle = styled.div`
     );
     top: 10%;
     left: -200px;
+
+    @media (max-width: 768px) {
+      width: 300px;
+      height: 300px;
+      left: -150px;
+    }
+
+    @media (max-width: 480px) {
+      width: 200px;
+      height: 200px;
+      left: -100px;
+    }
   }
 
   &.circle-right {
@@ -2875,6 +4373,18 @@ const ConversionBenefitsBgCircle = styled.div`
     );
     bottom: 5%;
     right: -200px;
+
+    @media (max-width: 768px) {
+      width: 350px;
+      height: 350px;
+      right: -150px;
+    }
+
+    @media (max-width: 480px) {
+      width: 250px;
+      height: 250px;
+      right: -100px;
+    }
   }
 `;
 
@@ -2888,6 +4398,22 @@ const LPWhyEffectiveSection = styled(motion.section)`
   );
   overflow: hidden;
   z-index: 1;
+
+  @media (max-width: 1024px) {
+    padding: 6rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 3rem 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2.5rem 0.5rem;
+  }
 
   &::before {
     content: '';
@@ -2941,7 +4467,7 @@ const LPWhyEffectiveTitle = styled(motion.h2)`
   }
 
   @media (max-width: 768px) {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 `;
 
@@ -2952,6 +4478,16 @@ const LPWhyEffectiveSubtitle = styled(motion.h3)`
   margin: 2.5rem 0 1.5rem;
   text-align: center;
   position: relative;
+
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+    margin: 2rem 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+    margin: 1.5rem 0 0.8rem;
+  }
 `;
 
 const LPWhyEffectiveDescription = styled(motion.p)`
@@ -2966,6 +4502,19 @@ const LPWhyEffectiveDescription = styled(motion.p)`
   border-radius: 16px;
   padding: 2rem;
   border: 1px solid rgba(94, 234, 212, 0.1);
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    line-height: 1.6;
+  }
 `;
 
 const LPWhyEffectiveDecoration = styled.div`
@@ -2999,6 +4548,18 @@ const LPWhyEffectiveBgCircle = styled.div`
     );
     top: 10%;
     left: -200px;
+
+    @media (max-width: 768px) {
+      width: 250px;
+      height: 250px;
+      left: -125px;
+    }
+
+    @media (max-width: 480px) {
+      width: 150px;
+      height: 150px;
+      left: -75px;
+    }
   }
 
   &.circle-right {
@@ -3011,6 +4572,18 @@ const LPWhyEffectiveBgCircle = styled.div`
     );
     bottom: 5%;
     right: -200px;
+
+    @media (max-width: 768px) {
+      width: 350px;
+      height: 350px;
+      right: -150px;
+    }
+
+    @media (max-width: 480px) {
+      width: 250px;
+      height: 250px;
+      right: -100px;
+    }
   }
 `;
 
@@ -3020,6 +4593,14 @@ const LPBusinessBenefitSection = styled(motion.section)`
   background: var(--bg-primary);
   overflow: hidden;
   z-index: 1;
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0.5rem;
+  }
 
   &::before {
     content: '';
@@ -3049,6 +4630,18 @@ const LPBusinessBenefitContainer = styled.div`
   padding: 3rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+    margin: 0 1rem;
+    border-radius: 20px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+    margin: 0 0.5rem;
+    border-radius: 16px;
+  }
 `;
 
 const LPBusinessBenefitSubtitle = styled(motion.h3)`
@@ -3058,6 +4651,16 @@ const LPBusinessBenefitSubtitle = styled(motion.h3)`
   margin-bottom: 1.5rem;
   position: relative;
   text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
 
   &::after {
     content: '';
@@ -3069,10 +4672,18 @@ const LPBusinessBenefitSubtitle = styled(motion.h3)`
     height: 3px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
-  }
 
-  @media (max-width: 768px) {
-    font-size: 1.6rem;
+    @media (max-width: 768px) {
+      width: 70px;
+      height: 2px;
+      bottom: -8px;
+    }
+    
+    @media (max-width: 480px) {
+      width: 60px;
+      height: 2px;
+      bottom: -6px;
+    }
   }
 `;
 
@@ -3082,6 +4693,16 @@ const LPBusinessBenefitText = styled(motion.p)`
   color: var(--text-primary);
   margin: 2rem 0 1.5rem;
   text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin: 1.5rem 0 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    margin: 1.5rem 0 1rem;
+  }
 `;
 
 const LPBusinessBenefitList = styled.div`
@@ -3092,6 +4713,13 @@ const LPBusinessBenefitList = styled.div`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin: 1.5rem 0;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+    margin: 1.2rem 0;
   }
 `;
 
@@ -3107,6 +4735,20 @@ const LPBusinessBenefitItem = styled(motion.div)`
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.05);
 
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    gap: 1.2rem;
+    border-radius: 14px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.2rem;
+    gap: 1rem;
+    border-radius: 12px;
+    flex-direction: column;
+    text-align: center;
+  }
+
   &:before {
     content: '';
     position: absolute;
@@ -3116,6 +4758,10 @@ const LPBusinessBenefitItem = styled(motion.div)`
     height: 5px;
     background: ${props => props.color || 'var(--accent-color)'};
     opacity: 0.7;
+
+    @media (max-width: 480px) {
+      height: 3px;
+    }
   }
 
   &:after {
@@ -3142,6 +4788,11 @@ const LPBusinessBenefitItem = styled(motion.div)`
       transparent 70%
     );
     border-radius: 50%;
+
+    @media (max-width: 480px) {
+      width: 60px;
+      height: 60px;
+    }
   }
 `;
 
@@ -3171,6 +4822,18 @@ const LPBusinessBenefitIconWrapper = styled.div`
   position: relative;
   z-index: 1;
 
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+
   &:before {
     content: '';
     position: absolute;
@@ -3179,11 +4842,19 @@ const LPBusinessBenefitIconWrapper = styled.div`
     border: 1px dashed ${props => props.color || 'var(--accent-color)'};
     opacity: 0.4;
     animation: rotate 20s linear infinite;
+
+    @media (max-width: 480px) {
+      inset: -3px;
+    }
   }
 `;
 
 const LPBusinessBenefitItemContent = styled.div`
   flex: 1;
+
+  @media (max-width: 480px) {
+    text-align: center;
+  }
 `;
 
 const LPBusinessBenefitItemTitle = styled.h4`
@@ -3191,12 +4862,32 @@ const LPBusinessBenefitItemTitle = styled.h4`
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
 `;
 
 const LPBusinessBenefitItemText = styled.p`
   font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.5;
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
 `;
 
 const LPBusinessBenefitSummary = styled(motion.p)`
@@ -3209,6 +4900,22 @@ const LPBusinessBenefitSummary = styled(motion.p)`
   border-radius: 12px;
   padding: 1.5rem;
   border-left: 3px solid var(--accent-color);
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    padding: 1.2rem;
+    margin: 1.5rem 0 0;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 1rem;
+    margin: 1.2rem 0 0;
+    border-radius: 8px;
+  }
 `;
 
 const LPBusinessBenefitDecoration = styled.div`
@@ -3220,6 +4927,20 @@ const LPBusinessBenefitDecoration = styled.div`
   border-radius: 50%;
   border: 1px dashed rgba(94, 234, 212, 0.2);
   opacity: 0.5;
+
+  @media (max-width: 768px) {
+    width: 100px;
+    height: 100px;
+    bottom: -20px;
+    right: -20px;
+  }
+
+  @media (max-width: 480px) {
+    width: 80px;
+    height: 80px;
+    bottom: -15px;
+    right: -15px;
+  }
 `;
 
 const LPEffectivenessBanner = styled(motion.div)`
@@ -3241,6 +4962,38 @@ const LPEffectivenessBanner = styled(motion.div)`
     background: rgba(94, 234, 212, 0.15);
     box-shadow: 0 10px 30px rgba(94, 234, 212, 0.15);
   }
+
+  @media (max-width: 1024px) {
+    padding: 1.2rem 1.5rem;
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 1.2rem;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 16px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 0.8rem 1rem;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.6rem 0.8rem;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
 `;
 
 const LPEffectivenessBannerIcon = styled.div`
@@ -3249,6 +5002,18 @@ const LPEffectivenessBannerIcon = styled.div`
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const LPEffectivenessBannerText = styled.p`
@@ -3256,6 +5021,18 @@ const LPEffectivenessBannerText = styled.p`
   font-weight: 600;
   color: #f1f5f9;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const LPEffectivenessText = styled(motion.p)`
@@ -3594,6 +5371,18 @@ const LPCreationSection = styled(motion.section)`
   background: var(--bg-primary);
   overflow: hidden;
   z-index: 1;
+
+  @media (max-width: 1024px) {
+    padding: 5rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0.5rem;
+  }
 `;
 
 const LPCreationContainer = styled.div`
@@ -3601,6 +5390,14 @@ const LPCreationContainer = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 1;
+
+  @media (max-width: 768px) {
+    margin: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    margin: 0 0.5rem;
+  }
 `;
 
 const LPCreationTitle = styled(motion.h2)`
@@ -3615,8 +5412,22 @@ const LPCreationTitle = styled(motion.h2)`
   line-height: 1.3;
   letter-spacing: -0.5px;
 
+  @media (max-width: 1024px) {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+  }
+
   @media (max-width: 768px) {
     font-size: 2.2rem;
+    margin-bottom: 1.8rem;
+    letter-spacing: -0.3px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0;
+    line-height: 1.2;
   }
 `;
 
@@ -3630,12 +5441,28 @@ const LPCreationContent = styled.div`
     grid-template-columns: 1fr;
     gap: 3rem;
   }
+
+  @media (max-width: 768px) {
+    gap: 2.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 2rem;
+  }
 `;
 
 const LPCreationSteps = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1.2rem;
+  }
 `;
 
 const LPCreationStep = styled(motion.div)`
@@ -3646,6 +5473,21 @@ const LPCreationStep = styled(motion.div)`
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
+
+  @media (max-width: 1024px) {
+    padding: 1.8rem;
+    border-radius: 18px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.2rem;
+    border-radius: 14px;
+  }
 
   &::before {
     content: '';
@@ -3665,6 +5507,14 @@ const LPCreationStep = styled(motion.div)`
     border-color: rgba(94, 234, 212, 0.2);
     box-shadow: 0 10px 30px rgba(94, 234, 212, 0.1);
 
+    @media (max-width: 768px) {
+      transform: translateX(5px);
+    }
+
+    @media (max-width: 480px) {
+      transform: translateY(-3px);
+    }
+
     &::before {
       opacity: 1;
     }
@@ -3681,6 +5531,18 @@ const LPCreationStepHeader = styled.div`
   align-items: center;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    gap: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    text-align: center;
+  }
 `;
 
 const LPCreationStepNumber = styled.span`
@@ -3691,6 +5553,14 @@ const LPCreationStepNumber = styled.span`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: 1;
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
 `;
 
 const LPCreationStepIcon = styled.div`
@@ -3698,6 +5568,14 @@ const LPCreationStepIcon = styled.div`
   color: #94a3b8;
   transition: all 0.3s ease;
   filter: drop-shadow(0 0 10px rgba(94, 234, 212, 0.2));
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const LPCreationStepTitle = styled.h3`
@@ -3705,17 +5583,51 @@ const LPCreationStepTitle = styled.h3`
   font-weight: 700;
   color: #fff;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.7rem;
+    text-align: center;
+  }
 `;
 
 const LPCreationStepText = styled.p`
   font-size: 1.1rem;
   line-height: 1.7;
   color: #94a3b8;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: center;
+  }
 `;
 
 const LPCreationVisual = styled.div`
   position: relative;
   padding: 2rem;
+
+  @media (max-width: 1024px) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+  }
 
   &::before {
     content: '';
@@ -3728,6 +5640,16 @@ const LPCreationVisual = styled.div`
     );
     border-radius: 30px;
     filter: blur(30px);
+
+    @media (max-width: 768px) {
+      border-radius: 20px;
+      filter: blur(20px);
+    }
+
+    @media (max-width: 480px) {
+      border-radius: 15px;
+      filter: blur(15px);
+    }
   }
 `;
 
@@ -3735,6 +5657,15 @@ const LPCreationCards = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1.2rem;
+  }
 `;
 
 const LPCreationCard = styled(motion.div)`
@@ -3745,8 +5676,28 @@ const LPCreationCard = styled(motion.div)`
   position: relative;
   overflow: hidden;
 
+  @media (max-width: 1024px) {
+    padding: 1.8rem;
+    border-radius: 18px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.2rem;
+    border-radius: 14px;
+    text-align: center;
+  }
+
   &:nth-child(even) {
     transform: translateY(2rem);
+
+    @media (max-width: 768px) {
+      transform: translateY(0);
+    }
   }
 
   &::before {
@@ -3772,6 +5723,16 @@ const LPCreationCardIcon = styled.div`
   color: #5eead4;
   margin-bottom: 1.5rem;
   filter: drop-shadow(0 0 10px rgba(94, 234, 212, 0.3));
+
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const LPCreationCardTitle = styled.h4`
@@ -3779,12 +5740,32 @@ const LPCreationCardTitle = styled.h4`
   font-weight: 700;
   color: #fff;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+  }
 `;
 
 const LPCreationCardText = styled.p`
   font-size: 1rem;
   line-height: 1.6;
   color: #94a3b8;
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
 `;
 
 const RequirementsCard = styled(motion.div)`
