@@ -328,6 +328,27 @@ const HeroBenefitsList = styled(motion.div)`
   max-width: 1200px;
   z-index: 1;
   position: relative;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.3rem;
+    margin: 3rem auto 0;
+    max-width: 900px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 2.5rem auto 0;
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    margin: 2rem auto 0;
+    padding: 0 0.5rem;
+    gap: 0.8rem;
+  }
 `;
 
 const HeroBenefitItem = styled(motion.div)`
@@ -341,10 +362,28 @@ const HeroBenefitItem = styled(motion.div)`
   gap: 1rem;
   transition: all 0.3s ease;
 
+  @media (max-width: 768px) {
+    padding: 1.3rem;
+    border-radius: 12px;
+    gap: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+    border-radius: 10px;
+    gap: 0.6rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
   &:hover {
     border-color: rgba(94, 234, 212, 0.3);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     transform: translateY(-5px);
+
+    @media (max-width: 480px) {
+      transform: translateY(-2px);
+    }
   }
 `;
 
@@ -360,22 +399,60 @@ const HeroBenefitIcon = styled.div`
   color: white;
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
   flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const HeroBenefitContent = styled.div`
   flex: 1;
+
+  @media (max-width: 480px) {
+    flex: none;
+  }
 `;
 
 const HeroBenefitTitle = styled.h3`
   font-size: 1.1rem;
   color: white;
   margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+  }
 `;
 
 const HeroBenefitDescription = styled.p`
   color: #9ca3af;
   font-size: 0.9rem;
   line-height: 1.4;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+    line-height: 1.2;
+  }
 `;
 
 const CTAButton = styled(motion.button)`
@@ -391,6 +468,30 @@ const CTAButton = styled(motion.button)`
   z-index: 1;
   position: relative;
   box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+
+  @media (max-width: 1024px) {
+    padding: 0.9rem 2.2rem;
+    font-size: 1.1rem;
+    margin-top: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    margin-top: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.95rem;
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 250px;
+  }
 `;
 
 const BusinessSection = styled(motion.section)`
@@ -404,6 +505,18 @@ const BusinessSection = styled(motion.section)`
   overflow: hidden;
   box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.2);
 
+  @media (max-width: 1024px) {
+    padding: 6rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0.5rem;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -415,6 +528,16 @@ const BusinessSection = styled(motion.section)`
     z-index: 2;
     clip-path: polygon(0 0, 100% 50%, 0 100%);
     transform: scaleX(2);
+
+    @media (max-width: 768px) {
+      top: -60px;
+      height: 120px;
+    }
+
+    @media (max-width: 480px) {
+      top: -40px;
+      height: 80px;
+    }
   }
 
   &::after {
@@ -449,6 +572,25 @@ const BusinessContainer = styled.div`
   padding: 3rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 1024px) {
+    max-width: 900px;
+    padding: 2.5rem;
+    border-radius: 20px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    margin: 0 1rem;
+    padding: 2rem;
+    border-radius: 16px;
+  }
+
+  @media (max-width: 480px) {
+    margin: 0 0.5rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
 `;
 
 const BusinessTitle = styled(motion.h2)`
@@ -460,6 +602,24 @@ const BusinessTitle = styled(motion.h2)`
   display: inline-block;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
+  @media (max-width: 1024px) {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    display: block;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -469,6 +629,20 @@ const BusinessTitle = styled(motion.h2)`
     height: 4px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
+
+    @media (max-width: 768px) {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      bottom: -10px;
+      height: 3px;
+    }
+
+    @media (max-width: 480px) {
+      width: 60px;
+      height: 2px;
+      bottom: -8px;
+    }
   }
 `;
 
@@ -477,6 +651,14 @@ const BusinessContent = styled(motion.div)`
   flex-direction: column;
   gap: 2rem;
   color: var(--text-primary);
+
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1.2rem;
+  }
 `;
 
 const BusinessText = styled(motion.p)`
@@ -484,6 +666,25 @@ const BusinessText = styled(motion.p)`
   line-height: 1.8;
   margin-bottom: 1.5rem;
   color: var(--text-secondary);
+
+  @media (max-width: 1024px) {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.3rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
 `;
 
 const BusinessHighlight = styled(motion.p)`
@@ -497,6 +698,31 @@ const BusinessHighlight = styled(motion.p)`
   background: rgba(255, 255, 255, 0.05);
   border-radius: 0 12px 12px 0;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 1024px) {
+    font-size: 1.3rem;
+    line-height: 1.7;
+    margin: 2rem 0;
+    padding: 1.3rem 1.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin: 1.8rem 0;
+    padding: 1.2rem 1.5rem;
+    border-radius: 0 10px 10px 0;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin: 1.5rem 0;
+    padding: 1rem 1.2rem;
+    border-radius: 0 8px 8px 0;
+    border-left-width: 3px;
+  }
 `;
 
 const BackgroundShape = styled(motion.div)`
@@ -635,6 +861,29 @@ const AppIcon = styled.div`
   color: white;
   margin-bottom: 1.5rem;
   box-shadow: 0 10px 25px rgba(94, 234, 212, 0.3);
+
+  @media (max-width: 1024px) {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+    border-radius: 14px;
+  }
+
+  @media (max-width: 768px) {
+    width: 55px;
+    height: 55px;
+    font-size: 1.6rem;
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
 `;
 
 const AppCardTitle = styled(motion.h3)`
@@ -642,12 +891,43 @@ const AppCardTitle = styled(motion.h3)`
   font-weight: 600;
   margin-bottom: 1.2rem;
   color: var(--text-primary);
+
+  @media (max-width: 1024px) {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+    margin-bottom: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
 `;
 
 const AppCardDescription = styled(motion.p)`
   font-size: 1.1rem;
   line-height: 1.7;
   color: var(--text-secondary);
+
+  @media (max-width: 1024px) {
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
 `;
 
 const MobileStagesSection = styled(motion.section)`
@@ -659,6 +939,18 @@ const MobileStagesSection = styled(motion.section)`
   position: relative;
   padding: 8rem 2rem;
   overflow: hidden;
+
+  @media (max-width: 1024px) {
+    padding: 6rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0.5rem;
+  }
 `;
 
 const MobileWhyUsSection = styled(motion.section)`
@@ -670,6 +962,18 @@ const MobileWhyUsSection = styled(motion.section)`
     rgba(16, 24, 39, 1) 100%
   );
   overflow: hidden;
+
+  @media (max-width: 1024px) {
+    padding: 6rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0.5rem;
+  }
 
   &::before {
     content: '';
@@ -709,6 +1013,19 @@ const WhyUsContainer = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 2;
+
+  @media (max-width: 1024px) {
+    max-width: 900px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    margin: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    margin: 0 0.5rem;
+  }
 `;
 
 const WhyUsTitle = styled(motion.h2)`
@@ -720,6 +1037,22 @@ const WhyUsTitle = styled(motion.h2)`
   display: inline-block;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
+  @media (max-width: 1024px) {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -729,6 +1062,18 @@ const WhyUsTitle = styled(motion.h2)`
     height: 4px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
+
+    @media (max-width: 768px) {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+    }
+
+    @media (max-width: 480px) {
+      width: 60px;
+      height: 2px;
+    }
   }
 `;
 
@@ -738,6 +1083,25 @@ const WhyUsSubtitle = styled(motion.h3)`
   margin-bottom: 4rem;
   max-width: 800px;
   line-height: 1.6;
+
+  @media (max-width: 1024px) {
+    font-size: 1.3rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+    line-height: 1.5;
+  }
 `;
 
 const WhyUsCardsContainer = styled(motion.div)`
@@ -746,8 +1110,21 @@ const WhyUsCardsContainer = styled(motion.div)`
   gap: 2.5rem;
   margin-bottom: 4rem;
 
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -764,6 +1141,21 @@ const WhyUsCard = styled(motion.div)`
   overflow: hidden;
   z-index: 1;
   height: 100%;
+
+  @media (max-width: 1024px) {
+    padding: 2rem;
+    border-radius: 16px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.8rem;
+    border-radius: 14px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
 
   &::before {
     content: '';
@@ -841,6 +1233,29 @@ const WhyUsIconWrapper = styled.div`
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 
+  @media (max-width: 1024px) {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    border-radius: 16px;
+  }
+
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    font-size: 1.8rem;
+    border-radius: 14px;
+    margin-bottom: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+  }
+
   ${WhyUsCard}:hover & {
     transform: scale(1.1);
   }
@@ -853,6 +1268,14 @@ const WhyUsIconWrapper = styled.div`
     border-radius: 20px;
     border: 1px dashed rgba(94, 234, 212, 0.3);
     animation: ${pulse} 3s infinite ease-in-out 1.5s;
+
+    @media (max-width: 768px) {
+      border-radius: 14px;
+    }
+
+    @media (max-width: 480px) {
+      border-radius: 12px;
+    }
   }
 `;
 
@@ -863,6 +1286,22 @@ const WhyUsCardTitle = styled.h3`
   font-weight: 600;
   position: relative;
 
+  @media (max-width: 1024px) {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -872,6 +1311,11 @@ const WhyUsCardTitle = styled.h3`
     height: 2px;
     background: var(--accent-color);
     border-radius: 2px;
+
+    @media (max-width: 480px) {
+      width: 30px;
+      bottom: -5px;
+    }
   }
 `;
 
@@ -880,6 +1324,22 @@ const WhyUsCardDescription = styled.p`
   line-height: 1.7;
   color: var(--text-secondary);
   margin-top: 1rem;
+
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-top: 0.8rem;
+  }
 `;
 
 const CardAccent = styled.div`
@@ -928,6 +1388,23 @@ const PulsingButton = styled(motion.button)`
   overflow: hidden;
   z-index: 1;
   box-shadow: 0 8px 25px rgba(94, 234, 212, 0.3);
+
+  @media (max-width: 1024px) {
+    padding: 1.1rem 3rem;
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 40px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+    border-radius: 30px;
+  }
 
   &::before {
     content: '';
@@ -1017,6 +1494,18 @@ const PricingSection = styled(motion.section)`
   padding: 8rem 2rem;
   overflow: hidden;
 
+  @media (max-width: 1024px) {
+    padding: 6rem 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0.5rem;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -1026,6 +1515,14 @@ const PricingSection = styled(motion.section)`
     height: 150px;
     background: linear-gradient(to top, transparent, rgba(16, 24, 39, 1));
     z-index: 1;
+
+    @media (max-width: 768px) {
+      height: 100px;
+    }
+
+    @media (max-width: 480px) {
+      height: 80px;
+    }
   }
 `;
 
@@ -1040,6 +1537,25 @@ const PricingContainer = styled.div`
   padding: 3.5rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 1024px) {
+    max-width: 900px;
+    padding: 2.5rem;
+    border-radius: 20px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    padding: 2rem;
+    border-radius: 16px;
+    margin: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 0 0.5rem;
+  }
 `;
 
 const PricingTitle = styled(motion.h2)`
@@ -1051,6 +1567,23 @@ const PricingTitle = styled(motion.h2)`
   display: inline-block;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
+  @media (max-width: 1024px) {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    display: block;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -1060,6 +1593,17 @@ const PricingTitle = styled(motion.h2)`
     height: 4px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
+
+    @media (max-width: 768px) {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+    }
+
+    @media (max-width: 480px) {
+      width: 60px;
+      height: 3px;
+    }
   }
 `;
 
@@ -1068,6 +1612,14 @@ const PricingContent = styled(motion.div)`
   flex-direction: column;
   gap: 2rem;
   color: var(--text-primary);
+
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+  }
 `;
 
 const PricingText = styled(motion.p)`
@@ -1075,10 +1627,35 @@ const PricingText = styled(motion.p)`
   line-height: 1.8;
   color: var(--text-secondary);
   margin-bottom: 2rem;
+
+  @media (max-width: 1024px) {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const PricingFactorsList = styled(motion.div)`
   margin: 2rem 0 3rem;
+
+  @media (max-width: 768px) {
+    margin: 1.5rem 0 2rem;
+  }
+
+  @media (max-width: 480px) {
+    margin: 1rem 0 1.5rem;
+  }
 `;
 
 const PricingFactorsTitle = styled(motion.h3)`
@@ -1086,6 +1663,22 @@ const PricingFactorsTitle = styled(motion.h3)`
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
+
+  @media (max-width: 1024px) {
+    font-size: 1.3rem;
+    margin-bottom: 1.3rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
 `;
 
 const FactorItem = styled(motion.div)`
@@ -1098,9 +1691,34 @@ const FactorItem = styled(motion.div)`
   border-radius: 16px;
   transition: all 0.3s ease;
 
+  @media (max-width: 768px) {
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 12px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.8rem;
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
   &:hover {
     background: rgba(255, 255, 255, 0.06);
     transform: translateX(10px);
+
+    @media (max-width: 768px) {
+      transform: translateX(5px);
+    }
+
+    @media (max-width: 480px) {
+      transform: translateY(-2px);
+    }
   }
 `;
 
@@ -1120,10 +1738,28 @@ const FactorIcon = styled.div`
   color: white;
   flex-shrink: 0;
   box-shadow: 0 8px 20px rgba(94, 234, 212, 0.2);
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 480px) {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
 `;
 
 const FactorContent = styled.div`
   flex: 1;
+
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 const FactorTitle = styled.h4`
@@ -1131,12 +1767,32 @@ const FactorTitle = styled.h4`
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
 `;
 
 const FactorDescription = styled.p`
   font-size: 1.05rem;
   color: var(--text-secondary);
   line-height: 1.6;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
 `;
 
 const PricingCTA = styled(motion.div)`
@@ -1146,6 +1802,18 @@ const PricingCTA = styled(motion.div)`
   margin-top: 2rem;
   border: 1px solid rgba(94, 234, 212, 0.1);
   text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+  }
 `;
 
 const PricingCTAText = styled.p`
@@ -1153,28 +1821,58 @@ const PricingCTAText = styled.p`
   font-weight: 500;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
 `;
 
 const PricingButton = styled(motion.button)`
-  padding: 1rem 2.5rem;
+  padding: 1.2rem 3rem;
   font-size: 1.2rem;
   font-weight: 600;
   background: linear-gradient(
-    90deg,
+    45deg,
     var(--accent-color),
     rgba(59, 130, 246, 0.9)
   );
   color: white;
   border: none;
-  border-radius: 12px;
+  border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 8px 25px rgba(94, 234, 212, 0.3);
   transition: all 0.3s ease;
-  margin: 0 auto;
+  box-shadow: 0 8px 25px rgba(94, 234, 212, 0.4);
+
+  @media (max-width: 1024px) {
+    padding: 1.1rem 2.8rem;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    border-radius: 40px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.9rem 2rem;
+    font-size: 0.95rem;
+    border-radius: 30px;
+  }
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(94, 234, 212, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(94, 234, 212, 0.5);
+
+    @media (max-width: 768px) {
+      transform: translateY(-1px);
+    }
   }
 `;
 
@@ -1429,9 +2127,23 @@ const FaqQuestionText = styled.h3`
   flex: 1;
   transform: translateZ(5px);
 
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    text-align: left;
+    margin-bottom: 0.5rem;
+  }
+
   ${FaqQuestion}:hover & {
     color: var(--accent-color);
     transform: translateZ(10px);
+
+    @media (max-width: 768px) {
+      transform: translateZ(5px);
+    }
   }
 `;
 
@@ -1448,9 +2160,31 @@ const FaqToggle = styled(motion.div)`
   border-radius: 50%;
   transition: all 0.3s ease;
 
+  @media (max-width: 768px) {
+    width: 24px;
+    height: 24px;
+    margin-left: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 20px;
+    height: 20px;
+    margin-left: 0;
+    margin-top: 0.2rem;
+    align-self: flex-start;
+  }
+
   &:hover {
     background: rgba(94, 234, 212, 0.1);
     box-shadow: 0 0 10px rgba(94, 234, 212, 0.2);
+
+    @media (max-width: 768px) {
+      box-shadow: 0 0 8px rgba(94, 234, 212, 0.2);
+    }
+
+    @media (max-width: 480px) {
+      box-shadow: 0 0 5px rgba(94, 234, 212, 0.2);
+    }
   }
 `;
 
@@ -1461,6 +2195,18 @@ const FaqAnswer = styled(motion.div)`
   color: var(--text-secondary);
   overflow: hidden;
   position: relative;
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1rem 1.2rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
 
   &::before {
     content: '';
@@ -1475,6 +2221,16 @@ const FaqAnswer = styled(motion.div)`
       rgba(255, 255, 255, 0.1),
       transparent
     );
+
+    @media (max-width: 768px) {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+      left: 1rem;
+      right: 1rem;
+    }
   }
 
   strong {
@@ -1492,6 +2248,11 @@ const FaqAnswer = styled(motion.div)`
     border-radius: 4px;
     margin: 0 0.2rem;
     position: relative;
+
+    @media (max-width: 480px) {
+      padding: 0.1rem 0.3rem;
+      margin: 0 0.1rem;
+    }
   }
 `;
 
@@ -1510,6 +2271,22 @@ const FaqCta = styled(motion.div)`
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
 
+  @media (max-width: 768px) {
+    padding: 2rem;
+    border-radius: 16px;
+    margin-top: 2rem;
+    gap: 1.2rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+    gap: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -1523,6 +2300,10 @@ const FaqCta = styled(motion.div)`
       rgba(59, 130, 246, 0.8)
     );
     z-index: 1;
+
+    @media (max-width: 480px) {
+      height: 3px;
+    }
   }
 
   &::after {
@@ -1542,16 +2323,33 @@ const FaqCta = styled(motion.div)`
 `;
 
 const FaqCtaText = styled.p`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 500;
   color: var(--text-primary);
-  text-align: center;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+
+  @media (max-width: 1024px) {
+    font-size: 1.2rem;
+    margin-bottom: 1.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.4;
+  }
 `;
 
 const FaqCtaButton = styled(motion.button)`
-  padding: 1.2rem 3rem;
-  font-size: 1.2rem;
+  padding: 1.2rem 3.5rem;
+  font-size: 1.3rem;
   font-weight: 600;
   background: linear-gradient(
     90deg,
@@ -1562,10 +2360,30 @@ const FaqCtaButton = styled(motion.button)`
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(94, 234, 212, 0.2);
-  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 8px 25px rgba(94, 234, 212, 0.3);
+  transition: all 0.3s ease;
+
+  @media (max-width: 1024px) {
+    padding: 1.1rem 3rem;
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 40px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 300px;
+  }
 
   &::before {
     content: '';
@@ -1581,6 +2399,7 @@ const FaqCtaButton = styled(motion.button)`
       transparent
     );
     transition: all 0.6s ease;
+    z-index: -1;
   }
 
   &:hover::before {
@@ -1590,17 +2409,52 @@ const FaqCtaButton = styled(motion.button)`
   &::after {
     content: '';
     position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 8px;
-    background: linear-gradient(
-      90deg,
-      rgba(59, 130, 246, 0.5),
-      var(--accent-color)
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.3) 0%,
+      transparent 60%
     );
-    filter: blur(5px);
-    opacity: 0.5;
+    transition: all 0.3s ease;
+    z-index: -1;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(94, 234, 212, 0.4);
+
+    @media (max-width: 768px) {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(94, 234, 212, 0.4);
+    }
+
+    @media (max-width: 480px) {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(94, 234, 212, 0.4);
+    }
+  }
+
+  &:hover::after {
+    width: 200px;
+    height: 200px;
+
+    @media (max-width: 768px) {
+      width: 150px;
+      height: 150px;
+    }
+
+    @media (max-width: 480px) {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  &:active {
+    transform: translateY(1px);
   }
 `;
 
@@ -2101,10 +2955,10 @@ const MobileAppsPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             style={{
-              fontSize: '4rem',
+              fontSize: 'clamp(2.5rem, 5vw, 4rem)',
               fontWeight: 800,
               color: 'var(--accent-color)',
-              marginBottom: '6rem',
+              marginBottom: 'clamp(3rem, 8vw, 6rem)',
               position: 'relative',
               textAlign: 'center',
               textShadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
@@ -2117,14 +2971,14 @@ const MobileAppsPage = () => {
                 bottom: '-20px',
                 left: '50%',
                 transform: 'translateX(-50%)',
-                width: '150px',
+                width: 'clamp(100px, 20vw, 150px)',
                 height: '4px',
                 background:
                   'linear-gradient(90deg, transparent, var(--accent-color), transparent)',
                 borderRadius: '4px',
               }}
               animate={{
-                width: ['0%', '150px'],
+                width: ['0%', 'clamp(100px, 20vw, 150px)'],
                 opacity: [0, 1],
               }}
               transition={{ duration: 1, delay: 0.3 }}
@@ -2136,11 +2990,12 @@ const MobileAppsPage = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             style={{
-              fontSize: '1.3rem',
-              maxWidth: '1000px',
+              fontSize: 'clamp(1rem, 2.5vw, 1.3rem)',
+              maxWidth: 'clamp(300px, 90%, 1000px)',
               textAlign: 'center',
-              margin: '0 auto 4rem',
+              margin: '0 auto clamp(2rem, 6vw, 4rem)',
               color: 'var(--text-secondary)',
+              padding: '0 1rem',
             }}
           >
             Процес створення мобільного додатку складається з кількох важливих
@@ -2163,7 +3018,7 @@ const MobileAppsPage = () => {
             style={{
               display: 'flex',
               flexDirection: 'column',
-              gap: '3rem',
+              gap: 'clamp(1.5rem, 4vw, 3rem)',
               alignItems: 'center',
             }}
           >
@@ -2213,112 +3068,124 @@ const MobileAppsPage = () => {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    gap: '2rem',
-                    padding: '2rem',
-                    width: '1000px',
-                    height: '180px',
+                    flexDirection: window.innerWidth <= 768 ? 'column' : 'row',
+                    gap: 'clamp(1rem, 3vw, 2rem)',
+                    padding: 'clamp(1rem, 3vw, 2rem)',
+                    width: 'clamp(300px, 95%, 1000px)',
+                    minHeight: 'clamp(140px, 20vw, 180px)',
                     background: 'rgba(16, 24, 39, 0.2)',
                     backdropFilter: 'blur(5px)',
-                    borderRadius: '20px',
+                    borderRadius: 'clamp(12px, 3vw, 20px)',
                     border: '1px solid rgba(255, 255, 255, 0.05)',
                     boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
                   }}
                   whileHover={{
-                    scale: 1.02,
+                    scale: window.innerWidth <= 768 ? 1.01 : 1.02,
                     transition: { duration: 0.3 },
                     boxShadow: '0 15px 40px rgba(0, 0, 0, 0.2)',
                     border: '1px solid rgba(94, 234, 212, 0.2)',
                   }}
                 >
-                  {/* Номер этапа */}
-                  <motion.div
-                    style={{
-                      width: '100px',
-                      height: '100px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '4rem',
-                      fontWeight: '900',
-                      color: 'rgba(94, 234, 212, 0.8)',
-                      textShadow: '0 2px 10px rgba(94, 234, 212, 0.4)',
-                      flexShrink: 0,
-                    }}
-                  >
-                    {index + 1}
-                  </motion.div>
-
-                  {/* Иконка */}
-                  <motion.div
-                    style={{
-                      width: '120px',
-                      height: '120px',
-                      borderRadius: '50%',
-                      background:
-                        'linear-gradient(135deg, var(--accent-color) 0%, rgba(59, 130, 246, 0.8) 100%)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '2.5rem',
-                      color: 'white',
-                      boxShadow: '0 10px 30px rgba(94, 234, 212, 0.4)',
-                      position: 'relative',
-                      flexShrink: 0,
-                    }}
-                    whileHover={{
-                      boxShadow: '0 15px 40px rgba(94, 234, 212, 0.6)',
-                      scale: 1.05,
-                      transition: { duration: 0.3 },
-                    }}
-                  >
-                    {/* Пульсирующий круг вокруг иконки */}
+                  {/* Контейнер для номера и иконки на мобильных */}
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 'clamp(1rem, 3vw, 2rem)',
+                    flexDirection: window.innerWidth <= 480 ? 'column' : 'row',
+                    ...(window.innerWidth <= 768 && { width: '100%', justifyContent: 'center' })
+                  }}>
+                    {/* Номер этапа */}
                     <motion.div
                       style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        borderRadius: '50%',
-                        border: '2px solid rgba(94, 234, 212, 0.5)',
+                        width: 'clamp(60px, 12vw, 100px)',
+                        height: 'clamp(60px, 12vw, 100px)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: 'clamp(2rem, 6vw, 4rem)',
+                        fontWeight: '900',
+                        color: 'rgba(94, 234, 212, 0.8)',
+                        textShadow: '0 2px 10px rgba(94, 234, 212, 0.4)',
+                        flexShrink: 0,
                       }}
-                      animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.5, 0, 0.5],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: 'easeInOut',
-                      }}
-                    />
+                    >
+                      {index + 1}
+                    </motion.div>
 
-                    {step.icon}
-                  </motion.div>
+                    {/* Иконка */}
+                    <motion.div
+                      style={{
+                        width: 'clamp(80px, 15vw, 120px)',
+                        height: 'clamp(80px, 15vw, 120px)',
+                        borderRadius: '50%',
+                        background:
+                          'linear-gradient(135deg, var(--accent-color) 0%, rgba(59, 130, 246, 0.8) 100%)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
+                        color: 'white',
+                        boxShadow: '0 10px 30px rgba(94, 234, 212, 0.4)',
+                        position: 'relative',
+                        flexShrink: 0,
+                      }}
+                      whileHover={{
+                        boxShadow: '0 15px 40px rgba(94, 234, 212, 0.6)',
+                        scale: window.innerWidth <= 768 ? 1.03 : 1.05,
+                        transition: { duration: 0.3 },
+                      }}
+                    >
+                      {/* Пульсирующий круг вокруг иконки */}
+                      <motion.div
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          right: 0,
+                          bottom: 0,
+                          borderRadius: '50%',
+                          border: '2px solid rgba(94, 234, 212, 0.5)',
+                        }}
+                        animate={{
+                          scale: [1, 1.2, 1],
+                          opacity: [0.5, 0, 0.5],
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: 'easeInOut',
+                        }}
+                      />
+
+                      {step.icon}
+                    </motion.div>
+                  </div>
 
                   {/* Текстовый блок */}
                   <motion.div
                     style={{
                       background: 'rgba(10, 15, 25, 0.85)',
                       backdropFilter: 'blur(10px)',
-                      borderRadius: '20px',
-                      padding: '1.5rem 2rem',
+                      borderRadius: 'clamp(12px, 3vw, 20px)',
+                      padding: 'clamp(1rem, 3vw, 1.5rem) clamp(1rem, 4vw, 2rem)',
                       border: '1px solid rgba(94, 234, 212, 0.3)',
                       boxShadow: '0 15px 40px rgba(0, 0, 0, 0.3)',
-                      width: 'calc(100% - 250px)',
-                      height: '160px',
+                      width: window.innerWidth <= 768 ? '100%' : 'calc(100% - 250px)',
+                      minHeight: 'clamp(120px, 18vw, 160px)',
                       display: 'flex',
                       flexDirection: 'column',
                       justifyContent: 'center',
+                      ...(window.innerWidth <= 768 && { marginTop: '1rem' })
                     }}
                   >
                     <h3
                       style={{
-                        fontSize: '1.5rem',
+                        fontSize: 'clamp(1.1rem, 3vw, 1.5rem)',
                         fontWeight: 700,
-                        marginBottom: '0.8rem',
+                        marginBottom: 'clamp(0.5rem, 2vw, 0.8rem)',
                         color: '#FFFFFF',
                         textShadow: '0 2px 5px rgba(0, 0, 0, 0.5)',
+                        textAlign: window.innerWidth <= 480 ? 'center' : 'left',
                       }}
                     >
                       {step.title}
@@ -2326,11 +3193,12 @@ const MobileAppsPage = () => {
 
                     <p
                       style={{
-                        fontSize: '1rem',
-                        lineHeight: 1.5,
+                        fontSize: 'clamp(0.85rem, 2.2vw, 1rem)',
+                        lineHeight: window.innerWidth <= 480 ? 1.4 : 1.5,
                         color: '#FFFFFF',
                         overflow: 'hidden',
                         textShadow: '0 1px 3px rgba(0, 0, 0, 0.5)',
+                        textAlign: window.innerWidth <= 480 ? 'center' : 'left',
                       }}
                     >
                       {step.description}
@@ -2342,14 +3210,14 @@ const MobileAppsPage = () => {
                 {index < 4 && (
                   <motion.div
                     style={{
-                      width: '4px',
-                      height: '5rem',
+                      width: 'clamp(2px, 1vw, 4px)',
+                      height: 'clamp(3rem, 8vw, 5rem)',
                       background:
                         'linear-gradient(to bottom, var(--accent-color), rgba(59, 130, 246, 0.1))',
                       borderRadius: '4px',
                     }}
                     initial={{ height: 0 }}
-                    animate={{ height: '5rem' }}
+                    animate={{ height: 'clamp(3rem, 8vw, 5rem)' }}
                     transition={{ duration: 0.8, delay: index * 0.3 + 0.5 }}
                   />
                 )}
@@ -2362,23 +3230,25 @@ const MobileAppsPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.6 }}
             whileHover={{
-              scale: 1.05,
+              scale: window.innerWidth <= 768 ? 1.02 : 1.05,
               boxShadow: '0 0 20px rgba(59, 130, 246, 0.7)',
             }}
             whileTap={{ scale: 0.95 }}
             style={{
-              padding: '1rem 2.5rem',
-              fontSize: '1.2rem',
+              padding: 'clamp(0.8rem, 3vw, 1rem) clamp(1.5rem, 5vw, 2.5rem)',
+              fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
               fontWeight: 'bold',
               background: 'var(--accent-color)',
               color: 'white',
               border: 'none',
-              borderRadius: '12px',
+              borderRadius: 'clamp(8px, 2vw, 12px)',
               cursor: 'pointer',
-              margin: '5rem auto 0',
+              margin: 'clamp(3rem, 8vw, 5rem) auto 0',
               zIndex: 1,
               position: 'relative',
               display: 'block',
+              width: window.innerWidth <= 480 ? '90%' : 'auto',
+              maxWidth: window.innerWidth <= 480 ? '300px' : 'none',
             }}
             onClick={openModal}
           >
