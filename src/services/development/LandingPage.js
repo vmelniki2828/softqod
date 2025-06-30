@@ -2628,13 +2628,13 @@ const CtaDecoration = styled.div`
 const PWAFaqSection = styled(motion.section)`
   position: relative;
   padding: 8rem 2rem;
-  background: linear-gradient(
+    background: linear-gradient(
     180deg,
     var(--bg-primary) 0%,
     rgba(16, 24, 39, 0.9) 100%
   );
   overflow: hidden;
-  z-index: 0;
+    z-index: 0;
 
   @media (max-width: 1024px) {
     padding: 6rem 1.5rem;
@@ -4673,7 +4673,7 @@ const LPBusinessBenefitSubtitle = styled(motion.h3)`
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
 
-    @media (max-width: 768px) {
+  @media (max-width: 768px) {
       width: 70px;
       height: 2px;
       bottom: -8px;
@@ -5353,7 +5353,7 @@ const LPCreationBackground = styled.div`
 `;
 
 const LPCreationPattern = styled.div`
-  position: absolute;
+    position: absolute;
   inset: 0;
   background-image: radial-gradient(
     rgba(255, 255, 255, 0.1) 1px,
