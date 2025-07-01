@@ -2174,12 +2174,6 @@ const floatVertical = keyframes`
   100% { transform: translateY(0); }
 `;
 
-const pulseFaq = keyframes`
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-`;
-
 const FaqSection = styled(motion.section)`
   position: relative;
   padding: 8rem 0;
@@ -2211,6 +2205,18 @@ const FaqSection = styled(motion.section)`
     );
     z-index: -1;
   }
+
+  @media (max-width: 1024px) {
+    padding: 6rem 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0;
+  }
 `;
 
 const FaqWaveTop = styled.div`
@@ -2234,6 +2240,21 @@ const FaqContainer = styled.div`
   position: relative;
   z-index: 2;
   padding: 0 2rem;
+
+  @media (max-width: 1024px) {
+    max-width: 800px;
+    padding: 0 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 700px;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    max-width: none;
+    padding: 0 1rem;
+  }
 `;
 
 const FaqGlowCircle = styled.div`
@@ -2247,7 +2268,7 @@ const FaqGlowCircle = styled.div`
     height: 400px;
     background: radial-gradient(
       circle,
-      rgba(var(--accent-color-rgb), 0.05) 0%,
+      rgba(94, 234, 212, 0.05) 0%,
       transparent 70%
     );
     top: 10%;
@@ -2260,7 +2281,7 @@ const FaqGlowCircle = styled.div`
     height: 500px;
     background: radial-gradient(
       circle,
-      rgba(var(--accent-color-rgb), 0.05) 0%,
+      rgba(59, 130, 246, 0.05) 0%,
       transparent 70%
     );
     bottom: 5%;
@@ -2276,16 +2297,16 @@ const FaqTitle = styled(motion.h2)`
   margin-bottom: 3rem;
   text-align: center;
   position: relative;
-  text-shadow: 0 2px 10px rgba(var(--accent-color-rgb), 0.2);
+  text-shadow: 0 2px 10px rgba(94, 234, 212, 0.2);
 
   &::before {
-    content: '';
+    content: 'F.A.Q';
     position: absolute;
     top: -30px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 5rem;
-    color: rgba(var(--accent-color-rgb), 0.03);
+    color: rgba(94, 234, 212, 0.03);
     font-weight: 900;
     letter-spacing: 5px;
     z-index: -1;
@@ -2307,7 +2328,49 @@ const FaqTitle = styled(motion.h2)`
       transparent
     );
     border-radius: 4px;
-    animation: ${pulseFaq} 2s infinite ease-in-out;
+    animation: ${pulse} 2s infinite ease-in-out;
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+
+    &::before {
+      font-size: 4rem;
+      top: -25px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+
+    &::before {
+      font-size: 3.5rem;
+      top: -20px;
+    }
+
+    &::after {
+      width: 60px;
+      height: 3px;
+      bottom: -12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+
+    &::before {
+      font-size: 2.5rem;
+      top: -15px;
+    }
+
+    &::after {
+      width: 50px;
+      height: 2px;
+      bottom: -10px;
+    }
   }
 `;
 
@@ -2316,6 +2379,16 @@ const FaqList = styled(motion.div)`
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 4rem;
+
+  @media (max-width: 768px) {
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const FaqItem = styled(motion.div)`
@@ -2330,10 +2403,25 @@ const FaqItem = styled(motion.div)`
   perspective: 1000px;
 
   &:hover {
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2),
-      0 0 15px rgba(var(--accent-color-rgb), 0.1);
-    border-color: rgba(var(--accent-color-rgb), 0.1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 15px rgba(94, 234, 212, 0.1);
+    border-color: rgba(94, 234, 212, 0.1);
     transform: translateY(-3px);
+  }
+
+  @media (max-width: 768px) {
+    border-radius: 12px;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    border-radius: 10px;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
   }
 `;
 
@@ -2385,6 +2473,25 @@ const FaqQuestion = styled(motion.div)`
       transparent
     );
   }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+
+    &::after {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.2rem;
+    align-items: flex-start;
+
+    &::after {
+      left: 1.2rem;
+      right: 1.2rem;
+    }
+  }
 `;
 
 const FaqQuestionText = styled.h3`
@@ -2399,6 +2506,16 @@ const FaqQuestionText = styled.h3`
     color: var(--accent-color);
     transform: translateZ(10px);
   }
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-right: 0.5rem;
+  }
 `;
 
 const FaqToggle = styled(motion.div)`
@@ -2410,13 +2527,20 @@ const FaqToggle = styled(motion.div)`
   color: var(--accent-color);
   margin-left: 1rem;
   flex-shrink: 0;
-  background: rgba(var(--accent-color-rgb), 0.05);
+  background: rgba(94, 234, 212, 0.05);
   border-radius: 50%;
   transition: all 0.3s ease;
 
   &:hover {
-    background: rgba(var(--accent-color-rgb), 0.1);
-    box-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.2);
+    background: rgba(94, 234, 212, 0.1);
+    box-shadow: 0 0 10px rgba(94, 234, 212, 0.2);
+  }
+
+  @media (max-width: 480px) {
+    width: 24px;
+    height: 24px;
+    margin-left: 0.5rem;
+    margin-top: 0.2rem;
   }
 `;
 
@@ -2473,7 +2597,7 @@ const FaqAnswer = styled(motion.div)`
   .highlight {
     background: linear-gradient(
       90deg,
-      rgba(var(--accent-color-rgb), 0.1),
+      rgba(94, 234, 212, 0.1),
       rgba(59, 130, 246, 0.1)
     );
     padding: 0.2rem 0.5rem;
@@ -2496,6 +2620,43 @@ const FaqAnswer = styled(motion.div)`
       );
       background-size: 200% 100%;
       animation: ${shimmerEffect} 2s infinite;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem 1.5rem;
+    font-size: 1rem;
+
+    &::before {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1.2rem 1.2rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+
+    &::before {
+      left: 1.2rem;
+      right: 1.2rem;
+    }
+
+    ul {
+      padding-left: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.4rem;
+    }
+
+    p {
+      margin-bottom: 0.6rem;
     }
   }
 `;
@@ -2538,10 +2699,22 @@ const FaqCta = styled(motion.div)`
     height: 100%;
     background: linear-gradient(
       135deg,
-      rgba(var(--accent-color-rgb), 0.05) 0%,
+      rgba(94, 234, 212, 0.05) 0%,
       transparent 50%
     );
     z-index: -1;
+  }
+
+  @media (max-width: 768px) {
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
+    gap: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    gap: 1rem;
   }
 `;
 
@@ -2551,6 +2724,15 @@ const FaqCtaText = styled.p`
   color: var(--text-primary);
   text-align: center;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
 `;
 
 const FaqCtaButton = styled(motion.button)`
@@ -2566,7 +2748,7 @@ const FaqCtaButton = styled(motion.button)`
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(var(--accent-color-rgb), 0.2);
+  box-shadow: 0 8px 20px rgba(94, 234, 212, 0.2);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -2605,6 +2787,19 @@ const FaqCtaButton = styled(motion.button)`
     );
     filter: blur(5px);
     opacity: 0.5;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 250px;
   }
 `;
 

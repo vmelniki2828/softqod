@@ -1327,27 +1327,6 @@ const ShowOnMobile = styled.div`
   }
 `;
 
-const MobileButton = styled(motion.button)`
-  background: var(--accent-color);
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 50px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin: 0 auto;
-  box-shadow: 0 10px 20px rgba(var(--accent-color-rgb), 0.3);
-  
-  &:hover {
-    background: #ff7b00;
-  }
-`;
-
 const AdvantagesSection = styled.section`
   padding: 8rem 0;
   background: var(--bg-primary);
@@ -2226,6 +2205,18 @@ const FaqSection = styled(motion.section)`
     );
     z-index: -1;
   }
+
+  @media (max-width: 1024px) {
+    padding: 6rem 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0;
+  }
 `;
 
 const FaqWaveTop = styled.div`
@@ -2245,6 +2236,21 @@ const FaqContainer = styled.div`
   position: relative;
   z-index: 2;
   padding: 0 2rem;
+
+  @media (max-width: 1024px) {
+    max-width: 800px;
+    padding: 0 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 700px;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    max-width: none;
+    padding: 0 1rem;
+  }
 `;
 
 const FaqGlowCircle = styled.div`
@@ -2320,6 +2326,48 @@ const FaqTitle = styled(motion.h2)`
     border-radius: 4px;
     animation: ${pulse} 2s infinite ease-in-out;
   }
+
+  @media (max-width: 1024px) {
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+
+    &::before {
+      font-size: 4rem;
+      top: -25px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+
+    &::before {
+      font-size: 3.5rem;
+      top: -20px;
+    }
+
+    &::after {
+      width: 60px;
+      height: 3px;
+      bottom: -12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+
+    &::before {
+      font-size: 2.5rem;
+      top: -15px;
+    }
+
+    &::after {
+      width: 50px;
+      height: 2px;
+      bottom: -10px;
+    }
+  }
 `;
 
 const FaqList = styled(motion.div)`
@@ -2327,6 +2375,16 @@ const FaqList = styled(motion.div)`
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 4rem;
+
+  @media (max-width: 768px) {
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const FaqItem = styled(motion.div)`
@@ -2344,6 +2402,22 @@ const FaqItem = styled(motion.div)`
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 15px rgba(94, 234, 212, 0.1);
     border-color: rgba(94, 234, 212, 0.1);
     transform: translateY(-3px);
+  }
+
+  @media (max-width: 768px) {
+    border-radius: 12px;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    border-radius: 10px;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
   }
 `;
 
@@ -2395,6 +2469,25 @@ const FaqQuestion = styled(motion.div)`
       transparent
     );
   }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+
+    &::after {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.2rem;
+    align-items: flex-start;
+
+    &::after {
+      left: 1.2rem;
+      right: 1.2rem;
+    }
+  }
 `;
 
 const FaqQuestionText = styled.h3`
@@ -2408,6 +2501,16 @@ const FaqQuestionText = styled.h3`
   ${FaqQuestion}:hover & {
     color: var(--accent-color);
     transform: translateZ(10px);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-right: 0.5rem;
   }
 `;
 
@@ -2427,6 +2530,13 @@ const FaqToggle = styled(motion.div)`
   &:hover {
     background: rgba(94, 234, 212, 0.1);
     box-shadow: 0 0 10px rgba(94, 234, 212, 0.2);
+  }
+
+  @media (max-width: 480px) {
+    width: 24px;
+    height: 24px;
+    margin-left: 0.5rem;
+    margin-top: 0.2rem;
   }
 `;
 
@@ -2508,6 +2618,43 @@ const FaqAnswer = styled(motion.div)`
       animation: ${shimmerEffect} 2s infinite;
     }
   }
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem 1.5rem;
+    font-size: 1rem;
+
+    &::before {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1.2rem 1.2rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+
+    &::before {
+      left: 1.2rem;
+      right: 1.2rem;
+    }
+
+    ul {
+      padding-left: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.4rem;
+    }
+
+    p {
+      margin-bottom: 0.6rem;
+    }
+  }
 `;
 
 const FaqCta = styled(motion.div)`
@@ -2553,6 +2700,18 @@ const FaqCta = styled(motion.div)`
     );
     z-index: -1;
   }
+
+  @media (max-width: 768px) {
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
+    gap: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    gap: 1rem;
+  }
 `;
 
 const FaqCtaText = styled.p`
@@ -2561,6 +2720,15 @@ const FaqCtaText = styled.p`
   color: var(--text-primary);
   text-align: center;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
 `;
 
 const FaqCtaButton = styled(motion.button)`
@@ -2615,6 +2783,19 @@ const FaqCtaButton = styled(motion.button)`
     );
     filter: blur(5px);
     opacity: 0.5;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 250px;
   }
 `;
 
@@ -3062,12 +3243,6 @@ const BrandbookPage = () => {
               </ShowcasePoint>
 
               <ShowOnMobile>
-                <MobileButton
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Переглянути приклади <FaArrowRight />
-                </MobileButton>
               </ShowOnMobile>
             </ShowcaseContent>
 

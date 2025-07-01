@@ -429,24 +429,84 @@ const FeatureCard = styled(motion.div)`
       transform: scaleX(1);
     }
   }
+  
+  @media (max-width: 1024px) {
+    padding: 2rem;
+    border-radius: 16px;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1.2rem;
+    border-radius: 10px;
+  }
 `;
 
 const FeatureIcon = styled.div`
   font-size: 2.5rem;
   color: var(--accent-color);
   margin-bottom: 1.5rem;
+  
+  @media (max-width: 1024px) {
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
 `;
 
 const FeatureTitle = styled.h3`
   font-size: 1.3rem;
   margin-bottom: 0.8rem;
   color: var(--text-primary);
+  
+  @media (max-width: 1024px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.7rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const FeatureDescription = styled.p`
   color: var(--text-secondary);
   line-height: 1.6;
   font-size: 1.1rem;
+  
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    line-height: 1.3;
+  }
 `;
 
 const SliderSection = styled.section`
@@ -456,6 +516,71 @@ const SliderSection = styled.section`
   border-radius: 24px;
   padding: 3rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  
+  @media (max-width: 1024px) {
+    margin: 4rem 0;
+    padding: 2.5rem;
+    border-radius: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    margin: 3rem 0;
+    padding: 2rem;
+    border-radius: 16px;
+  }
+  
+  @media (max-width: 480px) {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+`;
+
+const FeaturesContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const FeaturesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 0.8rem;
+  }
+`;
+
+const FeaturesSecondGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  
+  @media (max-width: 1024px) {
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 0.8rem;
+  }
 `;
 
 const SliderTitle = styled.h2`
@@ -463,6 +588,21 @@ const SliderTitle = styled.h2`
   text-align: center;
   margin-bottom: 3rem;
   color: var(--text-primary);
+  
+  @media (max-width: 1024px) {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const SliderIntro = styled.p`
@@ -472,6 +612,23 @@ const SliderIntro = styled.p`
   max-width: 1000px;
   margin: 0 auto 3rem;
   color: var(--text-secondary);
+  
+  @media (max-width: 1024px) {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
 `;
 
 const ServiceCard = styled(motion.div)`
@@ -505,6 +662,24 @@ const ServiceCard = styled(motion.div)`
     border-color: rgba(var(--accent-color-rgb), 0.3);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
   }
+  
+  @media (max-width: 1024px) {
+    padding: 2.5rem;
+    width: 85%;
+    border-radius: 14px;
+  }
+  
+  @media (max-width: 768px) {
+  padding: 2rem;
+    width: 90%;
+    border-radius: 12px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+    width: 95%;
+    border-radius: 10px;
+  }
 `;
 
 const ServiceIcon = styled.div`
@@ -513,6 +688,21 @@ const ServiceIcon = styled.div`
   margin-bottom: 2rem;
   opacity: 0.9;
   filter: drop-shadow(0 0 8px rgba(var(--accent-color-rgb), 0.3));
+  
+  @media (max-width: 1024px) {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  @media (max-width: 480px) {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  }
 `;
 
 const ServiceTitle = styled.h3`
@@ -520,12 +710,42 @@ const ServiceTitle = styled.h3`
   font-weight: 600;
   margin-bottom: 1.5rem;
   color: var(--text-primary);
+  
+  @media (max-width: 1024px) {
+    font-size: 1.7rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
 `;
 
 const ServiceDescription = styled.p`
   font-size: 1.2rem;
   line-height: 1.8;
   color: var(--text-secondary);
+  
+  @media (max-width: 1024px) {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
 `;
 
 const SliderContainer = styled.div`
@@ -535,6 +755,24 @@ const SliderContainer = styled.div`
   overflow: hidden;
   border-radius: 20px;
   margin: 3rem 0;
+  
+  @media (max-width: 1024px) {
+    height: 350px;
+    margin: 2.5rem 0;
+    border-radius: 16px;
+  }
+  
+  @media (max-width: 768px) {
+    height: 300px;
+    margin: 2rem 0;
+    border-radius: 12px;
+  }
+  
+  @media (max-width: 480px) {
+    height: 280px;
+    margin: 1.5rem 0;
+    border-radius: 10px;
+  }
 `;
 
 const Slider = styled.div`
@@ -559,6 +797,16 @@ const SliderControls = styled.div`
   gap: 1.5rem;
   margin: 2rem auto;
   z-index: 10;
+  
+  @media (max-width: 768px) {
+    gap: 1rem;
+    margin: 1.5rem auto;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 0.8rem;
+    margin: 1rem auto;
+  }
 `;
 
 const SliderButton = styled.button`
@@ -582,6 +830,18 @@ const SliderButton = styled.button`
     transform: scale(1.1);
     box-shadow: 0 8px 20px rgba(var(--accent-color-rgb), 0.3);
   }
+  
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
 `;
 
 const ProcessSection = styled.section`
@@ -589,6 +849,21 @@ const ProcessSection = styled.section`
   padding: 4rem 0;
   position: relative;
   overflow: hidden;
+
+  @media (max-width: 1024px) {
+    margin: 4rem 0;
+    padding: 3rem 1rem;
+  }
+
+  @media (max-width: 768px) {
+    margin: 3rem 0;
+    padding: 2rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    margin: 2rem 0;
+    padding: 1.5rem 0.5rem;
+  }
 `;
 
 const ProcessTitle = styled.h2`
@@ -608,6 +883,33 @@ const ProcessTitle = styled.h2`
     width: 80px;
     height: 4px;
     background: var(--accent-color);
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    
+    &::after {
+      width: 60px;
+      height: 3px;
+      bottom: -12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    
+    &::after {
+      width: 50px;
+      height: 3px;
+      bottom: -10px;
+    }
   }
 `;
 
@@ -631,6 +933,30 @@ const ProcessTimeline = styled.div`
     height: 100%;
     background: var(--accent-color);
     opacity: 0.3;
+  }
+
+  @media (max-width: 1024px) {
+    padding: 2rem 1rem;
+    gap: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 0.5rem;
+    gap: 2rem;
+    
+    &::before {
+      left: 2rem;
+      transform: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem 0.5rem;
+    gap: 1.5rem;
+    
+    &::before {
+      left: 1.5rem;
+    }
   }
 `;
 
@@ -698,6 +1024,66 @@ const ProcessStep = styled.div`
   &:nth-child(even)::after {
     right: -30px;
   }
+
+  @media (max-width: 1024px) {
+    width: 45%;
+    padding: 2rem;
+    border-radius: 16px;
+    
+    &:nth-child(odd) {
+      margin-top: -3rem;
+    }
+    
+    &:nth-child(even) {
+      margin-top: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-left: 4rem !important;
+    margin-right: 0 !important;
+    text-align: left !important;
+    padding: 1.5rem;
+    border-radius: 12px;
+    
+    &:nth-child(odd) {
+      margin-top: 0;
+    }
+    
+    &:nth-child(even) {
+      margin-top: 0;
+    }
+    
+    &::before {
+      left: -2rem !important;
+      right: auto !important;
+      width: 16px;
+      height: 16px;
+    }
+    
+    &::after {
+      left: -2.5rem !important;
+      right: auto !important;
+      width: 25px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    margin-left: 3rem !important;
+    padding: 1.2rem;
+    
+    &::before {
+      left: -1.5rem !important;
+      width: 14px;
+      height: 14px;
+    }
+    
+    &::after {
+      left: -2rem !important;
+      width: 20px;
+    }
+  }
 `;
 
 const ProcessIcon = styled.div`
@@ -717,6 +1103,27 @@ const ProcessIcon = styled.div`
   &:hover {
     transform: scale(1.1);
   }
+
+  @media (max-width: 1024px) {
+    font-size: 2.2rem;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.8rem;
+  }
 `;
 
 const ProcessNumber = styled.div`
@@ -726,6 +1133,23 @@ const ProcessNumber = styled.div`
   font-weight: 700;
   opacity: 0.9;
   letter-spacing: 3px;
+
+  @media (max-width: 1024px) {
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+  }
 `;
 
 const ProcessText = styled.p`
@@ -734,6 +1158,24 @@ const ProcessText = styled.p`
   font-size: 1.1rem;
   opacity: 0.9;
   margin-bottom: 2rem;
+
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+  }
 `;
 
 const ProcessDetails = styled.div`
@@ -743,6 +1185,26 @@ const ProcessDetails = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+
+  @media (max-width: 1024px) {
+    margin-top: 1.8rem;
+    padding-top: 1.8rem;
+    gap: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
 `;
 
 const ProcessDetailItem = styled.div`
@@ -764,6 +1226,26 @@ const ProcessDetailItem = styled.div`
     background: rgba(255, 255, 255, 0.03);
     transform: translateY(-3px);
   }
+
+  @media (max-width: 1024px) {
+    padding: 1.2rem;
+    gap: 0.6rem;
+    border-radius: 12px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.8rem;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    border-radius: 8px;
+  }
 `;
 
 const ProcessDetailIcon = styled.div`
@@ -783,11 +1265,44 @@ const ProcessDetailIcon = styled.div`
   &:hover {
     transform: scale(1.1);
   }
+
+  @media (max-width: 1024px) {
+    font-size: 1.6rem;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 0.6rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+    width: 35px;
+    height: 35px;
+    margin-bottom: 0.4rem;
+  }
 `;
 
 const ProcessDetailText = styled.span`
   font-size: 1rem;
   font-weight: 600;
+
+  @media (max-width: 1024px) {
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+  }
 `;
 
 const ExamplesSection = styled.section`
@@ -988,6 +1503,24 @@ const AdvantagesSection = styled.section`
     );
     z-index: 0;
   }
+  
+  @media (max-width: 1024px) {
+    padding: 4rem 0;
+    margin: 4rem 0;
+    border-radius: 24px;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+    margin: 3rem 0;
+    border-radius: 20px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 2rem 0;
+    margin: 2rem 0;
+    border-radius: 16px;
+  }
 `;
 
 const AdvantagesTitle = styled.h2`
@@ -997,6 +1530,21 @@ const AdvantagesTitle = styled.h2`
   color: var(--text-primary);
   position: relative;
   z-index: 1;
+  
+  @media (max-width: 1024px) {
+    font-size: 2.5rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+  }
 `;
 
 const AdvantagesDescription = styled.p`
@@ -1008,6 +1556,23 @@ const AdvantagesDescription = styled.p`
   color: var(--text-secondary);
   position: relative;
   z-index: 1;
+  
+  @media (max-width: 1024px) {
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
 `;
 
 const AdvantagesGrid = styled.div`
@@ -1018,6 +1583,21 @@ const AdvantagesGrid = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
 `;
 
 const AdvantageCard = styled(motion.div)`
@@ -1047,6 +1627,21 @@ const AdvantageCard = styled(motion.div)`
   &:hover::before {
     width: 100%;
     opacity: 0.05;
+  }
+  
+  @media (max-width: 1024px) {
+    padding: 2rem;
+    border-radius: 16px;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1.2rem;
+    border-radius: 10px;
   }
 `;
 
@@ -1086,6 +1681,42 @@ const AdvantageIcon = styled.div`
       transform: scale(1);
     }
   }
+  
+  @media (max-width: 1024px) {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    border-radius: 16px;
+    
+    &::after {
+      border-radius: 16px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    
+    &::after {
+      border-radius: 12px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    width: 45px;
+    height: 45px;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    border-radius: 10px;
+    
+    &::after {
+      border-radius: 10px;
+    }
+  }
 `;
 
 const AdvantageNumber = styled.div`
@@ -1103,6 +1734,24 @@ const AdvantageNumber = styled.div`
     color: rgba(var(--accent-color-rgb), 0.05);
     transform: scale(1.2);
   }
+  
+  @media (max-width: 1024px) {
+    font-size: 3.5rem;
+    top: 1.2rem;
+    right: 1.2rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 3rem;
+    top: 1rem;
+    right: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 2.5rem;
+    top: 0.8rem;
+    right: 0.8rem;
+  }
 `;
 
 const AdvantageTitle = styled.h3`
@@ -1112,6 +1761,21 @@ const AdvantageTitle = styled.h3`
   color: var(--text-primary);
   position: relative;
   z-index: 1;
+  
+  @media (max-width: 1024px) {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  @media (max-width: 768px) {
+  font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const AdvantageDescription = styled.p`
@@ -1121,6 +1785,21 @@ const AdvantageDescription = styled.p`
   position: relative;
   z-index: 1;
   flex: 1;
+  
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
 `;
 
 const TargetSection = styled.section`
@@ -1142,6 +1821,24 @@ const TargetSection = styled.section`
       repeat;
     z-index: 0;
   }
+  
+  @media (max-width: 1024px) {
+    padding: 4rem 0;
+    margin: 4rem 0;
+    border-radius: 24px;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+    margin: 3rem 0;
+    border-radius: 20px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 2rem 0;
+    margin: 2rem 0;
+    border-radius: 16px;
+  }
 `;
 
 const TargetTitle = styled.h2`
@@ -1151,19 +1848,20 @@ const TargetTitle = styled.h2`
   color: var(--text-primary);
   position: relative;
   z-index: 1;
-
-  &::after {
-    content: '';
-    display: block;
-    width: 150px;
-    height: 3px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--accent-color),
-      transparent
-    );
-    margin: 1rem auto 0;
+  
+  @media (max-width: 1024px) {
+    font-size: 2.5rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
   }
 `;
 
@@ -1176,6 +1874,30 @@ const TargetDescription = styled.p`
   color: var(--text-secondary);
   position: relative;
   z-index: 1;
+
+  @media (max-width: 1024px) {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin: 0 auto 3rem;
+    max-width: 700px;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0 auto 2.5rem;
+    max-width: 600px;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0 auto 2rem;
+    max-width: none;
+    padding: 0 0.5rem;
+  }
 `;
 
 const TabContainer = styled.div`
@@ -1183,6 +1905,21 @@ const TabContainer = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 1;
+
+  @media (max-width: 1024px) {
+    max-width: 1000px;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 700px;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    max-width: none;
+    padding: 0 0.5rem;
+  }
 `;
 
 const TabsHeader = styled.div`
@@ -1196,6 +1933,30 @@ const TabsHeader = styled.div`
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
+
+  @media (max-width: 1024px) {
+    margin-bottom: 2.5rem;
+    gap: 0.8rem;
+    border-radius: 12px;
+    padding: 0.4rem;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+    gap: 0.5rem;
+    border-radius: 10px;
+    padding: 0.3rem;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    padding: 0.2rem;
+    max-width: 300px;
+  }
 `;
 
 const TabButton = styled.button`
@@ -1214,12 +1975,43 @@ const TabButton = styled.button`
     background: ${props =>
       props.active ? 'var(--accent-color)' : 'rgba(255, 255, 255, 0.05)'};
   }
+
+  @media (max-width: 1024px) {
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 5px;
+  }
 `;
 
 const TabContent = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  @media (max-width: 1024px) {
+    gap: 1.8rem;
+  }
+
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1.2rem;
+  }
 `;
 
 const HexGrid = styled.div`
@@ -1229,6 +2021,24 @@ const HexGrid = styled.div`
   position: relative;
   margin: 0 auto;
   max-width: 1200px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+    max-width: 1000px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 700px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    max-width: none;
+  }
 `;
 
 const HexItem = styled(motion.div)`
@@ -1269,6 +2079,47 @@ const HexItem = styled(motion.div)`
       );
     }
   }
+
+  @media (max-width: 1024px) {
+    padding: 2.2rem;
+    border-radius: 16px;
+
+    &::before {
+      border-radius: 16px 16px 0 0;
+    }
+
+    &:hover {
+      transform: translateY(-8px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+    border-radius: 14px;
+
+    &::before {
+      border-radius: 14px 14px 0 0;
+      height: 3px;
+    }
+
+    &:hover {
+      transform: translateY(-6px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.8rem;
+    border-radius: 12px;
+
+    &::before {
+      border-radius: 12px 12px 0 0;
+      height: 3px;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
 `;
 
 const HexIcon = styled.div`
@@ -1296,6 +2147,39 @@ const HexIcon = styled.div`
     transform: translate(-50%, -50%) rotate(45deg);
     background: rgba(var(--accent-color-rgb), 0.2);
   }
+
+  @media (max-width: 1024px) {
+    font-size: 2.3rem;
+    margin-bottom: 1.3rem;
+
+    &::after {
+      width: 45px;
+      height: 45px;
+      border-radius: 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.1rem;
+    margin-bottom: 1.2rem;
+
+    &::after {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+
+    &::after {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+    }
+  }
 `;
 
 const HexTitle = styled.h3`
@@ -1303,6 +2187,21 @@ const HexTitle = styled.h3`
   font-weight: 700;
   margin-bottom: 1rem;
   color: var(--text-primary);
+
+  @media (max-width: 1024px) {
+    font-size: 1.3rem;
+    margin-bottom: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+  }
 `;
 
 const HexDescription = styled.p`
@@ -1310,6 +2209,21 @@ const HexDescription = styled.p`
   line-height: 1.7;
   color: var(--text-secondary);
   flex: 1;
+
+  @media (max-width: 1024px) {
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
 `;
 
 // Новые стили для финального блока CTA
@@ -1507,6 +2421,18 @@ const FaqSection = styled(motion.section)`
     );
     z-index: -1;
   }
+
+  @media (max-width: 1024px) {
+    padding: 6rem 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0;
+  }
 `;
 
 const FaqWaveTop = styled.div`
@@ -1526,6 +2452,21 @@ const FaqContainer = styled.div`
   position: relative;
   z-index: 2;
   padding: 0 2rem;
+
+  @media (max-width: 1024px) {
+    max-width: 800px;
+    padding: 0 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 700px;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    max-width: none;
+    padding: 0 1rem;
+  }
 `;
 
 const FaqGlowCircle = styled.div`
@@ -1601,6 +2542,48 @@ const FaqTitle = styled(motion.h2)`
     border-radius: 4px;
     animation: ${pulse} 2s infinite ease-in-out;
   }
+
+  @media (max-width: 1024px) {
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+
+    &::before {
+      font-size: 4rem;
+      top: -25px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+
+    &::before {
+      font-size: 3.5rem;
+      top: -20px;
+    }
+
+    &::after {
+      width: 60px;
+      height: 3px;
+      bottom: -12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+
+    &::before {
+      font-size: 2.5rem;
+      top: -15px;
+    }
+
+    &::after {
+      width: 50px;
+      height: 2px;
+      bottom: -10px;
+    }
+  }
 `;
 
 const FaqList = styled(motion.div)`
@@ -1608,6 +2591,16 @@ const FaqList = styled(motion.div)`
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 4rem;
+
+  @media (max-width: 768px) {
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const FaqItem = styled(motion.div)`
@@ -1625,6 +2618,22 @@ const FaqItem = styled(motion.div)`
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 15px rgba(94, 234, 212, 0.1);
     border-color: rgba(94, 234, 212, 0.1);
     transform: translateY(-3px);
+  }
+
+  @media (max-width: 768px) {
+    border-radius: 12px;
+
+    &:hover {
+    transform: translateY(-2px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    border-radius: 10px;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
   }
 `;
 
@@ -1676,6 +2685,25 @@ const FaqQuestion = styled(motion.div)`
       transparent
     );
   }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+
+    &::after {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.2rem;
+    align-items: flex-start;
+
+    &::after {
+      left: 1.2rem;
+      right: 1.2rem;
+    }
+  }
 `;
 
 const FaqQuestionText = styled.h3`
@@ -1689,6 +2717,16 @@ const FaqQuestionText = styled.h3`
   ${FaqQuestion}:hover & {
     color: var(--accent-color);
     transform: translateZ(10px);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-right: 0.5rem;
   }
 `;
 
@@ -1708,6 +2746,13 @@ const FaqToggle = styled(motion.div)`
   &:hover {
     background: rgba(94, 234, 212, 0.1);
     box-shadow: 0 0 10px rgba(94, 234, 212, 0.2);
+  }
+
+  @media (max-width: 480px) {
+    width: 24px;
+    height: 24px;
+    margin-left: 0.5rem;
+    margin-top: 0.2rem;
   }
 `;
 
@@ -1789,6 +2834,43 @@ const FaqAnswer = styled(motion.div)`
       animation: ${shimmerEffect} 2s infinite;
     }
   }
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem 1.5rem;
+    font-size: 1rem;
+
+    &::before {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1.2rem 1.2rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+
+    &::before {
+      left: 1.2rem;
+      right: 1.2rem;
+    }
+
+    ul {
+      padding-left: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.4rem;
+    }
+
+    p {
+      margin-bottom: 0.6rem;
+    }
+  }
 `;
 
 const FaqCta = styled(motion.div)`
@@ -1834,6 +2916,18 @@ const FaqCta = styled(motion.div)`
     );
     z-index: -1;
   }
+
+  @media (max-width: 768px) {
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
+    gap: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    gap: 1rem;
+  }
 `;
 
 const FaqCtaText = styled.p`
@@ -1842,6 +2936,15 @@ const FaqCtaText = styled.p`
   color: var(--text-primary);
   text-align: center;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
 `;
 
 const FaqCtaButton = styled(motion.button)`
@@ -1896,6 +2999,19 @@ const FaqCtaButton = styled(motion.button)`
     );
     filter: blur(5px);
     opacity: 0.5;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 250px;
   }
 `;
 
@@ -2505,15 +3621,8 @@ const BannerAds = () => {
         Ось кілька причин, чому наші клієнти обирають саме цей підхід:
       </Subtitle>
 
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '2rem',
-            marginBottom: '2rem',
-          }}
-        >
+      <FeaturesContainer>
+      <FeaturesGrid>
           {features.slice(0, 3).map((feature, index) => (
           <FeatureCard
             key={index}
@@ -2526,17 +3635,9 @@ const BannerAds = () => {
             <FeatureDescription>{feature.description}</FeatureDescription>
           </FeatureCard>
         ))}
-        </div>
+      </FeaturesGrid>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: '2rem',
-            maxWidth: '800px',
-            margin: '0 auto',
-          }}
-        >
+        <FeaturesSecondGrid>
           {features.slice(3, 5).map((feature, index) => (
             <FeatureCard
               key={index + 3}
@@ -2549,8 +3650,8 @@ const BannerAds = () => {
               <FeatureDescription>{feature.description}</FeatureDescription>
             </FeatureCard>
           ))}
-        </div>
-      </div>
+        </FeaturesSecondGrid>
+      </FeaturesContainer>
 
       <SliderSection>
         <SliderTitle>Що ми пропонуємо</SliderTitle>
