@@ -7,7 +7,6 @@ import {
     FaChartLine, 
     FaBullseye,
     FaRegChartBar,
-  FaCheckCircle,
   FaRocket,
   FaChartBar,
   FaEye,
@@ -37,6 +36,10 @@ import {
   FaHandshake,
   FaChartPie,
   FaPlus,
+  FaGoogle,
+  FaFacebook,
+  FaRobot,
+  FaCogs,
 } from 'react-icons/fa';
 
 const PageContainer = styled.div`
@@ -54,12 +57,6 @@ const breatheAnimation = keyframes`
 const shimmer = keyframes`
   0% { background-position: -468px 0; }
   100% { background-position: 468px 0; }
-`;
-
-const dotPulse = keyframes`
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(var(--accent-color-rgb), 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(var(--accent-color-rgb), 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(var(--accent-color-rgb), 0); }
 `;
 
 // Компоненты для нового дизайна героя
@@ -85,21 +82,38 @@ const HeroInner = styled.div`
 
 const HeroSplit = styled.div`
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: center;
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
-    gap: 4rem;
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+    padding: 0 0.5rem;
   }
 `;
 
 const HeroLeft = styled.div`
-  position: relative;
-
   @media (max-width: 1024px) {
-    text-align: center;
+  text-align: center;
+    order: 1;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 80px 0.5rem;
   }
 `;
 
@@ -109,16 +123,32 @@ const HeroRight = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  
   @media (max-width: 1024px) {
-    height: 400px;
+    order: 0;
+    max-width: 500px;
     margin: 0 auto;
-    order: -1;
+    height: 400px;
+  }
+
+  @media (max-width: 768px) {
+    height: 350px;
+    max-width: 400px;
+  }
+
+  @media (max-width: 480px) {
+    height: 300px;
+    max-width: 350px;
+  }
+
+  @media (max-width: 400px) {
+    height: 250px;
+    max-width: 300px;
   }
 `;
 
 const GlowingCircle = styled.div`
-    position: absolute;
+  position: absolute;
   width: ${props => props.size || '300px'};
   height: ${props => props.size || '300px'};
   border-radius: 50%;
@@ -140,19 +170,19 @@ const GlowingCircle = styled.div`
   );
   animation: ${breatheAnimation} ${props => props.duration || '8s'} ease-in-out
     infinite;
-    z-index: 0;
+  z-index: 0;
 `;
 
 const TiltedLine = styled.div`
-    position: absolute;
+  position: absolute;
   width: ${props => props.width || '150px'};
   height: 1px;
   background: linear-gradient(
     90deg,
-      transparent 0%,
+    transparent 0%,
     rgba(var(--accent-color-rgb), 0.6) 50%,
-      transparent 100%
-    );
+    transparent 100%
+  );
   top: ${props => props.top || 'auto'};
   left: ${props => props.left || 'auto'};
   right: ${props => props.right || 'auto'};
@@ -202,6 +232,21 @@ const AnimatedTitle = styled(motion.h1)`
   margin-bottom: 1.5rem;
   color: var(--text-primary);
   position: relative;
+
+  @media (max-width: 768px) {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 0.8rem;
+  }
+
+  @media (max-width: 400px) {
+    font-size: clamp(1.6rem, 3.5vw, 2rem);
+    margin-bottom: 0.6rem;
+  }
 `;
 
 const HighlightedSpan = styled.span`
@@ -233,6 +278,25 @@ const HeroDescription = styled(motion.p)`
     margin-left: auto;
     margin-right: auto;
   }
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    max-width: 500px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    max-width: 400px;
+    padding: 0 0.5rem;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    max-width: 350px;
+  }
 `;
 
 const ButtonGroup = styled(motion.div)`
@@ -245,6 +309,11 @@ const ButtonGroup = styled(motion.div)`
 
   @media (max-width: 480px) {
     flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  @media (max-width: 400px) {
+    gap: 0.6rem;
   }
 `;
 
@@ -255,6 +324,7 @@ const PrimaryButton = styled(motion.button)`
   border: none;
   border-radius: 4px;
   font-weight: 600;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -287,209 +357,22 @@ const PrimaryButton = styled(motion.button)`
   &:hover::before {
     animation: ${shimmer} 1s ease-out;
   }
-`;
 
+  @media (max-width: 768px) {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+  }
 
-const BannerContainer = styled.div`
-  position: relative;
+  @media (max-width: 480px) {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
     width: 100%;
-    height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const MainBanner = styled(motion.div)`
-  position: relative;
-  width: 80%;
-  height: 70%;
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1),
-    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
-  overflow: hidden;
-  z-index: 5;
-  will-change: transform;
-  transform-style: preserve-3d;
-  transform: perspective(1000px);
-  transition: transform 0.3s ease-out;
-`;
-
-const BannerGradient = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(var(--accent-color-rgb), 0.2) 0%,
-    rgba(var(--accent-color-rgb), 0.05) 50%,
-      transparent 100%
-    );
-  opacity: 0.5;
-  z-index: 0;
-`;
-
-const HeroBannerImage = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(var(--bg-primary-rgb), 0.6);
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.4) 0%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    z-index: 1;
-  }
-`;
-
-const BannerContent = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 2rem;
-  z-index: 2;
-`;
-
-const BannerHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const HeroBannerTitle = styled.h3`
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: white;
-  margin: 0;
-`;
-
-const BannerIconBox = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.2rem;
-`;
-
-const BannerMetrics = styled.div`
-  display: flex;
-  gap: 2rem;
-`;
-
-const MetricItem = styled.div`
-  text-align: center;
-  background: rgba(0, 0, 0, 0.2);
-  padding: 1rem;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-`;
-
-const MetricValue = styled.div`
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: white;
-`;
-
-const MetricLabel = styled.div`
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 0.5rem;
-`;
-
-const PulsingDot = styled(motion.div)`
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: var(--accent-color);
-  animation: ${dotPulse} 2s infinite;
-  z-index: 6;
-  opacity: 0.4;
-
-  &.dot-1 {
-    top: 20%;
-    left: 5%;
+    justify-content: center;
   }
 
-  &.dot-2 {
-    bottom: 15%;
-    right: 8%;
-  }
-
-  &.dot-3 {
-    display: none;
-  }
-`;
-
-const BannerInnerContent = styled.div`
-  margin: 2rem 0;
-  color: white;
-`;
-
-const BannerContentDescription = styled.p`
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
-  line-height: 1.6;
-  opacity: 0.9;
-`;
-
-const BannerFeatures = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-top: 1.5rem;
-`;
-
-const BannerFeatureItem = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-`;
-
-const BannerFeatureIcon = styled.div`
-  color: var(--accent-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const BannerButton = styled.button`
-  background: rgba(var(--accent-color-rgb), 0.2);
-  color: white;
-  border: 1px solid rgba(var(--accent-color-rgb), 0.5);
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  margin-top: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(var(--accent-color-rgb), 0.3);
+  @media (max-width: 400px) {
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
   }
 `;
 
@@ -631,7 +514,7 @@ const BannerTypesGrid = styled.div`
 `;
 
 const BannerTypeCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.03);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 1.5rem;
@@ -1281,19 +1164,19 @@ const ImplementationDescription = styled.p`
 
 const floatVertical = keyframes`
   0% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+  50% { transform: translateY(-15px); }
   100% { transform: translateY(0); }
 `;
 
 const pulseFaq = keyframes`
   0% { opacity: 0.6; width: 60px; }
-  50% { opacity: 1; width: 90px; }
+  50% { opacity: 1; width: 80px; }
   100% { opacity: 0.6; width: 60px; }
 `;
 
 const shimmerEffect = keyframes`
-  0% { background-position: -500px 0; }
-  100% { background-position: 500px 0; }
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0%; }
 `;
 
 // Стилизованные компоненты для секции FAQ
@@ -1313,7 +1196,6 @@ const FaqSection = styled.section`
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  margin-top: 4rem;
 
   &::before {
     content: '';
@@ -1329,6 +1211,18 @@ const FaqSection = styled.section`
     );
     z-index: -1;
   }
+
+  @media (max-width: 1024px) {
+    padding: 6rem 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0;
+  }
 `;
 
 const FaqWaveTop = styled.div`
@@ -1337,13 +1231,17 @@ const FaqWaveTop = styled.div`
   left: 0;
   width: 100%;
   height: 120px;
-  background: linear-gradient(
-    to top left,
-    transparent 49%,
-    var(--bg-primary) 51%
-  );
+  background: linear-gradient(to top left, transparent 49%, var(--bg-primary) 51%);
   z-index: 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    height: 80px;
+  }
+
+  @media (max-width: 480px) {
+    height: 60px;
+  }
 `;
 
 const FaqContainer = styled.div`
@@ -1352,6 +1250,21 @@ const FaqContainer = styled.div`
   position: relative;
   z-index: 2;
   padding: 0 2rem;
+
+  @media (max-width: 1024px) {
+    max-width: 800px;
+    padding: 0 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 700px;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    max-width: none;
+    padding: 0 1rem;
+  }
 `;
 
 const FaqGlowCircle = styled.div`
@@ -1365,7 +1278,7 @@ const FaqGlowCircle = styled.div`
     height: 400px;
     background: radial-gradient(
       circle,
-      rgba(var(--accent-color-rgb), 0.05) 0%,
+      rgba(94, 234, 212, 0.05) 0%,
       transparent 70%
     );
     top: 10%;
@@ -1378,7 +1291,7 @@ const FaqGlowCircle = styled.div`
     height: 500px;
     background: radial-gradient(
       circle,
-      rgba(var(--accent-color-rgb), 0.05) 0%,
+      rgba(59, 130, 246, 0.05) 0%,
       transparent 70%
     );
     bottom: 5%;
@@ -1394,22 +1307,22 @@ const FaqTitle = styled(motion.h2)`
   margin-bottom: 3rem;
   text-align: center;
   position: relative;
-  text-shadow: 0 2px 10px rgba(var(--accent-color-rgb), 0.2);
+  text-shadow: 0 2px 10px rgba(94, 234, 212, 0.2);
 
   &::before {
-    content: '';
+    content: 'F.A.Q';
     position: absolute;
     top: -30px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 5rem;
-    color: rgba(var(--accent-color-rgb), 0.03);
+    color: rgba(94, 234, 212, 0.03);
     font-weight: 900;
     letter-spacing: 5px;
     z-index: -1;
     white-space: nowrap;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -1427,6 +1340,48 @@ const FaqTitle = styled(motion.h2)`
     border-radius: 4px;
     animation: ${pulseFaq} 2s infinite ease-in-out;
   }
+
+  @media (max-width: 1024px) {
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+
+    &::before {
+      font-size: 4rem;
+      top: -25px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+
+    &::before {
+      font-size: 3.5rem;
+      top: -20px;
+    }
+
+    &::after {
+      width: 60px;
+      height: 3px;
+      bottom: -12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+
+    &::before {
+      font-size: 2.5rem;
+      top: -15px;
+    }
+
+    &::after {
+      width: 50px;
+      height: 2px;
+      bottom: -10px;
+    }
+  }
 `;
 
 const FaqList = styled(motion.div)`
@@ -1434,6 +1389,16 @@ const FaqList = styled(motion.div)`
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 4rem;
+
+  @media (max-width: 768px) {
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
 `;
 
 const FaqItem = styled(motion.div)`
@@ -1452,6 +1417,22 @@ const FaqItem = styled(motion.div)`
       0 0 15px rgba(var(--accent-color-rgb), 0.1);
     border-color: rgba(var(--accent-color-rgb), 0.1);
     transform: translateY(-3px);
+  }
+
+  @media (max-width: 768px) {
+    border-radius: 12px;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    border-radius: 10px;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
   }
 `;
 
@@ -1503,6 +1484,25 @@ const FaqQuestion = styled(motion.div)`
       transparent
     );
   }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+
+    &::after {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.2rem;
+    align-items: flex-start;
+
+    &::after {
+      left: 1.2rem;
+      right: 1.2rem;
+    }
+  }
 `;
 
 const FaqQuestionText = styled.h3`
@@ -1511,11 +1511,22 @@ const FaqQuestionText = styled.h3`
   color: var(--text-primary);
   transition: all 0.3s ease;
   flex: 1;
+  margin: 0;
   transform: translateZ(5px);
 
   ${FaqQuestion}:hover & {
-  color: var(--accent-color);
+    color: var(--accent-color);
     transform: translateZ(10px);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-right: 0.5rem;
   }
 `;
 
@@ -1531,10 +1542,34 @@ const FaqToggle = styled(motion.div)`
   background: rgba(var(--accent-color-rgb), 0.05);
   border-radius: 50%;
   transition: all 0.3s ease;
+  padding: 6px;
+  transform: ${props => props['data-open'] === 'true' ? 'rotate(45deg)' : 'rotate(0deg)'};
+  background-color: ${props => 
+    props['data-open'] === 'true' 
+      ? 'rgba(var(--accent-color-rgb), 0.15)' 
+      : 'rgba(var(--accent-color-rgb), 0.05)'
+  };
 
-  &:hover {
+  ${FaqQuestion}:hover & {
     background: rgba(var(--accent-color-rgb), 0.1);
     box-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.2);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  @media (max-width: 480px) {
+    width: 24px;
+    height: 24px;
+    margin-left: 0.5rem;
+    margin-top: 0.2rem;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
   }
 `;
 
@@ -1562,13 +1597,13 @@ const FaqAnswer = styled(motion.div)`
   }
 
   strong {
-  color: var(--accent-color);
+    color: var(--accent-color);
     font-weight: 600;
   }
 
   ul {
     margin-top: 0.8rem;
-  margin-bottom: 0.8rem;
+    margin-bottom: 0.8rem;
     padding-left: 1.5rem;
   }
 
@@ -1616,6 +1651,43 @@ const FaqAnswer = styled(motion.div)`
       animation: ${shimmerEffect} 2s infinite;
     }
   }
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem 1.5rem;
+    font-size: 1rem;
+
+    &::before {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1.2rem 1.2rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+
+    &::before {
+      left: 1.2rem;
+      right: 1.2rem;
+    }
+
+    ul {
+      padding-left: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.3rem;
+
+      &::before {
+        left: -0.8rem;
+      }
+    }
+  }
 `;
 
 const FaqCta = styled(motion.div)`
@@ -1661,6 +1733,18 @@ const FaqCta = styled(motion.div)`
     );
     z-index: -1;
   }
+
+  @media (max-width: 768px) {
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
+    gap: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    gap: 1rem;
+  }
 `;
 
 const FaqCtaText = styled.p`
@@ -1669,6 +1753,15 @@ const FaqCtaText = styled.p`
   color: var(--text-primary);
   text-align: center;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
 `;
 
 const FaqCtaButton = styled(motion.button)`
@@ -1697,11 +1790,102 @@ const FaqCtaButton = styled(motion.button)`
   svg {
     font-size: 1.1rem;
     transition: transform 0.3s ease;
-    }
+  }
 
   &:hover svg {
     transform: translateX(5px);
   }
+
+  @media (max-width: 768px) {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 250px;
+  }
+`;
+
+const AIPlatformsContainer = styled(motion.div)`
+  position: relative;
+  width: 100%;
+  height: 450px;
+  perspective: 1000px;
+`;
+
+const AIPlatformCard = styled(motion.div)`
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateZ(20px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15),
+      0 0 15px rgba(var(--accent-color-rgb), 0.3);
+    z-index: 10;
+  }
+
+  &.google-ads {
+    top: 20%;
+    left: 20%;
+    background: linear-gradient(
+      45deg,
+      #4285f4 0%,
+      #34a853 25%,
+      #fbbc05 50%,
+      #ea4335 75%,
+      #9c27b0 100%
+    );
+  }
+
+  &.facebook-ads {
+    top: 10%;
+    right: 15%;
+    background: #1877f2;
+  }
+
+  &.ai-creative {
+    bottom: 15%;
+    left: 10%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  &.programmatic {
+    top: 30%;
+    right: 5%;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  }
+
+  &.analytics {
+    bottom: 30%;
+    right: 20%;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  }
+
+  &.automation {
+    bottom: 5%;
+    left: 35%;
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  }
+`;
+
+const AIPlatformIcon = styled.div`
+  font-size: 2.5rem;
+  color: white;
 `;
 
 const AIBannerMarketing = () => {
@@ -1955,7 +2139,7 @@ const AIBannerMarketing = () => {
             <HeroLeft>
               <AnimatedTitle
                 initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
+        animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
               >
                 Банерна реклама на сайтах —{' '}
@@ -1977,8 +2161,8 @@ const AIBannerMarketing = () => {
               </HeroDescription>
 
               <StatsRow
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
                 <StatColumn>
@@ -2014,81 +2198,79 @@ const AIBannerMarketing = () => {
             </HeroLeft>
 
             <HeroRight>
-              <BannerContainer>
-                <MainBanner
-                  ref={bannerRef}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.3 }}
+              <AIPlatformsContainer>
+                <AIPlatformCard
+                  className="google-ads"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  whileHover={{ y: -10 }}
                 >
-                  <HeroBannerImage />
-                  <BannerGradient />
-                  <BannerContent>
-                    <BannerHeader>
-                      <HeroBannerTitle>Інтелектуальні банери</HeroBannerTitle>
-                      <BannerIconBox>
-                        <FaLightbulb />
-                      </BannerIconBox>
-                    </BannerHeader>
+                  <AIPlatformIcon>
+                    <FaGoogle />
+                  </AIPlatformIcon>
+                </AIPlatformCard>
 
-                    <BannerInnerContent>
-                      <BannerContentDescription>
-                        Наші інтелектуальні банери використовують передові
-                        технології AI для аналізу та оптимізації взаємодії з
-                        аудиторією в реальному часі.
-                      </BannerContentDescription>
+                <AIPlatformCard
+                  className="facebook-ads"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  whileHover={{ y: -10 }}
+                >
+                  <AIPlatformIcon>
+                    <FaFacebook />
+                  </AIPlatformIcon>
+                </AIPlatformCard>
 
-                      <BannerFeatures>
-                        <BannerFeatureItem>
-                          <BannerFeatureIcon>
-                            <FaCheckCircle />
-                          </BannerFeatureIcon>
-                          <span>Адаптивний дизайн</span>
-                        </BannerFeatureItem>
-                        <BannerFeatureItem>
-                          <BannerFeatureIcon>
-                            <FaCheckCircle />
-                          </BannerFeatureIcon>
-                          <span>Аналітика результатів</span>
-                        </BannerFeatureItem>
-                        <BannerFeatureItem>
-                          <BannerFeatureIcon>
-                            <FaCheckCircle />
-                          </BannerFeatureIcon>
-                          <span>AI-оптимізація</span>
-                        </BannerFeatureItem>
-                        <BannerFeatureItem>
-                          <BannerFeatureIcon>
-                            <FaCheckCircle />
-                          </BannerFeatureIcon>
-                          <span>Точне таргетування</span>
-                        </BannerFeatureItem>
-                      </BannerFeatures>
+                <AIPlatformCard
+                  className="ai-creative"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  whileHover={{ y: -10 }}
+                >
+                  <AIPlatformIcon>
+                    <FaRobot />
+                  </AIPlatformIcon>
+                </AIPlatformCard>
 
-                      <BannerButton>Докладніше про технологію</BannerButton>
-                    </BannerInnerContent>
+                <AIPlatformCard
+                  className="programmatic"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.8 }}
+                  whileHover={{ y: -10 }}
+                >
+                  <AIPlatformIcon>
+                    <FaChartLine />
+                  </AIPlatformIcon>
+                </AIPlatformCard>
 
-                    <BannerMetrics>
-                      <MetricItem>
-                        <MetricValue>+87%</MetricValue>
-                        <MetricLabel>Впізнаваність</MetricLabel>
-                      </MetricItem>
-                      <MetricItem>
-                        <MetricValue>5.2x</MetricValue>
-                        <MetricLabel>ROI</MetricLabel>
-                      </MetricItem>
-                      <MetricItem>
-                        <MetricValue>-32%</MetricValue>
-                        <MetricLabel>Bounce Rate</MetricLabel>
-                      </MetricItem>
-                    </BannerMetrics>
-                  </BannerContent>
-                </MainBanner>
+                <AIPlatformCard
+                  className="analytics"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 1.0 }}
+                  whileHover={{ y: -10 }}
+                >
+                  <AIPlatformIcon>
+                    <FaChartBar />
+                  </AIPlatformIcon>
+                </AIPlatformCard>
 
-                <PulsingDot className="dot-1" />
-                <PulsingDot className="dot-2" />
-                <PulsingDot className="dot-3" />
-              </BannerContainer>
+                <AIPlatformCard
+                  className="automation"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 1.2 }}
+                  whileHover={{ y: -10 }}
+                >
+                  <AIPlatformIcon>
+                    <FaCogs />
+                  </AIPlatformIcon>
+                </AIPlatformCard>
+              </AIPlatformsContainer>
             </HeroRight>
           </HeroSplit>
         </HeroInner>
@@ -3451,6 +3633,454 @@ const AIBannerMarketing = () => {
               justify-content: center;
             }
           }
+
+          @media (max-width: 768px) {
+            .analytics-section {
+              padding: 5rem 0;
+            }
+
+            .analytics-container {
+              padding: 0 1.5rem;
+            }
+
+            .analytics-title {
+              font-size: 2.2rem;
+              margin-bottom: 2rem;
+            }
+
+            .analytics-description {
+              font-size: 1.1rem;
+              margin-bottom: 3rem;
+              padding: 0 1rem;
+            }
+
+            .analytics-cards {
+              gap: 1.5rem;
+              margin-bottom: 3rem;
+            }
+
+            .analytics-card {
+              padding: 2rem;
+            }
+
+            .card-icon {
+              font-size: 1.8rem;
+              margin-bottom: 1.2rem;
+            }
+
+            .analytics-card h3 {
+              font-size: 1.4rem;
+              margin-bottom: 1.5rem;
+            }
+
+            .process-row {
+              grid-template-columns: 1fr;
+              gap: 1.5rem;
+            }
+
+            .process-row.second {
+              grid-template-columns: 1fr;
+              max-width: 100%;
+            }
+
+            .process-steps {
+              gap: 2rem;
+            }
+
+            .analytics-quote {
+              padding: 2rem;
+              margin: 3rem 0;
+            }
+
+            .analytics-quote blockquote {
+              font-size: 1.2rem;
+              padding-left: 3rem;
+            }
+
+            .quote-author {
+              padding-left: 3rem;
+            }
+
+            .analytics-cta p {
+              font-size: 1.2rem;
+              padding: 0 1rem;
+            }
+  }
+
+  @media (max-width: 576px) {
+            .analytics-section {
+              padding: 4rem 0;
+            }
+
+            .analytics-container {
+              padding: 0 1rem;
+            }
+
+            .analytics-title {
+              font-size: 1.8rem;
+              margin-bottom: 1.5rem;
+            }
+
+            .analytics-description {
+              font-size: 1rem;
+              margin-bottom: 2.5rem;
+              padding: 0 0.5rem;
+            }
+
+            .analytics-cards {
+              gap: 1rem;
+              margin-bottom: 2.5rem;
+            }
+
+            .analytics-card {
+              padding: 1.5rem;
+            }
+
+            .card-icon {
+              font-size: 1.6rem;
+              margin-bottom: 1rem;
+            }
+
+            .analytics-card h3 {
+              font-size: 1.3rem;
+              margin-bottom: 1.2rem;
+            }
+
+            .metric-name {
+              font-size: 1rem;
+            }
+
+            .metric-desc, .benefit-item p {
+              font-size: 0.95rem;
+            }
+
+            .benefit-icon {
+              width: 32px;
+              height: 32px;
+              font-size: 0.9rem;
+              margin-right: 0.8rem;
+            }
+
+            .benefit-title {
+              font-size: 1rem;
+            }
+
+            .benefit-item p {
+              padding-left: calc(32px + 0.8rem);
+            }
+
+            .step-number {
+              width: 40px;
+              height: 40px;
+              font-size: 1rem;
+              margin-bottom: 1rem;
+            }
+
+            .step-content h4 {
+              font-size: 1.1rem;
+              margin-bottom: 0.6rem;
+            }
+
+            .step-content p {
+              font-size: 0.95rem;
+            }
+
+            .analytics-quote {
+              padding: 1.5rem;
+              margin: 2.5rem 0;
+            }
+
+            .quote-icon {
+              top: 1.5rem;
+              left: 1.5rem;
+              font-size: 1.6rem;
+            }
+
+            .analytics-quote blockquote {
+              font-size: 1.1rem;
+              padding-left: 2.5rem;
+            }
+
+            .quote-author {
+              padding-left: 2.5rem;
+              font-size: 1rem;
+            }
+
+            .analytics-cta p {
+              font-size: 1.1rem;
+              padding: 0 0.5rem;
+              margin-bottom: 1.5rem;
+            }
+
+            .cta-btn {
+              padding: 0.9rem 1.5rem;
+              font-size: 1rem;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .analytics-section {
+              padding: 3rem 0;
+            }
+
+            .analytics-container {
+              padding: 0 0.75rem;
+            }
+
+            .analytics-title {
+              font-size: 1.6rem;
+              margin-bottom: 1.2rem;
+            }
+
+            .analytics-description {
+              font-size: 0.95rem;
+              margin-bottom: 2rem;
+              padding: 0 0.25rem;
+              line-height: 1.6;
+            }
+
+            .analytics-cards {
+              gap: 0.8rem;
+              margin-bottom: 2rem;
+            }
+
+            .analytics-card {
+              padding: 1.2rem;
+            }
+
+            .card-icon {
+              font-size: 1.4rem;
+              margin-bottom: 0.8rem;
+            }
+
+            .analytics-card h3 {
+              font-size: 1.2rem;
+              margin-bottom: 1rem;
+            }
+
+            .metrics-list, .benefits-list {
+              gap: 1rem;
+            }
+
+            .metric-name {
+              font-size: 0.95rem;
+              margin-bottom: 0.4rem;
+            }
+
+            .metric-desc, .benefit-item p {
+              font-size: 0.9rem;
+              line-height: 1.5;
+            }
+
+            .benefit-header {
+              margin-bottom: 0.6rem;
+            }
+
+            .benefit-icon {
+              width: 28px;
+              height: 28px;
+              font-size: 0.8rem;
+              margin-right: 0.6rem;
+            }
+
+            .benefit-title {
+              font-size: 0.95rem;
+            }
+
+            .benefit-item p {
+              padding-left: calc(28px + 0.6rem);
+            }
+
+            .process-steps {
+              gap: 1.5rem;
+              margin-top: 1.5rem;
+            }
+
+            .step-number {
+              width: 36px;
+              height: 36px;
+              font-size: 0.9rem;
+              margin-bottom: 0.8rem;
+            }
+
+            .step-content h4 {
+              font-size: 1rem;
+              margin-bottom: 0.5rem;
+            }
+
+            .step-content p {
+              font-size: 0.9rem;
+              line-height: 1.5;
+            }
+
+            .analytics-quote {
+              padding: 1.2rem;
+              margin: 2rem 0;
+            }
+
+            .quote-icon {
+              top: 1.2rem;
+              left: 1.2rem;
+              font-size: 1.4rem;
+            }
+
+            .analytics-quote blockquote {
+              font-size: 1rem;
+              padding-left: 2rem;
+              line-height: 1.5;
+            }
+
+            .quote-author {
+              padding-left: 2rem;
+              font-size: 0.95rem;
+              margin-top: 1.2rem;
+            }
+
+            .analytics-cta {
+              margin-top: 3rem;
+            }
+
+            .analytics-cta p {
+              font-size: 1rem;
+              padding: 0 0.25rem;
+              margin-bottom: 1.2rem;
+              line-height: 1.5;
+            }
+
+            .cta-btn {
+              padding: 0.8rem 1.2rem;
+              font-size: 0.95rem;
+    gap: 0.6rem;
+            }
+          }
+
+          @media (max-width: 400px) {
+            .analytics-section {
+              padding: 2.5rem 0;
+            }
+
+            .analytics-container {
+              padding: 0 0.5rem;
+            }
+
+            .analytics-title {
+              font-size: 1.4rem;
+              margin-bottom: 1rem;
+            }
+
+            .analytics-title:after {
+              width: 60px;
+              height: 3px;
+            }
+
+            .analytics-description {
+              font-size: 0.9rem;
+              margin-bottom: 1.8rem;
+              padding: 0;
+            }
+
+            .analytics-cards {
+              gap: 0.6rem;
+              margin-bottom: 1.8rem;
+            }
+
+            .analytics-card {
+              padding: 1rem;
+            }
+
+            .card-icon {
+              font-size: 1.2rem;
+              margin-bottom: 0.6rem;
+            }
+
+            .analytics-card h3 {
+              font-size: 1.1rem;
+              margin-bottom: 0.8rem;
+            }
+
+            .analytics-card h3:after {
+              width: 30px;
+              height: 2px;
+            }
+
+            .metrics-list, .benefits-list {
+              gap: 0.8rem;
+            }
+
+            .metric-name {
+              font-size: 0.9rem;
+              margin-bottom: 0.3rem;
+            }
+
+            .metric-desc, .benefit-item p {
+              font-size: 0.85rem;
+              line-height: 1.4;
+            }
+
+            .benefit-icon {
+              width: 24px;
+              height: 24px;
+              font-size: 0.7rem;
+              margin-right: 0.5rem;
+            }
+
+            .benefit-title {
+              font-size: 0.9rem;
+            }
+
+            .benefit-item p {
+              padding-left: calc(24px + 0.5rem);
+            }
+
+            .step-number {
+              width: 32px;
+              height: 32px;
+              font-size: 0.8rem;
+              margin-bottom: 0.6rem;
+            }
+
+            .step-content h4 {
+              font-size: 0.95rem;
+              margin-bottom: 0.4rem;
+            }
+
+            .step-content p {
+              font-size: 0.85rem;
+            }
+
+            .analytics-quote {
+              padding: 1rem;
+              margin: 1.5rem 0;
+            }
+
+            .quote-icon {
+              top: 1rem;
+              left: 1rem;
+              font-size: 1.2rem;
+            }
+
+            .analytics-quote blockquote {
+              font-size: 0.95rem;
+              padding-left: 1.8rem;
+            }
+
+            .quote-author {
+              padding-left: 1.8rem;
+              font-size: 0.9rem;
+              margin-top: 1rem;
+            }
+
+            .analytics-cta p {
+              font-size: 0.95rem;
+              margin-bottom: 1rem;
+            }
+
+            .cta-btn {
+              padding: 0.7rem 1rem;
+              font-size: 0.9rem;
+              gap: 0.5rem;
+            }
+          }
         `}</style>
       </section>
 
@@ -3780,7 +4410,7 @@ const AIBannerMarketing = () => {
             box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
             display: flex;
-            flex-direction: column;
+    flex-direction: column;
           }
 
           .benefits-card:hover {
@@ -3913,7 +4543,7 @@ const AIBannerMarketing = () => {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.8rem;
+    gap: 0.8rem;
             flex: 1;
           }
 
