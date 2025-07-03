@@ -467,6 +467,19 @@ const BrandStyleSection = styled.section`
   );
   overflow: hidden;
   border-radius: 20px;
+
+  @media (max-width: 992px) {
+    padding: 6rem 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+    border-radius: 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0;
+  }
 `;
 
 const BrandStyleWave = styled.div`
@@ -489,12 +502,32 @@ const BrandStyleContainer = styled.div`
   padding: 0 2rem;
   position: relative;
   z-index: 2;
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1rem;
+  }
 `;
 
 const BrandStyleHeader = styled.div`
   text-align: center;
   margin-bottom: 5rem;
   position: relative;
+
+  @media (max-width: 992px) {
+    margin-bottom: 4rem;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 2.5rem;
+  }
 `;
 
 const BrandStyleTitle = styled.h2`
@@ -521,8 +554,30 @@ const BrandStyleTitle = styled.h2`
     border-radius: 3px;
   }
 
+  @media (max-width: 992px) {
+    font-size: 2.8rem;
+  }
+
   @media (max-width: 768px) {
-    font-size: 2.6rem;
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+
+    &::after {
+      width: 80px;
+      height: 4px;
+      bottom: -12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    line-height: 1.2;
+
+    &::after {
+      width: 60px;
+      height: 3px;
+      bottom: -10px;
+    }
   }
 `;
 
@@ -534,6 +589,14 @@ const BrandStyleGrid = styled.div`
   @media (max-width: 992px) {
     grid-template-columns: 1fr;
     gap: 4rem;
+  }
+
+  @media (max-width: 768px) {
+    gap: 3rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 2.5rem;
   }
 `;
 
@@ -592,8 +655,29 @@ const ElementsSectionTitle = styled.h3`
     border-radius: 3px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     font-size: 1.8rem;
+    margin-bottom: 1.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    padding-left: 1.2rem;
+
+    &::before {
+      width: 4px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+    padding-left: 1rem;
+
+    &::before {
+      width: 3px;
+    }
   }
 `;
 
@@ -602,6 +686,23 @@ const ElementsDescription = styled.p`
   line-height: 1.8;
   color: var(--text-secondary);
   margin-bottom: 3rem;
+
+  @media (max-width: 992px) {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const BrandElements = styled.div`
@@ -609,8 +710,13 @@ const BrandElements = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 
+  @media (max-width: 768px) {
+    gap: 1.2rem;
+  }
+
   @media (max-width: 576px) {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 `;
 
@@ -659,6 +765,30 @@ const BrandElement = styled(motion.div)`
   &:hover::before {
     transform: scaleX(1);
   }
+
+  @media (max-width: 768px) {
+    padding: 1.2rem;
+    gap: 0.8rem;
+    border-radius: 12px;
+
+    &::before {
+      height: 3px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+    gap: 0.6rem;
+    border-radius: 8px;
+  }
+`;
+
+const BrandElementWide = styled(BrandElement)`
+  grid-column: 1 / span 2;
+  
+  @media (max-width: 576px) {
+    grid-column: 1;
+  }
 `;
 
 const ElementIcon = styled.div`
@@ -678,6 +808,20 @@ const ElementIcon = styled.div`
     background: rgba(var(--accent-color-rgb), 0.2);
     transform: scale(1.1) rotate(5deg);
   }
+
+  @media (max-width: 768px) {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 480px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+  }
 `;
 
 const ElementContent = styled.div`
@@ -694,12 +838,32 @@ const ElementTitle = styled.h4`
   ${BrandElement}:hover & {
     color: var(--accent-color);
   }
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
 `;
 
 const ElementDescription = styled.p`
   font-size: 1rem;
   line-height: 1.6;
   color: var(--text-secondary);
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
 `;
 
 const BrandStyleImpactSection = styled.div`
@@ -714,10 +878,21 @@ const ImpactGraphic = styled.div`
 
   @media (max-width: 992px) {
     height: 250px;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    height: 220px;
+    margin-bottom: 2rem;
   }
 
   @media (max-width: 576px) {
     height: 200px;
+  }
+
+  @media (max-width: 480px) {
+    height: 180px;
+    margin-bottom: 1.5rem;
   }
 `;
 
@@ -748,6 +923,18 @@ const ImpactCenter = styled.div`
   box-shadow: 0 5px 20px rgba(var(--accent-color-rgb), 0.4);
   z-index: 2;
   animation: ${impactPulse} 4s infinite ease-in-out;
+
+  @media (max-width: 768px) {
+    width: 100px;
+    height: 100px;
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+  }
 `;
 
 const ImpactRing = styled.div`
@@ -768,6 +955,30 @@ const ImpactRing = styled.div`
     width: 300px;
     height: 300px;
     animation: ${rotate} 60s infinite linear reverse;
+  }
+
+  @media (max-width: 768px) {
+    &.ring1 {
+      width: 160px;
+      height: 160px;
+    }
+
+    &.ring2 {
+      width: 240px;
+      height: 240px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &.ring1 {
+      width: 140px;
+      height: 140px;
+    }
+
+    &.ring2 {
+      width: 200px;
+      height: 200px;
+    }
   }
 `;
 
@@ -818,12 +1029,49 @@ const ImpactItem = styled.div`
     right: 5%;
     transform: translateY(-50%);
   }
+
+  @media (max-width: 768px) {
+    width: 75px;
+    height: 75px;
+    padding: 0.4rem;
+
+    &.item2 {
+      left: 8%;
+    }
+
+    &.item4 {
+      right: 8%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 65px;
+    height: 65px;
+    padding: 0.3rem;
+
+    &.item2 {
+      left: 10%;
+    }
+
+    &.item4 {
+      right: 10%;
+    }
+  }
 `;
 
 const ImpactItemIcon = styled.div`
   font-size: 1.5rem;
   color: var(--accent-color);
   margin-bottom: 0.3rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+    margin-bottom: 0.2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const ImpactItemText = styled.div`
@@ -832,6 +1080,15 @@ const ImpactItemText = styled.div`
   color: var(--text-primary);
   text-align: center;
   line-height: 1.2;
+
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.65rem;
+    line-height: 1.1;
+  }
 `;
 
 const ImpactDescription = styled.div`
@@ -840,12 +1097,30 @@ const ImpactDescription = styled.div`
   padding: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.2rem;
+    border-radius: 8px;
+  }
 `;
 
 const ImpactList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 2rem 0 0;
+
+  @media (max-width: 768px) {
+    margin: 1.5rem 0 0;
+  }
+
+  @media (max-width: 480px) {
+    margin: 1rem 0 0;
+  }
 `;
 
 const ImpactListItem = styled.li`
@@ -855,6 +1130,16 @@ const ImpactListItem = styled.li`
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.6rem;
+    margin-bottom: 1rem;
   }
 `;
 
@@ -869,6 +1154,18 @@ const ImpactListIcon = styled.div`
   color: var(--accent-color);
   font-size: 1rem;
   flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 25px;
+    height: 25px;
+    font-size: 0.8rem;
+  }
 `;
 
 const ImpactListText = styled.div`
@@ -880,12 +1177,32 @@ const ImpactListTitle = styled.h4`
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
 `;
 
 const ImpactListDescription = styled.p`
   font-size: 1rem;
   line-height: 1.6;
   color: var(--text-secondary);
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
 `;
 
 // Стили для секции услуг фирменного стиля
@@ -2615,6 +2932,21 @@ const OrderProcessSection = styled.section`
   overflow: hidden;
   margin-top: 4rem;
   border-radius: 20px;
+
+  @media (max-width: 992px) {
+    padding: 6rem 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+    margin-top: 3rem;
+    border-radius: 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0;
+    margin-top: 2rem;
+  }
 `;
 
 const OrderProcessContainer = styled.div`
@@ -2623,12 +2955,32 @@ const OrderProcessContainer = styled.div`
   padding: 0 2rem;
   position: relative;
   z-index: 2;
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1rem;
+  }
 `;
 
 const OrderProcessHeader = styled.div`
   text-align: center;
   margin-bottom: 5rem;
   position: relative;
+
+  @media (max-width: 992px) {
+    margin-bottom: 4rem;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 2.5rem;
+  }
 `;
 
 const OrderProcessTitle = styled(motion.h2)`
@@ -2655,8 +3007,30 @@ const OrderProcessTitle = styled(motion.h2)`
     border-radius: 3px;
   }
 
+  @media (max-width: 992px) {
+    font-size: 2.8rem;
+  }
+
   @media (max-width: 768px) {
-    font-size: 2.6rem;
+    font-size: 2.4rem;
+    margin-bottom: 0.8rem;
+
+    &::after {
+      width: 80px;
+      height: 4px;
+      bottom: -12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    line-height: 1.2;
+
+    &::after {
+      width: 60px;
+      height: 3px;
+      bottom: -10px;
+    }
   }
 `;
 
@@ -2666,6 +3040,18 @@ const OrderProcessSubtitle = styled(motion.h3)`
   color: var(--accent-color);
   margin-top: 2rem;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+    margin-top: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
 `;
 
 const OrderProcessDescription = styled(motion.p)`
@@ -2674,6 +3060,17 @@ const OrderProcessDescription = styled(motion.p)`
   color: var(--text-secondary);
   max-width: 700px;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
 `;
 
 const StepsContainer = styled.div`
@@ -2696,9 +3093,23 @@ const StepsContainer = styled.div`
     z-index: 1;
   }
 
+  @media (max-width: 992px) {
+    margin-top: 4rem;
+  }
+
   @media (max-width: 768px) {
+    margin-top: 3rem;
+
     &::before {
       left: 30px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 2rem;
+
+    &::before {
+      left: 25px;
     }
   }
 `;
@@ -2750,20 +3161,38 @@ const StepItem = styled(motion.div)`
     }
   }
 
+  @media (max-width: 992px) {
+    margin-bottom: 4rem;
+  }
+
   @media (max-width: 768px) {
     flex-direction: row !important;
-    padding-left: 60px;
+    padding-left: 70px;
+    margin-bottom: 3rem;
 
     .step-content {
       align-items: flex-start !important;
       text-align: left !important;
-      padding-left: 2rem !important;
+      padding-left: 2.5rem !important;
       padding-right: 0 !important;
     }
 
     .step-number {
-      left: 16px !important;
+      left: 20px !important;
       right: auto !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding-left: 65px;
+    margin-bottom: 2.5rem;
+
+    .step-content {
+      padding-left: 2rem !important;
+    }
+
+    .step-number {
+      left: 15px !important;
     }
   }
 `;
@@ -2801,6 +3230,22 @@ const StepContent = styled.div`
   ${StepItem}:hover .step-number {
     animation-play-state: running;
   }
+
+  @media (max-width: 768px) {
+    .step-number {
+      width: 50px;
+      height: 50px;
+      font-size: 1.3rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .step-number {
+      width: 45px;
+      height: 45px;
+      font-size: 1.1rem;
+    }
+  }
 `;
 
 const OrderStepTitle = styled.h4`
@@ -2814,6 +3259,16 @@ const OrderStepTitle = styled.h4`
     color: var(--accent-color);
     transform: translateY(-3px);
   }
+
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
 `;
 
 const OrderStepDescription = styled.p`
@@ -2821,6 +3276,17 @@ const OrderStepDescription = styled.p`
   line-height: 1.7;
   color: var(--text-secondary);
   max-width: 400px;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
 `;
 
 const StepCardContainer = styled.div`
@@ -2828,6 +3294,10 @@ const StepCardContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const StepCard = styled.div`
@@ -2867,6 +3337,11 @@ const StepCard = styled.div`
       opacity: 1;
     }
   }
+
+  @media (max-width: 992px) {
+    width: 200px;
+    height: 130px;
+  }
 `;
 
 const StepIconContainer = styled.div`
@@ -2885,11 +3360,25 @@ const StepIconContainer = styled.div`
     transform: scale(1.1);
     background: rgba(var(--accent-color-rgb), 0.2);
   }
+
+  @media (max-width: 992px) {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+  }
 `;
 
 const OrderCtaContainer = styled.div`
   margin-top: 5rem;
   text-align: center;
+
+  @media (max-width: 768px) {
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 2rem;
+  }
 `;
 
 const OrderCta = styled(motion.button)`
@@ -2941,6 +3430,26 @@ const OrderCta = styled(motion.button)`
   svg {
     font-size: 1.2rem;
     transition: transform 0.3s ease;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    gap: 0.8rem;
+
+    svg {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+    gap: 0.6rem;
+
+    svg {
+      font-size: 1rem;
+    }
   }
 `;
 
@@ -3004,7 +3513,7 @@ const OrderProcessLine = styled.div`
 `;
 
 // FAQ Section Styles
-const FaqSection = styled.section`
+const FaqSection = styled(motion.section)`
   position: relative;
   padding: 8rem 0;
   background: linear-gradient(
@@ -3020,7 +3529,6 @@ const FaqSection = styled.section`
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  margin-top: 4rem;
 
   &::before {
     content: '';
@@ -3036,6 +3544,18 @@ const FaqSection = styled.section`
     );
     z-index: -1;
   }
+
+  @media (max-width: 1024px) {
+    padding: 6rem 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0;
+  }
 `;
 
 const FaqWaveTop = styled.div`
@@ -3044,13 +3564,17 @@ const FaqWaveTop = styled.div`
   left: 0;
   width: 100%;
   height: 120px;
-  background: linear-gradient(
-    to top left,
-    transparent 49%,
-    var(--bg-primary) 51%
-  );
+  background: linear-gradient(to top left, transparent 49%, var(--bg-primary) 51%);
   z-index: 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    height: 80px;
+  }
+
+  @media (max-width: 480px) {
+    height: 60px;
+  }
 `;
 
 const FaqContainer = styled.div`
@@ -3059,6 +3583,21 @@ const FaqContainer = styled.div`
   position: relative;
   z-index: 2;
   padding: 0 2rem;
+
+  @media (max-width: 1024px) {
+    max-width: 800px;
+    padding: 0 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 700px;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    max-width: none;
+    padding: 0 1rem;
+  }
 `;
 
 const FaqGlowCircle = styled.div`
@@ -3072,7 +3611,7 @@ const FaqGlowCircle = styled.div`
     height: 400px;
     background: radial-gradient(
       circle,
-      rgba(var(--accent-color-rgb), 0.05) 0%,
+      rgba(94, 234, 212, 0.05) 0%,
       transparent 70%
     );
     top: 10%;
@@ -3085,7 +3624,7 @@ const FaqGlowCircle = styled.div`
     height: 500px;
     background: radial-gradient(
       circle,
-      rgba(var(--accent-color-rgb), 0.05) 0%,
+      rgba(59, 130, 246, 0.05) 0%,
       transparent 70%
     );
     bottom: 5%;
@@ -3101,16 +3640,16 @@ const FaqTitle = styled(motion.h2)`
   margin-bottom: 3rem;
   text-align: center;
   position: relative;
-  text-shadow: 0 2px 10px rgba(var(--accent-color-rgb), 0.2);
+  text-shadow: 0 2px 10px rgba(94, 234, 212, 0.2);
 
   &::before {
-    content: '';
+    content: 'F.A.Q';
     position: absolute;
     top: -30px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 5rem;
-    color: rgba(var(--accent-color-rgb), 0.03);
+    color: rgba(94, 234, 212, 0.03);
     font-weight: 900;
     letter-spacing: 5px;
     z-index: -1;
@@ -3134,6 +3673,48 @@ const FaqTitle = styled(motion.h2)`
     border-radius: 4px;
     animation: ${pulseFaq} 2s infinite ease-in-out;
   }
+
+  @media (max-width: 1024px) {
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+
+    &::before {
+      font-size: 4rem;
+      top: -25px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+
+    &::before {
+      font-size: 3.5rem;
+      top: -20px;
+    }
+
+    &::after {
+      width: 60px;
+      height: 3px;
+      bottom: -12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+
+    &::before {
+      font-size: 2.5rem;
+      top: -15px;
+    }
+
+    &::after {
+      width: 50px;
+      height: 2px;
+      bottom: -10px;
+    }
+  }
 `;
 
 const FaqList = styled(motion.div)`
@@ -3141,6 +3722,16 @@ const FaqList = styled(motion.div)`
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 4rem;
+
+  @media (max-width: 768px) {
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
 `;
 
 const FaqItem = styled(motion.div)`
@@ -3159,6 +3750,22 @@ const FaqItem = styled(motion.div)`
       0 0 15px rgba(var(--accent-color-rgb), 0.1);
     border-color: rgba(var(--accent-color-rgb), 0.1);
     transform: translateY(-3px);
+  }
+
+  @media (max-width: 768px) {
+    border-radius: 12px;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    border-radius: 10px;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
   }
 `;
 
@@ -3210,38 +3817,82 @@ const FaqQuestion = styled(motion.div)`
       transparent
     );
   }
-`;
 
-const FaqQuestionText = styled.h3`
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  transition: all 0.3s ease;
-  flex: 1;
-  transform: translateZ(5px);
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    flex: 1;
+    margin: 0;
+    transform: translateZ(5px);
+  }
 
-  ${FaqQuestion}:hover & {
+  &:hover h3 {
     color: var(--accent-color);
     transform: translateZ(10px);
   }
-`;
 
-const FaqToggle = styled(motion.div)`
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent-color);
-  margin-left: 1rem;
-  flex-shrink: 0;
-  background: rgba(var(--accent-color-rgb), 0.05);
-  border-radius: 50%;
-  transition: all 0.3s ease;
+  svg {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    margin-left: 1rem;
+    flex-shrink: 0;
+    background: rgba(var(--accent-color-rgb), 0.05);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    padding: 6px;
+    transform: ${props => props['data-open'] === 'true' ? 'rotate(45deg)' : 'rotate(0deg)'};
+    background-color: ${props => 
+      props['data-open'] === 'true' 
+        ? 'rgba(var(--accent-color-rgb), 0.15)' 
+        : 'rgba(var(--accent-color-rgb), 0.05)'
+    };
+  }
 
-  &:hover {
+  &:hover svg {
     background: rgba(var(--accent-color-rgb), 0.1);
     box-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.2);
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+
+    &::after {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.2rem;
+    align-items: flex-start;
+
+    &::after {
+      left: 1.2rem;
+      right: 1.2rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      line-height: 1.4;
+      margin-right: 0.5rem;
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+      margin-left: 0.5rem;
+      margin-top: 0.2rem;
+    }
   }
 `;
 
@@ -3323,6 +3974,43 @@ const FaqAnswer = styled(motion.div)`
       animation: ${shimmerEffect} 2s infinite;
     }
   }
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem 1.5rem;
+    font-size: 1rem;
+
+    &::before {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1.2rem 1.2rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+
+    &::before {
+      left: 1.2rem;
+      right: 1.2rem;
+    }
+
+    ul {
+      padding-left: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.3rem;
+
+      &::before {
+        left: -0.8rem;
+      }
+    }
+  }
 `;
 
 const FaqCta = styled(motion.div)`
@@ -3368,6 +4056,18 @@ const FaqCta = styled(motion.div)`
     );
     z-index: -1;
   }
+
+  @media (max-width: 768px) {
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
+    gap: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    gap: 1rem;
+  }
 `;
 
 const FaqCtaText = styled.p`
@@ -3376,6 +4076,15 @@ const FaqCtaText = styled.p`
   color: var(--text-primary);
   text-align: center;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
 `;
 
 const FaqCtaButton = styled(motion.button)`
@@ -3408,6 +4117,19 @@ const FaqCtaButton = styled(motion.button)`
 
   &:hover svg {
     transform: translateX(5px);
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 250px;
   }
 `;
 
@@ -3696,12 +4418,11 @@ const Branding = () => {
                   </ElementContent>
                 </BrandElement>
 
-                <BrandElement
+                <BrandElementWide
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.7 }}
-                  style={{ gridColumn: '1 / span 2' }}
                 >
                   <ElementIcon>
                     <FaSwatchbook />
@@ -3713,7 +4434,7 @@ const Branding = () => {
                       бренду для різних носіїв — від візиток до digital-кампаній
                     </ElementDescription>
                   </ElementContent>
-                </BrandElement>
+                </BrandElementWide>
               </BrandElements>
             </BrandStyleElementsSection>
 
@@ -4609,14 +5330,13 @@ const Branding = () => {
         </OrderProcessContainer>
       </OrderProcessSection>
 
-      {/* FAQ Section */}
+      {/* FAQ Секция */}
       <FaqSection>
         <FaqWaveTop />
+        <FaqGlowCircle className="circle-1" />
+        <FaqGlowCircle className="circle-2" />
 
         <FaqContainer>
-          <FaqGlowCircle className="circle-1" />
-          <FaqGlowCircle className="circle-2" />
-
           <FaqTitle
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -4654,23 +5374,11 @@ const Branding = () => {
                   <FaqQuestion
                     layout
                     onClick={() => toggleFaq(index)}
+                    data-open={expandedFaqs.includes(index)}
                     whileHover={{ color: 'var(--accent-color)' }}
                   >
-                    <FaqQuestionText>{faq.question}</FaqQuestionText>
-                    <FaqToggle
-                      animate={{
-                        rotate: expandedFaqs.includes(index) ? 45 : 0,
-                        backgroundColor: expandedFaqs.includes(index)
-                          ? 'rgba(var(--accent-color-rgb), 0.15)'
-                          : 'rgba(var(--accent-color-rgb), 0.05)',
-                      }}
-                      transition={{
-                        duration: 0.4,
-                        ease: [0.4, 0, 0.2, 1],
-                      }}
-                    >
-                      <FaPlus />
-                    </FaqToggle>
+                    <h3>{faq.question}</h3>
+                    <FaPlus />
                   </FaqQuestion>
 
                   <AnimatePresence>

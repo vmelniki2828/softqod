@@ -50,7 +50,7 @@ const FloatingCircle = styled(motion.div)`
 
 const Container = styled.div`
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 80px auto;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
