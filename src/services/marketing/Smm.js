@@ -2,9 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import Modal from '../../components/Modal';
-import { 
-  FaArrowRight, 
-  FaChartLine, 
+import {
+  FaArrowRight,
+  FaChartLine,
   FaUsers,
   FaComments,
   FaHeart,
@@ -25,7 +25,7 @@ import {
   FaPlus,
   FaRegEdit,
   FaShoppingCart,
-  FaCheck
+  FaCheck,
 } from 'react-icons/fa';
 
 const PageContainer = styled.div`
@@ -38,11 +38,6 @@ const breatheAnimation = keyframes`
   0% { transform: scale(1); opacity: 0.8; }
   50% { transform: scale(1.05); opacity: 1; }
   100% { transform: scale(1); opacity: 0.8; }
-`;
-
-const shimmer = keyframes`
-  0% { background-position: -468px 0; }
-  100% { background-position: 468px 0; }
 `;
 
 // Hero Section Components
@@ -73,7 +68,8 @@ const GlowingCircle = styled.div`
   );
   filter: blur(60px);
   z-index: 0;
-  animation: ${breatheAnimation} ${props => props.duration || '10s'} infinite ease-in-out;
+  animation: ${breatheAnimation} ${props => props.duration || '10s'} infinite
+    ease-in-out;
 `;
 
 const TiltedLine = styled.div`
@@ -97,7 +93,10 @@ const TiltedLine = styled.div`
 const Dot = styled.div`
   width: 2px;
   height: 2px;
-  background-color: rgba(var(--accent-color-rgb), ${props => props.opacity || '0.5'});
+  background-color: rgba(
+    var(--accent-color-rgb),
+    ${props => props.opacity || '0.5'}
+  );
   border-radius: 50%;
 `;
 
@@ -144,7 +143,7 @@ const HeroLeft = styled.div`
 
 const HeroRight = styled.div`
   position: relative;
-  
+
   @media (max-width: 1024px) {
     order: 0;
     max-width: 500px;
@@ -205,43 +204,48 @@ const ButtonGroup = styled(motion.div)`
 `;
 
 const PrimaryButton = styled(motion.button)`
-  padding: 0.9rem 2rem;
-  background: var(--accent-color);
+  padding: 15px 30px;
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
   color: white;
   border: none;
-  border-radius: 4px;
-  font-weight: 600;
+  border-radius: 12px;
+  font-weight: 700;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 8px;
   cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
+  white-space: nowrap;
 
   &:hover {
-    box-shadow: 0 7px 20px rgba(var(--accent-color-rgb), 0.3);
-    transform: translateY(-2px);
+    background: linear-gradient(135deg, #0056b3 0%, #003d7a 100%);
   }
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -75%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.4) 100%
-    );
-    transform: skewX(-25deg);
-    transition: all 0.75s ease;
+  // ... existing code ...
+
+  /* Mobile and tablet responsive styles */
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 12px 24px;
+    font-size: 16px;
   }
 
-  &:hover::before {
-    animation: ${shimmer} 1s ease-out;
+  @media (max-width: 480px) {
+    padding: 10px 20px;
+    font-size: 15px;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  @media (max-width: 400px) {
+    padding: 8px 16px;
+    font-size: 14px;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
   }
 `;
 
@@ -278,11 +282,11 @@ const SocialPlatformCard = styled(motion.div)`
     top: 20%;
     left: 20%;
     background: linear-gradient(
-      45deg, 
-      #f09433 0%, 
-      #e6683c 25%, 
-      #dc2743 50%, 
-      #cc2366 75%, 
+      45deg,
+      #f09433 0%,
+      #e6683c 25%,
+      #dc2743 50%,
+      #cc2366 75%,
       #bc1888 100%
     );
   }
@@ -357,50 +361,56 @@ const Smm = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const platformRef = useRef(null);
   const tasksSliderRef = useRef(null);
-  
+
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-  
+
   // Add FAQ state and data
   const [expandedFaqs, setExpandedFaqs] = useState([]);
-  
+
   // FAQ data with your provided content
   const faqData = [
     {
-      question: "1. Чи можна просувати бізнес у соціальних мережах без відео?",
-      answer: "Так, хоча відео — потужний інструмент залучення, ми адаптуємо контент-стратегію під ресурси клієнта. Можна використовувати графіку, каруселі, інфографіку, анімації чи інтерактивні опитування. Якщо згодом з'являється можливість створити відео — ми інтегруємо їх у контент-план."
+      question: '1. Чи можна просувати бізнес у соціальних мережах без відео?',
+      answer:
+        "Так, хоча відео — потужний інструмент залучення, ми адаптуємо контент-стратегію під ресурси клієнта. Можна використовувати графіку, каруселі, інфографіку, анімації чи інтерактивні опитування. Якщо згодом з'являється можливість створити відео — ми інтегруємо їх у контент-план.",
     },
     {
-      question: "2. Чи потрібна окрема стратегія для кожної соціальної мережі?",
-      answer: "Так. Поведінка користувачів у Facebook, Instagram і TikTok — різна, як і формат контенту. Ми адаптуємо tone of voice, типи публікацій та візуальний стиль під особливості кожної платформи, щоб досягти максимального ефекту."
+      question: '2. Чи потрібна окрема стратегія для кожної соціальної мережі?',
+      answer:
+        'Так. Поведінка користувачів у Facebook, Instagram і TikTok — різна, як і формат контенту. Ми адаптуємо tone of voice, типи публікацій та візуальний стиль під особливості кожної платформи, щоб досягти максимального ефекту.',
     },
     {
-      question: "3. Скільки часу потрібно, щоб побачити результати SMM-просування?",
-      answer: "Перші результати (зростання активності, охоплення, звернення) зазвичай помітні вже через 2–4 тижні. Повноцінне зміцнення бренду, стабільне зростання аудиторії та конверсії — через 2–3 місяці системної роботи."
+      question:
+        '3. Скільки часу потрібно, щоб побачити результати SMM-просування?',
+      answer:
+        'Перші результати (зростання активності, охоплення, звернення) зазвичай помітні вже через 2–4 тижні. Повноцінне зміцнення бренду, стабільне зростання аудиторії та конверсії — через 2–3 місяці системної роботи.',
     },
     {
-      question: "4. Яка мінімальна кількість постів на тиждень рекомендується?",
-      answer: "Оптимально — від 3 до 5 публікацій на тиждень. Це дозволяє підтримувати активність аудиторії без перенасичення. У деяких випадках достатньо 2 постів + щоденні сторіс, залежно від платформи й специфіки ніші."
+      question: '4. Яка мінімальна кількість постів на тиждень рекомендується?',
+      answer:
+        'Оптимально — від 3 до 5 публікацій на тиждень. Це дозволяє підтримувати активність аудиторії без перенасичення. У деяких випадках достатньо 2 постів + щоденні сторіс, залежно від платформи й специфіки ніші.',
     },
     {
-      question: "5. Чи можна інтегрувати SMM з email-розсилками або сайтом?",
-      answer: "Так. Ми налаштовуємо перехід з соціальних мереж на сайт, лендінг або email-підписку. Це допомагає побудувати багаторівневу комунікацію з клієнтом і підвищити довіру до бренду."
+      question: '5. Чи можна інтегрувати SMM з email-розсилками або сайтом?',
+      answer:
+        'Так. Ми налаштовуємо перехід з соціальних мереж на сайт, лендінг або email-підписку. Це допомагає побудувати багаторівневу комунікацію з клієнтом і підвищити довіру до бренду.',
     },
     {
-      question: "6. Чи варто використовувати інфлюенсерів у рамках SMM-кампанії?",
-      answer: "Інфлюенс-маркетинг — ефективне доповнення до класичного SMM. Ми допомагаємо підібрати мікро- або макроінфлюенсерів відповідно до вашої ніші, аналізуємо їхню авдиторію й організовуємо співпрацю \"під ключ\"."
-    }
+      question:
+        '6. Чи варто використовувати інфлюенсерів у рамках SMM-кампанії?',
+      answer:
+        'Інфлюенс-маркетинг — ефективне доповнення до класичного SMM. Ми допомагаємо підібрати мікро- або макроінфлюенсерів відповідно до вашої ніші, аналізуємо їхню авдиторію й організовуємо співпрацю "під ключ".',
+    },
   ];
-  
+
   // Toggle FAQ function
-  const toggleFaq = (index) => {
-    setExpandedFaqs(prev => 
-      prev.includes(index) 
-        ? prev.filter(i => i !== index) 
-        : [...prev, index]
+  const toggleFaq = index => {
+    setExpandedFaqs(prev =>
+      prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
     );
   };
-  
+
   // Рендер точек для декоративной сетки
   const renderDots = () => {
     const dots = [];
@@ -433,7 +443,8 @@ const Smm = () => {
 
     const handleMouseLeave = () => {
       if (!platformRef.current) return;
-      platformRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+      platformRef.current.style.transform =
+        'perspective(1000px) rotateX(0deg) rotateY(0deg)';
     };
 
     const container = platformRef.current;
@@ -454,62 +465,65 @@ const Smm = () => {
   const advantages = [
     {
       icon: <FaUsers />,
-      text: "Прямий зв'язок з вашою цільовою аудиторією"
+      text: "Прямий зв'язок з вашою цільовою аудиторією",
     },
     {
       icon: <FaHeart />,
-      text: "Формування лояльності та спільноти навколо бренду"
+      text: 'Формування лояльності та спільноти навколо бренду',
     },
     {
       icon: <FaShare />,
-      text: "Вірусне поширення контенту через репости"
+      text: 'Вірусне поширення контенту через репости',
     },
     {
       icon: <FaChartLine />,
-      text: "Детальна аналітика ефективності кампаній"
-    }
+      text: 'Детальна аналітика ефективності кампаній',
+    },
   ];
 
   // Tasks data
   const tasks = [
-    { 
-      icon: <FaBullhorn />, 
-      title: "Формування іміджу бренду", 
-      description: "через ціннісний контент, візуальний стиль і tone of voice",
-      color: "255, 107, 129"
+    {
+      icon: <FaBullhorn />,
+      title: 'Формування іміджу бренду',
+      description: 'через ціннісний контент, візуальний стиль і tone of voice',
+      color: '255, 107, 129',
     },
-    { 
-      icon: <FaRegChartBar />, 
-      title: "Підвищення впізнаваності", 
-      description: "за допомогою регулярної публікації, інтерактиву та таргетингу",
-      color: "64, 223, 159"
+    {
+      icon: <FaRegChartBar />,
+      title: 'Підвищення впізнаваності',
+      description:
+        'за допомогою регулярної публікації, інтерактиву та таргетингу',
+      color: '64, 223, 159',
     },
-    { 
-      icon: <FaUsers />, 
-      title: "Побудова ком'юніті", 
-      description: "створення лояльної бази підписників, які підтримують, коментують, купують",
-      color: "77, 171, 247"
+    {
+      icon: <FaUsers />,
+      title: "Побудова ком'юніті",
+      description:
+        'створення лояльної бази підписників, які підтримують, коментують, купують',
+      color: '77, 171, 247',
     },
-    { 
-      icon: <FaComments />, 
-      title: "Комунікація з аудиторією", 
-      description: "відповіді на запити, обробка відгуків, розв'язання ситуацій в режимі реального часу",
-      color: "146, 92, 255"
+    {
+      icon: <FaComments />,
+      title: 'Комунікація з аудиторією',
+      description:
+        "відповіді на запити, обробка відгуків, розв'язання ситуацій в режимі реального часу",
+      color: '146, 92, 255',
     },
-    { 
-      icon: <FaRocket />, 
-      title: "Просування продуктів чи послуг", 
-      description: "через рекламні кампанії, колаборації, акції, лід-магніти",
-      color: "255, 184, 48"
-    }
+    {
+      icon: <FaRocket />,
+      title: 'Просування продуктів чи послуг',
+      description: 'через рекламні кампанії, колаборації, акції, лід-магніти',
+      color: '255, 184, 48',
+    },
   ];
 
   // Add function to handle slider navigation
-  const navigateSlider = (direction) => {
+  const navigateSlider = direction => {
     if (direction === 'next') {
-      setActiveTaskIndex((prev) => (prev === tasks.length - 1 ? 0 : prev + 1));
+      setActiveTaskIndex(prev => (prev === tasks.length - 1 ? 0 : prev + 1));
     } else {
-      setActiveTaskIndex((prev) => (prev === 0 ? tasks.length - 1 : prev - 1));
+      setActiveTaskIndex(prev => (prev === 0 ? tasks.length - 1 : prev - 1));
     }
   };
 
@@ -549,7 +563,8 @@ const Smm = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
               >
-                SMM-просування — <HighlightedSpan>ваш бренд</HighlightedSpan> у соціальних мережах
+                SMM-просування — <HighlightedSpan>ваш бренд</HighlightedSpan> у
+                соціальних мережах
               </AnimatedTitle>
 
               <HeroDescription
@@ -557,7 +572,12 @@ const Smm = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
               >
-                SMM-просування — це стратегічний інструмент цифрового маркетингу, що дозволяє бізнесу будувати довготривалі відносини з клієнтами, формувати імідж бренду та стимулювати продажі через соціальні мережі. У світі, де увага споживача — найцінніший ресурс, SMM допомагає зайняти своє місце в інформаційному полі та трансформувати підписників у лояльну аудиторію.
+                SMM-просування — це стратегічний інструмент цифрового
+                маркетингу, що дозволяє бізнесу будувати довготривалі відносини
+                з клієнтами, формувати імідж бренду та стимулювати продажі через
+                соціальні мережі. У світі, де увага споживача — найцінніший
+                ресурс, SMM допомагає зайняти своє місце в інформаційному полі
+                та трансформувати підписників у лояльну аудиторію.
               </HeroDescription>
 
               <AdvantagesList
@@ -595,7 +615,7 @@ const Smm = () => {
 
             <HeroRight>
               <SocialPlatformsContainer ref={platformRef}>
-                <SocialPlatformCard 
+                <SocialPlatformCard
                   className="instagram"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -606,8 +626,8 @@ const Smm = () => {
                     <FaInstagram />
                   </SocialIcon>
                 </SocialPlatformCard>
-                
-                <SocialPlatformCard 
+
+                <SocialPlatformCard
                   className="facebook"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -618,8 +638,8 @@ const Smm = () => {
                     <FaFacebookF />
                   </SocialIcon>
                 </SocialPlatformCard>
-                
-                <SocialPlatformCard 
+
+                <SocialPlatformCard
                   className="twitter"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -630,8 +650,8 @@ const Smm = () => {
                     <FaTwitter />
                   </SocialIcon>
                 </SocialPlatformCard>
-                
-                <SocialPlatformCard 
+
+                <SocialPlatformCard
                   className="tiktok"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -642,8 +662,8 @@ const Smm = () => {
                     <FaTiktok />
                   </SocialIcon>
                 </SocialPlatformCard>
-                
-                <SocialPlatformCard 
+
+                <SocialPlatformCard
                   className="linkedin"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -654,8 +674,8 @@ const Smm = () => {
                     <FaLinkedinIn />
                   </SocialIcon>
                 </SocialPlatformCard>
-                
-                <SocialPlatformCard 
+
+                <SocialPlatformCard
                   className="youtube"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -675,8 +695,13 @@ const Smm = () => {
       {/* What is SMM Section */}
       <WhatIsSmmSection>
         <GlowingAccent top="10%" right="5%" size="250px" color="0, 150, 255" />
-        <GlowingAccent bottom="10%" left="5%" size="200px" color="255, 100, 200" />
-        
+        <GlowingAccent
+          bottom="10%"
+          left="5%"
+          size="200px"
+          color="255, 100, 200"
+        />
+
         <WhatIsSmmContainer>
           <SectionHeader
             initial={{ opacity: 0, y: 30 }}
@@ -687,7 +712,7 @@ const Smm = () => {
             <AccentLine />
             Що таке SMM і чому це важливо
           </SectionHeader>
-          
+
           <ContentGrid>
             <MainContent
               initial={{ opacity: 0, y: 40 }}
@@ -696,13 +721,20 @@ const Smm = () => {
               transition={{ duration: 0.7, delay: 0.2 }}
             >
               <p>
-                SMM (Social Media Marketing) — це комплекс дій для просування компанії в соціальних мережах: від створення контенту та управління спільнотами до запуску таргетованої реклами. SMM є не просто каналом комунікації — це джерело лояльності, зворотного зв'язку, прямого впливу на споживчу поведінку.
+                SMM (Social Media Marketing) — це комплекс дій для просування
+                компанії в соціальних мережах: від створення контенту та
+                управління спільнотами до запуску таргетованої реклами. SMM є не
+                просто каналом комунікації — це джерело лояльності, зворотного
+                зв'язку, прямого впливу на споживчу поведінку.
               </p>
               <p>
-                Соціальні мережі щоденно використовують мільйони українців. Ігнорувати цей канал — означає втрачати потенційних клієнтів, які прямо зараз готові купувати, замовляти або ділитися враженнями.
+                Соціальні мережі щоденно використовують мільйони українців.
+                Ігнорувати цей канал — означає втрачати потенційних клієнтів,
+                які прямо зараз готові купувати, замовляти або ділитися
+                враженнями.
               </p>
             </MainContent>
-            
+
             <StatisticsWrapper
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -710,19 +742,31 @@ const Smm = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               <StatsCard>
-                <StatNumber>73<span>%</span></StatNumber>
-                <StatDescription>користувачів інтернету активні в соцмережах</StatDescription>
+                <StatNumber>
+                  73<span>%</span>
+                </StatNumber>
+                <StatDescription>
+                  користувачів інтернету активні в соцмережах
+                </StatDescription>
               </StatsCard>
               <StatsCard>
-                <StatNumber>2.4<span>год</span></StatNumber>
-                <StatDescription>середній час в соцмережах щодня</StatDescription>
+                <StatNumber>
+                  2.4<span>год</span>
+                </StatNumber>
+                <StatDescription>
+                  середній час в соцмережах щодня
+                </StatDescription>
               </StatsCard>
               <StatsCard>
-                <StatNumber>61<span>%</span></StatNumber>
-                <StatDescription>приймають рішення про покупку після перегляду в соцмережах</StatDescription>
+                <StatNumber>
+                  61<span>%</span>
+                </StatNumber>
+                <StatDescription>
+                  приймають рішення про покупку після перегляду в соцмережах
+                </StatDescription>
               </StatsCard>
             </StatisticsWrapper>
-            
+
             <TasksHeader
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -731,8 +775,8 @@ const Smm = () => {
             >
               Основні завдання SMM
             </TasksHeader>
-            
-            <TasksSliderContainer 
+
+            <TasksSliderContainer
               ref={tasksSliderRef}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -741,17 +785,21 @@ const Smm = () => {
             >
               <TasksSliderWrapper
                 animate={{ x: `-${activeTaskIndex * 100}%` }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
               >
                 {tasks.map((task, index) => (
                   <TaskSlide key={index} isActive={index === activeTaskIndex}>
-                    <TaskSlideInner style={{ 
-                      background: `linear-gradient(135deg, rgba(${task.color}, 0.1) 0%, rgba(${task.color}, 0.2) 100%)`,
-                      borderColor: `rgba(${task.color}, 0.3)` 
-                    }}>
+                    <TaskSlideInner
+                      style={{
+                        background: `linear-gradient(135deg, rgba(${task.color}, 0.1) 0%, rgba(${task.color}, 0.2) 100%)`,
+                        borderColor: `rgba(${task.color}, 0.3)`,
+                      }}
+                    >
                       <TaskIconWrapper style={{ color: `rgb(${task.color})` }}>
                         {task.icon}
-                        <TaskIconBg style={{ background: `rgba(${task.color}, 0.15)` }} />
+                        <TaskIconBg
+                          style={{ background: `rgba(${task.color}, 0.15)` }}
+                        />
                       </TaskIconWrapper>
                       <TaskTitle>{task.title}</TaskTitle>
                       <TaskDescription>{task.description}</TaskDescription>
@@ -761,25 +809,25 @@ const Smm = () => {
               </TasksSliderWrapper>
 
               <SliderNavigation>
-                <SliderButton 
+                <SliderButton
                   onClick={() => navigateSlider('prev')}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
                   <SliderButtonIcon direction="left" />
                 </SliderButton>
-                
+
                 <SliderDots>
                   {tasks.map((_, index) => (
-                    <SliderDot 
-                      key={index} 
+                    <SliderDot
+                      key={index}
                       isActive={index === activeTaskIndex}
                       onClick={() => setActiveTaskIndex(index)}
                     />
                   ))}
                 </SliderDots>
-                
-                <SliderButton 
+
+                <SliderButton
                   onClick={() => navigateSlider('next')}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
@@ -789,17 +837,23 @@ const Smm = () => {
               </SliderNavigation>
             </TasksSliderContainer>
           </ContentGrid>
-          
+
           <NetworksSlider
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.7 }}
           >
-            {['Instagram', 'Facebook', 'TikTok', 'LinkedIn', 'Twitter', 'YouTube', 'Telegram'].map((network, index) => (
-              <NetworkBadge key={index}>
-                {network}
-              </NetworkBadge>
+            {[
+              'Instagram',
+              'Facebook',
+              'TikTok',
+              'LinkedIn',
+              'Twitter',
+              'YouTube',
+              'Telegram',
+            ].map((network, index) => (
+              <NetworkBadge key={index}>{network}</NetworkBadge>
             ))}
           </NetworksSlider>
         </WhatIsSmmContainer>
@@ -825,7 +879,11 @@ const Smm = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            Ми пропонуємо повний цикл SMM-супроводу — від стратегії до результатів. Наші послуги охоплюють ключові напрямки, які дозволяють бренду не лише "бути в соцмережах", а системно розвиватися, залучати клієнтів і досягати бізнес-цілей. Ми адаптуємо підхід під специфіку ринку, конкурентів і аудиторію.
+            Ми пропонуємо повний цикл SMM-супроводу — від стратегії до
+            результатів. Наші послуги охоплюють ключові напрямки, які дозволяють
+            бренду не лише "бути в соцмережах", а системно розвиватися, залучати
+            клієнтів і досягати бізнес-цілей. Ми адаптуємо підхід під специфіку
+            ринку, конкурентів і аудиторію.
           </ServicesIntro>
 
           <ServicesTabs>
@@ -835,8 +893,12 @@ const Smm = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.3 }}
             >
-              {['Розробка контент-стратегії', 'Ведення сторінок', 'Таргетована реклама'].map((tab, index) => (
-                <ServiceTab 
+              {[
+                'Розробка контент-стратегії',
+                'Ведення сторінок',
+                'Таргетована реклама',
+              ].map((tab, index) => (
+                <ServiceTab
                   key={index}
                   isActive={activeServiceTab === index}
                   onClick={() => setActiveServiceTab(index)}
@@ -844,7 +906,9 @@ const Smm = () => {
                   whileTap={{ scale: 0.97 }}
                 >
                   {tab}
-                  {activeServiceTab === index && <ActiveTabIndicator layoutId="activeTab" />}
+                  {activeServiceTab === index && (
+                    <ActiveTabIndicator layoutId="activeTab" />
+                  )}
                 </ServiceTab>
               ))}
             </ServiceTabsList>
@@ -860,38 +924,65 @@ const Smm = () => {
                     transition={{ duration: 0.5 }}
                   >
                     <ServiceTabHeader>
-                      <ServiceTabIcon><FaRegLightbulb /></ServiceTabIcon>
+                      <ServiceTabIcon>
+                        <FaRegLightbulb />
+                      </ServiceTabIcon>
                       <h3>Розробка контент-стратегії</h3>
                     </ServiceTabHeader>
-                    
+
                     <ServiceTabDescription>
-                      Контент — це основа комунікації в SMM. Ми створюємо стратегії, які враховують сезонність, поведінкові патерни аудиторії, тренди платформи та позиціонування бренду. Контент-план готується на місяць уперед і включає візуали, тексти, хештеги, інтерактиви, сторіс, Reels чи Shorts — залежно від платформи.
+                      Контент — це основа комунікації в SMM. Ми створюємо
+                      стратегії, які враховують сезонність, поведінкові патерни
+                      аудиторії, тренди платформи та позиціонування бренду.
+                      Контент-план готується на місяць уперед і включає візуали,
+                      тексти, хештеги, інтерактиви, сторіс, Reels чи Shorts —
+                      залежно від платформи.
                     </ServiceTabDescription>
 
                     <ServiceFeatures>
                       <ServiceFeatureItem>
-                        <ServiceFeatureIcon><FaCheckCircle /></ServiceFeatureIcon>
-                        <ServiceFeatureText>Визначення цілей і KPI</ServiceFeatureText>
+                        <ServiceFeatureIcon>
+                          <FaCheckCircle />
+                        </ServiceFeatureIcon>
+                        <ServiceFeatureText>
+                          Визначення цілей і KPI
+                        </ServiceFeatureText>
                       </ServiceFeatureItem>
                       <ServiceFeatureItem>
-                        <ServiceFeatureIcon><FaCheckCircle /></ServiceFeatureIcon>
-                        <ServiceFeatureText>Побудова tone of voice</ServiceFeatureText>
+                        <ServiceFeatureIcon>
+                          <FaCheckCircle />
+                        </ServiceFeatureIcon>
+                        <ServiceFeatureText>
+                          Побудова tone of voice
+                        </ServiceFeatureText>
                       </ServiceFeatureItem>
                       <ServiceFeatureItem>
-                        <ServiceFeatureIcon><FaCheckCircle /></ServiceFeatureIcon>
-                        <ServiceFeatureText>Контент-план по рубриках та форматах</ServiceFeatureText>
+                        <ServiceFeatureIcon>
+                          <FaCheckCircle />
+                        </ServiceFeatureIcon>
+                        <ServiceFeatureText>
+                          Контент-план по рубриках та форматах
+                        </ServiceFeatureText>
                       </ServiceFeatureItem>
                       <ServiceFeatureItem>
-                        <ServiceFeatureIcon><FaCheckCircle /></ServiceFeatureIcon>
-                        <ServiceFeatureText>Створення унікального креативу</ServiceFeatureText>
+                        <ServiceFeatureIcon>
+                          <FaCheckCircle />
+                        </ServiceFeatureIcon>
+                        <ServiceFeatureText>
+                          Створення унікального креативу
+                        </ServiceFeatureText>
                       </ServiceFeatureItem>
                     </ServiceFeatures>
 
                     <ServiceIllustration>
-                      <motion.div 
+                      <motion.div
                         initial={{ rotate: -5 }}
                         animate={{ rotate: 5 }}
-                        transition={{ yoyo: Infinity, duration: 6, ease: "easeInOut" }}
+                        transition={{
+                          yoyo: Infinity,
+                          duration: 6,
+                          ease: 'easeInOut',
+                        }}
                       >
                         <ContentPlanMockup />
                       </motion.div>
@@ -908,26 +999,47 @@ const Smm = () => {
                     transition={{ duration: 0.5 }}
                   >
                     <ServiceTabHeader>
-                      <ServiceTabIcon><FaComments /></ServiceTabIcon>
-                      <h3>Ведення сторінок (Instagram, Facebook, TikTok тощо)</h3>
+                      <ServiceTabIcon>
+                        <FaComments />
+                      </ServiceTabIcon>
+                      <h3>
+                        Ведення сторінок (Instagram, Facebook, TikTok тощо)
+                      </h3>
                     </ServiceTabHeader>
-                    
+
                     <ServiceTabDescription>
-                      Ми беремо на себе повне адміністрування акаунтів: регулярні публікації, відповіді в коментарях, обробку запитів у Direct, моніторинг згадок. Для кожної платформи обираємо найефективніші формати — короткі відео, каруселі, меми, розіграші чи гайд-пости.
+                      Ми беремо на себе повне адміністрування акаунтів:
+                      регулярні публікації, відповіді в коментарях, обробку
+                      запитів у Direct, моніторинг згадок. Для кожної платформи
+                      обираємо найефективніші формати — короткі відео, каруселі,
+                      меми, розіграші чи гайд-пости.
                     </ServiceTabDescription>
 
                     <ServicePlatforms>
                       <ServicePlatformItem>
-                        <ServicePlatformIcon platform="instagram"><FaInstagram /></ServicePlatformIcon>
-                        <ServicePlatformName>Instagram та Facebook (Meta)</ServicePlatformName>
+                        <ServicePlatformIcon platform="instagram">
+                          <FaInstagram />
+                        </ServicePlatformIcon>
+                        <ServicePlatformName>
+                          Instagram та Facebook (Meta)
+                        </ServicePlatformName>
                       </ServicePlatformItem>
                       <ServicePlatformItem>
-                        <ServicePlatformIcon platform="tiktok"><FaTiktok /></ServicePlatformIcon>
-                        <ServicePlatformName>TikTok — з урахуванням алгоритмів та вірусного потенціалу</ServicePlatformName>
+                        <ServicePlatformIcon platform="tiktok">
+                          <FaTiktok />
+                        </ServicePlatformIcon>
+                        <ServicePlatformName>
+                          TikTok — з урахуванням алгоритмів та вірусного
+                          потенціалу
+                        </ServicePlatformName>
                       </ServicePlatformItem>
                       <ServicePlatformItem>
-                        <ServicePlatformIcon platform="other"><FaYoutube /></ServicePlatformIcon>
-                        <ServicePlatformName>YouTube Shorts, Telegram, LinkedIn (опціонально)</ServicePlatformName>
+                        <ServicePlatformIcon platform="other">
+                          <FaYoutube />
+                        </ServicePlatformIcon>
+                        <ServicePlatformName>
+                          YouTube Shorts, Telegram, LinkedIn (опціонально)
+                        </ServicePlatformName>
                       </ServicePlatformItem>
                     </ServicePlatforms>
 
@@ -935,7 +1047,11 @@ const Smm = () => {
                       <motion.div
                         initial={{ y: 0 }}
                         animate={{ y: -10 }}
-                        transition={{ yoyo: Infinity, duration: 2, ease: "easeInOut" }}
+                        transition={{
+                          yoyo: Infinity,
+                          duration: 2,
+                          ease: 'easeInOut',
+                        }}
                       >
                         <SocialMediaMockup />
                       </motion.div>
@@ -952,30 +1068,44 @@ const Smm = () => {
                     transition={{ duration: 0.5 }}
                   >
                     <ServiceTabHeader>
-                      <ServiceTabIcon><FaBullhorn /></ServiceTabIcon>
+                      <ServiceTabIcon>
+                        <FaBullhorn />
+                      </ServiceTabIcon>
                       <h3>Таргетована реклама в соціальних мережах</h3>
                     </ServiceTabHeader>
-                    
+
                     <ServiceTabDescription>
-                      Один з найсильніших інструментів у SMM — це платна реклама. Ми запускаємо таргетинг по інтересах, поведінці, геолокації, схожих аудиторіях або ремаркетингу. Для кожної кампанії створюємо кілька креативів і тестуємо, щоб отримати оптимальний результат за мінімальною вартістю.
+                      Один з найсильніших інструментів у SMM — це платна
+                      реклама. Ми запускаємо таргетинг по інтересах, поведінці,
+                      геолокації, схожих аудиторіях або ремаркетингу. Для кожної
+                      кампанії створюємо кілька креативів і тестуємо, щоб
+                      отримати оптимальний результат за мінімальною вартістю.
                     </ServiceTabDescription>
 
                     <ServiceCampaignTypes>
                       <ServiceCampaignItem>
                         <ServiceCampaignCircle>01</ServiceCampaignCircle>
-                        <ServiceCampaignText>Залучення підписників</ServiceCampaignText>
+                        <ServiceCampaignText>
+                          Залучення підписників
+                        </ServiceCampaignText>
                       </ServiceCampaignItem>
                       <ServiceCampaignItem>
                         <ServiceCampaignCircle>02</ServiceCampaignCircle>
-                        <ServiceCampaignText>Реклама постів або сторіс</ServiceCampaignText>
+                        <ServiceCampaignText>
+                          Реклама постів або сторіс
+                        </ServiceCampaignText>
                       </ServiceCampaignItem>
                       <ServiceCampaignItem>
                         <ServiceCampaignCircle>03</ServiceCampaignCircle>
-                        <ServiceCampaignText>Генерація лідів (лід-форми, переходи на сайт)</ServiceCampaignText>
+                        <ServiceCampaignText>
+                          Генерація лідів (лід-форми, переходи на сайт)
+                        </ServiceCampaignText>
                       </ServiceCampaignItem>
                       <ServiceCampaignItem>
                         <ServiceCampaignCircle>04</ServiceCampaignCircle>
-                        <ServiceCampaignText>Динамічні кампанії для e-commerce</ServiceCampaignText>
+                        <ServiceCampaignText>
+                          Динамічні кампанії для e-commerce
+                        </ServiceCampaignText>
                       </ServiceCampaignItem>
                     </ServiceCampaignTypes>
 
@@ -983,7 +1113,11 @@ const Smm = () => {
                       <motion.div
                         initial={{ scale: 0.95 }}
                         animate={{ scale: 1.05 }}
-                        transition={{ yoyo: Infinity, duration: 3, ease: "easeInOut" }}
+                        transition={{
+                          yoyo: Infinity,
+                          duration: 3,
+                          ease: 'easeInOut',
+                        }}
                       >
                         <TargetingMockup />
                       </motion.div>
@@ -1016,7 +1150,10 @@ const Smm = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            Ми працюємо прозоро, системно й орієнтуємось на результат. Для кожного клієнта будуємо індивідуальний SMM-процес, адаптований під нішу, цілі та специфіку бізнесу. Кожен етап узгоджується і підтримується нашою командою — від старту до масштабування.
+            Ми працюємо прозоро, системно й орієнтуємось на результат. Для
+            кожного клієнта будуємо індивідуальний SMM-процес, адаптований під
+            нішу, цілі та специфіку бізнесу. Кожен етап узгоджується і
+            підтримується нашою командою — від старту до масштабування.
           </CollabIntro>
 
           <CollaborationTimeline>
@@ -1030,22 +1167,33 @@ const Smm = () => {
               <ProcessStepContent>
                 <ProcessStepTitle>Брифінг і аналіз ЦА</ProcessStepTitle>
                 <ProcessStepDescription>
-                  Починаємо з глибокого занурення у ваш бізнес: збираємо дані через бриф, аналізуємо конкурентів, визначаємо портрет цільової аудиторії. Вивчаємо її болі, інтереси, активність у соціальних мережах і адаптуємо підхід до комунікації відповідно до цих даних.
+                  Починаємо з глибокого занурення у ваш бізнес: збираємо дані
+                  через бриф, аналізуємо конкурентів, визначаємо портрет
+                  цільової аудиторії. Вивчаємо її болі, інтереси, активність у
+                  соціальних мережах і адаптуємо підхід до комунікації
+                  відповідно до цих даних.
                 </ProcessStepDescription>
-                
+
                 <ProcessStepList>
                   <ProcessStepListTitle>Що включає:</ProcessStepListTitle>
                   <ProcessStepListItem>
-                    <ProcessStepListIcon><FaSearch /></ProcessStepListIcon>
+                    <ProcessStepListIcon>
+                      <FaSearch />
+                    </ProcessStepListIcon>
                     Аналіз ринку, УТП, позиціонування
                   </ProcessStepListItem>
                   <ProcessStepListItem>
-                    <ProcessStepListIcon><FaUsers /></ProcessStepListIcon>
+                    <ProcessStepListIcon>
+                      <FaUsers />
+                    </ProcessStepListIcon>
                     Визначення платформи, де ЦА найактивніша
                   </ProcessStepListItem>
                   <ProcessStepListItem>
-                    <ProcessStepListIcon><FaComments /></ProcessStepListIcon>
-                    Побудова сценаріїв взаємодії (взаємний фоловінг, коментарі, реклама)
+                    <ProcessStepListIcon>
+                      <FaComments />
+                    </ProcessStepListIcon>
+                    Побудова сценаріїв взаємодії (взаємний фоловінг, коментарі,
+                    реклама)
                   </ProcessStepListItem>
                 </ProcessStepList>
 
@@ -1054,9 +1202,9 @@ const Smm = () => {
                 </ProcessStepIllustration>
               </ProcessStepContent>
             </ProcessStep>
-            
+
             <ProcessConnector />
-            
+
             <ProcessStep
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -1068,18 +1216,21 @@ const Smm = () => {
               <ProcessStepContent>
                 <ProcessStepTitle>Розробка стратегії</ProcessStepTitle>
                 <ProcessStepDescription>
-                  На основі зібраних даних формуємо стратегію присутності в соцмережах: визначаємо оптимальні платформи, контент-план, частоту публікацій, тональність і ключові повідомлення бренду.
+                  На основі зібраних даних формуємо стратегію присутності в
+                  соцмережах: визначаємо оптимальні платформи, контент-план,
+                  частоту публікацій, тональність і ключові повідомлення бренду.
                 </ProcessStepDescription>
-                
+
                 <ProcessStepTactic>
                   <ProcessStepTacticIcon>
                     <FaRegLightbulb />
                   </ProcessStepTacticIcon>
                   <ProcessStepTacticText>
-                    Ми надаємо документ з детальною стратегією, яка включає всі аспекти SMM-просування від візуального стилю до KPI
+                    Ми надаємо документ з детальною стратегією, яка включає всі
+                    аспекти SMM-просування від візуального стилю до KPI
                   </ProcessStepTacticText>
                 </ProcessStepTactic>
-                
+
                 <ProcessStepIllustration>
                   <StrategyGraphic />
                 </ProcessStepIllustration>
@@ -1087,7 +1238,7 @@ const Smm = () => {
             </ProcessStep>
 
             <ProcessConnector />
-            
+
             <ProcessStep
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -1098,24 +1249,35 @@ const Smm = () => {
               <ProcessStepContent>
                 <ProcessStepTitle>Запуск і реалізація</ProcessStepTitle>
                 <ProcessStepDescription>
-                  Створюємо та публікуємо контент згідно з узгодженим планом, налаштовуємо та запускаємо рекламні кампанії. Починаємо взаємодію з аудиторією та активно модеруємо коментарі та повідомлення.
+                  Створюємо та публікуємо контент згідно з узгодженим планом,
+                  налаштовуємо та запускаємо рекламні кампанії. Починаємо
+                  взаємодію з аудиторією та активно модеруємо коментарі та
+                  повідомлення.
                 </ProcessStepDescription>
-                
+
                 <ProcessStepCards>
                   <ProcessStepCard>
-                    <ProcessStepCardIcon><FaRegEdit /></ProcessStepCardIcon>
-                    <ProcessStepCardTitle>Створення контенту</ProcessStepCardTitle>
+                    <ProcessStepCardIcon>
+                      <FaRegEdit />
+                    </ProcessStepCardIcon>
+                    <ProcessStepCardTitle>
+                      Створення контенту
+                    </ProcessStepCardTitle>
                   </ProcessStepCard>
                   <ProcessStepCard>
-                    <ProcessStepCardIcon><FaBullhorn /></ProcessStepCardIcon>
+                    <ProcessStepCardIcon>
+                      <FaBullhorn />
+                    </ProcessStepCardIcon>
                     <ProcessStepCardTitle>Запуск реклами</ProcessStepCardTitle>
                   </ProcessStepCard>
                   <ProcessStepCard>
-                    <ProcessStepCardIcon><FaUsers /></ProcessStepCardIcon>
+                    <ProcessStepCardIcon>
+                      <FaUsers />
+                    </ProcessStepCardIcon>
                     <ProcessStepCardTitle>Комунікація</ProcessStepCardTitle>
                   </ProcessStepCard>
                 </ProcessStepCards>
-                
+
                 <ProcessStepIllustration>
                   <ExecutionGraphic />
                 </ProcessStepIllustration>
@@ -1123,7 +1285,7 @@ const Smm = () => {
             </ProcessStep>
 
             <ProcessConnector />
-            
+
             <ProcessStep
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -1133,13 +1295,21 @@ const Smm = () => {
             >
               <ProcessStepNumber>04</ProcessStepNumber>
               <ProcessStepContent>
-                <ProcessStepTitle>Регулярна аналітика і корекція стратегії</ProcessStepTitle>
+                <ProcessStepTitle>
+                  Регулярна аналітика і корекція стратегії
+                </ProcessStepTitle>
                 <ProcessStepDescription>
-                  Ми не "ведемо сторінки заради сторінок" — ми працюємо з даними. Щомісячно готуємо звітність по охопленнях, залученні, підписниках, збереженнях, кліках, коментарях. Аналізуємо, що працює, а що — ні, й коригуємо стратегію, аби не витрачати час і бюджет даремно.
+                  Ми не "ведемо сторінки заради сторінок" — ми працюємо з
+                  даними. Щомісячно готуємо звітність по охопленнях, залученні,
+                  підписниках, збереженнях, кліках, коментарях. Аналізуємо, що
+                  працює, а що — ні, й коригуємо стратегію, аби не витрачати час
+                  і бюджет даремно.
                 </ProcessStepDescription>
-                
+
                 <ProcessStepTools>
-                  <ProcessStepToolsTitle>Інструменти аналітики:</ProcessStepToolsTitle>
+                  <ProcessStepToolsTitle>
+                    Інструменти аналітики:
+                  </ProcessStepToolsTitle>
                   <ProcessStepToolsGrid>
                     <ProcessStepTool>
                       <ProcessStepToolIcon>
@@ -1161,30 +1331,30 @@ const Smm = () => {
                     </ProcessStepTool>
                   </ProcessStepToolsGrid>
                 </ProcessStepTools>
-                
+
                 <ProcessStepIllustration>
                   <AnalyticsGraphic>
                     <motion.div
-                      initial={{ height: "20%" }}
-                      whileInView={{ height: "70%" }}
+                      initial={{ height: '20%' }}
+                      whileInView={{ height: '70%' }}
                       viewport={{ once: true }}
                       transition={{ duration: 1, delay: 0.8 }}
                     />
                     <motion.div
-                      initial={{ height: "30%" }}
-                      whileInView={{ height: "90%" }}
+                      initial={{ height: '30%' }}
+                      whileInView={{ height: '90%' }}
                       viewport={{ once: true }}
                       transition={{ duration: 1, delay: 0.9 }}
                     />
                     <motion.div
-                      initial={{ height: "40%" }}
-                      whileInView={{ height: "60%" }}
+                      initial={{ height: '40%' }}
+                      whileInView={{ height: '60%' }}
                       viewport={{ once: true }}
                       transition={{ duration: 1, delay: 1 }}
                     />
                     <motion.div
-                      initial={{ height: "25%" }}
-                      whileInView={{ height: "80%" }}
+                      initial={{ height: '25%' }}
+                      whileInView={{ height: '80%' }}
                       viewport={{ once: true }}
                       transition={{ duration: 1, delay: 1.1 }}
                     />
@@ -1193,14 +1363,16 @@ const Smm = () => {
               </ProcessStepContent>
             </ProcessStep>
           </CollaborationTimeline>
-          
+
           <CollabCTA
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.7 }}
           >
-            <CollabCTAText>Готові розпочати співпрацю з командою професіоналів?</CollabCTAText>
+            <CollabCTAText>
+              Готові розпочати співпрацю з командою професіоналів?
+            </CollabCTAText>
             <CollabCTAButtons>
               <PrimaryButton
                 whileHover={{ scale: 1.05 }}
@@ -1219,13 +1391,12 @@ const Smm = () => {
         <ResultsWrapper>
           <ResultsHeader>
             <ResultsDecorLine />
-            <ResultsTitle>
-              Результати від SMM-просування
-            </ResultsTitle>
+            <ResultsTitle>Результати від SMM-просування</ResultsTitle>
             <ResultsDescription>
-              Робота в соціальних мережах має давати конкретний результат — не лише "лайки", 
-              а й реальні показники зростання. SMM-просування формує довготривалий ефект: 
-              зміцнює позиції бренду, створює ком'юніті та генерує ліди.
+              Робота в соціальних мережах має давати конкретний результат — не
+              лише "лайки", а й реальні показники зростання. SMM-просування
+              формує довготривалий ефект: зміцнює позиції бренду, створює
+              ком'юніті та генерує ліди.
             </ResultsDescription>
           </ResultsHeader>
 
@@ -1243,9 +1414,9 @@ const Smm = () => {
                 <TimelineNumber>03</TimelineNumber>
               </TimelineStep>
             </ResultsTimeline>
-            
+
             <ResultBoxes>
-              <ResultBox 
+              <ResultBox
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -1255,12 +1426,16 @@ const Smm = () => {
                 <ResultBoxInner>
                   <ResultBoxHeader>
                     <ResultBoxTitle>Впізнаваність бренду</ResultBoxTitle>
-                    <ResultBoxIcon><FaRegLightbulb /></ResultBoxIcon>
+                    <ResultBoxIcon>
+                      <FaRegLightbulb />
+                    </ResultBoxIcon>
                   </ResultBoxHeader>
                   <ResultBoxDesc>
-                    Завдяки регулярній публікації якісного контенту, присутності у стрічках підписників і запуску 
-                    таргетованої реклами, бренд стає впізнаваним. Люди починають асоціювати вас з експертизою, 
-                    надійністю або актуальністю — залежно від вибраного позиціонування.
+                    Завдяки регулярній публікації якісного контенту, присутності
+                    у стрічках підписників і запуску таргетованої реклами, бренд
+                    стає впізнаваним. Люди починають асоціювати вас з
+                    експертизою, надійністю або актуальністю — залежно від
+                    вибраного позиціонування.
                   </ResultBoxDesc>
                   <ResultMetrics>
                     <ResultMetric>
@@ -1269,28 +1444,38 @@ const Smm = () => {
                     </ResultMetric>
                     <ResultMetric>
                       <ResultMetricValue primary>+86%</ResultMetricValue>
-                      <ResultMetricLabel>Впізнаваність бренду</ResultMetricLabel>
+                      <ResultMetricLabel>
+                        Впізнаваність бренду
+                      </ResultMetricLabel>
                     </ResultMetric>
                   </ResultMetrics>
                   <ResultBoxList>
-                    <ResultBoxListTitle>Результати впізнаваності:</ResultBoxListTitle>
+                    <ResultBoxListTitle>
+                      Результати впізнаваності:
+                    </ResultBoxListTitle>
                     <ResultBoxListItem>
-                      <CheckIcon><FaCheck /></CheckIcon>
+                      <CheckIcon>
+                        <FaCheck />
+                      </CheckIcon>
                       <span>Зростання органічного трафіку на профіль</span>
                     </ResultBoxListItem>
                     <ResultBoxListItem>
-                      <CheckIcon><FaCheck /></CheckIcon>
+                      <CheckIcon>
+                        <FaCheck />
+                      </CheckIcon>
                       <span>Висока частота згадок або тегів</span>
                     </ResultBoxListItem>
                     <ResultBoxListItem>
-                      <CheckIcon><FaCheck /></CheckIcon>
+                      <CheckIcon>
+                        <FaCheck />
+                      </CheckIcon>
                       <span>Позитивні коментарі й відгуки</span>
                     </ResultBoxListItem>
                   </ResultBoxList>
                 </ResultBoxInner>
               </ResultBox>
-              
-              <ResultBox 
+
+              <ResultBox
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -1298,39 +1483,56 @@ const Smm = () => {
               >
                 <ResultBoxInner>
                   <ResultBoxHeader>
-                    <ResultBoxTitle>Ріст підписників і залучення</ResultBoxTitle>
-                    <ResultBoxIcon secondary><FaUsers /></ResultBoxIcon>
+                    <ResultBoxTitle>
+                      Ріст підписників і залучення
+                    </ResultBoxTitle>
+                    <ResultBoxIcon secondary>
+                      <FaUsers />
+                    </ResultBoxIcon>
                   </ResultBoxHeader>
                   <ResultBoxDesc>
-                    Активна сторінка з цікавим контентом приваблює нових підписників. Ми використовуємо 
-                    методи природного залучення, а також платні інструменти — рекламу, взаємні згадки, 
+                    Активна сторінка з цікавим контентом приваблює нових
+                    підписників. Ми використовуємо методи природного залучення,
+                    а також платні інструменти — рекламу, взаємні згадки,
                     співпраці з мікроінфлюенсерами.
                   </ResultBoxDesc>
                   <ResultChart>
                     <ResultChartBar height="20%" label="Січень" value="+210" />
                     <ResultChartBar height="45%" label="Лютий" value="+460" />
-                    <ResultChartBar height="65%" label="Березень" value="+680" />
+                    <ResultChartBar
+                      height="65%"
+                      label="Березень"
+                      value="+680"
+                    />
                     <ResultChartBar height="85%" label="Квітень" value="+890" />
                   </ResultChart>
                   <ResultBoxList>
-                    <ResultBoxListTitle>Показники, на які орієнтуємось:</ResultBoxListTitle>
+                    <ResultBoxListTitle>
+                      Показники, на які орієнтуємось:
+                    </ResultBoxListTitle>
                     <ResultBoxListItem>
-                      <CheckIcon secondary><FaCheck /></CheckIcon>
+                      <CheckIcon secondary>
+                        <FaCheck />
+                      </CheckIcon>
                       <span>Engagement Rate (ER)</span>
                     </ResultBoxListItem>
                     <ResultBoxListItem>
-                      <CheckIcon secondary><FaCheck /></CheckIcon>
+                      <CheckIcon secondary>
+                        <FaCheck />
+                      </CheckIcon>
                       <span>Кількість підписок за місяць</span>
                     </ResultBoxListItem>
                     <ResultBoxListItem>
-                      <CheckIcon secondary><FaCheck /></CheckIcon>
+                      <CheckIcon secondary>
+                        <FaCheck />
+                      </CheckIcon>
                       <span>Динаміка залучення від посту до посту</span>
                     </ResultBoxListItem>
                   </ResultBoxList>
                 </ResultBoxInner>
               </ResultBox>
-              
-              <ResultBox 
+
+              <ResultBox
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -1339,11 +1541,15 @@ const Smm = () => {
                 <ResultBoxInner>
                   <ResultBoxHeader>
                     <ResultBoxTitle>Генерація заявок і продажів</ResultBoxTitle>
-                    <ResultBoxIcon tertiary><FaShoppingCart /></ResultBoxIcon>
+                    <ResultBoxIcon tertiary>
+                      <FaShoppingCart />
+                    </ResultBoxIcon>
                   </ResultBoxHeader>
                   <ResultBoxDesc>
-                    SMM — це також прямий канал продажів, особливо для e-commerce, онлайн-послуг і локального 
-                    бізнесу. Ми створюємо спеціальні пропозиції, заклики до дії та лід-магніти для конверсій.
+                    SMM — це також прямий канал продажів, особливо для
+                    e-commerce, онлайн-послуг і локального бізнесу. Ми створюємо
+                    спеціальні пропозиції, заклики до дії та лід-магніти для
+                    конверсій.
                   </ResultBoxDesc>
                   <ResultProgressContainer>
                     <ResultProgressItem>
@@ -1376,35 +1582,45 @@ const Smm = () => {
                     </ResultProgressItem>
                   </ResultProgressContainer>
                   <ResultBoxList>
-                    <ResultBoxListTitle>Інструменти конверсії:</ResultBoxListTitle>
+                    <ResultBoxListTitle>
+                      Інструменти конверсії:
+                    </ResultBoxListTitle>
                     <ResultBoxListItem>
-                      <CheckIcon tertiary><FaCheck /></CheckIcon>
+                      <CheckIcon tertiary>
+                        <FaCheck />
+                      </CheckIcon>
                       <span>Лід-форми у Facebook / Instagram</span>
                     </ResultBoxListItem>
                     <ResultBoxListItem>
-                      <CheckIcon tertiary><FaCheck /></CheckIcon>
+                      <CheckIcon tertiary>
+                        <FaCheck />
+                      </CheckIcon>
                       <span>Заявки через Direct або коментарі</span>
                     </ResultBoxListItem>
                     <ResultBoxListItem>
-                      <CheckIcon tertiary><FaCheck /></CheckIcon>
-                      <span>Перенаправлення на лендінг із точковим оффером</span>
+                      <CheckIcon tertiary>
+                        <FaCheck />
+                      </CheckIcon>
+                      <span>
+                        Перенаправлення на лендінг із точковим оффером
+                      </span>
                     </ResultBoxListItem>
                   </ResultBoxList>
                 </ResultBoxInner>
               </ResultBox>
             </ResultBoxes>
           </ResultsContent>
-          
+
           <ResultsQuote>
             <ResultsQuoteText>
-              "Ефективний SMM — це не погоня за лайками, а системна робота, 
-              що прямо впливає на KPI вашого бізнесу."
+              "Ефективний SMM — це не погоня за лайками, а системна робота, що
+              прямо впливає на KPI вашого бізнесу."
             </ResultsQuoteText>
           </ResultsQuote>
-          
+
           <ResultsCTA>
             <ResultsCTATitle>Бажаєте схожих результатів?</ResultsCTATitle>
-            <ResultsCTAButton 
+            <ResultsCTAButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
@@ -1423,14 +1639,14 @@ const Smm = () => {
               Переваги роботи з нашою командою
             </TeamAdvantagesTitle>
             <TeamAdvantagesDescription>
-              Ми — не просто виконавці, ми — партнери, які зацікавлені в результаті. 
-              Для нас важливо не лише створити естетичний профіль, 
-              а й забезпечити стратегічне зростання вашого бренду в соціальних мережах. 
-              Наша команда складається з SMM-фахівців, дизайнерів, аналітиків і таргетологів, 
-              які працюють як єдиний механізм.
+              Ми — не просто виконавці, ми — партнери, які зацікавлені в
+              результаті. Для нас важливо не лише створити естетичний профіль, а
+              й забезпечити стратегічне зростання вашого бренду в соціальних
+              мережах. Наша команда складається з SMM-фахівців, дизайнерів,
+              аналітиків і таргетологів, які працюють як єдиний механізм.
             </TeamAdvantagesDescription>
           </TeamAdvantagesHeader>
-          
+
           <HexagonGrid>
             <HexagonWrapper>
               <Hexagon primary>
@@ -1440,20 +1656,24 @@ const Smm = () => {
                   </HexagonIcon>
                   <HexagonTitle>Інноваційні підходи</HexagonTitle>
                   <HexagonText>
-                    Ми постійно тестуємо нові формати та AI-інструменти, аналізуємо тренди, 
-                    щоб ваш бренд був попереду конкурентів.
+                    Ми постійно тестуємо нові формати та AI-інструменти,
+                    аналізуємо тренди, щоб ваш бренд був попереду конкурентів.
                   </HexagonText>
                 </HexagonContent>
               </Hexagon>
               <AdvantageFeatureList>
-                <AdvantageFeatureTitle>Що ми впроваджуємо:</AdvantageFeatureTitle>
+                <AdvantageFeatureTitle>
+                  Що ми впроваджуємо:
+                </AdvantageFeatureTitle>
                 <AdvantageFeature>
                   <AdvantageFeatureMarker primary>01</AdvantageFeatureMarker>
                   <span>Адаптація під алгоритми кожної соцмережі</span>
                 </AdvantageFeature>
                 <AdvantageFeature>
                   <AdvantageFeatureMarker primary>02</AdvantageFeatureMarker>
-                  <span>Використання ChatGPT та AI-дизайну для генерації контенту</span>
+                  <span>
+                    Використання ChatGPT та AI-дизайну для генерації контенту
+                  </span>
                 </AdvantageFeature>
                 <AdvantageFeature>
                   <AdvantageFeatureMarker primary>03</AdvantageFeatureMarker>
@@ -1461,7 +1681,7 @@ const Smm = () => {
                 </AdvantageFeature>
               </AdvantageFeatureList>
             </HexagonWrapper>
-            
+
             <HexagonWrapper>
               <Hexagon secondary>
                 <HexagonContent>
@@ -1470,8 +1690,8 @@ const Smm = () => {
                   </HexagonIcon>
                   <HexagonTitle>Досвід у різних сферах бізнесу</HexagonTitle>
                   <HexagonText>
-                    Ми працювали з компаніями з таких галузей: освіта, медицина, e-commerce, 
-                    інфобізнес, нерухомість, HoReCa, b2b.
+                    Ми працювали з компаніями з таких галузей: освіта, медицина,
+                    e-commerce, інфобізнес, нерухомість, HoReCa, b2b.
                   </HexagonText>
                 </HexagonContent>
               </Hexagon>
@@ -1491,7 +1711,7 @@ const Smm = () => {
                 </AdvantageFeature>
               </AdvantageFeatureList>
             </HexagonWrapper>
-            
+
             <HexagonWrapper>
               <Hexagon tertiary>
                 <HexagonContent>
@@ -1500,8 +1720,8 @@ const Smm = () => {
                   </HexagonIcon>
                   <HexagonTitle>Прозора звітність</HexagonTitle>
                   <HexagonText>
-                    Надаємо детальні звіти з конкретними KPI та метриками, які демонструють 
-                    ефективність роботи.
+                    Надаємо детальні звіти з конкретними KPI та метриками, які
+                    демонструють ефективність роботи.
                   </HexagonText>
                 </HexagonContent>
               </Hexagon>
@@ -1522,12 +1742,14 @@ const Smm = () => {
               </AdvantageFeatureList>
             </HexagonWrapper>
           </HexagonGrid>
-          
+
           <TeamConnectBanner>
             <TeamConnectDecor />
             <TeamConnectContent>
-              <TeamConnectHeading>Готові до співпраці з експертами?</TeamConnectHeading>
-              <TeamConnectButton 
+              <TeamConnectHeading>
+                Готові до співпраці з експертами?
+              </TeamConnectHeading>
+              <TeamConnectButton
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={openModal}
@@ -1538,7 +1760,7 @@ const Smm = () => {
           </TeamConnectBanner>
         </TeamAdvantagesContainer>
       </TeamAdvantagesSection>
-      
+
       {/* FAQ Section */}
       <FaqSection>
         <FaqWaveTop />
@@ -1633,9 +1855,7 @@ const Smm = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 1.2 }}
           >
-            <FaqCtaText>
-              Маєте додаткові запитання щодо SMM?
-            </FaqCtaText>
+            <FaqCtaText>Маєте додаткові запитання щодо SMM?</FaqCtaText>
             <FaqCtaButton
               whileHover={{
                 scale: 1.03,
@@ -1651,7 +1871,6 @@ const Smm = () => {
       </FaqSection>
 
       <Modal isOpen={isModalOpen} onClose={closeModal} />
-      
     </PageContainer>
   );
 };
@@ -1716,11 +1935,11 @@ const MainContent = styled(motion.div)`
   color: var(--text-secondary);
   font-size: 1.15rem;
   line-height: 1.7;
-  
+
   p {
     margin-bottom: 1.5rem;
   }
-  
+
   p:last-child {
     margin-bottom: 0;
   }
@@ -1731,7 +1950,7 @@ const StatisticsWrapper = styled(motion.div)`
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin: 2rem 0;
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
@@ -1746,7 +1965,7 @@ const StatsCard = styled.div`
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
@@ -1759,7 +1978,7 @@ const StatNumber = styled.div`
   font-weight: 800;
   color: var(--accent-color);
   margin-bottom: 0.5rem;
-  
+
   span {
     font-size: 1.5rem;
     font-weight: 600;
@@ -1798,8 +2017,8 @@ const TaskSlide = styled.div`
   justify-content: center;
   padding: 2rem 0;
   transition: all 0.5s ease;
-  opacity: ${props => props.isActive ? 1 : 0.7};
-  transform: scale(${props => props.isActive ? 1 : 0.9});
+  opacity: ${props => (props.isActive ? 1 : 0.7)};
+  transform: scale(${props => (props.isActive ? 1 : 0.9)});
 `;
 
 const TaskSlideInner = styled.div`
@@ -1813,7 +2032,7 @@ const TaskSlideInner = styled.div`
   text-align: center;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  
+
   @media (max-width: 768px) {
     max-width: 90%;
     padding: 2rem;
@@ -1839,7 +2058,7 @@ const SliderButton = styled(motion.button)`
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   &:hover {
     background: rgba(var(--accent-color-rgb), 0.2);
   }
@@ -1850,7 +2069,9 @@ const SliderButtonIcon = styled.span`
   height: 12px;
   border-top: 2px solid var(--accent-color);
   border-right: 2px solid var(--accent-color);
-  transform: rotate(${props => props.direction === 'left' ? '225deg' : '45deg'});
+  transform: rotate(
+    ${props => (props.direction === 'left' ? '225deg' : '45deg')}
+  );
 `;
 
 const SliderDots = styled.div`
@@ -1859,19 +2080,21 @@ const SliderDots = styled.div`
 `;
 
 const SliderDot = styled.div`
-  width: ${props => props.isActive ? '30px' : '10px'};
+  width: ${props => (props.isActive ? '30px' : '10px')};
   height: 10px;
   border-radius: 10px;
-  background: ${props => props.isActive 
-    ? 'var(--accent-color)' 
-    : 'rgba(var(--accent-color-rgb), 0.3)'};
+  background: ${props =>
+    props.isActive
+      ? 'var(--accent-color)'
+      : 'rgba(var(--accent-color-rgb), 0.3)'};
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   &:hover {
-    background: ${props => props.isActive 
-      ? 'var(--accent-color)' 
-      : 'rgba(var(--accent-color-rgb), 0.5)'};
+    background: ${props =>
+      props.isActive
+        ? 'var(--accent-color)'
+        : 'rgba(var(--accent-color-rgb), 0.5)'};
   }
 `;
 
@@ -1897,7 +2120,7 @@ const TaskIconBg = styled.div`
   background: rgba(var(--accent-color-rgb), 0.15);
   z-index: -1;
   transition: all 0.3s ease;
-  
+
   ${TaskIconWrapper}:hover & {
     transform: scale(1.1);
     background: rgba(var(--accent-color-rgb), 0.2);
@@ -1926,7 +2149,11 @@ const NetworksSlider = styled(motion.div)`
 `;
 
 const NetworkBadge = styled.div`
-  background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.1) 0%, rgba(var(--accent-color-rgb), 0.3) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent-color-rgb), 0.1) 0%,
+    rgba(var(--accent-color-rgb), 0.3) 100%
+  );
   padding: 0.6rem 1.2rem;
   border-radius: 30px;
   color: var(--text-primary);
@@ -1934,10 +2161,14 @@ const NetworkBadge = styled.div`
   font-size: 0.9rem;
   box-shadow: 0 5px 15px rgba(var(--accent-color-rgb), 0.1);
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-3px);
-    background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.2) 0%, rgba(var(--accent-color-rgb), 0.4) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(var(--accent-color-rgb), 0.2) 0%,
+      rgba(var(--accent-color-rgb), 0.4) 100%
+    );
     box-shadow: 0 8px 20px rgba(var(--accent-color-rgb), 0.2);
   }
 `;
@@ -1952,6 +2183,18 @@ const ServicesSection = styled.section`
     rgba(var(--bg-primary-rgb), 0.95) 100%
   );
   overflow: hidden;
+
+  @media (max-width: 1024px) {
+    padding: 6rem 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0;
+  }
 `;
 
 const ServicesBgPattern = styled.div`
@@ -1961,9 +2204,16 @@ const ServicesBgPattern = styled.div`
   right: 0;
   bottom: 0;
   opacity: 0.05;
-  background-image: radial-gradient(rgba(var(--accent-color-rgb), 0.3) 2px, transparent 2px);
+  background-image: radial-gradient(
+    rgba(var(--accent-color-rgb), 0.3) 2px,
+    transparent 2px
+  );
   background-size: 30px 30px;
   z-index: 0;
+
+  @media (max-width: 768px) {
+    background-size: 20px 20px;
+  }
 `;
 
 const ServicesContainer = styled.div`
@@ -1972,6 +2222,19 @@ const ServicesContainer = styled.div`
   padding: 0 2rem;
   position: relative;
   z-index: 1;
+
+  @media (max-width: 1024px) {
+    max-width: 900px;
+    padding: 0 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1rem;
+  }
 `;
 
 const ServicesIntro = styled(motion.p)`
@@ -1981,10 +2244,35 @@ const ServicesIntro = styled(motion.p)`
   max-width: 800px;
   margin: 0 auto 4rem;
   text-align: center;
+
+  @media (max-width: 1024px) {
+    font-size: 1.1rem;
+    margin: 0 auto 3rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    margin: 0 auto 2rem;
+    line-height: 1.5;
+  }
 `;
 
 const ServicesTabs = styled.div`
   margin-bottom: 4rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 2rem;
+  }
 `;
 
 const ServiceTabsList = styled(motion.div)`
@@ -1992,10 +2280,22 @@ const ServiceTabsList = styled(motion.div)`
   justify-content: center;
   gap: 1rem;
   margin-bottom: 3rem;
-  
+
+  @media (max-width: 1024px) {
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
   }
 `;
 
@@ -2005,15 +2305,36 @@ const ServiceTab = styled(motion.button)`
   backdrop-filter: blur(10px);
   padding: 0.8rem 2rem;
   border-radius: 30px;
-  color: ${props => props.isActive ? 'var(--accent-color)' : 'var(--text-primary)'};
+  color: ${props =>
+    props.isActive ? 'var(--accent-color)' : 'var(--text-primary)'};
   font-weight: 600;
   cursor: pointer;
   position: relative;
   transition: all 0.3s ease;
   min-width: 200px;
-  
+
   &:hover {
     background: rgba(255, 255, 255, 0.1);
+  }
+
+  @media (max-width: 1024px) {
+    padding: 0.7rem 1.5rem;
+    min-width: 180px;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 300px;
+    min-width: auto;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.85rem;
+    max-width: 280px;
   }
 `;
 
@@ -2026,11 +2347,25 @@ const ActiveTabIndicator = styled(motion.div)`
   height: 3px;
   background: var(--accent-color);
   border-radius: 3px;
+
+  @media (max-width: 768px) {
+    bottom: -8px;
+    width: 30px;
+    height: 2px;
+  }
 `;
 
 const ServicesContent = styled.div`
   min-height: 500px;
   position: relative;
+
+  @media (max-width: 768px) {
+    min-height: 400px;
+  }
+
+  @media (max-width: 480px) {
+    min-height: 350px;
+  }
 `;
 
 const ServiceTabContent = styled(motion.div)`
@@ -2044,9 +2379,28 @@ const ServiceTabContent = styled(motion.div)`
   padding: 3rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  
+
+  @media (max-width: 1024px) {
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
   @media (max-width: 768px) {
+    position: static;
     padding: 2rem;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   }
 `;
 
@@ -2055,11 +2409,35 @@ const ServiceTabHeader = styled.div`
   align-items: center;
   gap: 1rem;
   margin-bottom: 1.5rem;
-  
+
   h3 {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-primary);
+  }
+
+  @media (max-width: 768px) {
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+
+    h3 {
+      font-size: 1.3rem;
+      line-height: 1.3;
+      color: rgba(255, 255, 255, 0.95);
+    }
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+
+    h3 {
+      font-size: 1.1rem;
+      line-height: 1.2;
+      color: rgba(255, 255, 255, 0.98);
+      font-weight: 700;
+    }
   }
 `;
 
@@ -2073,6 +2451,19 @@ const ServiceTabIcon = styled.div`
   background: rgba(var(--accent-color-rgb), 0.1);
   color: var(--accent-color);
   font-size: 1.5rem;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
 `;
 
 const ServiceTabDescription = styled.p`
@@ -2080,6 +2471,21 @@ const ServiceTabDescription = styled.p`
   line-height: 1.7;
   margin-bottom: 2rem;
   font-size: 1.05rem;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+    color: rgba(255, 255, 255, 0.92);
+    font-weight: 400;
+  }
 `;
 
 // Content Strategy specific styles
@@ -2088,9 +2494,16 @@ const ServiceFeatures = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
   margin-bottom: 2rem;
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+    margin-bottom: 1.2rem;
   }
 `;
 
@@ -2098,6 +2511,10 @@ const ServiceFeatureItem = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 1rem;
+
+  @media (max-width: 480px) {
+    gap: 0.8rem;
+  }
 `;
 
 const ServiceFeatureIcon = styled.div`
@@ -2105,11 +2522,29 @@ const ServiceFeatureIcon = styled.div`
   font-size: 1.2rem;
   margin-top: 0.2rem;
   flex-shrink: 0;
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
 `;
 
-const ServiceFeatureText = styled.p`
-  color: var(--text-primary);
+const ServiceFeatureText = styled.span`
+  color: var(--text-secondary);
+  font-size: 0.95rem;
   font-weight: 500;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 600;
+    line-height: 1.4;
+  }
 `;
 
 // Page Management specific styles
@@ -2118,6 +2553,16 @@ const ServicePlatforms = styled.div`
   grid-template-columns: 1fr;
   gap: 1.5rem;
   margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
 `;
 
 const ServicePlatformItem = styled.div`
@@ -2128,10 +2573,29 @@ const ServicePlatformItem = styled.div`
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.03);
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateX(10px);
     background: rgba(255, 255, 255, 0.05);
+  }
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+    padding: 0.8rem;
+
+    &:hover {
+      transform: translateX(5px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.8rem;
+    padding: 0.7rem;
+    border-radius: 8px;
+
+    &:hover {
+      transform: translateX(3px);
+    }
   }
 `;
 
@@ -2145,23 +2609,56 @@ const ServicePlatformIcon = styled.div`
   font-size: 1.5rem;
   color: white;
   flex-shrink: 0;
-  
-  ${props => props.platform === 'instagram' && `
+
+  ${props =>
+    props.platform === 'instagram' &&
+    `
     background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
   `}
-  
-  ${props => props.platform === 'tiktok' && `
+
+  ${props =>
+    props.platform === 'tiktok' &&
+    `
     background: black;
   `}
   
-  ${props => props.platform === 'other' && `
+  ${props =>
+    props.platform === 'other' &&
+    `
     background: linear-gradient(45deg, #FF0000 0%, #FF0000 100%);
   `}
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 480px) {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+    border-radius: 6px;
+  }
 `;
 
-const ServicePlatformName = styled.p`
-  color: var(--text-primary);
+const ServicePlatformName = styled.span`
+  color: var(--text-secondary);
+  font-size: 0.9rem;
   font-weight: 500;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.88);
+    font-weight: 600;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.92);
+    font-weight: 600;
+  }
 `;
 
 // Targeting specific styles
@@ -2170,9 +2667,16 @@ const ServiceCampaignTypes = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
   margin-bottom: 2rem;
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+    margin-bottom: 1.2rem;
   }
 `;
 
@@ -2184,10 +2688,28 @@ const ServiceCampaignItem = styled.div`
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.03);
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-5px);
     background: rgba(255, 255, 255, 0.05);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.8rem;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.8rem;
+    padding: 0.7rem;
+    border-radius: 8px;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
   }
 `;
 
@@ -2202,57 +2724,135 @@ const ServiceCampaignCircle = styled.div`
   color: white;
   font-weight: 700;
   flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
 `;
 
-const ServiceCampaignText = styled.p`
-  color: var(--text-primary);
+const ServiceCampaignText = styled.span`
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 400;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.86);
+    font-weight: 500;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    line-height: 1.3;
+  }
 `;
 
 const ServiceIllustration = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 3rem;
+
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 1.5rem;
+  }
 `;
 
 // Mockup components for illustrations
 const ContentPlanMockup = styled.div`
   width: 300px;
   height: 200px;
-  background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.8) 0%, rgba(var(--accent-color-rgb), 0.4) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent-color-rgb), 0.8) 0%,
+    rgba(var(--accent-color-rgb), 0.4) 100%
+  );
   border-radius: 10px;
   position: relative;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  
-  &::before, &::after {
+
+  &::before,
+  &::after {
     content: '';
     position: absolute;
     background: white;
     border-radius: 4px;
   }
-  
+
   &::before {
     top: 20px;
     left: 20px;
     right: 20px;
     height: 30px;
   }
-  
+
   &::after {
     top: 70px;
     left: 20px;
     right: 20px;
     bottom: 20px;
   }
+
+  @media (max-width: 768px) {
+    width: 250px;
+    height: 160px;
+
+    &::before {
+      top: 15px;
+      left: 15px;
+      right: 15px;
+      height: 25px;
+    }
+
+    &::after {
+      top: 55px;
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 200px;
+    height: 130px;
+
+    &::before {
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      height: 20px;
+    }
+
+    &::after {
+      top: 42px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+    }
+  }
 `;
 
 const SocialMediaMockup = styled.div`
   width: 200px;
   height: 400px;
-  background: linear-gradient(135deg, #1DA1F2 0%, #1778F2 50%, #C13584 100%);
+  background: linear-gradient(135deg, #1da1f2 0%, #1778f2 50%, #c13584 100%);
   border-radius: 30px;
   position: relative;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -2263,7 +2863,7 @@ const SocialMediaMockup = styled.div`
     background: rgba(255, 255, 255, 0.1);
     border-radius: 25px;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -2275,17 +2875,62 @@ const SocialMediaMockup = styled.div`
     left: 50%;
     transform: translateX(-50%);
   }
+
+  @media (max-width: 768px) {
+    width: 160px;
+    height: 320px;
+    border-radius: 25px;
+
+    &::before {
+      top: 8px;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      border-radius: 20px;
+    }
+
+    &::after {
+      width: 50px;
+      height: 5px;
+      top: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 130px;
+    height: 260px;
+    border-radius: 20px;
+
+    &::before {
+      top: 6px;
+      left: 6px;
+      right: 6px;
+      bottom: 6px;
+      border-radius: 16px;
+    }
+
+    &::after {
+      width: 40px;
+      height: 4px;
+      top: 12px;
+    }
+  }
 `;
 
 const TargetingMockup = styled.div`
   width: 300px;
   height: 300px;
-  background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.4) 0%, rgba(var(--accent-color-rgb), 0.8) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent-color-rgb), 0.4) 0%,
+    rgba(var(--accent-color-rgb), 0.8) 100%
+  );
   border-radius: 50%;
   position: relative;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  
-  &::before, &::after {
+
+  &::before,
+  &::after {
     content: '';
     position: absolute;
     border-radius: 50%;
@@ -2294,15 +2939,45 @@ const TargetingMockup = styled.div`
     transform: translate(-50%, -50%);
     border: 2px solid rgba(255, 255, 255, 0.3);
   }
-  
+
   &::before {
     width: 200px;
     height: 200px;
   }
-  
+
   &::after {
     width: 100px;
     height: 100px;
+  }
+
+  @media (max-width: 768px) {
+    width: 250px;
+    height: 250px;
+
+    &::before {
+      width: 170px;
+      height: 170px;
+    }
+
+    &::after {
+      width: 85px;
+      height: 85px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 200px;
+    height: 200px;
+
+    &::before {
+      width: 140px;
+      height: 140px;
+    }
+
+    &::after {
+      width: 70px;
+      height: 70px;
+    }
   }
 `;
 
@@ -2359,8 +3034,8 @@ const ProcessStep = styled(motion.div)`
   display: flex;
   align-items: flex-start;
   margin-bottom: 1.5rem;
-  flex-direction: ${props => props.isRight ? 'row-reverse' : 'row'};
-  
+  flex-direction: ${props => (props.isRight ? 'row-reverse' : 'row')};
+
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
@@ -2371,7 +3046,11 @@ const ProcessStep = styled(motion.div)`
 const ProcessStepNumber = styled.div`
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.7) 0%, rgba(var(--accent-color-rgb), 0.9) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent-color-rgb), 0.7) 0%,
+    rgba(var(--accent-color-rgb), 0.9) 100%
+  );
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -2385,12 +3064,12 @@ const ProcessStepNumber = styled.div`
   flex-shrink: 0;
   position: relative;
   z-index: 2;
-  
+
   ${ProcessStep}[isRight] & {
     margin-right: 0;
     margin-left: 1.2rem;
   }
-  
+
   @media (max-width: 768px) {
     margin: 0 0 1rem 0;
   }
@@ -2405,8 +3084,8 @@ const ProcessStepContent = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   position: relative;
-  max-width: ${props => props.isRight ? 'calc(100% - 65px)' : '100%'};
-  
+  max-width: ${props => (props.isRight ? 'calc(100% - 65px)' : '100%')};
+
   &::before {
     content: '';
     position: absolute;
@@ -2418,14 +3097,17 @@ const ProcessStepContent = styled.div`
     border-left: 1px solid rgba(255, 255, 255, 0.05);
     transform: rotate(-45deg);
     z-index: 1;
-    
-    ${props => props.isRight ? `
+
+    ${props =>
+      props.isRight
+        ? `
       right: -8px;
-    ` : `
+    `
+        : `
       left: -8px;
     `}
   }
-  
+
   @media (max-width: 768px) {
     &::before {
       display: none;
@@ -2462,7 +3144,7 @@ const ProcessConnector = styled.div`
     rgba(var(--accent-color-rgb), 0.1)
   );
   z-index: 1;
-  
+
   @media (max-width: 768px) {
     display: none;
   }
@@ -2487,7 +3169,7 @@ const ProcessStepListItem = styled.div`
   margin-bottom: 0.4rem;
   color: var(--text-secondary);
   font-size: 0.85rem;
-  
+
   @media (max-width: 768px) {
     justify-content: center;
   }
@@ -2515,7 +3197,7 @@ const ProcessStepTactic = styled.div`
   padding: 0.8rem;
   border-radius: 10px;
   margin-bottom: 1rem;
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
@@ -2547,7 +3229,7 @@ const ProcessStepCards = styled.div`
   display: flex;
   gap: 0.5rem;
   margin-bottom: 1rem;
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
@@ -2563,7 +3245,7 @@ const ProcessStepCard = styled.div`
   background: rgba(255, 255, 255, 0.03);
   border-radius: 10px;
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-5px);
     background: rgba(255, 255, 255, 0.05);
@@ -2574,7 +3256,11 @@ const ProcessStepCardIcon = styled.div`
   width: 28px;
   height: 28px;
   border-radius: 8px;
-  background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.5) 0%, rgba(var(--accent-color-rgb), 0.8) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent-color-rgb), 0.5) 0%,
+    rgba(var(--accent-color-rgb), 0.8) 100%
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2606,7 +3292,7 @@ const ProcessStepToolsGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
@@ -2622,15 +3308,15 @@ const ProcessStepTool = styled.div`
   font-size: 0.8rem;
   color: var(--text-secondary);
   transition: all 0.3s ease;
-  
+
   &:hover {
     background: rgba(255, 255, 255, 0.05);
     transform: translateX(5px);
   }
-  
+
   @media (max-width: 768px) {
     justify-content: center;
-    
+
     &:hover {
       transform: translateY(-5px);
     }
@@ -2661,7 +3347,7 @@ const AudienceAnalysisGraphic = styled.div`
   width: 120px;
   height: 120px;
   position: relative;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -2673,14 +3359,19 @@ const AudienceAnalysisGraphic = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  
+
   &::after {
     content: '';
     position: absolute;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(var(--accent-color-rgb), 0.2) 0%, rgba(var(--accent-color-rgb), 0.1) 70%, transparent 100%);
+    background: radial-gradient(
+      circle,
+      rgba(var(--accent-color-rgb), 0.2) 0%,
+      rgba(var(--accent-color-rgb), 0.1) 70%,
+      transparent 100%
+    );
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -2695,19 +3386,25 @@ const StrategyGraphic = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  
-  &::before, &::after {
+
+  &::before,
+  &::after {
     content: '';
     height: 6px;
-    background: linear-gradient(90deg, rgba(var(--accent-color-rgb), 0.3) 0%, rgba(var(--accent-color-rgb), 0.7) 50%, rgba(var(--accent-color-rgb), 0.3) 100%);
+    background: linear-gradient(
+      90deg,
+      rgba(var(--accent-color-rgb), 0.3) 0%,
+      rgba(var(--accent-color-rgb), 0.7) 50%,
+      rgba(var(--accent-color-rgb), 0.3) 100%
+    );
     border-radius: 3px;
   }
-  
+
   &::before {
     width: 80%;
     margin-top: 15px;
   }
-  
+
   &::after {
     width: 60%;
     margin-bottom: 15px;
@@ -2718,7 +3415,7 @@ const ExecutionGraphic = styled.div`
   width: 100px;
   height: 100px;
   position: relative;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -2727,10 +3424,14 @@ const ExecutionGraphic = styled.div`
     width: 80px;
     height: 80px;
     transform: translate(-50%, -50%) rotate(45deg);
-    background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.1) 0%, rgba(var(--accent-color-rgb), 0.3) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(var(--accent-color-rgb), 0.1) 0%,
+      rgba(var(--accent-color-rgb), 0.3) 100%
+    );
     border: 1px solid rgba(var(--accent-color-rgb), 0.3);
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -2752,7 +3453,7 @@ const AnalyticsGraphic = styled.div`
   justify-content: space-between;
   padding: 0 8px 8px;
   position: relative;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -2762,7 +3463,7 @@ const AnalyticsGraphic = styled.div`
     height: 1px;
     background: rgba(var(--accent-color-rgb), 0.5);
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -2772,10 +3473,14 @@ const AnalyticsGraphic = styled.div`
     height: 100%;
     background: rgba(var(--accent-color-rgb), 0.5);
   }
-  
+
   div {
     width: 15%;
-    background: linear-gradient(to top, rgba(var(--accent-color-rgb), 0.3), rgba(var(--accent-color-rgb), 0.7));
+    background: linear-gradient(
+      to top,
+      rgba(var(--accent-color-rgb), 0.3),
+      rgba(var(--accent-color-rgb), 0.7)
+    );
     border-radius: 2px 2px 0 0;
   }
 `;
@@ -2796,7 +3501,7 @@ const CollabCTAButtons = styled.div`
   display: flex;
   gap: 1rem;
   justify-content: center;
-  
+
   @media (max-width: 480px) {
     flex-direction: column;
     align-items: center;
@@ -2826,7 +3531,12 @@ const ResultsHeader = styled.div`
 const ResultsDecorLine = styled.div`
   width: 120px;
   height: 3px;
-  background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--accent-color),
+    transparent
+  );
   margin: 0 auto 1.5rem;
 `;
 
@@ -2848,7 +3558,7 @@ const ResultsContent = styled.div`
   display: flex;
   position: relative;
   margin-bottom: 5rem;
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -2860,12 +3570,9 @@ const ResultsTimeline = styled.div`
   align-items: center;
   margin-right: 2rem;
   min-width: 40px;
-  
+
   @media (max-width: 768px) {
-    flex-direction: row;
-    justify-content: space-around;
-    margin-right: 0;
-    margin-bottom: 2rem;
+    display: none; /* Скрываем цифры на планшетах и мобильных */
   }
 `;
 
@@ -2875,7 +3582,7 @@ const TimelineStep = styled.div`
   flex-direction: column;
   align-items: center;
   flex: 1;
-  
+
   @media (max-width: 768px) {
     flex-direction: row;
   }
@@ -2894,7 +3601,7 @@ const TimelineNumber = styled.div`
   margin-bottom: 1rem;
   box-shadow: 0 5px 15px rgba(var(--accent-color-rgb), 0.3);
   z-index: 2;
-  
+
   @media (max-width: 768px) {
     margin-bottom: 0;
     margin-right: 1rem;
@@ -2904,9 +3611,13 @@ const TimelineNumber = styled.div`
 const TimelineConnector = styled.div`
   width: 2px;
   height: 100%;
-  background: linear-gradient(to bottom, var(--accent-color), rgba(var(--accent-color-rgb), 0.3));
+  background: linear-gradient(
+    to bottom,
+    var(--accent-color),
+    rgba(var(--accent-color-rgb), 0.3)
+  );
   margin: 0.5rem 0;
-  
+
   @media (max-width: 768px) {
     width: 100%;
     height: 2px;
@@ -2924,11 +3635,14 @@ const ResultBoxes = styled.div`
 const ResultBox = styled(motion.div)`
   position: relative;
   border-radius: 16px;
-  border-left: ${props => props.active ? '4px solid var(--accent-color)' : '1px solid rgba(255, 255, 255, 0.1)'};
+  border-left: ${props =>
+    props.active
+      ? '4px solid var(--accent-color)'
+      : '1px solid rgba(255, 255, 255, 0.1)'};
   background: rgba(255, 255, 255, 0.02);
   overflow: hidden;
   transition: all 0.3s ease;
-  
+
   &:hover {
     background: rgba(255, 255, 255, 0.04);
     transform: translateY(-5px);
@@ -2962,18 +3676,20 @@ const ResultBoxIcon = styled.div`
   justify-content: center;
   font-size: 1.5rem;
   color: white;
-  background: ${props => props.tertiary 
-    ? 'linear-gradient(135deg, #FF9B21 0%, #FFCA80 120%)'
-    : props.secondary 
+  background: ${props =>
+    props.tertiary
+      ? 'linear-gradient(135deg, #FF9B21 0%, #FFCA80 120%)'
+      : props.secondary
       ? 'linear-gradient(135deg, #4A8CFF 0%, #9AC1FF 120%)'
       : 'linear-gradient(135deg, var(--accent-color) 0%, #B56EFF 120%)'};
-  box-shadow: ${props => props.tertiary 
-    ? '0 8px 20px rgba(255, 155, 33, 0.3)'
-    : props.secondary 
+  box-shadow: ${props =>
+    props.tertiary
+      ? '0 8px 20px rgba(255, 155, 33, 0.3)'
+      : props.secondary
       ? '0 8px 20px rgba(74, 140, 255, 0.3)'
       : '0 8px 20px rgba(var(--accent-color-rgb), 0.3)'};
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: scale(1.1) rotate(10deg);
   }
@@ -3001,7 +3717,7 @@ const ResultBoxListItem = styled.div`
   display: flex;
   align-items: flex-start;
   margin-bottom: 0.8rem;
-  
+
   span {
     font-size: 0.95rem;
     color: var(--text-secondary);
@@ -3019,14 +3735,16 @@ const CheckIcon = styled.div`
   font-size: 0.8rem;
   margin-right: 1rem;
   flex-shrink: 0;
-  color: ${props => props.tertiary 
-    ? '#FF9B21'
-    : props.secondary 
+  color: ${props =>
+    props.tertiary
+      ? '#FF9B21'
+      : props.secondary
       ? '#4A8CFF'
       : 'var(--accent-color)'};
-  background: ${props => props.tertiary 
-    ? 'rgba(255, 155, 33, 0.15)'
-    : props.secondary 
+  background: ${props =>
+    props.tertiary
+      ? 'rgba(255, 155, 33, 0.15)'
+      : props.secondary
       ? 'rgba(74, 140, 255, 0.15)'
       : 'rgba(var(--accent-color-rgb), 0.15)'};
 `;
@@ -3035,7 +3753,7 @@ const ResultMetrics = styled.div`
   display: flex;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
-  
+
   @media (max-width: 480px) {
     flex-direction: column;
     gap: 1rem;
@@ -3054,9 +3772,10 @@ const ResultMetricValue = styled.div`
   font-size: 1.8rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
-  color: ${props => props.tertiary 
-    ? '#FF9B21'
-    : props.secondary 
+  color: ${props =>
+    props.tertiary
+      ? '#FF9B21'
+      : props.secondary
       ? '#4A8CFF'
       : 'var(--accent-color)'};
 `;
@@ -3074,7 +3793,7 @@ const ResultChart = styled.div`
   margin-bottom: 2.5rem;
   padding: 0 1rem;
   position: relative;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -3085,16 +3804,36 @@ const ResultChart = styled.div`
     background: rgba(255, 255, 255, 0.1);
     z-index: 0;
   }
+
+  @media (max-width: 768px) {
+    height: 150px;
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    height: 120px;
+    margin-bottom: 1.5rem;
+    padding: 0 0.3rem;
+
+    &::before {
+      bottom: 25px;
+    }
+  }
 `;
 
 const ResultChartBar = styled.div`
   position: relative;
   width: 20%;
   height: ${props => props.height};
-  background: linear-gradient(to top, rgba(74, 140, 255, 0.7), rgba(74, 140, 255, 0.3));
+  background: linear-gradient(
+    to top,
+    rgba(74, 140, 255, 0.7),
+    rgba(74, 140, 255, 0.3)
+  );
   border-radius: 6px 6px 0 0;
   transition: all 0.3s ease;
-  
+
   &::before {
     content: '${props => props.label}';
     position: absolute;
@@ -3105,7 +3844,7 @@ const ResultChartBar = styled.div`
     color: var(--text-secondary);
     white-space: nowrap;
   }
-  
+
   &::after {
     content: '${props => props.value}';
     position: absolute;
@@ -3114,12 +3853,46 @@ const ResultChartBar = styled.div`
     transform: translateX(-50%);
     font-size: 0.9rem;
     font-weight: 600;
-    color: #4A8CFF;
+    color: #4a8cff;
   }
-  
+
   &:hover {
     transform: scaleY(1.05);
-    background: linear-gradient(to top, rgba(74, 140, 255, 0.8), rgba(74, 140, 255, 0.4));
+    background: linear-gradient(
+      to top,
+      rgba(74, 140, 255, 0.8),
+      rgba(74, 140, 255, 0.4)
+    );
+  }
+
+  @media (max-width: 768px) {
+    border-radius: 4px 4px 0 0;
+
+    &::before {
+      bottom: -30px;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    &::after {
+      top: -20px;
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    border-radius: 3px 3px 0 0;
+
+    &::before {
+      bottom: -25px;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    &::after {
+      top: -18px;
+      font-size: 0.8rem;
+    }
   }
 `;
 
@@ -3153,9 +3926,10 @@ const ResultProgressFill = styled.div`
   height: 100%;
   width: ${props => props.percent};
   border-radius: 4px;
-  background: ${props => props.tertiary 
-    ? 'linear-gradient(to right, #FF9B21, #FFCA80)'
-    : props.secondary 
+  background: ${props =>
+    props.tertiary
+      ? 'linear-gradient(to right, #FF9B21, #FFCA80)'
+      : props.secondary
       ? 'linear-gradient(to right, #4A8CFF, #9AC1FF)'
       : 'linear-gradient(to right, var(--accent-color), #B56EFF)'};
 `;
@@ -3181,20 +3955,21 @@ const ResultsQuoteText = styled.blockquote`
   color: var(--text-primary);
   line-height: 1.5;
   position: relative;
-  
-  &::before, &::after {
+
+  &::before,
+  &::after {
     content: '"';
     font-size: 4rem;
     color: rgba(var(--accent-color-rgb), 0.2);
     line-height: 0;
     position: absolute;
   }
-  
+
   &::before {
     left: -2rem;
     top: 1rem;
   }
-  
+
   &::after {
     right: -2rem;
     bottom: 0;
@@ -3249,7 +4024,7 @@ const TeamAdvantagesHeader = styled.div`
   max-width: 800px;
   margin: 0 auto 6rem;
   position: relative;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -3258,7 +4033,12 @@ const TeamAdvantagesHeader = styled.div`
     transform: translateX(-50%);
     width: 150px;
     height: 1px;
-    background: linear-gradient(to right, transparent, rgba(var(--accent-color-rgb), 0.5), transparent);
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(var(--accent-color-rgb), 0.5),
+      transparent
+    );
   }
 `;
 
@@ -3269,7 +4049,7 @@ const TeamAdvantagesTitle = styled.h2`
   color: var(--text-primary);
   position: relative;
   display: inline-block;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -3281,7 +4061,7 @@ const TeamAdvantagesTitle = styled.h2`
     background: var(--accent-color);
     border-radius: 2px;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -3290,7 +4070,12 @@ const TeamAdvantagesTitle = styled.h2`
     right: 0;
     height: 3px;
     border-radius: 3px;
-    background: linear-gradient(90deg, rgba(var(--accent-color-rgb), 0.2), var(--accent-color), rgba(var(--accent-color-rgb), 0.2));
+    background: linear-gradient(
+      90deg,
+      rgba(var(--accent-color-rgb), 0.2),
+      var(--accent-color),
+      rgba(var(--accent-color-rgb), 0.2)
+    );
   }
 `;
 
@@ -3305,11 +4090,11 @@ const HexagonGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 3rem;
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
-  
+
   & > :last-child {
     grid-column: 1 / -1;
     justify-self: center;
@@ -3327,9 +4112,10 @@ const Hexagon = styled.div`
   position: relative;
   width: 320px;
   height: 320px;
-  background: ${props => props.tertiary 
-    ? 'linear-gradient(135deg, rgba(255, 155, 33, 0.05) 0%, rgba(255, 155, 33, 0.15) 100%)'
-    : props.secondary 
+  background: ${props =>
+    props.tertiary
+      ? 'linear-gradient(135deg, rgba(255, 155, 33, 0.05) 0%, rgba(255, 155, 33, 0.15) 100%)'
+      : props.secondary
       ? 'linear-gradient(135deg, rgba(74, 140, 255, 0.05) 0%, rgba(74, 140, 255, 0.15) 100%)'
       : 'linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.05) 0%, rgba(var(--accent-color-rgb), 0.15) 100%)'};
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
@@ -3337,7 +4123,7 @@ const Hexagon = styled.div`
   align-items: center;
   justify-content: center;
   transition: all 0.5s ease;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -3349,34 +4135,40 @@ const Hexagon = styled.div`
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     z-index: 1;
   }
-  
+
   &:hover {
     transform: translateY(-10px) rotate(3deg);
-    box-shadow: ${props => props.tertiary 
-      ? '0 20px 40px rgba(255, 155, 33, 0.1)'
-      : props.secondary 
+    box-shadow: ${props =>
+      props.tertiary
+        ? '0 20px 40px rgba(255, 155, 33, 0.1)'
+        : props.secondary
         ? '0 20px 40px rgba(74, 140, 255, 0.1)'
         : '0 20px 40px rgba(var(--accent-color-rgb), 0.1)'};
   }
-  
+
   &::after {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    background: ${props => props.tertiary 
-      ? 'conic-gradient(from 0deg at 50% 50%, rgba(255, 155, 33, 0) 0%, rgba(255, 155, 33, 0.3) 50%, rgba(255, 155, 33, 0) 100%)'
-      : props.secondary 
+    background: ${props =>
+      props.tertiary
+        ? 'conic-gradient(from 0deg at 50% 50%, rgba(255, 155, 33, 0) 0%, rgba(255, 155, 33, 0.3) 50%, rgba(255, 155, 33, 0) 100%)'
+        : props.secondary
         ? 'conic-gradient(from 0deg at 50% 50%, rgba(74, 140, 255, 0) 0%, rgba(74, 140, 255, 0.3) 50%, rgba(74, 140, 255, 0) 100%)'
         : 'conic-gradient(from 0deg at 50% 50%, rgba(var(--accent-color-rgb), 0) 0%, rgba(var(--accent-color-rgb), 0.3) 50%, rgba(var(--accent-color-rgb), 0) 100%)'};
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     animation: spinGradient 10s linear infinite;
     z-index: 0;
   }
-  
+
   @keyframes spinGradient {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 `;
 
@@ -3395,13 +4187,19 @@ const HexagonIcon = styled.div`
   margin-bottom: 1rem;
   position: relative;
   animation: iconPulse 2s infinite ease-in-out;
-  
+
   @keyframes iconPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -3415,23 +4213,31 @@ const HexagonIcon = styled.div`
     z-index: -1;
     animation: ripple 2s infinite ease-out;
   }
-  
+
   @keyframes ripple {
-    0% { width: 0px; height: 0px; opacity: 0.8; }
-    100% { width: 70px; height: 70px; opacity: 0; }
+    0% {
+      width: 0px;
+      height: 0px;
+      opacity: 0.8;
+    }
+    100% {
+      width: 70px;
+      height: 70px;
+      opacity: 0;
+    }
   }
-  
+
   ${Hexagon}[secondary] & {
-    color: #4A8CFF;
-    
+    color: #4a8cff;
+
     &::after {
       background: rgba(74, 140, 255, 0.1);
     }
   }
-  
+
   ${Hexagon}[tertiary] & {
-    color: #FF9B21;
-    
+    color: #ff9b21;
+
     &::after {
       background: rgba(255, 155, 33, 0.1);
     }
@@ -3445,7 +4251,7 @@ const HexagonTitle = styled.h3`
   color: var(--text-primary);
   position: relative;
   display: inline-block;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -3454,14 +4260,15 @@ const HexagonTitle = styled.h3`
     bottom: -4px;
     left: 50%;
     transform: translateX(-50%);
-    background: ${props => props.tertiary 
-      ? '#FF9B21'
-      : props.secondary 
+    background: ${props =>
+      props.tertiary
+        ? '#FF9B21'
+        : props.secondary
         ? '#4A8CFF'
         : 'var(--accent-color)'};
     transition: width 0.5s ease;
   }
-  
+
   ${Hexagon}:hover & {
     &::after {
       width: 80%;
@@ -3498,7 +4305,7 @@ const AdvantageFeature = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
-  
+
   span {
     font-size: 0.9rem;
     color: var(--text-secondary);
@@ -3518,14 +4325,16 @@ const AdvantageFeatureMarker = styled.div`
   font-weight: 700;
   color: white;
   flex-shrink: 0;
-  background: ${props => props.tertiary 
-    ? 'linear-gradient(135deg, #FF9B21 0%, #FFB84F 100%)'
-    : props.secondary 
+  background: ${props =>
+    props.tertiary
+      ? 'linear-gradient(135deg, #FF9B21 0%, #FFB84F 100%)'
+      : props.secondary
       ? 'linear-gradient(135deg, #4A8CFF 0%, #63A1FF 100%)'
       : 'linear-gradient(135deg, var(--accent-color) 0%, #9461FC 100%)'};
-  box-shadow: ${props => props.tertiary 
-    ? '0 5px 15px rgba(255, 155, 33, 0.3)'
-    : props.secondary 
+  box-shadow: ${props =>
+    props.tertiary
+      ? '0 5px 15px rgba(255, 155, 33, 0.3)'
+      : props.secondary
       ? '0 5px 15px rgba(74, 140, 255, 0.3)'
       : '0 5px 15px rgba(var(--accent-color-rgb), 0.3)'};
 `;
@@ -3535,7 +4344,11 @@ const TeamConnectBanner = styled.div`
   margin-top: 6rem;
   padding: 3rem 2rem;
   border-radius: 20px;
-  background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.03) 0%, rgba(var(--accent-color-rgb), 0.08) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent-color-rgb), 0.03) 0%,
+    rgba(var(--accent-color-rgb), 0.08) 100%
+  );
   border: 1px solid rgba(var(--accent-color-rgb), 0.1);
   overflow: hidden;
 `;
@@ -3546,11 +4359,18 @@ const TeamConnectDecor = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(var(--accent-color-rgb), 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(74, 140, 255, 0.1) 0%, transparent 50%);
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(var(--accent-color-rgb), 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(74, 140, 255, 0.1) 0%,
+      transparent 50%
+    );
   z-index: 0;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -3573,7 +4393,7 @@ const TeamConnectContent = styled.div`
   align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
@@ -3589,7 +4409,7 @@ const TeamConnectHeading = styled.h3`
 
 const TeamConnectButton = styled(motion.button)`
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, var(--accent-color) 0%, #9461FC 100%);
+  background: linear-gradient(135deg, var(--accent-color) 0%, #9461fc 100%);
   color: white;
   border: none;
   border-radius: 8px;
@@ -3622,7 +4442,7 @@ const shimmerEffect = keyframes`
 `;
 
 // Стилизованные компоненты для секции FAQ
-const FaqSection = styled.section`
+const FaqSection = styled(motion.section)`
   position: relative;
   padding: 8rem 0;
   background: linear-gradient(
@@ -3638,7 +4458,6 @@ const FaqSection = styled.section`
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  margin-top: 4rem;
 
   &::before {
     content: '';
@@ -3654,6 +4473,18 @@ const FaqSection = styled.section`
     );
     z-index: -1;
   }
+
+  @media (max-width: 1024px) {
+    padding: 6rem 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0;
+  }
 `;
 
 const FaqWaveTop = styled.div`
@@ -3662,13 +4493,17 @@ const FaqWaveTop = styled.div`
   left: 0;
   width: 100%;
   height: 120px;
-  background: linear-gradient(
-    to top left,
-    transparent 49%,
-    var(--bg-primary) 51%
-  );
+  background: linear-gradient(to top left, transparent 49%, var(--bg-primary) 51%);
   z-index: 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    height: 80px;
+  }
+
+  @media (max-width: 480px) {
+    height: 60px;
+  }
 `;
 
 const FaqContainer = styled.div`
@@ -3677,6 +4512,21 @@ const FaqContainer = styled.div`
   position: relative;
   z-index: 2;
   padding: 0 2rem;
+
+  @media (max-width: 1024px) {
+    max-width: 800px;
+    padding: 0 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 700px;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    max-width: none;
+    padding: 0 1rem;
+  }
 `;
 
 const FaqGlowCircle = styled.div`
@@ -3690,7 +4540,7 @@ const FaqGlowCircle = styled.div`
     height: 400px;
     background: radial-gradient(
       circle,
-      rgba(var(--accent-color-rgb), 0.05) 0%,
+      rgba(94, 234, 212, 0.05) 0%,
       transparent 70%
     );
     top: 10%;
@@ -3703,12 +4553,40 @@ const FaqGlowCircle = styled.div`
     height: 500px;
     background: radial-gradient(
       circle,
-      rgba(var(--accent-color-rgb), 0.05) 0%,
+      rgba(59, 130, 246, 0.05) 0%,
       transparent 70%
     );
     bottom: 5%;
     right: -200px;
     animation: ${floatVertical} 18s infinite ease-in-out reverse;
+  }
+
+  @media (max-width: 768px) {
+    &.circle-1 {
+      width: 300px;
+      height: 300px;
+      left: -150px;
+    }
+
+    &.circle-2 {
+      width: 350px;
+      height: 350px;
+      right: -150px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &.circle-1 {
+      width: 200px;
+      height: 200px;
+      left: -100px;
+    }
+
+    &.circle-2 {
+      width: 250px;
+      height: 250px;
+      right: -100px;
+    }
   }
 `;
 
@@ -3719,16 +4597,16 @@ const FaqTitle = styled(motion.h2)`
   margin-bottom: 3rem;
   text-align: center;
   position: relative;
-  text-shadow: 0 2px 10px rgba(var(--accent-color-rgb), 0.2);
+  text-shadow: 0 2px 10px rgba(94, 234, 212, 0.2);
 
   &::before {
-    content: '';
+    content: 'F.A.Q';
     position: absolute;
     top: -30px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 5rem;
-    color: rgba(var(--accent-color-rgb), 0.03);
+    color: rgba(94, 234, 212, 0.03);
     font-weight: 900;
     letter-spacing: 5px;
     z-index: -1;
@@ -3752,31 +4630,97 @@ const FaqTitle = styled(motion.h2)`
     border-radius: 4px;
     animation: ${pulseFaq} 2s infinite ease-in-out;
   }
+
+  @media (max-width: 1024px) {
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+
+    &::before {
+      font-size: 4rem;
+      top: -25px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+
+    &::before {
+      font-size: 3.5rem;
+      top: -20px;
+    }
+
+    &::after {
+      width: 60px;
+      height: 3px;
+      bottom: -12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+
+    &::before {
+      font-size: 2.5rem;
+      top: -15px;
+    }
+
+    &::after {
+      width: 50px;
+      height: 2px;
+      bottom: -10px;
+    }
+  }
 `;
 
-const FaqList = styled(motion.div)`
+const FaqList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 4rem;
+
+  @media (max-width: 768px) {
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
 `;
 
 const FaqItem = styled(motion.div)`
-  overflow: hidden;
-  border-radius: 16px;
-  background: rgba(16, 24, 39, 0.5);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
   transition: all 0.3s ease;
-  transform-style: preserve-3d;
-  perspective: 1000px;
 
   &:hover {
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2),
-      0 0 15px rgba(var(--accent-color-rgb), 0.1);
-    border-color: rgba(var(--accent-color-rgb), 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(94, 234, 212, 0.1);
     transform: translateY(-3px);
+  }
+
+  @media (max-width: 768px) {
+    border-radius: 12px;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    border-radius: 10px;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
   }
 `;
 
@@ -3828,6 +4772,25 @@ const FaqQuestion = styled(motion.div)`
       transparent
     );
   }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+
+    &::after {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.2rem;
+    align-items: flex-start;
+
+    &::after {
+      left: 1.2rem;
+      right: 1.2rem;
+    }
+  }
 `;
 
 const FaqQuestionText = styled.h3`
@@ -3836,11 +4799,22 @@ const FaqQuestionText = styled.h3`
   color: var(--text-primary);
   transition: all 0.3s ease;
   flex: 1;
+  margin: 0;
   transform: translateZ(5px);
 
   ${FaqQuestion}:hover & {
     color: var(--accent-color);
     transform: translateZ(10px);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-right: 0.5rem;
   }
 `;
 
@@ -3856,10 +4830,18 @@ const FaqToggle = styled(motion.div)`
   background: rgba(var(--accent-color-rgb), 0.05);
   border-radius: 50%;
   transition: all 0.3s ease;
+  padding: 6px;
 
   &:hover {
     background: rgba(var(--accent-color-rgb), 0.1);
     box-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.2);
+  }
+
+  @media (max-width: 480px) {
+    width: 24px;
+    height: 24px;
+    margin-left: 0.5rem;
+    margin-top: 0.2rem;
   }
 `;
 
@@ -3939,6 +4921,35 @@ const FaqAnswer = styled(motion.div)`
       );
       background-size: 200% 100%;
       animation: ${shimmerEffect} 2s infinite;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem 1.5rem;
+    font-size: 1rem;
+
+    &::before {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1.2rem 1.2rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+
+    &::before {
+      left: 1.2rem;
+      right: 1.2rem;
+    }
+
+    ul {
+      padding-left: 1rem;
     }
   }
 `;

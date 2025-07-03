@@ -99,6 +99,9 @@ const MobileMenuButton = styled(motion.button)`
   cursor: pointer;
   padding: 0.5rem;
   z-index: 1001;
+  opacity: ${props => props.isHidden ? 0 : 1};
+  pointer-events: ${props => props.isHidden ? 'none' : 'auto'};
+  transition: opacity 0.3s ease;
 
   @media (max-width: 768px) {
     display: block;
@@ -158,12 +161,26 @@ const MobileMenuTitle = styled.h3`
 `;
 
 const CloseButton = styled(motion.button)`
-  background: none;
-  border: none;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
   color: var(--text-primary);
   font-size: 1.2rem;
   cursor: pointer;
-  padding: 0.25rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+
+  &:hover {
+    background: var(--accent-color);
+    color: var(--bg-primary);
+    border-color: var(--accent-color);
+    transform: scale(1.05);
+  }
 `;
 
 const MobileNavSection = styled.div`
@@ -527,6 +544,7 @@ const Header = () => {
           onClick={handleMenuToggle}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
+          isHidden={isMenuOpen}
         >
           <FaBars />
         </MobileMenuButton>
