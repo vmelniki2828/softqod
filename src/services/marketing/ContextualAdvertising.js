@@ -453,12 +453,32 @@ const InfoContentGrid = styled.div`
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
     gap: 3rem;
+    margin-top: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    gap: 2.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 2rem;
+    margin-top: 1rem;
   }
 `;
 
 const InfoText = styled.div`
   @media (max-width: 1024px) {
     order: 1;
+    margin-top: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    margin-top: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    margin-top: 1rem;
   }
 `;
 
@@ -3097,6 +3117,18 @@ const StagesSection = styled.section`
       transparent 100%
     );
   }
+  
+  @media (max-width: 1024px) {
+    padding: 5rem 0;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 3rem 0;
+  }
 `;
 
 const StagesContainer = styled.div`
@@ -3105,6 +3137,14 @@ const StagesContainer = styled.div`
   padding: 0 2rem;
   position: relative;
   z-index: 2;
+  
+  @media (max-width: 768px) {
+    padding: 0 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 1rem;
+  }
 `;
 
 const StagesTitle = styled.h2`
@@ -3132,6 +3172,21 @@ const StagesTitle = styled.h2`
     background: var(--accent-color);
     border-radius: 2px;
   }
+  
+  @media (max-width: 1024px) {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const StagesDescription = styled.p`
@@ -3142,6 +3197,21 @@ const StagesDescription = styled.p`
   margin: 0 auto 4rem;
   text-align: center;
   position: relative;
+  
+  @media (max-width: 1024px) {
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const StagesTimeline = styled.div`
@@ -3170,9 +3240,26 @@ const StagesTimeline = styled.div`
   
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
+    gap: 2rem;
     
     &::before {
       left: 30px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+    
+    &::before {
+      left: 25px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    gap: 1rem;
+    
+    &::before {
+      left: 20px;
     }
   }
 `;
@@ -3195,6 +3282,14 @@ const StageCard = styled(motion.div)`
       margin-right: 0;
       margin-left: 4rem;
     }
+    
+    @media (max-width: 768px) {
+      margin-left: 3rem;
+    }
+    
+    @media (max-width: 480px) {
+      margin-left: 2.5rem;
+    }
   }
   
   &:nth-child(even) {
@@ -3203,12 +3298,26 @@ const StageCard = styled(motion.div)`
     @media (max-width: 1024px) {
       margin-left: 4rem;
     }
+    
+    @media (max-width: 768px) {
+      margin-left: 3rem;
+    }
+    
+    @media (max-width: 480px) {
+      margin-left: 2.5rem;
+    }
   }
   
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     border-color: rgba(var(--accent-color-rgb), 0.2);
+  }
+  
+  @media (max-width: 768px) {
+    &:hover {
+      transform: translateY(-3px);
+    }
   }
 `;
 
@@ -3233,6 +3342,22 @@ const StageNumber = styled.div`
     left: -2rem;
   }
   
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+    left: -1.5rem;
+    top: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+    left: -1.25rem;
+    top: 0.8rem;
+  }
+  
   ${StageCard}:hover & {
     transform: scale(1.1);
     box-shadow: 0 8px 20px rgba(var(--accent-color-rgb), 0.4);
@@ -3242,6 +3367,14 @@ const StageNumber = styled.div`
 const StageContent = styled.div`
   padding: 2rem 2rem 2rem 2.5rem;
   flex: 1;
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem 1.5rem 1.5rem 2rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem 1rem 1rem 1.5rem;
+  }
 `;
 
 const StageTitle = styled.h3`
@@ -3250,6 +3383,23 @@ const StageTitle = styled.h3`
   margin-bottom: 1rem;
   color: var(--text-primary);
   padding-right: 50px;
+  
+  @media (max-width: 1024px) {
+    font-size: 1.3rem;
+    padding-right: 40px;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    padding-right: 35px;
+    margin-bottom: 0.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    padding-right: 30px;
+    margin-bottom: 0.6rem;
+  }
 `;
 
 const StageDescription = styled.p`
@@ -3257,6 +3407,21 @@ const StageDescription = styled.p`
   line-height: 1.6;
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
+  
+  @media (max-width: 1024px) {
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+  }
 `;
 
 const StageIconContainer = styled.div`
@@ -3273,6 +3438,22 @@ const StageIconContainer = styled.div`
   justify-content: center;
   font-size: 1.2rem;
   
+  @media (max-width: 768px) {
+    width: 35px;
+    height: 35px;
+    font-size: 1.1rem;
+    top: 1rem;
+    right: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+    top: 0.8rem;
+    right: 0.8rem;
+  }
+  
   ${StageCard}:hover & {
     transform: rotate(10deg);
     background: rgba(var(--accent-color-rgb), 0.15);
@@ -3281,6 +3462,14 @@ const StageIconContainer = styled.div`
 
 const StageBulletPoints = styled.div`
   margin-top: 1.5rem;
+  
+  @media (max-width: 768px) {
+    margin-top: 1.2rem;
+  }
+  
+  @media (max-width: 480px) {
+    margin-top: 1rem;
+  }
 `;
 
 const StageBullet = styled.div`
@@ -3292,6 +3481,16 @@ const StageBullet = styled.div`
   
   &:last-child {
     margin-bottom: 0;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
   }
 `;
 
@@ -3307,6 +3506,20 @@ const StageBulletIcon = styled.span`
   font-size: 0.7rem;
   margin-right: 0.8rem;
   flex-shrink: 0;
+  
+  @media (max-width: 768px) {
+    width: 18px;
+    height: 18px;
+    font-size: 0.65rem;
+    margin-right: 0.7rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 16px;
+    height: 16px;
+    font-size: 0.6rem;
+    margin-right: 0.6rem;
+  }
 `;
 
 const StagesCallout = styled.div`
@@ -3682,6 +3895,10 @@ const SuitableForSection = styled.section`
       rgba(var(--accent-color-rgb), 0.4) 50%,
       transparent 100%
     );
+  }
+
+  @media (max-width: 1024px) {
+    display: none;
   }
 `;
 
@@ -4070,6 +4287,18 @@ const ApproachSection = styled.section`
       transparent 100%
     );
   }
+  
+  @media (max-width: 1024px) {
+    padding: 5rem 0;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 3rem 0;
+  }
 `;
 
 const ApproachContainer = styled.div`
@@ -4078,6 +4307,14 @@ const ApproachContainer = styled.div`
   padding: 0 2rem;
   position: relative;
   z-index: 2;
+  
+  @media (max-width: 768px) {
+    padding: 0 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 1rem;
+  }
 `;
 
 const ApproachTitle = styled.h2`
@@ -4105,6 +4342,21 @@ const ApproachTitle = styled.h2`
     background: var(--accent-color);
     border-radius: 2px;
   }
+  
+  @media (max-width: 1024px) {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const ApproachIntro = styled.p`
@@ -4115,12 +4367,35 @@ const ApproachIntro = styled.p`
   margin: 0 auto 4rem;
   text-align: center;
   position: relative;
+  
+  @media (max-width: 1024px) {
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const ApproachTimeline = styled.div`
   position: relative;
   margin: 0 auto 5rem;
   max-width: 900px;
+  
+  @media (max-width: 768px) {
+    margin-bottom: 3rem;
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 2rem;
+  }
 `;
 
 const ApproachStage = styled(motion.div)`
@@ -4130,6 +4405,14 @@ const ApproachStage = styled(motion.div)`
   
   &:last-child {
     margin-bottom: 0;
+  }
+  
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 1.5rem;
   }
 `;
 
@@ -4157,12 +4440,30 @@ const ApproachStageNumber = styled.div`
     opacity: 0.2;
     z-index: -1;
   }
+  
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 45px;
+    height: 45px;
+  }
 `;
 
 const ApproachStageNumberInner = styled.div`
   font-size: 1.6rem;
   font-weight: 800;
   color: var(--accent-color);
+  
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const ApproachStageLine = styled.div`
@@ -4177,6 +4478,16 @@ const ApproachStageLine = styled.div`
     rgba(var(--accent-color-rgb), 0.1)
   );
   z-index: 1;
+  
+  @media (max-width: 768px) {
+    top: 50px;
+    left: 25px;
+  }
+  
+  @media (max-width: 480px) {
+    top: 45px;
+    left: 22.5px;
+  }
 `;
 
 const ApproachStageContent = styled.div`
@@ -4194,6 +4505,16 @@ const ApproachStageContent = styled.div`
     border-color: rgba(var(--accent-color-rgb), 0.2);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    margin-left: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
+    margin-left: 1rem;
+  }
 `;
 
 const ApproachStageTitle = styled.h3`
@@ -4202,6 +4523,23 @@ const ApproachStageTitle = styled.h3`
   color: var(--text-primary);
   margin-bottom: 1rem;
   padding-right: 50px;
+  
+  @media (max-width: 1024px) {
+    font-size: 1.3rem;
+    padding-right: 40px;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    padding-right: 35px;
+    margin-bottom: 0.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    padding-right: 30px;
+    margin-bottom: 0.6rem;
+  }
 `;
 
 const ApproachStageDescription = styled.p`
@@ -4209,12 +4547,35 @@ const ApproachStageDescription = styled.p`
   line-height: 1.6;
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
+  
+  @media (max-width: 1024px) {
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+  }
 `;
 
 const ApproachStageTags = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
+  
+  @media (max-width: 768px) {
+    gap: 0.6rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 0.5rem;
+  }
 `;
 
 const ApproachTag = styled.span`
@@ -4227,6 +4588,16 @@ const ApproachTag = styled.span`
   
   &:hover {
     background: rgba(var(--accent-color-rgb), 0.1);
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.75rem;
   }
 `;
 
@@ -4243,6 +4614,22 @@ const ApproachStageIcon = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
+  
+  @media (max-width: 768px) {
+    width: 32px;
+    height: 32px;
+    font-size: 1.1rem;
+    top: 1rem;
+    right: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+    top: 0.8rem;
+    right: 0.8rem;
+  }
 `;
 
 const ResultsSection = styled.section`
@@ -4481,6 +4868,18 @@ const FaqSection = styled.section`
     );
     z-index: -1;
   }
+  
+  @media (max-width: 1024px) {
+    padding: 6rem 0;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 3rem 0;
+  }
 `;
 
 const FaqWaveTop = styled.div`
@@ -4496,25 +4895,42 @@ const FaqWaveTop = styled.div`
   );
   z-index: 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  
+  @media (max-width: 768px) {
+    height: 80px;
+  }
+  
+  @media (max-width: 480px) {
+    height: 60px;
+  }
 `;
 
 const FaqContainer = styled.div`
-  max-width: 1000px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 0 2rem;
   position: relative;
+  z-index: 2;
+  padding: 0 2rem;
+  
+  @media (max-width: 1024px) {
+    max-width: 800px;
+    padding: 0 1.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    max-width: 700px;
+    padding: 0 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    max-width: none;
+    padding: 0 1rem;
+  }
 `;
 
 const FaqGlowCircle = styled.div`
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(var(--accent-color-rgb), 0.2) 0%,
-    rgba(var(--accent-color-rgb), 0.1) 40%,
-    transparent 70%
-  );
-  z-index: 0;
   filter: blur(80px);
   z-index: 0;
 
@@ -4523,12 +4939,24 @@ const FaqGlowCircle = styled.div`
     height: 400px;
     background: radial-gradient(
       circle,
-      rgba(var(--accent-color-rgb), 0.05) 0%,
+      rgba(94, 234, 212, 0.05) 0%,
       transparent 70%
     );
     top: 10%;
     left: -200px;
     animation: ${floatVertical} 15s infinite ease-in-out;
+    
+    @media (max-width: 768px) {
+      width: 300px;
+      height: 300px;
+      left: -150px;
+    }
+    
+    @media (max-width: 480px) {
+      width: 250px;
+      height: 250px;
+      left: -125px;
+    }
   }
 
   &.circle-2 {
@@ -4536,12 +4964,24 @@ const FaqGlowCircle = styled.div`
     height: 500px;
     background: radial-gradient(
       circle,
-      rgba(var(--accent-color-rgb), 0.05) 0%,
+      rgba(59, 130, 246, 0.05) 0%,
       transparent 70%
     );
     bottom: 5%;
     right: -200px;
     animation: ${floatVertical} 18s infinite ease-in-out reverse;
+    
+    @media (max-width: 768px) {
+      width: 350px;
+      height: 350px;
+      right: -150px;
+    }
+    
+    @media (max-width: 480px) {
+      width: 280px;
+      height: 280px;
+      right: -120px;
+    }
   }
 `;
 
@@ -4552,16 +4992,16 @@ const FaqTitle = styled(motion.h2)`
   margin-bottom: 3rem;
   text-align: center;
   position: relative;
-  text-shadow: 0 2px 10px rgba(var(--accent-color-rgb), 0.2);
+  text-shadow: 0 2px 10px rgba(94, 234, 212, 0.2);
 
   &::before {
-    content: '';
+    content: 'F.A.Q';
     position: absolute;
     top: -30px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 5rem;
-    color: rgba(var(--accent-color-rgb), 0.03);
+    color: rgba(94, 234, 212, 0.03);
     font-weight: 900;
     letter-spacing: 5px;
     z-index: -1;
@@ -4585,6 +5025,48 @@ const FaqTitle = styled(motion.h2)`
     border-radius: 4px;
     animation: ${pulseFaq} 2s infinite ease-in-out;
   }
+  
+  @media (max-width: 1024px) {
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+
+    &::before {
+      font-size: 4rem;
+      top: -25px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+
+    &::before {
+      font-size: 3.5rem;
+      top: -20px;
+    }
+
+    &::after {
+      width: 60px;
+      height: 3px;
+      bottom: -12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+
+    &::before {
+      font-size: 2.5rem;
+      top: -15px;
+    }
+
+    &::after {
+      width: 50px;
+      height: 2px;
+      bottom: -10px;
+    }
+  }
 `;
 
 const FaqList = styled(motion.div)`
@@ -4592,6 +5074,16 @@ const FaqList = styled(motion.div)`
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 4rem;
+  
+  @media (max-width: 768px) {
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const FaqItem = styled(motion.div)`
@@ -4610,6 +5102,22 @@ const FaqItem = styled(motion.div)`
       0 0 15px rgba(var(--accent-color-rgb), 0.1);
     border-color: rgba(var(--accent-color-rgb), 0.1);
     transform: translateY(-3px);
+  }
+  
+  @media (max-width: 768px) {
+    border-radius: 12px;
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    border-radius: 10px;
+    
+    &:hover {
+      transform: translateY(-1px);
+    }
   }
 `;
 
@@ -4661,6 +5169,24 @@ const FaqQuestion = styled(motion.div)`
       transparent
     );
   }
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem 1.5rem;
+    
+    &::after {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1.2rem 1rem;
+    
+    &::after {
+      left: 1rem;
+      right: 1rem;
+    }
+  }
 `;
 
 const FaqQuestionText = styled.h3`
@@ -4674,6 +5200,18 @@ const FaqQuestionText = styled.h3`
   ${FaqQuestion}:hover & {
     color: var(--accent-color);
     transform: translateZ(10px);
+  }
+  
+  @media (max-width: 1024px) {
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
   }
 `;
 
@@ -4709,6 +5247,38 @@ const FaqToggle = styled(motion.div)`
   &::after {
     width: 2px;
     height: 12px;
+  }
+  
+  @media (max-width: 768px) {
+    width: 24px;
+    height: 24px;
+    margin-left: 0.8rem;
+    
+    &::before {
+      width: 10px;
+      height: 2px;
+    }
+    
+    &::after {
+      width: 2px;
+      height: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    width: 22px;
+    height: 22px;
+    margin-left: 0.6rem;
+    
+    &::before {
+      width: 9px;
+      height: 2px;
+    }
+    
+    &::after {
+      width: 2px;
+      height: 9px;
+    }
   }
 `;
 
@@ -4790,6 +5360,26 @@ const FaqAnswer = styled(motion.div)`
       animation: ${shimmerEffect} 2s infinite;
     }
   }
+  
+  @media (max-width: 768px) {
+    padding: 0 1.5rem 1.5rem;
+    font-size: 1rem;
+    
+    &::before {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 1rem 1.2rem;
+    font-size: 0.95rem;
+    
+    &::before {
+      left: 1rem;
+      right: 1rem;
+    }
+  }
 `;
 
 const FaqCta = styled(motion.div)`
@@ -4835,6 +5425,18 @@ const FaqCta = styled(motion.div)`
     );
     z-index: -1;
   }
+  
+  @media (max-width: 768px) {
+    padding: 2rem;
+    gap: 1.2rem;
+    border-radius: 16px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+    gap: 1rem;
+    border-radius: 12px;
+  }
 `;
 
 const FaqCtaText = styled.p`
@@ -4842,40 +5444,100 @@ const FaqCtaText = styled.p`
   font-weight: 500;
   color: var(--text-primary);
   text-align: center;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin: 0;
+  
+  @media (max-width: 1024px) {
+    font-size: 1.3rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const FaqCtaButton = styled(motion.button)`
   padding: 1rem 2rem;
   background: linear-gradient(
-    90deg,
+    135deg,
     var(--accent-color) 0%,
     var(--accent-color-light) 100%
   );
   color: white;
+  border: none;
+  border-radius: 8px;
   font-size: 1.1rem;
   font-weight: 600;
-  border: none;
-  border-radius: 50px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(var(--accent-color-rgb), 0.3);
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.8rem;
-  box-shadow: 0 10px 25px rgba(var(--accent-color-rgb), 0.3);
-  transition: all 0.3s ease;
 
-  &:hover {
-    box-shadow: 0 15px 30px rgba(var(--accent-color-rgb), 0.5);
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: left 0.5s ease;
   }
 
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(var(--accent-color-rgb), 0.4);
+
+    &::before {
+      left: 100%;
+    }
+    
+    svg {
+      transform: translateX(5px);
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
+  
   svg {
     font-size: 1.1rem;
     transition: transform 0.3s ease;
   }
-
-  &:hover svg {
-    transform: translateX(5px);
+  
+  @media (max-width: 768px) {
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+    gap: 0.7rem;
+    
+    svg {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+    gap: 0.6rem;
+    
+    svg {
+      font-size: 0.95rem;
+    }
   }
 `;
-
 export default ContextualAdvertising;
+
