@@ -1322,7 +1322,7 @@ const FaqTitle = styled(motion.h2)`
     z-index: -1;
     white-space: nowrap;
   }
-
+  
   &::after {
     content: '';
     position: absolute;
@@ -1515,7 +1515,7 @@ const FaqQuestionText = styled.h3`
   transform: translateZ(5px);
 
   ${FaqQuestion}:hover & {
-    color: var(--accent-color);
+  color: var(--accent-color);
     transform: translateZ(10px);
   }
 
@@ -1597,13 +1597,13 @@ const FaqAnswer = styled(motion.div)`
   }
 
   strong {
-    color: var(--accent-color);
+  color: var(--accent-color);
     font-weight: 600;
   }
 
   ul {
     margin-top: 0.8rem;
-    margin-bottom: 0.8rem;
+  margin-bottom: 0.8rem;
     padding-left: 1.5rem;
   }
 
