@@ -59,6 +59,14 @@ const HeroWrapper = styled.section`
     rgba(var(--bg-primary-rgb), 0.97) 100%
   );
   margin-top: 100px;
+
+  @media (max-width: 768px) {
+    margin-top: 80px;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 60px;
+  }
 `;
 
 const GlowingCircle = styled.div`
@@ -129,6 +137,14 @@ const HeroInner = styled.div`
   padding: 0 2rem;
   position: relative;
   z-index: 2;
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1rem;
+  }
 `;
 
 const HeroSplit = styled.div`
@@ -141,11 +157,27 @@ const HeroSplit = styled.div`
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+  }
 `;
 
 const HeroLeft = styled.div`
   @media (max-width: 1024px) {
     text-align: center;
+    order: 1;
+  }
+
+  @media (max-width: 768px) {
+    order: 1;
+  }
+
+  @media (max-width: 480px) {
     order: 1;
   }
 `;
@@ -158,6 +190,14 @@ const HeroRight = styled.div`
     max-width: 500px;
     margin: 0 auto;
   }
+
+  @media (max-width: 768px) {
+    max-width: 400px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 300px;
+  }
 `;
 
 const AnimatedTitle = styled(motion.h1)`
@@ -166,6 +206,21 @@ const AnimatedTitle = styled(motion.h1)`
   line-height: 1.2;
   margin-bottom: 1.5rem;
   color: var(--text-primary);
+
+  @media (max-width: 1024px) {
+    font-size: clamp(2.2rem, 4.5vw, 3rem);
+    margin-bottom: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    margin-bottom: 0.8rem;
+  }
 `;
 
 const HighlightedSpan = styled.span`
@@ -184,6 +239,20 @@ const HighlightedSpan = styled.span`
     z-index: -1;
     border-radius: 4px;
   }
+
+  @media (max-width: 768px) {
+    &::after {
+      bottom: 3px;
+      height: 8px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &::after {
+      bottom: 2px;
+      height: 6px;
+    }
+  }
 `;
 
 const HeroDescription = styled(motion.p)`
@@ -196,6 +265,21 @@ const HeroDescription = styled(motion.p)`
   @media (max-width: 1024px) {
     margin-left: auto;
     margin-right: auto;
+    font-size: 1.1rem;
+    margin-bottom: 1.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    max-width: 500px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+    max-width: 100%;
+    line-height: 1.6;
   }
 `;
 
@@ -204,11 +288,18 @@ const ButtonGroup = styled(motion.div)`
   gap: 1rem;
 
   @media (max-width: 1024px) {
+    align-items: center;
     justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    gap: 0.8rem;
   }
 
   @media (max-width: 480px) {
     flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
   }
 `;
 
@@ -251,6 +342,18 @@ const PrimaryButton = styled(motion.button)`
   &:hover::before {
     animation: ${shimmer} 1s ease-out;
   }
+
+  @media (max-width: 768px) {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.9rem 1.5rem;
+    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
+  }
 `;
 
 const KeyPoints = styled.div`
@@ -261,6 +364,19 @@ const KeyPoints = styled.div`
 
   @media (max-width: 1024px) {
     justify-content: center;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    gap: 0.8rem;
+    margin-top: 1.8rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -274,6 +390,19 @@ const LegacyKeyPoint = styled.div`
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.05);
   max-width: 260px;
+
+  @media (max-width: 768px) {
+    padding: 0.6rem 1rem;
+    max-width: 240px;
+    gap: 0.6rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem 0.8rem;
+    max-width: 100%;
+    width: 100%;
+    gap: 0.5rem;
+  }
 `;
 
 const LegacyKeyPointIcon = styled.div`
@@ -287,12 +416,32 @@ const LegacyKeyPointIcon = styled.div`
   justify-content: center;
   font-size: 0.9rem;
   flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 22px;
+    height: 22px;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+  }
 `;
 
 const LegacyKeyPointText = styled.p`
   font-size: 0.95rem;
   line-height: 1.5;
   color: var(--text-secondary);
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+  }
 `;
 
 // Marketing Audit Visualization Components
@@ -302,6 +451,18 @@ const AuditVisualization = styled.div`
   height: 450px;
   perspective: 1000px;
   transform-style: preserve-3d;
+
+  @media (max-width: 1024px) {
+    height: 400px;
+  }
+
+  @media (max-width: 768px) {
+    height: 350px;
+  }
+
+  @media (max-width: 480px) {
+    height: 280px;
+  }
 `;
 
 const AuditCardContainer = styled(motion.div)`
@@ -311,6 +472,14 @@ const AuditCardContainer = styled(motion.div)`
   perspective: 1000px;
   transform-style: preserve-3d;
   animation: ${floatUpDown} 6s ease-in-out infinite;
+
+  @media (max-width: 768px) {
+    animation: ${floatUpDown} 8s ease-in-out infinite;
+  }
+
+  @media (max-width: 480px) {
+    animation: ${floatUpDown} 10s ease-in-out infinite;
+  }
 `;
 
 const AuditCard = styled(motion.div)`
@@ -385,12 +554,114 @@ const AuditCard = styled(motion.div)`
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
   }
+
+  @media (max-width: 1024px) {
+    width: 120px;
+    height: 120px;
+    gap: 0.8rem;
+
+    &.strategy {
+      top: 40px;
+      left: 40px;
+    }
+
+    &.competitors {
+      top: 80px;
+      right: 60px;
+    }
+
+    &.analytics {
+      bottom: 120px;
+      left: 80px;
+    }
+
+    &.channels {
+      bottom: 80px;
+      right: 40px;
+    }
+
+    &.conversion {
+      top: 160px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 100px;
+    height: 100px;
+    gap: 0.6rem;
+
+    &.strategy {
+      top: 30px;
+      left: 30px;
+    }
+
+    &.competitors {
+      top: 60px;
+      right: 40px;
+    }
+
+    &.analytics {
+      bottom: 90px;
+      left: 60px;
+    }
+
+    &.channels {
+      bottom: 60px;
+      right: 30px;
+    }
+
+    &.conversion {
+      top: 120px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 80px;
+    height: 80px;
+    gap: 0.5rem;
+
+    &.strategy {
+      top: 20px;
+      left: 20px;
+    }
+
+    &.competitors {
+      top: 40px;
+      right: 20px;
+    }
+
+    &.analytics {
+      bottom: 60px;
+      left: 40px;
+    }
+
+    &.channels {
+      bottom: 40px;
+      right: 20px;
+    }
+
+    &.conversion {
+      top: 80px;
+    }
+  }
 `;
 
 const CardIcon = styled.div`
   font-size: 2rem;
   color: var(--accent-color);
   opacity: 0.9;
+
+  @media (max-width: 1024px) {
+    font-size: 1.6rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const CardName = styled.span`
@@ -399,6 +670,18 @@ const CardName = styled.span`
   color: var(--text-primary);
   text-align: center;
   line-height: 1.3;
+
+  @media (max-width: 1024px) {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.65rem;
+  }
 `;
 
 const AuditBadge = styled(motion.div)`
@@ -420,18 +703,63 @@ const AuditBadge = styled(motion.div)`
   align-items: center;
   gap: 0.2rem;
   box-shadow: 0 8px 25px rgba(var(--accent-color-rgb), 0.3);
+
+  @media (max-width: 1024px) {
+    top: 15px;
+    right: 15px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 768px) {
+    top: 10px;
+    right: 10px;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 480px) {
+    top: 5px;
+    right: 5px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+  }
 `;
 
 const BadgeNumber = styled.div`
   font-size: 1.2rem;
   font-weight: 800;
   line-height: 1;
+
+  @media (max-width: 1024px) {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const BadgeText = styled.div`
   font-size: 0.7rem;
   opacity: 0.9;
   line-height: 1;
+
+  @media (max-width: 1024px) {
+    font-size: 0.65rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.55rem;
+  }
 `;
 
 const FloatingIcons = styled.div`
@@ -441,6 +769,10 @@ const FloatingIcons = styled.div`
   width: 100%;
   height: 100%;
   pointer-events: none;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const FloatingIcon = styled(motion.div)`
@@ -477,6 +809,16 @@ const FloatingIcon = styled(motion.div)`
   &.checklist {
     bottom: 60px;
     right: 30px;
+  }
+
+  @media (max-width: 1024px) {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -2378,6 +2720,33 @@ const FinalConclusion = styled(motion.div)`
     position: relative;
     z-index: 1;
   }
+
+  @media (max-width: 1024px) {
+    padding: 4rem 3rem;
+    border-radius: 32px;
+
+    &::before {
+      border-radius: 35px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 3rem 2rem;
+    border-radius: 24px;
+
+    &::before {
+      border-radius: 27px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 2.5rem 1.5rem;
+    border-radius: 20px;
+
+    &::before {
+      border-radius: 23px;
+    }
+  }
 `;
 
 const ResultsConclusionIconGroup = styled.div`
@@ -2386,6 +2755,17 @@ const ResultsConclusionIconGroup = styled.div`
   align-items: center;
   gap: 1.5rem;
   margin-bottom: 3rem;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
 `;
 
 const ResultsConclusionIcon = styled.div`
@@ -2405,6 +2785,30 @@ const ResultsConclusionIcon = styled.div`
   &:hover {
     transform: scale(1.15);
   }
+
+  @media (max-width: 768px) {
+    width: 80px;
+    height: 80px;
+    font-size: 2.5rem;
+    box-shadow: 0 15px 35px ${props => props.shadowColor},
+      0 0 45px ${props => props.glowColor};
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    box-shadow: 0 10px 25px ${props => props.shadowColor},
+      0 0 30px ${props => props.glowColor};
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
 `;
 
 const ResultsConclusionTitle = styled.h3`
@@ -2413,6 +2817,21 @@ const ResultsConclusionTitle = styled.h3`
   color: rgb(var(--primary-color-rgb));
   margin-bottom: 2rem;
   line-height: 1.2;
+
+  @media (max-width: 1024px) {
+    font-size: 2.2rem;
+    margin-bottom: 1.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
 `;
 
 const ResultsConclusionText = styled.p`
@@ -2422,6 +2841,22 @@ const ResultsConclusionText = styled.p`
   max-width: 800px;
   margin: 0 auto;
   font-weight: 500;
+
+  @media (max-width: 1024px) {
+    font-size: 1.3rem;
+    max-width: 700px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    max-width: 100%;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
 `;
 
 // Advantages Section
