@@ -3262,6 +3262,21 @@ const AdvantagesFooter = styled.div`
     );
     z-index: -1;
   }
+
+  @media (max-width: 1024px) {
+    padding: 3.5rem 1.8rem;
+    border-radius: 28px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 3rem 1.5rem;
+    border-radius: 24px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2.5rem 1rem;
+    border-radius: 20px;
+  }
 `;
 
 const FooterIconsContainer = styled.div`
@@ -3270,6 +3285,22 @@ const FooterIconsContainer = styled.div`
   align-items: center;
   gap: 2rem;
   margin-bottom: 3rem;
+
+  @media (max-width: 1024px) {
+    gap: 1.8rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+    flex-wrap: wrap;
+  }
 `;
 
 const FooterIcon = styled.div`
@@ -3290,6 +3321,42 @@ const FooterIcon = styled.div`
   &:hover {
     transform: scale(1.1) translateY(-5px);
   }
+
+  @media (max-width: 1024px) {
+    width: 90px;
+    height: 90px;
+    font-size: 2.8rem;
+    box-shadow: 0 18px 45px ${props => props.shadowColor},
+      0 0 70px rgba(var(--accent-color-rgb), 0.1);
+
+    &:hover {
+      transform: scale(1.08) translateY(-4px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 80px;
+    height: 80px;
+    font-size: 2.5rem;
+    box-shadow: 0 15px 35px ${props => props.shadowColor},
+      0 0 60px rgba(var(--accent-color-rgb), 0.1);
+
+    &:hover {
+      transform: scale(1.05) translateY(-3px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    box-shadow: 0 12px 25px ${props => props.shadowColor},
+      0 0 40px rgba(var(--accent-color-rgb), 0.1);
+
+    &:hover {
+      transform: scale(1.03) translateY(-2px);
+    }
+  }
 `;
 
 const FooterTitle = styled.h3`
@@ -3298,6 +3365,21 @@ const FooterTitle = styled.h3`
   color: var(--text-primary);
   margin-bottom: 2rem;
   line-height: 1.3;
+
+  @media (max-width: 1024px) {
+    font-size: 2rem;
+    margin-bottom: 1.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
 `;
 
 const FooterText = styled.p`
@@ -3307,9 +3389,32 @@ const FooterText = styled.p`
   max-width: 800px;
   margin: 0 auto;
   font-weight: 500;
+
+  @media (max-width: 1024px) {
+    font-size: 1.2rem;
+    max-width: 700px;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    max-width: 100%;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
 `;
 
 // Стилизованные компоненты для секции FAQ
+const floatVertical = keyframes`
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+`;
+
 const shimmerEffect = keyframes`
   0% {
     background-position: -200% 0;
@@ -3320,12 +3425,9 @@ const shimmerEffect = keyframes`
 `;
 
 const pulseFaq = keyframes`
-  0%, 100% {
-    opacity: 0.6;
-  }
-  50% {
-    opacity: 1;
-  }
+  0% { opacity: 0.6; width: 60px; }
+  50% { opacity: 1; width: 80px; }
+  100% { opacity: 0.6; width: 60px; }
 `;
 
 const FaqSection = styled(motion.section)`
@@ -3360,6 +3462,18 @@ const FaqSection = styled(motion.section)`
     );
     z-index: -1;
   }
+
+  @media (max-width: 1024px) {
+    padding: 6rem 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0;
+  }
 `;
 
 const FaqWaveTop = styled.div`
@@ -3375,6 +3489,14 @@ const FaqWaveTop = styled.div`
   );
   z-index: 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    height: 80px;
+  }
+
+  @media (max-width: 480px) {
+    height: 60px;
+  }
 `;
 
 const FaqContainer = styled.div`
@@ -3383,6 +3505,21 @@ const FaqContainer = styled.div`
   position: relative;
   z-index: 2;
   padding: 0 2rem;
+
+  @media (max-width: 1024px) {
+    max-width: 800px;
+    padding: 0 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 700px;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    max-width: none;
+    padding: 0 1rem;
+  }
 `;
 
 const FaqGlowCircle = styled.div`
@@ -3396,12 +3533,12 @@ const FaqGlowCircle = styled.div`
     height: 400px;
     background: radial-gradient(
       circle,
-      rgba(var(--accent-color-rgb), 0.05) 0%,
+      rgba(94, 234, 212, 0.05) 0%,
       transparent 70%
     );
     top: 10%;
     left: -200px;
-    animation: ${floatAnimation} 15s infinite ease-in-out;
+    animation: ${floatVertical} 15s infinite ease-in-out;
   }
 
   &.circle-2 {
@@ -3409,12 +3546,12 @@ const FaqGlowCircle = styled.div`
     height: 500px;
     background: radial-gradient(
       circle,
-      rgba(var(--accent-color-rgb), 0.05) 0%,
+      rgba(59, 130, 246, 0.05) 0%,
       transparent 70%
     );
     bottom: 5%;
     right: -200px;
-    animation: ${floatAnimation} 18s infinite ease-in-out reverse;
+    animation: ${floatVertical} 18s infinite ease-in-out reverse;
   }
 `;
 
@@ -3425,16 +3562,16 @@ const FaqTitle = styled(motion.h2)`
   margin-bottom: 3rem;
   text-align: center;
   position: relative;
-  text-shadow: 0 2px 10px rgba(var(--accent-color-rgb), 0.2);
+  text-shadow: 0 2px 10px rgba(94, 234, 212, 0.2);
 
   &::before {
-    content: '';
+    content: 'F.A.Q';
     position: absolute;
     top: -30px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 5rem;
-    color: rgba(var(--accent-color-rgb), 0.03);
+    color: rgba(94, 234, 212, 0.03);
     font-weight: 900;
     letter-spacing: 5px;
     z-index: -1;
@@ -3458,6 +3595,48 @@ const FaqTitle = styled(motion.h2)`
     border-radius: 4px;
     animation: ${pulseFaq} 2s infinite ease-in-out;
   }
+
+  @media (max-width: 1024px) {
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+
+    &::before {
+      font-size: 4rem;
+      top: -25px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+
+    &::before {
+      font-size: 3.5rem;
+      top: -20px;
+    }
+
+    &::after {
+      width: 60px;
+      height: 3px;
+      bottom: -12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+
+    &::before {
+      font-size: 2.5rem;
+      top: -15px;
+    }
+
+    &::after {
+      width: 50px;
+      height: 2px;
+      bottom: -10px;
+    }
+  }
 `;
 
 const FaqList = styled(motion.div)`
@@ -3465,6 +3644,16 @@ const FaqList = styled(motion.div)`
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 4rem;
+
+  @media (max-width: 768px) {
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
 `;
 
 const FaqItem = styled(motion.div)`
@@ -3483,6 +3672,22 @@ const FaqItem = styled(motion.div)`
       0 0 15px rgba(var(--accent-color-rgb), 0.1);
     border-color: rgba(var(--accent-color-rgb), 0.1);
     transform: translateY(-3px);
+  }
+
+  @media (max-width: 768px) {
+    border-radius: 12px;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    border-radius: 10px;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
   }
 `;
 
@@ -3534,6 +3739,25 @@ const FaqQuestion = styled(motion.div)`
       transparent
     );
   }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+
+    &::after {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.2rem;
+    align-items: flex-start;
+
+    &::after {
+      left: 1.2rem;
+      right: 1.2rem;
+    }
+  }
 `;
 
 const FaqQuestionText = styled.h3`
@@ -3542,11 +3766,22 @@ const FaqQuestionText = styled.h3`
   color: var(--text-primary);
   transition: all 0.3s ease;
   flex: 1;
+  margin: 0;
   transform: translateZ(5px);
 
   ${FaqQuestion}:hover & {
     color: var(--accent-color);
     transform: translateZ(10px);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-right: 0.5rem;
   }
 `;
 
@@ -3562,10 +3797,34 @@ const FaqToggle = styled(motion.div)`
   background: rgba(var(--accent-color-rgb), 0.05);
   border-radius: 50%;
   transition: all 0.3s ease;
+  padding: 6px;
+  transform: ${props => props['data-open'] === 'true' ? 'rotate(45deg)' : 'rotate(0deg)'};
+  background-color: ${props => 
+    props['data-open'] === 'true' 
+      ? 'rgba(var(--accent-color-rgb), 0.15)' 
+      : 'rgba(var(--accent-color-rgb), 0.05)'
+  };
 
   &:hover {
     background: rgba(var(--accent-color-rgb), 0.1);
     box-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.2);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  @media (max-width: 480px) {
+    width: 24px;
+    height: 24px;
+    margin-left: 0.5rem;
+    margin-top: 0.2rem;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
   }
 `;
 
@@ -3647,6 +3906,43 @@ const FaqAnswer = styled(motion.div)`
       animation: ${shimmerEffect} 2s infinite;
     }
   }
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem 1.5rem;
+    font-size: 1rem;
+
+    &::before {
+      left: 1.5rem;
+      right: 1.5rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1.2rem 1.2rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+
+    &::before {
+      left: 1.2rem;
+      right: 1.2rem;
+    }
+
+    ul {
+      padding-left: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.3rem;
+
+      &::before {
+        left: -0.8rem;
+      }
+    }
+  }
 `;
 
 const FaqCta = styled(motion.div)`
@@ -3692,6 +3988,18 @@ const FaqCta = styled(motion.div)`
     );
     z-index: -1;
   }
+
+  @media (max-width: 768px) {
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
+    gap: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    gap: 1rem;
+  }
 `;
 
 const FaqCtaText = styled.p`
@@ -3700,6 +4008,15 @@ const FaqCtaText = styled.p`
   color: var(--text-primary);
   text-align: center;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
 `;
 
 const FaqCtaButton = styled(motion.button)`
@@ -3732,6 +4049,19 @@ const FaqCtaButton = styled(motion.button)`
 
   &:hover svg {
     transform: translateX(5px);
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 250px;
   }
 `;
 
