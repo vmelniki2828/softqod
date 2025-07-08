@@ -98,25 +98,25 @@ const HeroSection = styled(motion.div)`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  padding: 2rem;
+  padding: 1rem;
 
   @media (max-width: 1024px) {
     min-height: 90vh;
-    padding: 1.5rem;
+    padding: 2.5rem;
   }
 
   @media (max-width: 768px) {
     min-height: 80vh;
-    padding: 1rem;
+    padding: 2rem;
   }
 
   @media (max-width: 576px) {
     min-height: 70vh;
-    padding: 0.8rem;
+    padding: 2.8rem;
   }
 
   @media (max-width: 480px) {
-    padding: 0.5rem;
+    padding: 2.5rem;
   }
 `;
 

@@ -1,8 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaMobile, FaRocket, FaChartLine, FaWifi, FaCog, FaShieldAlt, FaBell, FaCoins, FaPencilRuler, FaTools, FaBolt, FaBrain, FaPlus } from 'react-icons/fa';
+import {
+  FaMobile,
+  FaRocket,
+  FaChartLine,
+  FaWifi,
+  FaCog,
+  FaShieldAlt,
+  FaBell,
+  FaCoins,
+  FaPencilRuler,
+  FaTools,
+  FaBolt,
+  FaBrain,
+  FaPlus,
+} from 'react-icons/fa';
 import Modal from '../../components/Modal';
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG } from '../../config/emailjs';
 
 // Анимации
 const pulse = keyframes`
@@ -58,11 +74,11 @@ const Container = styled.div`
   color: var(--text-primary);
   position: relative;
   overflow: hidden;
-  
+
   @media (max-width: 992px) {
     padding-top: 80px;
   }
-  
+
   @media (max-width: 576px) {
     padding-top: 60px;
   }
@@ -78,12 +94,12 @@ const HeroSection = styled(motion.div)`
   align-items: center;
   overflow: hidden;
   padding: 2rem;
-  
+
   @media (max-width: 992px) {
     padding: 1.5rem;
     min-height: 90vh;
   }
-  
+
   @media (max-width: 576px) {
     padding: 1rem;
     min-height: 85vh;
@@ -96,9 +112,13 @@ const Background = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--bg-primary) 0%,
+    var(--bg-secondary) 100%
+  );
   z-index: -1;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -106,18 +126,30 @@ const Background = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 20% 30%, rgba(94, 234, 212, 0.15) 0%, transparent 25%),
-                radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.15) 0%, transparent 25%);
+    background: radial-gradient(
+        circle at 20% 30%,
+        rgba(94, 234, 212, 0.15) 0%,
+        transparent 25%
+      ),
+      radial-gradient(
+        circle at 80% 70%,
+        rgba(59, 130, 246, 0.15) 0%,
+        transparent 25%
+      );
   }
 `;
 
 const StarField = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  background: radial-gradient(circle at center, transparent 0%, var(--bg-primary) 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    transparent 0%,
+    var(--bg-primary) 100%
+  );
   z-index: -1;
 `;
 
@@ -139,7 +171,12 @@ const Title = styled(motion.h1)`
   text-align: center;
   margin-bottom: 2rem;
   color: transparent;
-  background: linear-gradient(90deg, var(--accent-color), #5eead4, var(--accent-color));
+  background: linear-gradient(
+    90deg,
+    var(--accent-color),
+    #5eead4,
+    var(--accent-color)
+  );
   background-size: 200% auto;
   background-clip: text;
   -webkit-background-clip: text;
@@ -158,12 +195,12 @@ const Title = styled(motion.h1)`
   @media (max-width: 768px) {
     font-size: 2.5rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 2rem;
     margin-bottom: 1rem;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -174,7 +211,7 @@ const Title = styled(motion.h1)`
     height: 3px;
     background: var(--accent-color);
     border-radius: 3px;
-    
+
     @media (max-width: 576px) {
       width: 60px;
       height: 2px;
@@ -202,7 +239,7 @@ const Subtitle = styled(motion.p)`
     padding: 0 1rem;
     margin-bottom: 2rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
@@ -215,17 +252,17 @@ const PhoneContainer = styled(motion.div)`
   position: relative;
   perspective: 1000px;
   margin: 0 auto;
-  
+
   @media (max-width: 992px) {
     width: 250px;
     height: 420px;
   }
-  
+
   @media (max-width: 768px) {
     width: 220px;
     height: 400px;
   }
-  
+
   @media (max-width: 576px) {
     width: 200px;
     height: 350px;
@@ -239,7 +276,11 @@ const Phone = styled(motion.div)`
   transform-style: preserve-3d;
   border-radius: 36px;
   box-shadow: 0 0 50px rgba(94, 234, 212, 0.3);
-  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--bg-secondary) 0%,
+    var(--bg-primary) 100%
+  );
   overflow: hidden;
   animation: ${glow} 4s infinite ease-in-out;
 
@@ -255,7 +296,7 @@ const Phone = styled(motion.div)`
     border-radius: 20px;
     z-index: 2;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -263,7 +304,11 @@ const Phone = styled(motion.div)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(94, 234, 212, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(94, 234, 212, 0.1) 0%,
+      rgba(59, 130, 246, 0.1) 100%
+    );
     z-index: 1;
   }
 `;
@@ -331,7 +376,7 @@ const AppIcon = styled(motion.div)`
 `;
 
 const OrbitingCircle = styled(motion.div)`
-    position: absolute;
+  position: absolute;
   width: 200%;
   height: 200%;
   left: -50%;
@@ -374,19 +419,19 @@ const HeroBenefitsList = styled(motion.div)`
   max-width: 1200px;
   z-index: 1;
   position: relative;
-  
+
   @media (max-width: 992px) {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.2rem;
     margin-top: 3rem;
   }
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 1rem;
     margin-top: 2.5rem;
   }
-  
+
   @media (max-width: 576px) {
     margin-top: 2rem;
   }
@@ -408,7 +453,7 @@ const HeroBenefitItem = styled(motion.div)`
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     transform: translateY(-5px);
   }
-  
+
   @media (max-width: 576px) {
     padding: 1.2rem;
     gap: 0.8rem;
@@ -427,7 +472,7 @@ const HeroBenefitIcon = styled.div`
   color: white;
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
   flex-shrink: 0;
-  
+
   @media (max-width: 576px) {
     width: 40px;
     height: 40px;
@@ -443,7 +488,7 @@ const HeroBenefitTitle = styled.h3`
   font-size: 1.1rem;
   color: white;
   margin-bottom: 0.5rem;
-  
+
   @media (max-width: 576px) {
     font-size: 1rem;
   }
@@ -453,14 +498,18 @@ const HeroBenefitDescription = styled.p`
   color: #9ca3af;
   font-size: 0.9rem;
   line-height: 1.4;
-  
+
   @media (max-width: 576px) {
     font-size: 0.85rem;
   }
 `;
 
 const PWAInfoSection = styled(motion.section)`
-  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--bg-secondary) 0%,
+    var(--bg-primary) 100%
+  );
   position: relative;
   padding: 8rem 2rem;
   overflow: hidden;
@@ -469,11 +518,11 @@ const PWAInfoSection = styled(motion.section)`
   @media (max-width: 992px) {
     padding: 6rem 1.5rem;
   }
-  
+
   @media (max-width: 768px) {
     padding: 5rem 1rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 4rem 0.8rem;
   }
@@ -490,7 +539,7 @@ const PWAInfoSection = styled(motion.section)`
     clip-path: polygon(0 0, 100% 50%, 0 100%);
     transform: scaleX(2);
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -498,8 +547,16 @@ const PWAInfoSection = styled(motion.section)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 70% 20%, rgba(94, 234, 212, 0.1) 0%, transparent 30%),
-                radial-gradient(circle at 30% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 30%);
+    background: radial-gradient(
+        circle at 70% 20%,
+        rgba(94, 234, 212, 0.1) 0%,
+        transparent 30%
+      ),
+      radial-gradient(
+        circle at 30% 70%,
+        rgba(59, 130, 246, 0.1) 0%,
+        transparent 30%
+      );
     z-index: 1;
   }
 `;
@@ -515,16 +572,16 @@ const PWAInfoContainer = styled.div`
   padding: 3rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-  
+
   @media (max-width: 992px) {
     padding: 2.5rem;
   }
-  
+
   @media (max-width: 768px) {
     padding: 2rem;
     border-radius: 16px;
   }
-  
+
   @media (max-width: 576px) {
     padding: 1.5rem;
   }
@@ -543,12 +600,12 @@ const PWAInfoTitle = styled(motion.h2)`
     font-size: 2.5rem;
     margin-bottom: 2.5rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
     margin-bottom: 2rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.7rem;
     margin-bottom: 1.5rem;
@@ -563,7 +620,7 @@ const PWAInfoTitle = styled(motion.h2)`
     height: 4px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
-    
+
     @media (max-width: 576px) {
       width: 60px;
       height: 3px;
@@ -583,16 +640,16 @@ const PWAInfoText = styled(motion.p)`
   line-height: 1.8;
   margin-bottom: 1.5rem;
   color: var(--text-secondary);
-  
+
   @media (max-width: 992px) {
     font-size: 1.1rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1rem;
     line-height: 1.6;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 0.95rem;
   }
@@ -618,29 +675,29 @@ const PWAFeatureItem = styled(motion.li)`
     background: rgba(255, 255, 255, 0.1);
     transform: translateX(10px);
   }
-  
+
   @media (max-width: 992px) {
     font-size: 1.1rem;
     padding: 0.9rem 0.9rem 0.9rem 2.2rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1rem;
     padding: 0.8rem 0.8rem 0.8rem 2rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 0.95rem;
     padding: 0.7rem 0.7rem 0.7rem 1.8rem;
   }
-  
+
   &::before {
     content: '—';
     position: absolute;
     left: 1rem;
     color: var(--accent-color);
     font-weight: bold;
-    
+
     @media (max-width: 576px) {
       left: 0.8rem;
     }
@@ -658,18 +715,18 @@ const PWASummary = styled(motion.p)`
   background: rgba(255, 255, 255, 0.05);
   border-radius: 0 12px 12px 0;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  
+
   @media (max-width: 992px) {
     font-size: 1.3rem;
     padding: 1.3rem 1.8rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1.2rem;
     padding: 1.2rem 1.5rem;
     margin: 2rem 0;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.1rem;
     padding: 1rem 1.2rem;
@@ -687,23 +744,27 @@ const BackgroundShape = styled(motion.div)`
 
 // Стилизация новой секции
 const PWABenefitsSection = styled(motion.section)`
-  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,
+    var(--bg-secondary) 100%
+  );
   position: relative;
   padding: 8rem 2rem;
   overflow: hidden;
-  
+
   @media (max-width: 992px) {
     padding: 6rem 1.5rem;
   }
-  
+
   @media (max-width: 768px) {
     padding: 5rem 1rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 4rem 0.8rem;
   }
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -731,22 +792,22 @@ const PWABenefitsTitle = styled(motion.h2)`
   position: relative;
   display: inline-block;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  
+
   @media (max-width: 992px) {
     font-size: 2.5rem;
     margin-bottom: 3rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
     margin-bottom: 2.5rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.7rem;
     margin-bottom: 2rem;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -756,7 +817,7 @@ const PWABenefitsTitle = styled(motion.h2)`
     height: 4px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
-    
+
     @media (max-width: 576px) {
       width: 80px;
       height: 3px;
@@ -769,19 +830,19 @@ const PWABenefitCardContainer = styled(motion.div)`
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2rem;
   margin-bottom: 4rem;
-  
+
   @media (max-width: 992px) {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.5rem;
     margin-bottom: 3rem;
   }
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 1.2rem;
     margin-bottom: 2.5rem;
   }
-  
+
   @media (max-width: 576px) {
     margin-bottom: 2rem;
   }
@@ -796,19 +857,19 @@ const PWABenefitCard = styled(motion.div)`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  
+
   @media (max-width: 992px) {
     padding: 1.8rem;
   }
-  
+
   @media (max-width: 768px) {
     padding: 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 1.2rem;
   }
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -816,7 +877,11 @@ const PWABenefitCard = styled(motion.div)`
     height: 100%;
     top: 0;
     left: 0;
-    background: linear-gradient(135deg, rgba(94, 234, 212, 0.05) 0%, transparent 50%);
+    background: linear-gradient(
+      135deg,
+      rgba(94, 234, 212, 0.05) 0%,
+      transparent 50%
+    );
     z-index: 0;
   }
 `;
@@ -826,7 +891,7 @@ const PWABenefitIconWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1.5rem;
-  
+
   @media (max-width: 576px) {
     margin-bottom: 1.2rem;
   }
@@ -836,7 +901,11 @@ const PWABenefitIcon = styled.div`
   width: 60px;
   height: 60px;
   border-radius: 14px;
-  background: linear-gradient(135deg, var(--accent-color) 0%, rgba(59, 130, 246, 0.8) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent-color) 0%,
+    rgba(59, 130, 246, 0.8) 100%
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -845,25 +914,29 @@ const PWABenefitIcon = styled.div`
   box-shadow: 0 8px 20px rgba(94, 234, 212, 0.3);
   position: relative;
   z-index: 1;
-  
+
   @media (max-width: 992px) {
     width: 55px;
     height: 55px;
     font-size: 1.6rem;
   }
-  
+
   @media (max-width: 576px) {
     width: 50px;
     height: 50px;
     font-size: 1.4rem;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.2) 0%,
+      transparent 100%
+    );
     border-radius: inherit;
     z-index: -1;
   }
@@ -874,11 +947,11 @@ const PWABenefitNumber = styled.span`
   font-weight: 800;
   color: rgba(255, 255, 255, 0.08);
   font-family: sans-serif;
-  
+
   @media (max-width: 992px) {
     font-size: 2.5rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 2rem;
   }
@@ -894,15 +967,15 @@ const PWABenefitCardTitle = styled.h3`
   font-weight: 600;
   margin-bottom: 1rem;
   color: var(--text-primary);
-  
+
   @media (max-width: 992px) {
     font-size: 1.3rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1.2rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.1rem;
     margin-bottom: 0.8rem;
@@ -913,16 +986,16 @@ const PWABenefitCardDescription = styled.p`
   font-size: 1.05rem;
   line-height: 1.7;
   color: var(--text-secondary);
-  
+
   @media (max-width: 992px) {
     font-size: 1rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 0.95rem;
     line-height: 1.6;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 0.9rem;
   }
@@ -932,7 +1005,11 @@ const PWACtaButton = styled(motion.button)`
   padding: 1.2rem 3rem;
   font-size: 1.2rem;
   font-weight: 600;
-  background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.9));
+  background: linear-gradient(
+    90deg,
+    var(--accent-color),
+    rgba(59, 130, 246, 0.9)
+  );
   color: white;
   border: none;
   border-radius: 12px;
@@ -948,12 +1025,12 @@ const PWACtaButton = styled(motion.button)`
     padding: 1.1rem 2.8rem;
     font-size: 1.1rem;
   }
-  
+
   @media (max-width: 768px) {
     padding: 1rem 2.5rem;
     font-size: 1rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 0.9rem 2rem;
     font-size: 0.95rem;
@@ -966,10 +1043,15 @@ const PWACtaButton = styled(motion.button)`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
     transition: all 0.6s ease;
   }
-  
+
   &:hover::before {
     left: 100%;
   }
@@ -981,26 +1063,30 @@ const PWABenefitsDecoration = styled.div`
   right: 5%;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(94, 234, 212, 0.1) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(94, 234, 212, 0.1) 0%,
+    transparent 70%
+  );
   border-radius: 50%;
   filter: blur(40px);
   z-index: 0;
-  
+
   @media (max-width: 992px) {
     width: 250px;
     height: 250px;
   }
-  
+
   @media (max-width: 768px) {
     width: 200px;
     height: 200px;
   }
-  
+
   @media (max-width: 576px) {
     width: 150px;
     height: 150px;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -1008,15 +1094,19 @@ const PWABenefitsDecoration = styled.div`
     left: -30%;
     width: 200px;
     height: 200px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(59, 130, 246, 0.1) 0%,
+      transparent 70%
+    );
     border-radius: 50%;
     filter: blur(40px);
-    
+
     @media (max-width: 768px) {
       width: 150px;
       height: 150px;
     }
-    
+
     @media (max-width: 576px) {
       width: 100px;
       height: 100px;
@@ -1028,17 +1118,21 @@ const PWABenefitsDecoration = styled.div`
 const PWAServicesSection = styled(motion.section)`
   position: relative;
   padding: 8rem 2rem;
-  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--bg-secondary) 0%,
+    var(--bg-primary) 100%
+  );
   overflow: hidden;
-  
+
   @media (max-width: 992px) {
     padding: 6rem 1.5rem;
   }
-  
+
   @media (max-width: 768px) {
     padding: 5rem 1rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 4rem 0.8rem;
   }
@@ -1053,11 +1147,11 @@ const ServicesWave = styled.div`
   background: var(--bg-secondary);
   clip-path: polygon(0 0, 100% 0, 100% 40%, 0 100%);
   z-index: 1;
-  
+
   @media (max-width: 768px) {
     height: 80px;
   }
-  
+
   @media (max-width: 576px) {
     height: 60px;
   }
@@ -1083,12 +1177,12 @@ const PWAServicesTitle = styled(motion.h2)`
     font-size: 2.5rem;
     margin-bottom: 3rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
     margin-bottom: 2.5rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.7rem;
     margin-bottom: 2rem;
@@ -1103,7 +1197,7 @@ const PWAServicesTitle = styled(motion.h2)`
     height: 4px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
-    
+
     @media (max-width: 576px) {
       width: 80px;
       height: 3px;
@@ -1120,31 +1214,35 @@ const PWAServicesContent = styled.div`
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
-  
+
   @media (max-width: 992px) {
     padding: 2.5rem;
   }
-  
+
   @media (max-width: 768px) {
     padding: 2rem;
     border-radius: 16px;
   }
-  
+
   @media (max-width: 576px) {
     padding: 1.5rem;
   }
-  
+
   &::before {
     content: '';
     position: absolute;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(94, 234, 212, 0.05) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(94, 234, 212, 0.05) 0%,
+      transparent 70%
+    );
     top: -200px;
     right: -200px;
     border-radius: 50%;
     z-index: 0;
-    
+
     @media (max-width: 768px) {
       width: 250px;
       height: 250px;
@@ -1161,24 +1259,24 @@ const PWAServicesIntro = styled(motion.p)`
   margin-bottom: 3rem;
   position: relative;
   z-index: 1;
-  
+
   @media (max-width: 992px) {
     font-size: 1.2rem;
     margin-bottom: 2.5rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1.1rem;
     margin-bottom: 2rem;
     line-height: 1.6;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1rem;
     margin-bottom: 1.5rem;
   }
 `;
-  
+
 const ServicesHeading = styled(motion.h3)`
   font-size: 1.8rem;
   font-weight: 600;
@@ -1186,17 +1284,17 @@ const ServicesHeading = styled(motion.h3)`
   margin-bottom: 2rem;
   position: relative;
   z-index: 1;
-  
+
   @media (max-width: 992px) {
     font-size: 1.6rem;
     margin-bottom: 1.8rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1.4rem;
     margin-bottom: 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.2rem;
     margin-bottom: 1.2rem;
@@ -1209,11 +1307,11 @@ const ServicesList = styled(motion.ul)`
   margin: 0 0 3rem 0;
   position: relative;
   z-index: 1;
-  
+
   @media (max-width: 768px) {
     margin-bottom: 2.5rem;
   }
-  
+
   @media (max-width: 576px) {
     margin-bottom: 2rem;
   }
@@ -1232,17 +1330,17 @@ const ServiceItem = styled(motion.li)`
     background: rgba(255, 255, 255, 0.07);
     transform: translateX(10px);
   }
-  
+
   @media (max-width: 992px) {
     padding: 0.9rem;
     margin-bottom: 1.3rem;
   }
-  
+
   @media (max-width: 768px) {
     padding: 0.8rem;
     margin-bottom: 1.2rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 0.7rem;
     margin-bottom: 1rem;
@@ -1262,29 +1360,29 @@ const ServiceCircle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   @media (max-width: 992px) {
     width: 22px;
     height: 22px;
   }
-  
+
   @media (max-width: 768px) {
     width: 20px;
     height: 20px;
   }
-  
+
   @media (max-width: 576px) {
     width: 18px;
     height: 18px;
   }
-  
+
   &::before {
     content: '';
     width: 10px;
     height: 10px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.9);
-    
+
     @media (max-width: 576px) {
       width: 8px;
       height: 8px;
@@ -1297,16 +1395,16 @@ const ServiceText = styled.p`
   line-height: 1.6;
   color: var(--text-secondary);
   flex: 1;
-  
+
   @media (max-width: 992px) {
     font-size: 1.1rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1rem;
     line-height: 1.5;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 0.95rem;
   }
@@ -1318,7 +1416,11 @@ const PWAServiceSummary = styled(motion.p)`
   line-height: 1.7;
   color: var(--text-primary);
   padding: 2rem;
-  background: linear-gradient(90deg, rgba(94, 234, 212, 0.1), rgba(59, 130, 246, 0.1));
+  background: linear-gradient(
+    90deg,
+    rgba(94, 234, 212, 0.1),
+    rgba(59, 130, 246, 0.1)
+  );
   border-radius: 12px;
   margin: 2rem 0 3rem;
   position: relative;
@@ -1329,14 +1431,14 @@ const PWAServiceSummary = styled(motion.p)`
     padding: 1.8rem;
     margin: 1.8rem 0 2.5rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1.3rem;
     padding: 1.5rem;
     margin: 1.5rem 0 2rem;
     line-height: 1.6;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.1rem;
     padding: 1.2rem;
@@ -1352,20 +1454,20 @@ const PWAServiceSummary = styled(motion.p)`
     font-size: 4rem;
     color: rgba(94, 234, 212, 0.2);
     font-family: serif;
-    
+
     @media (max-width: 768px) {
       font-size: 3rem;
       top: 8px;
       left: 12px;
     }
-    
+
     @media (max-width: 576px) {
       font-size: 2.5rem;
       top: 5px;
       left: 10px;
     }
   }
-  
+
   &::after {
     content: '"';
     position: absolute;
@@ -1374,13 +1476,13 @@ const PWAServiceSummary = styled(motion.p)`
     font-size: 4rem;
     color: rgba(94, 234, 212, 0.2);
     font-family: serif;
-    
+
     @media (max-width: 768px) {
       font-size: 3rem;
       bottom: 8px;
       right: 12px;
     }
-    
+
     @media (max-width: 576px) {
       font-size: 2.5rem;
       bottom: 5px;
@@ -1395,9 +1497,16 @@ const ServicesBgDecoration = styled.div`
   height: 100%;
   top: 0;
   left: 0;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(94, 234, 212, 0.03) 0%, transparent 25%),
-    radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.03) 0%, transparent 25%);
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(94, 234, 212, 0.03) 0%,
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(59, 130, 246, 0.03) 0%,
+      transparent 25%
+    );
   z-index: 0;
 `;
 
@@ -1408,7 +1517,11 @@ const ServicesBgGlow = styled.div`
   transform: translateX(-50%);
   width: 500px;
   height: 300px;
-  background: radial-gradient(ellipse, rgba(94, 234, 212, 0.1) 0%, transparent 70%);
+  background: radial-gradient(
+    ellipse,
+    rgba(94, 234, 212, 0.1) 0%,
+    transparent 70%
+  );
   border-radius: 50%;
   filter: blur(50px);
   z-index: 0;
@@ -1418,18 +1531,13 @@ const ServicesBgGlow = styled.div`
 const PWAWhyUsSection = styled(motion.section)`
   position: relative;
   padding: 120px 0;
-  background: linear-gradient(
-    135deg,
-    #0f0c1a 0%,
-    #1a1625 50%,
-    #0f0c1a 100%
-  );
+  background: linear-gradient(135deg, #0f0c1a 0%, #1a1625 50%, #0f0c1a 100%);
   overflow: hidden;
-  
+
   @media (max-width: 992px) {
     padding: 80px 0;
   }
-  
+
   @media (max-width: 576px) {
     padding: 60px 0;
   }
@@ -1439,17 +1547,109 @@ const PWAWhyUsSection = styled(motion.section)`
 const PWAPage = () => {
   // Add modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+  const [automationFormData, setAutomationFormData] = useState({
+    from_name: '',
+    phone: '',
+    from_email: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState('');
+  const formRef = useRef(null);
+
+  const handleInputChange = e => {
+    const { name, value } = e.target;
+    setAutomationFormData(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+
+    // Валідація обов'язкових полів
+    const requiredFields = ['from_name', 'from_email'];
+    const emptyFields = requiredFields.filter(
+      field => !automationFormData[field].trim()
+    );
+
+    if (emptyFields.length > 0) {
+      setError("Будь ласка, заповніть всі обов'язкові поля (Ім'я, Email)");
+      return;
+    }
+
+    // Валідація email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(automationFormData.from_email)) {
+      setError('Будь ласка, введіть коректний email адрес');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      // Створюємо повідомлення для форми автоматизації
+      const templateParams = {
+        from_name: automationFormData.from_name,
+        from_email: automationFormData.from_email,
+        phone: automationFormData.phone || 'Не вказано',
+        service: 'PWA розробка',
+        message: `Заявка на розробку PWA від ${
+          automationFormData.from_name
+        }. Телефон: ${automationFormData.phone || 'Не вказано'}`,
+      };
+
+      // Відправка через EmailJS
+      const result = await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        templateParams,
+        EMAILJS_CONFIG.USER_ID
+      );
+
+      console.log('PWA form sent successfully:', result);
+      setIsSubmitted(true);
+
+      // Логування для аналітики
+      console.log('PWA lead generated:', {
+        name: automationFormData.from_name,
+        email: automationFormData.from_email,
+        phone: automationFormData.phone,
+        timestamp: new Date().toISOString(),
+        service: 'PWA розробка',
+      });
+
+      // Очищуємо форму після успішної відправки
+      setTimeout(() => {
+        setAutomationFormData({
+          from_name: '',
+          phone: '',
+          from_email: '',
+        });
+        setIsSubmitted(false);
+      }, 3000);
+    } catch (err) {
+      console.error('PWA form sending failed:', err);
+      setError(
+        "Помилка відправки повідомлення. Спробуйте ще раз або зв'яжіться з нами безпосередньо."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   // Modal functions
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-  
+
   const [stars, setStars] = useState([]);
   // const [orbitingDots, setOrbitingDots] = useState([]);
   const [backgroundShapes, setBackgroundShapes] = useState([]);
   // Добавляем состояние для аккордеона FAQ
   const [expandedFaqs, setExpandedFaqs] = useState([]);
-  
+
   useEffect(() => {
     // Генерация звезд для фона
     const generatedStars = [];
@@ -1460,22 +1660,22 @@ const PWAPage = () => {
         opacity: Math.random() * 0.5 + 0.1,
         top: Math.random() * 100,
         left: Math.random() * 100,
-        duration: Math.random() * 3 + 1
+        duration: Math.random() * 3 + 1,
       });
     }
     setStars(generatedStars);
-    
+
     // Генерация вращающихся точек
     const dots = [];
     for (let i = 0; i < 5; i++) {
       dots.push({
         id: i,
         top: Math.random() * 100,
-        left: Math.random() * 100
+        left: Math.random() * 100,
       });
     }
     // setOrbitingDots(dots);
-    
+
     // Генерация фоновых форм
     const shapes = [];
     for (let i = 0; i < 5; i++) {
@@ -1485,73 +1685,79 @@ const PWAPage = () => {
         top: Math.random() * 100,
         left: Math.random() * 100,
         duration: Math.random() * 20 + 10,
-        delay: Math.random() * 5
+        delay: Math.random() * 5,
       });
     }
     setBackgroundShapes(shapes);
   }, []);
-  
+
   // Функция для переключения состояния аккордеона
-  const toggleFaq = (index) => {
+  const toggleFaq = index => {
     if (expandedFaqs.includes(index)) {
       setExpandedFaqs(expandedFaqs.filter(item => item !== index));
     } else {
       setExpandedFaqs([...expandedFaqs, index]);
     }
   };
-  
+
   const benefitsData = [
     {
       icon: <FaChartLine />,
-      title: "Більше клієнтів",
-      description: "Завдяки PWA доступ до вашого продукту стає простішим, що збільшує охоплення аудиторії."
+      title: 'Більше клієнтів',
+      description:
+        'Завдяки PWA доступ до вашого продукту стає простішим, що збільшує охоплення аудиторії.',
     },
     {
       icon: <FaMobile />,
-      title: "Краще юзер-експірієнс",
-      description: "Швидкість, зручність та інтуїтивний інтерфейс забезпечують найкращий досвід користувача."
+      title: 'Краще юзер-експірієнс',
+      description:
+        'Швидкість, зручність та інтуїтивний інтерфейс забезпечують найкращий досвід користувача.',
     },
     {
       icon: <FaRocket />,
-      title: "Швидший шлях до прибутку",
-      description: "Економія на розробці нативних додатків та швидше введення продукту на ринок."
+      title: 'Швидший шлях до прибутку',
+      description:
+        'Економія на розробці нативних додатків та швидше введення продукту на ринок.',
     },
     {
       icon: <FaWifi />,
-      title: "Офлайн-режим",
-      description: "PWA доступні навіть за відсутності інтернет-з'єднання завдяки кешуванню."
+      title: 'Офлайн-режим',
+      description:
+        "PWA доступні навіть за відсутності інтернет-з'єднання завдяки кешуванню.",
     },
     {
       icon: <FaCog />,
-      title: "Автоматичні оновлення",
-      description: "Користувачі завжди отримують найновішу версію без необхідності ручного оновлення."
+      title: 'Автоматичні оновлення',
+      description:
+        'Користувачі завжди отримують найновішу версію без необхідності ручного оновлення.',
     },
     {
       icon: <FaShieldAlt />,
-      title: "Підвищена безпека",
-      description: "HTTPS-з'єднання та додаткові рівні захисту для користувача та його даних."
-    }
+      title: 'Підвищена безпека',
+      description:
+        "HTTPS-з'єднання та додаткові рівні захисту для користувача та його даних.",
+    },
   ];
-  
+
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { 
+    visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
-  
+
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
+      transition: { duration: 0.8, ease: 'easeOut' },
+    },
   };
-  
+
   // const phoneVariants = {
   //   initial: { rotateY: 0 },
   //   animate: {
@@ -1574,17 +1780,17 @@ const PWAPage = () => {
         <Background />
         <StarField>
           {stars.map(star => (
-            <Star 
-              key={star.id} 
-              size={star.size} 
-              opacity={star.opacity} 
-              top={star.top} 
-              left={star.left} 
-              duration={star.duration} 
+            <Star
+              key={star.id}
+              size={star.size}
+              opacity={star.opacity}
+              top={star.top}
+              left={star.left}
+              duration={star.duration}
             />
           ))}
         </StarField>
-        
+
         <Title
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -1592,16 +1798,17 @@ const PWAPage = () => {
         >
           PWA: Майбутнє веб-додатків
         </Title>
-        
+
         <Subtitle
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          Прогресивні веб-додатки (PWA) — це поєднання найкращих якостей сайтів і мобільних застосунків.
-          Вони працюють швидко, надійно й можуть встановлюватися на смартфон без походу в App Store чи Google Play.
+          Прогресивні веб-додатки (PWA) — це поєднання найкращих якостей сайтів
+          і мобільних застосунків. Вони працюють швидко, надійно й можуть
+          встановлюватися на смартфон без походу в App Store чи Google Play.
         </Subtitle>
-        
+
         <PhoneContainer
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -1614,7 +1821,7 @@ const PWAPage = () => {
           >
             <OrbitingCircle />
             <OrbitingCircleInner />
-            
+
             <PhoneScreen
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -1622,15 +1829,15 @@ const PWAPage = () => {
             >
               <PhoneContent>
                 <IconCircle
-              animate={{ 
+                  animate={{
                     scale: [1, 1.1, 1],
-                    rotateZ: [0, 10, -10, 0]
-              }}
-              transition={{
+                    rotateZ: [0, 10, -10, 0],
+                  }}
+                  transition={{
                     duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
                 >
                   <FaRocket />
                 </IconCircle>
@@ -1650,42 +1857,48 @@ const PWAPage = () => {
                   Швидкість та надійність
                 </motion.p>
               </PhoneContent>
-              
+
               <PhoneApps>
-                <AppIcon whileHover={{ scale: 1.2 }}><FaChartLine /></AppIcon>
-                <AppIcon whileHover={{ scale: 1.2 }}><FaMobile /></AppIcon>
-                <AppIcon whileHover={{ scale: 1.2 }}><FaRocket /></AppIcon>
+                <AppIcon whileHover={{ scale: 1.2 }}>
+                  <FaChartLine />
+                </AppIcon>
+                <AppIcon whileHover={{ scale: 1.2 }}>
+                  <FaMobile />
+                </AppIcon>
+                <AppIcon whileHover={{ scale: 1.2 }}>
+                  <FaRocket />
+                </AppIcon>
               </PhoneApps>
             </PhoneScreen>
           </Phone>
         </PhoneContainer>
-        
+
         <HeroBenefitsList
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.3 }}
         >
           {benefitsData.slice(0, 3).map((benefit, index) => (
-            <HeroBenefitItem
-              key={index}
-              whileHover={{ scale: 1.02 }}
-            >
-              <HeroBenefitIcon>
-                {benefit.icon}
-              </HeroBenefitIcon>
+            <HeroBenefitItem key={index} whileHover={{ scale: 1.02 }}>
+              <HeroBenefitIcon>{benefit.icon}</HeroBenefitIcon>
               <HeroBenefitContent>
                 <HeroBenefitTitle>{benefit.title}</HeroBenefitTitle>
-                <HeroBenefitDescription>{benefit.description}</HeroBenefitDescription>
+                <HeroBenefitDescription>
+                  {benefit.description}
+                </HeroBenefitDescription>
               </HeroBenefitContent>
             </HeroBenefitItem>
           ))}
         </HeroBenefitsList>
-        
+
         <motion.button
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.6 }}
-          whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(59, 130, 246, 0.7)' }}
+          whileHover={{
+            scale: 1.05,
+            boxShadow: '0 0 20px rgba(59, 130, 246, 0.7)',
+          }}
           whileTap={{ scale: 0.95 }}
           onClick={openModal}
           style={{
@@ -1699,19 +1912,19 @@ const PWAPage = () => {
             cursor: 'pointer',
             marginTop: '3rem',
             zIndex: 1,
-            position: 'relative'
+            position: 'relative',
           }}
         >
           Дізнатися більше
         </motion.button>
       </HeroSection>
-      
+
       <PWAInfoSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        {backgroundShapes.map((shape) => (
+        {backgroundShapes.map(shape => (
           <BackgroundShape
             key={shape.id}
             style={{
@@ -1729,11 +1942,11 @@ const PWAPage = () => {
               duration: shape.duration,
               repeat: Infinity,
               delay: shape.delay,
-              ease: "linear"
+              ease: 'linear',
             }}
           />
         ))}
-        
+
         <PWAInfoContainer>
           <PWAInfoTitle
             initial={{ opacity: 0, x: -20 }}
@@ -1742,48 +1955,50 @@ const PWAPage = () => {
           >
             Що таке PWA (Progressive Web Apps)?
           </PWAInfoTitle>
-          
+
           <PWAInfoContent>
             <PWAInfoText
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              PWA — це сучасний формат веб-додатків, який поєднує переваги сайтів і мобільних застосунків. 
-              Вони працюють прямо в браузері, але при цьому можуть:
+              PWA — це сучасний формат веб-додатків, який поєднує переваги
+              сайтів і мобільних застосунків. Вони працюють прямо в браузері,
+              але при цьому можуть:
             </PWAInfoText>
-            
+
             <PWAFeaturesList>
               {[
                 'запускатися офлайн',
                 'надсилати push-сповіщення',
                 'встановлюватися на головний екран смартфона',
-                'працювати швидко навіть при поганому інтернеті'
+                'працювати швидко навіть при поганому інтернеті',
               ].map((feature, index) => (
                 <PWAFeatureItem
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 + (index * 0.15) }}
+                  transition={{ duration: 0.5, delay: 0.4 + index * 0.15 }}
                   whileHover={{ x: 10 }}
                 >
                   {feature}
                 </PWAFeatureItem>
               ))}
             </PWAFeaturesList>
-            
+
             <PWASummary
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
               Простіше кажучи — це сайт, який поводиться як застосунок.
-              Користувач не помічає різниці, а бізнес отримує максимум охоплення без витрат на розробку окремих мобільних платформ.
+              Користувач не помічає різниці, а бізнес отримує максимум охоплення
+              без витрат на розробку окремих мобільних платформ.
             </PWASummary>
           </PWAInfoContent>
         </PWAInfoContainer>
       </PWAInfoSection>
-      
+
       <PWABenefitsSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -1797,7 +2012,7 @@ const PWAPage = () => {
           >
             Переваги PWA для бізнесу
           </PWABenefitsTitle>
-          
+
           <PWABenefitCardContainer
             variants={containerVariants}
             initial="hidden"
@@ -1806,48 +2021,54 @@ const PWAPage = () => {
             {[
               {
                 icon: <FaMobile />,
-                number: "01",
-                title: "Універсальність",
-                description: "PWA працює на будь-якому пристрої — Android, iOS, Windows. Один додаток охоплює всю аудиторію без додаткових витрат на кілька платформ."
+                number: '01',
+                title: 'Універсальність',
+                description:
+                  'PWA працює на будь-якому пристрої — Android, iOS, Windows. Один додаток охоплює всю аудиторію без додаткових витрат на кілька платформ.',
               },
               {
                 icon: <FaRocket />,
-                number: "02",
-                title: "Встановлення без App Store",
-                description: "Користувачі можуть додати додаток на головний екран у два кліки — без реєстрацій, маркетів і оновлень."
+                number: '02',
+                title: 'Встановлення без App Store',
+                description:
+                  'Користувачі можуть додати додаток на головний екран у два кліки — без реєстрацій, маркетів і оновлень.',
               },
               {
                 icon: <FaWifi />,
-                number: "03",
-                title: "Робота офлайн",
-                description: "Навіть без інтернету ваші клієнти зможуть переглядати важливі сторінки, оформлювати замовлення чи залишати заявки."
+                number: '03',
+                title: 'Робота офлайн',
+                description:
+                  'Навіть без інтернету ваші клієнти зможуть переглядати важливі сторінки, оформлювати замовлення чи залишати заявки.',
               },
               {
                 icon: <FaChartLine />,
-                number: "04",
-                title: "Вища швидкість завантаження",
-                description: "PWA кешує дані і працює в рази швидше, ніж звичайний сайт. А швидкість = краща конверсія."
+                number: '04',
+                title: 'Вища швидкість завантаження',
+                description:
+                  'PWA кешує дані і працює в рази швидше, ніж звичайний сайт. А швидкість = краща конверсія.',
               },
               {
                 icon: <FaBell />,
-                number: "05",
-                title: "Push-сповіщення",
-                description: "Нагадуйте про акції, новинки чи брошені кошики напряму на екран смартфона — як у мобільних застосунках."
+                number: '05',
+                title: 'Push-сповіщення',
+                description:
+                  'Нагадуйте про акції, новинки чи брошені кошики напряму на екран смартфона — як у мобільних застосунках.',
               },
               {
                 icon: <FaCoins />,
-                number: "06",
-                title: "Менше витрат на розробку",
-                description: "Не потрібно створювати й підтримувати окремі застосунки для iOS та Android — одна PWA покриває все."
-              }
+                number: '06',
+                title: 'Менше витрат на розробку',
+                description:
+                  'Не потрібно створювати й підтримувати окремі застосунки для iOS та Android — одна PWA покриває все.',
+              },
             ].map((benefit, index) => (
               <PWABenefitCard
                 key={index}
                 variants={itemVariants}
-                whileHover={{ 
-                  y: -10, 
+                whileHover={{
+                  y: -10,
                   boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3)',
-                  borderColor: 'rgba(94, 234, 212, 0.4)'
+                  borderColor: 'rgba(94, 234, 212, 0.4)',
                 }}
               >
                 <PWABenefitIconWrapper>
@@ -1856,37 +2077,39 @@ const PWAPage = () => {
                 </PWABenefitIconWrapper>
                 <PWABenefitContent>
                   <PWABenefitCardTitle>{benefit.title}</PWABenefitCardTitle>
-                  <PWABenefitCardDescription>{benefit.description}</PWABenefitCardDescription>
+                  <PWABenefitCardDescription>
+                    {benefit.description}
+                  </PWABenefitCardDescription>
                 </PWABenefitContent>
               </PWABenefitCard>
             ))}
           </PWABenefitCardContainer>
-          
+
           <PWACtaButton
-            whileHover={{ 
-              scale: 1.05, 
-              boxShadow: '0 0 25px rgba(94, 234, 212, 0.5)' 
+            whileHover={{
+              scale: 1.05,
+              boxShadow: '0 0 25px rgba(94, 234, 212, 0.5)',
             }}
             whileTap={{ scale: 0.98 }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
             onClick={openModal}
           >
             Замовити PWA-розробку
           </PWACtaButton>
         </PWABenefitsContainer>
-        
+
         <PWABenefitsDecoration />
       </PWABenefitsSection>
-      
+
       <PWAServicesSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
+        transition={{ duration: 0.8 }}
+      >
         <ServicesWave />
-        
+
         <PWAServicesContainer>
           <PWAServicesTitle
             initial={{ opacity: 0, x: -20 }}
@@ -1895,18 +2118,19 @@ const PWAPage = () => {
           >
             Наші послуги з розробки PWA
           </PWAServicesTitle>
-          
+
           <PWAServicesContent>
             <PWAServicesIntro
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
-              Ми створюємо прогресивні веб-додатки під ключ — від ідеї до запуску. 
-              Вся розробка повністю кастомна, без шаблонів і конструкторів. 
-              Ви отримаєте унікальний продукт, який ідеально відповідає вашим бізнес-цілям.
+              Ми створюємо прогресивні веб-додатки під ключ — від ідеї до
+              запуску. Вся розробка повністю кастомна, без шаблонів і
+              конструкторів. Ви отримаєте унікальний продукт, який ідеально
+              відповідає вашим бізнес-цілям.
             </PWAServicesIntro>
-            
+
             <ServicesHeading
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -1914,20 +2138,20 @@ const PWAPage = () => {
             >
               Що входить у наші послуги:
             </ServicesHeading>
-            
+
             <ServicesList
               variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
               {[
-                "Аналіз ніші, конкурентів та потреб користувачів",
-                "Прототипування та розробка логічної структури", 
-                "UI/UX-дизайн, адаптивність під різні пристрої",
-                "Верстка та програмування з використанням сучасних технологій (JS, HTML5, Service Workers тощо)",
-                "Інтеграція офлайн-функціоналу, push-сповіщень, кешування",
-                "SEO-оптимізація, аналітика, тестування",
-                "Техпідтримка та розвиток проєкту після запуску"
+                'Аналіз ніші, конкурентів та потреб користувачів',
+                'Прототипування та розробка логічної структури',
+                'UI/UX-дизайн, адаптивність під різні пристрої',
+                'Верстка та програмування з використанням сучасних технологій (JS, HTML5, Service Workers тощо)',
+                'Інтеграція офлайн-функціоналу, push-сповіщень, кешування',
+                'SEO-оптимізація, аналітика, тестування',
+                'Техпідтримка та розвиток проєкту після запуску',
               ].map((service, index) => (
                 <ServiceItem
                   key={index}
@@ -1941,30 +2165,30 @@ const PWAPage = () => {
                 </ServiceItem>
               ))}
             </ServicesList>
-            
+
             <PWAServiceSummary
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              Ми не просто робимо "додаток у браузері" — ми створюємо інструмент, який реально працює на результат.
+              Ми не просто робимо "додаток у браузері" — ми створюємо
+              інструмент, який реально працює на результат.
             </PWAServiceSummary>
-            
           </PWAServicesContent>
-          
+
           <ServicesBgDecoration />
         </PWAServicesContainer>
-        
+
         <ServicesBgGlow />
       </PWAServicesSection>
-      
+
       <PWAWhyUsSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
         <WhyUsDiagonal />
-        
+
         <WhyUsContainer>
           <WhyUsTitle
             initial={{ opacity: 0, x: -20 }}
@@ -1973,7 +2197,7 @@ const PWAPage = () => {
           >
             Чому варто обрати нас?
           </WhyUsTitle>
-          
+
           <WhyUsCardsContainer
             variants={containerVariants}
             initial="hidden"
@@ -1982,51 +2206,53 @@ const PWAPage = () => {
             {[
               {
                 icon: <FaPencilRuler />,
-                title: "Кастомна розробка під ваш бізнес",
-                description: "Ми не працюємо з шаблонами. Кожен PWA — це унікальний продукт, створений з урахуванням вашої ніші, цілей і клієнтів."
+                title: 'Кастомна розробка під ваш бізнес',
+                description:
+                  'Ми не працюємо з шаблонами. Кожен PWA — це унікальний продукт, створений з урахуванням вашої ніші, цілей і клієнтів.',
               },
               {
                 icon: <FaTools />,
-                title: "Повний цикл — від ідеї до запуску",
-                description: "Ви отримаєте повноцінний веб-додаток з усіма необхідними функціями. Ми беремо на себе весь процес — аналіз, дизайн, код, тестування, SEO."
+                title: 'Повний цикл — від ідеї до запуску',
+                description:
+                  'Ви отримаєте повноцінний веб-додаток з усіма необхідними функціями. Ми беремо на себе весь процес — аналіз, дизайн, код, тестування, SEO.',
               },
               {
                 icon: <FaBolt />,
-                title: "Швидкість, якість, результат",
-                description: "Ми створюємо швидкі, стабільні й оптимізовані PWA, які відповідають останнім стандартам вебу та реально приносять результат."
+                title: 'Швидкість, якість, результат',
+                description:
+                  'Ми створюємо швидкі, стабільні й оптимізовані PWA, які відповідають останнім стандартам вебу та реально приносять результат.',
               },
               {
                 icon: <FaBrain />,
-                title: "Досвід і експертиза",
-                description: "Наша команда має глибоку технічну експертизу та розуміє, як бізнесу потрібні не просто технології, а рішення, що працюють."
-              }
+                title: 'Досвід і експертиза',
+                description:
+                  'Наша команда має глибоку технічну експертизу та розуміє, як бізнесу потрібні не просто технології, а рішення, що працюють.',
+              },
             ].map((item, index) => (
               <WhyUsCard
                 key={index}
                 variants={itemVariants}
                 initial="hidden"
                 animate="visible"
-                whileHover={{ 
+                whileHover={{
                   y: -15,
                   boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
                   rotateY: 5,
-                  rotateX: -5
+                  rotateX: -5,
                 }}
               >
                 <WhyUsCardGlow />
-                <WhyUsIconWrapper>
-                  {item.icon}
-                </WhyUsIconWrapper>
+                <WhyUsIconWrapper>{item.icon}</WhyUsIconWrapper>
                 <WhyUsCardTitle>{item.title}</WhyUsCardTitle>
                 <WhyUsCardDescription>{item.description}</WhyUsCardDescription>
                 <CardAccent />
               </WhyUsCard>
             ))}
           </WhyUsCardsContainer>
-          
+
           <WhyUsAction
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             <PulsingButton
@@ -2039,21 +2265,21 @@ const PWAPage = () => {
             </PulsingButton>
           </WhyUsAction>
         </WhyUsContainer>
-        
+
         <WhyUsBackgroundShapes />
       </PWAWhyUsSection>
-      
+
       <PWACtaSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
         <CtaWaveTop />
-        
+
         <CtaContainer>
           <CtaGlowCircle className="circle-1" />
           <CtaGlowCircle className="circle-2" />
-          
+
           <CtaContent>
             <CtaTitle
               initial={{ opacity: 0, y: -20 }}
@@ -2062,17 +2288,17 @@ const PWAPage = () => {
             >
               Замовте PWA для вашого бізнесу вже сьогодні!
             </CtaTitle>
-            
+
             <CtaText
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Хочете швидкий, зручний та ефективний веб-додаток, який працює на всіх пристроях 
-              і реально приносить клієнтів? Ми створимо для вас саме такий PWA — індивідуальний, 
-              сучасний і готовий до росту.
+              Хочете швидкий, зручний та ефективний веб-додаток, який працює на
+              всіх пристроях і реально приносить клієнтів? Ми створимо для вас
+              саме такий PWA — індивідуальний, сучасний і готовий до росту.
             </CtaText>
-            
+
             <CtaHighlight
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -2080,68 +2306,129 @@ const PWAPage = () => {
             >
               Працюємо швидко, чітко та з результатом.
             </CtaHighlight>
-            
+
             <CtaSubtext
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Залишайте заявку — і ми зв'яжемось із вами для обговорення деталей, 
-              прорахунку вартості та термінів.
+              Залишайте заявку — і ми зв'яжемось із вами для обговорення
+              деталей, прорахунку вартості та термінів.
             </CtaSubtext>
-            
             <CtaForm
+              ref={formRef}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
+              onSubmit={handleSubmit}
             >
+              {/* Повідомлення про помилку */}
+              {error && (
+                <ErrorMessage
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {error}
+                </ErrorMessage>
+              )}
+
+              {/* Повідомлення про успішну відправку */}
+              {isSubmitted && (
+                <SuccessMessage
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  Дякуємо! Ваша заявка надіслана. Ми зв'яжемося з вами
+                  найближчим часом.
+                </SuccessMessage>
+              )}
+
               <CtaInputWrapper>
-                <CtaInput type="text" placeholder="Ваше ім'я" />
+                <CtaInput
+                  type="text"
+                  placeholder="Ваше ім'я *"
+                  name="from_name"
+                  value={automationFormData.from_name}
+                  onChange={handleInputChange}
+                  disabled={isSubmitting}
+                  required
+                />
                 <CtaInputBg />
               </CtaInputWrapper>
-              
+
               <CtaInputWrapper>
-                <CtaInput type="tel" placeholder="Телефон" />
+                <CtaInput
+                  type="tel"
+                  placeholder="Телефон"
+                  name="phone"
+                  value={automationFormData.phone}
+                  onChange={handleInputChange}
+                  disabled={isSubmitting}
+                />
                 <CtaInputBg />
               </CtaInputWrapper>
-              
+
               <CtaInputWrapper>
-                <CtaInput type="email" placeholder="Email" />
+                <CtaInput
+                  type="email"
+                  placeholder="Email *"
+                  name="from_email"
+                  value={automationFormData.from_email}
+                  onChange={handleInputChange}
+                  disabled={isSubmitting}
+                  required
+                />
                 <CtaInputBg />
               </CtaInputWrapper>
-              
+
               <CtaButton
-                whileHover={{ scale: 1.03, boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)' }}
-                whileTap={{ scale: 0.98 }}
+                type="submit"
+                disabled={isSubmitting}
+                whileHover={
+                  !isSubmitting
+                    ? {
+                        scale: 1.03,
+                        boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)',
+                      }
+                    : {}
+                }
+                whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+                style={{
+                  opacity: isSubmitting ? 0.7 : 1,
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                }}
               >
-                Залишити заявку
+                {isSubmitting ? 'Відправляємо...' : 'Замовити консультацію'}
               </CtaButton>
             </CtaForm>
-            
+
             <CtaFooterText
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.9 }}
             >
-              Залишити заявку або отримати консультацію — один крок до потужного цифрового інструменту для вашого бізнесу.
+              Залишити заявку або отримати консультацію — один крок до потужного
+              цифрового інструменту для вашого бізнесу.
             </CtaFooterText>
           </CtaContent>
-          
+
           <CtaDecoration />
         </CtaContainer>
       </PWACtaSection>
-      
+
       <PWAFaqSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
         <FaqWaveTop />
-        
+
         <FaqContainer>
           <FaqGlowCircle className="circle-1" />
           <FaqGlowCircle className="circle-2" />
-          
+
           <FaqTitle
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -2149,7 +2436,7 @@ const PWAPage = () => {
           >
             FAQ
           </FaqTitle>
-          
+
           <FaqList
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -2157,43 +2444,51 @@ const PWAPage = () => {
           >
             {[
               {
-                question: "Що таке Progressive Web App (PWA)?",
-                answer: "PWA — це веб-додаток, який виглядає й працює як мобільний застосунок. Його можна відкрити в браузері, встановити на смартфон, працювати з ним офлайн та отримувати push-сповіщення — без потреби завантаження з App Store або Google Play."
+                question: 'Що таке Progressive Web App (PWA)?',
+                answer:
+                  'PWA — це веб-додаток, який виглядає й працює як мобільний застосунок. Його можна відкрити в браузері, встановити на смартфон, працювати з ним офлайн та отримувати push-сповіщення — без потреби завантаження з App Store або Google Play.',
               },
               {
-                question: "Чим PWA кращий за мобільний додаток?",
-                answer: "PWA не потребує окремої розробки для iOS та Android, що економить бюджет. Його простіше просувати, швидше запускати і легше оновлювати. А ще користувачі можуть взаємодіяти з ним одразу — без установки."
+                question: 'Чим PWA кращий за мобільний додаток?',
+                answer:
+                  'PWA не потребує окремої розробки для iOS та Android, що економить бюджет. Його простіше просувати, швидше запускати і легше оновлювати. А ще користувачі можуть взаємодіяти з ним одразу — без установки.',
               },
               {
-                question: "Чи працює PWA без інтернету?",
-                answer: "Так, PWA підтримує офлайн-режим. Завдяки кешуванню, користувач може переглядати контент або виконувати дії навіть без підключення до мережі."
+                question: 'Чи працює PWA без інтернету?',
+                answer:
+                  'Так, PWA підтримує офлайн-режим. Завдяки кешуванню, користувач може переглядати контент або виконувати дії навіть без підключення до мережі.',
               },
               {
-                question: "Чи можна встановити PWA на iOS та Android?",
-                answer: "Так. PWA можна додати на головний екран смартфона як звичайний застосунок. Працює на Android, iOS, Windows та інших системах із сучасним браузером."
+                question: 'Чи можна встановити PWA на iOS та Android?',
+                answer:
+                  'Так. PWA можна додати на головний екран смартфона як звичайний застосунок. Працює на Android, iOS, Windows та інших системах із сучасним браузером.',
               },
               {
-                question: "Як PWA впливає на швидкість сайту та SEO?",
-                answer: "PWA завантажується швидше завдяки кешуванню і оптимізації. Це позитивно впливає на користувацький досвід і поведінкові фактори, що, у свою чергу, покращує SEO."
+                question: 'Як PWA впливає на швидкість сайту та SEO?',
+                answer:
+                  'PWA завантажується швидше завдяки кешуванню і оптимізації. Це позитивно впливає на користувацький досвід і поведінкові фактори, що, у свою чергу, покращує SEO.',
               },
               {
-                question: "Скільки коштує розробка PWA?",
-                answer: "Ціна залежить від складності функціоналу та обсягу роботи. Ми працюємо індивідуально: аналізуємо потреби клієнта, після чого формуємо чітку комерційну пропозицію."
+                question: 'Скільки коштує розробка PWA?',
+                answer:
+                  'Ціна залежить від складності функціоналу та обсягу роботи. Ми працюємо індивідуально: аналізуємо потреби клієнта, після чого формуємо чітку комерційну пропозицію.',
               },
               {
-                question: "Чи можна інтегрувати оплату в PWA?",
-                answer: "Так, ми можемо реалізувати платіжні системи (наприклад, картки, Apple Pay, Google Pay тощо) в рамках PWA — так само, як у звичайному застосунку чи сайті."
+                question: 'Чи можна інтегрувати оплату в PWA?',
+                answer:
+                  'Так, ми можемо реалізувати платіжні системи (наприклад, картки, Apple Pay, Google Pay тощо) в рамках PWA — так само, як у звичайному застосунку чи сайті.',
               },
               {
-                question: "Як додати PWA на головний екран смартфона?",
-                answer: "При відкритті PWA у браузері користувач побачить спливаюче вікно з пропозицією встановити додаток. У два кліки він з'являється на головному екрані — без маркетів, пошуку чи реєстрацій."
-              }
+                question: 'Як додати PWA на головний екран смартфона?',
+                answer:
+                  "При відкритті PWA у браузері користувач побачить спливаюче вікно з пропозицією встановити додаток. У два кліки він з'являється на головному екрані — без маркетів, пошуку чи реєстрацій.",
+              },
             ].map((faq, index) => (
               <FaqItem
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 + (index * 0.1) }}
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
               >
                 <AnimatePresence>
                   <FaqItemContent
@@ -2208,59 +2503,118 @@ const PWAPage = () => {
                     >
                       <FaqQuestionText>{faq.question}</FaqQuestionText>
                       <FaqToggle
-                        animate={{ rotate: expandedFaqs.includes(index) ? 45 : 0 }}
+                        animate={{
+                          rotate: expandedFaqs.includes(index) ? 45 : 0,
+                        }}
                         transition={{ duration: 0.3 }}
                       >
                         <FaPlus />
                       </FaqToggle>
                     </FaqQuestion>
-                    
+
                     <AnimatePresence>
                       {expandedFaqs.includes(index) && (
                         <FaqAnswer
                           initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
+                          animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.3 }}
                         >
                           {index === 0 && (
                             <>
-                              PWA — це веб-додаток, який виглядає й працює як <span className="highlight">мобільний застосунок</span>. Його можна відкрити в браузері, <span className="highlight">встановити на смартфон</span>, працювати з ним <span className="highlight">офлайн</span> та отримувати <span className="highlight">push-сповіщення</span> — без потреби завантаження з App Store або Google Play.
+                              PWA — це веб-додаток, який виглядає й працює як{' '}
+                              <span className="highlight">
+                                мобільний застосунок
+                              </span>
+                              . Його можна відкрити в браузері,{' '}
+                              <span className="highlight">
+                                встановити на смартфон
+                              </span>
+                              , працювати з ним{' '}
+                              <span className="highlight">офлайн</span> та
+                              отримувати{' '}
+                              <span className="highlight">push-сповіщення</span>{' '}
+                              — без потреби завантаження з App Store або Google
+                              Play.
                             </>
                           )}
                           {index === 1 && (
                             <>
-                              PWA не потребує <span className="highlight">окремої розробки для iOS та Android</span>, що <strong>економить бюджет</strong>. Його простіше просувати, швидше запускати і легше оновлювати. А ще користувачі можуть взаємодіяти з ним одразу — <span className="highlight">без установки</span>.
+                              PWA не потребує{' '}
+                              <span className="highlight">
+                                окремої розробки для iOS та Android
+                              </span>
+                              , що <strong>економить бюджет</strong>. Його
+                              простіше просувати, швидше запускати і легше
+                              оновлювати. А ще користувачі можуть взаємодіяти з
+                              ним одразу —{' '}
+                              <span className="highlight">без установки</span>.
                             </>
                           )}
                           {index === 2 && (
                             <>
-                              Так, PWA підтримує <span className="highlight">офлайн-режим</span>. Завдяки кешуванню, користувач може переглядати контент або виконувати дії навіть <strong>без підключення до мережі</strong>.
+                              Так, PWA підтримує{' '}
+                              <span className="highlight">офлайн-режим</span>.
+                              Завдяки кешуванню, користувач може переглядати
+                              контент або виконувати дії навіть{' '}
+                              <strong>без підключення до мережі</strong>.
                             </>
                           )}
                           {index === 3 && (
                             <>
-                              Так. PWA можна додати на <span className="highlight">головний екран смартфона</span> як звичайний застосунок. Працює на <span className="highlight">Android, iOS, Windows</span> та інших системах із сучасним браузером.
+                              Так. PWA можна додати на{' '}
+                              <span className="highlight">
+                                головний екран смартфона
+                              </span>{' '}
+                              як звичайний застосунок. Працює на{' '}
+                              <span className="highlight">
+                                Android, iOS, Windows
+                              </span>{' '}
+                              та інших системах із сучасним браузером.
                             </>
                           )}
                           {index === 4 && (
                             <>
-                              PWA завантажується <strong>швидше</strong> завдяки кешуванню і оптимізації. Це позитивно впливає на <span className="highlight">користувацький досвід</span> і поведінкові фактори, що, у свою чергу, <span className="highlight">покращує SEO</span>.
+                              PWA завантажується <strong>швидше</strong> завдяки
+                              кешуванню і оптимізації. Це позитивно впливає на{' '}
+                              <span className="highlight">
+                                користувацький досвід
+                              </span>{' '}
+                              і поведінкові фактори, що, у свою чергу,{' '}
+                              <span className="highlight">покращує SEO</span>.
                             </>
                           )}
                           {index === 5 && (
                             <>
-                              Ціна залежить від складності функціоналу та обсягу роботи. Ми працюємо <span className="highlight">індивідуально</span>: аналізуємо потреби клієнта, після чого формуємо чітку комерційну пропозицію.
+                              Ціна залежить від складності функціоналу та обсягу
+                              роботи. Ми працюємо{' '}
+                              <span className="highlight">індивідуально</span>:
+                              аналізуємо потреби клієнта, після чого формуємо
+                              чітку комерційну пропозицію.
                             </>
                           )}
                           {index === 6 && (
                             <>
-                              Так, ми можемо реалізувати <span className="highlight">платіжні системи</span> (наприклад, картки, <span className="highlight">Apple Pay, Google Pay</span> тощо) в рамках PWA — так само, як у звичайному застосунку чи сайті.
+                              Так, ми можемо реалізувати{' '}
+                              <span className="highlight">
+                                платіжні системи
+                              </span>{' '}
+                              (наприклад, картки,{' '}
+                              <span className="highlight">
+                                Apple Pay, Google Pay
+                              </span>{' '}
+                              тощо) в рамках PWA — так само, як у звичайному
+                              застосунку чи сайті.
                             </>
                           )}
                           {index === 7 && (
                             <>
-                              При відкритті PWA у браузері користувач побачить <span className="highlight">спливаюче вікно</span> з пропозицією встановити додаток. У <strong>два кліки</strong> він з'являється на головному екрані — без маркетів, пошуку чи реєстрацій.
+                              При відкритті PWA у браузері користувач побачить{' '}
+                              <span className="highlight">спливаюче вікно</span>{' '}
+                              з пропозицією встановити додаток. У{' '}
+                              <strong>два кліки</strong> він з'являється на
+                              головному екрані — без маркетів, пошуку чи
+                              реєстрацій.
                             </>
                           )}
                         </FaqAnswer>
@@ -2271,7 +2625,7 @@ const PWAPage = () => {
               </FaqItem>
             ))}
           </FaqList>
-          
+
           <FaqCta
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -2279,7 +2633,10 @@ const PWAPage = () => {
           >
             <FaqCtaText>Не знайшли відповідь на своє питання?</FaqCtaText>
             <FaqCtaButton
-              whileHover={{ scale: 1.03, boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)' }}
+              whileHover={{
+                scale: 1.03,
+                boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)',
+              }}
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
             >
@@ -2287,13 +2644,12 @@ const PWAPage = () => {
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
-        
+
         <FaqDecoration />
       </PWAFaqSection>
-      
+
       {/* Modal Window */}
       <Modal isOpen={isModalOpen} onClose={closeModal} />
-      
     </Container>
   );
 };
@@ -2310,11 +2666,11 @@ const PWACtaSection = styled(motion.section)`
   );
   overflow: hidden;
   border-top: 1px solid rgba(147, 51, 234, 0.2);
-  
+
   @media (max-width: 992px) {
     padding: 80px 0;
   }
-  
+
   @media (max-width: 576px) {
     padding: 60px 0;
   }
@@ -2326,7 +2682,11 @@ const CtaWaveTop = styled.div`
   left: 0;
   width: 100%;
   height: 100px;
-  background: linear-gradient(to bottom right, rgba(16, 24, 39, 1) 49%, transparent 51%);
+  background: linear-gradient(
+    to bottom right,
+    rgba(16, 24, 39, 1) 49%,
+    transparent 51%
+  );
   z-index: 1;
 `;
 
@@ -2336,12 +2696,12 @@ const CtaContainer = styled.div`
   padding: 0 2rem;
   position: relative;
   z-index: 2;
-  
+
   @media (max-width: 992px) {
     max-width: 700px;
     padding: 0 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 0 1rem;
   }
@@ -2356,14 +2716,14 @@ const CtaGlowCircle = styled.div`
     transparent 70%
   );
   animation: ${glow} 4s infinite alternate;
-  
+
   &.circle-1 {
     width: 400px;
     height: 400px;
     top: 10%;
     left: -10%;
   }
-  
+
   &.circle-2 {
     width: 300px;
     height: 300px;
@@ -2371,26 +2731,26 @@ const CtaGlowCircle = styled.div`
     right: -10%;
     animation-delay: 2s;
   }
-  
+
   @media (max-width: 992px) {
     &.circle-1 {
       width: 300px;
       height: 300px;
     }
-    
+
     &.circle-2 {
       width: 250px;
       height: 250px;
     }
   }
-  
+
   @media (max-width: 576px) {
     &.circle-1 {
       width: 200px;
       height: 200px;
       top: 5%;
     }
-    
+
     &.circle-2 {
       width: 150px;
       height: 150px;
@@ -2408,7 +2768,7 @@ const CtaContent = styled.div`
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -2416,14 +2776,18 @@ const CtaContent = styled.div`
     left: 0;
     width: 100%;
     height: 5px;
-    background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.8));
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
+      rgba(59, 130, 246, 0.8)
+    );
     z-index: 1;
   }
-  
+
   @media (max-width: 768px) {
     padding: 2.5rem 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 2rem 1rem;
   }
@@ -2435,11 +2799,11 @@ const CtaTitle = styled(motion.h2)`
   color: var(--accent-color);
   margin-bottom: 2rem;
   text-align: center;
-  
+
   @media (max-width: 768px) {
     font-size: 2.2rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
@@ -2455,7 +2819,7 @@ const CtaText = styled(motion.p)`
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-  
+
   @media (max-width: 576px) {
     font-size: 1rem;
     margin-bottom: 1.5rem;
@@ -2470,9 +2834,13 @@ const CtaHighlight = styled(motion.div)`
   text-align: center;
   margin: 2.5rem 0;
   padding: 1.5rem;
-  background: linear-gradient(90deg, rgba(94, 234, 212, 0.1), rgba(59, 130, 246, 0.1));
+  background: linear-gradient(
+    90deg,
+    rgba(94, 234, 212, 0.1),
+    rgba(59, 130, 246, 0.1)
+  );
   border-radius: 12px;
-  
+
   @media (max-width: 576px) {
     font-size: 1.2rem;
     margin: 2rem 0;
@@ -2486,7 +2854,7 @@ const CtaSubtext = styled(motion.p)`
   color: var(--text-secondary);
   margin-bottom: 2.5rem;
   text-align: center;
-  
+
   @media (max-width: 576px) {
     font-size: 1rem;
     margin-bottom: 2rem;
@@ -2501,7 +2869,7 @@ const CtaForm = styled(motion.form)`
   margin: 0 auto 2.5rem;
   position: relative;
   z-index: 2;
-  
+
   @media (max-width: 576px) {
     gap: 1rem;
     margin-bottom: 2rem;
@@ -2523,11 +2891,11 @@ const CtaInputBg = styled.div`
   background: rgba(255, 255, 255, 0.03);
   z-index: -1;
   transition: all 0.3s ease;
-  
+
   ${CtaInputWrapper}:hover & {
     background: rgba(255, 255, 255, 0.06);
   }
-  
+
   ${CtaInputWrapper}:focus-within & {
     background: rgba(255, 255, 255, 0.08);
     box-shadow: 0 0 0 2px rgba(94, 234, 212, 0.3);
@@ -2544,7 +2912,7 @@ const CtaInput = styled.input`
   font-size: 1.1rem;
   z-index: 1;
   position: relative;
-  
+
   &::placeholder {
     color: rgba(255, 255, 255, 0.4);
   }
@@ -2554,7 +2922,11 @@ const CtaButton = styled(motion.button)`
   padding: 1.3rem;
   font-size: 1.2rem;
   font-weight: 600;
-  background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.9));
+  background: linear-gradient(
+    90deg,
+    var(--accent-color),
+    rgba(59, 130, 246, 0.9)
+  );
   color: white;
   border: none;
   border-radius: 12px;
@@ -2564,7 +2936,7 @@ const CtaButton = styled(motion.button)`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -2572,14 +2944,19 @@ const CtaButton = styled(motion.button)`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
     transition: all 0.6s ease;
   }
-  
+
   &:hover::before {
     left: 100%;
   }
-  
+
   @media (max-width: 576px) {
     padding: 1rem;
     font-size: 1.1rem;
@@ -2592,7 +2969,7 @@ const CtaFooterText = styled(motion.p)`
   opacity: 0.8;
   text-align: center;
   margin-top: 2.5rem;
-  
+
   @media (max-width: 576px) {
     font-size: 0.9rem;
     margin-top: 2rem;
@@ -2614,13 +2991,13 @@ const CtaDecoration = styled.div`
   border-radius: 50%;
   transform: translateY(-50%);
   animation: ${float} 6s infinite ease-in-out;
-  
+
   @media (max-width: 992px) {
     right: -150px;
     width: 250px;
     height: 250px;
   }
-  
+
   @media (max-width: 768px) {
     display: none;
   }
@@ -2645,11 +3022,11 @@ const WhyUsContainer = styled.div`
   padding: 0 2rem;
   position: relative;
   z-index: 2;
-  
+
   @media (max-width: 992px) {
     padding: 0 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 0 1rem;
   }
@@ -2660,21 +3037,16 @@ const WhyUsTitle = styled(motion.h2)`
   font-weight: 700;
   margin-bottom: 1rem;
   text-align: center;
-  background: linear-gradient(
-    135deg,
-    #ffffff 0%,
-    #e2e8f0 50%,
-    #cbd5e1 100%
-  );
+  background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #cbd5e1 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   line-height: 1.2;
-  
+
   @media (max-width: 992px) {
     font-size: 2.8rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 2.2rem;
     line-height: 1.3;
@@ -2687,13 +3059,13 @@ const WhyUsCardsContainer = styled(motion.div)`
   gap: 2rem;
   margin-bottom: 4rem;
   perspective: 1000px;
-  
+
   @media (max-width: 992px) {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     margin-bottom: 3rem;
   }
-  
+
   @media (max-width: 576px) {
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -2714,11 +3086,11 @@ const WhyUsCard = styled(motion.div)`
   overflow: hidden;
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
-  
+
   @media (max-width: 992px) {
     padding: 2rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 1.5rem;
     border-radius: 16px;
@@ -2741,7 +3113,7 @@ const WhyUsCardGlow = styled.div`
   opacity: 0;
   z-index: -1;
   transition: opacity 0.3s ease;
-  
+
   @media (max-width: 576px) {
     border-radius: 18px;
   }
@@ -2750,11 +3122,7 @@ const WhyUsCardGlow = styled.div`
 const WhyUsIconWrapper = styled.div`
   width: 80px;
   height: 80px;
-  background: linear-gradient(
-    135deg,
-    var(--accent-color) 0%,
-    #06b6d4 100%
-  );
+  background: linear-gradient(135deg, var(--accent-color) 0%, #06b6d4 100%);
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -2762,13 +3130,13 @@ const WhyUsIconWrapper = styled.div`
   margin-bottom: 1.5rem;
   color: white;
   font-size: 2rem;
-  
+
   @media (max-width: 992px) {
     width: 70px;
     height: 70px;
     font-size: 1.8rem;
   }
-  
+
   @media (max-width: 576px) {
     width: 60px;
     height: 60px;
@@ -2783,11 +3151,11 @@ const WhyUsCardTitle = styled.h3`
   margin-bottom: 1rem;
   color: white;
   line-height: 1.3;
-  
+
   @media (max-width: 992px) {
     font-size: 1.3rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.2rem;
     margin-bottom: 0.8rem;
@@ -2798,7 +3166,7 @@ const WhyUsCardDescription = styled.p`
   font-size: 1rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.8);
-  
+
   @media (max-width: 576px) {
     font-size: 0.9rem;
     line-height: 1.5;
@@ -2820,7 +3188,7 @@ const CardAccent = styled.div`
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.3s ease;
-  
+
   @media (max-width: 576px) {
     height: 3px;
   }
@@ -2828,7 +3196,7 @@ const CardAccent = styled.div`
 
 const WhyUsAction = styled(motion.div)`
   text-align: center;
-  
+
   @media (max-width: 576px) {
     margin-top: 1rem;
   }
@@ -2836,11 +3204,7 @@ const WhyUsAction = styled(motion.div)`
 
 const PulsingButton = styled(motion.button)`
   padding: 1.2rem 3rem;
-  background: linear-gradient(
-    135deg,
-    var(--accent-color) 0%,
-    #06b6d4 100%
-  );
+  background: linear-gradient(135deg, var(--accent-color) 0%, #06b6d4 100%);
   border: none;
   border-radius: 50px;
   color: white;
@@ -2850,7 +3214,7 @@ const PulsingButton = styled(motion.button)`
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
-  
+
   @media (max-width: 576px) {
     padding: 1rem 2rem;
     font-size: 1rem;
@@ -2865,7 +3229,7 @@ const WhyUsBackgroundShapes = styled.div`
   height: 100%;
   overflow: hidden;
   z-index: 0;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -2881,7 +3245,7 @@ const WhyUsBackgroundShapes = styled.div`
     border-radius: 50%;
     animation: ${float} 8s infinite ease-in-out;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -2897,26 +3261,26 @@ const WhyUsBackgroundShapes = styled.div`
     border-radius: 50%;
     animation: ${float} 10s infinite ease-in-out reverse;
   }
-  
+
   @media (max-width: 992px) {
     &::before {
       width: 200px;
       height: 200px;
     }
-    
+
     &::after {
       width: 250px;
       height: 250px;
     }
   }
-  
+
   @media (max-width: 576px) {
     &::before {
       width: 150px;
       height: 150px;
       left: -20%;
     }
-    
+
     &::after {
       width: 180px;
       height: 180px;
@@ -2929,10 +3293,14 @@ const WhyUsBackgroundShapes = styled.div`
 const PWAFaqSection = styled(motion.section)`
   position: relative;
   padding: 8rem 2rem;
-  background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(16, 24, 39, 0.9) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary) 0%,
+    rgba(16, 24, 39, 0.9) 100%
+  );
   overflow: hidden;
   z-index: 0;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -2940,7 +3308,11 @@ const PWAFaqSection = styled(motion.section)`
     right: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(ellipse at top right, rgba(94, 234, 212, 0.08) 0%, transparent 70%);
+    background: radial-gradient(
+      ellipse at top right,
+      rgba(94, 234, 212, 0.08) 0%,
+      transparent 70%
+    );
     z-index: -1;
   }
 `;
@@ -2951,7 +3323,11 @@ const FaqWaveTop = styled.div`
   left: 0;
   width: 100%;
   height: 120px;
-  background: linear-gradient(to top left, transparent 49%, var(--bg-primary) 51%);
+  background: linear-gradient(
+    to top left,
+    transparent 49%,
+    var(--bg-primary) 51%
+  );
   z-index: 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 `;
@@ -2968,20 +3344,28 @@ const FaqGlowCircle = styled.div`
   border-radius: 50%;
   filter: blur(80px);
   z-index: 0;
-  
+
   &.circle-1 {
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(94, 234, 212, 0.05) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(94, 234, 212, 0.05) 0%,
+      transparent 70%
+    );
     top: 10%;
     left: -200px;
     animation: ${floatVertical} 15s infinite ease-in-out;
   }
-  
+
   &.circle-2 {
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(59, 130, 246, 0.05) 0%,
+      transparent 70%
+    );
     bottom: 5%;
     right: -200px;
     animation: ${floatVertical} 18s infinite ease-in-out reverse;
@@ -2996,7 +3380,7 @@ const FaqTitle = styled(motion.h2)`
   text-align: center;
   position: relative;
   text-shadow: 0 2px 10px rgba(94, 234, 212, 0.2);
-  
+
   &::before {
     content: 'F.A.Q';
     position: absolute;
@@ -3010,7 +3394,7 @@ const FaqTitle = styled(motion.h2)`
     z-index: -1;
     white-space: nowrap;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -3019,7 +3403,12 @@ const FaqTitle = styled(motion.h2)`
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-color),
+      transparent
+    );
     border-radius: 4px;
     animation: ${pulse} 2s infinite ease-in-out;
   }
@@ -3042,7 +3431,7 @@ const FaqItem = styled(motion.div)`
   transition: all 0.3s ease;
   transform-style: preserve-3d;
   perspective: 1000px;
-  
+
   &:hover {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 15px rgba(94, 234, 212, 0.1);
     border-color: rgba(94, 234, 212, 0.1);
@@ -3062,7 +3451,7 @@ const FaqQuestion = styled(motion.div)`
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -3070,16 +3459,20 @@ const FaqQuestion = styled(motion.div)`
     left: 0;
     width: 5px;
     height: 100%;
-    background: linear-gradient(to bottom, var(--accent-color), rgba(59, 130, 246, 0.5));
+    background: linear-gradient(
+      to bottom,
+      var(--accent-color),
+      rgba(59, 130, 246, 0.5)
+    );
     opacity: 0;
     transition: opacity 0.3s ease;
     border-radius: 0 3px 3px 0;
   }
-  
+
   &:hover::before {
     opacity: 1;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -3087,7 +3480,12 @@ const FaqQuestion = styled(motion.div)`
     left: 2rem;
     right: 2rem;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.05),
+      transparent
+    );
   }
 `;
 
@@ -3098,7 +3496,7 @@ const FaqQuestionText = styled.h3`
   transition: all 0.3s ease;
   flex: 1;
   transform: translateZ(5px);
-  
+
   ${FaqQuestion}:hover & {
     color: var(--accent-color);
     transform: translateZ(10px);
@@ -3109,11 +3507,11 @@ const FaqToggle = styled(motion.div)`
   font-size: 1.2rem;
   color: var(--accent-color);
   transition: all 0.3s ease;
-  
+
   @media (max-width: 992px) {
     font-size: 1.1rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1rem;
   }
@@ -3127,7 +3525,7 @@ const FaqAnswer = styled(motion.div)`
   overflow: hidden;
   position: relative;
   animation: ${fadeInScale} 0.4s ease forwards;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -3135,24 +3533,29 @@ const FaqAnswer = styled(motion.div)`
     left: 2rem;
     right: 2rem;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
   }
-  
+
   strong {
     color: var(--accent-color);
     font-weight: 600;
   }
-  
+
   ul {
     margin-top: 0.8rem;
     margin-bottom: 0.8rem;
     padding-left: 1.5rem;
   }
-  
+
   li {
     margin-bottom: 0.5rem;
     position: relative;
-    
+
     &::before {
       content: '•';
       color: var(--accent-color);
@@ -3160,18 +3563,22 @@ const FaqAnswer = styled(motion.div)`
       left: -1rem;
     }
   }
-  
+
   p {
     margin-bottom: 0.8rem;
   }
-  
+
   .highlight {
-    background: linear-gradient(90deg, rgba(94, 234, 212, 0.1), rgba(59, 130, 246, 0.1));
+    background: linear-gradient(
+      90deg,
+      rgba(94, 234, 212, 0.1),
+      rgba(59, 130, 246, 0.1)
+    );
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
     margin: 0 0.2rem;
     position: relative;
-    
+
     &::before {
       content: '';
       position: absolute;
@@ -3179,8 +3586,11 @@ const FaqAnswer = styled(motion.div)`
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, 
-        transparent, rgba(255, 255, 255, 0.05), transparent
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.05),
+        transparent
       );
       background-size: 200% 100%;
       animation: ${shimmerEffect} 2s infinite;
@@ -3202,7 +3612,7 @@ const FaqCta = styled(motion.div)`
   position: relative;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -3210,10 +3620,14 @@ const FaqCta = styled(motion.div)`
     left: 0;
     width: 100%;
     height: 5px;
-    background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.8));
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
+      rgba(59, 130, 246, 0.8)
+    );
     z-index: 1;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -3221,7 +3635,11 @@ const FaqCta = styled(motion.div)`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(94, 234, 212, 0.05) 0%, transparent 50%);
+    background: linear-gradient(
+      135deg,
+      rgba(94, 234, 212, 0.05) 0%,
+      transparent 50%
+    );
     z-index: -1;
   }
 `;
@@ -3238,7 +3656,11 @@ const FaqCtaButton = styled(motion.button)`
   padding: 1.2rem 3rem;
   font-size: 1.2rem;
   font-weight: 600;
-  background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.9));
+  background: linear-gradient(
+    90deg,
+    var(--accent-color),
+    rgba(59, 130, 246, 0.9)
+  );
   color: white;
   border: none;
   border-radius: 50px;
@@ -3247,7 +3669,7 @@ const FaqCtaButton = styled(motion.button)`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -3255,14 +3677,19 @@ const FaqCtaButton = styled(motion.button)`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
     transition: all 0.6s ease;
   }
-  
+
   &:hover::before {
     left: 100%;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -3270,7 +3697,11 @@ const FaqCtaButton = styled(motion.button)`
     left: 0;
     width: 100%;
     height: 8px;
-    background: linear-gradient(90deg, rgba(59, 130, 246, 0.5), var(--accent-color));
+    background: linear-gradient(
+      90deg,
+      rgba(59, 130, 246, 0.5),
+      var(--accent-color)
+    );
     filter: blur(5px);
     opacity: 0.5;
   }
@@ -3286,7 +3717,7 @@ const FaqDecoration = styled.div`
   right: 10%;
   animation: ${rotate} 30s linear infinite;
   z-index: 0;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -3298,13 +3729,17 @@ const FaqDecoration = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  
+
   &::after {
     content: '';
     position: absolute;
     width: 50px;
     height: 50px;
-    background: radial-gradient(circle, rgba(94, 234, 212, 0.1) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(94, 234, 212, 0.1) 0%,
+      transparent 70%
+    );
     border-radius: 50%;
     top: 30%;
     left: 20%;
@@ -3312,4 +3747,52 @@ const FaqDecoration = styled.div`
   }
 `;
 
-export default PWAPage; 
+// Добавляем недостающие компоненты для работы формы
+const ErrorMessage = styled(motion.div)`
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  color: #ef4444;
+  font-size: 0.9rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  &::before {
+    content: '⚠️';
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    padding: 0.6rem 0.8rem;
+  }
+`;
+
+const SuccessMessage = styled(motion.div)`
+  text-align: center;
+  padding: 2rem;
+  color: var(--accent-color);
+  font-size: 1.1rem;
+  font-weight: 500;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+`;
+
+export default PWAPage;

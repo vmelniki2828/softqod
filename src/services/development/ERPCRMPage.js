@@ -87,11 +87,11 @@ const Container = styled.div`
   color: white;
   position: relative;
   overflow: hidden;
-  
+
   @media (max-width: 768px) {
     padding: 0 1rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 0 0.5rem;
   }
@@ -106,15 +106,15 @@ const HeroSection = styled(motion.section)`
   text-align: center;
   position: relative;
   overflow: hidden;
-  padding: 2rem;
-  
+  padding: 7rem;
+
   @media (max-width: 768px) {
-    padding: 1.5rem 1rem;
+    padding: 7rem 1rem;
     min-height: 90vh;
   }
-  
+
   @media (max-width: 576px) {
-    padding: 1rem 0.5rem;
+    padding: 7rem 0.5rem;
     min-height: 85vh;
   }
 `;
@@ -195,7 +195,7 @@ const Title = styled(motion.h1)`
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 2rem;
     margin-bottom: 1rem;
@@ -211,7 +211,7 @@ const Title = styled(motion.h1)`
     height: 4px;
     background: var(--accent-color);
     border-radius: 3px;
-    
+
     @media (max-width: 576px) {
       width: 80px;
       height: 3px;
@@ -235,7 +235,7 @@ const Subtitle = styled(motion.p)`
     margin-bottom: 2rem;
     max-width: 90%;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1rem;
     margin-bottom: 1.5rem;
@@ -253,7 +253,7 @@ const SystemContainer = styled(motion.div)`
     width: 260px;
     height: 400px;
   }
-  
+
   @media (max-width: 576px) {
     width: 240px;
     height: 360px;
@@ -410,14 +410,14 @@ const HeroBenefitsList = styled(motion.div)`
   max-width: 1200px;
   z-index: 1;
   position: relative;
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 1rem;
     margin-top: 2.5rem;
     padding: 0 1rem;
   }
-  
+
   @media (max-width: 576px) {
     margin-top: 2rem;
     padding: 0;
@@ -440,7 +440,7 @@ const HeroBenefitItem = styled(motion.div)`
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     transform: translateY(-5px);
   }
-  
+
   @media (max-width: 576px) {
     padding: 1.2rem;
     gap: 0.8rem;
@@ -459,7 +459,7 @@ const HeroBenefitIcon = styled.div`
   color: white;
   box-shadow: 0 0 20px rgba(41, 98, 255, 0.5);
   flex-shrink: 0;
-  
+
   @media (max-width: 576px) {
     width: 40px;
     height: 40px;
@@ -471,7 +471,7 @@ const HeroBenefitTitle = styled.h3`
   font-size: 1.1rem;
   color: white;
   margin-bottom: 0.5rem;
-  
+
   @media (max-width: 576px) {
     font-size: 1rem;
   }
@@ -481,7 +481,7 @@ const HeroBenefitDescription = styled.p`
   color: #9ca3af;
   font-size: 0.9rem;
   line-height: 1.4;
-  
+
   @media (max-width: 576px) {
     font-size: 0.85rem;
   }
@@ -509,14 +509,18 @@ const InfoSection = styled(motion.section)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(74, 144, 226, 0.1) 0%, transparent 70%);
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(74, 144, 226, 0.1) 0%,
+      transparent 70%
+    );
     z-index: 0;
   }
-  
+
   @media (max-width: 768px) {
     padding: 4rem 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 3rem 1rem;
   }
@@ -546,12 +550,12 @@ const InfoTitle = styled(motion.h2)`
   background-clip: text;
   position: relative;
   z-index: 1;
-  
+
   @media (max-width: 768px) {
     font-size: 2.2rem;
     margin-bottom: 2rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
@@ -641,14 +645,18 @@ const BenefitsSection = styled(motion.section)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 30% 70%, rgba(41, 98, 255, 0.15) 0%, transparent 50%);
+    background: radial-gradient(
+      circle at 30% 70%,
+      rgba(41, 98, 255, 0.15) 0%,
+      transparent 50%
+    );
     z-index: 0;
   }
-  
+
   @media (max-width: 768px) {
     padding: 4rem 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 3rem 1rem;
   }
@@ -672,12 +680,12 @@ const BenefitsTitle = styled(motion.h2)`
   background-clip: text;
   position: relative;
   z-index: 1;
-  
+
   @media (max-width: 768px) {
     font-size: 2.2rem;
     margin-bottom: 2rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
@@ -836,14 +844,18 @@ const ServicesSection = styled(motion.section)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(ellipse at 70% 30%, rgba(74, 144, 226, 0.1) 0%, transparent 60%);
+    background: radial-gradient(
+      ellipse at 70% 30%,
+      rgba(74, 144, 226, 0.1) 0%,
+      transparent 60%
+    );
     z-index: 0;
   }
-  
+
   @media (max-width: 768px) {
     padding: 4rem 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 3rem 1rem;
   }
@@ -878,12 +890,12 @@ const SectionTitle = styled(motion.h2)`
   background-clip: text;
   position: relative;
   z-index: 1;
-  
+
   @media (max-width: 768px) {
     font-size: 2.2rem;
     margin-bottom: 2rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
@@ -925,12 +937,12 @@ const ServicesHeading = styled(motion.h3)`
   text-align: center;
   position: relative;
   z-index: 1;
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
     margin-bottom: 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.6rem;
     margin-bottom: 1.2rem;
@@ -992,12 +1004,12 @@ const ServiceButton = styled(motion.button)`
   &:hover::before {
     left: 100%;
   }
-  
+
   @media (max-width: 768px) {
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 0.9rem 2rem;
     font-size: 1rem;
@@ -1024,14 +1036,18 @@ const FaqSection = styled(motion.section)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 80% 20%, rgba(94, 234, 212, 0.1) 0%, transparent 50%);
+    background: radial-gradient(
+      circle at 80% 20%,
+      rgba(94, 234, 212, 0.1) 0%,
+      transparent 50%
+    );
     z-index: 0;
   }
-  
+
   @media (max-width: 768px) {
     padding: 4rem 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 3rem 1rem;
   }
@@ -1057,12 +1073,12 @@ const FaqContainer = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 1;
-  
+
   @media (max-width: 768px) {
     max-width: 100%;
     padding: 0 1rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 0;
   }
@@ -1109,17 +1125,17 @@ const FaqTitle = styled(motion.h2)`
   text-align: center;
   position: relative;
   text-shadow: 0 2px 10px rgba(94, 234, 212, 0.2);
-  
+
   @media (max-width: 992px) {
     font-size: 3rem;
     margin-bottom: 2.5rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2.5rem;
     margin-bottom: 2rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 2rem;
     margin-bottom: 1.5rem;
@@ -1137,12 +1153,12 @@ const FaqTitle = styled(motion.h2)`
     letter-spacing: 5px;
     z-index: -1;
     white-space: nowrap;
-    
+
     @media (max-width: 768px) {
       font-size: 4rem;
       top: -25px;
     }
-    
+
     @media (max-width: 576px) {
       font-size: 3rem;
       top: -20px;
@@ -1165,7 +1181,7 @@ const FaqTitle = styled(motion.h2)`
     );
     border-radius: 4px;
     animation: ${pulse} 2s infinite ease-in-out;
-    
+
     @media (max-width: 576px) {
       width: 60px;
       height: 3px;
@@ -1179,12 +1195,12 @@ const FaqList = styled(motion.div)`
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 4rem;
-  
+
   @media (max-width: 768px) {
     gap: 1rem;
     margin-bottom: 3rem;
   }
-  
+
   @media (max-width: 576px) {
     gap: 0.8rem;
     margin-bottom: 2rem;
@@ -1201,11 +1217,11 @@ const FaqItem = styled(motion.div)`
   transition: all 0.3s ease;
   transform-style: preserve-3d;
   perspective: 1000px;
-  
+
   @media (max-width: 768px) {
     border-radius: 12px;
   }
-  
+
   @media (max-width: 576px) {
     border-radius: 8px;
   }
@@ -1229,11 +1245,11 @@ const FaqQuestion = styled(motion.div)`
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
-  
+
   @media (max-width: 768px) {
     padding: 1.5rem 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 1.2rem 1rem;
   }
@@ -1272,12 +1288,12 @@ const FaqQuestion = styled(motion.div)`
       rgba(255, 255, 255, 0.05),
       transparent
     );
-    
+
     @media (max-width: 768px) {
       left: 1.5rem;
       right: 1.5rem;
     }
-    
+
     @media (max-width: 576px) {
       left: 1rem;
       right: 1rem;
@@ -1292,11 +1308,11 @@ const FaqQuestionText = styled.h3`
   transition: all 0.3s ease;
   flex: 1;
   transform: translateZ(5px);
-  
+
   @media (max-width: 768px) {
     font-size: 1.1rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1rem;
   }
@@ -1334,13 +1350,13 @@ const FaqAnswer = styled(motion.div)`
   overflow: hidden;
   position: relative;
   animation: ${fadeInScale} 0.4s ease forwards;
-  
+
   @media (max-width: 768px) {
     padding: 0 1.5rem 1.5rem;
     font-size: 1rem;
     line-height: 1.6;
   }
-  
+
   @media (max-width: 576px) {
     padding: 0 1rem 1.2rem;
     font-size: 0.95rem;
@@ -1360,12 +1376,12 @@ const FaqAnswer = styled(motion.div)`
       rgba(255, 255, 255, 0.1),
       transparent
     );
-    
+
     @media (max-width: 768px) {
       left: 1.5rem;
       right: 1.5rem;
     }
-    
+
     @media (max-width: 576px) {
       left: 1rem;
       right: 1rem;
@@ -1381,7 +1397,7 @@ const FaqAnswer = styled(motion.div)`
     margin-top: 0.8rem;
     margin-bottom: 0.8rem;
     padding-left: 1.5rem;
-    
+
     @media (max-width: 576px) {
       padding-left: 1rem;
     }
@@ -1396,7 +1412,7 @@ const FaqAnswer = styled(motion.div)`
       color: var(--accent-color);
       position: absolute;
       left: -1rem;
-      
+
       @media (max-width: 576px) {
         left: -0.8rem;
       }
@@ -1405,7 +1421,7 @@ const FaqAnswer = styled(motion.div)`
 
   p {
     margin-bottom: 0.8rem;
-    
+
     @media (max-width: 576px) {
       margin-bottom: 0.6rem;
     }
@@ -1421,7 +1437,7 @@ const FaqAnswer = styled(motion.div)`
     border-radius: 4px;
     margin: 0 0.2rem;
     position: relative;
-    
+
     @media (max-width: 576px) {
       padding: 0.1rem 0.3rem;
       margin: 0 0.1rem;
@@ -1458,13 +1474,13 @@ const HeroButton = styled(motion.button)`
   margin-top: 3rem;
   z-index: 1;
   position: relative;
-  
+
   @media (max-width: 768px) {
     padding: 0.9rem 2rem;
     font-size: 1.1rem;
     margin-top: 2rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
@@ -1483,13 +1499,13 @@ const FaqCta = styled(motion.div)`
   text-align: center;
   border: 1px solid rgba(94, 234, 212, 0.2);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  
+
   @media (max-width: 768px) {
     padding: 1.5rem;
     margin-top: 2rem;
     border-radius: 16px;
   }
-  
+
   @media (max-width: 576px) {
     padding: 1.2rem;
     border-radius: 12px;
@@ -1501,12 +1517,12 @@ const FaqCtaText = styled.p`
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
   font-weight: 500;
-  
+
   @media (max-width: 768px) {
     font-size: 1.1rem;
     margin-bottom: 1.2rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1rem;
     margin-bottom: 1rem;
@@ -1529,12 +1545,12 @@ const FaqCtaButton = styled(motion.button)`
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(94, 234, 212, 0.3);
   }
-  
+
   @media (max-width: 768px) {
     padding: 0.9rem 1.8rem;
     font-size: 0.9rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 0.8rem 1.5rem;
     font-size: 0.85rem;
@@ -1562,7 +1578,7 @@ const WorkStageCard = styled(motion.div)`
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  
+
   @media (max-width: 1024px) {
     width: 90%;
     max-width: 800px;
@@ -1570,7 +1586,7 @@ const WorkStageCard = styled(motion.div)`
     min-height: 160px;
     padding: 1.8rem;
   }
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 1.5rem;
@@ -1579,7 +1595,7 @@ const WorkStageCard = styled(motion.div)`
     height: auto;
     text-align: center;
   }
-  
+
   @media (max-width: 576px) {
     padding: 1.2rem;
     gap: 1rem;
@@ -1606,13 +1622,13 @@ const WorkStageNumber = styled(motion.div)`
   color: rgba(74, 144, 226, 0.8);
   text-shadow: 0 2px 10px rgba(74, 144, 226, 0.4);
   flex-shrink: 0;
-  
+
   @media (max-width: 768px) {
     width: 80px;
     height: 80px;
     font-size: 3rem;
   }
-  
+
   @media (max-width: 576px) {
     width: 60px;
     height: 60px;
@@ -1624,7 +1640,11 @@ const WorkStageIcon = styled(motion.div)`
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent-color) 0%, rgba(41, 98, 255, 0.8) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent-color) 0%,
+    rgba(41, 98, 255, 0.8) 100%
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1633,13 +1653,13 @@ const WorkStageIcon = styled(motion.div)`
   box-shadow: 0 10px 30px rgba(74, 144, 226, 0.4);
   position: relative;
   flex-shrink: 0;
-  
+
   @media (max-width: 768px) {
     width: 100px;
     height: 100px;
     font-size: 2rem;
   }
-  
+
   @media (max-width: 576px) {
     width: 80px;
     height: 80px;
@@ -1665,21 +1685,21 @@ const WorkStageContent = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
+
   @media (max-width: 1024px) {
     width: calc(100% - 200px);
     height: auto;
     min-height: 120px;
     padding: 1.3rem 1.8rem;
   }
-  
+
   @media (max-width: 768px) {
     width: 100%;
     height: auto;
     padding: 1.2rem;
     border-radius: 16px;
   }
-  
+
   @media (max-width: 576px) {
     padding: 1rem;
     border-radius: 12px;
@@ -1690,14 +1710,14 @@ const WorkStageTitle = styled.h3`
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 0.8rem;
-  color: #FFFFFF;
+  color: #ffffff;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  
+
   @media (max-width: 768px) {
     font-size: 1.3rem;
     margin-bottom: 0.6rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
@@ -1707,15 +1727,15 @@ const WorkStageTitle = styled.h3`
 const WorkStageDescription = styled.p`
   font-size: 1rem;
   line-height: 1.5;
-  color: #FFFFFF;
+  color: #ffffff;
   overflow: hidden;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  
+
   @media (max-width: 768px) {
     font-size: 0.95rem;
     line-height: 1.4;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 0.9rem;
     line-height: 1.3;
@@ -1725,15 +1745,19 @@ const WorkStageDescription = styled.p`
 const WorkStageConnector = styled(motion.div)`
   width: 4px;
   height: 5rem;
-  background: linear-gradient(to bottom, var(--accent-color), rgba(41, 98, 255, 0.1));
+  background: linear-gradient(
+    to bottom,
+    var(--accent-color),
+    rgba(41, 98, 255, 0.1)
+  );
   border-radius: 2px;
   margin: 0 auto;
-  
+
   @media (max-width: 768px) {
     height: 3rem;
     width: 3px;
   }
-  
+
   @media (max-width: 576px) {
     height: 2rem;
     width: 2px;
@@ -1748,17 +1772,17 @@ const WorkStagesTitle = styled(motion.h2)`
   position: relative;
   text-align: center;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  
+
   @media (max-width: 992px) {
     font-size: 3.5rem;
     margin-bottom: 5rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 3rem;
     margin-bottom: 4rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 2.5rem;
     margin-bottom: 3rem;
@@ -1770,11 +1794,11 @@ const WorkStagesContainer = styled(motion.div)`
   flex-direction: column;
   gap: 3rem;
   align-items: center;
-  
+
   @media (max-width: 768px) {
     gap: 2.5rem;
   }
-  
+
   @media (max-width: 576px) {
     gap: 2rem;
     padding: 0 0.5rem;
@@ -2909,9 +2933,7 @@ const ERPCRMPage = () => {
                     },
                   }}
                 >
-                  <WorkStageNumber>
-                    {index + 1}
-                  </WorkStageNumber>
+                  <WorkStageNumber>{index + 1}</WorkStageNumber>
 
                   <WorkStageIcon
                     whileHover={{
@@ -2944,9 +2966,7 @@ const ERPCRMPage = () => {
                   </WorkStageIcon>
 
                   <WorkStageContent>
-                    <WorkStageTitle>
-                      {step.title}
-                    </WorkStageTitle>
+                    <WorkStageTitle>{step.title}</WorkStageTitle>
                     <WorkStageDescription>
                       {step.description}
                     </WorkStageDescription>
