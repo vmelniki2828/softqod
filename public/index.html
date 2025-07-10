@@ -57,22 +57,15 @@
       })(window.location);
     </script>
     <!-- End Single Page Apps for GitHub Pages -->
-<script>
-  (function(d,t) {
-    var BASE_URL="https://chatwoot.qodeq.net";
-    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-    g.src=BASE_URL+"/packs/js/sdk.js";
-    g.defer = true;
-    g.async = true;
-    s.parentNode.insertBefore(g,s);
-    g.onload=function(){
-      window.chatwootSDK.run({
-        websiteToken: 'gijwhHHyDvjnbReERDdfMc2U',
-        baseUrl: BASE_URL
-      })
-    }
-  })(document,"script");
-</script>
+    <script src="http://146.19.230.62:8080/assets/chat/chat-no-jquery.min.js"></script>
+    <script>
+      (function () {
+        new ZammadChat({
+          fontSize: "12px",
+          chatId: 1,
+        });
+      })();
+    </script>
 
   </head>
   <body>
