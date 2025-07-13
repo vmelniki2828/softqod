@@ -22,6 +22,7 @@ import {
   FaFont,
   FaBook,
   FaCode,
+  FaChevronDown,
 } from 'react-icons/fa';
 // import BurgerMenu from './BurgerMenu';
 
@@ -333,6 +334,101 @@ const DropdownItem = styled(Link)`
 //   }
 // `;
 
+const LanguageSwitcherContainer = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+`;
+
+const LanguageButton = styled(motion.button)`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  color: var(--text-primary);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--accent-color);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+`;
+
+const LanguageDropdown = styled(motion.div)`
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  z-index: 1000;
+  min-width: 150px;
+
+  @media (max-width: 768px) {
+    min-width: 120px;
+  }
+`;
+
+const LanguageOption = styled(motion.button)`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--accent-color);
+  }
+
+  &.active {
+    background: rgba(94, 234, 212, 0.1);
+    color: var(--accent-color);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+`;
+
+const LanguageFlag = styled.span`
+  font-size: 1.2rem;
+  line-height: 1;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+`;
+
 const HeaderNavigation = () => {
   const location = useLocation();
   const [activeBlock, setActiveBlock] = useState(null);
@@ -483,6 +579,24 @@ const HeaderNavigation = () => {
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const [language, setLanguage] = useState('uk');
+  const [isOpen, setIsOpen] = useState(false);
+
+  const languages = [
+    { code: 'uk', name: 'Українська', flag: '🇺🇦' },
+    { code: 'en', name: 'English', flag: '🇺🇸' },
+  ];
+
+  const currentLanguage = languages.find(lang => lang.code === language);
+
+  const handleLanguageChange = (langCode) => {
+    setLanguage(langCode);
+    setIsOpen(false);
+  };
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -540,14 +654,58 @@ const Header = () => {
 
         <HeaderNavigation />
 
-        <MobileMenuButton
-          onClick={handleMenuToggle}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          isHidden={isMenuOpen}
-        >
-          <FaBars />
-        </MobileMenuButton>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginLeft: 'auto' }}>
+          <LanguageSwitcherContainer>
+            <LanguageButton
+              onClick={toggleDropdown}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <FaGlobe />
+              <span>{currentLanguage?.flag}</span>
+              <span>{currentLanguage?.code.toUpperCase()}</span>
+              <motion.div
+                animate={{ rotate: isOpen ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <FaChevronDown size={12} />
+              </motion.div>
+            </LanguageButton>
+
+            <AnimatePresence>
+              {isOpen && (
+                <LanguageDropdown
+                  initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {languages.map((lang) => (
+                    <LanguageOption
+                      key={lang.code}
+                      onClick={() => handleLanguageChange(lang.code)}
+                      className={language === lang.code ? 'active' : ''}
+                      whileHover={{ x: 5 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <LanguageFlag>{lang.flag}</LanguageFlag>
+                      <span>{lang.name}</span>
+                    </LanguageOption>
+                  ))}
+                </LanguageDropdown>
+              )}
+            </AnimatePresence>
+          </LanguageSwitcherContainer>
+
+          <MobileMenuButton
+            onClick={handleMenuToggle}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            isHidden={isMenuOpen}
+          >
+            <FaBars />
+          </MobileMenuButton>
+        </div>
       </HeaderContent>
 
       <AnimatePresence>
