@@ -107,7 +107,7 @@ const HeroSection = styled(motion.div)`
 
   @media (max-width: 768px) {
     min-height: 80vh;
-    padding: 2rem;
+  padding: 2rem;
   }
 
   @media (max-width: 576px) {
