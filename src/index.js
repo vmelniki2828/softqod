@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { createGlobalStyle } from 'styled-components';
 import './index.css';
+import './i18n';
 
 const GlobalStyle = createGlobalStyle`
   * {
