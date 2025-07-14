@@ -1,9 +1,17 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaUser, FaComment, FaPaperPlane } from 'react-icons/fa';
+import {
+  FaEnvelope,
+  FaPhone,
+  FaMapMarkerAlt,
+  FaUser,
+  FaComment,
+  FaPaperPlane,
+} from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../config/emailjs';
+import { useTranslation } from 'react-i18next';
 
 const ContactSection = styled.section`
   padding: 6rem 2rem;
@@ -137,7 +145,7 @@ const ContactCard = styled(motion.div)`
 const IconWrapper = styled.div`
   width: 60px;
   height: 60px;
-  background: linear-gradient(45deg, var(--accent-color), #6AADFF);
+  background: linear-gradient(45deg, var(--accent-color), #6aadff);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -384,7 +392,7 @@ const TextareaIcon = styled.div`
 const SubmitButton = styled(motion.button)`
   width: 100%;
   padding: 1rem 2rem;
-  background: linear-gradient(45deg, var(--accent-color), #6AADFF);
+  background: linear-gradient(45deg, var(--accent-color), #6aadff);
   border: none;
   border-radius: 8px;
   color: var(--bg-primary);
@@ -399,7 +407,7 @@ const SubmitButton = styled(motion.button)`
   box-shadow: 0 5px 15px rgba(74, 144, 226, 0.2);
 
   &:hover {
-    background: linear-gradient(45deg, #6AADFF, var(--accent-color));
+    background: linear-gradient(45deg, #6aadff, var(--accent-color));
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
   }
@@ -491,7 +499,7 @@ const FloatingShape = styled(motion.div)`
   position: absolute;
   width: 300px;
   height: 300px;
-  background: linear-gradient(45deg, var(--accent-color), #6AADFF);
+  background: linear-gradient(45deg, var(--accent-color), #6aadff);
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   opacity: 0.1;
   z-index: 1;
@@ -518,6 +526,7 @@ const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
   const formRef = useRef(null);
+  const { t } = useTranslation();
 
   const handleInputChange = e => {
     const { name, value } = e.target;
@@ -622,7 +631,7 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          Свяжитесь с нами
+          {t('mainPage.contact.title')}
         </SectionTitle>
         <ContactGrid>
           <ContactInfo>
@@ -650,7 +659,7 @@ const Contact = () => {
                 <FaPhone />
               </IconWrapper>
               <InfoContent>
-                <InfoTitle>Телефон</InfoTitle>
+                <InfoTitle>{t('mainPage.contact.contactTetx1')}</InfoTitle>
                 <InfoText>+38 (067) 123-45-67</InfoText>
               </InfoContent>
             </ContactCard>
@@ -664,8 +673,8 @@ const Contact = () => {
                 <FaMapMarkerAlt />
               </IconWrapper>
               <InfoContent>
-                <InfoTitle>Адрес</InfoTitle>
-                <InfoText>м. Київ, вул. Хрещатик, буд. 22</InfoText>
+                <InfoTitle>{t('mainPage.contact.contactTetx2')}</InfoTitle>
+                <InfoText>{t('mainPage.contact.adressText')}</InfoText>
               </InfoContent>
             </ContactCard>
           </ContactInfo>
@@ -684,9 +693,9 @@ const Contact = () => {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
               >
-                ✅ Дякуємо! Ваша заявка надіслана успішно.
+                ✅ {t('mainPage.contact.formStatus1')}
                 <br />
-                Ми зв'яжемося з вами найближчим часом.
+                {t('mainPage.contact.formStatus2')}
               </SuccessMessage>
             )}
 
@@ -703,7 +712,7 @@ const Contact = () => {
 
             <FormGroup>
               <Label>
-                <FaUser /> Ваше имя *
+                <FaUser /> {t('mainPage.contact.formNameText')} *
               </Label>
               <div style={{ position: 'relative' }}>
                 <InputIcon>
@@ -714,7 +723,7 @@ const Contact = () => {
                   name="from_name"
                   value={formData.from_name}
                   onChange={handleInputChange}
-                  placeholder="Введите ваше имя"
+                  placeholder={t('mainPage.contact.placeholderNameText')}
                   required
                 />
               </div>
@@ -741,7 +750,7 @@ const Contact = () => {
 
             <FormGroup>
               <Label>
-                <FaPhone /> Номер телефону
+                <FaPhone /> {t('mainPage.contact.phonrNumberText')}
               </Label>
               <div style={{ position: 'relative' }}>
                 <InputIcon>
@@ -759,7 +768,7 @@ const Contact = () => {
 
             <FormGroup>
               <Label>
-                <FaComment /> Сообщение *
+                <FaComment /> {t('mainPage.contact.messegeText')} *
               </Label>
               <div style={{ position: 'relative' }}>
                 <TextareaIcon>
@@ -769,7 +778,7 @@ const Contact = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder="Введите ваше сообщение"
+                  placeholder={t('mainPage.contact.placeholderText')}
                   required
                 />
               </div>
@@ -784,12 +793,12 @@ const Contact = () => {
               {isSubmitting ? (
                 <>
                   <LoadingSpinner />
-                  Надсилання...
+                  {t('mainPage.contact.buttonText2')}
                 </>
               ) : (
                 <>
                   <FaPaperPlane />
-                  Отправить сообщение
+                  {t('mainPage.contact.buttonText1')}
                 </>
               )}
             </SubmitButton>

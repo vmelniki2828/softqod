@@ -11,6 +11,7 @@ import {
   FaChevronLeft,
   FaChevronRight,
 } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const ServicesSection = styled.section`
   padding: 6rem 2rem;
@@ -462,83 +463,81 @@ const Dot = styled(motion.button)`
   }
 `;
 
-const services = [
-  {
-    icon: <FaRocket />,
-    title: 'Швидкість та ефективність',
-    description:
-      'Ми розуміємо, що час - це гроші. Наші рішення допоможуть вам швидше досягти цілей і отримати результат.',
-    benefits: [
-      'Швидкий старт проєкту',
-      'Оптимізовані процеси',
-      'Скорочення часу на розробку',
-      'Миттєвий зворотний зв\'язок',
-    ],
-  },
-  {
-    icon: <FaChartLine />,
-    title: 'Зростання бізнесу',
-    description:
-      'Наші рішення спрямовані на збільшення прибутку та розширення вашого бізнесу.',
-    benefits: [
-      'Збільшення конверсії',
-      'Розширення клієнтської бази',
-      'Підвищення лояльності клієнтів',
-      'Оптимізація витрат',
-    ],
-  },
-  {
-    icon: <FaUsers />,
-    title: 'Клієнтоорієнтованість',
-    description:
-      'Ваші клієнти - наш пріоритет. Ми створюємо рішення, які роблять їх щасливими.',
-    benefits: [
-      'Покращення користувацького досвіду',
-      'Персоналізовані рішення',
-      'Постійна підтримка',
-      'Швидке вирішення проблем',
-    ],
-  },
-  {
-    icon: <FaShieldAlt />,
-    title: 'Надійність та безпека',
-    description: 'Ми гарантуємо стабільну роботу та захист ваших даних.',
-    benefits: [
-      'Захист від кібератак',
-      'Резервне копіювання даних',
-      'Стабільна робота 24/7',
-      'Дотримання стандартів безпеки',
-    ],
-  },
-  {
-    icon: <FaClock />,
-    title: 'Довгострокові рішення',
-    description:
-      'Ми створюємо рішення, які будуть працювати і розвиватися разом з вашим бізнесом.',
-    benefits: [
-      'Масштабованість рішень',
-      'Довгострокова підтримка',
-      'Регулярні оновлення',
-      'Адаптація під нові вимоги',
-    ],
-  },
-  {
-    icon: <FaHandshake />,
-    title: 'Партнерство',
-    description:
-      'Ми стаємо частиною вашої команди і працюємо на спільний успіх.',
-    benefits: [
-      'Прозора співпраця',
-      'Гнучкі умови роботи',
-      'Експертна підтримка',
-      'Спільний розвиток',
-    ],
-  },
-];
-
 const Services = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const { t } = useTranslation();
+
+  const services = [
+    {
+      icon: <FaRocket />,
+      title: t('mainPage.services.firstItem.title'),
+      description: t('mainPage.services.firstItem.description'),
+      benefits: [
+        t('mainPage.services.firstItem.benefitsFirstItem'),
+        t('mainPage.services.firstItem.benefitsSecondItem'),
+        t('mainPage.services.firstItem.benefitsThirdItem'),
+        t('mainPage.services.firstItem.benefitsForthItem'),
+      ],
+    },
+    {
+      icon: <FaChartLine />,
+      title: t('mainPage.services.secondItem.title'),
+      description: t('mainPage.services.secondItem.description'),
+      benefits: [
+        t('mainPage.services.secondItem.benefitsFirstItem'),
+        t('mainPage.services.secondItem.benefitsSecondItem'),
+        t('mainPage.services.secondItem.benefitsThirdItem'),
+        t('mainPage.services.secondItem.benefitsForthItem'),
+      ],
+    },
+    {
+      icon: <FaUsers />,
+      title: t('mainPage.services.thirdItem.title'),
+      description: t('mainPage.services.thirdItem.description'),
+      benefits: [
+        t('mainPage.services.thirdItem.benefitsFirstItem'),
+        t('mainPage.services.thirdItem.benefitsSecondItem'),
+        t('mainPage.services.thirdItem.benefitsThirdItem'),
+        t('mainPage.services.thirdItem.benefitsForthItem'),
+      ],
+    },
+    {
+      icon: <FaShieldAlt />,
+      title: t('mainPage.services.forthItem.title'),
+      description: t('mainPage.services.forthItem.description'),
+      benefits: [
+        t('mainPage.services.forthItem.benefitsFirstItem'),
+        t('mainPage.services.forthItem.benefitsSecondItem'),
+        t('mainPage.services.forthItem.benefitsThirdItem'),
+        t('mainPage.services.forthItem.benefitsForthItem'),
+      ],
+    },
+    {
+      icon: <FaClock />,
+      title: t('mainPage.services.fifthItem.title'),
+      description:
+      t('mainPage.services.fifthItem.description'),
+      benefits: [
+        t('mainPage.services.fifthItem.benefitsFirstItem'),
+        t('mainPage.services.fifthItem.benefitsSecondItem'),
+        t('mainPage.services.fifthItem.benefitsThirdItem'),
+        t('mainPage.services.fifthItem.benefitsForthItem'),
+      ],
+    },
+    {
+      icon: <FaHandshake />,
+      title: t('mainPage.services.sixthItem.title'),
+      description:
+      t('mainPage.services.sixthItem.description'),
+      benefits: [
+        t('mainPage.services.sixthItem.benefitsFirstItem'),
+        t('mainPage.services.sixthItem.benefitsSecondItem'),
+        t('mainPage.services.sixthItem.benefitsThirdItem'),
+        t('mainPage.services.sixthItem.benefitsForthItem'),
+      ],
+    },
+  ];
 
   useEffect(() => {
     if (isHovered) return;
@@ -548,7 +547,7 @@ const Services = () => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isHovered]);
+  }, [isHovered, services.length]);
 
   const nextSlide = () => {
     setCurrentIndex(prevIndex => (prevIndex + 1) % services.length);
@@ -573,7 +572,7 @@ const Services = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          Цінності наших послуг
+          {t('mainPage.services.title')}
         </SectionTitle>
 
         <SliderContainer

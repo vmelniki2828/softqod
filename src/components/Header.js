@@ -25,6 +25,8 @@ import {
   FaChevronDown,
 } from 'react-icons/fa';
 // import BurgerMenu from './BurgerMenu';
+import { useTranslation } from 'react-i18next';
+import { t } from 'i18next';
 
 const HeaderContainer = styled(motion.header)`
   position: fixed;
@@ -100,8 +102,8 @@ const MobileMenuButton = styled(motion.button)`
   cursor: pointer;
   padding: 0.5rem;
   z-index: 1001;
-  opacity: ${props => props.isHidden ? 0 : 1};
-  pointer-events: ${props => props.isHidden ? 'none' : 'auto'};
+  opacity: ${props => (props.isHidden ? 0 : 1)};
+  pointer-events: ${props => (props.isHidden ? 'none' : 'auto')};
   transition: opacity 0.3s ease;
 
   @media (max-width: 768px) {
@@ -446,7 +448,7 @@ const HeaderNavigation = () => {
               : ''
           }
         >
-          Розробка
+          {t('header.nav.firstItem')}
         </NavLink>
         {activeBlock === 'development' && (
           <DropdownMenu
@@ -461,7 +463,7 @@ const HeaderNavigation = () => {
             </DropdownItem>
             <DropdownItem to="/services/development/automation">
               <FaCogs />
-              Автоматизація та оптимізація бізнес-процесів
+              {t('header.navItem.developmentFirstItem')}
             </DropdownItem>
             <DropdownItem to="/services/development/erp">
               <FaDatabase />
@@ -477,7 +479,7 @@ const HeaderNavigation = () => {
             </DropdownItem>
             <DropdownItem to="/services/development/mobile">
               <FaMobile />
-              Розробка мобільних додатків
+              {t('header.navItem.developmentSecondItem')}
             </DropdownItem>
           </DropdownMenu>
         )}
@@ -491,7 +493,7 @@ const HeaderNavigation = () => {
             location.pathname.startsWith('/services/design') ? 'active' : ''
           }
         >
-          Дизайн
+          {t('header.nav.secondItem')}
         </NavLink>
         {activeBlock === 'design' && (
           <DropdownMenu
@@ -502,27 +504,27 @@ const HeaderNavigation = () => {
           >
             <DropdownItem to="/services/design/banners">
               <FaPaintBrush />
-              Банерна реклама
+              {t('header.navItem.designFirstItem')}
             </DropdownItem>
             <DropdownItem to="/services/design/brandbook">
               <FaBook />
-              Брендбук
+              {t('header.navItem.designSecondItem')}
             </DropdownItem>
             <DropdownItem to="/services/design/webdesign">
               <FaDesktop />
-              Веб-дизайн
+              {t('header.navItem.designThirdItem')}
             </DropdownItem>
             <DropdownItem to="/services/design/uxuidesign">
               <FaPalette />
-              UX/UI дизайн
+              {t('header.navItem.designForthItem')}
             </DropdownItem>
             <DropdownItem to="/services/design/typography_lettering">
               <FaFont />
-              Типографіка та леттеринг
+              {t('header.navItem.designFifthItem')}
             </DropdownItem>
             <DropdownItem to="/services/design/branding">
               <FaPencilRuler />
-              Брендинг та айдентика
+              {t('header.navItem.designSixthItem')}
             </DropdownItem>
           </DropdownMenu>
         )}
@@ -536,7 +538,7 @@ const HeaderNavigation = () => {
             location.pathname.startsWith('/services/marketing') ? 'active' : ''
           }
         >
-          Маркетинг
+          {t('header.nav.thirdItem')}
         </NavLink>
         {activeBlock === 'marketing' && (
           <DropdownMenu
@@ -547,7 +549,7 @@ const HeaderNavigation = () => {
           >
             <DropdownItem to="/services/marketing/banners">
               <FaBullhorn />
-              Банерна реклама ШІ
+              {t('header.navItem.marketingFirstItem')}
             </DropdownItem>
             <DropdownItem to="/services/marketing/smm">
               <FaUsers />
@@ -555,19 +557,19 @@ const HeaderNavigation = () => {
             </DropdownItem>
             <DropdownItem to="/services/marketing/context-ads">
               <FaChartBar />
-              Контекстна реклама
+              {t('header.navItem.marketingSecondItem')}
             </DropdownItem>
             <DropdownItem to="/services/marketing/seo">
               <FaSearch />
-              SEO Оптимізація
+              {t('header.navItem.marketingThirdItem')}
             </DropdownItem>
-          <DropdownItem to="/services/marketing/target">
+            <DropdownItem to="/services/marketing/target">
               <FaBullhorn />
-              Таргетированная реклама
+              {t('header.navItem.marketingForthItem')}
             </DropdownItem>
             <DropdownItem to="/services/marketing/audit">
               <FaChartBar />
-              Маркетинговий аудит
+              {t('header.navItem.marketingFifthItem')}
             </DropdownItem>
           </DropdownMenu>
         )}
@@ -581,6 +583,7 @@ const Header = () => {
   const location = useLocation();
   const [language, setLanguage] = useState('uk');
   const [isOpen, setIsOpen] = useState(false);
+  const { i18n } = useTranslation();
 
   const languages = [
     { code: 'uk', name: 'Українська', flag: '🇺🇦' },
@@ -589,8 +592,9 @@ const Header = () => {
 
   const currentLanguage = languages.find(lang => lang.code === language);
 
-  const handleLanguageChange = (langCode) => {
+  const handleLanguageChange = langCode => {
     setLanguage(langCode);
+    i18n.changeLanguage(langCode);
     setIsOpen(false);
   };
 
@@ -654,7 +658,14 @@ const Header = () => {
 
         <HeaderNavigation />
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginLeft: 'auto' }}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem',
+            marginLeft: 'auto',
+          }}
+        >
           <LanguageSwitcherContainer>
             <LanguageButton
               onClick={toggleDropdown}
@@ -680,7 +691,7 @@ const Header = () => {
                   exit={{ opacity: 0, y: -10, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
                 >
-                  {languages.map((lang) => (
+                  {languages.map(lang => (
                     <LanguageOption
                       key={lang.code}
                       onClick={() => handleLanguageChange(lang.code)}
@@ -722,7 +733,7 @@ const Header = () => {
               initial={{ x: 300 }}
               animate={{ x: 0 }}
               exit={{ x: 300 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
             >
               <MobileMenuHeader>
                 <MobileMenuTitle>Меню</MobileMenuTitle>
@@ -738,147 +749,220 @@ const Header = () => {
               <MobileNavSection>
                 <MobileNavTitle>
                   <FaCode />
-                  Розробка
+                  {t('header.nav.firstItem')}
                 </MobileNavTitle>
-                <MobileNavItem 
+                <MobileNavItem
                   to="/services/development/pwa"
-                  className={location.pathname === '/services/development/pwa' ? 'active' : ''}
+                  className={
+                    location.pathname === '/services/development/pwa'
+                      ? 'active'
+                      : ''
+                  }
                 >
                   <FaLaptopCode />
                   PWA (Progressive Web Apps)
                 </MobileNavItem>
-                <MobileNavItem 
+                <MobileNavItem
                   to="/services/development/automation"
-                  className={location.pathname === '/services/development/automation' ? 'active' : ''}
+                  className={
+                    location.pathname === '/services/development/automation'
+                      ? 'active'
+                      : ''
+                  }
                 >
                   <FaCogs />
-                  Автоматизація та оптимізація бізнес-процесів
+                  {t('header.navItem.developmentFirstItem')}
                 </MobileNavItem>
-                <MobileNavItem 
+                <MobileNavItem
                   to="/services/development/erp"
-                  className={location.pathname === '/services/development/erp' ? 'active' : ''}
+                  className={
+                    location.pathname === '/services/development/erp'
+                      ? 'active'
+                      : ''
+                  }
                 >
                   <FaDatabase />
                   ERP та CRM системи
                 </MobileNavItem>
-                <MobileNavItem 
+                <MobileNavItem
                   to="/services/development/ecommerce"
-                  className={location.pathname === '/services/development/ecommerce' ? 'active' : ''}
+                  className={
+                    location.pathname === '/services/development/ecommerce'
+                      ? 'active'
+                      : ''
+                  }
                 >
                   <FaStore />
                   E-commerce
                 </MobileNavItem>
-                <MobileNavItem 
+                <MobileNavItem
                   to="/services/development/landing"
-                  className={location.pathname === '/services/development/landing' ? 'active' : ''}
+                  className={
+                    location.pathname === '/services/development/landing'
+                      ? 'active'
+                      : ''
+                  }
                 >
                   <FaGlobe />
                   Landing page
                 </MobileNavItem>
-                <MobileNavItem 
+                <MobileNavItem
                   to="/services/development/mobile"
-                  className={location.pathname === '/services/development/mobile' ? 'active' : ''}
+                  className={
+                    location.pathname === '/services/development/mobile'
+                      ? 'active'
+                      : ''
+                  }
                 >
                   <FaMobile />
-                  Розробка мобільних додатків
+                  {t('header.navItem.developmentSecondItem')}
                 </MobileNavItem>
               </MobileNavSection>
 
               <MobileNavSection>
                 <MobileNavTitle>
                   <FaPaintBrush />
-                  Дизайн
+                  {t('header.nav.secondItem')}
                 </MobileNavTitle>
-                <MobileNavItem 
+                <MobileNavItem
                   to="/services/design/banners"
-                  className={location.pathname === '/services/design/banners' ? 'active' : ''}
+                  className={
+                    location.pathname === '/services/design/banners'
+                      ? 'active'
+                      : ''
+                  }
                 >
                   <FaPaintBrush />
-                  Банерна реклама
+                  {t('header.navItem.designFirstItem')}
                 </MobileNavItem>
-                <MobileNavItem 
+                <MobileNavItem
                   to="/services/design/brandbook"
-                  className={location.pathname === '/services/design/brandbook' ? 'active' : ''}
+                  className={
+                    location.pathname === '/services/design/brandbook'
+                      ? 'active'
+                      : ''
+                  }
                 >
                   <FaBook />
-                  Брендбук
+                  {t('header.navItem.designSecondItem')}
                 </MobileNavItem>
-                <MobileNavItem 
+                <MobileNavItem
                   to="/services/design/webdesign"
-                  className={location.pathname === '/services/design/webdesign' ? 'active' : ''}
+                  className={
+                    location.pathname === '/services/design/webdesign'
+                      ? 'active'
+                      : ''
+                  }
                 >
                   <FaDesktop />
-                  Веб-дизайн
+                  {t('header.navItem.designThirdItem')}
                 </MobileNavItem>
-                <MobileNavItem 
+                <MobileNavItem
                   to="/services/design/uxuidesign"
-                  className={location.pathname === '/services/design/uxuidesign' ? 'active' : ''}
+                  className={
+                    location.pathname === '/services/design/uxuidesign'
+                      ? 'active'
+                      : ''
+                  }
                 >
                   <FaPalette />
-                  UX/UI дизайн
+                  {t('header.navItem.designForthItem')}
                 </MobileNavItem>
-                <MobileNavItem 
+                <MobileNavItem
                   to="/services/design/typography_lettering"
-                  className={location.pathname === '/services/design/typography_lettering' ? 'active' : ''}
+                  className={
+                    location.pathname ===
+                    '/services/design/typography_lettering'
+                      ? 'active'
+                      : ''
+                  }
                 >
                   <FaFont />
-                  Типографіка та леттеринг
+                  {t('header.navItem.designFifthItem')}
                 </MobileNavItem>
-                <MobileNavItem 
+                <MobileNavItem
                   to="/services/design/branding"
-                  className={location.pathname === '/services/design/branding' ? 'active' : ''}
+                  className={
+                    location.pathname === '/services/design/branding'
+                      ? 'active'
+                      : ''
+                  }
                 >
                   <FaPencilRuler />
-                  Брендинг та айдентика
+                  {t('header.navItem.designSixthItem')}
                 </MobileNavItem>
               </MobileNavSection>
 
               <MobileNavSection>
                 <MobileNavTitle>
                   <FaBullhorn />
-                  Маркетинг
+                  {t('header.nav.thirdItem')}
                 </MobileNavTitle>
-                <MobileNavItem 
+                <MobileNavItem
                   to="/services/marketing/banners"
-                  className={location.pathname === '/services/marketing/banners' ? 'active' : ''}
+                  className={
+                    location.pathname === '/services/marketing/banners'
+                      ? 'active'
+                      : ''
+                  }
                 >
                   <FaBullhorn />
-                  Банерна реклама ШІ
+                  {t('header.navItem.marketingFirstItem')}
                 </MobileNavItem>
-                <MobileNavItem 
+                <MobileNavItem
                   to="/services/marketing/smm"
-                  className={location.pathname === '/services/marketing/smm' ? 'active' : ''}
+                  className={
+                    location.pathname === '/services/marketing/smm'
+                      ? 'active'
+                      : ''
+                  }
                 >
                   <FaUsers />
                   SMM
                 </MobileNavItem>
-                <MobileNavItem 
+                <MobileNavItem
                   to="/services/marketing/context-ads"
-                  className={location.pathname === '/services/marketing/context-ads' ? 'active' : ''}
+                  className={
+                    location.pathname === '/services/marketing/context-ads'
+                      ? 'active'
+                      : ''
+                  }
                 >
                   <FaChartBar />
-                  Контекстна реклама
+                  {t('header.navItem.marketingSecondItem')}
                 </MobileNavItem>
-                <MobileNavItem 
+                <MobileNavItem
                   to="/services/marketing/seo"
-                  className={location.pathname === '/services/marketing/seo' ? 'active' : ''}
+                  className={
+                    location.pathname === '/services/marketing/seo'
+                      ? 'active'
+                      : ''
+                  }
                 >
                   <FaSearch />
-                  SEO Оптимізація
+                  {t('header.navItem.marketingThirdItem')}
                 </MobileNavItem>
-                <MobileNavItem 
+                <MobileNavItem
                   to="/services/marketing/target"
-                  className={location.pathname === '/services/marketing/target' ? 'active' : ''}
+                  className={
+                    location.pathname === '/services/marketing/target'
+                      ? 'active'
+                      : ''
+                  }
                 >
                   <FaBullhorn />
-                  Таргетированная реклама
+                  {t('header.navItem.marketingForthItem')}
                 </MobileNavItem>
-                <MobileNavItem 
+                <MobileNavItem
                   to="/services/marketing/audit"
-                  className={location.pathname === '/services/marketing/audit' ? 'active' : ''}
+                  className={
+                    location.pathname === '/services/marketing/audit'
+                      ? 'active'
+                      : ''
+                  }
                 >
                   <FaChartBar />
-                  Маркетинговий аудит
+                  {t('header.navItem.marketingFifthItem')}
                 </MobileNavItem>
               </MobileNavSection>
             </MobileMenu>

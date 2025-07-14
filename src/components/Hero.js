@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Modal from './Modal';
+import { useTranslation } from 'react-i18next';
 
 const HeroSection = styled.section`
   min-height: 100vh;
@@ -185,7 +186,6 @@ const VisualSection = styled(motion.div)`
   }
 `;
 
-
 const StatsSection = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -277,6 +277,7 @@ const AnimatedShape = styled(motion.div)`
 
 const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { t } = useTranslation();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -333,17 +334,14 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Створюємо цифрові рішення для вашого бізнесу
+            {t('mainPage.hero.mainText')}
           </Title>
           <Description
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Ми допомагаємо компаніям розвиватися в цифровому середовищі за
-            допомогою сучасних технологій та креативних рішень. Наша команда
-            експертів створює інноваційні проєкти, які приносять реальні
-            результати.
+            {t('mainPage.hero.text')}
           </Description>
           <CTAButton
             initial={{ opacity: 0, y: 30 }}
@@ -353,7 +351,7 @@ const Hero = () => {
             whileTap={{ scale: 0.95 }}
             onClick={openModal}
           >
-            Обговорити проєкт
+            {t('mainPage.hero.buttonText')}
           </CTAButton>
           <StatsSection
             initial={{ opacity: 0, y: 30 }}
@@ -362,15 +360,15 @@ const Hero = () => {
           >
             <StatItem>
               <StatNumber>10+</StatNumber>
-              <StatLabel>Років досвіду</StatLabel>
+              <StatLabel> {t('mainPage.hero.firstListItem')}</StatLabel>
             </StatItem>
             <StatItem>
               <StatNumber>100+</StatNumber>
-              <StatLabel>Успішних проєктів</StatLabel>
+              <StatLabel> {t('mainPage.hero.firstListSecond')}</StatLabel>
             </StatItem>
             <StatItem>
               <StatNumber>50+</StatNumber>
-              <StatLabel>Експертів</StatLabel>
+              <StatLabel> {t('mainPage.hero.firstListThird')}</StatLabel>
             </StatItem>
           </StatsSection>
         </Content>

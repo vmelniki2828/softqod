@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaLightbulb, FaClock, FaUsers, FaHandshake } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const BenefitsSection = styled.section`
   padding: 6rem 2rem;
@@ -78,13 +79,13 @@ const BenefitsGrid = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   padding: 2rem;
-  
+
   @media (max-width: 1200px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     padding: 1.5rem;
   }
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 1.2rem;
@@ -102,11 +103,7 @@ const Number = styled(motion.div)`
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
-  background: linear-gradient(
-    45deg,
-    var(--accent-color),
-    #6AADFF
-  );
+  background: linear-gradient(45deg, var(--accent-color), #6aadff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: transform 0.3s ease;
@@ -140,7 +137,7 @@ const BenefitItem = styled(motion.div)`
   overflow: hidden;
   transition: all 0.3s ease;
   height: 100%;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -152,16 +149,16 @@ const BenefitItem = styled(motion.div)`
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     border-color: var(--accent-color);
-    
+
     &::before {
       opacity: 0.1;
     }
-    
+
     ${Number} {
       transform: scale(1.1);
     }
@@ -261,38 +258,40 @@ const BenefitDescription = styled(motion.p)`
   }
 `;
 
-const benefits = [
-  {
-    icon: <FaLightbulb />,
-    title: 'Інноваційні рішення',
-    description: 'Ми використовуємо найсучасніші технології для створення унікальних продуктів.',
-    stats: '100+',
-    statsLabel: 'Проєктів'
-  },
-  {
-    icon: <FaClock />,
-    title: 'Швидка доставка',
-    description: 'Оптимізовані процеси розробки дозволяють нам швидко виконувати проєкти.',
-    stats: '2x',
-    statsLabel: 'Швидше'
-  },
-  {
-    icon: <FaUsers />,
-    title: 'Експертна команда',
-    description: 'Наша команда складається з досвідчених професіоналів у різних галузях.',
-    stats: '50+',
-    statsLabel: 'Експертів'
-  },
-  {
-    icon: <FaHandshake />,
-    title: '24/7 Підтримка',
-    description: 'Ми завжди готові допомогти вам і відповісти на ваші запитання.',
-    stats: '24/7',
-    statsLabel: 'Підтримка'
-  }
-];
-
 const Benefits = () => {
+  const { t } = useTranslation();
+
+  const benefits = [
+    {
+      icon: <FaLightbulb />,
+      title: t('mainPage.benefits.firstItem.title'),
+      description: t('mainPage.benefits.firstItem.description'),
+      stats: '100+',
+      statsLabel: t('mainPage.benefits.firstItem.statsLabel'),
+    },
+    {
+      icon: <FaClock />,
+      title: t('mainPage.benefits.secondItem.title'),
+      description: t('mainPage.benefits.secondItem.description'),
+      stats: '2x',
+      statsLabel: t('mainPage.benefits.secondItem.statsLabel'),
+    },
+    {
+      icon: <FaUsers />,
+      title: t('mainPage.benefits.thirdItem.title'),
+      description: t('mainPage.benefits.thirdItem.description'),
+      stats: '50+',
+      statsLabel: t('mainPage.benefits.thirdItem.statsLabel'),
+    },
+    {
+      icon: <FaHandshake />,
+      title: t('mainPage.benefits.forthItem.title'),
+      description: t('mainPage.benefits.forthItem.description'),
+      stats: '24/7',
+      statsLabel: t('mainPage.benefits.forthItem.statsLabel'),
+    },
+  ];
+
   return (
     <BenefitsSection>
       <Container>
@@ -302,7 +301,7 @@ const Benefits = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          Чому обирають нас
+          {t('mainPage.benefits.title')}
         </SectionTitle>
         <BenefitsGrid>
           {benefits.map((benefit, index) => (
