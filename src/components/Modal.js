@@ -11,6 +11,7 @@ import {
 } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../config/emailjs';
+import { useTranslation } from 'react-i18next';
 
 const shimmer = keyframes`
   0% {
@@ -142,45 +143,6 @@ const CloseButton = styled.button`
     height: 36px;
     top: 0.5rem;
     right: 0.5rem;
-  }
-`;
-
-const ModalTitle = styled.h2`
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-  background: linear-gradient(
-    45deg,
-    var(--accent-color),
-    var(--accent-color-light)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-
-  @media (max-width: 768px) {
-    font-size: 1.75rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1.5rem;
-    margin-bottom: 0.25rem;
-  }
-`;
-
-const ModalSubtitle = styled.p`
-  color: var(--text-secondary);
-  font-size: 1rem;
-  line-height: 1.5;
-
-  @media (max-width: 768px) {
-    font-size: 0.9rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 0.85rem;
-    line-height: 1.4;
   }
 `;
 
@@ -457,12 +419,7 @@ const ErrorMessage = styled(motion.div)`
   }
 `;
 
-const Modal = ({
-  isOpen,
-  onClose,
-  title = "Зв'язатися з нами",
-  subtitle = "Залиште заявку і ми зв'яжемося з вами найближчим часом",
-}) => {
+const Modal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     from_name: '',
     from_email: '',
@@ -472,6 +429,7 @@ const Modal = ({
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
   const formRef = useRef(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (isOpen) {
@@ -501,16 +459,14 @@ const Modal = ({
     const emptyFields = requiredFields.filter(field => !formData[field].trim());
 
     if (emptyFields.length > 0) {
-      setError(
-        "Будь ласка, заповніть всі обов'язкові поля (Ім'я, Email, Повідомлення)"
-      );
+      setError(t('mainPage.modal.error1'));
       return;
     }
 
     // Валідація email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.from_email)) {
-      setError('Будь ласка, введіть коректний email адрес');
+      setError(t('mainPage.modal.error2'));
       return;
     }
 
@@ -542,9 +498,7 @@ const Modal = ({
       }, 2000);
     } catch (err) {
       console.error('Email sending failed:', err);
-      setError(
-        "Помилка відправки повідомлення. Спробуйте ще раз або зв'яжіться з нами безпосередньо."
-      );
+      setError(t('mainPage.modal.error3'));
     } finally {
       setIsSubmitting(false);
     }
@@ -583,9 +537,9 @@ const Modal = ({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                ✅ Дякуємо! Ваша заявка надіслана успішно.
+                ✅ {t('mainPage.modal.formStatus1')}
                 <br />
-                Ми зв'яжемося з вами найближчим часом.
+                {t('mainPage.modal.formStatus2')}
               </SuccessMessage>
             ) : (
               <>
@@ -594,13 +548,11 @@ const Modal = ({
                   <CloseButton onClick={onClose}>
                     <FaTimes />
                   </CloseButton>
-                  <ModalTitle>{title}</ModalTitle>
-                  <ModalSubtitle>{subtitle}</ModalSubtitle>
                 </ModalHeader>
                 <ModalForm ref={formRef} onSubmit={handleSubmit}>
                   <FormGroup>
                     <FormLabel>
-                      <FaUser /> Ім'я *
+                      <FaUser /> {t('mainPage.modal.formNameText')} *
                     </FormLabel>
                     <div style={{ position: 'relative' }}>
                       <InputIcon>
@@ -611,7 +563,7 @@ const Modal = ({
                         name="from_name"
                         value={formData.from_name}
                         onChange={handleInputChange}
-                        placeholder="Введіть ваше ім'я"
+                        placeholder={t('mainPage.modal.placeholderNameText')}
                         required
                       />
                     </div>
@@ -638,7 +590,7 @@ const Modal = ({
 
                   <FormGroup>
                     <FormLabel>
-                      <FaPhone /> Номер телефону
+                      <FaPhone /> {t('mainPage.modal.phonrNumberText')}
                     </FormLabel>
                     <div style={{ position: 'relative' }}>
                       <InputIcon>
@@ -656,7 +608,7 @@ const Modal = ({
 
                   <FormGroup>
                     <FormLabel>
-                      <FaComment /> Повідомлення *
+                      <FaComment /> {t('mainPage.modal.messegeText')} *
                     </FormLabel>
                     <div style={{ position: 'relative' }}>
                       <TextareaIcon>
@@ -666,7 +618,7 @@ const Modal = ({
                         name="message"
                         value={formData.message}
                         onChange={handleInputChange}
-                        placeholder="Розкажіть про ваш проєкт або поставте запитання..."
+                        placeholder={t('mainPage.modal.placeholderText')}
                         required
                       />
                     </div>
@@ -692,12 +644,12 @@ const Modal = ({
                     {isSubmitting ? (
                       <>
                         <LoadingSpinner />
-                        Надсилання...
+                        {t('mainPage.modal.buttonText2')}
                       </>
                     ) : (
                       <>
                         <FaPaperPlane />
-                        Надіслати заявку
+                        {t('mainPage.modal.buttonText1')}
                       </>
                     )}
                   </SubmitButton>

@@ -19,6 +19,7 @@ import {
 import Modal from '../../components/Modal';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../../config/emailjs';
+import { useTranslation } from 'react-i18next';
 
 // Анимации
 const pulse = keyframes`
@@ -1556,6 +1557,7 @@ const PWAPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
   const formRef = useRef(null);
+  const { t } = useTranslation();
 
   const handleInputChange = e => {
     const { name, value } = e.target;
@@ -1703,21 +1705,18 @@ const PWAPage = () => {
   const benefitsData = [
     {
       icon: <FaChartLine />,
-      title: 'Більше клієнтів',
-      description:
-        'Завдяки PWA доступ до вашого продукту стає простішим, що збільшує охоплення аудиторії.',
+      title: t('pwaPage.hero.mianTextItem1'),
+      description: t('pwaPage.hero.textItem1'),
     },
     {
       icon: <FaMobile />,
-      title: 'Краще юзер-експірієнс',
-      description:
-        'Швидкість, зручність та інтуїтивний інтерфейс забезпечують найкращий досвід користувача.',
+      title: t('pwaPage.hero.mianTextItem2'),
+      description: t('pwaPage.hero.textItem2'),
     },
     {
       icon: <FaRocket />,
-      title: 'Швидший шлях до прибутку',
-      description:
-        'Економія на розробці нативних додатків та швидше введення продукту на ринок.',
+      title: t('pwaPage.hero.mianTextItem3'),
+      description: t('pwaPage.hero.textItem3'),
     },
     {
       icon: <FaWifi />,
@@ -1790,25 +1789,20 @@ const PWAPage = () => {
             />
           ))}
         </StarField>
-
         <Title
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          PWA: Майбутнє веб-додатків
+          {t('pwaPage.hero.mainText')}
         </Title>
-
         <Subtitle
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          Прогресивні веб-додатки (PWA) — це поєднання найкращих якостей сайтів
-          і мобільних застосунків. Вони працюють швидко, надійно й можуть
-          встановлюватися на смартфон без походу в App Store чи Google Play.
+          {t('pwaPage.hero.text')}
         </Subtitle>
-
         <PhoneContainer
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -1854,7 +1848,7 @@ const PWAPage = () => {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 2, duration: 0.5 }}
                 >
-                  Швидкість та надійність
+                  {t('pwaPage.hero.phoneText')}
                 </motion.p>
               </PhoneContent>
 
@@ -1872,7 +1866,6 @@ const PWAPage = () => {
             </PhoneScreen>
           </Phone>
         </PhoneContainer>
-
         <HeroBenefitsList
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -1890,7 +1883,6 @@ const PWAPage = () => {
             </HeroBenefitItem>
           ))}
         </HeroBenefitsList>
-
         <motion.button
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -1915,7 +1907,7 @@ const PWAPage = () => {
             position: 'relative',
           }}
         >
-          Дізнатися більше
+          {t('pwaPage.hero.buttonText')}
         </motion.button>
       </HeroSection>
 
@@ -1953,7 +1945,7 @@ const PWAPage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Що таке PWA (Progressive Web Apps)?
+            {t('pwaPage.whatIsPWA.mainText')}
           </PWAInfoTitle>
 
           <PWAInfoContent>
@@ -1962,17 +1954,15 @@ const PWAPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              PWA — це сучасний формат веб-додатків, який поєднує переваги
-              сайтів і мобільних застосунків. Вони працюють прямо в браузері,
-              але при цьому можуть:
+              {t('pwaPage.whatIsPWA.text')}
             </PWAInfoText>
 
             <PWAFeaturesList>
               {[
-                'запускатися офлайн',
-                'надсилати push-сповіщення',
-                'встановлюватися на головний екран смартфона',
-                'працювати швидко навіть при поганому інтернеті',
+                t('pwaPage.whatIsPWA.itemText1'),
+                t('pwaPage.whatIsPWA.itemText2'),
+                t('pwaPage.whatIsPWA.itemText3'),
+                t('pwaPage.whatIsPWA.itemText4'),
               ].map((feature, index) => (
                 <PWAFeatureItem
                   key={index}
@@ -1991,9 +1981,7 @@ const PWAPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
-              Простіше кажучи — це сайт, який поводиться як застосунок.
-              Користувач не помічає різниці, а бізнес отримує максимум охоплення
-              без витрат на розробку окремих мобільних платформ.
+              {t('pwaPage.whatIsPWA.articleText')}
             </PWASummary>
           </PWAInfoContent>
         </PWAInfoContainer>
@@ -2010,7 +1998,7 @@ const PWAPage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Переваги PWA для бізнесу
+            {t('pwaPage.benefitsOfPWA.mainText')}
           </PWABenefitsTitle>
 
           <PWABenefitCardContainer
@@ -2022,44 +2010,38 @@ const PWAPage = () => {
               {
                 icon: <FaMobile />,
                 number: '01',
-                title: 'Універсальність',
-                description:
-                  'PWA працює на будь-якому пристрої — Android, iOS, Windows. Один додаток охоплює всю аудиторію без додаткових витрат на кілька платформ.',
+                title: t('pwaPage.benefitsOfPWA.itemMainText1'),
+                description: t('pwaPage.benefitsOfPWA.itemText1'),
               },
               {
                 icon: <FaRocket />,
                 number: '02',
-                title: 'Встановлення без App Store',
-                description:
-                  'Користувачі можуть додати додаток на головний екран у два кліки — без реєстрацій, маркетів і оновлень.',
+                title: t('pwaPage.benefitsOfPWA.itemMainText2'),
+                description: t('pwaPage.benefitsOfPWA.itemText2'),
               },
               {
                 icon: <FaWifi />,
                 number: '03',
-                title: 'Робота офлайн',
-                description:
-                  'Навіть без інтернету ваші клієнти зможуть переглядати важливі сторінки, оформлювати замовлення чи залишати заявки.',
+                title: t('pwaPage.benefitsOfPWA.itemMainText3'),
+                description: t('pwaPage.benefitsOfPWA.itemText3'),
               },
               {
                 icon: <FaChartLine />,
                 number: '04',
-                title: 'Вища швидкість завантаження',
-                description:
-                  'PWA кешує дані і працює в рази швидше, ніж звичайний сайт. А швидкість = краща конверсія.',
+                title: t('pwaPage.benefitsOfPWA.itemMainText4'),
+                description: t('pwaPage.benefitsOfPWA.itemText4'),
               },
               {
                 icon: <FaBell />,
                 number: '05',
-                title: 'Push-сповіщення',
-                description:
-                  'Нагадуйте про акції, новинки чи брошені кошики напряму на екран смартфона — як у мобільних застосунках.',
+                title: t('pwaPage.benefitsOfPWA.itemMainText5'),
+                description: t('pwaPage.benefitsOfPWA.itemText5'),
               },
               {
                 icon: <FaCoins />,
                 number: '06',
-                title: 'Менше витрат на розробку',
-                description:
-                  'Не потрібно створювати й підтримувати окремі застосунки для iOS та Android — одна PWA покриває все.',
+                title: t('pwaPage.benefitsOfPWA.itemMainText6'),
+                description: t('pwaPage.benefitsOfPWA.itemText6'),
               },
             ].map((benefit, index) => (
               <PWABenefitCard
@@ -2096,7 +2078,7 @@ const PWAPage = () => {
             transition={{ delay: 0.8 }}
             onClick={openModal}
           >
-            Замовити PWA-розробку
+            {t('pwaPage.benefitsOfPWA.btnText')}
           </PWACtaButton>
         </PWABenefitsContainer>
 
@@ -2116,7 +2098,7 @@ const PWAPage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Наші послуги з розробки PWA
+            {t('pwaPage.ourPWAServices.mainText')}
           </PWAServicesTitle>
 
           <PWAServicesContent>
@@ -2125,10 +2107,7 @@ const PWAPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
-              Ми створюємо прогресивні веб-додатки під ключ — від ідеї до
-              запуску. Вся розробка повністю кастомна, без шаблонів і
-              конструкторів. Ви отримаєте унікальний продукт, який ідеально
-              відповідає вашим бізнес-цілям.
+              {t('pwaPage.ourPWAServices.text')}
             </PWAServicesIntro>
 
             <ServicesHeading
@@ -2136,7 +2115,7 @@ const PWAPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
             >
-              Що входить у наші послуги:
+              {t('pwaPage.ourPWAServices.listMainText')}
             </ServicesHeading>
 
             <ServicesList
@@ -2145,13 +2124,13 @@ const PWAPage = () => {
               animate="visible"
             >
               {[
-                'Аналіз ніші, конкурентів та потреб користувачів',
-                'Прототипування та розробка логічної структури',
-                'UI/UX-дизайн, адаптивність під різні пристрої',
-                'Верстка та програмування з використанням сучасних технологій (JS, HTML5, Service Workers тощо)',
-                'Інтеграція офлайн-функціоналу, push-сповіщень, кешування',
-                'SEO-оптимізація, аналітика, тестування',
-                'Техпідтримка та розвиток проєкту після запуску',
+                t('pwaPage.ourPWAServices.listItem1'),
+                t('pwaPage.ourPWAServices.listItem2'),
+                t('pwaPage.ourPWAServices.listItem3'),
+                t('pwaPage.ourPWAServices.listItem4'),
+                t('pwaPage.ourPWAServices.listItem5'),
+                t('pwaPage.ourPWAServices.listItem6'),
+                t('pwaPage.ourPWAServices.listItem7'),
               ].map((service, index) => (
                 <ServiceItem
                   key={index}
@@ -2171,8 +2150,7 @@ const PWAPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              Ми не просто робимо "додаток у браузері" — ми створюємо
-              інструмент, який реально працює на результат.
+              {t('pwaPage.ourPWAServices.articleText')}
             </PWAServiceSummary>
           </PWAServicesContent>
 
@@ -2195,7 +2173,7 @@ const PWAPage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Чому варто обрати нас?
+            {t('pwaPage.whyChooseUs.mainText')}
           </WhyUsTitle>
 
           <WhyUsCardsContainer
@@ -2206,27 +2184,23 @@ const PWAPage = () => {
             {[
               {
                 icon: <FaPencilRuler />,
-                title: 'Кастомна розробка під ваш бізнес',
-                description:
-                  'Ми не працюємо з шаблонами. Кожен PWA — це унікальний продукт, створений з урахуванням вашої ніші, цілей і клієнтів.',
+                title: t('pwaPage.whyChooseUs.mainTextItem1'),
+                description: t('pwaPage.whyChooseUs.textItem1'),
               },
               {
                 icon: <FaTools />,
-                title: 'Повний цикл — від ідеї до запуску',
-                description:
-                  'Ви отримаєте повноцінний веб-додаток з усіма необхідними функціями. Ми беремо на себе весь процес — аналіз, дизайн, код, тестування, SEO.',
+                title: t('pwaPage.whyChooseUs.mainTextItem2'),
+                description: t('pwaPage.whyChooseUs.textItem2'),
               },
               {
                 icon: <FaBolt />,
-                title: 'Швидкість, якість, результат',
-                description:
-                  'Ми створюємо швидкі, стабільні й оптимізовані PWA, які відповідають останнім стандартам вебу та реально приносять результат.',
+                title: t('pwaPage.whyChooseUs.mainTextItem3'),
+                description: t('pwaPage.whyChooseUs.textItem3'),
               },
               {
                 icon: <FaBrain />,
-                title: 'Досвід і експертиза',
-                description:
-                  'Наша команда має глибоку технічну експертизу та розуміє, як бізнесу потрібні не просто технології, а рішення, що працюють.',
+                title: t('pwaPage.whyChooseUs.mainTextItem4'),
+                description: t('pwaPage.whyChooseUs.textItem4'),
               },
             ].map((item, index) => (
               <WhyUsCard
@@ -2261,7 +2235,7 @@ const PWAPage = () => {
               onClick={openModal}
             >
               <span className="glow-effect"></span>
-              Почати проєкт
+              {t('pwaPage.whyChooseUs.btnText')}
             </PulsingButton>
           </WhyUsAction>
         </WhyUsContainer>
@@ -2286,7 +2260,7 @@ const PWAPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              Замовте PWA для вашого бізнесу вже сьогодні!
+              {t('pwaPage.pwaForm.mainText')}
             </CtaTitle>
 
             <CtaText
@@ -2294,9 +2268,7 @@ const PWAPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Хочете швидкий, зручний та ефективний веб-додаток, який працює на
-              всіх пристроях і реально приносить клієнтів? Ми створимо для вас
-              саме такий PWA — індивідуальний, сучасний і готовий до росту.
+              {t('pwaPage.pwaForm.text1')}
             </CtaText>
 
             <CtaHighlight
@@ -2304,7 +2276,7 @@ const PWAPage = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Працюємо швидко, чітко та з результатом.
+              {t('pwaPage.pwaForm.text2')}
             </CtaHighlight>
 
             <CtaSubtext
@@ -2312,8 +2284,7 @@ const PWAPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Залишайте заявку — і ми зв'яжемось із вами для обговорення
-              деталей, прорахунку вартості та термінів.
+              {t('pwaPage.pwaForm.text3')}
             </CtaSubtext>
             <CtaForm
               ref={formRef}
@@ -2340,15 +2311,14 @@ const PWAPage = () => {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
                 >
-                  Дякуємо! Ваша заявка надіслана. Ми зв'яжемося з вами
-                  найближчим часом.
+                  {t('pwaPage.pwaForm.messegeText')}
                 </SuccessMessage>
               )}
 
               <CtaInputWrapper>
                 <CtaInput
                   type="text"
-                  placeholder="Ваше ім'я *"
+                  placeholder={t('pwaPage.pwaForm.placeholderNameText')}
                   name="from_name"
                   value={automationFormData.from_name}
                   onChange={handleInputChange}
@@ -2361,7 +2331,7 @@ const PWAPage = () => {
               <CtaInputWrapper>
                 <CtaInput
                   type="tel"
-                  placeholder="Телефон"
+                  placeholder={t('pwaPage.pwaForm.placeholderPhone')}
                   name="phone"
                   value={automationFormData.phone}
                   onChange={handleInputChange}
@@ -2400,7 +2370,9 @@ const PWAPage = () => {
                   cursor: isSubmitting ? 'not-allowed' : 'pointer',
                 }}
               >
-                {isSubmitting ? 'Відправляємо...' : 'Замовити консультацію'}
+                {isSubmitting
+                  ? t('pwaPage.pwaForm.btnText2')
+                  : t('pwaPage.pwaForm.btnText1')}
               </CtaButton>
             </CtaForm>
 
@@ -2409,8 +2381,7 @@ const PWAPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.9 }}
             >
-              Залишити заявку або отримати консультацію — один крок до потужного
-              цифрового інструменту для вашого бізнесу.
+              {t('pwaPage.pwaForm.articleText')}
             </CtaFooterText>
           </CtaContent>
 
@@ -2444,42 +2415,42 @@ const PWAPage = () => {
           >
             {[
               {
-                question: 'Що таке Progressive Web App (PWA)?',
+                question: t('pwaPage.faqPWA.question1'),
                 answer:
                   'PWA — це веб-додаток, який виглядає й працює як мобільний застосунок. Його можна відкрити в браузері, встановити на смартфон, працювати з ним офлайн та отримувати push-сповіщення — без потреби завантаження з App Store або Google Play.',
               },
               {
-                question: 'Чим PWA кращий за мобільний додаток?',
+                question: t('pwaPage.faqPWA.question2'),
                 answer:
                   'PWA не потребує окремої розробки для iOS та Android, що економить бюджет. Його простіше просувати, швидше запускати і легше оновлювати. А ще користувачі можуть взаємодіяти з ним одразу — без установки.',
               },
               {
-                question: 'Чи працює PWA без інтернету?',
+                question: t('pwaPage.faqPWA.question3'),
                 answer:
                   'Так, PWA підтримує офлайн-режим. Завдяки кешуванню, користувач може переглядати контент або виконувати дії навіть без підключення до мережі.',
               },
               {
-                question: 'Чи можна встановити PWA на iOS та Android?',
+                question: t('pwaPage.faqPWA.question4'),
                 answer:
                   'Так. PWA можна додати на головний екран смартфона як звичайний застосунок. Працює на Android, iOS, Windows та інших системах із сучасним браузером.',
               },
               {
-                question: 'Як PWA впливає на швидкість сайту та SEO?',
+                question: t('pwaPage.faqPWA.question5'),
                 answer:
                   'PWA завантажується швидше завдяки кешуванню і оптимізації. Це позитивно впливає на користувацький досвід і поведінкові фактори, що, у свою чергу, покращує SEO.',
               },
               {
-                question: 'Скільки коштує розробка PWA?',
+                question: t('pwaPage.faqPWA.question6'),
                 answer:
                   'Ціна залежить від складності функціоналу та обсягу роботи. Ми працюємо індивідуально: аналізуємо потреби клієнта, після чого формуємо чітку комерційну пропозицію.',
               },
               {
-                question: 'Чи можна інтегрувати оплату в PWA?',
+                question: t('pwaPage.faqPWA.question7'),
                 answer:
                   'Так, ми можемо реалізувати платіжні системи (наприклад, картки, Apple Pay, Google Pay тощо) в рамках PWA — так само, як у звичайному застосунку чи сайті.',
               },
               {
-                question: 'Як додати PWA на головний екран смартфона?',
+                question: t('pwaPage.faqPWA.question8'),
                 answer:
                   "При відкритті PWA у браузері користувач побачить спливаюче вікно з пропозицією встановити додаток. У два кліки він з'являється на головному екрані — без маркетів, пошуку чи реєстрацій.",
               },
@@ -2520,103 +2491,14 @@ const PWAPage = () => {
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.3 }}
                         >
-                          {index === 0 && (
-                            <>
-                              PWA — це веб-додаток, який виглядає й працює як{' '}
-                              <span className="highlight">
-                                мобільний застосунок
-                              </span>
-                              . Його можна відкрити в браузері,{' '}
-                              <span className="highlight">
-                                встановити на смартфон
-                              </span>
-                              , працювати з ним{' '}
-                              <span className="highlight">офлайн</span> та
-                              отримувати{' '}
-                              <span className="highlight">push-сповіщення</span>{' '}
-                              — без потреби завантаження з App Store або Google
-                              Play.
-                            </>
-                          )}
-                          {index === 1 && (
-                            <>
-                              PWA не потребує{' '}
-                              <span className="highlight">
-                                окремої розробки для iOS та Android
-                              </span>
-                              , що <strong>економить бюджет</strong>. Його
-                              простіше просувати, швидше запускати і легше
-                              оновлювати. А ще користувачі можуть взаємодіяти з
-                              ним одразу —{' '}
-                              <span className="highlight">без установки</span>.
-                            </>
-                          )}
-                          {index === 2 && (
-                            <>
-                              Так, PWA підтримує{' '}
-                              <span className="highlight">офлайн-режим</span>.
-                              Завдяки кешуванню, користувач може переглядати
-                              контент або виконувати дії навіть{' '}
-                              <strong>без підключення до мережі</strong>.
-                            </>
-                          )}
-                          {index === 3 && (
-                            <>
-                              Так. PWA можна додати на{' '}
-                              <span className="highlight">
-                                головний екран смартфона
-                              </span>{' '}
-                              як звичайний застосунок. Працює на{' '}
-                              <span className="highlight">
-                                Android, iOS, Windows
-                              </span>{' '}
-                              та інших системах із сучасним браузером.
-                            </>
-                          )}
-                          {index === 4 && (
-                            <>
-                              PWA завантажується <strong>швидше</strong> завдяки
-                              кешуванню і оптимізації. Це позитивно впливає на{' '}
-                              <span className="highlight">
-                                користувацький досвід
-                              </span>{' '}
-                              і поведінкові фактори, що, у свою чергу,{' '}
-                              <span className="highlight">покращує SEO</span>.
-                            </>
-                          )}
-                          {index === 5 && (
-                            <>
-                              Ціна залежить від складності функціоналу та обсягу
-                              роботи. Ми працюємо{' '}
-                              <span className="highlight">індивідуально</span>:
-                              аналізуємо потреби клієнта, після чого формуємо
-                              чітку комерційну пропозицію.
-                            </>
-                          )}
-                          {index === 6 && (
-                            <>
-                              Так, ми можемо реалізувати{' '}
-                              <span className="highlight">
-                                платіжні системи
-                              </span>{' '}
-                              (наприклад, картки,{' '}
-                              <span className="highlight">
-                                Apple Pay, Google Pay
-                              </span>{' '}
-                              тощо) в рамках PWA — так само, як у звичайному
-                              застосунку чи сайті.
-                            </>
-                          )}
-                          {index === 7 && (
-                            <>
-                              При відкритті PWA у браузері користувач побачить{' '}
-                              <span className="highlight">спливаюче вікно</span>{' '}
-                              з пропозицією встановити додаток. У{' '}
-                              <strong>два кліки</strong> він з'являється на
-                              головному екрані — без маркетів, пошуку чи
-                              реєстрацій.
-                            </>
-                          )}
+                          {index === 0 && <>{t('pwaPage.faqPWA.answer1')}</>}
+                          {index === 1 && <>{t('pwaPage.faqPWA.answer2')}</>}
+                          {index === 2 && <>{t('pwaPage.faqPWA.answer3')}</>}
+                          {index === 3 && <>{t('pwaPage.faqPWA.answer4')}</>}
+                          {index === 4 && <>{t('pwaPage.faqPWA.answer5')}</>}
+                          {index === 5 && <>{t('pwaPage.faqPWA.answer6')}</>}
+                          {index === 6 && <>{t('pwaPage.faqPWA.answer7')}</>}
+                          {index === 7 && <>{t('pwaPage.faqPWA.answer8')}</>}
                         </FaqAnswer>
                       )}
                     </AnimatePresence>
@@ -2631,7 +2513,7 @@ const PWAPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.2 }}
           >
-            <FaqCtaText>Не знайшли відповідь на своє питання?</FaqCtaText>
+            <FaqCtaText>{t('pwaPage.faqPWA.text')}</FaqCtaText>
             <FaqCtaButton
               whileHover={{
                 scale: 1.03,
@@ -2640,7 +2522,7 @@ const PWAPage = () => {
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
             >
-              Напишіть нам
+              {t('pwaPage.faqPWA.btnText')}
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>

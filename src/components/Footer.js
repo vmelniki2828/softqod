@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt} from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const FooterSection = styled.footer`
   background: var(--bg-primary);
@@ -37,7 +38,7 @@ const Logo = styled(motion.div)`
   font-size: 1.3rem;
   font-weight: 800;
   color: var(--text-primary);
-  background: linear-gradient(45deg, var(--accent-color), #6AADFF);
+  background: linear-gradient(45deg, var(--accent-color), #6aadff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 0.5rem;
@@ -105,62 +106,57 @@ const Copyright = styled.div`
 `;
 
 const Footer = () => {
-    return (
-        <FooterSection>
-            <Container>
-                <FooterColumn>
-                    <Logo
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        softqod
-                    </Logo>
-                    <FooterText>
-                        Створюємо інноваційні цифрові рішення для розвитку вашого бізнесу.
-                    </FooterText>
-                </FooterColumn>
+  const { t } = useTranslation();
 
-                <FooterColumn>
-                    <ContactItem
-                        whileHover={{ x: 5 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                    >
-                        <IconWrapper>
-                            <FaEnvelope />
-                        </IconWrapper>
-                        <FooterLink href="mailto:info@softqod.com">
-                            info@softqod.com
-                        </FooterLink>
-                    </ContactItem>
-                    <ContactItem
-                        whileHover={{ x: 5 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                    >
-                        <IconWrapper>
-                            <FaPhone />
-                        </IconWrapper>
-                        <FooterLink href="tel:+380671234567">
-                            +38 (067) 123-45-67
-                        </FooterLink>
-                    </ContactItem>
-                    <ContactItem
-                        whileHover={{ x: 5 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                    >
-                        <IconWrapper>
-                            <FaMapMarkerAlt />
-                        </IconWrapper>
-                        <FooterText>
-                            м. Київ, вул. Хрещатик, буд. 22
-                        </FooterText>
-                    </ContactItem>
-                </FooterColumn>
-            </Container>
-            <Copyright>
-                © {new Date().getFullYear()} softqod. Всі права захищені.
-            </Copyright>
-        </FooterSection>
-    );
+  return (
+    <FooterSection>
+      <Container>
+        <FooterColumn>
+          <Logo whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            softqod
+          </Logo>
+          <FooterText>{t('mainPage.footer.footerText')}</FooterText>
+        </FooterColumn>
+
+        <FooterColumn>
+          <ContactItem
+            whileHover={{ x: 5 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+          >
+            <IconWrapper>
+              <FaEnvelope />
+            </IconWrapper>
+            <FooterLink href="mailto:info@softqod.com">
+              info@softqod.com
+            </FooterLink>
+          </ContactItem>
+          <ContactItem
+            whileHover={{ x: 5 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+          >
+            <IconWrapper>
+              <FaPhone />
+            </IconWrapper>
+            <FooterLink href="tel:+380671234567">
+              +38 (067) 123-45-67
+            </FooterLink>
+          </ContactItem>
+          <ContactItem
+            whileHover={{ x: 5 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+          >
+            <IconWrapper>
+              <FaMapMarkerAlt />
+            </IconWrapper>
+            <FooterText>{t('mainPage.footer.footerAdress')}</FooterText>
+          </ContactItem>
+        </FooterColumn>
+      </Container>
+      <Copyright>
+        © {new Date().getFullYear()} softqod. {t('mainPage.footer.footerText1')}
+      </Copyright>
+    </FooterSection>
+  );
 };
 
 export default Footer;
