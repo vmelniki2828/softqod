@@ -17,6 +17,7 @@ import {
 import Modal from '../../components/Modal';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../../config/emailjs';
+import { useTranslation } from 'react-i18next';
 
 // Анимации
 const pulse = keyframes`
@@ -67,11 +68,11 @@ const Container = styled.div`
   color: var(--text-primary);
   position: relative;
   overflow: hidden;
-  
+
   @media (max-width: 992px) {
     padding-top: 80px;
   }
-  
+
   @media (max-width: 576px) {
     padding-top: 60px;
   }
@@ -87,12 +88,12 @@ const HeroSection = styled(motion.div)`
   align-items: center;
   overflow: hidden;
   padding: 2rem;
-  
+
   @media (max-width: 992px) {
     padding: 1.5rem;
     min-height: 90vh;
   }
-  
+
   @media (max-width: 576px) {
     padding: 1rem;
     min-height: 85vh;
@@ -188,7 +189,7 @@ const Title = styled(motion.h1)`
   @media (max-width: 768px) {
     font-size: 2.5rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 2rem;
     margin-bottom: 1rem;
@@ -204,7 +205,7 @@ const Title = styled(motion.h1)`
     height: 3px;
     background: var(--accent-color);
     border-radius: 3px;
-    
+
     @media (max-width: 576px) {
       width: 60px;
       height: 2px;
@@ -232,7 +233,7 @@ const Subtitle = styled(motion.p)`
     padding: 0 1rem;
     margin-bottom: 2rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1rem;
     margin-bottom: 1.5rem;
@@ -255,7 +256,7 @@ const PhoneContainer = styled(motion.div)`
     width: 220px;
     height: 400px;
   }
-  
+
   @media (max-width: 576px) {
     width: 180px;
     height: 350px;
@@ -412,13 +413,13 @@ const HeroBenefitsList = styled(motion.div)`
   max-width: 1200px;
   z-index: 1;
   position: relative;
-  
+
   @media (max-width: 992px) {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     margin: 3rem auto 0;
     gap: 1rem;
   }
-  
+
   @media (max-width: 576px) {
     grid-template-columns: 1fr;
     margin: 2rem auto 0;
@@ -461,7 +462,7 @@ const HeroBenefitIcon = styled.div`
   color: white;
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
   flex-shrink: 0;
-  
+
   @media (max-width: 576px) {
     width: 40px;
     height: 40px;
@@ -477,7 +478,7 @@ const HeroBenefitTitle = styled.h3`
   font-size: 1.1rem;
   color: white;
   margin-bottom: 0.5rem;
-  
+
   @media (max-width: 576px) {
     font-size: 1rem;
     margin-bottom: 0.25rem;
@@ -488,7 +489,7 @@ const HeroBenefitDescription = styled.p`
   color: #9ca3af;
   font-size: 0.9rem;
   line-height: 1.4;
-  
+
   @media (max-width: 576px) {
     font-size: 0.8rem;
   }
@@ -504,11 +505,11 @@ const InfoSection = styled(motion.section)`
   padding: 8rem 2rem;
   overflow: hidden;
   box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.2);
-  
+
   @media (max-width: 992px) {
     padding: 6rem 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 4rem 1rem;
   }
@@ -558,16 +559,16 @@ const InfoContainer = styled.div`
   padding: 3rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-  
+
   @media (max-width: 992px) {
     padding: 2.5rem;
   }
-  
+
   @media (max-width: 768px) {
     padding: 2rem;
     border-radius: 16px;
   }
-  
+
   @media (max-width: 576px) {
     padding: 1.5rem;
     margin: 0 1rem;
@@ -582,17 +583,17 @@ const InfoTitle = styled(motion.h2)`
   position: relative;
   display: inline-block;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  
+
   @media (max-width: 992px) {
     font-size: 2.5rem;
     margin-bottom: 2.5rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
     margin-bottom: 2rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
@@ -676,11 +677,11 @@ const BenefitsSection = styled(motion.section)`
   position: relative;
   padding: 8rem 2rem;
   overflow: hidden;
-  
+
   @media (max-width: 992px) {
     padding: 6rem 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 4rem 1rem;
   }
@@ -702,7 +703,7 @@ const BenefitsContainer = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 2;
-  
+
   @media (max-width: 576px) {
     margin: 0 1rem;
   }
@@ -716,17 +717,17 @@ const BenefitsTitle = styled(motion.h2)`
   position: relative;
   display: inline-block;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  
+
   @media (max-width: 992px) {
     font-size: 2.5rem;
     margin-bottom: 3rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
     margin-bottom: 2.5rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.5rem;
     margin-bottom: 2rem;
@@ -741,7 +742,7 @@ const BenefitsTitle = styled(motion.h2)`
     height: 4px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
-    
+
     @media (max-width: 576px) {
       width: 80px;
       height: 3px;
@@ -761,7 +762,7 @@ const BenefitCardContainer = styled(motion.div)`
     gap: 1.5rem;
     margin-bottom: 3rem;
   }
-  
+
   @media (max-width: 576px) {
     gap: 1rem;
     margin-bottom: 2rem;
@@ -777,11 +778,11 @@ const BenefitCard = styled(motion.div)`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  
+
   @media (max-width: 768px) {
     padding: 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 1rem;
     border-radius: 12px;
@@ -809,7 +810,7 @@ const FaqWaveTop = styled.div`
   left: 0;
   width: 100%;
   height: 120px;
-    background: linear-gradient(
+  background: linear-gradient(
     to top left,
     transparent 49%,
     var(--bg-primary) 51%
@@ -829,7 +830,7 @@ const FaqGlowCircle = styled.div`
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-    z-index: 0;
+  z-index: 0;
 
   &.circle-1 {
     width: 400px;
@@ -866,20 +867,20 @@ const FaqTitle = styled(motion.h2)`
   text-align: center;
   position: relative;
   text-shadow: 0 2px 10px rgba(94, 234, 212, 0.2);
-  
+
   @media (max-width: 992px) {
     font-size: 3rem;
     margin-bottom: 2.5rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2.5rem;
     margin-bottom: 2rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 2rem;
-  margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
   &::before {
@@ -894,12 +895,12 @@ const FaqTitle = styled(motion.h2)`
     letter-spacing: 5px;
     z-index: -1;
     white-space: nowrap;
-    
+
     @media (max-width: 768px) {
       font-size: 4rem;
       top: -25px;
     }
-    
+
     @media (max-width: 576px) {
       font-size: 3rem;
       top: -20px;
@@ -912,7 +913,7 @@ const FaqTitle = styled(motion.h2)`
     bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
-  width: 80px;
+    width: 80px;
     height: 4px;
     background: linear-gradient(
       90deg,
@@ -922,7 +923,7 @@ const FaqTitle = styled(motion.h2)`
     );
     border-radius: 4px;
     animation: ${pulse} 2s infinite ease-in-out;
-    
+
     @media (max-width: 576px) {
       width: 60px;
       height: 3px;
@@ -936,12 +937,12 @@ const FaqList = styled(motion.div)`
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 4rem;
-  
+
   @media (max-width: 768px) {
     gap: 1rem;
     margin-bottom: 3rem;
   }
-  
+
   @media (max-width: 576px) {
     gap: 0.8rem;
     margin-bottom: 2rem;
@@ -958,11 +959,11 @@ const FaqItem = styled(motion.div)`
   transition: all 0.3s ease;
   transform-style: preserve-3d;
   perspective: 1000px;
-  
+
   @media (max-width: 768px) {
     border-radius: 12px;
   }
-  
+
   @media (max-width: 576px) {
     border-radius: 8px;
   }
@@ -986,11 +987,11 @@ const FaqQuestion = styled(motion.div)`
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
-  
+
   @media (max-width: 768px) {
     padding: 1.5rem 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 1.2rem 1rem;
   }
@@ -1029,12 +1030,12 @@ const FaqQuestion = styled(motion.div)`
       rgba(255, 255, 255, 0.05),
       transparent
     );
-    
+
     @media (max-width: 768px) {
       left: 1.5rem;
       right: 1.5rem;
     }
-    
+
     @media (max-width: 576px) {
       left: 1rem;
       right: 1rem;
@@ -1049,11 +1050,11 @@ const FaqQuestionText = styled.h3`
   transition: all 0.3s ease;
   flex: 1;
   transform: translateZ(5px);
-  
+
   @media (max-width: 768px) {
     font-size: 1.1rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1rem;
   }
@@ -1091,13 +1092,13 @@ const FaqAnswer = styled(motion.div)`
   overflow: hidden;
   position: relative;
   animation: ${fadeInScale} 0.4s ease forwards;
-  
+
   @media (max-width: 768px) {
     padding: 0 1.5rem 1.5rem;
     font-size: 1rem;
     line-height: 1.6;
   }
-  
+
   @media (max-width: 576px) {
     padding: 0 1rem 1.2rem;
     font-size: 0.95rem;
@@ -1117,12 +1118,12 @@ const FaqAnswer = styled(motion.div)`
       rgba(255, 255, 255, 0.1),
       transparent
     );
-    
+
     @media (max-width: 768px) {
       left: 1.5rem;
       right: 1.5rem;
     }
-    
+
     @media (max-width: 576px) {
       left: 1rem;
       right: 1rem;
@@ -1131,14 +1132,14 @@ const FaqAnswer = styled(motion.div)`
 
   strong {
     color: var(--accent-color);
-  font-weight: 600;
+    font-weight: 600;
   }
 
   ul {
     margin-top: 0.8rem;
     margin-bottom: 0.8rem;
     padding-left: 1.5rem;
-    
+
     @media (max-width: 576px) {
       padding-left: 1rem;
     }
@@ -1153,7 +1154,7 @@ const FaqAnswer = styled(motion.div)`
       color: var(--accent-color);
       position: absolute;
       left: -1rem;
-      
+
       @media (max-width: 576px) {
         left: -0.8rem;
       }
@@ -1162,7 +1163,7 @@ const FaqAnswer = styled(motion.div)`
 
   p {
     margin-bottom: 0.8rem;
-    
+
     @media (max-width: 576px) {
       margin-bottom: 0.6rem;
     }
@@ -1178,7 +1179,7 @@ const FaqAnswer = styled(motion.div)`
     border-radius: 4px;
     margin: 0 0.2rem;
     position: relative;
-    
+
     @media (max-width: 576px) {
       padding: 0.1rem 0.3rem;
       margin: 0 0.1rem;
@@ -1218,7 +1219,7 @@ const FaqCta = styled(motion.div)`
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
   isolation: isolate;
-  
+
   @media (max-width: 768px) {
     padding: 2.5rem 2rem;
     gap: 1rem;
@@ -1227,7 +1228,7 @@ const FaqCta = styled(motion.div)`
     backdrop-filter: none;
     background: rgba(16, 24, 39, 0.8);
   }
-  
+
   @media (max-width: 576px) {
     padding: 2rem 1.5rem;
     gap: 0.8rem;
@@ -1244,9 +1245,9 @@ const FaqCta = styled(motion.div)`
     left: 0;
     width: 100%;
     height: 5px;
-  background: linear-gradient(
-    90deg,
-    var(--accent-color),
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
       rgba(59, 130, 246, 0.8)
     );
     z-index: 1;
@@ -1276,11 +1277,11 @@ const FaqCtaText = styled.p`
   color: var(--text-primary);
   text-align: center;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  
+
   @media (max-width: 768px) {
     font-size: 1.3rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.1rem;
   }
@@ -1301,13 +1302,13 @@ const FaqCtaButton = styled.button`
   z-index: 9999;
   display: block;
   margin: 0 auto;
-  
+
   /* Мобильные оптимизации */
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   touch-action: manipulation;
   pointer-events: auto;
-  
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(94, 234, 212, 0.4);
@@ -1317,20 +1318,20 @@ const FaqCtaButton = styled.button`
     transform: translateY(1px);
     box-shadow: 0 4px 10px rgba(94, 234, 212, 0.3);
   }
-  
+
   @media (max-width: 768px) {
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
     width: 100%;
     max-width: 320px;
-    
+
     /* Убираем hover на мобильных */
     &:hover {
       transform: none;
       box-shadow: 0 8px 20px rgba(94, 234, 212, 0.2);
     }
   }
-  
+
   @media (max-width: 576px) {
     padding: 0.8rem 2rem;
     font-size: 1rem;
@@ -1383,7 +1384,11 @@ const CtaButton = styled(motion.button)`
   padding: 1.3rem 3rem;
   font-size: 1.2rem;
   font-weight: 600;
-  background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.9));
+  background: linear-gradient(
+    90deg,
+    var(--accent-color),
+    rgba(59, 130, 246, 0.9)
+  );
   color: white;
   border: none;
   border-radius: 12px;
@@ -1401,19 +1406,24 @@ const CtaButton = styled(motion.button)`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
     transition: all 0.6s ease;
   }
 
   &:hover::before {
     left: 100%;
   }
-  
+
   @media (max-width: 768px) {
     padding: 1.1rem 2.5rem;
     font-size: 1.1rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 1rem 2rem;
     font-size: 1rem;
@@ -1438,13 +1448,13 @@ const BenefitIconWrapper = styled.div`
   font-size: 2rem;
   box-shadow: 0 10px 20px rgba(94, 234, 212, 0.3);
   transition: transform 0.3s ease;
-  
+
   @media (max-width: 768px) {
     width: 70px;
     height: 70px;
     font-size: 1.8rem;
   }
-  
+
   @media (max-width: 576px) {
     width: 60px;
     height: 60px;
@@ -1462,11 +1472,11 @@ const BenefitCardTitle = styled.h3`
   font-weight: 600;
   margin-bottom: 1rem;
   color: var(--text-primary);
-  
+
   @media (max-width: 768px) {
     font-size: 1.3rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.2rem;
     margin-bottom: 0.8rem;
@@ -1477,7 +1487,7 @@ const BenefitCardDescription = styled.p`
   font-size: 1rem;
   line-height: 1.6;
   color: var(--text-secondary);
-  
+
   @media (max-width: 576px) {
     font-size: 0.9rem;
   }
@@ -1530,11 +1540,11 @@ const WorkflowSection = styled(motion.section)`
   position: relative;
   padding: 8rem 2rem;
   overflow: hidden;
-  
+
   @media (max-width: 992px) {
     padding: 6rem 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 4rem 1rem;
   }
@@ -1566,7 +1576,11 @@ const ServicesWave = styled.div`
   left: 0;
   width: 100%;
   height: 100px;
-  background: linear-gradient(to bottom right, var(--bg-primary) 49%, transparent 51%);
+  background: linear-gradient(
+    to bottom right,
+    var(--bg-primary) 49%,
+    transparent 51%
+  );
   z-index: 2;
 `;
 
@@ -1575,11 +1589,11 @@ const WorkflowContainer = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 3;
-  
+
   @media (max-width: 992px) {
     padding: 0 1rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 0 0.5rem;
   }
@@ -1593,17 +1607,17 @@ const WorkflowTitle = styled(motion.h2)`
   position: relative;
   display: inline-block;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  
+
   @media (max-width: 992px) {
     font-size: 2.5rem;
     margin-bottom: 2.5rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
     margin-bottom: 2rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
@@ -1618,7 +1632,7 @@ const WorkflowTitle = styled(motion.h2)`
     height: 4px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
-    
+
     @media (max-width: 576px) {
       width: 80px;
       height: 3px;
@@ -1631,11 +1645,11 @@ const WorkflowContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  
+
   @media (max-width: 768px) {
     gap: 2rem;
   }
-  
+
   @media (max-width: 576px) {
     gap: 1.5rem;
   }
@@ -1648,11 +1662,11 @@ const WorkflowIntro = styled(motion.p)`
   text-align: center;
   max-width: 800px;
   margin: 0 auto;
-  
+
   @media (max-width: 768px) {
     font-size: 1.2rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1rem;
   }
@@ -1663,12 +1677,12 @@ const WorkflowStepsList = styled(motion.div)`
   flex-direction: column;
   gap: 2.5rem;
   margin: 3rem 0;
-  
+
   @media (max-width: 768px) {
     gap: 2rem;
     margin: 2rem 0;
   }
-  
+
   @media (max-width: 576px) {
     gap: 1.5rem;
     margin: 1.5rem 0;
@@ -1691,7 +1705,7 @@ const WorkflowStep = styled(motion.div)`
     padding: 2rem;
     gap: 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 1.5rem;
     gap: 1rem;
@@ -1719,17 +1733,17 @@ const WorkflowStepNumber = styled.div`
   color: white;
   flex-shrink: 0;
   box-shadow: 0 10px 20px rgba(94, 234, 212, 0.3);
-  
+
   @media (max-width: 768px) {
     width: 50px;
     height: 50px;
     font-size: 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     width: 40px;
     height: 40px;
-  font-size: 1.2rem;
+    font-size: 1.2rem;
   }
 `;
 
@@ -1751,13 +1765,13 @@ const WorkflowStepCircle = styled.div`
   justify-content: center;
   font-size: 2rem;
   color: var(--accent-color);
-  
+
   @media (max-width: 768px) {
     width: 60px;
     height: 60px;
     font-size: 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     width: 50px;
     height: 50px;
@@ -1774,14 +1788,14 @@ const WorkflowStepTitle = styled.h3`
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 1rem;
-  
+
   @media (max-width: 768px) {
     font-size: 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.3rem;
-  margin-bottom: 0.8rem;
+    margin-bottom: 0.8rem;
   }
 `;
 
@@ -1789,7 +1803,7 @@ const WorkflowStepDescription = styled.p`
   font-size: 1.1rem;
   line-height: 1.7;
   color: var(--text-secondary);
-  
+
   @media (max-width: 576px) {
     font-size: 1rem;
   }
@@ -1807,13 +1821,13 @@ const WorkflowSummary = styled(motion.p)`
   background: rgba(94, 234, 212, 0.05);
   border-radius: 16px;
   border-left: 4px solid var(--accent-color);
-  
+
   @media (max-width: 768px) {
     font-size: 1.2rem;
     margin: 2rem auto 0;
     padding: 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1rem;
     margin: 1.5rem auto 0;
@@ -1872,11 +1886,11 @@ const WhyUsSection = styled(motion.section)`
     rgba(16, 24, 39, 1) 100%
   );
   overflow: hidden;
-  
+
   @media (max-width: 992px) {
     padding: 6rem 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 4rem 1rem;
   }
@@ -1919,11 +1933,11 @@ const WhyUsContainer = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 2;
-  
+
   @media (max-width: 992px) {
     padding: 0 1rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 0 0.5rem;
   }
@@ -1937,15 +1951,15 @@ const WhyUsTitle = styled(motion.h2)`
   position: relative;
   display: inline-block;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  
+
   @media (max-width: 992px) {
     font-size: 2.5rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.5rem;
     margin-bottom: 1rem;
@@ -1960,7 +1974,7 @@ const WhyUsTitle = styled(motion.h2)`
     height: 4px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
-    
+
     @media (max-width: 576px) {
       width: 80px;
       height: 3px;
@@ -1975,12 +1989,12 @@ const WhyUsIntro = styled(motion.p)`
   margin-bottom: 4rem;
   max-width: 800px;
   line-height: 1.6;
-  
+
   @media (max-width: 768px) {
     font-size: 1.2rem;
-  margin-bottom: 3rem;
+    margin-bottom: 3rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1rem;
     margin-bottom: 2rem;
@@ -1992,16 +2006,16 @@ const BenefitsList = styled(motion.div)`
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2.5rem;
   margin-bottom: 4rem;
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-  gap: 2rem;
+    gap: 2rem;
     margin-bottom: 3rem;
   }
-  
+
   @media (max-width: 576px) {
     gap: 1.5rem;
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -2022,7 +2036,7 @@ const BenefitItem = styled(motion.div)`
   @media (max-width: 768px) {
     padding: 2rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 1.5rem;
     border-radius: 16px;
@@ -2090,13 +2104,13 @@ const BenefitCardGlow = styled.div`
 `;
 
 const CardAccent = styled.div`
-    position: absolute;
+  position: absolute;
   bottom: 0;
   right: 0;
   width: 60px;
   height: 60px;
   border-radius: 0 0 20px 0;
-    background: linear-gradient(
+  background: linear-gradient(
     135deg,
     transparent 50%,
     rgba(94, 234, 212, 0.1) 50%
@@ -2120,12 +2134,12 @@ const ResultsSummary = styled(motion.div)`
   border: 1px solid rgba(255, 255, 255, 0.05);
   margin-bottom: 4rem;
   text-align: center;
-  
+
   @media (max-width: 768px) {
     padding: 2rem;
     margin-bottom: 3rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 1.5rem;
     margin-bottom: 2rem;
@@ -2137,11 +2151,11 @@ const ResultsTitle = styled.h3`
   font-weight: 600;
   color: var(--accent-color);
   margin-bottom: 1.5rem;
-  
+
   @media (max-width: 768px) {
     font-size: 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.3rem;
     margin-bottom: 1rem;
@@ -2152,7 +2166,7 @@ const ResultsText = styled.p`
   font-size: 1.2rem;
   line-height: 1.7;
   color: var(--text-secondary);
-  
+
   @media (max-width: 576px) {
     font-size: 1rem;
   }
@@ -2161,14 +2175,18 @@ const ResultsText = styled.p`
 const ResultsHighlight = styled.span`
   color: var(--accent-color);
   font-weight: 600;
-  background: linear-gradient(90deg, rgba(94, 234, 212, 0.1), rgba(59, 130, 246, 0.1));
+  background: linear-gradient(
+    90deg,
+    rgba(94, 234, 212, 0.1),
+    rgba(59, 130, 246, 0.1)
+  );
   padding: 0.2rem 0.5rem;
   border-radius: 4px;
 `;
 
 const WhyUsAction = styled(motion.div)`
   text-align: center;
-  
+
   @media (max-width: 576px) {
     margin-top: 1rem;
   }
@@ -2191,12 +2209,12 @@ const PulsingButton = styled(motion.button)`
   overflow: hidden;
   transition: all 0.3s ease;
   box-shadow: 0 10px 30px rgba(94, 234, 212, 0.3);
-  
+
   @media (max-width: 768px) {
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 0.9rem 2rem;
     font-size: 1rem;
@@ -2208,7 +2226,12 @@ const PulsingButton = styled(motion.button)`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
     transition: all 0.6s ease;
   }
 
@@ -2257,26 +2280,26 @@ const WhyUsBackgroundShapes = styled.div`
     border-radius: 50%;
     animation: ${floatVertical} 10s infinite ease-in-out reverse;
   }
-  
+
   @media (max-width: 992px) {
     &::before {
       width: 200px;
       height: 200px;
     }
-    
+
     &::after {
       width: 250px;
       height: 250px;
     }
   }
-  
+
   @media (max-width: 576px) {
     &::before {
       width: 150px;
       height: 150px;
       left: -20%;
     }
-    
+
     &::after {
       width: 180px;
       height: 180px;
@@ -2297,11 +2320,11 @@ const CtaSection = styled(motion.section)`
   );
   overflow: hidden;
   border-top: 1px solid rgba(147, 51, 234, 0.2);
-  
+
   @media (max-width: 992px) {
     padding: 80px 0;
   }
-  
+
   @media (max-width: 576px) {
     padding: 60px 0;
   }
@@ -2313,7 +2336,11 @@ const CtaWaveTop = styled.div`
   left: 0;
   width: 100%;
   height: 100px;
-  background: linear-gradient(to bottom right, var(--bg-primary) 49%, transparent 51%);
+  background: linear-gradient(
+    to bottom right,
+    var(--bg-primary) 49%,
+    transparent 51%
+  );
   z-index: 1;
 `;
 
@@ -2323,12 +2350,12 @@ const CtaContainer = styled.div`
   padding: 0 2rem;
   position: relative;
   z-index: 2;
-  
+
   @media (max-width: 992px) {
     max-width: 700px;
     padding: 0 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 0 1rem;
   }
@@ -2337,13 +2364,13 @@ const CtaContainer = styled.div`
 const CtaGlowCircle = styled.div`
   position: absolute;
   border-radius: 50%;
-    background: radial-gradient(
-      circle,
+  background: radial-gradient(
+    circle,
     rgba(94, 234, 212, 0.1) 0%,
-      transparent 70%
-    );
+    transparent 70%
+  );
   animation: ${glow} 4s infinite alternate;
-  
+
   &.circle-1 {
     width: 400px;
     height: 400px;
@@ -2358,26 +2385,26 @@ const CtaGlowCircle = styled.div`
     right: -10%;
     animation-delay: 2s;
   }
-  
+
   @media (max-width: 992px) {
     &.circle-1 {
       width: 300px;
       height: 300px;
     }
-    
+
     &.circle-2 {
       width: 250px;
       height: 250px;
     }
   }
-  
+
   @media (max-width: 576px) {
     &.circle-1 {
       width: 200px;
       height: 200px;
       top: 5%;
     }
-    
+
     &.circle-2 {
       width: 150px;
       height: 150px;
@@ -2403,14 +2430,18 @@ const CtaContent = styled.div`
     left: 0;
     width: 100%;
     height: 5px;
-    background: linear-gradient(90deg, var(--accent-color), rgba(59, 130, 246, 0.8));
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
+      rgba(59, 130, 246, 0.8)
+    );
     z-index: 1;
   }
 
   @media (max-width: 768px) {
     padding: 2.5rem 1.5rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 2rem 1rem;
   }
@@ -2426,7 +2457,7 @@ const CtaTitle = styled(motion.h2)`
   @media (max-width: 768px) {
     font-size: 2.2rem;
   }
-  
+
   @media (max-width: 576px) {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
@@ -2442,7 +2473,7 @@ const CtaText = styled(motion.p)`
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-  
+
   @media (max-width: 576px) {
     font-size: 1rem;
     margin-bottom: 1.5rem;
@@ -2457,9 +2488,13 @@ const CtaHighlight = styled(motion.div)`
   text-align: center;
   margin: 2.5rem 0;
   padding: 1.5rem;
-  background: linear-gradient(90deg, rgba(94, 234, 212, 0.1), rgba(59, 130, 246, 0.1));
+  background: linear-gradient(
+    90deg,
+    rgba(94, 234, 212, 0.1),
+    rgba(59, 130, 246, 0.1)
+  );
   border-radius: 12px;
-  
+
   @media (max-width: 576px) {
     font-size: 1.2rem;
     margin: 2rem 0;
@@ -2475,7 +2510,7 @@ const CtaForm = styled(motion.form)`
   margin: 0 auto 2.5rem;
   position: relative;
   z-index: 2;
-  
+
   @media (max-width: 576px) {
     gap: 1rem;
     margin-bottom: 2rem;
@@ -2523,11 +2558,11 @@ const CtaInput = styled.input`
     color: rgba(255, 255, 255, 0.4);
     transition: color 0.3s ease;
   }
-  
+
   &:focus::placeholder {
     color: rgba(255, 255, 255, 0.6);
   }
-  
+
   @media (max-width: 576px) {
     padding: 1rem 1.2rem;
     font-size: 1rem;
@@ -2558,14 +2593,19 @@ const FormCtaButton = styled(motion.button)`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
     transition: all 0.6s ease;
   }
 
   &:hover::before {
     left: 100%;
   }
-  
+
   @media (max-width: 576px) {
     padding: 1.1rem 1.5rem;
     font-size: 1.1rem;
@@ -2578,7 +2618,7 @@ const CtaFooterText = styled(motion.p)`
   opacity: 0.8;
   text-align: center;
   margin-top: 2.5rem;
-  
+
   @media (max-width: 576px) {
     font-size: 0.9rem;
     margin-top: 2rem;
@@ -2589,24 +2629,24 @@ const CtaDecoration = styled.div`
   position: absolute;
   top: 50%;
   right: -200px;
-    width: 300px;
-    height: 300px;
+  width: 300px;
+  height: 300px;
   background: linear-gradient(
     45deg,
     transparent 30%,
     rgba(94, 234, 212, 0.05) 50%,
-      transparent 70%
-    );
+    transparent 70%
+  );
   border-radius: 50%;
   transform: translateY(-50%);
   animation: ${floatVertical} 6s infinite ease-in-out;
-  
+
   @media (max-width: 992px) {
     right: -150px;
     width: 250px;
     height: 250px;
   }
-  
+
   @media (max-width: 768px) {
     display: none;
   }
@@ -2621,7 +2661,7 @@ const ErrorMessage = styled(motion.div)`
   color: #fca5a5;
   text-align: center;
   margin-bottom: 1rem;
-  
+
   @media (max-width: 576px) {
     padding: 0.8rem;
     font-size: 0.9rem;
@@ -2636,7 +2676,7 @@ const SuccessMessage = styled(motion.div)`
   color: #86efac;
   text-align: center;
   margin-bottom: 1rem;
-  
+
   @media (max-width: 576px) {
     padding: 0.8rem;
     font-size: 0.9rem;
@@ -2646,23 +2686,24 @@ const SuccessMessage = styled(motion.div)`
 const BusinessAutomationPage = () => {
   // Add modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
   // Modal functions
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-  
+
   // Business Automation form states
   const [automationFormData, setAutomationFormData] = useState({
     from_name: '',
     phone: '',
-    from_email: ''
+    from_email: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
-  
+
   const [stars, setStars] = useState([]);
   const [expandedFaqs, setExpandedFaqs] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     // Генерация звезд для фона
@@ -2694,21 +2735,18 @@ const BusinessAutomationPage = () => {
   const benefitsData = [
     {
       icon: <FaChartLine />,
-      title: 'Збільшення ефективності',
-      description:
-        'Автоматизація рутинних процесів дозволяє співробітникам зосередитись на важливих завданнях.',
+      title: t('automation.hero.mianTextItem1'),
+      description: t('automation.hero.textItem1'),
     },
     {
       icon: <FaChartBar />,
-      title: 'Підвищення прибутку',
-      description:
-        'Оптимізація бізнес-процесів веде до зменшення витрат та зростання доходів.',
+      title: t('automation.hero.mianTextItem2'),
+      description: t('automation.hero.textItem2'),
     },
     {
       icon: <FaClipboardCheck />,
-      title: 'Контроль якості',
-      description:
-        'Автоматизація зменшує кількість помилок та покращує якість продукції або послуг.',
+      title: t('automation.hero.mianTextItem3'),
+      description: t('automation.hero.textItem3'),
     },
   ];
 
@@ -2722,38 +2760,40 @@ const BusinessAutomationPage = () => {
   };
 
   // Business Automation form functions
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     const { name, value } = e.target;
     setAutomationFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
-    
+
     // Скидаємо помилку при зміні полів
     if (error) {
       setError('');
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    
+
     // Валідація обов'язкових полів
     const requiredFields = ['from_name', 'from_email'];
-    const emptyFields = requiredFields.filter(field => !automationFormData[field].trim());
-    
+    const emptyFields = requiredFields.filter(
+      field => !automationFormData[field].trim()
+    );
+
     if (emptyFields.length > 0) {
-      setError('Будь ласка, заповніть всі обов\'язкові поля (Ім\'я, Email)');
+      setError("Будь ласка, заповніть всі обов'язкові поля (Ім'я, Email)");
       return;
     }
-    
+
     // Валідація email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(automationFormData.from_email)) {
       setError('Будь ласка, введіть коректний email адрес');
       return;
     }
-    
+
     setIsSubmitting(true);
     setError('');
 
@@ -2764,7 +2804,9 @@ const BusinessAutomationPage = () => {
         from_email: automationFormData.from_email,
         phone: automationFormData.phone || 'Не вказано',
         service: 'Автоматизація та оптимізація бізнес-процесів',
-        message: `Заявка на консультацію з автоматизації бізнес-процесів від ${automationFormData.from_name}. Телефон: ${automationFormData.phone || 'Не вказано'}`
+        message: `Заявка на консультацію з автоматизації бізнес-процесів від ${
+          automationFormData.from_name
+        }. Телефон: ${automationFormData.phone || 'Не вказано'}`,
       };
 
       // Відправка через EmailJS
@@ -2774,38 +2816,39 @@ const BusinessAutomationPage = () => {
         templateParams,
         EMAILJS_CONFIG.USER_ID
       );
-      
+
       console.log('Business Automation form sent successfully:', result);
       setIsSubmitted(true);
-      
+
       // Логування для аналітики
       console.log('Business Automation lead generated:', {
         name: automationFormData.from_name,
         email: automationFormData.from_email,
         phone: automationFormData.phone,
         timestamp: new Date().toISOString(),
-        service: 'Автоматизація та оптимізація бізнес-процесів'
+        service: 'Автоматизація та оптимізація бізнес-процесів',
       });
-      
+
       // Очищуємо форму після успішної відправки
       setTimeout(() => {
         setAutomationFormData({
           from_name: '',
           phone: '',
-          from_email: ''
+          from_email: '',
         });
         setIsSubmitted(false);
       }, 3000);
-      
     } catch (err) {
       console.error('Business Automation form sending failed:', err);
-      setError('Помилка відправки повідомлення. Спробуйте ще раз або зв\'яжіться з нами безпосередньо.');
+      setError(
+        "Помилка відправки повідомлення. Спробуйте ще раз або зв'яжіться з нами безпосередньо."
+      );
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleMobileClick = (e) => {
+  const handleMobileClick = e => {
     console.log('Button clicked!', e.type, e.target);
     e.preventDefault();
     e.stopPropagation();
@@ -2838,7 +2881,7 @@ const BusinessAutomationPage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          Автоматизація та оптимізація бізнес-процесів
+          {t('automation.hero.mainText')}
         </Title>
 
         <Subtitle
@@ -2846,11 +2889,7 @@ const BusinessAutomationPage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          В сучасних умовах бізнес не може дозволити собі неефективність. Кожна
-          зайва дія, затримка або помилка обходяться дорого. Ми пропонуємо
-          послугу автоматизації та оптимізації бізнес-процесів, яка дозволяє
-          компаніям працювати швидше, витрачати менше ресурсів і забезпечувати
-          стабільне зростання прибутку.
+          {t('automation.hero.text')}
         </Subtitle>
 
         <PhoneContainer
@@ -2891,14 +2930,14 @@ const BusinessAutomationPage = () => {
                   transition={{ delay: 1.8, duration: 0.5 }}
                   style={{ marginBottom: '0.5rem' }}
                 >
-                  Бізнес Автоматизація
+                  {t('automation.hero.phoneMainText')}
                 </motion.h3>
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 2, duration: 0.5 }}
                 >
-                  Ефективність і контроль
+                  {t('automation.hero.phoneText')}
                 </motion.p>
               </PhoneContent>
 
@@ -2939,14 +2978,18 @@ const BusinessAutomationPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          style={{ display: 'flex', justifyContent: 'center', marginTop: '3rem' }}
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginTop: '3rem',
+          }}
         >
           <CtaButton
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
             onClick={handleMobileClick}
-        >
-          Дізнатися більше
+          >
+            {t('automation.hero.buttonText')}
           </CtaButton>
         </motion.div>
       </HeroSection>
@@ -2962,7 +3005,7 @@ const BusinessAutomationPage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Наші рішення для вашого бізнесу
+            {t('automation.ourSolutions.maintText')}
           </InfoTitle>
 
           <InfoContent>
@@ -2971,10 +3014,7 @@ const BusinessAutomationPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Ми пропонуємо не стандартні пакети, а індивідуальні рішення,
-              розроблені спеціально під ваш бізнес. Перед стартом роботи ми
-              аналізуємо структуру компанії, визначаємо сильні та слабкі сторони
-              процесів, а також оцінюємо потенціал для автоматизації.
+              {t('automation.ourSolutions.text')}
             </InfoText>
 
             <InfoText
@@ -2982,13 +3022,7 @@ const BusinessAutomationPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Комплексна автоматизація включає побудову систем управління
-              завданнями, документообігом, продажами, взаємодією з клієнтами
-              (CRM) та постачальниками. Ми інтегруємо інструменти, які спрощують
-              облік, зменшують кількість ручної роботи та мінімізують ризик
-              помилок. В результаті ви отримуєте не просто окремі автоматизовані
-              процеси, а єдину узгоджену екосистему, яка допомагає вашій команді
-              досягати цілей швидше.
+              {t('automation.ourSolutions.text1')}
             </InfoText>
 
             <InfoSummary
@@ -2996,18 +3030,16 @@ const BusinessAutomationPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Що важливо, ми не залишаємо клієнта після впровадження: наші
-              фахівці супроводжують процес адаптації, оновлюють рішення
-              відповідно до змін у бізнесі та технологіях.
+              {t('automation.ourSolutions.articleText')}
             </InfoSummary>
 
             <FeaturesList>
               {[
-                'Аналіз бізнес-процесів та потреб компанії',
-                'Розробка індивідуальної стратегії автоматизації',
-                'Впровадження CRM та систем документообігу',
-                'Створення єдиної екосистеми для управління бізнесом',
-                'Навчання персоналу та технічна підтримка',
+                t('automation.ourSolutions.itemText1'),
+                t('automation.ourSolutions.itemText2'),
+                t('automation.ourSolutions.itemText3'),
+                t('automation.ourSolutions.itemText4'),
+                t('automation.ourSolutions.itemText5'),
               ].map((feature, index) => (
                 <FeatureItem
                   key={index}
@@ -3035,7 +3067,7 @@ const BusinessAutomationPage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Переваги автоматизації та оптимізації бізнес-процесів
+            {t('automation.benefitsOfAutomation.mainText')}
           </BenefitsTitle>
 
           <InfoText
@@ -3044,9 +3076,7 @@ const BusinessAutomationPage = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             style={{ marginBottom: '2rem' }}
           >
-            Чому зараз саме час інвестувати в автоматизацію? Тому що це вже не
-            конкурентна перевага, а необхідність для виживання та розвитку на
-            ринку.
+            {t('automation.benefitsOfAutomation.text')}
           </InfoText>
 
           <BenefitCardContainer
@@ -3056,27 +3086,23 @@ const BusinessAutomationPage = () => {
           >
             {[
               {
-                title: 'Економія ресурсів',
-                description:
-                  'Автоматизовані процеси дозволяють істотно скоротити витрати на операційний персонал, зменшити час виконання задач і оптимізувати використання технічних ресурсів.',
+                title: t('automation.benefitsOfAutomation.itemMainText1'),
+                description: t('automation.benefitsOfAutomation.itemText1'),
                 icon: <FaChartLine />,
               },
               {
-                title: 'Підвищення прибутковості',
-                description:
-                  'Оптимізація процесів призводить до більшої продуктивності співробітників без необхідності збільшувати чисельність персоналу. Ваш бізнес отримує можливість обслуговувати більше клієнтів і виконувати більше замовлень без додаткових витрат.',
+                title: t('automation.benefitsOfAutomation.itemMainText1'),
+                description: t('automation.benefitsOfAutomation.itemText2'),
                 icon: <FaChartBar />,
               },
               {
-                title: 'Зниження кількості помилок і ризиків',
-                description:
-                  "Ручна обробка даних завжди пов'язана з ризиком неточностей. Автоматизація дозволяє мінімізувати людський фактор, що критично важливо для фінансових операцій, обліку товарів, ведення проектної документації.",
+                title: t('automation.benefitsOfAutomation.itemMainText1'),
+                description: t('automation.benefitsOfAutomation.itemText3'),
                 icon: <FaClipboardCheck />,
               },
               {
-                title: 'Кращий контроль і прозорість',
-                description:
-                  'Автоматизовані процеси забезпечують кращий контроль і прозорість бізнесу. Керівники в реальному часі бачать стан справ, що дозволяє оперативно ухвалювати управлінські рішення.',
+                title: t('automation.benefitsOfAutomation.itemMainText1'),
+                description: t('automation.benefitsOfAutomation.itemText4'),
                 icon: <FaRegLightbulb />,
               },
             ].map((benefit, index) => (
@@ -3111,7 +3137,7 @@ const BusinessAutomationPage = () => {
             transition={{ delay: 0.8 }}
             onClick={handleMobileClick}
           >
-            Почати оптимізацію бізнесу
+            {t('automation.benefitsOfAutomation.btnText')}
           </CtaButton>
         </BenefitsContainer>
 
@@ -3131,7 +3157,7 @@ const BusinessAutomationPage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Як ми працюємо
+            {t('automation.howWeWork.mainText')}
           </WorkflowTitle>
 
           <WorkflowContent>
@@ -3140,9 +3166,7 @@ const BusinessAutomationPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
-              Наша співпраця починається з безкоштовної консультації, на якій ми
-              обговорюємо завдання вашого бізнесу та визначаємо потенційні
-              напрями для оптимізації.
+              {t('automation.howWeWork.text')}
             </WorkflowIntro>
 
             <WorkflowStepsList
@@ -3152,27 +3176,23 @@ const BusinessAutomationPage = () => {
             >
               {[
                 {
-                  title: 'Аудит бізнес-процесів',
-                  description:
-                    'Ми проводимо глибокий аудит процесів. Це включає аналіз існуючих бізнес-операцій, виявлення вузьких місць, дублювань функцій та надмірних витрат ресурсів.',
+                  title: t('automation.howWeWork.itemMainText1'),
+                  description: t('automation.howWeWork.itemText1'),
                   icon: <FaClipboardCheck />,
                 },
                 {
-                  title: 'Розробка індивідуального рішення',
-                  description:
-                    'На основі аудиту розробляється індивідуальне рішення. Ми підбираємо оптимальні інструменти — від CRM та ERP-систем до спеціалізованих програм для виробництва, логістики чи бухгалтерського обліку.',
+                  title: t('automation.howWeWork.itemMainText2'),
+                  description: t('automation.howWeWork.itemText2'),
                   icon: <FaBrain />,
                 },
                 {
-                  title: 'Впровадження та навчання',
-                  description:
-                    'Етап впровадження передбачає налаштування систем, інтеграцію між собою та тестування рішень в умовах реального бізнесу. Ми також навчаємо персонал користуватися новими інструментами для досягнення максимальної ефективності.',
+                  title: t('automation.howWeWork.itemMainText3'),
+                  description: t('automation.howWeWork.itemText3'),
                   icon: <FaCog />,
                 },
                 {
-                  title: 'Підтримка та розвиток',
-                  description:
-                    'Після запуску ми забезпечуємо постійну підтримку та розвиток — оновлюємо рішення, додаємо нові функції у відповідь на потреби компанії, консультуємо і допомагаємо вашому бізнесу залишатися на крок попереду конкурентів.',
+                  title: t('automation.howWeWork.itemMainText4'),
+                  description: t('automation.howWeWork.itemText4'),
                   icon: <FaRocket />,
                 },
               ].map((step, index) => (
@@ -3200,8 +3220,7 @@ const BusinessAutomationPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              Ми не просто впроваджуємо технології — ми створюємо комплексні
-              рішення, які реально підвищують ефективність вашого бізнесу.
+              {t('automation.howWeWork.articleText')}
             </WorkflowSummary>
           </WorkflowContent>
 
@@ -3224,7 +3243,7 @@ const BusinessAutomationPage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Що ви отримаєте, обравши нас
+            {t('automation.whatYouWillGet.mainText')}
           </WhyUsTitle>
 
           <WhyUsIntro
@@ -3232,9 +3251,7 @@ const BusinessAutomationPage = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Замовляючи послугу автоматизації бізнес-процесів у нас, ви
-            інвестуєте не просто в технології, а у свій результат. Основні
-            вигоди для наших клієнтів:
+            {t('automation.whatYouWillGet.text')}
           </WhyUsIntro>
 
           <BenefitsList
@@ -3244,33 +3261,28 @@ const BusinessAutomationPage = () => {
           >
             {[
               {
-                title: 'Скорочення витрат на 20–40%',
-                description:
-                  'Оптимізація ресурсів та мінімізація надлишкових операцій дозволяє суттєво знизити операційні витрати бізнесу.',
+                title: t('automation.whatYouWillGet.itemMainText1'),
+                description: t('automation.whatYouWillGet.itemText1'),
                 icon: <FaCoins />,
               },
               {
-                title: 'Прискорення бізнес-операцій у 1,5–2 рази',
-                description:
-                  'Автоматизовані процеси виконуються швидше та ефективніше, що підвищує продуктивність всієї компанії.',
+                title: t('automation.whatYouWillGet.itemMainText2'),
+                description: t('automation.whatYouWillGet.itemText2'),
                 icon: <FaBolt />,
               },
               {
-                title: 'Підвищення точності обліку та звітності',
-                description:
-                  'Мінімізація людського фактору забезпечує вищу точність даних та надійність прийняття рішень.',
+                title: t('automation.whatYouWillGet.itemMainText3'),
+                description: t('automation.whatYouWillGet.itemText3'),
                 icon: <FaChartBar />,
               },
               {
-                title: 'Підвищення лояльності клієнтів',
-                description:
-                  'Швидше та якісніше обслуговування клієнтів завдяки оптимізованим процесам та налагодженим комунікаціям.',
+                title: t('automation.whatYouWillGet.itemMainText4'),
+                description: t('automation.whatYouWillGet.itemText4'),
                 icon: <FaRegLightbulb />,
               },
               {
-                title: 'Більша прозорість і контроль',
-                description:
-                  'Повний огляд всіх етапів діяльності компанії в реальному часі для оперативного управління.',
+                title: t('automation.whatYouWillGet.itemMainText5'),
+                description: t('automation.whatYouWillGet.itemText5'),
                 icon: <FaClipboardCheck />,
               },
             ].map((benefit, index) => (
@@ -3300,16 +3312,17 @@ const BusinessAutomationPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.8 }}
           >
-            <ResultsTitle>Підтверджені результати наших клієнтів:</ResultsTitle>
+            <ResultsTitle>
+              {t('automation.whatYouWillGet.mainArticleText')}
+            </ResultsTitle>
             <ResultsText>
-              Виробничі компанії, які скористались нашими рішеннями, збільшили
-              оборот на <ResultsHighlight>30%</ResultsHighlight> без суттєвого
-              зростання витрат, а логістичні оператори змогли скоротити час
-              обробки замовлень на <ResultsHighlight>40%</ResultsHighlight>.
+              {t('automation.whatYouWillGet.articleText1')}
+              <ResultsHighlight>30%</ResultsHighlight>
+              {t('automation.whatYouWillGet.articleText2')}
+              <ResultsHighlight>40%</ResultsHighlight>.
             </ResultsText>
             <ResultsText style={{ marginTop: '1.5rem' }}>
-              Ми орієнтовані не на гучні обіцянки, а на реальні зміни у вашому
-              бізнесі.
+              {t('automation.whatYouWillGet.articleText3')}
             </ResultsText>
           </ResultsSummary>
 
@@ -3324,7 +3337,7 @@ const BusinessAutomationPage = () => {
               onClick={handleMobileClick}
             >
               <span className="glow-effect"></span>
-              Розпочати автоматизацію
+              {t('automation.whatYouWillGet.btnText')}
             </PulsingButton>
           </WhyUsAction>
         </WhyUsContainer>
@@ -3349,7 +3362,7 @@ const BusinessAutomationPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              Замовте автоматизацію бізнес-процесів уже сьогодні!
+              {t('automation.automationForm.mainText')}
             </CtaTitle>
 
             <CtaText
@@ -3357,10 +3370,7 @@ const BusinessAutomationPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Не відкладайте оптимізацію на потім — саме зараз у вас є
-              можливість вивести бізнес на новий рівень. Залиште заявку на
-              консультацію, і ми запропонуємо рішення, яке працюватиме саме для
-              вас.
+              {t('automation.automationForm.text1')}
             </CtaText>
 
             <CtaHighlight
@@ -3368,9 +3378,7 @@ const BusinessAutomationPage = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Натисніть кнопку "Замовити консультацію", щоб отримати
-              персоналізовану стратегію розвитку вашого бізнесу через
-              автоматизацію.
+              {t('automation.automationForm.text2')}
             </CtaHighlight>
 
             <CtaForm
@@ -3397,14 +3405,16 @@ const BusinessAutomationPage = () => {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
                 >
-                  Дякуємо! Ваша заявка надіслана. Ми зв'яжемося з вами найближчим часом.
+                  {t('automation.automationForm.messegeText')}
                 </SuccessMessage>
               )}
 
               <CtaInputWrapper>
-                <CtaInput 
-                  type="text" 
-                  placeholder="Ваше ім'я *" 
+                <CtaInput
+                  type="text"
+                  placeholder={t(
+                    'automation.automationForm.placeholderNameText'
+                  )}
                   name="from_name"
                   value={automationFormData.from_name}
                   onChange={handleInputChange}
@@ -3415,9 +3425,9 @@ const BusinessAutomationPage = () => {
               </CtaInputWrapper>
 
               <CtaInputWrapper>
-                <CtaInput 
-                  type="tel" 
-                  placeholder="Телефон" 
+                <CtaInput
+                  type="tel"
+                  placeholder={t('automation.automationForm.placeholderPhone')}
                   name="phone"
                   value={automationFormData.phone}
                   onChange={handleInputChange}
@@ -3427,9 +3437,9 @@ const BusinessAutomationPage = () => {
               </CtaInputWrapper>
 
               <CtaInputWrapper>
-                <CtaInput 
-                  type="email" 
-                  placeholder="Email *" 
+                <CtaInput
+                  type="email"
+                  placeholder="Email *"
                   name="from_email"
                   value={automationFormData.from_email}
                   onChange={handleInputChange}
@@ -3442,17 +3452,23 @@ const BusinessAutomationPage = () => {
               <FormCtaButton
                 type="submit"
                 disabled={isSubmitting}
-                whileHover={!isSubmitting ? {
-                  scale: 1.03,
-                  boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)',
-                } : {}}
+                whileHover={
+                  !isSubmitting
+                    ? {
+                        scale: 1.03,
+                        boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)',
+                      }
+                    : {}
+                }
                 whileTap={!isSubmitting ? { scale: 0.98 } : {}}
                 style={{
                   opacity: isSubmitting ? 0.7 : 1,
-                  cursor: isSubmitting ? 'not-allowed' : 'pointer'
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
                 }}
               >
-                {isSubmitting ? 'Відправляємо...' : 'Замовити консультацію'}
+                {isSubmitting
+                  ? t('automation.automationForm.btnText2')
+                  : t('automation.automationForm.btnText1')}
               </FormCtaButton>
             </CtaForm>
 
@@ -3461,8 +3477,7 @@ const BusinessAutomationPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.9 }}
             >
-              Один крок до ефективного та прибуткового бізнесу. Почніть
-              отримувати більше від своїх процесів уже сьогодні!
+              {t('automation.automationForm.articleText')}
             </CtaFooterText>
           </CtaContent>
 
@@ -3496,41 +3511,32 @@ const BusinessAutomationPage = () => {
           >
             {[
               {
-                question: 'Що включає послуга автоматизації бізнес-процесів?',
-                answer:
-                  'Послуга охоплює аналіз існуючих процесів, розробку індивідуальних рішень, впровадження програмного забезпечення, навчання співробітників і подальшу технічну підтримку.',
+                question: t('automation.faqAutomation.question1'),
+                answer: t('automation.faqAutomation.answer1'),
               },
               {
-                question: 'Для яких бізнесів підходить автоматизація?',
-                answer:
-                  'Автоматизація підходить компаніям будь-якого розміру — від малого бізнесу до великих підприємств у сферах виробництва, логістики, торгівлі, послуг та IT.',
+                question: t('automation.faqAutomation.question2'),
+                answer: t('automation.faqAutomation.answer2'),
               },
               {
-                question: 'Які результати можна очікувати після впровадження?',
-                answer:
-                  'Зазвичай бізнес отримує економію часу та ресурсів, зменшення кількості помилок, підвищення продуктивності та прозорість управління.',
+                question: t('automation.faqAutomation.question3'),
+                answer: t('automation.faqAutomation.answer3'),
               },
               {
-                question: 'Скільки часу займає процес автоматизації?',
-                answer:
-                  'Тривалість залежить від складності проекту. Середній термін впровадження — від 4 до 12 тижнів.',
+                question: t('automation.faqAutomation.question4'),
+                answer: t('automation.faqAutomation.answer4'),
               },
               {
-                question:
-                  'Чи потрібно змінювати всю ІТ-інфраструктуру для автоматизації?',
-                answer:
-                  'Ні, ми інтегруємо нові рішення з існуючими системами. Повна заміна необхідна лише у випадку, якщо поточні рішення суттєво застарілі.',
+                question: t('automation.faqAutomation.question5'),
+                answer: t('automation.faqAutomation.answer5'),
               },
               {
-                question: 'Скільки коштує автоматизація бізнес-процесів?',
-                answer:
-                  'Вартість визначається індивідуально після аудиту процесів. Вона залежить від масштабу автоматизації, кількості інтеграцій та специфіки бізнесу.',
+                question: t('automation.faqAutomation.question6'),
+                answer: t('automation.faqAutomation.answer6'),
               },
               {
-                question:
-                  'Що робити, якщо після впровадження зміняться вимоги бізнесу?',
-                answer:
-                  'Ми забезпечуємо гнучкість рішень і готові оновлювати та розширювати функціонал відповідно до змін потреб компанії.',
+                question: t('automation.faqAutomation.question7'),
+                answer: t('automation.faqAutomation.answer7'),
               },
             ].map((faq, index) => (
               <FaqItem
@@ -3580,15 +3586,13 @@ const BusinessAutomationPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
-            <FaqCtaText>
-              Маєте додаткові запитання щодо автоматизації бізнес-процесів?
-            </FaqCtaText>
+            <FaqCtaText>{t('automation.faqAutomation.text')}</FaqCtaText>
             <FaqCtaButton
               onClick={handleMobileClick}
               onTouchStart={handleMobileClick}
               type="button"
             >
-              Зв'язатися з експертом
+              {t('automation.faqAutomation.btnText')}
             </FaqCtaButton>
           </FaqCta>
 
@@ -3633,15 +3637,15 @@ const FaqSection = styled(motion.section)`
   );
   overflow: hidden;
   z-index: 0;
-  
+
   @media (max-width: 992px) {
     padding: 6rem 1.5rem;
   }
-  
+
   @media (max-width: 768px) {
     padding: 5rem 1rem;
   }
-  
+
   @media (max-width: 576px) {
     padding: 4rem 1rem;
   }
