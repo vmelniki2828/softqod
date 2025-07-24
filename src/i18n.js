@@ -203,7 +203,7 @@ const resources = {
           itemText3: 'be installed on the home screen of a smartphone',
           itemText4: 'work quickly even with poor internet',
           articleText:
-            'Simply put, it’s a website that behaves like an app. The user doesn’t notice the difference, and the business gets maximum reach without the expense of developing separate mobile platforms.',
+            "Simply put, it's a website that behaves like an app. The user doesn't notice the difference, and the business gets maximum reach without the expense of developing separate mobile platforms.",
         },
         benefitsOfPWA: {
           mainText: 'Benefits of PWA for business',
@@ -287,7 +287,7 @@ const resources = {
           answer1:
             'PWA — це веб-додаток, який виглядає й працює як мобільний застосунок. Його можна відкрити в браузері, встановити на смартфон, працювати з ним офлайн та отримувати push-сповіщення — без потреби завантаження з App Store або Google Play.',
           answer2:
-            'A PWA doesn’t require separate development for iOS and Android, which saves budget. It’s easier to promote, faster to launch, and easier to update. Plus, users can interact with it right away — without installation.',
+            "A PWA doesn't require separate development for iOS and Android, which saves budget. It's easier to promote, faster to launch, and easier to update. Plus, users can interact with it right away — without installation.",
           answer3:
             'Yes, PWA supports offline mode. Thanks to caching, the user can view content or perform actions even without a network connection.',
           answer4:
@@ -454,6 +454,116 @@ const resources = {
           textItem2: 'Automate routine tasks and optimize business processes',
           textItem3: 'Automate routine tasks and optimize business processes',
           buttonText: 'Learn more',
+        },
+        whatIsErpCrm: {
+          title: 'What are ERP and CRM systems?',
+          erpTitle: 'ERP: enterprise resource management',
+          erpDescription:
+            'ERP (Enterprise Resource Planning) is a comprehensive system for managing all enterprise resources: finance, production, procurement, inventory, personnel. The goal of ERP is to create a unified information space that allows management to see a complete picture of business processes and make operational decisions.',
+          erpFeaturesTitle: 'Main capabilities of ERP systems:',
+          erpFeatures: [
+            'Automation of accounting and financial management',
+            'Supply and inventory management',
+            'Production planning',
+            'Personnel management',
+            'Real-time analytics and reporting',
+          ],
+          crmTitle: 'CRM: customer relationship management',
+          crmDescription:
+            'CRM (Customer Relationship Management) is a system for organizing effective customer interaction. It helps track contact history, improve service quality, manage sales and marketing.',
+          crmFeaturesTitle: 'CRM system functions:',
+          crmFeatures: [
+            'Customer database management',
+            'Lead and deal management',
+            'Sales automation',
+            'Analysis of sales department performance',
+            'Marketing campaigns and communication',
+          ],
+        },
+        problemsSolved: {
+          title: 'What problems do ERP and CRM systems solve?',
+          description:
+            'ERP and CRM systems help solve key challenges that prevent companies from growing, developing, and operating efficiently. They eliminate chaos in business processes, allowing companies to focus on development and increasing profitability.',
+          erpProblemsTitle: 'The main problems that the ERP system solves:',
+          erpProblems: {
+            title1: 'Lack of a unified database',
+            description1:
+              'Information about finances, purchasing, inventory, and production is scattered across different systems or maintained manually. ERP integrates all data into a single database, ensuring transparency and accessibility of information for management.',
+            title2: 'Inconsistency between departments',
+            description2:
+              'Lack of interaction between departments leads to errors, delays and financial losses. ERP systems synchronize the work of all departments in real time.',
+
+            title3: 'Slow decision-making speed',
+            description3:
+              'Due to the lack of up-to-date analytics, managers are forced to make decisions "blindly." ERP provides analytical reports in one click, allowing you to quickly respond to market changes.',
+
+            title4: 'Difficulties in resource planning',
+            description4:
+              'Production disruptions, material shortages, or budget overruns are all consequences of lack of planning. ERP automates these processes, helping you to more accurately forecast needs.',
+          },
+          crmProblemsTitle: 'The main problems that the CRM system solves:',
+          crmProblems: {
+            title1: 'Loss of customers due to poor service',
+            description1:
+              'Without CRM, it is difficult to keep a history of customer interactions, track their needs, and offer relevant solutions. CRM records all contacts, tasks, and deals, improving the level of service.',
+
+            title2: 'Ineffective sales and marketing',
+            description2:
+              'Without structured lead management, a company loses potential revenue. CRM helps automate the sales funnel, manage leads, analyze conversion, and increase the effectiveness of marketing campaigns.',
+
+            title3: 'Incomprehensible effectiveness of managers',
+            description3:
+              'When there is no centralized system for recording the activities of sales managers, it is difficult to assess their productivity. CRM allows you to see the number of calls, letters, meetings and the actual results of each employee.',
+
+            title4:
+              'Lack of a systematic approach to developing the client base',
+            description4:
+              'CRM creates a complete customer profile, helping to better understand their needs and offer appropriate products or services, which increases repeat sales.',
+          },
+        },
+        ourSolutions: {
+          title: 'Our solutions for your business',
+          erpImplementation: {
+            title: 'Implementation of ERP systems',
+            description:
+              'We select and configure ERP systems for your tasks: from financial management to production automation. We work with both ready-made solutions and individual developments.',
+          },
+          crmImplementation: {
+            title: 'Implementation of CRM systems',
+            description:
+              'We help you set up effective work with clients: sales automation, transaction accounting, creation of client databases, marketing campaign analytics.',
+          },
+          integration: {
+            title: 'ERP and CRM integration',
+            description:
+              'We integrate ERP and CRM systems to create a single digital environment where business processes and customer interaction work as a single mechanism.',
+          },
+          customSolutions: {
+            title: 'Customized solutions',
+            description:
+              'We develop systems for specific business needs: logistics features, production processes, non-standard sales schemes, etc.',
+          },
+          consulting: {
+            title: 'Digital transformation consulting',
+            description:
+              'We help businesses determine the optimal automation and digitalization strategy. We audit existing processes, develop an ERP/CRM implementation roadmap, and support them at all stages of digital transformation.',
+          },
+          blockButton: 'Order a consultation',
+        },
+        advantages: {
+          title: 'Advantages of cooperation with us',
+          advantagesItems: {
+            title1: 'Experience in various industries',
+            description1: 'From retail to manufacturing and service',
+            title2: 'Individual approach',
+            description2: 'We select solutions for specific company goals',
+            title3: 'Comprehensive approach',
+            description3: 'Analysis, implementation, training, support',
+            title4: 'Result guarantee',
+            description4: 'Improving business efficiency after implementation',
+            title5: 'System support and development',
+            description5: 'Adaptation to business changes',
+          },
         },
       },
     },
@@ -907,6 +1017,117 @@ const resources = {
           textItem3:
             'Повна історія взаємодії з клієнтами та швидкий доступ до даних',
           buttonText: 'Дізнатися більше',
+        },
+        whatIsErpCrm: {
+          title: 'Що таке ERP та CRM системи?',
+          erpTitle: 'ERP: управління ресурсами компанії',
+          erpDescription:
+            'ERP (Enterprise Resource Planning) — це система комплексного управління всіма ресурсами підприємства: фінансами, виробництвом, закупівлями, складом, персоналом. Мета ERP — створити єдиний інформаційний простір, що дозволяє керівництву бачити повну картину бізнес-процесів і оперативно приймати рішення.',
+          erpFeaturesTitle: 'Основні можливості ERP систем:',
+          erpFeatures: [
+            'Автоматизація обліку та управління фінансами',
+            'Управління постачаннями та запасами',
+            'Планування виробництва',
+            'Управління персоналом',
+            'Аналітика та звітність в реальному часі',
+          ],
+          crmTitle: 'CRM: управління відносинами з клієнтами',
+          crmDescription:
+            'CRM (Customer Relationship Management) — це система для організації ефективної взаємодії з клієнтами. Вона допомагає відстежувати історію контактів, покращувати якість обслуговування, управляти продажами та маркетингом.',
+          crmFeaturesTitle: 'Функції CRM систем:',
+          crmFeatures: [
+            'Ведення клієнтської бази',
+            'Управління лідами та угодами',
+            'Автоматизація продажів',
+            'Аналіз ефективності роботи відділу продажу',
+            'Маркетингові кампанії та комунікація',
+          ],
+        },
+        problemsSolved: {
+          title: 'Які проблеми вирішують ERP та CRM системи?',
+          description:
+            'ERP та CRM системи допомагають вирішити ключові завдання, що заважають компаніям рости, розвиватися та ефективно працювати. Вони усувають хаос у бізнес-процесах, дозволяють зосередитися на розвитку компанії та підвищенні прибутковості.',
+          erpProblemsTitle: 'Основні проблеми, які вирішує ERP система:',
+          erpProblems: {
+            title1: 'Відсутність єдиної бази даних',
+            description1:
+              "Інформація про фінанси, закупівлі, складські залишки та виробництво розкидана по різних системах або ведеться вручну. ERP об'єднує всі дані в єдину базу, забезпечуючи прозорість і доступність інформації для керівництва.",
+
+            title2: 'Неузгодженість між відділами',
+            description2:
+              'Відсутність взаємодії між підрозділами призводить до помилок, затримок і фінансових втрат. ERP системи синхронізують роботу всіх відділів у реальному часі.',
+
+            title3: 'Низька швидкість прийняття рішень',
+            description3:
+              'Через нестачу актуальної аналітики керівники змушені ухвалювати рішення "наосліп". ERP надає аналітичні звіти в один клік, що дозволяє швидко реагувати на зміни на ринку.',
+
+            title4: 'Труднощі в плануванні ресурсів',
+            description4:
+              'Виробничі збої, нестача матеріалів або перевитрати бюджету — наслідки відсутності планування. ERP автоматизує ці процеси, допомагаючи більш точно прогнозувати потреби.',
+          },
+          crmProblemsTitle: 'Основні проблеми, які вирішує CRM система:',
+          crmProblems: {
+            title1: 'Втрата клієнтів через неякісне обслуговування',
+            description1:
+              'Без CRM важко зберігати історію взаємодії з клієнтом, відстежувати його потреби та пропонувати актуальні рішення. CRM фіксує всі контакти, завдання та угоди, підвищуючи рівень обслуговування.',
+
+            title2: 'Неефективний продаж і маркетинг',
+            description2:
+              'Без структурованої роботи з лідами компанія втрачає потенційні доходи. CRM допомагає автоматизувати воронку продажів, управляти лідами, аналізувати конверсію та підвищувати ефективність маркетингових кампаній.',
+
+            title3: 'Незрозуміла ефективність менеджерів',
+            description3:
+              'Коли відсутня централізована система обліку діяльності менеджерів з продажу, складно оцінити їхню продуктивність. CRM дозволяє бачити кількість дзвінків, листів, зустрічей та фактичні результати кожного співробітника.',
+
+            title4:
+              'Відсутність системного підходу до розвитку клієнтської бази',
+            description4:
+              'CRM формує повноцінний профіль клієнта, допомагаючи краще розуміти його потреби і пропонувати відповідні товари або послуги, що збільшує обсяг повторних продажів.',
+          },
+        },
+        ourSolutions: {
+          title: 'Наші рішення для вашого бізнесу',
+          erpImplementation: {
+            title: 'Впровадження ERP систем',
+            description:
+              'Ми підбираємо і налаштовуємо ERP системи під ваші завдання: від управління фінансами до автоматизації виробництва. Працюємо як із готовими рішеннями, так і з індивідуальними розробками.',
+          },
+          crmImplementation: {
+            title: 'Впровадження CRM систем',
+            description:
+              'Допомагаємо налаштувати ефективну роботу з клієнтами: автоматизація продажів, облік угод, створення клієнтських баз, аналітика маркетингових кампаній.',
+          },
+          integration: {
+            title: 'Інтеграція ERP та CRM',
+            description:
+              "Об'єднуємо ERP та CRM системи для створення єдиного цифрового середовища, де бізнес-процеси та взаємодія з клієнтами працюють як єдиний механізм.",
+          },
+          customSolutions: {
+            title: 'Індивідуальні рішення',
+            description:
+              'Розробляємо системи під конкретні потреби бізнесу: особливості логістики, виробничі процеси, нестандартні схеми продажів тощо.',
+          },
+          consulting: {
+            title: 'Консалтинг з цифрової трансформації',
+            description:
+              'Допомагаємо бізнесу визначити оптимальну стратегію автоматизації та цифровізації. Проводимо аудит існуючих процесів, розробляємо дорожню карту впровадження ERP/CRM та супроводжуємо на всіх етапах цифрової трансформації.',
+          },
+          blockButton: 'Замовити консультацію',
+        },
+        advantages: {
+          title: 'Переваги співпраці з нами',
+          advantagesItems: {
+            title1: 'Досвід у різних галузях',
+            description1: 'Від роздрібної торгівлі до виробництва та сервісу',
+            title2: 'Індивідуальний підхід',
+            description2: 'Підбираємо рішення під конкретні цілі компанії',
+            title3: 'Комплексний підхід',
+            description3: 'Аналіз, впровадження, навчання, підтримка',
+            title4: 'Гарантія результату',
+            description4: 'Підвищення ефективності бізнесу після впровадження',
+            title5: 'Супровід і розвиток системи',
+            description5: 'Адаптація до змін у бізнесі',
+          },
         },
       },
     },

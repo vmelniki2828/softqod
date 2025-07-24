@@ -1814,6 +1814,12 @@ const ERPCRMPage = () => {
   const [expandedFaqs, setExpandedFaqs] = useState([]);
 
   const { t } = useTranslation();
+  const erpFeatures = t('ErpCrmSystem.whatIsErpCrm.erpFeatures', {
+    returnObjects: true,
+  });
+  const crmFeatures = t('ErpCrmSystem.whatIsErpCrm.crmFeatures', {
+    returnObjects: true,
+  });
 
   // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -2088,7 +2094,7 @@ const ERPCRMPage = () => {
             transition={{ duration: 0.6 }}
             style={{ marginBottom: '0.75rem' }}
           >
-            Що таке ERP та CRM системи?
+            {t('ErpCrmSystem.whatIsErpCrm.title')}
           </InfoTitle>
 
           <InfoContent>
@@ -2103,7 +2109,7 @@ const ERPCRMPage = () => {
                 fontWeight: '600',
               }}
             >
-              ERP: управління ресурсами компанії
+              {t('ErpCrmSystem.whatIsErpCrm.erpTitle')}
             </motion.h3>
 
             <InfoText
@@ -2112,11 +2118,7 @@ const ERPCRMPage = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               style={{ marginBottom: '0.5rem' }}
             >
-              ERP (Enterprise Resource Planning) — це система комплексного
-              управління всіма ресурсами підприємства: фінансами, виробництвом,
-              закупівлями, складом, персоналом. Мета ERP — створити єдиний
-              інформаційний простір, що дозволяє керівництву бачити повну
-              картину бізнес-процесів і оперативно приймати рішення.
+              {t('ErpCrmSystem.whatIsErpCrm.erpDescription')}
             </InfoText>
 
             <InfoText
@@ -2129,17 +2131,11 @@ const ERPCRMPage = () => {
                 fontWeight: '600',
               }}
             >
-              Основні можливості ERP систем:
+              {t('ErpCrmSystem.whatIsErpCrm.erpFeaturesTitle')}
             </InfoText>
 
             <FeaturesList style={{ marginBottom: '1rem' }}>
-              {[
-                'Автоматизація обліку та управління фінансами',
-                'Управління постачаннями та запасами',
-                'Планування виробництва',
-                'Управління персоналом',
-                'Аналітика та звітність в реальному часі',
-              ].map((feature, index) => (
+              {erpFeatures.map((feature, index) => (
                 <FeatureItem
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
@@ -2165,7 +2161,7 @@ const ERPCRMPage = () => {
                 fontWeight: '600',
               }}
             >
-              CRM: управління відносинами з клієнтами
+              {t('ErpCrmSystem.whatIsErpCrm.crmTitle')}
             </motion.h3>
 
             <InfoText
@@ -2174,10 +2170,7 @@ const ERPCRMPage = () => {
               transition={{ duration: 0.6, delay: 0.9 }}
               style={{ marginBottom: '0.5rem' }}
             >
-              CRM (Customer Relationship Management) — це система для
-              організації ефективної взаємодії з клієнтами. Вона допомагає
-              відстежувати історію контактів, покращувати якість обслуговування,
-              управляти продажами та маркетингом.
+              {t('ErpCrmSystem.whatIsErpCrm.crmDescription')}
             </InfoText>
 
             <InfoText
@@ -2190,17 +2183,11 @@ const ERPCRMPage = () => {
                 fontWeight: '600',
               }}
             >
-              Функції CRM систем:
+              {t('ErpCrmSystem.whatIsErpCrm.crmFeaturesTitle')}
             </InfoText>
 
             <FeaturesList>
-              {[
-                'Ведення клієнтської бази',
-                'Управління лідами та угодами',
-                'Автоматизація продажів',
-                'Аналіз ефективності роботи відділу продажу',
-                'Маркетингові кампанії та комунікація',
-              ].map((feature, index) => (
+              {crmFeatures.map((feature, index) => (
                 <FeatureItem
                   key={index + 5}
                   initial={{ opacity: 0, x: -20 }}
@@ -2228,7 +2215,7 @@ const ERPCRMPage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Які проблеми вирішують ERP та CRM системи?
+            {t('ErpCrmSystem.problemsSolved.title')}
           </BenefitsTitle>
 
           <InfoText
@@ -2237,10 +2224,7 @@ const ERPCRMPage = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             style={{ marginBottom: '2rem' }}
           >
-            ERP та CRM системи допомагають вирішити ключові завдання, що
-            заважають компаніям рости, розвиватися та ефективно працювати. Вони
-            усувають хаос у бізнес-процесах, дозволяють зосередитися на розвитку
-            компанії та підвищенні прибутковості.
+            {t('ErpCrmSystem.problemsSolved.description')}
           </InfoText>
 
           <motion.h3
@@ -2254,7 +2238,7 @@ const ERPCRMPage = () => {
               fontWeight: '600',
             }}
           >
-            Основні проблеми, які вирішує ERP система:
+            {t('ErpCrmSystem.problemsSolved.erpProblemsTitle')}
           </motion.h3>
 
           <BenefitCardContainer
@@ -2264,27 +2248,31 @@ const ERPCRMPage = () => {
           >
             {[
               {
-                title: 'Відсутність єдиної бази даних',
-                description:
-                  "Інформація про фінанси, закупівлі, складські залишки та виробництво розкидана по різних системах або ведеться вручну. ERP об'єднує всі дані в єдину базу, забезпечуючи прозорість і доступність інформації для керівництва.",
+                title: t('ErpCrmSystem.problemsSolved.erpProblems.title1'),
+                description: t(
+                  'ErpCrmSystem.problemsSolved.erpProblems.description1'
+                ),
                 icon: <FaDatabase />,
               },
               {
-                title: 'Неузгодженість між відділами',
-                description:
-                  'Відсутність взаємодії між підрозділами призводить до помилок, затримок і фінансових втрат. ERP системи синхронізують роботу всіх відділів у реальному часі.',
+                title: t('ErpCrmSystem.problemsSolved.erpProblems.title2'),
+                description: t(
+                  'ErpCrmSystem.problemsSolved.erpProblems.description2'
+                ),
                 icon: <FaProjectDiagram />,
               },
               {
-                title: 'Низька швидкість прийняття рішень',
-                description:
-                  'Через нестачу актуальної аналітики керівники змушені ухвалювати рішення "наосліп". ERP надає аналітичні звіти в один клік, що дозволяє швидко реагувати на зміни на ринку.',
+                title: t('ErpCrmSystem.problemsSolved.erpProblems.title3'),
+                description: t(
+                  'ErpCrmSystem.problemsSolved.erpProblems.description3'
+                ),
                 icon: <FaChartLine />,
               },
               {
-                title: 'Труднощі в плануванні ресурсів',
-                description:
-                  'Виробничі збої, нестача матеріалів або перевитрати бюджету — наслідки відсутності планування. ERP автоматизує ці процеси, допомагаючи більш точно прогнозувати потреби.',
+                title: t('ErpCrmSystem.problemsSolved.erpProblems.title4'),
+                description: t(
+                  'ErpCrmSystem.problemsSolved.erpProblems.description4'
+                ),
                 icon: <FaCogs />,
               },
             ].map((benefit, index) => (
@@ -2322,7 +2310,7 @@ const ERPCRMPage = () => {
               fontWeight: '600',
             }}
           >
-            Основні проблеми, які вирішує CRM система:
+            {t('ErpCrmSystem.problemsSolved.crmProblemsTitle')}
           </motion.h3>
 
           <BenefitCardContainer
@@ -2332,28 +2320,31 @@ const ERPCRMPage = () => {
           >
             {[
               {
-                title: 'Втрата клієнтів через неякісне обслуговування',
-                description:
-                  'Без CRM важко зберігати історію взаємодії з клієнтом, відстежувати його потреби та пропонувати актуальні рішення. CRM фіксує всі контакти, завдання та угоди, підвищуючи рівень обслуговування.',
+                title: t('ErpCrmSystem.problemsSolved.crmProblems.title1'),
+                description: t(
+                  'ErpCrmSystem.problemsSolved.crmProblems.description1'
+                ),
                 icon: <FaUsers />,
               },
               {
-                title: 'Неефективний продаж і маркетинг',
-                description:
-                  'Без структурованої роботи з лідами компанія втрачає потенційні доходи. CRM допомагає автоматизувати воронку продажів, управляти лідами, аналізувати конверсію та підвищувати ефективність маркетингових кампаній.',
+                title: t('ErpCrmSystem.problemsSolved.crmProblems.title2'),
+                description: t(
+                  'ErpCrmSystem.problemsSolved.crmProblems.description2'
+                ),
                 icon: <FaChartBar />,
               },
               {
-                title: 'Незрозуміла ефективність менеджерів',
-                description:
-                  'Коли відсутня централізована система обліку діяльності менеджерів з продажу, складно оцінити їхню продуктивність. CRM дозволяє бачити кількість дзвінків, листів, зустрічей та фактичні результати кожного співробітника.',
+                title: t('ErpCrmSystem.problemsSolved.crmProblems.title3'),
+                description: t(
+                  'ErpCrmSystem.problemsSolved.crmProblems.description3'
+                ),
                 icon: <FaUserCog />,
               },
               {
-                title:
-                  'Відсутність системного підходу до розвитку клієнтської бази',
-                description:
-                  'CRM формує повноцінний профіль клієнта, допомагаючи краще розуміти його потреби і пропонувати відповідні товари або послуги, що збільшує обсяг повторних продажів.',
+                title: t('ErpCrmSystem.problemsSolved.crmProblems.title4'),
+                description: t(
+                  'ErpCrmSystem.problemsSolved.crmProblems.description4'
+                ),
                 icon: <FaExchangeAlt />,
               },
             ].map((benefit, index) => (
@@ -2396,7 +2387,7 @@ const ERPCRMPage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Наші рішення для вашого бізнесу
+            {t('ErpCrmSystem.ourSolutions.title')}
           </SectionTitle>
 
           <ServicesContent>
@@ -2411,13 +2402,11 @@ const ERPCRMPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
               >
-                Впровадження ERP систем
+                {t('ErpCrmSystem.ourSolutions.erpImplementation.title')}
               </ServicesHeading>
 
               <ServiceText style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>
-                Ми підбираємо і налаштовуємо ERP системи під ваші завдання: від
-                управління фінансами до автоматизації виробництва. Працюємо як
-                із готовими рішеннями, так і з індивідуальними розробками.
+                {t('ErpCrmSystem.ourSolutions.erpImplementation.description')}
               </ServiceText>
             </motion.div>
 
@@ -2432,13 +2421,11 @@ const ERPCRMPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.4 }}
               >
-                Впровадження CRM систем
+                {t('ErpCrmSystem.ourSolutions.crmImplementation.title')}
               </ServicesHeading>
 
               <ServiceText style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>
-                Допомагаємо налаштувати ефективну роботу з клієнтами:
-                автоматизація продажів, облік угод, створення клієнтських баз,
-                аналітика маркетингових кампаній.
+                {t('ErpCrmSystem.ourSolutions.crmImplementation.description')}
               </ServiceText>
             </motion.div>
 
@@ -2453,13 +2440,11 @@ const ERPCRMPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.6 }}
               >
-                Інтеграція ERP та CRM
+                {t('ErpCrmSystem.ourSolutions.integration.title')}
               </ServicesHeading>
 
               <ServiceText style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>
-                Об'єднуємо ERP та CRM системи для створення єдиного цифрового
-                середовища, де бізнес-процеси та взаємодія з клієнтами працюють
-                як єдиний механізм.
+                {t('ErpCrmSystem.ourSolutions.integration.description')}
               </ServiceText>
             </motion.div>
 
@@ -2473,12 +2458,11 @@ const ERPCRMPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.8 }}
               >
-                Індивідуальні рішення
+                {t('ErpCrmSystem.ourSolutions.customSolutions.title')}
               </ServicesHeading>
 
               <ServiceText style={{ fontSize: '1.2rem' }}>
-                Розробляємо системи під конкретні потреби бізнесу: особливості
-                логістики, виробничі процеси, нестандартні схеми продажів тощо.
+                {t('ErpCrmSystem.ourSolutions.customSolutions.description')}
               </ServiceText>
             </motion.div>
 
@@ -2493,14 +2477,11 @@ const ERPCRMPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 1.0 }}
               >
-                Консалтинг з цифрової трансформації
+                {t('ErpCrmSystem.ourSolutions.consulting.title')}
               </ServicesHeading>
 
               <ServiceText style={{ fontSize: '1.2rem' }}>
-                Допомагаємо бізнесу визначити оптимальну стратегію автоматизації
-                та цифровізації. Проводимо аудит існуючих процесів, розробляємо
-                дорожню карту впровадження ERP/CRM та супроводжуємо на всіх
-                етапах цифрової трансформації.
+                {t('ErpCrmSystem.ourSolutions.consulting.description')}
               </ServiceText>
             </motion.div>
 
@@ -2517,7 +2498,7 @@ const ERPCRMPage = () => {
                 whileTap={{ scale: 0.98 }}
                 onClick={openModal}
               >
-                Замовити консультацію
+                {t('ErpCrmSystem.ourSolutions.blockButton')}
               </ServiceButton>
             </ServiceActions>
           </ServicesContent>
@@ -2578,7 +2559,7 @@ const ERPCRMPage = () => {
               textShadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
             }}
           >
-            Переваги співпраці з нами
+            {t('ErpCrmSystem.advantages.title')}
           </motion.h2>
 
           <motion.ul
@@ -2605,19 +2586,19 @@ const ERPCRMPage = () => {
             {[
               {
                 icon: <FaTools />,
-                title: 'Досвід у різних галузях',
+                title: t('ErpCrmSystem.advantages.advantagesItems.title1'),
                 description:
-                  'Від роздрібної торгівлі до виробництва та сервісу',
+                t('ErpCrmSystem.advantages.advantagesItems.description1'),
               },
               {
                 icon: <FaUserCog />,
-                title: 'Індивідуальний підхід',
-                description: 'Підбираємо рішення під конкретні цілі компанії',
+                title: t('ErpCrmSystem.advantages.advantagesItems.title2'),
+                description: t('ErpCrmSystem.advantages.advantagesItems.description2'),
               },
               {
                 icon: <FaClipboardCheck />,
-                title: 'Комплексний підхід',
-                description: 'Аналіз, впровадження, навчання, підтримка',
+                title: t('ErpCrmSystem.advantages.advantagesItems.title3'),
+                description: t('ErpCrmSystem.advantages.advantagesItems.description3'),
               },
             ].map((advantage, index) => (
               <motion.li
@@ -2715,14 +2696,14 @@ const ERPCRMPage = () => {
             {[
               {
                 icon: <FaChartLine />,
-                title: 'Гарантія результату',
+                title: t('ErpCrmSystem.advantages.advantagesItems.title4'),
                 description:
-                  'Підвищення ефективності бізнесу після впровадження',
+                t('ErpCrmSystem.advantages.advantagesItems.description4'),
               },
               {
                 icon: <FaSyncAlt />,
-                title: 'Супровід і розвиток системи',
-                description: 'Адаптація до змін у бізнесі',
+                title: t('ErpCrmSystem.advantages.advantagesItems.title5'),
+                description: t('ErpCrmSystem.advantages.advantagesItems.description5'),
               },
             ].map((advantage, index) => (
               <motion.div
