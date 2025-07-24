@@ -467,7 +467,7 @@ const HeaderNavigation = () => {
             </DropdownItem>
             <DropdownItem to="/services/development/erp">
               <FaDatabase />
-              ERP та CRM системи
+              {t('header.navItem.developmentThirdItem')}
             </DropdownItem>
             <DropdownItem to="/services/development/ecommerce">
               <FaStore />
@@ -782,7 +782,7 @@ const Header = () => {
                   }
                 >
                   <FaDatabase />
-                  ERP та CRM системи
+                  {t('header.navItem.developmentThirdItem')}
                 </MobileNavItem>
                 <MobileNavItem
                   to="/services/development/ecommerce"

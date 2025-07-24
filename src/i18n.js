@@ -14,6 +14,7 @@ const resources = {
           developmentFirstItem:
             'Automation and optimization of business processes',
           developmentSecondItem: 'Mobile application development',
+          developmentThirdItem: 'ERP and CRM systems',
           designFirstItem: 'Banner advertising',
           designSecondItem: 'Brand book',
           designThirdItem: 'Web design',
@@ -440,6 +441,21 @@ const resources = {
           btnText: 'Contact an expert',
         },
       },
+      ErpCrmSystem: {
+        hero: {
+          mainText: 'ERP and CRM systems',
+          text: 'Comprehensive solutions for business and customer relationship management. Optimize processes, automate routines, and increase profits.',
+          animationText: 'Management and analytics',
+          mianTextItem1: 'Centralized management',
+          mianTextItem2: 'Increasing efficiency',
+          mianTextItem3: 'Improving customer service',
+          textItem1:
+            'All company data and processes in a single system, accessible to all departments',
+          textItem2: 'Automate routine tasks and optimize business processes',
+          textItem3: 'Automate routine tasks and optimize business processes',
+          buttonText: 'Learn more',
+        },
+      },
     },
   },
   uk: {
@@ -453,6 +469,7 @@ const resources = {
         navItem: {
           developmentFirstItem: 'Автоматизація та оптимізація бізнес-процесів',
           developmentSecondItem: 'Розробка мобільних додатків',
+          developmentThirdItem: 'ERP та CRM системи',
           designFirstItem: 'Банерна реклама',
           designSecondItem: 'Брендбук',
           designThirdItem: 'Веб-дизайн',
@@ -873,6 +890,23 @@ const resources = {
             'Ми забезпечуємо гнучкість рішень і готові оновлювати та розширювати функціонал відповідно до змін потреб компанії.',
           text: 'Маєте додаткові запитання щодо автоматизації бізнес-процесів?',
           btnText: "Зв'язатися з експертом",
+        },
+      },
+      ErpCrmSystem: {
+        hero: {
+          mainText: 'ERP та CRM системи',
+          text: 'Комплексні рішення для управління бізнесом та взаємовідносинами з клієнтами. Оптимізуйте процеси, автоматизуйте рутину та збільшуйте прибуток.',
+          animationText: 'Управління та аналітика',
+          mianTextItem1: 'Централізоване управління',
+          mianTextItem2: 'Підвищення ефективності',
+          mianTextItem3: 'Поліпшення клієнтського сервісу',
+          textItem1:
+            'Усі дані та процеси компанії в єдиній системі, доступній для всіх відділів',
+          textItem2:
+            'Автоматизація рутинних завдань та оптимізація бізнес-процесів',
+          textItem3:
+            'Повна історія взаємодії з клієнтами та швидкий доступ до даних',
+          buttonText: 'Дізнатися більше',
         },
       },
     },

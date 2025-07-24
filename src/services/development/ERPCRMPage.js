@@ -18,6 +18,7 @@ import {
   FaClipboardCheck,
   FaPlus,
 } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 // Анимации
 const pulse = keyframes`
@@ -1812,6 +1813,8 @@ const ERPCRMPage = () => {
   // Состояние для аккордеона FAQ
   const [expandedFaqs, setExpandedFaqs] = useState([]);
 
+  const { t } = useTranslation();
+
   // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
@@ -1870,21 +1873,18 @@ const ERPCRMPage = () => {
   const benefitsData = [
     {
       icon: <FaDatabase />,
-      title: 'Централізоване управління',
-      description:
-        'Усі дані та процеси компанії в єдиній системі, доступній для всіх відділів',
+      title: t('ErpCrmSystem.hero.mianTextItem1'),
+      description: t('ErpCrmSystem.hero.textItem1'),
     },
     {
       icon: <FaChartLine />,
-      title: 'Підвищення ефективності',
-      description:
-        'Автоматизація рутинних завдань та оптимізація бізнес-процесів',
+      title: t('ErpCrmSystem.hero.mianTextItem2'),
+      description: t('ErpCrmSystem.hero.textItem2'),
     },
     {
       icon: <FaUsers />,
-      title: 'Поліпшення клієнтського сервісу',
-      description:
-        'Повна історія взаємодії з клієнтами та швидкий доступ до даних',
+      title: t('ErpCrmSystem.hero.mianTextItem3'),
+      description: t('ErpCrmSystem.hero.textItem3'),
     },
   ];
 
@@ -1945,7 +1945,7 @@ const ERPCRMPage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          ERP та CRM системи
+          {t('ErpCrmSystem.hero.mainText')}
         </Title>
 
         <Subtitle
@@ -1953,9 +1953,7 @@ const ERPCRMPage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          Комплексні рішення для управління бізнесом та взаємовідносинами з
-          клієнтами. Оптимізуйте процеси, автоматизуйте рутину та збільшуйте
-          прибуток.
+          {t('ErpCrmSystem.hero.text')}
         </Subtitle>
 
         <SystemContainer
@@ -2003,7 +2001,7 @@ const ERPCRMPage = () => {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 2, duration: 0.5 }}
                 >
-                  Управління та аналітика
+                  {t('ErpCrmSystem.hero.animationText')}
                 </motion.p>
               </SystemContent>
 
@@ -2051,7 +2049,7 @@ const ERPCRMPage = () => {
           whileTap={{ scale: 0.95 }}
           onClick={openModal}
         >
-          Дізнатись більше
+          {t('ErpCrmSystem.hero.buttonText')}
         </HeroButton>
       </HeroSection>
 
