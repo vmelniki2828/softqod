@@ -565,6 +565,60 @@ const resources = {
             description5: 'Adaptation to business changes',
           },
         },
+        workStages: {
+          title: 'Stages of our work',
+          stages: {
+            title1: 'Business needs analysis',
+            description1:
+              "We study the company's business features, problem areas, and expected results.",
+
+            title2: 'Choosing the optimal solution',
+            description2:
+              'We offer solutions — ready-made products or individual development.',
+
+            title3: 'System implementation',
+            description3:
+              "We configure, adapt, and integrate the system into the company's existing processes.",
+
+            title4: 'Testing and staff training',
+            description4:
+              "We check the system's operation in practice and train employees to work with new tools.",
+
+            title5: 'Support and development',
+            description5:
+              'We provide technical support and system modernization in accordance with changes in your business.',
+          },
+        },
+        faq: {
+          title: 'FAQ',
+          questions: {
+            question1: 'How does ERP differ from CRM system?',
+            answer1:
+              'ERP system manages all internal company processes (finance, production, logistics, etc.), while CRM focuses on customer relationships, sales, and marketing. In many cases, these systems are integrated to create a comprehensive solution.',
+
+            question2: 'How long does ERP/CRM implementation take?',
+            answer2:
+              'Implementation time depends on the scale of the business and the complexity of processes. For small businesses, it can take from 1 to 3 months, for medium-sized businesses — from 3 to 6 months, for large businesses — from 6 months to a year.',
+
+            question3: 'Can ERP/CRM be integrated with our existing programs?',
+            answer3:
+              'Yes, modern systems have open APIs and integration capabilities with accounting programs, websites, marketplaces, analytics systems, and many other solutions.',
+
+            question4: 'What budget is required for implementation?',
+            answer4:
+              'The cost depends on the chosen solution (ready-made product or development from scratch), number of users, required modules, and complexity of integrations. We provide a detailed calculation after analyzing business needs.',
+
+            question5: 'How to choose the right system for business?',
+            answer5:
+              'The choice depends on the size of the company, industry, budget, and specific requirements. We conduct a business process audit and based on it recommend the optimal solution — ready-made or individual.',
+
+            question6: 'Is special equipment needed for ERP/CRM?',
+            answer6:
+              'Most modern systems work in the cloud and do not require installation of complex equipment. For local solutions, your own server may be required.',
+          },
+          ctaText: "Didn't find the answer to your question?",
+          ctaButton: 'Write to us',
+        },
       },
     },
   },
@@ -1128,6 +1182,57 @@ const resources = {
             title5: 'Супровід і розвиток системи',
             description5: 'Адаптація до змін у бізнесі',
           },
+        },
+        workStages: {
+          title: 'Етапи нашої роботи',
+          stages: {
+            title1: 'Аналіз потреб бізнесу',
+            description1:
+              'Вивчаємо особливості діяльності компанії, проблемні зони та очікувані результати.',
+            title2: 'Вибір оптимального рішення',
+            description2:
+              'Пропонуємо рішення — готові продукти або індивідуальну розробку.',
+            title3: 'Впровадження системи',
+            description3:
+              'Налаштовуємо, адаптуємо та інтегруємо систему в існуючі процеси компанії.',
+            title4: 'Тестування та навчання персоналу',
+            description4:
+              'Перевіряємо роботу системи на практиці, навчаємо співробітників роботі з новими інструментами.',
+            title5: 'Підтримка та розвиток',
+            description5:
+              'Забезпечуємо технічну підтримку та модернізацію системи відповідно до змін вашого бізнесу.',
+          },
+        },
+        faq: {
+          title: 'FAQ',
+          questions: {
+            question1: 'Чим відрізняється ERP від CRM системи?',
+            answer1:
+              'ERP система управляє всіма внутрішніми процесами компанії (фінанси, виробництво, логістика тощо), а CRM фокусується на взаємовідносинах з клієнтами, продажах та маркетингу. У багатьох випадках ці системи інтегруються для створення комплексного рішення.',
+
+            question2: 'Скільки часу займає впровадження ERP/CRM?',
+            answer2:
+              'Терміни впровадження залежать від масштабу бізнесу та складності процесів. Для малого бізнесу це може зайняти від 1 до 3 місяців, для середнього — від 3 до 6 місяців, для великого — від 6 місяців до року.',
+
+            question3:
+              'Чи можна інтегрувати ERP/CRM з нашими існуючими програмами?',
+            answer3:
+              'Так, сучасні системи мають відкритий API та можливості інтеграції з бухгалтерськими програмами, сайтами, маркетплейсами, системами аналітики та багатьма іншими рішеннями.',
+
+            question4: 'Який бюджет знадобиться на впровадження?',
+            answer4:
+              'Вартість залежить від обраного рішення (готовий продукт або розробка з нуля), кількості користувачів, необхідних модулів та складності інтеграцій. Ми складаємо детальний розрахунок після аналізу потреб бізнесу.',
+
+            question5: 'Як вибрати підходящу систему для бізнесу?',
+            answer5:
+              'Вибір залежить від розміру компанії, галузі, бюджету та специфічних вимог. Ми проводимо аудит бізнес-процесів і на його основі рекомендуємо оптимальне рішення — готове або індивідуальне.',
+
+            question6: 'Чи потрібне спеціальне обладнання для ERP/CRM?',
+            answer6:
+              'Більшість сучасних систем працюють у хмарі і не потребують встановлення складного обладнання. Для локальних рішень може знадобитися власний сервер.',
+          },
+          ctaText: 'Не знайшли відповідь на своє питання?',
+          ctaButton: 'Напишіть нам',
         },
       },
     },
