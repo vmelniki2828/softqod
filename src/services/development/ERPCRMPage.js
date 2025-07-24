@@ -2587,18 +2587,23 @@ const ERPCRMPage = () => {
               {
                 icon: <FaTools />,
                 title: t('ErpCrmSystem.advantages.advantagesItems.title1'),
-                description:
-                t('ErpCrmSystem.advantages.advantagesItems.description1'),
+                description: t(
+                  'ErpCrmSystem.advantages.advantagesItems.description1'
+                ),
               },
               {
                 icon: <FaUserCog />,
                 title: t('ErpCrmSystem.advantages.advantagesItems.title2'),
-                description: t('ErpCrmSystem.advantages.advantagesItems.description2'),
+                description: t(
+                  'ErpCrmSystem.advantages.advantagesItems.description2'
+                ),
               },
               {
                 icon: <FaClipboardCheck />,
                 title: t('ErpCrmSystem.advantages.advantagesItems.title3'),
-                description: t('ErpCrmSystem.advantages.advantagesItems.description3'),
+                description: t(
+                  'ErpCrmSystem.advantages.advantagesItems.description3'
+                ),
               },
             ].map((advantage, index) => (
               <motion.li
@@ -2697,13 +2702,16 @@ const ERPCRMPage = () => {
               {
                 icon: <FaChartLine />,
                 title: t('ErpCrmSystem.advantages.advantagesItems.title4'),
-                description:
-                t('ErpCrmSystem.advantages.advantagesItems.description4'),
+                description: t(
+                  'ErpCrmSystem.advantages.advantagesItems.description4'
+                ),
               },
               {
                 icon: <FaSyncAlt />,
                 title: t('ErpCrmSystem.advantages.advantagesItems.title5'),
-                description: t('ErpCrmSystem.advantages.advantagesItems.description5'),
+                description: t(
+                  'ErpCrmSystem.advantages.advantagesItems.description5'
+                ),
               },
             ].map((advantage, index) => (
               <motion.div
@@ -2835,7 +2843,7 @@ const ERPCRMPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Етапи нашої роботи
+            {t('ErpCrmSystem.workStages.title')}
             <motion.div
               style={{
                 position: 'absolute',
@@ -2872,33 +2880,28 @@ const ERPCRMPage = () => {
             {[
               {
                 icon: <FaClipboardCheck />,
-                title: 'Аналіз потреб бізнесу',
-                description:
-                  'Вивчаємо особливості діяльності компанії, проблемні зони та очікувані результати.',
+                title: t('ErpCrmSystem.workStages.stages.title1'),
+                description: t('ErpCrmSystem.workStages.stages.description1'),
               },
               {
                 icon: <FaCogs />,
-                title: 'Вибір оптимального рішення',
-                description:
-                  'Пропонуємо рішення — готові продукти або індивідуальну розробку.',
+                title: t('ErpCrmSystem.workStages.stages.title2'),
+                description: t('ErpCrmSystem.workStages.stages.description2'),
               },
               {
                 icon: <FaLaptopCode />,
-                title: 'Впровадження системи',
-                description:
-                  'Налаштовуємо, адаптуємо та інтегруємо систему в існуючі процеси компанії.',
+                title: t('ErpCrmSystem.workStages.stages.title3'),
+                description: t('ErpCrmSystem.workStages.stages.description3'),
               },
               {
                 icon: <FaUsers />,
-                title: 'Тестування та навчання персоналу',
-                description:
-                  'Перевіряємо роботу системи на практиці, навчаємо співробітників роботі з новими інструментами.',
+                title: t('ErpCrmSystem.workStages.stages.title4'),
+                description: t('ErpCrmSystem.workStages.stages.description4'),
               },
               {
                 icon: <FaSyncAlt />,
-                title: 'Підтримка та розвиток',
-                description:
-                  'Забезпечуємо технічну підтримку та модернізацію системи відповідно до змін вашого бізнесу.',
+                title: t('ErpCrmSystem.workStages.stages.title5'),
+                description: t('ErpCrmSystem.workStages.stages.description5'),
               },
             ].map((step, index) => (
               <React.Fragment key={index}>
@@ -2991,35 +2994,28 @@ const ERPCRMPage = () => {
           >
             {[
               {
-                question: 'Чем отличается ERP от CRM системы?',
-                answer:
-                  'ERP система управляет всеми внутренними процессами компании (финансы, производство, логистика и т.д.), а CRM фокусируется на взаимоотношениях с клиентами, продажах и маркетинге. Во многих случаях эти системы интегрируются для создания комплексного решения.',
+                question: t('ErpCrmSystem.faq.questions.question1'),
+                answer: t('ErpCrmSystem.faq.questions.answer1'),
               },
               {
-                question: 'Сколько времени занимает внедрение ERP/CRM?',
-                answer:
-                  'Сроки внедрения зависят от масштаба бизнеса и сложности процессов. Для малого бизнеса это может занять от 1 до 3 месяцев, для среднего — от 3 до 6 месяцев, для крупного — от 6 месяцев до года.',
+                question: t('ErpCrmSystem.faq.questions.question2'),
+                answer: t('ErpCrmSystem.faq.questions.answer2'),
               },
               {
-                question:
-                  'Можно ли интегрировать ERP/CRM с нашими существующими программами?',
-                answer:
-                  'Да, современные системы имеют открытый API и возможности интеграции с бухгалтерскими программами, сайтами, маркетплейсами, системами аналитики и многими другими решениями.',
+                question: t('ErpCrmSystem.faq.questions.question3'),
+                answer: t('ErpCrmSystem.faq.questions.answer3'),
               },
               {
-                question: 'Какой бюджет потребуется на внедрение?',
-                answer:
-                  'Стоимость зависит от выбранного решения (готовый продукт или разработка с нуля), количества пользователей, необходимых модулей и сложности интеграций. Мы составляем детальный расчет после анализа потребностей бизнеса.',
+                question: t('ErpCrmSystem.faq.questions.question4'),
+                answer: t('ErpCrmSystem.faq.questions.answer4'),
               },
               {
-                question: 'Как выбрать подходящую систему для бизнеса?',
-                answer:
-                  'Выбор зависит от размера компании, отрасли, бюджета и специфических требований. Мы проводим аудит бизнес-процессов и на его основе рекомендуем оптимальное решение — готовое или индивидуальное.',
+                question: t('ErpCrmSystem.faq.questions.question5'),
+                answer: t('ErpCrmSystem.faq.questions.answer5'),
               },
               {
-                question: 'Нужно ли специальное оборудование для ERP/CRM?',
-                answer:
-                  'Большинство современных систем работают в облаке и не требуют установки сложного оборудования. Для локальных решений может потребоваться собственный сервер.',
+                question: t('ErpCrmSystem.faq.questions.question6'),
+                answer: t('ErpCrmSystem.faq.questions.answer6'),
               },
             ].map((faq, index) => (
               <FaqItem
@@ -3074,7 +3070,7 @@ const ERPCRMPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.2 }}
           >
-            <FaqCtaText>Не знайшли відповідь на своє питання?</FaqCtaText>
+            <FaqCtaText>{t('ErpCrmSystem.faq.ctaText')}</FaqCtaText>
             <FaqCtaButton
               whileHover={{
                 scale: 1.03,
@@ -3083,7 +3079,7 @@ const ERPCRMPage = () => {
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
             >
-              Напишіть нам
+              {t('ErpCrmSystem.faq.ctaButton')}
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
