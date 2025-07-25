@@ -22,6 +22,7 @@ import {
 } from 'react-icons/fa';
 import { AnimatePresence } from 'framer-motion';
 import Modal from '../../components/Modal';
+import { useTranslation } from 'react-i18next';
 
 // Анимации
 const pulse = keyframes`
@@ -337,7 +338,7 @@ const Phone = styled(motion.div)`
   @media (max-width: 768px) {
     border-radius: 32px;
     box-shadow: 0 0 40px rgba(94, 234, 212, 0.4);
-    
+
     &::before {
       top: 15px;
       height: 20px;
@@ -348,7 +349,7 @@ const Phone = styled(motion.div)`
   @media (max-width: 480px) {
     border-radius: 28px;
     box-shadow: 0 0 30px rgba(94, 234, 212, 0.5);
-    
+
     &::before {
       top: 12px;
       height: 18px;
@@ -416,7 +417,7 @@ const StoreLogo = styled.div`
 
   @media (max-width: 768px) {
     font-size: 1.1rem;
-    
+
     svg {
       margin-right: 6px;
       font-size: 1rem;
@@ -425,7 +426,7 @@ const StoreLogo = styled.div`
 
   @media (max-width: 480px) {
     font-size: 1rem;
-    
+
     svg {
       margin-right: 4px;
       font-size: 0.9rem;
@@ -454,11 +455,11 @@ const StoreSearch = styled.div`
   @media (max-width: 768px) {
     padding: 0.4rem 0.8rem;
     border-radius: 16px;
-    
+
     &::after {
       font-size: 0.75rem;
     }
-    
+
     svg {
       font-size: 0.9rem;
     }
@@ -467,11 +468,11 @@ const StoreSearch = styled.div`
   @media (max-width: 480px) {
     padding: 0.3rem 0.6rem;
     border-radius: 14px;
-    
+
     &::after {
       font-size: 0.7rem;
     }
-    
+
     svg {
       font-size: 0.8rem;
       margin-right: 3px;
@@ -539,7 +540,7 @@ const ProductImage = styled.div`
     width: 60px;
     height: 60px;
     margin-bottom: 0.6rem;
-    
+
     svg {
       font-size: 1.3rem;
     }
@@ -550,7 +551,7 @@ const ProductImage = styled.div`
     height: 50px;
     margin-bottom: 0.5rem;
     border-radius: 6px;
-    
+
     svg {
       font-size: 1.1rem;
     }
@@ -621,7 +622,7 @@ const FooterItem = styled.div`
 
   @media (max-width: 768px) {
     font-size: 0.75rem;
-    
+
     svg {
       font-size: 1.1rem;
       margin-bottom: 3px;
@@ -630,7 +631,7 @@ const FooterItem = styled.div`
 
   @media (max-width: 480px) {
     font-size: 0.7rem;
-    
+
     svg {
       font-size: 1rem;
       margin-bottom: 2px;
@@ -954,7 +955,12 @@ const WhyUsTitle = styled(motion.h2)`
     transform: translateX(-50%);
     width: 150px;
     height: 4px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-color),
+      transparent
+    );
     border-radius: 4px;
 
     @media (max-width: 768px) {
@@ -2740,6 +2746,8 @@ const EcommercePage = () => {
     typeof window !== 'undefined' ? window.innerWidth : 1024
   );
 
+  const { t } = useTranslation();
+
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -2771,21 +2779,18 @@ const EcommercePage = () => {
   const benefitsData = [
     {
       icon: <FaStore />,
-      title: 'Індивідуальний дизайн',
-      description:
-        'Унікальний дизайн магазину під вашу нішу та цільову аудиторію.',
+      title: t('EcommercePage.hero.benefits.title1'),
+      description: t('EcommercePage.hero.benefits.description1'),
     },
     {
       icon: <FaMobile />,
-      title: 'Мобільна адаптація',
-      description:
-        "Ідеальне відображення на всіх пристроях — від смартфонів до комп'ютерів.",
+      title: t('EcommercePage.hero.benefits.title2'),
+      description: t('EcommercePage.hero.benefits.description2'),
     },
     {
       icon: <FaSearch />,
-      title: 'SEO-оптимізація',
-      description:
-        'Вбудована SEO-підготовка для високих позицій у пошукових системах.',
+      title: t('EcommercePage.hero.benefits.title3'),
+      description: t('EcommercePage.hero.benefits.description3'),
     },
   ];
 
@@ -2844,7 +2849,7 @@ const EcommercePage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          Розробка інтернет-магазинів під ключ
+          {t('EcommercePage.hero.title')}
         </Title>
 
         <Subtitle
@@ -2852,11 +2857,7 @@ const EcommercePage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          Створюємо інтернет-магазини, які продають. Від проєктування до запуску
-          — повний цикл розробки під ваш бізнес. Ми враховуємо специфіку ніші,
-          цілі, поведінку покупців і вимоги до SEO-просування. Гарантуємо
-          технічну надійність, зручний інтерфейс та готовність до маркетингу з
-          першого дня.
+          {t('EcommercePage.hero.subtitle')}
         </Subtitle>
 
         <PhoneContainer
@@ -2902,7 +2903,9 @@ const EcommercePage = () => {
                   <ProductImage>
                     <FaTags />
                   </ProductImage>
-                  <ProductTitle>Футболка чоловіча</ProductTitle>
+                  <ProductTitle>
+                    {t('EcommercePage.hero.phoneStore.products.title1')}
+                  </ProductTitle>
                   <ProductPrice>1 200 грн</ProductPrice>
                 </ProductCard>
 
@@ -2915,7 +2918,9 @@ const EcommercePage = () => {
                   <ProductImage>
                     <FaTags />
                   </ProductImage>
-                  <ProductTitle>Худі з капюшоном</ProductTitle>
+                  <ProductTitle>
+                    {t('EcommercePage.hero.phoneStore.products.title2')}
+                  </ProductTitle>
                   <ProductPrice>1 750 грн</ProductPrice>
                 </ProductCard>
 
@@ -2928,7 +2933,9 @@ const EcommercePage = () => {
                   <ProductImage>
                     <FaTags />
                   </ProductImage>
-                  <ProductTitle>Шорти спортивні</ProductTitle>
+                  <ProductTitle>
+                    {t('EcommercePage.hero.phoneStore.products.title3')}
+                  </ProductTitle>
                   <ProductPrice>950 грн</ProductPrice>
                 </ProductCard>
 
@@ -2941,7 +2948,9 @@ const EcommercePage = () => {
                   <ProductImage>
                     <FaTags />
                   </ProductImage>
-                  <ProductTitle>Шапка зимова</ProductTitle>
+                  <ProductTitle>
+                    {t('EcommercePage.hero.phoneStore.products.title4')}
+                  </ProductTitle>
                   <ProductPrice>550 грн</ProductPrice>
                 </ProductCard>
               </StoreContent>
@@ -2949,15 +2958,15 @@ const EcommercePage = () => {
               <StoreFooter>
                 <FooterItem>
                   <FaShoppingCart />
-                  Кошик
+                  {t('EcommercePage.hero.phoneStore.footer.cart')}
                 </FooterItem>
                 <FooterItem>
                   <FaHeadset />
-                  Підтримка
+                  {t('EcommercePage.hero.phoneStore.footer.support')}
                 </FooterItem>
                 <FooterItem>
                   <FaChartLine />
-                  Акції
+                  {t('EcommercePage.hero.phoneStore.footer.promotions')}
                 </FooterItem>
               </StoreFooter>
             </PhoneScreen>
@@ -3006,7 +3015,7 @@ const EcommercePage = () => {
             position: 'relative',
           }}
         >
-          Замовити розробку
+          {t('EcommercePage.hero.buttonText')}
         </motion.button>
       </HeroSection>
 
@@ -3023,7 +3032,7 @@ const EcommercePage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Чому варто замовити інтернет-магазин у нас
+            {t('EcommercePage.whyUs.title')}
           </WhyUsTitle>
 
           <WhyUsSubtitle
@@ -3031,7 +3040,7 @@ const EcommercePage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Гарантуємо зростання продажів та зручність для користувачів
+            {t('EcommercePage.whyUs.subtitle')}
           </WhyUsSubtitle>
 
           <WhyUsCardsContainer
@@ -3053,13 +3062,10 @@ const EcommercePage = () => {
                 <FaRocket />
               </WhyUsIconWrapper>
               <WhyUsCardTitle>
-                Гарантуємо зростання продажів та зручність для користувачів
+                {t('EcommercePage.whyUs.cards.title1')}
               </WhyUsCardTitle>
               <WhyUsCardDescription>
-                Ми проєктуємо інтерфейс на основі логіки користувача. Зручна
-                навігація, швидке завантаження, проста корзина і оформлення
-                замовлення — усе це скорочує шлях до покупки та підвищує
-                конверсію.
+                {t('EcommercePage.whyUs.cards.description1')}
               </WhyUsCardDescription>
               <CardAccent />
             </WhyUsCard>
@@ -3078,14 +3084,10 @@ const EcommercePage = () => {
                 <FaStore />
               </WhyUsIconWrapper>
               <WhyUsCardTitle>
-                Досвід у eCommerce та індивідуальні рішення
+                {t('EcommercePage.whyUs.cards.title2')}
               </WhyUsCardTitle>
               <WhyUsCardDescription>
-                За нашими плечима — десятки реалізованих проєктів у різних
-                галузях: одяг, електроніка, товари для дому, B2B-рішення. Ми не
-                працюємо за шаблонами — кожен магазин розробляємо індивідуально,
-                з урахуванням продукту, цільової аудиторії та бізнес-цілей
-                клієнта.
+                {t('EcommercePage.whyUs.cards.description2')}
               </WhyUsCardDescription>
               <CardAccent />
             </WhyUsCard>
@@ -3103,12 +3105,11 @@ const EcommercePage = () => {
               <WhyUsIconWrapper>
                 <FaSearch />
               </WhyUsIconWrapper>
-              <WhyUsCardTitle>SEO-оптимізація вже «з коробки»</WhyUsCardTitle>
+              <WhyUsCardTitle>
+                {t('EcommercePage.whyUs.cards.title3')}
+              </WhyUsCardTitle>
               <WhyUsCardDescription>
-                Ми впроваджуємо правильну структуру URL, оптимізовані мета-теги,
-                мікророзмітку Schema.org та налаштовуємо швидке завантаження
-                сторінок. Це формує міцну SEO-базу для швидкого виходу в топ та
-                подальшого просування.
+                {t('EcommercePage.whyUs.cards.description3')}
               </WhyUsCardDescription>
               <CardAccent />
             </WhyUsCard>
@@ -3125,7 +3126,7 @@ const EcommercePage = () => {
               onClick={openModal}
             >
               <span className="glow-effect"></span>
-              Обговорити проєкт
+              {t('EcommercePage.whyUs.btnText')}
             </PulsingButton>
           </WhyUsAction>
         </WhyUsContainer>
@@ -3149,7 +3150,7 @@ const EcommercePage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Що ви отримаєте з інтернет-магазином від нас
+            {t('EcommercePage.features.title')}
           </FeaturesTitle>
 
           <FeaturesIntro
@@ -3157,9 +3158,7 @@ const EcommercePage = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Ми створюємо не просто сайт з кошиком, а повноцінну
-            eCommerce-платформу, готову до продажів, просування та
-            масштабування. Усе необхідне для запуску вже включено:
+            {t('EcommercePage.features.intro')}
           </FeaturesIntro>
 
           <FeaturesGrid
@@ -3178,11 +3177,11 @@ const EcommercePage = () => {
                 <FaMobile />
               </FeatureIconContainer>
               <FeatureContent>
-                <FeatureTitle>Адаптивний сучасний дизайн</FeatureTitle>
+                <FeatureTitle>
+                  {t('EcommercePage.features.features.title1')}
+                </FeatureTitle>
                 <FeatureDescription>
-                  Ваш інтернет-магазин буде однаково зручним на смартфонах,
-                  планшетах і комп'ютерах. Користувач швидко знайде товар і
-                  оформить замовлення без зайвих кроків.
+                  {t('EcommercePage.features.features.description1')}
                 </FeatureDescription>
               </FeatureContent>
             </FeatureCard>
@@ -3198,11 +3197,11 @@ const EcommercePage = () => {
                 <FaCog />
               </FeatureIconContainer>
               <FeatureContent>
-                <FeatureTitle>Зручна система керування</FeatureTitle>
+                <FeatureTitle>
+                  {t('EcommercePage.features.features.title2')}
+                </FeatureTitle>
                 <FeatureDescription>
-                  Ви зможете самостійно додавати й редагувати товари, керувати
-                  замовленнями, цінами, акціями та сторінками — без потреби
-                  звертатися до розробника.
+                  {t('EcommercePage.features.features.description2')}
                 </FeatureDescription>
               </FeatureContent>
             </FeatureCard>
@@ -3218,12 +3217,11 @@ const EcommercePage = () => {
                 <FaLink />
               </FeatureIconContainer>
               <FeatureContent>
-                <FeatureTitle>Інтеграції під ключ</FeatureTitle>
+                <FeatureTitle>
+                  {t('EcommercePage.features.features.title3')}
+                </FeatureTitle>
                 <FeatureDescription>
-                  Підключаємо платіжні системи (LiqPay, Stripe, Fondy), служби
-                  доставки (Нова пошта, Укрпошта), CRM, аналітику,
-                  e-mail-маркетинг, трекінг подій і рекламу — все для
-                  автоматизації процесів.
+                  {t('EcommercePage.features.features.description3')}
                 </FeatureDescription>
               </FeatureContent>
             </FeatureCard>
@@ -3239,12 +3237,11 @@ const EcommercePage = () => {
                 <FaSearch />
               </FeatureIconContainer>
               <FeatureContent>
-                <FeatureTitle>SEO та аналітика з першого дня</FeatureTitle>
+                <FeatureTitle>
+                  {t('EcommercePage.features.features.title4')}
+                </FeatureTitle>
                 <FeatureDescription>
-                  Грамотна структура URL, мета-теги, мікророзмітка (Schema.org),
-                  швидке завантаження сторінок — усе це вже налаштовано.
-                  Додатково інтегруємо Google Analytics, GA4, Google Tag
-                  Manager, налаштовуємо події та цілі.
+                  {t('EcommercePage.features.features.description4')}
                 </FeatureDescription>
               </FeatureContent>
             </FeatureCard>
@@ -3260,11 +3257,11 @@ const EcommercePage = () => {
                 <FaShieldAlt />
               </FeatureIconContainer>
               <FeatureContent>
-                <FeatureTitle>Безпека та продуктивність</FeatureTitle>
+                <FeatureTitle>
+                  {t('EcommercePage.features.features.title5')}
+                </FeatureTitle>
                 <FeatureDescription>
-                  SSL-сертифікат, захист від ботів, регулярні оновлення CMS,
-                  капча, оптимізація коду та зображень — усе для стабільної та
-                  швидкої роботи магазину.
+                  {t('EcommercePage.features.features.description5')}
                 </FeatureDescription>
               </FeatureContent>
             </FeatureCard>
@@ -3280,12 +3277,11 @@ const EcommercePage = () => {
                 <FaExpand />
               </FeatureIconContainer>
               <FeatureContent>
-                <FeatureTitle>Можливість масштабування</FeatureTitle>
+                <FeatureTitle>
+                  {t('EcommercePage.features.features.title6')}
+                </FeatureTitle>
                 <FeatureDescription>
-                  Інтернет-магазин легко розширити: додати нові категорії,
-                  змінити валюту, запустити акції або інтегрувати з
-                  маркетплейсами. Ми проєктуємо платформу з урахуванням вашого
-                  росту.
+                  {t('EcommercePage.features.features.description6')}
                 </FeatureDescription>
               </FeatureContent>
             </FeatureCard>
@@ -3304,7 +3300,7 @@ const EcommercePage = () => {
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
             >
-              Замовити консультацію
+              {t('EcommercePage.features.buttonText')}
             </FeaturesButton>
           </FeaturesAction>
         </FeaturesContainer>
@@ -3358,7 +3354,12 @@ const EcommercePage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             style={{
-              fontSize: window.innerWidth <= 768 ? '2.5rem' : window.innerWidth <= 1024 ? '3.2rem' : '4rem',
+              fontSize:
+                window.innerWidth <= 768
+                  ? '2.5rem'
+                  : window.innerWidth <= 1024
+                  ? '3.2rem'
+                  : '4rem',
               fontWeight: 800,
               color: 'var(--accent-color)',
               marginBottom: window.innerWidth <= 768 ? '3rem' : '6rem',
@@ -3367,7 +3368,7 @@ const EcommercePage = () => {
               textShadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
             }}
           >
-            Етапи створення інтернет-магазину
+            {t('EcommercePage.stages.title')}
             <motion.div
               style={{
                 position: 'absolute',
@@ -3401,8 +3402,7 @@ const EcommercePage = () => {
               padding: window.innerWidth <= 768 ? '0 1rem' : '0',
             }}
           >
-            Ми працюємо поетапно, прозоро й системно — щоб ви розуміли, на якому
-            етапі знаходиться проєкт і що отримаєте в результаті:
+            {t('EcommercePage.stages.subtitle')}
           </motion.p>
 
           <motion.div
@@ -3427,27 +3427,23 @@ const EcommercePage = () => {
             {[
               {
                 icon: <FaSearch />,
-                title: 'Аналіз ніші та цільової аудиторії',
-                description:
-                  'Вивчаємо ринок, конкурентів і поведінку ваших потенційних покупців. Формуємо структуру сайту, визначаємо ключовий функціонал і точки зростання.',
+                title: t('EcommercePage.stages.steps.title1'),
+                description: t('EcommercePage.stages.steps.description1'),
               },
               {
                 icon: <FaSitemap />,
-                title: 'Прототипування та структура каталогу',
-                description:
-                  'Створюємо логічну схему сторінок, меню, фільтрів, карток товарів. Розробляємо зручну архітектуру, яка спрощує навігацію та сприяє SEO.',
+                title: t('EcommercePage.stages.steps.title2'),
+                description: t('EcommercePage.stages.steps.description2'),
               },
               {
                 icon: <FaPencilRuler />,
-                title: 'Дизайн і розробка функціоналу',
-                description:
-                  'Створюємо індивідуальний дизайн з урахуванням UX/UI, адаптуємо під мобільні пристрої. Реалізуємо кошик, оплату, доставку, реєстрацію, особистий кабінет тощо.',
+                title: t('EcommercePage.stages.steps.title3'),
+                description: t('EcommercePage.stages.steps.description3'),
               },
               {
                 icon: <FaRocket />,
-                title: 'Тестування, запуск і підтримка',
-                description:
-                  'Перевіряємо сайт на помилки, швидкість, адаптивність і коректність усіх інтеграцій. Після запуску — супроводжуємо, оновлюємо, консультуємо.',
+                title: t('EcommercePage.stages.steps.title4'),
+                description: t('EcommercePage.stages.steps.description4'),
               },
             ].map((step, index) => (
               <React.Fragment key={index}>
@@ -3462,12 +3458,19 @@ const EcommercePage = () => {
                   }}
                   style={{
                     display: 'flex',
-                    alignItems: window.innerWidth <= 768 ? 'flex-start' : 'center',
-                    justifyContent: window.innerWidth <= 768 ? 'flex-start' : 'space-between',
+                    alignItems:
+                      window.innerWidth <= 768 ? 'flex-start' : 'center',
+                    justifyContent:
+                      window.innerWidth <= 768 ? 'flex-start' : 'space-between',
                     flexDirection: window.innerWidth <= 768 ? 'column' : 'row',
                     gap: window.innerWidth <= 768 ? '1.5rem' : '2rem',
                     padding: window.innerWidth <= 768 ? '1.5rem' : '2rem',
-                    width: window.innerWidth <= 768 ? '95%' : window.innerWidth <= 1024 ? '90%' : '1000px',
+                    width:
+                      window.innerWidth <= 768
+                        ? '95%'
+                        : window.innerWidth <= 1024
+                        ? '90%'
+                        : '1000px',
                     maxWidth: window.innerWidth <= 768 ? '400px' : 'none',
                     height: window.innerWidth <= 768 ? 'auto' : '180px',
                     minHeight: window.innerWidth <= 768 ? '300px' : '180px',
@@ -3487,13 +3490,15 @@ const EcommercePage = () => {
                 >
                   {/* Верхняя строка на мобильном: номер и иконка */}
                   {window.innerWidth <= 768 && (
-                    <div style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      width: '100%',
-                      marginBottom: '1rem'
-                    }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        width: '100%',
+                        marginBottom: '1rem',
+                      }}
+                    >
                       {/* Номер этапа */}
                       <motion.div
                         style={{
@@ -3636,10 +3641,18 @@ const EcommercePage = () => {
                       background: 'rgba(10, 15, 25, 0.85)',
                       backdropFilter: 'blur(10px)',
                       borderRadius: '20px',
-                      padding: window.innerWidth <= 768 ? '1rem 1.5rem' : '1.5rem 2rem',
+                      padding:
+                        window.innerWidth <= 768
+                          ? '1rem 1.5rem'
+                          : '1.5rem 2rem',
                       border: '1px solid rgba(94, 234, 212, 0.3)',
                       boxShadow: '0 15px 40px rgba(0, 0, 0, 0.3)',
-                      width: window.innerWidth <= 768 ? '100%' : window.innerWidth <= 1024 ? 'calc(100% - 200px)' : 'calc(100% - 250px)',
+                      width:
+                        window.innerWidth <= 768
+                          ? '100%'
+                          : window.innerWidth <= 1024
+                          ? 'calc(100% - 200px)'
+                          : 'calc(100% - 250px)',
                       height: window.innerWidth <= 768 ? 'auto' : '160px',
                       minHeight: window.innerWidth <= 768 ? '120px' : '160px',
                       display: 'flex',
@@ -3649,9 +3662,15 @@ const EcommercePage = () => {
                   >
                     <h3
                       style={{
-                        fontSize: window.innerWidth <= 768 ? '1.2rem' : window.innerWidth <= 1024 ? '1.3rem' : '1.5rem',
+                        fontSize:
+                          window.innerWidth <= 768
+                            ? '1.2rem'
+                            : window.innerWidth <= 1024
+                            ? '1.3rem'
+                            : '1.5rem',
                         fontWeight: 700,
-                        marginBottom: window.innerWidth <= 768 ? '0.5rem' : '0.8rem',
+                        marginBottom:
+                          window.innerWidth <= 768 ? '0.5rem' : '0.8rem',
                         color: '#FFFFFF',
                         textShadow: '0 2px 5px rgba(0, 0, 0, 0.5)',
                         lineHeight: window.innerWidth <= 768 ? '1.3' : '1.4',
@@ -3686,7 +3705,9 @@ const EcommercePage = () => {
                       margin: window.innerWidth <= 768 ? '0 auto' : '0',
                     }}
                     initial={{ height: 0 }}
-                    animate={{ height: window.innerWidth <= 768 ? '3rem' : '5rem' }}
+                    animate={{
+                      height: window.innerWidth <= 768 ? '3rem' : '5rem',
+                    }}
                     transition={{ duration: 0.8, delay: index * 0.3 + 0.5 }}
                   />
                 )}
@@ -3719,7 +3740,7 @@ const EcommercePage = () => {
               display: 'block',
             }}
           >
-            Замовити розробку
+            {t('EcommercePage.stages.btnText')}
           </motion.button>
         </div>
       </EcommerceStagesSection>
@@ -3737,7 +3758,7 @@ const EcommercePage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Вартість і терміни розробки інтернет-магазину
+            {t('EcommercePage.pricing.title')}
           </PricingTitle>
 
           <PricingContent>
@@ -3751,10 +3772,7 @@ const EcommercePage = () => {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
               >
-                Ціна створення інтернет-магазину залежить від складності
-                функціоналу, кількості сторінок, інтеграцій та індивідуального
-                дизайну. Ми не використовуємо шаблонних рішень, тому кожен
-                проєкт — унікальний.
+                {t('EcommercePage.pricing.description')}
               </PricingText>
 
               <PricingFactorsContainer
@@ -3771,8 +3789,14 @@ const EcommercePage = () => {
                 animate="visible"
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: windowWidth <= 768 ? '1fr' : 'repeat(2, 1fr)',
-                  gap: windowWidth <= 480 ? '1rem' : windowWidth <= 768 ? '1.2rem' : '2rem',
+                  gridTemplateColumns:
+                    windowWidth <= 768 ? '1fr' : 'repeat(2, 1fr)',
+                  gap:
+                    windowWidth <= 480
+                      ? '1rem'
+                      : windowWidth <= 768
+                      ? '1.2rem'
+                      : '2rem',
                 }}
               >
                 <PricingFactor variants={itemVariants}>
@@ -3780,11 +3804,10 @@ const EcommercePage = () => {
                     <FaCode />
                   </PricingFactorIcon>
                   <PricingFactorTitle>
-                    Складність функціоналу
+                    {t('EcommercePage.pricing.factors.title1')}
                   </PricingFactorTitle>
                   <PricingFactorDescription>
-                    Кількість та складність функцій: фільтри товарів, особистий
-                    кабінет, порівняння, збереження кошика, мультивалютність.
+                    {t('EcommercePage.pricing.factors.description1')}
                   </PricingFactorDescription>
                 </PricingFactor>
 
@@ -3792,10 +3815,11 @@ const EcommercePage = () => {
                   <PricingFactorIcon>
                     <FaLink />
                   </PricingFactorIcon>
-                  <PricingFactorTitle>Інтеграції</PricingFactorTitle>
+                  <PricingFactorTitle>
+                    {t('EcommercePage.pricing.factors.title2')}
+                  </PricingFactorTitle>
                   <PricingFactorDescription>
-                    Підключення платіжних систем, служб доставки, CRM, ERP,
-                    систем аналітики, сервісів розсилки.
+                    {t('EcommercePage.pricing.factors.description2')}
                   </PricingFactorDescription>
                 </PricingFactor>
 
@@ -3803,10 +3827,11 @@ const EcommercePage = () => {
                   <PricingFactorIcon>
                     <FaPencilRuler />
                   </PricingFactorIcon>
-                  <PricingFactorTitle>Дизайн</PricingFactorTitle>
+                  <PricingFactorTitle>
+                    {t('EcommercePage.pricing.factors.title3')}
+                  </PricingFactorTitle>
                   <PricingFactorDescription>
-                    Від базового стильного оформлення до повністю кастомного
-                    дизайну з анімаціями та індивідуальною графікою.
+                    {t('EcommercePage.pricing.factors.description3')}
                   </PricingFactorDescription>
                 </PricingFactor>
 
@@ -3814,10 +3839,11 @@ const EcommercePage = () => {
                   <PricingFactorIcon>
                     <FaClock />
                   </PricingFactorIcon>
-                  <PricingFactorTitle>Терміни розробки</PricingFactorTitle>
+                  <PricingFactorTitle>
+                    {t('EcommercePage.pricing.factors.title4')}
+                  </PricingFactorTitle>
                   <PricingFactorDescription>
-                    В середньому проєкт займає від 4 до 12 тижнів, залежно від
-                    складності та кількості сторінок.
+                    {t('EcommercePage.pricing.factors.description4')}
                   </PricingFactorDescription>
                 </PricingFactor>
               </PricingFactorsContainer>
@@ -3828,7 +3854,7 @@ const EcommercePage = () => {
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
                 <PriceDependenciesTitle>
-                  Від чого залежить ціна
+                  {t('EcommercePage.pricing.dependencies.title')}
                 </PriceDependenciesTitle>
                 <PriceDependenciesList>
                   <PriceDependencyItem
@@ -3836,37 +3862,35 @@ const EcommercePage = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
                   >
-                    Обсяг каталогу товарів та складність фільтрації.
+                    {t('EcommercePage.pricing.dependencies.items.item1')}
                   </PriceDependencyItem>
                   <PriceDependencyItem
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.7 }}
                   >
-                    Необхідні інтеграції: платіжні системи, доставка, CRM,
-                    склад.
+                    {t('EcommercePage.pricing.dependencies.items.item2')}
                   </PriceDependencyItem>
                   <PriceDependencyItem
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.8 }}
                   >
-                    Наявність особистого кабінету, бонусної системи,
-                    мультивалютності тощо.
+                    {t('EcommercePage.pricing.dependencies.items.item3')}
                   </PriceDependencyItem>
                   <PriceDependencyItem
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.9 }}
                   >
-                    Індивідуальний або типовий дизайн.
+                    {t('EcommercePage.pricing.dependencies.items.item4')}
                   </PriceDependencyItem>
                   <PriceDependencyItem
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 1 }}
                   >
-                    Потрібна чи ні подальша технічна підтримка.
+                    {t('EcommercePage.pricing.dependencies.items.item5')}
                   </PriceDependencyItem>
                 </PriceDependenciesList>
               </PriceDependenciesSection>
@@ -3877,10 +3901,7 @@ const EcommercePage = () => {
                 transition={{ duration: 0.6, delay: 1 }}
                 style={{ fontWeight: '500', color: 'var(--text-primary)' }}
               >
-                Для визначення точної вартості та термінів проводимо детальний
-                аналіз проєкту. Ми допоможемо вам визначитися з оптимальним
-                набором функцій для успішного старту, а потім масштабувати
-                бізнес.
+                {t('EcommercePage.pricing.conclusion')}
               </PricingText>
 
               <PricingCTA
@@ -3908,7 +3929,7 @@ const EcommercePage = () => {
                     position: 'relative',
                   }}
                 >
-                  Отримати безкоштовну консультацію
+                  {t('EcommercePage.pricing.buttonText')}
                 </motion.button>
               </PricingCTA>
             </PricingCard>
@@ -3942,35 +3963,28 @@ const EcommercePage = () => {
           >
             {[
               {
-                question: 'Скільки коштує розробка інтернет-магазину?',
-                answer:
-                  'Вартість залежить від кількості функцій та складності проекту. Ми розробляємо інтернет-магазини індивідуально під ваші потреби, тому точну ціну можна визначити після оцінки вимог і специфікацій.',
+                question: t('EcommercePage.faq.questions.question1'),
+                answer: t('EcommercePage.faq.questions.answer1'),
               },
               {
-                question: 'Скільки часу займає розробка інтернет-магазину?',
-                answer:
-                  'Терміни варіюються в залежності від складності проєкту. Мінімальний термін — від 3 тижнів, але зазвичай на розробку потрібно 4-6 тижнів. У цей час входять дизайн, розробка функціоналу, тестування і запуск.',
+                question: t('EcommercePage.faq.questions.question2'),
+                answer: t('EcommercePage.faq.questions.answer2'),
               },
               {
-                question: 'Чи надається підтримка після запуску?',
-                answer:
-                  'Так, ми надаємо технічну підтримку після запуску інтернет-магазину. Ви можете звертатися за допомогою щодо технічних питань, оновлень або додаткових налаштувань.',
+                question: t('EcommercePage.faq.questions.question3'),
+                answer: t('EcommercePage.faq.questions.answer3'),
               },
               {
-                question: 'Чи потрібно замовляти домен і хостинг самостійно?',
-                answer:
-                  'Ми можемо допомогти з вибором домену та хостингу або налаштувати їх для вас. Усі питання з хостингом і доменом ми обговорюємо на етапі підготовки проєкту.',
+                question: t('EcommercePage.faq.questions.question4'),
+                answer: t('EcommercePage.faq.questions.answer4'),
               },
               {
-                question:
-                  'Чи можна інтегрувати магазин з маркетплейсами та соцмережами?',
-                answer:
-                  'Так, ми інтегруємо інтернет-магазин з маркетплейсами (Prom, Rozetka) та соціальними мережами (Facebook, Instagram) для продажу та реклами.',
+                question: t('EcommercePage.faq.questions.question5'),
+                answer: t('EcommercePage.faq.questions.answer5'),
               },
               {
-                question: 'Чи підходять ваші магазини для мобільних пристроїв?',
-                answer:
-                  "Так, ми створюємо адаптивний дизайн, який дозволяє інтернет-магазину коректно відображатися на всіх типах пристроїв — смартфонах, планшетах та комп'ютерах.",
+                question: t('EcommercePage.faq.questions.question6'),
+                answer: t('EcommercePage.faq.questions.answer6'),
               },
             ].map((faq, index) => (
               <FaqItem
@@ -4024,7 +4038,7 @@ const EcommercePage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.2 }}
           >
-            <FaqCtaText>Не знайшли відповідь на своє питання?</FaqCtaText>
+            <FaqCtaText>{t('EcommercePage.faq.ctaText')}</FaqCtaText>
             <FaqCtaButton
               whileHover={{
                 scale: 1.03,
@@ -4033,12 +4047,12 @@ const EcommercePage = () => {
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
             >
-              Напишіть нам
+              {t('EcommercePage.faq.ctaButton')}
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
       </EcommerceFaqSection>
-      
+
       {/* Modal Window */}
       <Modal isOpen={isModalOpen} onClose={closeModal} />
     </PageContainer>

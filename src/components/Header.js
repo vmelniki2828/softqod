@@ -563,7 +563,7 @@ const HeaderNavigation = () => {
               <FaSearch />
               {t('header.navItem.marketingThirdItem')}
             </DropdownItem>
-            <DropdownItem to="/services/marketing/target">
+          <DropdownItem to="/services/marketing/target">
               <FaBullhorn />
               {t('header.navItem.marketingForthItem')}
             </DropdownItem>
@@ -710,11 +710,11 @@ const Header = () => {
 
           <MobileMenuButton
             onClick={handleMenuToggle}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
             isHidden={isMenuOpen}
-          >
-            <FaBars />
+        >
+          <FaBars />
           </MobileMenuButton>
         </div>
       </HeaderContent>
