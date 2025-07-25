@@ -620,6 +620,461 @@ const resources = {
           ctaButton: 'Write to us',
         },
       },
+      EcommercePage: {
+        hero: {
+          title: 'Custom e-commerce development',
+          subtitle:
+            'We create e-commerce stores that sell. From design to launch — a complete development cycle for your business. We take into account the specifics of the niche, goals, buyer behavior, and SEO promotion requirements. We guarantee technical reliability, convenient interface, and readiness for marketing from day one.',
+          buttonText: 'Order development',
+          benefits: {
+            title1: 'Custom design',
+            description1:
+              'Unique store design for your niche and target audience.',
+            title2: 'Mobile adaptation',
+            description2:
+              'Perfect display on all devices — from smartphones to computers.',
+            title3: 'SEO optimization',
+            description3:
+              'Built-in SEO preparation for high positions in search engines.',
+          },
+          phoneStore: {
+            storeName: 'YourStore',
+            products: {
+              title1: "Men's T-shirt",
+              price1: '1 200 грн',
+              title2: 'Hoodie with hood',
+              price2: '1 750 грн',
+              title3: 'Sports shorts',
+              price3: '950 грн',
+              title4: 'Winter hat',
+              price4: '550 грн',
+            },
+            footer: {
+              cart: 'Cart',
+              support: 'Support',
+              promotions: 'Promotions',
+            },
+          },
+        },
+        whyUs: {
+          title: 'Why order an e-commerce store from us',
+          subtitle: 'We guarantee sales growth and user convenience',
+          cards: {
+            title1: 'We guarantee sales growth and user convenience',
+            description1:
+              'We design the interface based on user logic. Convenient navigation, fast loading, simple cart and checkout — all this shortens the path to purchase and increases conversion.',
+
+            title2: 'E-commerce experience and individual solutions',
+            description2:
+              "Behind our shoulders — dozens of implemented projects in various industries: clothing, electronics, home goods, B2B solutions. We don't work with templates — each store is developed individually, taking into account the product, target audience, and client's business goals.",
+
+            title3: 'Technical reliability and security',
+            description3:
+              'We use modern technologies and follow security standards. Fast loading, protection against attacks, backup systems, and 24/7 monitoring ensure stable operation of your store.',
+          },
+          btnText: 'Discuss the project',
+        },
+        features: {
+          title: 'What you get with an e-commerce store from us',
+          intro:
+            'We create not just a site with a cart, but a full-fledged eCommerce platform ready for sales, promotion, and scaling. Everything needed for launch is already included:',
+          features: {
+            title1: 'Adaptive modern design',
+            description1:
+              'Your e-commerce store will be equally convenient on smartphones, tablets, and computers. The user will quickly find the product and place an order without unnecessary steps.',
+
+            title2: 'Convenient management system',
+            description2:
+              'You will be able to independently add and edit products, manage orders, prices, promotions, and pages — without the need to contact the developer.',
+
+            title3: 'Turnkey integrations',
+            description3:
+              'We connect payment systems (LiqPay, Stripe, Fondy), delivery services (Nova Poshta, Ukrposhta), CRM, analytics, email marketing, event tracking, and advertising — everything for process automation.',
+
+            title4: 'SEO and analytics from day one',
+            description4:
+              'Proper URL structure, meta tags, microdata (Schema.org), fast page loading — all this is already configured. Additionally, we integrate Google Analytics, GA4, Google Tag Manager, set up events and goals.',
+
+            title5: 'Security and performance',
+            description5:
+              'SSL certificate, bot protection, regular CMS updates, captcha, code and image optimization — everything for stable and fast store operation.',
+
+            title6: 'Scalability capability',
+            description6:
+              'The e-commerce store is easy to expand: add new categories, change currency, launch promotions, or integrate with marketplaces. We design the platform with your growth in mind.',
+          },
+          buttonText: 'Order development',
+        },
+        stages: {
+          title: 'Stages of e-commerce store creation',
+          subtitle:
+            'We work step by step, transparently and systematically — so you understand at what stage the project is and what you will get as a result:',
+          steps: {
+            title1: 'Niche and target audience analysis',
+            description1:
+              'We study the market, competitors, and behavior of your potential buyers. We form the site structure, define key functionality and growth points.',
+            title2: 'Prototyping and catalog structure',
+            description2:
+              'We create a logical scheme of pages, menus, filters, product cards. We develop a convenient architecture that simplifies navigation and promotes SEO.',
+            title3: 'Design and functionality development',
+            description3:
+              'We create individual design with UX/UI consideration, adapt for mobile devices. We implement cart, payment, delivery, registration, personal account, etc.',
+            title4: 'Testing, launch and support',
+            description4:
+              'We check the site for errors, speed, adaptability, and correctness of all integrations. After launch — we accompany, update, consult.',
+          },
+          btnText: 'Order development',
+        },
+        pricing: {
+          title: 'Cost and development time for e-commerce store',
+          description:
+            "The price of creating an e-commerce store depends on the complexity of functionality, number of pages, integrations, and individual design. We don't use template solutions, so each project is unique.",
+          factors: {
+            title1: 'Functionality complexity',
+            description1:
+              'Number and complexity of functions: product filters, personal account, comparison, cart saving, multi-currency.',
+
+            title2: 'Integrations',
+            description2:
+              'Connection of payment systems, delivery services, CRM, ERP, analytics systems, mailing services.',
+
+            title3: 'Design',
+            description3:
+              'From basic stylish design to fully custom design with animations and individual graphics.',
+
+            title4: 'Development time',
+            description4:
+              'On average, a project takes from 4 to 12 weeks, depending on complexity and number of pages.',
+          },
+          dependencies: {
+            title: 'What the price depends on',
+            items: {
+              item1: 'Volume of product catalog and filtering complexity.',
+              item2:
+                'Required integrations: payment systems, delivery, CRM, warehouse.',
+              item3:
+                'Presence of personal account, bonus system, multi-currency, etc.',
+              item4: 'Individual or typical design.',
+              item5: 'Whether further technical support is needed.',
+            },
+          },
+          conclusion:
+            'To determine the exact cost and terms, we conduct a detailed project analysis. We will help you decide on the optimal set of functions for a successful start, and then scale the business.',
+          buttonText: 'Get consultation',
+        },
+        faq: {
+          title: 'FAQ',
+          questions: {
+            question1: 'How much does e-commerce store development cost?',
+            answer1:
+              'The cost depends on the number of functions and project complexity. We develop e-commerce stores individually for your needs, so the exact price can be determined after assessing requirements and specifications.',
+
+            question2: 'How long does e-commerce store development take?',
+            answer2:
+              'Terms vary depending on project complexity. Minimum term — from 3 weeks, but usually development takes 4-6 weeks. This time includes design, functionality development, testing, and launch.',
+
+            question3: 'Is support provided after launch?',
+            answer3:
+              'Yes, we provide technical support after launching the e-commerce store. You can contact us for help with technical issues, updates, or additional settings.',
+
+            question4: 'Do I need to order domain and hosting myself?',
+            answer4:
+              'We can help with domain and hosting selection or set them up for you. All hosting and domain issues are discussed at the project preparation stage.',
+
+            question5:
+              'Can the store be integrated with marketplaces and social networks?',
+            answer5:
+              'Yes, we integrate the e-commerce store with marketplaces (Prom, Rozetka) and social networks (Facebook, Instagram) for sales and advertising.',
+
+            question6: 'Are your stores suitable for mobile devices?',
+            answer6:
+              'Yes, we create adaptive design that allows the e-commerce store to display correctly on all types of devices — smartphones, tablets, and computers.',
+          },
+          ctaText: "Didn't find the answer to your question?",
+          ctaButton: 'Write to us',
+        },
+      },
+      LandingPage: {
+        hero: {
+          title: 'We create landing pages that bring profit to your business',
+          subtitle:
+            'We develop effective landing pages that convert visitors into customers. Modern design, fast loading and search engine optimization.',
+          buttonText: 'Learn more',
+          phoneContent: {
+            title: 'Landing Page',
+            subtitle: 'Conversion and results',
+          },
+          benefits: {
+            title1: 'High conversion',
+            description1:
+              'We create pages that transform visitors into customers through proper structure and call-to-action elements.',
+
+            title2: 'Unique design',
+            description2:
+              'We develop individual design that reflects the features of your brand and attracts customer attention.',
+
+            title3: 'Quick launch',
+            description3:
+              'We create and launch effective landing pages in the shortest time so you can start attracting customers right now.',
+          },
+        },
+        whatIsLandingPage: {
+          title: 'What is Landing Page and its main functions',
+          description:
+            "Landing Page (or single-page website) is a web page created to achieve a specific marketing goal: selling a product, collecting applications or presenting a service. It focuses the user's attention on the main thing — your offer.",
+          features: [
+            'Clear structure and understandable user path',
+            'Effective attention-grabbing elements and call-to-action',
+            'Adaptive design for all devices',
+            'Fast loading and optimized performance',
+            'Integration with analytics and CRM systems',
+            'Lead capture forms and feedback',
+          ],
+          summary:
+            'An effective landing page is not just a beautiful page, but a powerful sales tool that transforms visitors into customers and brings real profit to your business.',
+        },
+        landingVsMultiPage: {
+          title: 'How landing page differs from multi-page website',
+          quote:
+            'The main difference of landing page is focus. Unlike multi-page websites that scatter attention across dozens of pages, landing page leads the user along a logical path to one target action. This increases the chances that the visitor will become your customer.',
+          landing: {
+            title: 'Landing Page',
+            features: {
+              item1: 'One page — one clear path for the user',
+              item2: 'All elements lead to the target action',
+              item3: 'High conversion due to focus on results',
+              item4: 'Quick launch and easy testing',
+              item5: 'Perfect for advertising and quick sales',
+            },
+          },
+          multiPage: {
+            title: 'Multi-page website',
+            features: {
+              item1: 'Branched structure with many pages',
+              item2: 'Extended functionality and capabilities',
+              item3: 'More complex navigation and longer path to goal',
+              item4: 'Suitable for large projects and catalogs',
+              item5: 'Requires more time for development and maintenance',
+            },
+          },
+        },
+        conversionBenefits: {
+          title: 'How properly built landing page helps increase conversion',
+          description:
+            "A strategically designed landing page takes into account the needs of the target audience, solves their pain points and leads to decision making. From a competent headline to a convincing call-to-action — every element works for results. That's why an effective landing page is not just a website, but a profit growth tool.",
+          subtitle: 'Benefits of ordering a professional landing page',
+          advantages: {
+            item1: 'Individual approach to your business',
+            item2: 'Catchy and memorable design',
+            item3: 'High loading speed and adaptability',
+            item4: 'SEO optimization for promotion in Google',
+            item5: 'Analytics connection and readiness for advertising',
+          },
+          buttonText: 'Order landing page',
+        },
+        whyEffective: {
+          title:
+            'Why Landing Page is the most effective tool for attracting customers?',
+          subtitle: 'How single-page website focuses on specific user action',
+          description:
+            'Landing Page is created with a clear purpose: to interest, convince and encourage the user to perform a certain action — leave an application, call, purchase a product. Thanks to minimal distracting elements and clear structure, single-page websites achieve higher conversion than classic multi-page websites.',
+        },
+        businessBenefits: {
+          subtitle: 'Which businesses benefit most from landing pages',
+          intro: 'Landing pages are perfect for:',
+          categories: {
+            title1: 'Services',
+            description1: 'legal, cosmetology, construction, etc.',
+
+            title2: 'Online courses',
+            description2: 'and various infoproducts',
+
+            title3: 'Product sales',
+            description3: 'individual products or new collections',
+
+            title4: 'Promo campaigns',
+            description4: 'and launching promising startups',
+          },
+          summary:
+            'In fact, any business that has a specific target audience and a clear offer benefits from using landing pages.',
+        },
+        effectiveness: {
+          title:
+            'Why Landing Page is the most effective tool for attracting customers?',
+          banner: 'Single-page website that transforms visitors into customers',
+          description:
+            'Landing Page is created with a clear purpose: to interest, convince and encourage the user to perform a certain action — leave an application, call, purchase a product. Thanks to minimal distracting elements and clear structure, single-page websites achieve higher conversion than classic multi-page websites.',
+          conversionSteps: {
+            title1: 'Attention attraction',
+
+            title2: 'Interest retention',
+
+            title3: 'Desire formation',
+
+            title4: 'Action motivation',
+          },
+          statsTitle: 'Real benefits of landing pages in numbers',
+          stats: {
+            value1: '+75%',
+            label1: 'Conversion increase',
+
+            value2: '-50%',
+            label2: 'Lower customer acquisition cost',
+
+            value3: 'x3',
+            label3: 'Faster market entry',
+          },
+          advantagesTitle:
+            'Key advantages of landing page over regular websites',
+          advantages: {
+            item1: 'One goal — user is not distracted by secondary information',
+            item2:
+              'Clear structure — each block logically leads to target action',
+            item3: 'Simplified analytics — easier to track user behavior',
+            item4: 'A/B testing — ability to quickly test different hypotheses',
+          },
+          quote:
+            'Landing page is not just a page, but a conversion funnel where every element has its role in transforming a visitor into a customer',
+          buttonText: 'Order effective landing page',
+        },
+        creation: {
+          title:
+            'How we create landing page that transforms visitors into buyers',
+          steps: {
+            title1: 'Analysis and strategy',
+            description1:
+              'We study your business, competitors and target audience to form a clear strategy',
+
+            title2: 'Design and prototype',
+            description2:
+              'We create unique design that reflects your brand and develop a prototype focused on conversion',
+
+            title3: 'Development',
+            description3:
+              'We create adaptive landing page with modern animations and optimize speed and performance',
+
+            title4: 'Launch and analytics',
+            description4:
+              'We set up analytics, test all elements and launch the landing page with further support',
+          },
+          features: {
+            title1: 'Clear structure',
+            description1: 'Logical sequence of blocks leading to target action',
+
+            title2: 'Unique design',
+            description2:
+              'Creative solutions that distinguish you from competitors',
+
+            title3: 'Speed of work',
+            description3: 'Optimized loading speed and response',
+
+            title4: 'Adaptability',
+            description4: 'Perfect display on all devices',
+          },
+        },
+        requirements: {
+          title: 'What is needed to create a single-page website that sells?',
+          cards: {
+            title1: 'Clear structure and strong USP',
+            description1:
+              'Successful landing page starts with a script that leads the user to a specific action: leave an application, make a purchase or sign up for a consultation. Unique selling proposition (USP) should immediately capture attention, be understandable and valuable for your client.',
+
+            title2: 'Trust triggers and proper call-to-action',
+            description2:
+              "To prevent user doubts, it's important to add trust elements: real reviews, cases, photos, certificates, guarantees. This significantly increases confidence level. And the final step should be a strong call-to-action (CTA): bright button with clear message that motivates to click.",
+
+            title3: 'Optimization and simplicity',
+            description3:
+              "It's important not to overload the page — minimum unnecessary elements, maximum focus on the goal. And also — technical optimization: fast loading, adaptability, convenient navigation on any device.",
+          },
+        },
+        offer: {
+          title:
+            'Get an effective Landing Page turnkey — quickly and profitably',
+          subtitle: "Why it's worth ordering a landing page from professionals",
+          description:
+            'Creating a landing page yourself — is possible. But creating one that really sells — is a matter for an experienced team. We know how to lead a client to target action, how to structure content, where to put a button and what to write in the headline. Your website is the face of your business, and it should work for you.',
+          additionalDescription:
+            'We offer both completely individual development and template adaptation for your business. Both options have their advantages — everything depends on budget, tasks and deadlines. In any case, you will get a modern, adaptive and conversion landing page.',
+          whatYouGet: {
+            title: 'What you will get:',
+            items: {
+              item1:
+                'Professional single-page website optimized for your goals and audience',
+              item2:
+                'Increase in conversion and sales due to proper structure and USP',
+              item3: 'Adaptive design that looks great on all devices',
+              item4: 'Fast loading and optimal performance',
+            },
+          },
+          ourFeatures: {
+            title: 'Our features:',
+            items: {
+              item1: 'Unique design created for your brand and target audience',
+              item2: 'Integration with CRM and analytics systems',
+              item3: 'Spam protection and data security',
+              item4: 'Technical support and consultations after launch',
+            },
+          },
+        },
+        cta: {
+          title: 'Order an effective landing page for your business',
+          description:
+            'Want to get a modern single-page website that will bring real applications and sales? We will create a selling landing page with unique design and high conversion for you.',
+          highlight: 'We develop landing pages that bring results',
+          subtext:
+            'Leave an application — and we will contact you to discuss your project, calculate cost and development time.',
+          form: {
+            name: 'Your name',
+            phone: 'Phone',
+            email: 'Email',
+            button: 'Get consultation',
+          },
+          footer:
+            'Take the first step to increasing sales — order a professional landing page right now',
+        },
+        faq: {
+          title: 'FAQ',
+          questions: {
+         
+              question1: 'What is Landing Page and what is it needed for?',
+              answer1:
+                'Landing Page is a single-page website that focuses on one action: get an application, call or sale. We create custom landing pages with unique structure, design and content tailored to a specific target audience.',
+        
+              question2:
+                'How does single-page website differ from regular website?',
+              answer2:
+                'Regular website contains many pages and sections, while landing page is a focused sales tool. Everything in it is subordinated to one action, without unnecessary distractions. Custom development allows making the landing page as accurate and effective as possible.',
+           
+              question3: 'What types of landing pages exist?',
+              answer3:
+                'We create different types of custom landing pages: Product — for selling specific product or service, Promo pages — for campaigns, launches, events, Business card landing pages — for experts, freelancers, business, Lead generation — for collecting applications and contacts.',
+         
+              question4: 'How much time is needed to create a Landing Page?',
+              answer4:
+                'On average — from 7 to 14 working days. Everything depends on task complexity, content volume and required functionality. Custom development takes a bit more time, but the result is completely unique.',
+           
+              question5: 'Can landing page be edited after launch?',
+              answer5:
+                "Yes, we provide the possibility of further changes and updates. You can contact us for editing or get access to the administrative part if it's provided.",
+           
+              question6: 'How does landing page help increase conversion?',
+              answer6:
+                'Our custom landing pages are created based on target audience analysis, user behavior psychology and marketing triggers. Thanks to proper structure, strong headlines, USP and trust elements, we help transform a visitor into a customer.',
+           
+              question7: 'On what platform do you develop landing pages?',
+              answer7:
+                "We don't use constructors (like Tilda or Wix). Each website is created from scratch — manually, on clean code (HTML, CSS, JS, sometimes CMS if needed). This gives maximum freedom in design implementation, high website speed and full control over all functionality.",
+           
+              question8: 'What services are included in Landing Page creation?',
+              answer8:
+                'Full cycle of custom development includes: Analysis of your business and target audience, Structure and prototype development, Unique design and adaptive layout, Sales-oriented text writing, Analytics connection, Functionality testing, Launch and support after publication.',
+            
+          },
+          ctaText: "Didn't find the answer to your question?",
+          ctaButton: 'Write to us',
+        },
+      },
     },
   },
   uk: {
@@ -1230,6 +1685,476 @@ const resources = {
             question6: 'Чи потрібне спеціальне обладнання для ERP/CRM?',
             answer6:
               'Більшість сучасних систем працюють у хмарі і не потребують встановлення складного обладнання. Для локальних рішень може знадобитися власний сервер.',
+          },
+          ctaText: 'Не знайшли відповідь на своє питання?',
+          ctaButton: 'Напишіть нам',
+        },
+      },
+      EcommercePage: {
+        hero: {
+          title: 'Розробка інтернет-магазинів під ключ',
+          subtitle:
+            'Створюємо інтернет-магазини, які продають. Від проєктування до запуску — повний цикл розробки під ваш бізнес. Ми враховуємо специфіку ніші, цілі, поведінку покупців і вимоги до SEO-просування. Гарантуємо технічну надійність, зручний інтерфейс та готовність до маркетингу з першого дня.',
+          buttonText: 'Замовити розробку',
+          benefits: {
+            title1: 'Індивідуальний дизайн',
+            description1:
+              'Унікальний дизайн магазину під вашу нішу та цільову аудиторію.',
+
+            title2: 'Мобільна адаптація',
+            description2:
+              "Ідеальне відображення на всіх пристроях — від смартфонів до комп'ютерів.",
+
+            title3: 'SEO-оптимізація',
+            description3:
+              'Вбудована SEO-підготовка для високих позицій у пошукових системах.',
+          },
+          phoneStore: {
+            storeName: 'YourStore',
+            products: {
+              title1: 'Футболка чоловіча',
+              price1: '1 200 грн',
+              title2: 'Худі з капюшоном',
+              price2: '1 750 грн',
+              title3: 'Шорти спортивні',
+              price3: '950 грн',
+              title4: 'Шапка зимова',
+              price4: '550 грн',
+            },
+            footer: {
+              cart: 'Кошик',
+              support: 'Підтримка',
+              promotions: 'Акції',
+            },
+          },
+        },
+        whyUs: {
+          title: 'Чому варто замовити інтернет-магазин у нас',
+          subtitle:
+            'Гарантуємо зростання продажів та зручність для користувачів',
+          cards: {
+            title1:
+              'Гарантуємо зростання продажів та зручність для користувачів',
+            description1:
+              'Ми проєктуємо інтерфейс на основі логіки користувача. Зручна навігація, швидке завантаження, проста корзина і оформлення замовлення — усе це скорочує шлях до покупки та підвищує конверсію.',
+
+            title2: 'Досвід у eCommerce та індивідуальні рішення',
+            description2:
+              'За нашими плечима — десятки реалізованих проєктів у різних галузях: одяг, електроніка, товари для дому, B2B-рішення. Ми не працюємо за шаблонами — кожен магазин розробляємо індивідуально, з урахуванням продукту, цільової аудиторії та бізнес-цілей клієнта.',
+
+            title3: 'Технічна надійність та безпека',
+            description3:
+              'Використовуємо сучасні технології та дотримуємося стандартів безпеки. Швидке завантаження, захист від атак, резервні системи та моніторинг 24/7 забезпечують стабільну роботу вашого магазину.',
+          },
+          btnText: 'Обговорити проєкт',
+        },
+        features: {
+          title: 'Що ви отримаєте з інтернет-магазином від нас',
+          intro:
+            'Ми створюємо не просто сайт з кошиком, а повноцінну eCommerce-платформу, готову до продажів, просування та масштабування. Усе необхідне для запуску вже включено:',
+          features: {
+            title1: 'Адаптивний сучасний дизайн',
+            description1:
+              "Ваш інтернет-магазин буде однаково зручним на смартфонах, планшетах і комп'ютерах. Користувач швидко знайде товар і оформить замовлення без зайвих кроків.",
+
+            title2: 'Зручна система керування',
+            description2:
+              'Ви зможете самостійно додавати й редагувати товари, керувати замовленнями, цінами, акціями та сторінками — без потреби звертатися до розробника.',
+
+            title3: 'Інтеграції під ключ',
+            description3:
+              'Підключаємо платіжні системи (LiqPay, Stripe, Fondy), служби доставки (Нова пошта, Укрпошта), CRM, аналітику, e-mail-маркетинг, трекінг подій і рекламу — все для автоматизації процесів.',
+
+            title4: 'SEO та аналітика з першого дня',
+            description4:
+              'Грамотна структура URL, мета-теги, мікророзмітка (Schema.org), швидке завантаження сторінок — усе це вже налаштовано. Додатково інтегруємо Google Analytics, GA4, Google Tag Manager, налаштовуємо події та цілі.',
+
+            title5: 'Безпека та продуктивність',
+            description5:
+              'SSL-сертифікат, захист від ботів, регулярні оновлення CMS, капча, оптимізація коду та зображень — усе для стабільної та швидкої роботи магазину.',
+
+            title6: 'Можливість масштабування',
+            description6:
+              'Інтернет-магазин легко розширити: додати нові категорії, змінити валюту, запустити акції або інтегрувати з маркетплейсами. Ми проєктуємо платформу з урахуванням вашого росту.',
+          },
+          buttonText: 'Замовити розробку',
+        },
+        stages: {
+          title: 'Етапи створення інтернет-магазину',
+          subtitle:
+            'Ми працюємо поетапно, прозоро й системно — щоб ви розуміли, на якому етапі знаходиться проєкт і що отримаєте в результаті:',
+          steps: {
+            title1: 'Аналіз ніші та цільової аудиторії',
+            description1:
+              'Вивчаємо ринок, конкурентів і поведінку ваших потенційних покупців. Формуємо структуру сайту, визначаємо ключовий функціонал і точки зростання.',
+
+            title2: 'Прототипування та структура каталогу',
+            description2:
+              'Створюємо логічну схему сторінок, меню, фільтрів, карток товарів. Розробляємо зручну архітектуру, яка спрощує навігацію та сприяє SEO.',
+
+            title3: 'Дизайн і розробка функціоналу',
+            description3:
+              'Створюємо індивідуальний дизайн з урахуванням UX/UI, адаптуємо під мобільні пристрої. Реалізуємо кошик, оплату, доставку, реєстрацію, особистий кабінет тощо.',
+
+            title4: 'Тестування, запуск і підтримка',
+            description4:
+              'Перевіряємо сайт на помилки, швидкість, адаптивність і коректність усіх інтеграцій. Після запуску — супроводжуємо, оновлюємо, консультуємо.',
+          },
+          btnText: 'Замовити розробку',
+        },
+        pricing: {
+          title: 'Вартість і терміни розробки інтернет-магазину',
+          description:
+            'Ціна створення інтернет-магазину залежить від складності функціоналу, кількості сторінок, інтеграцій та індивідуального дизайну. Ми не використовуємо шаблонних рішень, тому кожен проєкт — унікальний.',
+          factors: {
+            title1: 'Складність функціоналу',
+            description1:
+              'Кількість та складність функцій: фільтри товарів, особистий кабінет, порівняння, збереження кошика, мультивалютність.',
+
+            title2: 'Інтеграції',
+            description2:
+              'Підключення платіжних систем, служб доставки, CRM, ERP, систем аналітики, сервісів розсилки.',
+
+            title3: 'Дизайн',
+            description3:
+              'Від базового стильного оформлення до повністю кастомного дизайну з анімаціями та індивідуальною графікою.',
+
+            title4: 'Терміни розробки',
+            description4:
+              'В середньому проєкт займає від 4 до 12 тижнів, залежно від складності та кількості сторінок.',
+          },
+          dependencies: {
+            title: 'Від чого залежить ціна',
+            items: {
+              item1: 'Обсяг каталогу товарів та складність фільтрації.',
+              item2:
+                'Необхідні інтеграції: платіжні системи, доставка, CRM, склад.',
+              item3:
+                'Наявність особистого кабінету, бонусної системи, мультивалютності тощо.',
+              item4: 'Індивідуальний або типовий дизайн.',
+              item5: 'Потрібна чи ні подальша технічна підтримка.',
+            },
+          },
+          conclusion:
+            'Для визначення точної вартості та термінів проводимо детальний аналіз проєкту. Ми допоможемо вам визначитися з оптимальним набором функцій для успішного старту, а потім масштабувати бізнес.',
+          buttonText: 'Отримати консультацію',
+        },
+        faq: {
+          title: 'FAQ',
+          questions: {
+            question1: 'Скільки коштує розробка інтернет-магазину?',
+            answer1:
+              'Вартість залежить від кількості функцій та складності проекту. Ми розробляємо інтернет-магазини індивідуально під ваші потреби, тому точну ціну можна визначити після оцінки вимог і специфікацій.',
+
+            question2: 'Скільки часу займає розробка інтернет-магазину?',
+            answer2:
+              'Терміни варіюються в залежності від складності проєкту. Мінімальний термін — від 3 тижнів, але зазвичай на розробку потрібно 4-6 тижнів. У цей час входять дизайн, розробка функціоналу, тестування і запуск.',
+
+            question3: 'Чи надається підтримка після запуску?',
+            answer3:
+              'Так, ми надаємо технічну підтримку після запуску інтернет-магазину. Ви можете звертатися за допомогою щодо технічних питань, оновлень або додаткових налаштувань.',
+
+            question4: 'Чи потрібно замовляти домен і хостинг самостійно?',
+            answer4:
+              'Ми можемо допомогти з вибором домену та хостингу або налаштувати їх для вас. Усі питання з хостингом і доменом ми обговорюємо на етапі підготовки проєкту.',
+
+            question5:
+              'Чи можна інтегрувати магазин з маркетплейсами та соцмережами?',
+            answer5:
+              'Так, ми інтегруємо інтернет-магазин з маркетплейсами (Prom, Rozetka) та соціальними мережами (Facebook, Instagram) для продажу та реклами.',
+
+            question6: 'Чи підходять ваші магазини для мобільних пристроїв?',
+            answer6:
+              "Так, ми створюємо адаптивний дизайн, який дозволяє інтернет-магазину коректно відображатися на всіх типах пристроїв — смартфонах, планшетах та комп'ютерах.",
+          },
+          ctaText: 'Не знайшли відповідь на своє питання?',
+          ctaButton: 'Напишіть нам',
+        },
+      },
+      LandingPage: {
+        hero: {
+          title:
+            'Створюємо односторінкові сайти, що приносять прибуток вашому бізнесу',
+          subtitle:
+            'Розробляємо ефективні landing page, які конвертують відвідувачів у клієнтів. Сучасний дизайн, швидкість завантаження та оптимізація для пошукових систем.',
+          buttonText: 'Дізнатися більше',
+          phoneContent: {
+            title: 'Landing Page',
+            subtitle: 'Конверсія та результат',
+          },
+          benefits: {
+            title1: 'Висока конверсія',
+            description1:
+              'Створюємо сторінки, що перетворюють відвідувачів на клієнтів завдяки правильній структурі та закликам до дії.',
+
+            title2: 'Унікальний дизайн',
+            description2:
+              'Розробляємо індивідуальний дизайн, що відображає особливості вашого бренду та привертає увагу клієнтів.',
+
+            title3: 'Швидкий запуск',
+            description3:
+              'Створюємо та запускаємо ефективні лендінги в найкоротші терміни, щоб ви могли почати залучати клієнтів вже зараз.',
+          },
+        },
+        whatIsLandingPage: {
+          title: 'Що таке Landing Page та які його основні функції',
+          description:
+            'Landing Page (або односторінковий сайт) — це вебсторінка, створена для досягнення конкретної маркетингової цілі: продажу товару, збору заявок чи презентації послуги. Вона концентрує увагу користувача на головному — вашій пропозиції.',
+          features: [
+            'Чітка структура та зрозумілий користувацький шлях',
+            'Ефективні елементи захоплення уваги та заклики до дії',
+            'Адаптивний дизайн для всіх пристроїв',
+            'Швидке завантаження та оптимізована продуктивність',
+            'Інтеграція з системами аналітики та CRM',
+            "Форми захоплення лідів та зворотного зв'язку",
+          ],
+          summary:
+            'Ефективний лендінг — це не просто гарна сторінка, а потужний інструмент продажів, який перетворює відвідувачів у клієнтів та приносить реальний прибуток вашому бізнесу.',
+        },
+        landingVsMultiPage: {
+          title: 'Чим лендінг відрізняється від багатосторінкового сайту',
+          quote:
+            'Головна відмінність лендінгу — фокус. На відміну від багатосторінкових сайтів, які розпорошують увагу між десятками сторінок, лендінг веде користувача по логічному шляху до однієї цільової дії. Це збільшує шанси, що відвідувач стане вашим клієнтом.',
+          landing: {
+            title: 'Лендінг',
+            features: {
+              item1: 'Одна сторінка — один чіткий шлях для користувача',
+              item2: 'Всі елементи ведуть до цільової дії',
+              item3: 'Висока конверсія завдяки фокусу на результат',
+              item4: 'Швидкий запуск та легке тестування',
+              item5: 'Ідеально для реклами та швидких продажів',
+            },
+          },
+          multiPage: {
+            title: 'Багатосторінковий сайт',
+            features: {
+              item1: 'Розгалужена структура з багатьма сторінками',
+              item2: 'Розширений функціонал та можливості',
+              item3: 'Складніша навігація та довший шлях до цілі',
+              item4: 'Підходить для великих проектів та каталогів',
+              item5: 'Потребує більше часу на розробку та підтримку',
+            },
+          },
+        },
+        conversionBenefits: {
+          title:
+            'Як правильно побудований лендінг допомагає збільшити конверсію',
+          description:
+            'Стратегічно спроєктований лендінг враховує потреби цільової аудиторії, вирішує її болі та підводить до прийняття рішення. Від грамотного заголовка до переконливого заклику до дії — кожен елемент працює на результат. Саме тому ефективний лендинг — це не просто сайт, а інструмент зростання прибутку.',
+          subtitle: 'Переваги замовлення професійного лендингу',
+          advantages: {
+            item1: 'Індивідуальний підхід до вашого бізнесу',
+            item2: "Дизайн, що чіпляє та запам'ятовується",
+            item3: 'Висока швидкість завантаження й адаптивність',
+            item4: 'SEO-оптимізація для просування в Google',
+            item5: 'Підключення аналітики й готовність до реклами',
+          },
+          buttonText: 'Замовити лендінг',
+        },
+        whyEffective: {
+          title:
+            'Чому Landing Page — це найефективніший інструмент для залучення клієнтів?',
+          subtitle:
+            'Як односторінковий сайт фокусується на конкретній дії користувача',
+          description:
+            'Landing Page створюється з чіткою метою: зацікавити, переконати й спонукати користувача виконати певну дію — залишити заявку, зателефонувати, придбати товар. Завдяки мінімуму відволікаючих елементів і чіткій структурі, односторінкові сайти досягають вищої конверсії, ніж класичні багатосторінкові сайти.',
+        },
+        businessBenefits: {
+          subtitle: 'Які бізнеси отримують найбільше користі від лендингів',
+          intro: 'Лендінги ідеально підходять для:',
+          categories: {
+            title1: 'Послуг',
+            description1: 'юридичних, косметологічних, будівельних тощо',
+
+            title2: 'Онлайн-курсів',
+            description2: 'та різноманітних інфопродуктів',
+
+            title3: 'Продажу товарів',
+            description3: 'окремих продуктів або нових колекцій',
+
+            title4: 'Промо-акцій',
+            description4: 'та запуску перспективних стартапів',
+          },
+          summary:
+            'Фактично, будь-який бізнес, що має конкретну цільову аудиторію та чітку пропозицію, виграє від використання лендінгу.',
+        },
+        effectiveness: {
+          title:
+            'Чому Landing Page — це найефективніший інструмент для залучення клієнтів?',
+          banner:
+            'Односторінковий сайт, який перетворює відвідувачів у клієнтів',
+          description:
+            'Landing Page створюється з чіткою метою: зацікавити, переконати й спонукати користувача виконати певну дію — залишити заявку, зателефонувати, придбати товар. Завдяки мінімуму відволікаючих елементів і чіткій структурі, односторінкові сайти досягають вищої конверсії, ніж класичні багатосторінкові сайти.',
+          conversionSteps: {
+            title1: 'Привернення уваги',
+
+            title2: 'Утримання інтересу',
+
+            title3: 'Формування бажання',
+
+            title4: 'Спонукання до дії',
+          },
+          statsTitle: 'Реальні переваги лендінгів у цифрах',
+          stats: {
+            value1: '+75%',
+            label1: 'Збільшення конверсії',
+
+            value2: '-50%',
+            label2: 'Менша вартість залучення клієнта',
+
+            value3: 'x3',
+            label3: 'Швидше введення на ринок',
+          },
+          advantagesTitle: 'Ключові переваги лендингу перед звичайними сайтами',
+          advantages: {
+            item1:
+              'Одна мета — користувач не відволікається на другорядну інформацію',
+            item2:
+              'Чітка структура — кожний блок логічно підводить до цільової дії',
+            item3:
+              'Спрощена аналітика — легше відстежувати поведінку користувача',
+            item4:
+              'A/B тестування — можливість швидко перевіряти різні гіпотези',
+          },
+          quote:
+            'Лендінг — це не просто сторінка, а конверсійна воронка, де кожен елемент має свою роль у перетворенні відвідувача в клієнта',
+          buttonText: 'Замовити ефективний лендінг',
+        },
+        creation: {
+          title:
+            'Як ми створюємо лендінг, що перетворює відвідувачів у покупців',
+          steps: {
+            title1: 'Аналіз та стратегія',
+            description1:
+              'Вивчаємо ваш бізнес, конкурентів і цільову аудиторію для формування чіткої стратегії',
+
+            title2: 'Дизайн та прототип',
+            description2:
+              'Створюємо унікальний дизайн, що відображає ваш бренд, та розробляємо прототип з фокусом на конверсію',
+
+            title3: 'Розробка',
+            description3:
+              'Верстаємо адаптивний лендінг з сучасними анімаціями та оптимізуємо швидкість і продуктивність',
+
+            title4: 'Запуск та аналітика',
+            description4:
+              'Налаштовуємо аналітику, тестуємо всі елементи та запускаємо лендінг з подальшою підтримкою',
+          },
+          features: {
+            title1: 'Чітка структура',
+            description1:
+              'Логічна послідовність блоків, що ведуть до цільової дії',
+
+            title2: 'Унікальний дизайн',
+            description2:
+              'Креативні рішення, що виділяють вас серед конкурентів',
+
+            title3: 'Швидкість роботи',
+            description3: 'Оптимізована швидкість завантаження та відгуку',
+
+            title4: 'Адаптивність',
+            description4: 'Ідеальне відображення на всіх пристроях',
+          },
+        },
+        requirements: {
+          title:
+            'Що потрібно для створення односторінкового сайту, який продає?',
+          cards: {
+            title1: 'Чітка структура та сильне УТП',
+            description1:
+              'Успішний лендинг починається зі сценарію, що веде користувача до конкретної дії: залишити заявку, здійснити покупку або записатися на консультацію. Унікальна торгова пропозиція (УТП) повинна одразу захоплювати увагу, бути зрозумілою та цінною для вашого клієнта.',
+
+            title2: 'Тригери довіри та правильний заклик до дії',
+            description2:
+              'Щоб користувач не сумнівався, важливо додати елементи довіри: реальні відгуки, кейси, фото, сертифікати, гарантії. Це суттєво підвищує рівень впевненості. А завершальним кроком має стати сильний заклик до дії (CTA): яскрава кнопка з чітким посилом, що мотивує натиснути.',
+
+            title3: 'Оптимізація та простота',
+            description3:
+              'Важливо не перенавантажувати сторінку — мінімум зайвих елементів, максимум фокус на цілі. А ще — технічна оптимізація: швидке завантаження, адаптивність, зручна навігація на будь-якому пристрої.',
+          },
+        },
+        offer: {
+          title:
+            'Отримайте ефективний Landing Page під ключ — швидко та вигідно',
+          subtitle: 'Чому варто замовити лендінг у професіоналів',
+          description:
+            'Самостійно створити лендінг — можна. Але створити той, що дійсно продає, — справа для команди з досвідом. Ми знаємо, як вивести клієнта на цільову дію, як структурувати контент, де поставити кнопку й що написати в заголовку. Ваш сайт — це обличчя бізнесу, і воно має працювати на вас.',
+          additionalDescription:
+            'Ми пропонуємо як повністю індивідуальну розробку, так і адаптацію шаблонів під ваш бізнес. Обидва варіанти мають свої переваги — все залежить від бюджету, задач і термінів. У будь-якому випадку ви отримаєте сучасний, адаптивний та конверсійний лендінг.',
+          whatYouGet: {
+            title: 'Що ви отримаєте:',
+            items: {
+              item1:
+                'Професійний односторінковий сайт, оптимізований під ваші цілі та аудиторію',
+              item2:
+                'Збільшення конверсії та продажів завдяки правильній структурі та УТП',
+              item3:
+                'Адаптивний дизайн, що відмінно виглядає на всіх пристроях',
+              item4: 'Швидке завантаження та оптимальна продуктивність',
+            },
+          },
+          ourFeatures: {
+            title: 'Наші фішки:',
+            items: {
+              item1:
+                'Унікальний дизайн, створений під ваш бренд та цільову аудиторію',
+              item2: 'Інтеграція з CRM та системами аналітики',
+              item3: 'Захист від спаму та безпека даних',
+              item4: 'Технічна підтримка та консультації після запуску',
+            },
+          },
+        },
+        cta: {
+          title: 'Замовте ефективний лендінг для вашого бізнесу',
+          description:
+            'Бажаєте отримати сучасний односторінковий сайт, який буде приносити реальні заявки та продажі? Ми створимо для вас продаючий лендінг з унікальним дизайном та високою конверсією.',
+          highlight: 'Розробляємо лендінги, що приносять результат',
+          subtext:
+            "Залиште заявку — і ми зв'яжемося з вами для обговорення вашого проєкту, розрахунку вартості та термінів розробки.",
+          form: {
+            name: "Ваше ім'я",
+            phone: 'Телефон',
+            email: 'Email',
+            button: 'Отримати консультацію',
+          },
+          footer:
+            'Зробіть перший крок до збільшення продажів — замовте професійний лендінг прямо зараз',
+        },
+        faq: {
+          title: 'FAQ',
+          questions: {
+            question1: 'Що таке Landing Page і для чого він потрібен?',
+            answer1:
+              'Landing Page — це односторінковий сайт, який фокусується на одній дії: отримати заявку, дзвінок або продаж. Ми створюємо кастомні лендінги з унікальною структурою, дизайном і контентом, що підлаштовані під конкретну цільову аудиторію.',
+
+            question2:
+              'Чим односторінковий сайт відрізняється від звичайного сайту?',
+            answer2:
+              'Звичайний сайт містить багато сторінок і розділів, а лендінг — це фокусований інструмент продажів. У ньому все підпорядковано одній дії, без зайвих відволікань. Кастомна розробка дозволяє зробити лендінг максимально точним і ефективним.',
+
+            question3: 'Які види лендінгів існують?',
+            answer3:
+              'Ми створюємо різні типи кастомних лендінгів: Продуктові — для продажу конкретного товару чи послуги, Промо-сторінки — для акцій, запусків, подій, Лендінги-візитки — для експертів, фрілансерів, бізнесу, Лід-генераційні — для збору заявок та контактів.',
+
+            question4: 'Скільки часу потрібно для створення Landing Page?',
+            answer4:
+              'В середньому — від 7 до 14 робочих днів. Все залежить від складності задач, обсягу контенту та необхідного функціоналу. Кастомна розробка займає трохи більше часу, але результат повністю унікальний.',
+
+            question5: 'Чи можна редагувати лендінг після запуску?',
+            answer5:
+              'Так, ми закладаємо можливість подальших змін і оновлень. Ви зможете звертатися до нас для редагування або отримати доступ до адміністративної частини, якщо вона передбачена.',
+
+            question6: 'Як лендінг допомагає підвищити конверсію?',
+            answer6:
+              'Наші кастомні лендінги створюються на основі аналізу ЦА, психології поведінки користувача та маркетингових тригерів. Завдяки правильній структурі, сильним заголовкам, УТП і елементам довіри ми допомагаємо перетворити відвідувача на клієнта.',
+
+            question7: 'На якій платформі ви розробляєте лендінги?',
+            answer7:
+              'Ми не використовуємо конструктори (типу Tilda чи Wix). Кожен сайт створюється з нуля — вручну, на чистому коді (HTML, CSS, JS, іноді CMS за потреби). Це дає максимальну свободу в реалізації дизайну, високу швидкість роботи сайту та повний контроль над усім функціоналом.',
+
+            question8: 'Які послуги входять у створення Landing Page?',
+            answer8:
+              'Повний цикл кастомної розробки включає: Аналіз вашого бізнесу та ЦА, Розробку структури та прототипу, Унікальний дизайн і адаптивну верстку, Написання текстів під продаж, Підключення аналітики, Тестування функціоналу, Запуск і підтримку після публікації.',
           },
           ctaText: 'Не знайшли відповідь на своє питання?',
           ctaButton: 'Напишіть нам',

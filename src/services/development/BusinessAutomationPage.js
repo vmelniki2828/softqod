@@ -810,7 +810,7 @@ const FaqWaveTop = styled.div`
   left: 0;
   width: 100%;
   height: 120px;
-  background: linear-gradient(
+    background: linear-gradient(
     to top left,
     transparent 49%,
     var(--bg-primary) 51%
@@ -830,7 +830,7 @@ const FaqGlowCircle = styled.div`
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-  z-index: 0;
+    z-index: 0;
 
   &.circle-1 {
     width: 400px;
@@ -880,7 +880,7 @@ const FaqTitle = styled(motion.h2)`
 
   @media (max-width: 576px) {
     font-size: 2rem;
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
   }
 
   &::before {
@@ -913,7 +913,7 @@ const FaqTitle = styled(motion.h2)`
     bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
+  width: 80px;
     height: 4px;
     background: linear-gradient(
       90deg,
@@ -1190,8 +1190,8 @@ const FaqAnswer = styled(motion.div)`
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+    width: 100%;
+    height: 100%;
       background: linear-gradient(
         90deg,
         transparent,
@@ -1250,7 +1250,7 @@ const FaqCta = styled(motion.div)`
       var(--accent-color),
       rgba(59, 130, 246, 0.8)
     );
-    z-index: 1;
+  z-index: 1;
     pointer-events: none;
   }
 
@@ -1743,7 +1743,7 @@ const WorkflowStepNumber = styled.div`
   @media (max-width: 576px) {
     width: 40px;
     height: 40px;
-    font-size: 1.2rem;
+  font-size: 1.2rem;
   }
 `;
 
@@ -1795,7 +1795,7 @@ const WorkflowStepTitle = styled.h3`
 
   @media (max-width: 576px) {
     font-size: 1.3rem;
-    margin-bottom: 0.8rem;
+  margin-bottom: 0.8rem;
   }
 `;
 
@@ -1992,7 +1992,7 @@ const WhyUsIntro = styled(motion.p)`
 
   @media (max-width: 768px) {
     font-size: 1.2rem;
-    margin-bottom: 3rem;
+  margin-bottom: 3rem;
   }
 
   @media (max-width: 576px) {
@@ -2009,13 +2009,13 @@ const BenefitsList = styled(motion.div)`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 2rem;
+  gap: 2rem;
     margin-bottom: 3rem;
   }
 
   @media (max-width: 576px) {
     gap: 1.5rem;
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
   }
 `;
 
@@ -2104,13 +2104,13 @@ const BenefitCardGlow = styled.div`
 `;
 
 const CardAccent = styled.div`
-  position: absolute;
+    position: absolute;
   bottom: 0;
   right: 0;
   width: 60px;
   height: 60px;
   border-radius: 0 0 20px 0;
-  background: linear-gradient(
+    background: linear-gradient(
     135deg,
     transparent 50%,
     rgba(94, 234, 212, 0.1) 50%
@@ -2364,11 +2364,11 @@ const CtaContainer = styled.div`
 const CtaGlowCircle = styled.div`
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
+    background: radial-gradient(
+      circle,
     rgba(94, 234, 212, 0.1) 0%,
-    transparent 70%
-  );
+      transparent 70%
+    );
   animation: ${glow} 4s infinite alternate;
 
   &.circle-1 {
@@ -2629,14 +2629,14 @@ const CtaDecoration = styled.div`
   position: absolute;
   top: 50%;
   right: -200px;
-  width: 300px;
-  height: 300px;
+    width: 300px;
+    height: 300px;
   background: linear-gradient(
     45deg,
     transparent 30%,
     rgba(94, 234, 212, 0.05) 50%,
-    transparent 70%
-  );
+      transparent 70%
+    );
   border-radius: 50%;
   transform: translateY(-50%);
   animation: ${floatVertical} 6s infinite ease-in-out;
@@ -3455,8 +3455,8 @@ const BusinessAutomationPage = () => {
                 whileHover={
                   !isSubmitting
                     ? {
-                        scale: 1.03,
-                        boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)',
+                  scale: 1.03,
+                  boxShadow: '0 10px 30px rgba(94, 234, 212, 0.3)',
                       }
                     : {}
                 }

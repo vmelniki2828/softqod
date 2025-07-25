@@ -26,6 +26,7 @@ import {
   FaCode,
 } from 'react-icons/fa';
 import Modal from '../../components/Modal';
+import { useTranslation } from 'react-i18next';
 
 // Анимации
 const pulse = keyframes`
@@ -107,7 +108,7 @@ const HeroSection = styled(motion.div)`
 
   @media (max-width: 768px) {
     min-height: 80vh;
-  padding: 2rem;
+    padding: 2rem;
   }
 
   @media (max-width: 576px) {
@@ -490,12 +491,12 @@ const PhoneContent = styled(motion.div)`
 
   @media (max-width: 768px) {
     padding: 1.2rem 0.8rem;
-    
+
     h3 {
       font-size: 1rem;
       margin: 0.6rem 0 0.3rem 0;
     }
-    
+
     p {
       font-size: 0.85rem;
     }
@@ -503,12 +504,12 @@ const PhoneContent = styled(motion.div)`
 
   @media (max-width: 576px) {
     padding: 1rem 0.6rem;
-    
+
     h3 {
       font-size: 0.9rem;
       margin: 0.5rem 0 0.2rem 0;
     }
-    
+
     p {
       font-size: 0.8rem;
     }
@@ -516,12 +517,12 @@ const PhoneContent = styled(motion.div)`
 
   @media (max-width: 480px) {
     padding: 0.8rem 0.5rem;
-    
+
     h3 {
       font-size: 0.85rem;
       margin: 0.4rem 0 0.2rem 0;
     }
-    
+
     p {
       font-size: 0.75rem;
     }
@@ -597,7 +598,8 @@ const AppIcon = styled(motion.div)`
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: ${props => props.color || 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)'};
+  background: ${props =>
+    props.color || 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)'};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -863,9 +865,9 @@ const PWAInfoSection = styled(motion.section)`
     clip-path: polygon(100% 100%, 0 100%, 100% 0);
     background: linear-gradient(
       -45deg,
-        rgba(94, 234, 212, 0.1) 0%,
+      rgba(94, 234, 212, 0.1) 0%,
       transparent 70%
-      );
+    );
     z-index: 1;
 
     @media (max-width: 768px) {
@@ -926,12 +928,12 @@ const PWAInfoTitle = styled(motion.h2)`
 
   @media (max-width: 768px) {
     font-size: 2.2rem;
-  margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
   @media (max-width: 576px) {
     font-size: 1.8rem;
-  margin-bottom: 1.2rem;
+    margin-bottom: 1.2rem;
   }
 
   @media (max-width: 480px) {
@@ -949,7 +951,7 @@ const PWAInfoTitle = styled(motion.h2)`
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
 
-  @media (max-width: 768px) {
+    @media (max-width: 768px) {
       left: 50%;
       transform: translateX(-50%);
       width: 100px;
@@ -985,7 +987,7 @@ const PWAInfoText = styled(motion.p)`
   color: var(--text-secondary);
 
   @media (max-width: 1024px) {
-  font-size: 1.2rem;
+    font-size: 1.2rem;
     line-height: 1.7;
   }
 
@@ -1098,7 +1100,7 @@ const BackgroundShape = styled(motion.div)`
 
   @media (max-width: 768px) {
     width: 300px;
-  height: 300px;
+    height: 300px;
   }
 
   @media (max-width: 480px) {
@@ -1107,11 +1109,11 @@ const BackgroundShape = styled(motion.div)`
   }
 
   &.shape-1 {
-  background: radial-gradient(
+    background: radial-gradient(
       circle,
-    rgba(94, 234, 212, 0.1) 0%,
-    transparent 70%
-  );
+      rgba(94, 234, 212, 0.1) 0%,
+      transparent 70%
+    );
     top: 20%;
     left: -200px;
 
@@ -1150,6 +1152,11 @@ const LandingPage = () => {
   // Добавляем состояние для аккордеона FAQ
   const [expandedFaqs, setExpandedFaqs] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const { t } = useTranslation();
+  const whatIsLandingPage = t('LandingPage.whatIsLandingPage.features', {
+    returnObjects: true,
+  });
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -1243,7 +1250,7 @@ const LandingPage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          Створюємо односторінкові сайти, що приносять прибуток вашому бізнесу
+          {t('LandingPage.hero.title')}
         </Title>
 
         <Subtitle
@@ -1251,9 +1258,7 @@ const LandingPage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          Розробляємо ефективні landing page, які конвертують відвідувачів у
-          клієнтів. Сучасний дизайн, швидкість завантаження та оптимізація для
-          пошукових систем.
+          {t('LandingPage.hero.subtitle')}
         </Subtitle>
 
         <PhoneContainer
@@ -1302,7 +1307,7 @@ const LandingPage = () => {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 2, duration: 0.5 }}
                 >
-                  Конверсія та результат
+                  {t('LandingPage.hero.phoneContent.subtitle')}
                 </motion.p>
               </PhoneContent>
 
@@ -1331,10 +1336,11 @@ const LandingPage = () => {
               <FaChartLine />
             </HeroBenefitIcon>
             <HeroBenefitContent>
-              <HeroBenefitTitle>Висока конверсія</HeroBenefitTitle>
+              <HeroBenefitTitle>
+                {t('LandingPage.hero.benefits.title1')}
+              </HeroBenefitTitle>
               <HeroBenefitDescription>
-                Створюємо сторінки, що перетворюють відвідувачів на клієнтів
-                завдяки правильній структурі та закликам до дії.
+                {t('LandingPage.hero.benefits.description1')}
               </HeroBenefitDescription>
             </HeroBenefitContent>
           </HeroBenefitItem>
@@ -1344,10 +1350,11 @@ const LandingPage = () => {
               <FaPencilRuler />
             </HeroBenefitIcon>
             <HeroBenefitContent>
-              <HeroBenefitTitle>Унікальний дизайн</HeroBenefitTitle>
+              <HeroBenefitTitle>
+                {t('LandingPage.hero.benefits.title2')}
+              </HeroBenefitTitle>
               <HeroBenefitDescription>
-                Розробляємо індивідуальний дизайн, що відображає особливості
-                вашого бренду та привертає увагу клієнтів.
+                {t('LandingPage.hero.benefits.description2')}
               </HeroBenefitDescription>
             </HeroBenefitContent>
           </HeroBenefitItem>
@@ -1357,10 +1364,11 @@ const LandingPage = () => {
               <FaBolt />
             </HeroBenefitIcon>
             <HeroBenefitContent>
-              <HeroBenefitTitle>Швидкий запуск</HeroBenefitTitle>
+              <HeroBenefitTitle>
+                {t('LandingPage.hero.benefits.title3')}
+              </HeroBenefitTitle>
               <HeroBenefitDescription>
-                Створюємо та запускаємо ефективні лендінги в найкоротші терміни,
-                щоб ви могли почати залучати клієнтів вже зараз.
+                {t('LandingPage.hero.benefits.description3')}
               </HeroBenefitDescription>
             </HeroBenefitContent>
           </HeroBenefitItem>
@@ -1390,7 +1398,7 @@ const LandingPage = () => {
           }}
           onClick={openModal}
         >
-          Дізнатися більше
+          {t('LandingPage.hero.buttonText')}
         </motion.button>
       </HeroSection>
       <PWAInfoSection
@@ -1427,7 +1435,7 @@ const LandingPage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Що таке Landing Page та які його основні функції
+            {t('LandingPage.whatIsLandingPage.title')}
           </PWAInfoTitle>
 
           <PWAInfoContent>
@@ -1436,21 +1444,11 @@ const LandingPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Landing Page (або односторінковий сайт) — це вебсторінка, створена
-              для досягнення конкретної маркетингової цілі: продажу товару,
-              збору заявок чи презентації послуги. Вона концентрує увагу
-              користувача на головному — вашій пропозиції.
+              {t('LandingPage.whatIsLandingPage.description')}
             </PWAInfoText>
 
             <PWAFeaturesList>
-              {[
-                'Чітка структура та зрозумілий користувацький шлях',
-                'Ефективні елементи захоплення уваги та заклики до дії',
-                'Адаптивний дизайн для всіх пристроїв',
-                'Швидке завантаження та оптимізована продуктивність',
-                'Інтеграція з системами аналітики та CRM',
-                "Форми захоплення лідів та зворотного зв'язку",
-              ].map((feature, index) => (
+              {whatIsLandingPage.map((feature, index) => (
                 <PWAFeatureItem
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
@@ -1468,9 +1466,7 @@ const LandingPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
-              Ефективний лендінг — це не просто гарна сторінка, а потужний
-              інструмент продажів, який перетворює відвідувачів у клієнтів та
-              приносить реальний прибуток вашому бізнесу.
+              {t('LandingPage.whatIsLandingPage.summary')}
             </PWASummary>
           </PWAInfoContent>
         </PWAInfoContainer>
@@ -1486,7 +1482,7 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Чим лендінг відрізняється від багатосторінкового сайту
+            {t('LandingPage.landingVsMultiPage.title')}
           </LandingVsTitle>
 
           <LandingVsQuote
@@ -1495,10 +1491,7 @@ const LandingPage = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             <QuoteIcon>💡</QuoteIcon>
-            Головна відмінність лендінгу — фокус. На відміну від
-            багатосторінкових сайтів, які розпорошують увагу між десятками
-            сторінок, лендінг веде користувача по логічному шляху до однієї
-            цільової дії. Це збільшує шанси, що відвідувач стане вашим клієнтом.
+            {t('LandingPage.landingVsMultiPage.quote')}
           </LandingVsQuote>
 
           <LandingVsGrid>
@@ -1510,19 +1503,23 @@ const LandingPage = () => {
             >
               <VsColTitle>
                 <VsColIcon>🎯</VsColIcon>
-                Лендінг
+                {t('LandingPage.landingVsMultiPage.landing.title')}
               </VsColTitle>
               <VsList>
                 <VsListItem>
-                  Одна сторінка — один чіткий шлях для користувача
+                  {t('LandingPage.landingVsMultiPage.landing.features.item1')}
                 </VsListItem>
-                <VsListItem>Всі елементи ведуть до цільової дії</VsListItem>
                 <VsListItem>
-                  Висока конверсія завдяки фокусу на результат
+                  {t('LandingPage.landingVsMultiPage.landing.features.item2')}
                 </VsListItem>
-                <VsListItem>Швидкий запуск та легке тестування</VsListItem>
                 <VsListItem>
-                  Ідеально для реклами та швидких продажів
+                  {t('LandingPage.landingVsMultiPage.landing.features.item3')}
+                </VsListItem>
+                <VsListItem>
+                  {t('LandingPage.landingVsMultiPage.landing.features.item4')}
+                </VsListItem>
+                <VsListItem>
+                  {t('LandingPage.landingVsMultiPage.landing.features.item5')}
                 </VsListItem>
               </VsList>
             </VsCol>
@@ -1535,21 +1532,23 @@ const LandingPage = () => {
             >
               <VsColTitle>
                 <VsColIcon>📄</VsColIcon>
-                Багатосторінковий сайт
+                {t('LandingPage.landingVsMultiPage.multiPage.title')}
               </VsColTitle>
               <VsList>
                 <VsListItem>
-                  Розгалужена структура з багатьма сторінками
-                </VsListItem>
-                <VsListItem>Розширений функціонал та можливості</VsListItem>
-                <VsListItem>
-                  Складніша навігація та довший шлях до цілі
+                  {t('LandingPage.landingVsMultiPage.multiPage.features.item1')}
                 </VsListItem>
                 <VsListItem>
-                  Підходить для великих проектів та каталогів
+                  {t('LandingPage.landingVsMultiPage.multiPage.features.item2')}
                 </VsListItem>
                 <VsListItem>
-                  Потребує більше часу на розробку та підтримку
+                  {t('LandingPage.landingVsMultiPage.multiPage.features.item3')}
+                </VsListItem>
+                <VsListItem>
+                  {t('LandingPage.landingVsMultiPage.multiPage.features.item4')}
+                </VsListItem>
+                <VsListItem>
+                  {t('LandingPage.landingVsMultiPage.multiPage.features.item5')}
                 </VsListItem>
               </VsList>
             </VsCol>
@@ -1567,7 +1566,7 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Як правильно побудований лендінг допомагає збільшити конверсію
+            {t('LandingPage.conversionBenefits.title')}
           </ConversionBenefitsTitle>
 
           <ConversionBenefitsDescription
@@ -1575,11 +1574,7 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Стратегічно спроєктований лендінг враховує потреби цільової
-            аудиторії, вирішує її болі та підводить до прийняття рішення. Від
-            грамотного заголовка до переконливого заклику до дії — кожен елемент
-            працює на результат. Саме тому ефективний лендинг — це не просто
-            сайт, а інструмент зростання прибутку.
+            {t('LandingPage.conversionBenefits.description')}
           </ConversionBenefitsDescription>
 
           <ConversionBenefitsSubtitle
@@ -1587,30 +1582,30 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Переваги замовлення професійного лендингу
+            {t('LandingPage.conversionBenefits.subtitle')}
           </ConversionBenefitsSubtitle>
 
           <ConversionBenefitsList>
             {[
               {
                 icon: <FaPencilRuler />,
-                text: 'Індивідуальний підхід до вашого бізнесу',
+                text: t('LandingPage.conversionBenefits.advantages.item1'),
               },
               {
                 icon: <FaChartLine />,
-                text: "Дизайн, що чіпляє та запам'ятовується",
+                text: t('LandingPage.conversionBenefits.advantages.item2'),
               },
               {
                 icon: <FaBolt />,
-                text: 'Висока швидкість завантаження й адаптивність',
+                text: t('LandingPage.conversionBenefits.advantages.item3'),
               },
               {
                 icon: <FaTools />,
-                text: 'SEO-оптимізація для просування в Google',
+                text: t('LandingPage.conversionBenefits.advantages.item4'),
               },
               {
                 icon: <FaChartLine />,
-                text: 'Підключення аналітики й готовність до реклами',
+                text: t('LandingPage.conversionBenefits.advantages.item5'),
               },
             ].map((advantage, index) => (
               <ConversionBenefitsItem
@@ -1644,7 +1639,7 @@ const LandingPage = () => {
             whileTap={{ scale: 0.98 }}
             onClick={openModal}
           >
-            Замовити лендінг
+            {t('LandingPage.conversionBenefits.buttonText')}
           </ConversionBenefitsButton>
         </ConversionBenefitsContainer>
 
@@ -1662,8 +1657,7 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Чому Landing Page — це найефективніший інструмент для залучення
-            клієнтів?
+            {t('LandingPage.whyEffective.title')}
           </LPWhyEffectiveTitle>
 
           <LPWhyEffectiveSubtitle
@@ -1671,7 +1665,7 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Як односторінковий сайт фокусується на конкретній дії користувача
+            {t('LandingPage.whyEffective.subtitle')}
           </LPWhyEffectiveSubtitle>
 
           <LPWhyEffectiveDescription
@@ -1679,11 +1673,7 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Landing Page створюється з чіткою метою: зацікавити, переконати й
-            спонукати користувача виконати певну дію — залишити заявку,
-            зателефонувати, придбати товар. Завдяки мінімуму відволікаючих
-            елементів і чіткій структурі, односторінкові сайти досягають вищої
-            конверсії, ніж класичні багатосторінкові сайти.
+            {t('LandingPage.whyEffective.description')}
           </LPWhyEffectiveDescription>
 
           <LPWhyEffectiveDecoration />
@@ -1703,7 +1693,7 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Які бізнеси отримують найбільше користі від лендингів
+            {t('LandingPage.businessBenefits.subtitle')}
           </LPBusinessBenefitSubtitle>
 
           <LPBusinessBenefitText
@@ -1711,33 +1701,33 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Лендінги ідеально підходять для:
+            {t('LandingPage.businessBenefits.intro')}
           </LPBusinessBenefitText>
 
           <LPBusinessBenefitList>
             {[
               {
                 icon: <FaBriefcase />,
-                title: 'Послуг',
-                text: 'юридичних, косметологічних, будівельних тощо',
+                title: t('LandingPage.businessBenefits.categories.title1'),
+                text: t('LandingPage.businessBenefits.categories.description1'),
                 color: '#5eead4',
               },
               {
                 icon: <FaGraduationCap />,
-                title: 'Онлайн-курсів',
-                text: 'та різноманітних інфопродуктів',
+                title: t('LandingPage.businessBenefits.categories.title2'),
+                text: t('LandingPage.businessBenefits.categories.description2'),
                 color: '#60a5fa',
               },
               {
                 icon: <FaShoppingCart />,
-                title: 'Продажу товарів',
-                text: 'окремих продуктів або нових колекцій',
+                title: t('LandingPage.businessBenefits.categories.title3'),
+                text: t('LandingPage.businessBenefits.categories.description3'),
                 color: '#f472b6',
               },
               {
                 icon: <FaRocket />,
-                title: 'Промо-акцій',
-                text: 'та запуску перспективних стартапів',
+                title: t('LandingPage.businessBenefits.categories.title4'),
+                text: t('LandingPage.businessBenefits.categories.description4'),
                 color: '#818cf8',
               },
             ].map((item, index) => (
@@ -1776,8 +1766,7 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
-            Фактично, будь-який бізнес, що має конкретну цільову аудиторію та
-            чітку пропозицію, виграє від використання лендінгу.
+            {t('LandingPage.businessBenefits.summary')}
           </LPBusinessBenefitSummary>
 
           <LPBusinessBenefitDecoration />
@@ -1799,8 +1788,7 @@ const LandingPage = () => {
               textAlign: 'center',
             }}
           >
-            Чому Landing Page — це найефективніший інструмент для залучення
-            клієнтів?
+            {t('LandingPage.effectiveness.title')}
           </Title>
 
           <LPEffectivenessBanner
@@ -1811,7 +1799,7 @@ const LandingPage = () => {
           >
             <LPEffectivenessBannerIcon>🚀</LPEffectivenessBannerIcon>
             <LPEffectivenessBannerText>
-              Односторінковий сайт, який перетворює відвідувачів у клієнтів
+              {t('LandingPage.whyEffective.subtitle')}
             </LPEffectivenessBannerText>
           </LPEffectivenessBanner>
 
@@ -1820,11 +1808,7 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Landing Page створюється з чіткою метою: зацікавити, переконати й
-            спонукати користувача виконати певну дію — залишити заявку,
-            зателефонувати, придбати товар. Завдяки мінімуму відволікаючих
-            елементів і чіткій структурі, односторінкові сайти досягають вищої
-            конверсії, ніж класичні багатосторінкові сайти.
+            {t('LandingPage.whyEffective.description')}
           </LPEffectivenessText>
 
           <LPEffectivenessGraphic
@@ -1835,22 +1819,22 @@ const LandingPage = () => {
             <LPEffectivenessConversionFlow>
               {[
                 {
-                  title: 'Привернення уваги',
+                  title: t('LandingPage.businessBenefits.categories.title1'),
                   icon: <FaEye />,
                   color: '#5eead4',
                 },
                 {
-                  title: 'Утримання інтересу',
+                  title: t('LandingPage.businessBenefits.categories.title2'),
                   icon: <FaLightbulb />,
                   color: '#60a5fa',
                 },
                 {
-                  title: 'Формування бажання',
+                  title: t('LandingPage.businessBenefits.categories.title3'),
                   icon: <FaHeart />,
                   color: '#f472b6',
                 },
                 {
-                  title: 'Спонукання до дії',
+                  title: t('LandingPage.businessBenefits.categories.title4'),
                   icon: <FaHandPointer />,
                   color: '#818cf8',
                 },
@@ -1887,26 +1871,26 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            Реальні переваги лендінгів у цифрах
+            {t('LandingPage.effectiveness.statsTitle')}
           </LPEffectivenessStatsTitle>
 
           <LPEffectivenessStats>
             {[
               {
                 value: '+75%',
-                label: 'Збільшення конверсії',
+                label: t('LandingPage.effectiveness.stats.label1'),
                 icon: <FaChartLine />,
                 color: '#5eead4',
               },
               {
                 value: '-50%',
-                label: 'Менша вартість залучення клієнта',
+                label: t('LandingPage.effectiveness.stats.label2'),
                 icon: <FaCoins />,
                 color: '#60a5fa',
               },
               {
                 value: 'x3',
-                label: 'Швидше введення на ринок',
+                label: t('LandingPage.effectiveness.stats.label3'),
                 icon: <FaRocket />,
                 color: '#f472b6',
               },
@@ -1946,22 +1930,22 @@ const LandingPage = () => {
             transition={{ duration: 0.7, delay: 0.9 }}
           >
             <LPEffectivenessAdvantagesTitle>
-              Ключові переваги лендингу перед звичайними сайтами
+              {t('LandingPage.effectiveness.advantagesTitle')}
             </LPEffectivenessAdvantagesTitle>
 
             <LPEffectivenessAdvantagesList>
               {[
                 {
-                  text: '<strong>Одна мета</strong> — користувач не відволікається на другорядну інформацію',
+                  text: t('LandingPage.effectiveness.advantages.item1'),
                 },
                 {
-                  text: '<strong>Чітка структура</strong> — кожний блок логічно підводить до цільової дії',
+                  text: t('LandingPage.effectiveness.advantages.item2'),
                 },
                 {
-                  text: '<strong>Спрощена аналітика</strong> — легше відстежувати поведінку користувача',
+                  text: t('LandingPage.effectiveness.advantages.item3'),
                 },
                 {
-                  text: '<strong>A/B тестування</strong> — можливість швидко перевіряти різні гіпотези',
+                  text: t('LandingPage.effectiveness.advantages.item4'),
                 },
               ].map((item, index) => (
                 <LPEffectivenessAdvantagesItem
@@ -1993,8 +1977,7 @@ const LandingPage = () => {
           >
             <LPEffectivenessQuoteIcon>💡</LPEffectivenessQuoteIcon>
             <LPEffectivenessQuoteText>
-              Лендінг — це не просто сторінка, а конверсійна воронка, де кожен
-              елемент має свою роль у перетворенні відвідувача в клієнта
+              {t('LandingPage.effectiveness.quote')}
             </LPEffectivenessQuoteText>
           </LPEffectivenessQuote>
 
@@ -2009,7 +1992,7 @@ const LandingPage = () => {
             whileTap={{ scale: 0.98 }}
             onClick={openModal}
           >
-            Замовити ефективний лендінг
+            {t('LandingPage.effectiveness.buttonText')}
             <LPEffectivenessCTAArrow>
               <FaArrowRight />
             </LPEffectivenessCTAArrow>
@@ -2031,7 +2014,7 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Як ми створюємо лендінг, що перетворює відвідувачів у покупців{' '}
+            {t('LandingPage.creation.title')}
           </LPCreationTitle>{' '}
           <LPCreationContent>
             {' '}
@@ -2040,23 +2023,23 @@ const LandingPage = () => {
               {[
                 {
                   icon: <FaSearch />,
-                  title: 'Аналіз та стратегія',
-                  text: 'Вивчаємо ваш бізнес, конкурентів і цільову аудиторію для формування чіткої стратегії',
+                  title: t('LandingPage.creation.steps.title1'),
+                  text: t('LandingPage.creation.steps.description1'),
                 },
                 {
                   icon: <FaPencilRuler />,
-                  title: 'Дизайн та прототип',
-                  text: 'Створюємо унікальний дизайн, що відображає ваш бренд, та розробляємо прототип з фокусом на конверсію',
+                  title: t('LandingPage.creation.steps.title2'),
+                  text: t('LandingPage.creation.steps.description2'),
                 },
                 {
                   icon: <FaCode />,
-                  title: 'Розробка',
-                  text: 'Верстаємо адаптивний лендінг з сучасними анімаціями та оптимізуємо швидкість і продуктивність',
+                  title: t('LandingPage.creation.steps.title3'),
+                  text: t('LandingPage.creation.steps.description3'),
                 },
                 {
                   icon: <FaRocket />,
-                  title: 'Запуск та аналітика',
-                  text: 'Налаштовуємо аналітику, тестуємо всі елементи та запускаємо лендінг з подальшою підтримкою',
+                  title: t('LandingPage.creation.steps.title4'),
+                  text: t('LandingPage.creation.steps.description4'),
                 },
               ].map((step, index) => (
                 <LPCreationStep
@@ -2096,23 +2079,23 @@ const LandingPage = () => {
                 {[
                   {
                     icon: '🎯',
-                    title: 'Чітка структура',
-                    text: 'Логічна послідовність блоків, що ведуть до цільової дії',
+                    title: t('LandingPage.creation.features.title1'),
+                    text: t('LandingPage.creation.features.description1'),
                   },
                   {
                     icon: '💡',
-                    title: 'Унікальний дизайн',
-                    text: 'Креативні рішення, що виділяють вас серед конкурентів',
+                    title: t('LandingPage.creation.features.title2'),
+                    text: t('LandingPage.creation.features.description2'),
                   },
                   {
                     icon: '⚡',
-                    title: 'Швидкість роботи',
-                    text: 'Оптимізована швидкість завантаження та відгуку',
+                    title: t('LandingPage.creation.features.title3'),
+                    text: t('LandingPage.creation.features.description3'),
                   },
                   {
                     icon: '📱',
-                    title: 'Адаптивність',
-                    text: 'Ідеальне відображення на всіх пристроях',
+                    title: t('LandingPage.creation.features.title4'),
+                    text: t('LandingPage.creation.features.description4'),
                   },
                 ].map((card, index) => (
                   <LPCreationCard
@@ -2152,7 +2135,7 @@ const LandingPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              Замовте ефективний лендінг для вашого бізнесу
+              {t('LandingPage.cta.title')}
             </CtaTitle>
 
             <CtaText
@@ -2160,9 +2143,7 @@ const LandingPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Бажаєте отримати сучасний односторінковий сайт, який буде
-              приносити реальні заявки та продажі? Ми створимо для вас продаючий
-              лендінг з унікальним дизайном та високою конверсією.
+              {t('LandingPage.cta.description')}
             </CtaText>
 
             <CtaHighlight
@@ -2170,7 +2151,7 @@ const LandingPage = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Розробляємо лендінги, що приносять результат
+              {t('LandingPage.cta.highlight')}
             </CtaHighlight>
 
             <CtaSubtext
@@ -2178,8 +2159,7 @@ const LandingPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Залиште заявку — і ми зв'яжемося з вами для обговорення вашого
-              проєкту, розрахунку вартості та термінів розробки.
+              {t('LandingPage.cta.subtext')}
             </CtaSubtext>
 
             <CtaForm
@@ -2188,17 +2168,26 @@ const LandingPage = () => {
               transition={{ duration: 0.8, delay: 0.7 }}
             >
               <CtaInputWrapper>
-                <CtaInput type="text" placeholder="Ваше ім'я" />
+                <CtaInput
+                  type="text"
+                  placeholder={t('LandingPage.cta.form.name')}
+                />
                 <CtaInputBg />
               </CtaInputWrapper>
 
               <CtaInputWrapper>
-                <CtaInput type="tel" placeholder="Телефон" />
+                <CtaInput
+                  type="tel"
+                  placeholder={t('LandingPage.cta.form.phone')}
+                />
                 <CtaInputBg />
               </CtaInputWrapper>
 
               <CtaInputWrapper>
-                <CtaInput type="email" placeholder="Email" />
+                <CtaInput
+                  type="email"
+                  placeholder={t('LandingPage.cta.form.email')}
+                />
                 <CtaInputBg />
               </CtaInputWrapper>
 
@@ -2209,7 +2198,7 @@ const LandingPage = () => {
                 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Отримати консультацію
+                {t('LandingPage.cta.form.button')}
               </CtaButton>
             </CtaForm>
 
@@ -2218,8 +2207,7 @@ const LandingPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.9 }}
             >
-              Зробіть перший крок до збільшення продажів — замовте професійний
-              лендінг прямо зараз
+              {t('LandingPage.cta.footer')}
             </CtaFooterText>
           </CtaContent>
 
@@ -2252,45 +2240,36 @@ const LandingPage = () => {
           >
             {[
               {
-                question: 'Що таке Landing Page і для чого він потрібен?',
-                answer:
-                  'Landing Page — це односторінковий сайт, який фокусується на одній дії: отримати заявку, дзвінок або продаж. Ми створюємо кастомні лендінги з унікальною структурою, дизайном і контентом, що підлаштовані під конкретну цільову аудиторію.',
+                question: t('LandingPage.faq.questions.question1'),
+                answer: t('LandingPage.faq.questions.answer1'),
               },
               {
-                question:
-                  'Чим односторінковий сайт відрізняється від звичайного сайту?',
-                answer:
-                  'Звичайний сайт містить багато сторінок і розділів, а лендінг — це фокусований інструмент продажів. У ньому все підпорядковано одній дії, без зайвих відволікань. Кастомна розробка дозволяє зробити лендінг максимально точним і ефективним.',
+                question: t('LandingPage.faq.questions.question2'),
+                answer: t('LandingPage.faq.questions.answer2'),
               },
               {
-                question: 'Які види лендінгів існують?',
-                answer:
-                  'Ми створюємо різні типи кастомних лендінгів: Продуктові — для продажу конкретного товару чи послуги, Промо-сторінки — для акцій, запусків, подій, Лендінги-візитки — для експертів, фрілансерів, бізнесу, Лід-генераційні — для збору заявок та контактів.',
+                question: t('LandingPage.faq.questions.question3'),
+                answer: t('LandingPage.faq.questions.answer3'),
               },
               {
-                question: 'Скільки часу потрібно для створення Landing Page?',
-                answer:
-                  'В середньому — від 7 до 14 робочих днів. Все залежить від складності задач, обсягу контенту та необхідного функціоналу. Кастомна розробка займає трохи більше часу, але результат повністю унікальний.',
+                question: t('LandingPage.faq.questions.question4'),
+                answer: t('LandingPage.faq.questions.answer4'),
               },
               {
-                question: 'Чи можна редагувати лендінг після запуску?',
-                answer:
-                  'Так, ми закладаємо можливість подальших змін і оновлень. Ви зможете звертатися до нас для редагування або отримати доступ до адміністративної частини, якщо вона передбачена.',
+                question: t('LandingPage.faq.questions.question5'),
+                answer: t('LandingPage.faq.questions.answer5'),
               },
               {
-                question: 'Як лендінг допомагає підвищити конверсію?',
-                answer:
-                  'Наші кастомні лендінги створюються на основі аналізу ЦА, психології поведінки користувача та маркетингових тригерів. Завдяки правильній структурі, сильним заголовкам, УТП і елементам довіри ми допомагаємо перетворити відвідувача на клієнта.',
+                question: t('LandingPage.faq.questions.question6'),
+                answer: t('LandingPage.faq.questions.answer6'),
               },
               {
-                question: 'На якій платформі ви розробляєте лендінги?',
-                answer:
-                  'Ми не використовуємо конструктори (типу Tilda чи Wix). Кожен сайт створюється з нуля — вручну, на чистому коді (HTML, CSS, JS, іноді CMS за потреби). Це дає максимальну свободу в реалізації дизайну, високу швидкість роботи сайту та повний контроль над усім функціоналом.',
+                question: t('LandingPage.faq.questions.question7'),
+                answer: t('LandingPage.faq.questions.answer7'),
               },
               {
-                question: 'Які послуги входять у створення Landing Page?',
-                answer:
-                  'Повний цикл кастомної розробки включає: Аналіз вашого бізнесу та ЦА, Розробку структури та прототипу, Унікальний дизайн і адаптивну верстку, Написання текстів під продаж, Підключення аналітики, Тестування функціоналу, Запуск і підтримку після публікації.',
+                question: t('LandingPage.faq.questions.question8'),
+                answer: t('LandingPage.faq.questions.answer8'),
               },
             ].map((faq, index) => (
               <FaqItem
@@ -2344,7 +2323,7 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.2 }}
           >
-            <FaqCtaText>Не знайшли відповідь на своє питання?</FaqCtaText>
+            <FaqCtaText>{t('LandingPage.faq.ctaText')}</FaqCtaText>
             <FaqCtaButton
               whileHover={{
                 scale: 1.03,
@@ -2353,7 +2332,7 @@ const LandingPage = () => {
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
             >
-              Напишіть нам
+              {t('LandingPage.faq.ctaButton')}
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
@@ -2628,13 +2607,13 @@ const CtaDecoration = styled.div`
 const PWAFaqSection = styled(motion.section)`
   position: relative;
   padding: 8rem 2rem;
-    background: linear-gradient(
+  background: linear-gradient(
     180deg,
     var(--bg-primary) 0%,
     rgba(16, 24, 39, 0.9) 100%
   );
   overflow: hidden;
-    z-index: 0;
+  z-index: 0;
 
   @media (max-width: 1024px) {
     padding: 6rem 1.5rem;
@@ -3628,7 +3607,7 @@ const LandingVsTitle = styled(motion.h2)`
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
 
-  @media (max-width: 768px) {
+    @media (max-width: 768px) {
       width: 100px;
       height: 3px;
       bottom: -12px;
@@ -3809,7 +3788,7 @@ const VsColTitle = styled.h3`
   }
 
   @media (max-width: 576px) {
-  font-size: 1.1rem;
+    font-size: 1.1rem;
     margin-bottom: 1rem;
     gap: 0.5rem;
   }
@@ -3835,7 +3814,7 @@ const VsColIcon = styled.span`
   }
 
   @media (max-width: 480px) {
-  font-size: 1.2rem;
+    font-size: 1.2rem;
   }
 `;
 
@@ -3852,7 +3831,7 @@ const VsList = styled.ul`
   }
 
   @media (max-width: 576px) {
-  gap: 0.7rem;
+    gap: 0.7rem;
   }
 
   @media (max-width: 480px) {
@@ -3887,7 +3866,7 @@ const VsListItem = styled.li`
   @media (max-width: 480px) {
     font-size: 0.85rem;
     padding-left: 1.2rem;
-  line-height: 1.3;
+    line-height: 1.3;
   }
 
   &::before {
@@ -3901,7 +3880,7 @@ const VsListItem = styled.li`
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(94, 234, 212, 0.5);
 
-  @media (max-width: 768px) {
+    @media (max-width: 768px) {
       width: 6px;
       height: 6px;
       top: 0.4rem;
@@ -4042,7 +4021,7 @@ const ConversionBenefitsTitle = styled(motion.h2)`
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
 
-  @media (max-width: 768px) {
+    @media (max-width: 768px) {
       width: 100px;
       height: 3px;
       bottom: -12px;
@@ -4673,12 +4652,12 @@ const LPBusinessBenefitSubtitle = styled(motion.h3)`
     background: linear-gradient(90deg, var(--accent-color), transparent);
     border-radius: 4px;
 
-  @media (max-width: 768px) {
+    @media (max-width: 768px) {
       width: 70px;
       height: 2px;
       bottom: -8px;
     }
-    
+
     @media (max-width: 480px) {
       width: 60px;
       height: 2px;
@@ -5353,7 +5332,7 @@ const LPCreationBackground = styled.div`
 `;
 
 const LPCreationPattern = styled.div`
-    position: absolute;
+  position: absolute;
   inset: 0;
   background-image: radial-gradient(
     rgba(255, 255, 255, 0.1) 1px,
@@ -5894,6 +5873,8 @@ const LPOfferDivider = styled.div`
 `;
 
 const LPOfferSection = () => {
+  const { t } = useTranslation();
+
   return (
     <Section>
       <LPOfferDivider />
@@ -5907,7 +5888,7 @@ const LPOfferSection = () => {
             textAlign: 'center',
           }}
         >
-          Отримайте ефективний Landing Page під ключ — швидко та вигідно
+          {t('LandingPage.offer.title')}
         </Title>
         <OfferCard
           initial={{ opacity: 0, y: 20 }}
@@ -5916,91 +5897,73 @@ const LPOfferSection = () => {
           transition={{ duration: 0.6 }}
         >
           <RequirementsTitle style={{ color: 'var(--text-primary)' }}>
-            Чому варто замовити лендінг у професіоналів
+            {t('LandingPage.offer.subtitle')}
           </RequirementsTitle>
           <RequirementsText>
-            Самостійно створити лендінг — можна. Але створити той, що дійсно
-            продає, — справа для команди з досвідом. Ми знаємо, як вивести
-            клієнта на цільову дію, як структурувати контент, де поставити
-            кнопку й що написати в заголовку. Ваш сайт — це обличчя бізнесу, і
-            воно має працювати на вас.
+            {t('LandingPage.offer.description')}
           </RequirementsText>
           <RequirementsText style={{ marginTop: '1.5rem' }}>
-            Ми пропонуємо як повністю індивідуальну розробку, так і адаптацію
-            шаблонів під ваш бізнес. Обидва варіанти мають свої переваги — все
-            залежить від бюджету, задач і термінів. У будь-якому випадку ви
-            отримаєте сучасний, адаптивний та конверсійний лендінг.
+            {t('LandingPage.offer.additionalDescription')}
           </RequirementsText>
         </OfferCard>
 
         <OfferContainer>
           <OfferBlock>
-            <BlockTitle>Що ви отримаєте:</BlockTitle>
+            <BlockTitle>{t('LandingPage.offer.whatYouGet.title')}</BlockTitle>
             <OfferList>
               <OfferItem>
                 <OfferIcon>
                   <FaRocket />
                 </OfferIcon>
-                <span>
-                  Професійний односторінковий сайт, оптимізований під ваші цілі
-                  та аудиторію
-                </span>
+                <span>{t('LandingPage.offer.whatYouGet.items.item1')}</span>
               </OfferItem>
               <OfferItem>
                 <OfferIcon>
                   <FaChartLine />
                 </OfferIcon>
-                <span>
-                  Збільшення конверсії та продажів завдяки правильній структурі
-                  та УТП
-                </span>
+                <span>{t('LandingPage.offer.whatYouGet.items.item2')}</span>
               </OfferItem>
               <OfferItem>
                 <OfferIcon>
                   <FaMobile />
                 </OfferIcon>
-                <span>
-                  Адаптивний дизайн, що відмінно виглядає на всіх пристроях
-                </span>
+                <span>{t('LandingPage.offer.whatYouGet.items.item3')}</span>
               </OfferItem>
               <OfferItem>
                 <OfferIcon>
                   <FaBolt />
                 </OfferIcon>
-                <span>Швидке завантаження та оптимальна продуктивність</span>
+                <span>{t('LandingPage.offer.whatYouGet.items.item4')}</span>
               </OfferItem>
             </OfferList>
           </OfferBlock>
 
           <OfferBlock>
-            <BlockTitle>Наші фішки:</BlockTitle>
+            <BlockTitle>{t('LandingPage.offer.ourFeatures.title')}</BlockTitle>
             <OfferList>
               <OfferItem>
                 <OfferIcon>
                   <FaBrain />
                 </OfferIcon>
-                <span>
-                  Унікальний дизайн, створений під ваш бренд та цільову
-                  аудиторію
-                </span>
+                <span>{t('LandingPage.offer.ourFeatures.items.item1')}</span>
               </OfferItem>
               <OfferItem>
                 <OfferIcon>
                   <FaCog />
                 </OfferIcon>
-                <span>Інтеграція з CRM та системами аналітики</span>
+                <span>{t('LandingPage.offer.ourFeatures.items.item2')}</span>
               </OfferItem>
               <OfferItem>
                 <OfferIcon>
                   <FaShieldAlt />
                 </OfferIcon>
-                <span>Захист від спаму та безпека даних</span>
+                <span>{t('LandingPage.offer.ourFeatures.items.item3')}</span>
               </OfferItem>
               <OfferItem>
                 <OfferIcon>
                   <FaTools />
                 </OfferIcon>
-                <span>Технічна підтримка та консультації після запуску</span>
+                <span>{t('LandingPage.offer.ourFeatures.items.item4')}</span>
               </OfferItem>
             </OfferList>
           </OfferBlock>
@@ -6065,6 +6028,8 @@ const LPRequirementsDivider = styled.div`
 `;
 
 const LPRequirementsSection = () => {
+  const { t } = useTranslation();
+
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -6087,7 +6052,7 @@ const LPRequirementsSection = () => {
             textAlign: 'center',
           }}
         >
-          Що потрібно для створення односторінкового сайту, який продає?
+          {t('LandingPage.requirements.title')}
         </Title>
         <RequirementsGrid>
           <RequirementsCard
@@ -6098,12 +6063,11 @@ const LPRequirementsSection = () => {
             whileHover={{ scale: 1.02 }}
             transition={{ type: 'spring', stiffness: 300 }}
           >
-            <RequirementsTitle>Чітка структура та сильне УТП</RequirementsTitle>
+            <RequirementsTitle>
+              {t('LandingPage.requirements.cards.title1')}
+            </RequirementsTitle>
             <RequirementsText>
-              Успішний лендинг починається зі сценарію, що веде користувача до
-              конкретної дії: залишити заявку, здійснити покупку або записатися
-              на консультацію. Унікальна торгова пропозиція (УТП) повинна одразу
-              захоплювати увагу, бути зрозумілою та цінною для вашого клієнта.
+              {t('LandingPage.requirements.cards.description1')}
             </RequirementsText>
           </RequirementsCard>
 
@@ -6116,14 +6080,10 @@ const LPRequirementsSection = () => {
             transition={{ type: 'spring', stiffness: 300 }}
           >
             <RequirementsTitle>
-              Тригери довіри та правильний заклик до дії
+              {t('LandingPage.requirements.cards.title2')}
             </RequirementsTitle>
             <RequirementsText>
-              Щоб користувач не сумнівався, важливо додати елементи довіри:
-              реальні відгуки, кейси, фото, сертифікати, гарантії. Це суттєво
-              підвищує рівень впевненості. А завершальним кроком має стати
-              сильний заклик до дії (CTA): яскрава кнопка з чітким посилом, що
-              мотивує натиснути.
+              {t('LandingPage.requirements.cards.description2')}
             </RequirementsText>
           </RequirementsCard>
 
@@ -6135,12 +6095,11 @@ const LPRequirementsSection = () => {
             whileHover={{ scale: 1.02 }}
             transition={{ type: 'spring', stiffness: 300 }}
           >
-            <RequirementsTitle>Оптимізація та простота</RequirementsTitle>
+            <RequirementsTitle>
+              {t('LandingPage.requirements.cards.title3')}
+            </RequirementsTitle>
             <RequirementsText>
-              Важливо не перенавантажувати сторінку — мінімум зайвих елементів,
-              максимум фокус на цілі. А ще — технічна оптимізація: швидке
-              завантаження, адаптивність, зручна навігація на будь-якому
-              пристрої.
+              {t('LandingPage.requirements.cards.description3')}
             </RequirementsText>
           </RequirementsCard>
         </RequirementsGrid>
