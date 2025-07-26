@@ -1036,41 +1036,504 @@ const resources = {
         faq: {
           title: 'FAQ',
           questions: {
-         
-              question1: 'What is Landing Page and what is it needed for?',
-              answer1:
-                'Landing Page is a single-page website that focuses on one action: get an application, call or sale. We create custom landing pages with unique structure, design and content tailored to a specific target audience.',
-        
-              question2:
-                'How does single-page website differ from regular website?',
-              answer2:
-                'Regular website contains many pages and sections, while landing page is a focused sales tool. Everything in it is subordinated to one action, without unnecessary distractions. Custom development allows making the landing page as accurate and effective as possible.',
-           
-              question3: 'What types of landing pages exist?',
-              answer3:
-                'We create different types of custom landing pages: Product — for selling specific product or service, Promo pages — for campaigns, launches, events, Business card landing pages — for experts, freelancers, business, Lead generation — for collecting applications and contacts.',
-         
-              question4: 'How much time is needed to create a Landing Page?',
-              answer4:
-                'On average — from 7 to 14 working days. Everything depends on task complexity, content volume and required functionality. Custom development takes a bit more time, but the result is completely unique.',
-           
-              question5: 'Can landing page be edited after launch?',
-              answer5:
-                "Yes, we provide the possibility of further changes and updates. You can contact us for editing or get access to the administrative part if it's provided.",
-           
-              question6: 'How does landing page help increase conversion?',
-              answer6:
-                'Our custom landing pages are created based on target audience analysis, user behavior psychology and marketing triggers. Thanks to proper structure, strong headlines, USP and trust elements, we help transform a visitor into a customer.',
-           
-              question7: 'On what platform do you develop landing pages?',
-              answer7:
-                "We don't use constructors (like Tilda or Wix). Each website is created from scratch — manually, on clean code (HTML, CSS, JS, sometimes CMS if needed). This gives maximum freedom in design implementation, high website speed and full control over all functionality.",
-           
-              question8: 'What services are included in Landing Page creation?',
-              answer8:
-                'Full cycle of custom development includes: Analysis of your business and target audience, Structure and prototype development, Unique design and adaptive layout, Sales-oriented text writing, Analytics connection, Functionality testing, Launch and support after publication.',
-            
+            question1: 'What is Landing Page and what is it needed for?',
+            answer1:
+              'Landing Page is a single-page website that focuses on one action: get an application, call or sale. We create custom landing pages with unique structure, design and content tailored to a specific target audience.',
+
+            question2:
+              'How does single-page website differ from regular website?',
+            answer2:
+              'Regular website contains many pages and sections, while landing page is a focused sales tool. Everything in it is subordinated to one action, without unnecessary distractions. Custom development allows making the landing page as accurate and effective as possible.',
+
+            question3: 'What types of landing pages exist?',
+            answer3:
+              'We create different types of custom landing pages: Product — for selling specific product or service, Promo pages — for campaigns, launches, events, Business card landing pages — for experts, freelancers, business, Lead generation — for collecting applications and contacts.',
+
+            question4: 'How much time is needed to create a Landing Page?',
+            answer4:
+              'On average — from 7 to 14 working days. Everything depends on task complexity, content volume and required functionality. Custom development takes a bit more time, but the result is completely unique.',
+
+            question5: 'Can landing page be edited after launch?',
+            answer5:
+              "Yes, we provide the possibility of further changes and updates. You can contact us for editing or get access to the administrative part if it's provided.",
+
+            question6: 'How does landing page help increase conversion?',
+            answer6:
+              'Our custom landing pages are created based on target audience analysis, user behavior psychology and marketing triggers. Thanks to proper structure, strong headlines, USP and trust elements, we help transform a visitor into a customer.',
+
+            question7: 'On what platform do you develop landing pages?',
+            answer7:
+              "We don't use constructors (like Tilda or Wix). Each website is created from scratch — manually, on clean code (HTML, CSS, JS, sometimes CMS if needed). This gives maximum freedom in design implementation, high website speed and full control over all functionality.",
+
+            question8: 'What services are included in Landing Page creation?',
+            answer8:
+              'Full cycle of custom development includes: Analysis of your business and target audience, Structure and prototype development, Unique design and adaptive layout, Sales-oriented text writing, Analytics connection, Functionality testing, Launch and support after publication.',
           },
+          ctaText: "Didn't find the answer to your question?",
+          ctaButton: 'Write to us',
+        },
+      },
+      MobileAppsPage: {
+        hero: {
+          title: 'Custom mobile app development',
+          subtitle:
+            "Creating a mobile app is an effective business tool that helps attract new customers, increase loyalty, and boost sales. In today's world, over 70% of internet traffic comes from mobile devices, so having your own mobile app for iOS or Android becomes an important competitive advantage.",
+          subtitle2:
+            'Our company offers professional mobile app development services "turnkey" — from analytics and planning to launch and support. We create native apps, cross-platform solutions, and progressive web apps (PWA) that work fast, stably, and securely.',
+          buttonText: 'Order consultation',
+          phoneContent: {
+            title: 'Mobile App',
+            subtitle: 'iOS + Android',
+          },
+        },
+        benefits: {
+          title1: 'Native development',
+          desc1:
+            'We create unique apps with maximum performance for iOS and Android.',
+          title2: 'Cross-platform solutions',
+          desc2: 'Save time and budget with apps that work on all platforms.',
+          title3: 'Support and updates',
+          desc3:
+            'We ensure stable operation and release new versions with additional functionality.',
+        },
+        business: {
+          title: 'Why your business needs a mobile app',
+          text1:
+            'A mobile app opens new opportunities for business interaction with customers and market promotion. It allows you to stay connected with your audience 24/7, send push notifications about promotions, news, and special offers, as well as collect analytics to improve service.',
+          text2:
+            'Additionally, having a mobile app helps strengthen your brand. A bright and convenient interface, flawless functionality, and fast operation help form a positive company image. Businesses that offer a mobile experience significantly outperform competitors in customer engagement and sales volume.',
+          highlight:
+            'By investing in mobile app development, you get a powerful marketing tool that works for your success every day.',
+        },
+        appTypes: {
+          title: 'What mobile apps we create',
+          description:
+            'Our team develops mobile solutions for businesses of any complexity — from startups to large corporations. We create apps that perfectly fit your target audience and business goals.',
+          nativeTitle: 'Native apps for iOS and Android',
+          nativeDesc:
+            'Native development allows creating maximum fast and stable apps that fully utilize the capabilities of iOS and Android operating systems. Such apps are distinguished by high performance, quality graphics, and deep integration with user devices.',
+          crossTitle: 'Cross-platform apps on Flutter and React Native',
+          crossDesc:
+            'Cross-platform solutions allow developing one app for two platforms simultaneously, saving time and budget. Flutter and React Native technologies ensure high speed, good interface quality, and easy project scaling.',
+          pwaTitle: 'Progressive web apps (PWA)',
+          pwaDesc:
+            "Progressive web apps combine the advantages of websites and native apps. They work in the browser, don't require installation, can work offline, and support push notifications. PWA is an excellent choice for businesses that want to quickly launch a mobile product with minimal costs.",
+        },
+        stages: {
+          title: 'Mobile app development stages',
+          description:
+            'The process of creating a mobile app consists of several important stages, each of which affects the quality of the final product and its success among users.',
+          step1Title: 'Analysis and planning',
+          step1Desc:
+            'We study your business, audience, competitors, and formulate clear requirements for the future app. We create technical specifications and choose optimal technologies.',
+          step2Title: 'UX/UI Design',
+          step2Desc:
+            'We design the logical structure of the app, create prototypes and design that ensures ease of use and attractive appearance.',
+          step3Title: 'Development',
+          step3Desc:
+            'Our programmers implement functionality, integrate necessary services, ensure security and optimize app performance.',
+          step4Title: 'Testing',
+          step4Desc:
+            'We conduct comprehensive testing to identify and fix errors. We guarantee stable app operation on different devices and operating system versions.',
+          step5Title: 'Launch and support',
+          step5Desc:
+            'We publish the app in App Store and Google Play, provide technical support, develop and update the product according to new business needs.',
+          buttonText: 'Order development',
+        },
+        whyUs: {
+          title: 'Advantages of working with our team',
+          subtitle:
+            'By ordering mobile app development from us, you get not just a contractor, but a reliable technology partner who is interested in your success.',
+          card1Title: 'Experienced development team',
+          card1Desc:
+            'We have been working in mobile development for many years and have successful cases in various niches — from e-commerce and finance to education and medicine.',
+          card2Title: 'Individual approach to each project',
+          card2Desc:
+            'Every business is unique, so we offer solutions that consider your goals, target audience needs, and budget.',
+          card3Title: 'Quality guarantee and deadline compliance',
+          card3Desc:
+            'We strictly control quality at every development stage and always adhere to agreed deadlines. Your project will be implemented on time and meet all modern standards.',
+          buttonText: 'Order development',
+        },
+        pricing: {
+          title: 'Mobile app cost',
+          description:
+            'The price of mobile app development depends on several factors: functionality complexity, platform choice, technologies, and implementation terms. We offer flexible solutions that allow choosing the optimal option for your budget and needs.',
+          factorsTitle: 'Main factors affecting cost:',
+          factor1Title: 'App type',
+          factor1Desc: 'Native, cross-platform, or PWA.',
+          factor2Title: 'Functionality complexity',
+          factor2Desc:
+            'Additional features such as payment system integration, geolocation, video/audio functions, etc.',
+          factor3Title: 'Design and UX/UI',
+          factor3Desc:
+            'Unique design may increase cost, but it always contributes to better user experience.',
+          factor4Title: 'Implementation timeline',
+          factor4Desc:
+            'The faster you need to complete the project, the higher the resource costs may be.',
+          ctaText:
+            'For accurate calculation of your mobile app cost, we offer a free consultation during which we will determine the scope of work and create an individual proposal.',
+          buttonText: 'Get consultation',
+        },
+        faq: {
+          title: 'FAQ',
+          q1: 'How long does mobile app development take?',
+          a1: 'The time for mobile app development depends on the project complexity and functions you want to implement. Usually, development takes from 2 to 6 months for standard apps, but for complex solutions, this period may be longer.',
+          q2: "What's the difference between native and cross-platform apps?",
+          a2: 'A native app is developed separately for each operating system (iOS or Android), which allows achieving high performance and integration with device functions. Cross-platform apps are developed using technologies that allow using one code for two platforms, which saves time and budget, but may be less optimal in speed and stability.',
+          q3: 'What is a progressive web app (PWA)?',
+          a3: 'A progressive web app is a web app that combines the advantages of websites and native apps. PWA can work offline, receive push notifications, and launch on any device without installation.',
+          q4: 'What advantages does a mobile app have for my business?',
+          a4: 'A mobile app allows your business to be accessible to customers 24/7, helps increase loyalty, improves user experience, and allows conducting effective marketing campaigns. The app also helps collect analytics to improve service and expand business.',
+          q5: 'What additional functions can be added to a mobile app?',
+          a5: 'Various functions can be added to a mobile app, such as geolocation, push notifications, payment system integration, chatbots, social networks, offline mode, multimedia support (video, photos), and many others, depending on your needs.',
+          q6: 'How can I get the exact cost of mobile app development?',
+          a6: 'For accurate cost calculation, we need to discuss project details: its complexity, desired platform, functionality, and terms. We offer a free consultation during which we will collect all necessary information and provide you with an individual proposal.',
+          ctaText: "Didn't find the answer to your question?",
+          ctaButton: 'Write to us',
+        },
+      },
+      BannerAdsPage: {
+        hero: {
+          title: 'AI Advertising Banners – Fast, Accurate, Effective',
+          subtitle:
+            'Increase the effectiveness of your marketing with AI-powered banner ads. Save time, personalize, and convert.',
+          buttonText: 'Order Banners',
+          features: {
+            fast: 'Fast',
+            quality: 'Quality',
+            effective: 'Effective',
+          },
+        },
+        imgText: {
+          text1: 'Special offer',
+          text2: 'Summer discount 50%',
+          text3: 'For all types of advertising banners for your business',
+          text4: 'Order',
+        },
+        benefits: {
+          title: 'Why use AI to create banners',
+          subTitle:
+            'Modern AI-powered tools are changing the game in advertising design. Here are a few reasons why our clients choose this approach:',
+          speed: {
+            title: 'Development Speed',
+            description:
+              'Generating several banner variations takes just minutes.',
+          },
+          budget: {
+            title: 'Budget Savings',
+            description:
+              'Less costs for manual work of designers and copywriters.',
+          },
+          optimization: {
+            title: 'A/B Testing Optimization',
+            description:
+              'AI can create dozens of variations for different audience segments.',
+          },
+          personalization: {
+            title: 'Personalization',
+            description:
+              'Adaptation to language, geolocation, interests and user behavior.',
+          },
+          uniqueness: {
+            title: 'Uniqueness',
+            description:
+              'Visuals and texts are generated from scratch, taking into account your style and brand.',
+          },
+        },
+        services: {
+          title: 'What We Offer',
+          subTitle:
+            'We specialize in creating advertising banners using artificial intelligence tools. This allows you to quickly generate high-quality visuals adapted to different platforms and tasks. Our services cover the full range of banner advertising:',
+          static: {
+            title: 'Static Banners',
+            description:
+              'Suitable for Google Ads, Facebook, Instagram, mobile applications and websites. Generated in various formats and sizes taking into account platform requirements.',
+          },
+          animated: {
+            title: 'Animated Banners (GIF and HTML5)',
+            description:
+              'We create dynamic creatives that attract attention and increase clickability.',
+          },
+          remarketing: {
+            title: 'Banners for Remarketing and Programmatic Advertising',
+            description:
+              'Development of adaptive creatives for showing audiences who have already contacted your brand.',
+          },
+          massGeneration: {
+            title: 'Mass Generation of Variations',
+            description:
+              'AI is capable of creating dozens and even hundreds of variations of one banner for testing or scaling advertising campaigns.',
+          },
+          textGeneration: {
+            title: 'Text and Image Generation',
+            description:
+              'We combine AI text models (e.g., ChatGPT) with visual ones (DALL·E, Midjourney, Stable Diffusion) to create creatives completely from scratch.',
+          },
+          footerText:
+            'Each banner is manually checked and refined by the designer to achieve high quality.',
+        },
+        process: {
+          title: 'How the Process Works',
+          subTitle:
+            'We have made the process of creating AI advertising banners as simple, transparent, and convenient as possible for the customer. The entire process takes from a few hours to a few days, depending on the complexity and volume.',
+          text: 'Step',
+          step1: {
+            title: 'Task Discussion',
+            description:
+              "At the first stage, we clarify campaign goals, platform type (Google, Meta, TikTok, mobile apps, etc.), banner format, wishes for styling and texts. If there's a brand book — we'll take into account colors, logo and style.",
+            item1: 'Goal Definition',
+            item2: 'Audience Analysis',
+            item3: 'Concept Creation',
+          },
+          step2: {
+            title: 'Concept Generation',
+            description:
+              'We use generative AI tools to create first variations: images (if needed — with illustrations, characters or objects); text (taking into account platform and target audience); animation or static variants.',
+            item1: 'Image Generation',
+            item2: 'Design Variations',
+            item3: 'First Selection',
+          },
+          step3: {
+            title: 'Manual Refinement',
+            description:
+              'Selected banners we adapt manually: adjust design elements, align, add lightness and visual balance. If needed, we make edits after your feedback.',
+            item1: 'Final Design',
+            item2: 'Element Correction',
+            item3: 'Edit Approval',
+          },
+          step4: {
+            title: 'Platform Optimization',
+            description:
+              'After approval of the final design, we create banners in all necessary sizes and formats: 300×250, 728×90, 160×600 – for display networks; 1080×1080, 1080×1920 – for social networks; HTML5, GIF – for animation.',
+            item1: 'Web Formats',
+            item2: 'Mobile Formats',
+            item3: 'Animated Versions',
+          },
+          step5: {
+            title: 'Final Files Delivery',
+            description:
+              'All ready banners you receive in a convenient form (archive, Google Drive, link). Also upon request we provide recommendations for their placement or help with uploading to advertising cabinets.',
+            item1: 'File Package',
+            item2: 'Timely Delivery',
+            item3: 'Placement Support',
+          },
+        },
+        examples: {
+          title: 'Examples of advertising banners created with AI',
+          subTitle:
+            'Artificial intelligence opens up new possibilities in creating advertising banners. Thanks to modern generative models, we create visuals that perfectly match business goals and audience needs. Flexibility, scalability, and high quality are the key advantages of our approach.',
+          filters: {
+            all: 'All Types',
+            mobile: 'Mobile Advertising',
+            retargeting: 'Retargeting',
+            education: 'Educational Products',
+            niche: 'Niche Projects',
+          },
+          examples: {
+            item1: {
+              title: 'Discount -50% on Summer Collection',
+              description:
+                'Banner with bright background and clear product display. Simple and attractive design for increasing conversion.',
+              tags1: 'Discount',
+            },
+            item2: {
+              title: 'New Bag Collection 2023',
+              description:
+                'Banner for accessories brand with focus on seasonal novelties and exclusive offers.',
+              tags1: 'Seasonal Collection',
+            },
+            item3: {
+              title: 'Mobile App – 30% Discount',
+              description:
+                'Bright banner for mobile app promo campaign with focus on limited offer.',
+              tags1: 'Animation',
+            },
+            item4: {
+              title: 'New Game – Available on AppStore',
+              description:
+                'Vertical banner for mobile game with bright elements and clear CTA.',
+              tags1: 'Vertical Format',
+            },
+            item5: {
+              title: 'You Forgot Something in Your Cart!',
+              description:
+                "Personalized banner for retargeting users who didn't complete their purchase.",
+              tags1: 'Retargeting',
+              tags2: 'Personalization',
+              tags3: 'Cart',
+            },
+            item6: {
+              title: 'Marketing Course – Start September 15',
+              description:
+                'Informative banner for educational project with focus on course benefits and start date.',
+              tags1: 'Education',
+              tags2: 'Online Course',
+              tags3: 'Marketing',
+            },
+            item7: {
+              title: 'Exclusive Offer for Gamers',
+              description:
+                'Thematic banner for gaming service using appropriate styling and color scheme.',
+              tags1: 'Games',
+              tags2: 'Offer',
+            },
+            item8: {
+              title: 'Financial Service for Business',
+              description:
+                'Professional banner for B2B financial product with focus on security and reliability.',
+              tags1: 'Finance',
+              tags2: 'Security',
+            },
+          },
+          footerTitle: 'Additional information',
+          footerText1:
+            'We provide examples of banners in PNG, JPEG, GIF or HTML5 format. If necessary, we will prepare a banner set for Google Ads, Meta Ads or any DSP platform.',
+          footerText2:
+            'Additionally, we can offer multiple design options for each order, so you can choose the one that works best. All of this without a significant price increase, as the generation is automated.',
+        },
+        advantages: {
+          title: 'Benefits of using AI in banner creation',
+          subTitle:
+            'Using artificial intelligence in banner design is not just a fashion trend, but a practical solution that provides concrete business benefits. Below are the key reasons why more and more companies are choosing AI design:',
+          speed: {
+            title: 'Execution Speed',
+            description:
+              'Instead of several days for preparing layouts — you can get first banner variations in just a few hours. Algorithms work quickly and in parallel, which is especially useful for urgent campaigns.',
+          },
+          variety: {
+            title: 'More Options to Choose From',
+            description:
+              'AI allows generating dozens of unique creatives at once. This enables faster finding of the perfect style, testing several versions (A/B testing) and choosing the most effective option.',
+          },
+          creativity: {
+            title: 'Creativity + Analytics',
+            description:
+              'AI takes into account trends, visual patterns and audience preferences. Thanks to this, banners are created that are not just beautiful, but also work for results: high CTR, more conversions, better engagement.',
+          },
+          budget: {
+            title: 'Budget Savings',
+            description:
+              'Manual work of designers is expensive. Using generative AI significantly reduces costs for banner production, especially if you need a large number of formats.',
+          },
+          scaling: {
+            title: 'Scaling',
+            description:
+              "Need banners in 10+ formats? Or a series of 30 variations for different offers? For AI this is not a problem. You'll be able to scale advertising in a few clicks.",
+          },
+          adaptation: {
+            title: 'Platform Adaptation',
+            description:
+              'AI "understands" which banners work better on Facebook, which — in Google Ads, and which — in TikTok. Therefore banners are immediately optimized for the specifics of each channel.',
+          },
+        },
+        target: {
+          title: 'Who is this service suitable for and why do they choose us?',
+          text: 'AI banner ad creation service is an effective solution for any business that wants to quickly and profitably promote itself on the Internet. And regardless of the niche, we know how to give you results.',
+          subTitle1: 'Who will benefit',
+          subTitle2: 'Why choose us',
+          ecommerce: {
+            title: 'Online Stores and E-commerce',
+            description:
+              'Bright banners for promotions, sales, novelties. Fast generation of hundreds of banners for different product categories.',
+          },
+          mobile: {
+            title: 'Mobile App Developers',
+            description:
+              'Creatives for promotion on TikTok, Meta and Google Ads. High conversion thanks to AI-based approach and testing.',
+          },
+          education: {
+            title: 'Online Courses and Educational Platforms',
+            description:
+              'Professional banners for advertising webinars, courses and training programs with focus on your competitive advantages.',
+          },
+          gaming: {
+            title: 'Gambling Projects and Entertainment Services',
+            description:
+              'Attracting attention with bright visuals while complying with legislative restrictions and niche specifics.',
+          },
+          b2b: {
+            title: 'B2B Companies',
+            description:
+              'Presentation of services, events, programs or lead generation. Banners that match your corporate style.',
+          },
+          agencies: {
+            title: 'Marketers and Agencies',
+            description:
+              'Large-scale and fast banner production for client projects. New ideas and approaches for increasing conversion.',
+          },
+        },
+        whyUs: {
+          speed: {
+            title: 'Speed',
+            description:
+              'First creative variations in just a few hours. We can prepare an entire campaign in 1-2 days.',
+          },
+          quality: {
+            title: 'Quality + AI',
+            description:
+              'Combination of artificial intelligence with human experience.',
+          },
+          experience: {
+            title: 'Experience in Different Niches',
+            description:
+              'Understanding the specifics of different business sectors.',
+          },
+          adaptation: {
+            title: 'Complete Adaptation',
+            description: 'Customization to your needs and brand.',
+          },
+          transparency: {
+            title: 'Transparent Process',
+            description: 'Full control at every stage of creation.',
+          },
+          pricing: {
+            title: 'Optimal Prices',
+            description: 'Affordable tariff plans for any budget.',
+          },
+        },
+        specialOffer: {
+          tagline: 'Special Offer',
+          title: 'Summer Discount 50%',
+          description: 'On all types of advertising banners for your business',
+          buttonText: 'Order',
+        },
+        additionalInfo: {
+          title: 'Additional Information',
+        },
+        checklist: {
+          title: 'Order modern advertising banners today',
+          subTitle:
+            'The world of digital marketing is changing, and AI-powered banners are not just a trend, but an effective promotional tool. They attract attention, convey a message, and drive clicks — all with minimal time and budget.',
+          text: 'If you need:',
+          items: {
+            item1: 'attract new customers',
+            item2: 'update creatives for a new offer',
+            item3: 'conduct A/B testing of different variants',
+            item4: 'save budget on design',
+            item5: 'quickly launch an advertising campaign',
+          },
+          footerText:
+            'Order AI-powered banner ads right now and get a modern design that delivers results.',
+          footerSub:
+            "Contact us for a consultation or leave a request - we will respond within 1 business day.",
+        },
+        faq: {
+          title: 'Frequently Asked Questions',
+          q1: 'How are AI-created banners better than regular ones?',
+          a1: 'AI banners are created faster, cost less and can generate dozens of variations for testing. They combine creativity with analytics for maximum effectiveness.',
+          q2: 'What banner formats do you create?',
+          a2: 'We create static banners (JPG, PNG), animated (GIF, HTML5), and also adapt to different sizes for different platforms.',
+          q3: 'Will the banner be unique?',
+          a3: 'Yes, each banner is created from scratch based on your requirements. AI generates unique variations that are then refined by a designer.',
+          q4: 'Do I need technical knowledge to order a banner?',
+          a4: 'No. You just provide a brief technical specification, and we take care of everything else.',
+          q5: 'Can I add my logo or brand colors?',
+          a5: 'Of course! We integrate your branding into all banners to maintain style consistency.',
+          q6: 'How long does it take to create an AI banner?',
+          a6: 'Depends on complexity, but usually 2-24 hours. For complex projects it may take up to 2-3 days.',
+          q7: 'Can I test several banner variants?',
+          a7: 'Yes! We create several variations for A/B testing so you can choose the most effective option.',
           ctaText: "Didn't find the answer to your question?",
           ctaButton: 'Write to us',
         },
@@ -2156,6 +2619,473 @@ const resources = {
             answer8:
               'Повний цикл кастомної розробки включає: Аналіз вашого бізнесу та ЦА, Розробку структури та прототипу, Унікальний дизайн і адаптивну верстку, Написання текстів під продаж, Підключення аналітики, Тестування функціоналу, Запуск і підтримку після публікації.',
           },
+          ctaText: 'Не знайшли відповідь на своє питання?',
+          ctaButton: 'Напишіть нам',
+        },
+      },
+
+      MobileAppsPage: {
+        hero: {
+          title: 'Розробка мобільних додатків на замовлення',
+          subtitle:
+            'Створення мобільного додатку — це ефективний інструмент для бізнесу, який допомагає залучати нових клієнтів, підвищувати лояльність та збільшувати продажі. У сучасному світі понад 70% інтернет-трафіку надходить саме з мобільних пристроїв, тому наявність власного мобільного додатку для iOS або Android стає важливою конкурентною перевагою.',
+          subtitle2:
+            'Наша компанія пропонує професійні послуги з розробки мобільних додатків "під ключ" — від аналітики і проєктування до запуску та підтримки. Ми створюємо нативні додатки, кросплатформенні рішення та прогресивні вебдодатки (PWA), які працюють швидко, стабільно та безпечно.',
+          buttonText: 'Замовити консультацію',
+          phoneContent: {
+            title: 'Mobile App',
+            subtitle: 'iOS + Android',
+          },
+        },
+        benefits: {
+          title1: 'Нативна розробка',
+          desc1:
+            'Створюємо унікальні додатки з максимальною продуктивністю для iOS та Android.',
+          title2: 'Крос-платформенні рішення',
+          desc2:
+            'Економія часу та бюджету з додатками, що працюють на всіх платформах.',
+          title3: 'Підтримка та оновлення',
+          desc3:
+            'Забезпечуємо стабільну роботу та випускаємо нові версії з додатковим функціоналом.',
+        },
+        business: {
+          title: 'Чому вашому бізнесу потрібно мобільний додаток',
+          text1:
+            "Мобільний додаток відкриває для бізнесу нові можливості взаємодії з клієнтами та ринку просування. Він дозволяє бути на зв'язку з аудиторією 24/7, надсилати push-сповіщення про акції, новини та спеціальні пропозиції, а також збирати аналітику для покращення сервісу.",
+          text2:
+            'Крім того, наявність мобільного додатку сприяє зміцненню бренду. Яскравий та зручний інтерфейс, бездоганна функціональність і швидка робота допомагають формувати позитивний імідж компанії. Бізнеси, що пропонують мобільний досвід, значно випереджають конкурентів за рівнем залученості клієнтів та обсягом продажів.',
+          highlight:
+            'Інвестуючи у розробку мобільного додатку, ви отримуєте потужний маркетинговий інструмент, який працює на ваш успіх кожного дня.',
+        },
+        appTypes: {
+          title: 'Які мобільні додатки ми створюємо',
+          description:
+            'Наша команда розробляє мобільні рішення для бізнесу будь-якої складності — від стартапів до великих корпорацій. Ми створюємо додатки, що ідеально підходять для вашої цільової аудиторії та бізнес-цілей.',
+          nativeTitle: 'Нативні додатки для iOS та Android',
+          nativeDesc:
+            'Нативна розробка дозволяє створювати максимально швидкі та стабільні додатки, що повністю використовують можливості операційних систем iOS та Android. Такі додатки відрізняються високою продуктивністю, якісною графікою та глибокою інтеграцією з пристроями користувача.',
+          crossTitle: 'Кросплатформенні додатки на Flutter та React Native',
+          crossDesc:
+            'Кросплатформенні рішення дають змогу розробити один додаток для двох платформ одночасно, що економить час та бюджет. Технології Flutter і React Native забезпечують високу швидкість роботи, гарну якість інтерфейсу та простоту масштабування проєкту.',
+          pwaTitle: 'Прогресивні вебдодатки (PWA)',
+          pwaDesc:
+            'Прогресивні вебдодатки поєднують переваги вебсайтів та нативних додатків. Вони працюють у браузері, не потребують встановлення, можуть працювати в офлайн-режимі та підтримують push-сповіщення. PWA — чудовий вибір для бізнесу, який хоче швидко запустити мобільний продукт із мінімальними витратами.',
+        },
+        stages: {
+          title: 'Етапи розробки мобільного додатку',
+          description:
+            'Процес створення мобільного додатку складається з кількох важливих етапів, кожен з яких впливає на якість кінцевого продукту та його успіх серед користувачів.',
+          step1Title: 'Аналіз та планування',
+          step1Desc:
+            'Ми вивчаємо ваш бізнес, аудиторію, конкурентів і формулюємо чіткі вимоги до майбутнього додатку. Створюємо технічне завдання та обираємо оптимальні технології.',
+          step2Title: 'Дизайн UX/UI',
+          step2Desc:
+            'Проєктуємо логічну структуру додатку, створюємо прототипи та дизайн, який забезпечує зручність використання й привабливий вигляд.',
+          step3Title: 'Розробка',
+          step3Desc:
+            'Наші програмісти реалізують функціонал, інтегрують необхідні сервіси, забезпечують безпеку та оптимізацію продуктивності додатку.',
+          step4Title: 'Тестування',
+          step4Desc:
+            'Проводимо комплексне тестування для виявлення та виправлення помилок. Гарантуємо стабільну роботу додатку на різних пристроях та версіях операційних систем.',
+          step5Title: 'Запуск і підтримка',
+          step5Desc:
+            'Публікуємо додаток у App Store та Google Play, надаємо технічну підтримку, розвиваємо та оновлюємо продукт відповідно до нових потреб бізнесу.',
+          buttonText: 'Замовити розробку',
+        },
+        whyUs: {
+          title: 'Переваги роботи з нашою командою',
+          subtitle:
+            'Замовляючи розробку мобільного додатку у нас, ви отримуєте не просто виконавця, а надійного технологічного партнера, який зацікавлений у вашому успіху.',
+          card1Title: 'Досвідчена команда розробників',
+          card1Desc:
+            'Ми працюємо у сфері мобільної розробки багато років і маємо успішні кейси у різних нішах — від e-commerce і фінансів до освіти та медицини.',
+          card2Title: 'Індивідуальний підхід до кожного проєкту',
+          card2Desc:
+            'Кожен бізнес унікальний, тому ми пропонуємо рішення, які враховують ваші цілі, потреби цільової аудиторії та бюджет.',
+          card3Title: 'Гарантія якості та дотримання термінів',
+          card3Desc:
+            'Ми суворо контролюємо якість на кожному етапі розробки та завжди дотримуємося узгоджених термінів. Ваш проєкт буде реалізований вчасно та відповідатиме всім сучасним стандартам.',
+          buttonText: 'Замовити розробку',
+        },
+        pricing: {
+          title: 'Вартість мобільного додатку',
+          description:
+            'Ціна розробки мобільного додатку залежить від кількох факторів: складності функціоналу, вибору платформи, технологій та термінів реалізації. Ми пропонуємо гнучкі рішення, які дозволяють підібрати оптимальний варіант під ваш бюджет і потреби.',
+          factorsTitle: 'Основні фактори, що впливають на вартість:',
+          factor1Title: 'Тип додатку',
+          factor1Desc: 'Нативний, кросплатформенний чи PWA.',
+          factor2Title: 'Складність функціоналу',
+          factor2Desc:
+            'Додаткові можливості, такі як інтеграція з платіжними системами, геолокація, відео/аудіо функції тощо.',
+          factor3Title: 'Дизайн та UX/UI',
+          factor3Desc:
+            'Унікальний дизайн може збільшити вартість, але він завжди сприяє кращому користувацькому досвіду.',
+          factor4Title: 'Термін реалізації',
+          factor4Desc:
+            'Чим швидше потрібно завершити проєкт, тим більше можуть бути витрати на ресурси.',
+          ctaText:
+            'Для точного розрахунку вартості вашого мобільного додатку ми пропонуємо безкоштовну консультацію, під час якої ми визначимо обсяг робіт та створимо індивідуальну пропозицію.',
+          buttonText: 'Отримати консультацію',
+        },
+        faq: {
+          title: 'FAQ',
+          q1: 'Скільки часу займає розробка мобільного додатку?',
+          a1: 'Час на розробку мобільного додатку залежить від складності проекту та функцій, які ви хочете реалізувати. Зазвичай, розробка займає від 2 до 6 місяців для стандартних додатків, але для складних рішень цей термін може бути довшим.',
+          q2: 'Чим відрізняється нативний додаток від кросплатформеного?',
+          a2: 'Нативний додаток розробляється окремо для кожної операційної системи (iOS чи Android), що дозволяє досягти високої продуктивності та інтеграції з функціями пристроїв. Кросплатформенні додатки розробляються за допомогою технологій, які дозволяють використовувати один код для двох платформ, що економить час і бюджет, але може бути менш оптимальним за швидкістю та стабільністю.',
+          q3: 'Що таке прогресивний вебдодаток (PWA)?',
+          a3: 'Прогресивний вебдодаток — це вебдодаток, який поєднує переваги вебсайтів і нативних додатків. PWA може працювати офлайн, отримувати push-сповіщення і запускатися на будь-якому пристрої без необхідності встановлення.',
+          q4: 'Які переваги має мобільний додаток для мого бізнесу?',
+          a4: 'Мобільний додаток дозволяє вашому бізнесу бути доступним для клієнтів 24/7, сприяє збільшенню лояльності, покращує користувацький досвід і дозволяє проводити ефективні маркетингові кампанії. Додаток також допомагає зібрати аналітику для покращення сервісу та розширення бізнесу.',
+          q5: 'Які додаткові функції можна додати до мобільного додатку?',
+          a5: 'До мобільного додатку можна додавати різноманітні функції, такі як геолокація, push-сповіщення, інтеграція з платіжними системами, чат-боти, соціальні мережі, офлайн-режим, підтримка мультимедіа (відео, фото) і багато інших, залежно від ваших потреб.',
+          q6: 'Як я можу отримати точну вартість розробки мобільного додатку?',
+          a6: 'Для точного розрахунку вартості потрібно обговорити деталі проєкту: його складність, бажану платформу, функціонал та терміни. Ми пропонуємо безкоштовну консультацію, під час якої ми зберемо всю необхідну інформацію і надамо вам індивідуальну пропозицію.',
+          ctaText: 'Не знайшли відповідь на своє питання?',
+          ctaButton: 'Напишіть нам',
+        },
+      },
+      BannerAdsPage: {
+        hero: {
+          title: 'Рекламні банери з ШІ – швидко, точно, ефективно',
+          subtitle:
+            'Підвищіть ефективність вашого маркетингу з рекламними банерами, створеними за допомогою штучного інтелекту. Економія часу, персоналізація та висока конверсія.',
+          buttonText: 'Замовити банери',
+          features: {
+            fast: 'Швидко',
+            quality: 'Якісно',
+            effective: 'Ефективно',
+          },
+        },
+        imgText: {
+          text1: 'Спеціальна пропозиція',
+          text2: 'Літня знижка 50%',
+          text3: 'На всі види рекламних банерів для вашого бізнесу',
+          text4: 'Замовити',
+        },
+        benefits: {
+          title: 'Чому варто використовувати ШІ для створення банерів',
+          subTitle:
+            'Сучасні інструменти на основі ШІ змінюють правила гри в дизайні реклами. Ось кілька причин, чому наші клієнти обирають саме цей підхід:',
+          speed: {
+            title: 'Швидкість розробки',
+            description:
+              'Генерація декількох варіантів банерів займає лічені хвилини.',
+          },
+          budget: {
+            title: 'Економія бюджету',
+            description:
+              'Менше витрат на ручну роботу дизайнерів і копірайтерів.',
+          },
+          optimization: {
+            title: 'Оптимізація під A/B-тестування',
+            description:
+              'ШІ може створити десятки варіацій під різні сегменти ЦА.',
+          },
+          personalization: {
+            title: 'Персоналізація',
+            description:
+              'Адаптація під мову, геолокацію, інтереси та поведінку користувача.',
+          },
+          uniqueness: {
+            title: 'Унікальність',
+            description:
+              'Візуали та тексти генеруються заново, з урахуванням вашого стилю та бренду.',
+          },
+        },
+        services: {
+          title: 'Що ми пропонуємо',
+          subTitle:
+            'Ми спеціалізуємося на створенні рекламних банерів з використанням інструментів штучного інтелекту. Це дозволяє швидко генерувати якісні візуали, адаптовані до різних платформ і завдань. Наші послуги охоплюють повний спектр банерної реклами:',
+          static: {
+            title: 'Статичні банери',
+            description:
+              'Підходять для Google Ads, Facebook, Instagram, мобільних застосунків та сайтів. Генеруються у різних форматах і розмірах з урахуванням вимог платформи.',
+          },
+          animated: {
+            title: 'Анімовані банери (GIF та HTML5)',
+            description:
+              'Створюємо динамічні креативи, які привертають увагу і підвищують клікабельність.',
+          },
+          remarketing: {
+            title: 'Банери для ремаркетингу та програматик-реклами',
+            description:
+              'Розробка адаптивних креативів для показу аудиторії, яка вже контактувала з вашим брендом.',
+          },
+          massGeneration: {
+            title: 'Масова генерація варіантів',
+            description:
+              'ШІ здатен створити десятки і навіть сотні варіацій одного банера для тестування або масштабування рекламних кампаній.',
+          },
+          textGeneration: {
+            title: 'Генерація текстів і зображень',
+            description:
+              'Ми поєднуємо текстові моделі ШІ (наприклад, ChatGPT) з візуальними (DALL·E, Midjourney, Stable Diffusion), щоб створювати креативи повністю з нуля.',
+          },
+          footerText:
+            'Кожен банер проходить ручну перевірку та доопрацювання дизайнером для досягнення високої якості.',
+        },
+        process: {
+          title: 'Як працює процес',
+          subTitle:
+            'Ми зробили процес створення рекламних банерів з ШІ максимально простим, прозорим і зручним для замовника. Уся робота займає від кількох годин до кількох днів — залежно від складності та обсягу.',
+          text: 'Крок',
+          step1: {
+            title: 'Обговорення завдання',
+
+            description:
+              'На першому етапі ми уточнюємо цілі кампанії, тип платформи (Google, Meta, TikTok, мобільні додатки тощо), формат банера, побажання до стилістики та текстів. Якщо є брендбук — ми врахуємо кольори, логотип та стиль.',
+            item1: 'Визначення цілей',
+            item2: 'Аналіз аудиторії',
+            item3: 'Створення концепції',
+          },
+          step2: {
+            title: 'Генерація концептів',
+            description:
+              'Ми використовуємо інструменти генеративного ШІ для створення перших варіантів: зображення (за потреби — з ілюстраціями, персонажами або предметами); текст (з урахуванням платформи й ЦА); анімація або статичні варіанти.',
+            item1: 'Генерація зображень',
+            item2: 'Варіанти дизайну',
+            item3: 'Перший відбір',
+          },
+          step3: {
+            title: 'Ручна доопрацювання',
+            description:
+              'Обрані банери ми адаптуємо вручну: коригуємо елементи дизайну, вирівнюємо, додаємо легкість і візуальний баланс. За потреби вносимо правки після вашого фідбеку.',
+
+            item1: 'Фінальний дизайн',
+            item2: 'Корекція елементів',
+            item3: 'Узгодження правок',
+          },
+          step4: {
+            title: 'Оптимізація під платформи',
+            description:
+              'Після затвердження фінального дизайну, ми створюємо банери у всіх необхідних розмірах і форматах: 300×250, 728×90, 160×600 – для дисплейних мереж; 1080×1080, 1080×1920 – для соціальних мереж; HTML5, GIF – для анімації.',
+            item1: 'Веб-формати',
+            item2: 'Мобільні формати',
+            item3: 'Анімовані версії',
+          },
+          step5: {
+            title: 'Передача фінальних файлів',
+            description:
+              'Усі готові банери ви отримуєте у зручному вигляді (архів, Google Drive, посилання). Також за запитом надаємо рекомендації щодо їх розміщення або допомагаємо з завантаженням у рекламні кабінети.',
+
+            item1: 'Пакет файлів',
+            item2: 'Своєчасна доставка',
+            item3: 'Підтримка розміщення',
+          },
+        },
+        examples: {
+          title: 'Приклади рекламних банерів, створених з ШІ',
+          subTitle:
+            'Штучний інтелект відкриває нові можливості у створенні рекламних банерів. Завдяки сучасним генеративним моделям, ми створюємо візуали, які ідеально відповідають цілям бізнесу та потребам аудиторії. Гнучкість, масштабованість і висока якість — ключові переваги нашого підходу.',
+          filters: {
+            all: 'Всі типи',
+            mobile: 'Мобільна реклама',
+            retargeting: 'Ретаргетинг',
+            education: 'Освітні продукти',
+            niche: 'Нішеві проекти',
+          },
+          examples: {
+            item1: {
+              title: 'Знижка -50% на літню колекцію',
+              description:
+                'Банер з яскравим фоном і чітким відображенням продукту. Простий і привабливий дизайн для збільшення конверсії.',
+              tags1: 'Знижка',
+            },
+            item2: {
+              title: 'Нова колекція сумок 2023',
+              description:
+                'Банер для бренду аксесуарів з акцентом на новинки сезону та ексклюзивні пропозиції.',
+              tags1: 'Сезонна колекція',
+            },
+            item3: {
+              title: 'Мобільний додаток – Знижка 30%',
+              description:
+                'Яскравий банер для промо-кампанії мобільного додатку з акцентом на обмежену пропозицію.',
+              tags1: 'Анімація',
+            },
+            item4: {
+              title: 'Нова гра – Доступно в AppStore',
+              description:
+                'Вертикальний банер для мобільної гри з яскравими елементами і чітким CTA.',
+              tags1: 'Вертикальний формат',
+            },
+            item5: {
+              title: 'Ви забули щось у кошику!',
+              description:
+                'Персоналізований банер для ретаргетингу користувачів, які не завершили покупку.',
+              tags1: 'Ретаргетинг',
+              tags2: 'Персоналізація',
+              tags3: 'Кошик',
+            },
+            item6: {
+              title: 'Курс з маркетингу – Старт 15 вересня',
+              description:
+                'Інформативний банер для освітнього проекту з фокусом на переваги курсу та дату початку.',
+              tags1: 'Навчання',
+              tags2: 'Онлайн-курс',
+              tags3: 'Маркетинг',
+            },
+            item7: {
+              title: 'Ексклюзивна пропозиція для геймерів',
+              description:
+                'Тематичний банер для ігрового сервісу з використанням відповідної стилістики та кольорової гами.',
+              tags1: 'Ігри',
+              tags2: 'Пропозиція',
+            },
+            item8: {
+              title: 'Фінансовий сервіс для бізнесу',
+              description:
+                'Професійний банер для B2B фінансового продукту з акцентом на безпеку та надійність.',
+              tags1: 'Фінанси',
+              tags2: 'Безпека',
+            },
+          },
+          footerTitle: 'Додаткова інформація',
+          footerText1:
+            'Ми надаємо приклади банерів у форматі PNG, JPEG, GIF або HTML5. За потреби — підготуємо банер-сет під Google Ads, Meta Ads або будь-яку DSP-платформу.',
+          footerText2:
+            'Крім того, для кожного замовлення ми можемо запропонувати декілька варіантів дизайну — щоб ви могли обрати той, що працює найкраще. Усе це — без значного підвищення ціни, адже генерація відбувається автоматизовано.',
+        },
+        advantages: {
+          title: 'Переваги використання ШІ в створенні банерів',
+          subTitle:
+            'Використання штучного інтелекту в дизайні рекламних банерів — це не просто модний тренд, а практичне рішення, що дає конкретні переваги бізнесу. Нижче — ключові причини, чому все більше компаній обирають саме AI-дизайн:',
+          speed: {
+            title: 'Швидкість виконання',
+            description:
+              'Замість кількох днів на підготовку макетів — перші варіанти банерів ви можете отримати вже через кілька годин. Алгоритми працюють швидко й паралельно, що особливо корисно для термінових кампаній.',
+          },
+          variety: {
+            title: 'Більше варіантів на вибір',
+            description:
+              'ШІ дозволяє одразу згенерувати десятки унікальних креативів. Це дає змогу швидше знайти ідеальний стиль, протестувати кілька версій (A/B-тестування) та обрати найефективніший варіант.',
+          },
+          creativity: {
+            title: 'Креативність + аналітика',
+            description:
+              'AI бере до уваги тренди, візуальні патерни та переваги аудиторії. Завдяки цьому створюються банери, які не просто красиві, а ще й працюють на результат: високий CTR, більше конверсій, краще залучення.',
+          },
+          budget: {
+            title: 'Економія бюджету',
+            description:
+              'Ручна робота дизайнерів — дорога. Застосування генеративного ШІ суттєво знижує витрати на виробництво банерів, особливо якщо вам потрібна велика кількість форматів.',
+          },
+          scaling: {
+            title: 'Масштабування',
+            description:
+              'Потрібні банери 10+ форматів? Або серія з 30 варіацій під різні оффери? Для ШІ це не проблема. Ви зможете масштабувати рекламу в кілька кліків.',
+          },
+          adaptation: {
+            title: 'Адаптація під платформи',
+            description:
+              'ШІ «розуміє», які банери краще працюють у Facebook, які — в Google Ads, а які — в TikTok. Тому банери одразу оптимізуються під специфіку кожного каналу.',
+          },
+        },
+        target: {
+          title: 'Для кого підходить ця послуга та чому обирають нас',
+          text: 'Послуга створення рекламних банерів з використанням ШІ — це ефективне рішення для будь-якого бізнесу, який прагне швидко та вигідно просуватися в інтернеті. І незалежно від ніші, ми знаємо, як дати вам результат.',
+          subTitle1: 'Кому буде корисно',
+          subTitle2: 'Чому обирають нас',
+          ecommerce: {
+            title: 'Інтернет-магазинам та e-commerce',
+            description:
+              'Яскраві банери для акцій, розпродажів, новинок. Швидка генерація сотень банерів для різних товарних категорій.',
+          },
+          mobile: {
+            title: 'Розробникам мобільних застосунків',
+            description:
+              'Креативи для просування в TikTok, Meta та Google Ads. Висока конверсія завдяки підходу, заснованому на ШІ та тестуванні.',
+          },
+          education: {
+            title: 'Онлайн-курсам та освітнім платформам',
+            description:
+              'Професійні банери для реклами вебінарів, курсів та програм навчання з акцентом на ваші конкурентні переваги.',
+          },
+          gaming: {
+            title: 'Гемблінг-проєктам та розважальним сервісам',
+            description:
+              'Залучення уваги яскравими візуалами з дотриманням законодавчих обмежень та особливостей ніші.',
+          },
+          b2b: {
+            title: 'B2B-компаніям',
+            description:
+              'Презентація послуг, подій, програм або генерація лідів. Банери, що відповідають вашому корпоративному стилю.',
+          },
+          agencies: {
+            title: 'Маркетологам та агентствам',
+            description:
+              'Масштабне та швидке виробництво банерів під проєкти клієнтів. Нові ідеї та підходи для збільшення конверсії.',
+          },
+        },
+        whyUs: {
+          speed: {
+            title: 'Швидкість',
+            description:
+              'Перші варіанти креативів вже за кілька годин. Цілу кампанію можемо підготувати за 1-2 дні.',
+          },
+          quality: {
+            title: 'Якість + ШІ',
+            description: 'Поєднання штучного інтелекту з людським досвідом.',
+          },
+          experience: {
+            title: 'Досвід у різних нішах',
+            description: 'Розуміння специфіки різних бізнес-секторів.',
+          },
+          adaptation: {
+            title: 'Повна адаптація',
+            description: 'Налаштування під ваші потреби та бренд.',
+          },
+          transparency: {
+            title: 'Прозорий процес',
+            description: 'Повний контроль на кожному етапі створення.',
+          },
+          pricing: {
+            title: 'Оптимальні ціни',
+            description: 'Доступні тарифні плани для будь-якого бюджету.',
+          },
+        },
+        specialOffer: {
+          tagline: 'Спеціальна пропозиція',
+          title: 'Літня знижка 50%',
+          description: 'На всі види рекламних банерів для вашого бізнесу',
+          buttonText: 'Замовити',
+        },
+        additionalInfo: {
+          title: 'Додаткова інформація',
+        },
+        checklist: {
+          title: 'Замовляйте сучасні рекламні банери вже сьогодні',
+          subTitle:
+            'Світ цифрового маркетингу змінюється, і банери, створені за допомогою ШІ, — це не просто тренд, а ефективний інструмент просування. Вони привертають увагу, передають меседж, стимулюють кліки — і все це з мінімальними витратами часу та бюджету.',
+          text: 'Якщо вам потрібно:',
+          items: {
+            item1: 'привернути нових клієнтів',
+            item2: 'оновити креативи під нову пропозицію',
+            item3: 'провести A/B-тестування різних варіантів',
+            item4: 'заощадити бюджет на дизайн',
+            item5: 'швидко запустити рекламну кампанію',
+          },
+          footerText:
+            'Замовляйте рекламні банери з використанням ШІ прямо зараз — і отримайте сучасний дизайн, що працює на результат.',
+          footerSub:
+            "Зв'яжіться з нами для консультації або залиште заявку — відповімо протягом 1 робочого дня.",
+        },
+        faq: {
+          q1: 'Чим банери, створені за допомогою ШІ, кращі за звичайні?',
+          a1: 'ШІ-банери створюються швидше, коштують дешевше і можуть генерувати десятки варіацій для тестування. Вони поєднують креативність з аналітикою для максимальної ефективності.',
+          q2: 'Які формати банерів ви створюєте?',
+          a2: 'Ми створюємо статичні банери (JPG, PNG), анімовані (GIF, HTML5), а також адаптуємо під різні розміри для різних платформ.',
+          q3: 'Чи буде банер унікальним?',
+          a3: 'Так, кожен банер створюється з нуля на основі ваших вимог. ШІ генерує унікальні варіації, які потім доопрацьовуються дизайнером.',
+          q4: 'Чи потрібні технічні знання, щоб замовити банер?',
+          a4: 'Ні. Ви просто надаєте коротке ТЗ, а ми беремо на себе все інше.',
+          q5: 'Чи можна додати свій логотип або кольори бренду?',
+          a5: 'Звичайно! Ми інтегруємо ваш брендинг у всі банери для підтримки єдності стилю.',
+          q6: 'Скільки часу займає створення банеру з ШІ?',
+          a6: 'Залежить від складності, але зазвичай 2-24 години. Для складних проєктів може знадобитися до 2-3 днів.',
+          q7: 'Чи можна протестувати кілька варіантів банерів?',
+          a7: 'Так! Ми створюємо кілька варіацій для A/B-тестування, щоб ви могли вибрати найефективніший варіант.',
           ctaText: 'Не знайшли відповідь на своє питання?',
           ctaButton: 'Напишіть нам',
         },
