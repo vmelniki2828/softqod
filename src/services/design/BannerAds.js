@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import Modal from '../../components/Modal';
-import { 
-    FaArrowRight, 
-    FaLightbulb, 
-    FaPalette, 
-    FaChartLine, 
-    FaRobot,
-    FaChevronLeft,
-    FaChevronRight,
-    FaCheck,
-    FaClock,
-    FaUsers,
-    FaMobile,
-    FaDesktop,
+import {
+  FaArrowRight,
+  FaLightbulb,
+  FaPalette,
+  FaChartLine,
+  FaRobot,
+  FaChevronLeft,
+  FaChevronRight,
+  FaCheck,
+  FaClock,
+  FaUsers,
+  FaMobile,
+  FaDesktop,
   FaRocket,
   FaCoins,
   FaBrain,
@@ -40,6 +40,7 @@ import {
   FaHandshake,
   FaBuilding,
 } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const PageContainer = styled.div`
   max-width: 1400px;
@@ -67,9 +68,16 @@ const HeroSection = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-      radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 40%),
-      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 40%);
+    background: radial-gradient(
+        circle at 20% 80%,
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 40%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        rgba(255, 255, 255, 0.08) 0%,
+        transparent 40%
+      );
     z-index: 0;
   }
 `;
@@ -114,15 +122,15 @@ const HeroTitle = styled(motion.h1)`
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
-  
+
   span {
-  position: relative;
+    position: relative;
     display: inline-block;
     color: var(--accent-color-light);
     -webkit-text-fill-color: currentColor;
     text-fill-color: currentColor;
     margin: 0 0.2rem;
-    
+
     &::after {
       content: '';
       position: absolute;
@@ -134,7 +142,7 @@ const HeroTitle = styled(motion.h1)`
       border-radius: 2px;
     }
   }
-  
+
   @media (max-width: 768px) {
     font-size: 3rem;
   }
@@ -146,7 +154,7 @@ const HeroDescription = styled(motion.p)`
   margin-bottom: 2.5rem;
   opacity: 0.9;
   max-width: 500px;
-  
+
   @media (max-width: 992px) {
     max-width: 100%;
   }
@@ -156,7 +164,7 @@ const HeroButtons = styled(motion.div)`
   display: flex;
   gap: 1.5rem;
   margin-top: 1rem;
-  
+
   @media (max-width: 576px) {
     flex-direction: column;
     width: 100%;
@@ -177,17 +185,17 @@ const PrimaryButton = styled(motion.button)`
   align-items: center;
   gap: 0.5rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-  
+
   &:hover {
     background: #ff7b00;
     transform: translateY(-2px);
     box-shadow: 0 15px 30px rgba(255, 123, 0, 0.4);
   }
-  
+
   svg {
     font-size: 1.2rem;
   }
-  
+
   @media (max-width: 576px) {
     width: 100%;
     justify-content: center;
@@ -202,7 +210,7 @@ const HeroBanner = styled(motion.div)`
   justify-content: center;
   align-items: center;
   perspective: 1000px;
-  
+
   @media (max-width: 992px) {
     order: 1;
     height: 350px;
@@ -226,7 +234,8 @@ const Banner3D = styled(motion.div)`
   transform-style: preserve-3d;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   border-radius: 16px;
-  box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.2), -20px -20px 60px rgba(255, 255, 255, 0.1);
+  box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.2),
+    -20px -20px 60px rgba(255, 255, 255, 0.1);
   overflow: hidden;
   perspective: 1000px;
 `;
@@ -296,7 +305,7 @@ const BannerPrice = styled.div`
   font-size: 1.3rem;
   font-weight: bold;
   color: #333;
-  
+
   span {
     font-size: 0.9rem;
     font-weight: normal;
@@ -367,7 +376,7 @@ const HeroFeatures = styled(motion.div)`
   display: flex;
   gap: 1.5rem;
   margin-top: 2.5rem;
-  
+
   @media (max-width: 992px) {
     justify-content: center;
     flex-wrap: wrap;
@@ -390,7 +399,6 @@ const FeatureText = styled.p`
   font-size: 1rem;
   font-weight: 500;
 `;
-
 
 const Subtitle = styled.p`
   font-size: 1.4rem;
@@ -424,22 +432,22 @@ const FeatureCard = styled(motion.div)`
 
   &:hover {
     transform: translateY(-5px);
-    
+
     &::before {
       transform: scaleX(1);
     }
   }
-  
+
   @media (max-width: 1024px) {
     padding: 2rem;
     border-radius: 16px;
   }
-  
+
   @media (max-width: 768px) {
     padding: 1.5rem;
     border-radius: 12px;
   }
-  
+
   @media (max-width: 480px) {
     padding: 1.2rem;
     border-radius: 10px;
@@ -450,17 +458,17 @@ const FeatureIcon = styled.div`
   font-size: 2.5rem;
   color: var(--accent-color);
   margin-bottom: 1.5rem;
-  
+
   @media (max-width: 1024px) {
     font-size: 2.2rem;
     margin-bottom: 1.2rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
     margin-bottom: 1rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 1.8rem;
     margin-bottom: 0.8rem;
@@ -471,17 +479,17 @@ const FeatureTitle = styled.h3`
   font-size: 1.3rem;
   margin-bottom: 0.8rem;
   color: var(--text-primary);
-  
+
   @media (max-width: 1024px) {
     font-size: 1.2rem;
     margin-bottom: 0.7rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1.1rem;
     margin-bottom: 0.6rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 1rem;
     margin-bottom: 0.5rem;
@@ -492,17 +500,17 @@ const FeatureDescription = styled.p`
   color: var(--text-secondary);
   line-height: 1.6;
   font-size: 1.1rem;
-  
+
   @media (max-width: 1024px) {
     font-size: 1rem;
     line-height: 1.5;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 0.9rem;
     line-height: 1.4;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 0.85rem;
     line-height: 1.3;
@@ -516,19 +524,19 @@ const SliderSection = styled.section`
   border-radius: 24px;
   padding: 3rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  
+
   @media (max-width: 1024px) {
     margin: 4rem 0;
     padding: 2.5rem;
     border-radius: 20px;
   }
-  
+
   @media (max-width: 768px) {
     margin: 3rem 0;
     padding: 2rem;
     border-radius: 16px;
   }
-  
+
   @media (max-width: 480px) {
     margin: 2rem 0;
     padding: 1.5rem;
@@ -546,17 +554,17 @@ const FeaturesGrid = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-bottom: 2rem;
-  
+
   @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   @media (max-width: 480px) {
     gap: 0.8rem;
   }
@@ -568,16 +576,16 @@ const FeaturesSecondGrid = styled.div`
   gap: 2rem;
   max-width: 800px;
   margin: 0 auto;
-  
+
   @media (max-width: 1024px) {
     gap: 1.5rem;
   }
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   @media (max-width: 480px) {
     gap: 0.8rem;
   }
@@ -588,17 +596,17 @@ const SliderTitle = styled.h2`
   text-align: center;
   margin-bottom: 3rem;
   color: var(--text-primary);
-  
+
   @media (max-width: 1024px) {
     font-size: 2.5rem;
     margin-bottom: 2.5rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
     margin-bottom: 2rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 1.6rem;
     margin-bottom: 1.5rem;
@@ -612,18 +620,18 @@ const SliderIntro = styled.p`
   max-width: 1000px;
   margin: 0 auto 3rem;
   color: var(--text-secondary);
-  
+
   @media (max-width: 1024px) {
     font-size: 1.1rem;
     margin-bottom: 2.5rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1rem;
     margin-bottom: 2rem;
     line-height: 1.6;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 0.9rem;
     margin-bottom: 1.5rem;
@@ -649,10 +657,10 @@ const ServiceCard = styled(motion.div)`
 
   &::before {
     content: '';
-  position: absolute;
+    position: absolute;
     top: 0;
-  left: 0;
-  right: 0;
+    left: 0;
+    right: 0;
     height: 5px;
     background: linear-gradient(90deg, var(--accent-color), transparent);
   }
@@ -662,19 +670,19 @@ const ServiceCard = styled(motion.div)`
     border-color: rgba(var(--accent-color-rgb), 0.3);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
   }
-  
+
   @media (max-width: 1024px) {
     padding: 2.5rem;
     width: 85%;
     border-radius: 14px;
   }
-  
+
   @media (max-width: 768px) {
-  padding: 2rem;
+    padding: 2rem;
     width: 90%;
     border-radius: 12px;
   }
-  
+
   @media (max-width: 480px) {
     padding: 1.5rem;
     width: 95%;
@@ -688,20 +696,20 @@ const ServiceIcon = styled.div`
   margin-bottom: 2rem;
   opacity: 0.9;
   filter: drop-shadow(0 0 8px rgba(var(--accent-color-rgb), 0.3));
-  
+
   @media (max-width: 1024px) {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2.2rem;
     margin-bottom: 1.2rem;
   }
-  
+
   @media (max-width: 480px) {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+    font-size: 2rem;
+    margin-bottom: 1rem;
   }
 `;
 
@@ -710,17 +718,17 @@ const ServiceTitle = styled.h3`
   font-weight: 600;
   margin-bottom: 1.5rem;
   color: var(--text-primary);
-  
+
   @media (max-width: 1024px) {
     font-size: 1.7rem;
     margin-bottom: 1.2rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1.5rem;
     margin-bottom: 1rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 1.3rem;
     margin-bottom: 0.8rem;
@@ -731,17 +739,17 @@ const ServiceDescription = styled.p`
   font-size: 1.2rem;
   line-height: 1.8;
   color: var(--text-secondary);
-  
+
   @media (max-width: 1024px) {
     font-size: 1.1rem;
     line-height: 1.7;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1rem;
     line-height: 1.6;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 0.9rem;
     line-height: 1.5;
@@ -755,19 +763,19 @@ const SliderContainer = styled.div`
   overflow: hidden;
   border-radius: 20px;
   margin: 3rem 0;
-  
+
   @media (max-width: 1024px) {
     height: 350px;
     margin: 2.5rem 0;
     border-radius: 16px;
   }
-  
+
   @media (max-width: 768px) {
     height: 300px;
     margin: 2rem 0;
     border-radius: 12px;
   }
-  
+
   @media (max-width: 480px) {
     height: 280px;
     margin: 1.5rem 0;
@@ -797,12 +805,12 @@ const SliderControls = styled.div`
   gap: 1.5rem;
   margin: 2rem auto;
   z-index: 10;
-  
+
   @media (max-width: 768px) {
     gap: 1rem;
     margin: 1.5rem auto;
   }
-  
+
   @media (max-width: 480px) {
     gap: 0.8rem;
     margin: 1rem auto;
@@ -830,13 +838,13 @@ const SliderButton = styled.button`
     transform: scale(1.1);
     box-shadow: 0 8px 20px rgba(var(--accent-color-rgb), 0.3);
   }
-  
+
   @media (max-width: 768px) {
     width: 50px;
     height: 50px;
     font-size: 1.3rem;
   }
-  
+
   @media (max-width: 480px) {
     width: 45px;
     height: 45px;
@@ -873,7 +881,7 @@ const ProcessTitle = styled.h2`
   color: var(--text-primary);
   position: relative;
   z-index: 1;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -893,7 +901,7 @@ const ProcessTitle = styled.h2`
   @media (max-width: 768px) {
     font-size: 2.5rem;
     margin-bottom: 2.5rem;
-    
+
     &::after {
       width: 60px;
       height: 3px;
@@ -904,7 +912,7 @@ const ProcessTitle = styled.h2`
   @media (max-width: 480px) {
     font-size: 2rem;
     margin-bottom: 2rem;
-    
+
     &::after {
       width: 50px;
       height: 3px;
@@ -943,7 +951,7 @@ const ProcessTimeline = styled.div`
   @media (max-width: 768px) {
     padding: 1.5rem 0.5rem;
     gap: 2rem;
-    
+
     &::before {
       left: 2rem;
       transform: none;
@@ -953,7 +961,7 @@ const ProcessTimeline = styled.div`
   @media (max-width: 480px) {
     padding: 1rem 0.5rem;
     gap: 1.5rem;
-    
+
     &::before {
       left: 1.5rem;
     }
@@ -1029,11 +1037,11 @@ const ProcessStep = styled.div`
     width: 45%;
     padding: 2rem;
     border-radius: 16px;
-    
+
     &:nth-child(odd) {
       margin-top: -3rem;
     }
-    
+
     &:nth-child(even) {
       margin-top: 2rem;
     }
@@ -1046,22 +1054,22 @@ const ProcessStep = styled.div`
     text-align: left !important;
     padding: 1.5rem;
     border-radius: 12px;
-    
+
     &:nth-child(odd) {
       margin-top: 0;
     }
-    
+
     &:nth-child(even) {
       margin-top: 0;
     }
-    
+
     &::before {
       left: -2rem !important;
       right: auto !important;
       width: 16px;
       height: 16px;
     }
-    
+
     &::after {
       left: -2.5rem !important;
       right: auto !important;
@@ -1072,13 +1080,13 @@ const ProcessStep = styled.div`
   @media (max-width: 480px) {
     margin-left: 3rem !important;
     padding: 1.2rem;
-    
+
     &::before {
       left: -1.5rem !important;
       width: 14px;
       height: 14px;
     }
-    
+
     &::after {
       left: -2rem !important;
       width: 20px;
@@ -1503,19 +1511,19 @@ const AdvantagesSection = styled.section`
     );
     z-index: 0;
   }
-  
+
   @media (max-width: 1024px) {
     padding: 4rem 0;
     margin: 4rem 0;
     border-radius: 24px;
   }
-  
+
   @media (max-width: 768px) {
     padding: 3rem 0;
     margin: 3rem 0;
     border-radius: 20px;
   }
-  
+
   @media (max-width: 480px) {
     padding: 2rem 0;
     margin: 2rem 0;
@@ -1530,17 +1538,17 @@ const AdvantagesTitle = styled.h2`
   color: var(--text-primary);
   position: relative;
   z-index: 1;
-  
+
   @media (max-width: 1024px) {
     font-size: 2.5rem;
     margin-bottom: 1.2rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
     margin-bottom: 1rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 1.6rem;
     margin-bottom: 0.8rem;
@@ -1556,18 +1564,18 @@ const AdvantagesDescription = styled.p`
   color: var(--text-secondary);
   position: relative;
   z-index: 1;
-  
+
   @media (max-width: 1024px) {
     font-size: 1.1rem;
     margin-bottom: 3rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1rem;
     margin-bottom: 2.5rem;
     line-height: 1.6;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 0.9rem;
     margin-bottom: 2rem;
@@ -1583,17 +1591,17 @@ const AdvantagesGrid = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 1;
-  
+
   @media (max-width: 1024px) {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
   }
-  
+
   @media (max-width: 768px) {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
   }
-  
+
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
     gap: 0.8rem;
@@ -1619,7 +1627,7 @@ const AdvantageCard = styled(motion.div)`
     left: 0;
     width: 5px;
     height: 100%;
-  background: var(--accent-color);
+    background: var(--accent-color);
     opacity: 0.7;
     transition: all 0.3s ease;
   }
@@ -1628,17 +1636,17 @@ const AdvantageCard = styled(motion.div)`
     width: 100%;
     opacity: 0.05;
   }
-  
+
   @media (max-width: 1024px) {
     padding: 2rem;
     border-radius: 16px;
   }
-  
+
   @media (max-width: 768px) {
     padding: 1.5rem;
     border-radius: 12px;
   }
-  
+
   @media (max-width: 480px) {
     padding: 1.2rem;
     border-radius: 10px;
@@ -1674,45 +1682,45 @@ const AdvantageIcon = styled.div`
   }
 
   ${AdvantageCard}:hover & {
-  color: white;
+    color: white;
 
     &::after {
       opacity: 1;
       transform: scale(1);
     }
   }
-  
+
   @media (max-width: 1024px) {
     width: 60px;
     height: 60px;
     font-size: 1.8rem;
     margin-bottom: 1.2rem;
     border-radius: 16px;
-    
+
     &::after {
       border-radius: 16px;
     }
   }
-  
+
   @media (max-width: 768px) {
     width: 50px;
     height: 50px;
     font-size: 1.6rem;
     margin-bottom: 1rem;
     border-radius: 12px;
-    
+
     &::after {
       border-radius: 12px;
     }
   }
-  
+
   @media (max-width: 480px) {
     width: 45px;
     height: 45px;
     font-size: 1.4rem;
     margin-bottom: 0.8rem;
     border-radius: 10px;
-    
+
     &::after {
       border-radius: 10px;
     }
@@ -1734,19 +1742,19 @@ const AdvantageNumber = styled.div`
     color: rgba(var(--accent-color-rgb), 0.05);
     transform: scale(1.2);
   }
-  
+
   @media (max-width: 1024px) {
     font-size: 3.5rem;
     top: 1.2rem;
     right: 1.2rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 3rem;
     top: 1rem;
     right: 1rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 2.5rem;
     top: 0.8rem;
@@ -1761,17 +1769,17 @@ const AdvantageTitle = styled.h3`
   color: var(--text-primary);
   position: relative;
   z-index: 1;
-  
+
   @media (max-width: 1024px) {
     font-size: 1.3rem;
     margin-bottom: 0.8rem;
   }
-  
+
   @media (max-width: 768px) {
-  font-size: 1.2rem;
+    font-size: 1.2rem;
     margin-bottom: 0.6rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
@@ -1785,17 +1793,17 @@ const AdvantageDescription = styled.p`
   position: relative;
   z-index: 1;
   flex: 1;
-  
+
   @media (max-width: 1024px) {
     font-size: 1rem;
     line-height: 1.6;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 0.9rem;
     line-height: 1.5;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 0.85rem;
     line-height: 1.4;
@@ -1821,19 +1829,19 @@ const TargetSection = styled.section`
       repeat;
     z-index: 0;
   }
-  
+
   @media (max-width: 1024px) {
     padding: 4rem 0;
     margin: 4rem 0;
     border-radius: 24px;
   }
-  
+
   @media (max-width: 768px) {
     padding: 3rem 0;
     margin: 3rem 0;
     border-radius: 20px;
   }
-  
+
   @media (max-width: 480px) {
     padding: 2rem 0;
     margin: 2rem 0;
@@ -1848,17 +1856,17 @@ const TargetTitle = styled.h2`
   color: var(--text-primary);
   position: relative;
   z-index: 1;
-  
+
   @media (max-width: 1024px) {
     font-size: 2.5rem;
     margin-bottom: 1.2rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
     margin-bottom: 1rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 1.6rem;
     margin-bottom: 0.8rem;
@@ -2441,7 +2449,11 @@ const FaqWaveTop = styled.div`
   left: 0;
   width: 100%;
   height: 120px;
-  background: linear-gradient(to top left, transparent 49%, var(--bg-primary) 51%);
+  background: linear-gradient(
+    to top left,
+    transparent 49%,
+    var(--bg-primary) 51%
+  );
   z-index: 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 `;
@@ -2624,7 +2636,7 @@ const FaqItem = styled(motion.div)`
     border-radius: 12px;
 
     &:hover {
-    transform: translateY(-2px);
+      transform: translateY(-2px);
     }
   }
 
@@ -3028,6 +3040,8 @@ const BannerAds = () => {
   const [expandedFaqs, setExpandedFaqs] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const { t } = useTranslation();
+
   // Modal functions
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -3035,64 +3049,56 @@ const BannerAds = () => {
   const features = [
     {
       icon: <FaRocket />,
-      title: 'Швидкість розробки',
-      description:
-        'Генерація декількох варіантів банерів займає лічені хвилини.',
+      title: t('BannerAdsPage.benefits.speed.title'),
+      description: t('BannerAdsPage.benefits.speed.description'),
     },
     {
       icon: <FaCoins />,
-      title: 'Економія бюджету',
-      description: 'Менше витрат на ручну роботу дизайнерів і копірайтерів.',
+      title: t('BannerAdsPage.benefits.budget.title'),
+      description: t('BannerAdsPage.benefits.budget.description'),
     },
     {
       icon: <FaChartLine />,
-      title: 'Оптимізація під A/B-тестування',
-      description: 'ШІ може створити десятки варіацій під різні сегменти ЦА.',
+      title: t('BannerAdsPage.benefits.optimization.title'),
+      description: t('BannerAdsPage.benefits.optimization.description'),
     },
     {
       icon: <FaUsers />,
-      title: 'Персоналізація',
-      description:
-        'Адаптація під мову, геолокацію, інтереси та поведінку користувача.',
+      title: t('BannerAdsPage.benefits.personalization.title'),
+      description: t('BannerAdsPage.benefits.personalization.description'),
     },
     {
       icon: <FaBrain />,
-      title: 'Унікальність',
-      description:
-        'Візуали та тексти генеруються заново, з урахуванням вашого стилю та бренду.',
+      title: t('BannerAdsPage.benefits.uniqueness.title'),
+      description: t('BannerAdsPage.benefits.uniqueness.description'),
     },
   ];
 
   const services = [
     {
       icon: <FaPalette />,
-      title: 'Статичні банери',
-      description:
-        'Підходять для Google Ads, Facebook, Instagram, мобільних застосунків та сайтів. Генеруються у різних форматах і розмірах з урахуванням вимог платформи.',
+      title: t('BannerAdsPage.services.static.title'),
+      description: t('BannerAdsPage.services.static.description'),
     },
     {
       icon: <FaBolt />,
-      title: 'Анімовані банери (GIF та HTML5)',
-      description:
-        'Створюємо динамічні креативи, які привертають увагу і підвищують клікабельність.',
+      title: t('BannerAdsPage.services.animated.title'),
+      description: t('BannerAdsPage.services.animated.description'),
     },
     {
       icon: <FaShoppingCart />,
-      title: 'Банери для ремаркетингу та програматик-реклами',
-      description:
-        'Розробка адаптивних креативів для показу аудиторії, яка вже контактувала з вашим брендом.',
+      title: t('BannerAdsPage.services.remarketing.title'),
+      description: t('BannerAdsPage.services.remarketing.description'),
     },
     {
       icon: <FaPlus />,
-      title: 'Масова генерація варіантів',
-      description:
-        'ШІ здатен створити десятки і навіть сотні варіацій одного банера для тестування або масштабування рекламних кампаній.',
+      title: t('BannerAdsPage.services.massGeneration.title'),
+      description: t('BannerAdsPage.services.massGeneration.description'),
     },
     {
       icon: <FaRobot />,
-      title: 'Генерація текстів і зображень',
-      description:
-        'Ми поєднуємо текстові моделі ШІ (наприклад, ChatGPT) з візуальними (DALL·E, Midjourney, Stable Diffusion), щоб створювати креативи повністю з нуля.',
+      title: t('BannerAdsPage.services.textGeneration.title'),
+      description: t('BannerAdsPage.services.textGeneration.description'),
     },
   ];
 
@@ -3100,61 +3106,59 @@ const BannerAds = () => {
     {
       icon: <FaUsers />,
       number: '01',
-      title: 'Обговорення завдання',
-      description:
-        'На першому етапі ми уточнюємо цілі кампанії, тип платформи (Google, Meta, TikTok, мобільні додатки тощо), формат банера, побажання до стилістики та текстів. Якщо є брендбук — ми врахуємо кольори, логотип, шрифти.',
+      title: t('BannerAdsPage.process.step1.title'),
+      description: t('BannerAdsPage.process.step1.description'),
       details: [
-        { icon: <FaChartLine />, text: 'Визначення цілей' },
-        { icon: <FaUsers />, text: 'Аналіз аудиторії' },
-        { icon: <FaLightbulb />, text: 'Створення концепції' },
+        { icon: <FaChartLine />, text: t('BannerAdsPage.process.step1.item1') },
+        { icon: <FaUsers />, text: t('BannerAdsPage.process.step1.item2') },
+        { icon: <FaLightbulb />, text: t('BannerAdsPage.process.step1.item3') },
       ],
     },
     {
       icon: <FaRobot />,
       number: '02',
-      title: 'Генерація концептів',
-      description:
-        'Ми використовуємо інструменти генеративного ШІ для створення перших варіантів: зображення (за потреби — з ілюстраціями, персонажами або предметами); текст (з урахуванням платформи й ЦА); анімація або динамічні ефекти — якщо це потрібно. У середньому генерується 5–10 варіантів, з яких ви обираєте найкращі.',
+      title: t('BannerAdsPage.process.step2.title'),
+      description: t('BannerAdsPage.process.step2.description'),
       details: [
-        { icon: <FaRobot />, text: 'Генерація зображень' },
-        { icon: <FaPalette />, text: 'Варіанти дизайну' },
-        { icon: <FaCheck />, text: 'Перший відбір' },
+        { icon: <FaRobot />, text: t('BannerAdsPage.process.step2.item1') },
+        { icon: <FaPalette />, text: t('BannerAdsPage.process.step2.item2') },
+        { icon: <FaCheck />, text: t('BannerAdsPage.process.step2.item3') },
       ],
     },
     {
       icon: <FaPalette />,
       number: '03',
-      title: 'Ручна доопрацювання',
-      description:
-        'Обрані банери ми адаптуємо вручну: коригуємо елементи дизайну, вирівнюємо, додаємо легкість і візуальний баланс. За потреби вносимо правки після вашого фідбеку.',
+      title: t('BannerAdsPage.process.step3.title'),
+      description: t('BannerAdsPage.process.step3.description'),
       details: [
-        { icon: <FaDesktop />, text: 'Фінальний дизайн' },
-        { icon: <FaPencilRuler />, text: 'Корекція елементів' },
-        { icon: <FaCheck />, text: 'Узгодження правок' },
+        { icon: <FaDesktop />, text: t('BannerAdsPage.process.step3.item1') },
+        {
+          icon: <FaPencilRuler />,
+          text: t('BannerAdsPage.process.step3.item2'),
+        },
+        { icon: <FaCheck />, text: t('BannerAdsPage.process.step3.item3') },
       ],
     },
     {
       icon: <FaMobile />,
       number: '04',
-      title: 'Оптимізація під платформи',
-      description:
-        'Після затвердження фінального дизайну, ми створюємо банери у всіх необхідних розмірах і форматах: 300×250, 728×90, 160×600 – для дисплейних мереж; 1080×1080, 1080×1920 – для соціальних мереж; HTML5, GIF – для анімованої реклами.',
+      title: t('BannerAdsPage.process.step4.title'),
+      description: t('BannerAdsPage.process.step4.description'),
       details: [
-        { icon: <FaDesktop />, text: 'Веб-формати' },
-        { icon: <FaMobile />, text: 'Мобільні формати' },
-        { icon: <FaBolt />, text: 'Анімовані версії' },
+        { icon: <FaDesktop />, text: t('BannerAdsPage.process.step4.item1') },
+        { icon: <FaMobile />, text: t('BannerAdsPage.process.step4.item2') },
+        { icon: <FaBolt />, text: t('BannerAdsPage.process.step4.item3') },
       ],
     },
     {
       icon: <FaRocket />,
       number: '05',
-      title: 'Передача фінальних файлів',
-      description:
-        'Усі готові банери ви отримуєте у зручному вигляді (архів, Google Drive, посилання). Також за запитом надаємо рекомендації щодо їх розміщення або допомагаємо з завантаженням у рекламні кабінети.',
+      title: t('BannerAdsPage.process.step5.title'),
+      description: t('BannerAdsPage.process.step5.description'),
       details: [
-        { icon: <FaChartLine />, text: 'Пакет файлів' },
-        { icon: <FaClock />, text: 'Своєчасна доставка' },
-        { icon: <FaCheck />, text: 'Підтримка розміщення' },
+        { icon: <FaChartLine />, text: t('BannerAdsPage.process.step5.item1') },
+        { icon: <FaClock />, text: t('BannerAdsPage.process.step5.item2') },
+        { icon: <FaCheck />, text: t('BannerAdsPage.process.step5.item3') },
       ],
     },
   ];
@@ -3163,92 +3167,136 @@ const BannerAds = () => {
     {
       id: 1,
       type: 'ecommerce',
-      title: 'Знижка -50% на літню колекцію',
-      description:
-        'Банер з яскравим фоном і чітким відображенням продукту. Простий і привабливий дизайн для збільшення конверсії.',
+      title: t('BannerAdsPage.examples.examples.item1.title'),
+      description: t('BannerAdsPage.examples.examples.item1.description'),
       image:
         'https://via.placeholder.com/600x300/1a1a2e/FFFFFF?text=E-Commerce+Banner',
-      tags: ['Google Ads', 'Instagram', 'Знижка'],
+      tags: [
+        'Google Ads',
+        'Instagram',
+        t('BannerAdsPage.examples.examples.item1.tags1'),
+      ],
     },
     {
       id: 2,
       type: 'ecommerce',
-      title: 'Нова колекція сумок 2023',
-      description:
-        'Банер для бренду аксесуарів з акцентом на новинки сезону та ексклюзивні пропозиції.',
+      title: t('BannerAdsPage.examples.examples.item2.title'),
+      description: t('BannerAdsPage.examples.examples.item2.description'),
       image:
         'https://via.placeholder.com/600x300/1a1a2e/FFFFFF?text=New+Collection',
-      tags: ['Facebook', 'Сезонна колекція', 'Fashion'],
+      tags: [
+        'Facebook',
+        t('BannerAdsPage.examples.examples.item2.tags1'),
+        'Fashion',
+      ],
     },
     {
       id: 3,
       type: 'mobile',
-      title: 'Мобільний додаток – Знижка 30%',
-      description:
-        'Яскравий банер для промо-кампанії мобільного додатку з акцентом на обмежену пропозицію.',
+      title: t('BannerAdsPage.examples.examples.item3.title'),
+      description: t('BannerAdsPage.examples.examples.item3.description'),
       image:
         'https://via.placeholder.com/600x300/1a1a2e/FFFFFF?text=Mobile+App+Banner',
-      tags: ['TikTok', 'Instagram Stories', 'Анімація'],
+      tags: [
+        'TikTok',
+        'Instagram Stories',
+        t('BannerAdsPage.examples.examples.item3.tags1'),
+      ],
     },
     {
       id: 4,
       type: 'mobile',
-      title: 'Нова гра – Доступно в AppStore',
-      description:
-        'Вертикальний банер для мобільної гри з яскравими елементами і чітким CTA.',
+      title: t('BannerAdsPage.examples.examples.item4.title'),
+      description: t('BannerAdsPage.examples.examples.item4.description'),
       image:
         'https://via.placeholder.com/600x600/1a1a2e/FFFFFF?text=Mobile+Game',
-      tags: ['App Store', 'Google Play', 'Вертикальний формат'],
+      tags: [
+        'App Store',
+        'Google Play',
+        t('BannerAdsPage.examples.examples.item4.tags1'),
+      ],
     },
     {
       id: 5,
       type: 'retargeting',
-      title: 'Ви забули щось у кошику!',
-      description:
-        'Персоналізований банер для ретаргетингу користувачів, які не завершили покупку.',
+      title: t('BannerAdsPage.examples.examples.item5.title'),
+      description: t('BannerAdsPage.examples.examples.item5.description'),
       image:
         'https://via.placeholder.com/600x300/1a1a2e/FFFFFF?text=Retargeting+Banner',
-      tags: ['Ретаргетинг', 'Персоналізація', 'Кошик'],
+      tags: [
+        t('BannerAdsPage.examples.examples.item5.tags1'),
+        t('BannerAdsPage.examples.examples.item5.tags2'),
+        t('BannerAdsPage.examples.examples.item5.tags3'),
+      ],
     },
     {
       id: 6,
       type: 'education',
-      title: 'Курс з маркетингу – Старт 15 вересня',
-      description:
-        'Інформативний банер для освітнього проекту з фокусом на переваги курсу та дату початку.',
+      title: t('BannerAdsPage.examples.examples.item6.title'),
+      description: t('BannerAdsPage.examples.examples.item6.description'),
       image:
         'https://via.placeholder.com/600x300/1a1a2e/FFFFFF?text=Education+Course',
-      tags: ['Навчання', 'Онлайн-курс', 'Маркетинг'],
+      tags: [
+        t('BannerAdsPage.examples.examples.item6.tags1'),
+        t('BannerAdsPage.examples.examples.item6.tags2'),
+        t('BannerAdsPage.examples.examples.item6.tags3'),
+      ],
     },
     {
       id: 7,
       type: 'niche',
-      title: 'Ексклюзивна пропозиція для геймерів',
-      description:
-        'Тематичний банер для ігрового сервісу з використанням відповідної стилістики та кольорової гами.',
+      title: t('BannerAdsPage.examples.examples.item7.title'),
+      description: t('BannerAdsPage.examples.examples.item7.description'),
       image:
         'https://via.placeholder.com/600x300/1a1a2e/FFFFFF?text=Gaming+Banner',
-      tags: ['Ігри', 'Пропозиція', 'B2C'],
+      tags: [
+        t('BannerAdsPage.examples.examples.item7.tags1'),
+        t('BannerAdsPage.examples.examples.item7.tags2'),
+        'B2C',
+      ],
     },
     {
       id: 8,
       type: 'niche',
-      title: 'Фінансовий сервіс для бізнесу',
-      description:
-        'Професійний банер для B2B фінансового продукту з акцентом на безпеку та надійність.',
+      title: t('BannerAdsPage.examples.examples.item8.title'),
+      description: t('BannerAdsPage.examples.examples.item8.description'),
       image:
         'https://via.placeholder.com/600x300/1a1a2e/FFFFFF?text=Finance+Service',
-      tags: ['Фінанси', 'B2B', 'Безпека'],
+      tags: [
+        t('BannerAdsPage.examples.examples.item8.tags1'),
+        'B2B',
+        t('BannerAdsPage.examples.examples.item8.tags2'),
+      ],
     },
   ];
 
   const filters = [
-    { id: 'all', name: 'Всі типи', icon: <FaFilter /> },
+    {
+      id: 'all',
+      name: t('BannerAdsPage.examples.filters.all'),
+      icon: <FaFilter />,
+    },
     { id: 'ecommerce', name: 'E-commerce', icon: <FaShoppingCart /> },
-    { id: 'mobile', name: 'Мобільна реклама', icon: <FaMobileAlt /> },
-    { id: 'retargeting', name: 'Ретаргетинг', icon: <FaSyncAlt /> },
-    { id: 'education', name: 'Освітні продукти', icon: <FaGraduationCap /> },
-    { id: 'niche', name: 'Нішеві проекти', icon: <FaGamepad /> },
+    {
+      id: 'mobile',
+      name: t('BannerAdsPage.examples.filters.mobile'),
+      icon: <FaMobileAlt />,
+    },
+    {
+      id: 'retargeting',
+      name: t('BannerAdsPage.examples.filters.retargeting'),
+      icon: <FaSyncAlt />,
+    },
+    {
+      id: 'education',
+      name: t('BannerAdsPage.examples.filters.education'),
+      icon: <FaGraduationCap />,
+    },
+    {
+      id: 'niche',
+      name: t('BannerAdsPage.examples.filters.niche'),
+      icon: <FaGamepad />,
+    },
   ];
 
   const filteredBanners =
@@ -3269,49 +3317,43 @@ const BannerAds = () => {
       id: 1,
       number: '01',
       icon: <FaClock />,
-      title: 'Швидкість виконання',
-      description:
-        'Замість кількох днів на підготовку макетів — перші варіанти банерів ви можете отримати вже через кілька годин. Алгоритми працюють швидко й паралельно, що особливо корисно для термінових кампаній.',
+      title: t('BannerAdsPage.advantages.speed.title'),
+      description: t('BannerAdsPage.advantages.speed.description'),
     },
     {
       id: 2,
       number: '02',
       icon: <FaListAlt />,
-      title: 'Більше варіантів на вибір',
-      description:
-        'ШІ дозволяє одразу згенерувати десятки унікальних креативів. Це дає змогу швидше знайти ідеальний стиль, протестувати кілька версій (A/B-тестування) та обрати найефективніший варіант.',
+      title: t('BannerAdsPage.advantages.variety.title'),
+      description: t('BannerAdsPage.advantages.variety.description'),
     },
     {
       id: 3,
       number: '03',
       icon: <FaBrain />,
-      title: 'Креативність + аналітика',
-      description:
-        'AI бере до уваги тренди, візуальні патерни та переваги аудиторії. Завдяки цьому створюються банери, які не просто красиві, а ще й працюють на результат: високий CTR, більше конверсій, краще залучення.',
+      title: t('BannerAdsPage.advantages.creativity.title'),
+      description: t('BannerAdsPage.advantages.creativity.description'),
     },
     {
       id: 4,
       number: '04',
       icon: <FaMoneyBillWave />,
-      title: 'Економія бюджету',
-      description:
-        'Ручна робота дизайнерів — дорога. Застосування генеративного ШІ суттєво знижує витрати на виробництво банерів, особливо якщо вам потрібна велика кількість форматів.',
+      title: t('BannerAdsPage.advantages.budget.title'),
+      description: t('BannerAdsPage.advantages.budget.description'),
     },
     {
       id: 5,
       number: '05',
       icon: <FaExpand />,
-      title: 'Масштабування',
-      description:
-        'Потрібні банери 10+ форматів? Або серія з 30 варіацій під різні оффери? Для ШІ це не проблема. Ви зможете масштабувати рекламу в кілька кліків.',
+      title: t('BannerAdsPage.advantages.scaling.title'),
+      description: t('BannerAdsPage.advantages.scaling.description'),
     },
     {
       id: 6,
       number: '06',
       icon: <FaTv />,
-      title: 'Адаптація під платформи',
-      description:
-        'ШІ «розуміє», які банери краще працюють у Facebook, які — в Google Ads, а які — в TikTok. Тому банери одразу оптимізуються під специфіку кожного каналу.',
+      title: t('BannerAdsPage.advantages.adaptation.title'),
+      description: t('BannerAdsPage.advantages.adaptation.description'),
     },
   ];
 
@@ -3319,44 +3361,38 @@ const BannerAds = () => {
     {
       id: 1,
       icon: <FaStore />,
-      title: 'Інтернет-магазинам та e-commerce',
-      description:
-        'Яскраві банери для акцій, розпродажів, новинок. Швидка генерація сотень банерів для різних товарних категорій.',
+      title: t('BannerAdsPage.target.ecommerce.title'),
+      description: t('BannerAdsPage.target.ecommerce.description'),
     },
     {
       id: 2,
       icon: <FaMobileAlt />,
-      title: 'Розробникам мобільних застосунків',
-      description:
-        'Креативи для просування в TikTok, Meta та Google Ads. Висока конверсія завдяки підходу, заснованому на ШІ та тестуванні.',
+      title: t('BannerAdsPage.target.mobile.title'),
+      description: t('BannerAdsPage.target.mobile.description'),
     },
     {
       id: 3,
       icon: <FaGraduationCap />,
-      title: 'Онлайн-курсам та освітнім платформам',
-      description:
-        'Професійні банери для реклами вебінарів, курсів та програм навчання з акцентом на ваші конкурентні переваги.',
+      title: t('BannerAdsPage.target.education.title'),
+      description: t('BannerAdsPage.target.education.description'),
     },
     {
       id: 4,
       icon: <FaGamepad />,
-      title: 'Гемблінг-проєктам та розважальним сервісам',
-      description:
-        'Залучення уваги яскравими візуалами з дотриманням законодавчих обмежень та особливостей ніші.',
+      title: t('BannerAdsPage.target.gaming.title'),
+      description: t('BannerAdsPage.target.gaming.description'),
     },
     {
       id: 5,
       icon: <FaBuilding />,
-      title: 'B2B-компаніям',
-      description:
-        'Презентація послуг, подій, програм або генерація лідів. Банери, що відповідають вашому корпоративному стилю.',
+      title: t('BannerAdsPage.target.b2b.title'),
+      description: t('BannerAdsPage.target.b2b.description'),
     },
     {
       id: 6,
       icon: <FaChessKnight />,
-      title: 'Маркетологам та агентствам',
-      description:
-        'Масштабне та швидке виробництво банерів під проєкти клієнтів. Нові ідеї та підходи для збільшення конверсії.',
+      title: t('BannerAdsPage.target.agencies.title'),
+      description: t('BannerAdsPage.target.agencies.description'),
     },
   ];
 
@@ -3364,83 +3400,77 @@ const BannerAds = () => {
     {
       id: 1,
       icon: <FaClock />,
-      title: 'Швидкість',
-      description:
-        'Перші варіанти креативів уже за кілька годин. Цілу кампанію можемо підготувати за 1-2 дні.',
+      title: t('BannerAdsPage.whyUs.speed.title'),
+      description: t('BannerAdsPage.whyUs.speed.description'),
     },
     {
       id: 2,
       icon: <FaPaintBrush />,
-      title: 'Якість + ШІ',
-      description:
-        'Поєднуємо автоматизовану генерацію з ручним доопрацюванням для досягнення ідеального результату.',
+      title: t('BannerAdsPage.whyUs.quality.title'),
+      description: t('BannerAdsPage.whyUs.quality.description'),
     },
     {
       id: 3,
       icon: <FaIndustry />,
-      title: 'Досвід у різних нішах',
-      description:
-        'Від освіти й e-commerce до казино та фінансів — ми знаємо специфіку та особливості кожної галузі.',
+      title: t('BannerAdsPage.whyUs.experience.title'),
+      description: t('BannerAdsPage.whyUs.experience.description'),
     },
     {
       id: 4,
       icon: <FaSitemap />,
-      title: 'Повна адаптація',
-      description:
-        'Банери для Meta, Google, TikTok, банерних мереж, мобільних додатків з урахуванням вимог кожної платформи.',
+      title: t('BannerAdsPage.whyUs.adaptation.title'),
+      description: t('BannerAdsPage.whyUs.adaptation.description'),
     },
     {
       id: 5,
       icon: <FaClipboardCheck />,
-      title: 'Прозорий процес',
-      description:
-        'Без зайвої бюрократії й затримок. Ви завжди в курсі прогресу та можете вносити коригування.',
+      title: t('BannerAdsPage.whyUs.transparency.title'),
+      description: t('BannerAdsPage.whyUs.transparency.description'),
     },
     {
       id: 6,
       icon: <FaHandshake />,
-      title: 'Оптимальні ціни',
-      description:
-        'Вигідніше, ніж повноцінна команда дизайнерів, і якісніше, ніж дешеві фріланс-рішення.',
+      title: t('BannerAdsPage.whyUs.pricing.title'),
+      description: t('BannerAdsPage.whyUs.pricing.description'),
     },
   ];
 
   // Данные FAQ
   const faqData = [
     {
-      question: '1. Чим банери, створені за допомогою ШІ, кращі за звичайні?',
+      question: t('BannerAdsPage.faq.q1'),
       answer:
-        'Вони генеруються швидше, адаптуються до цільової аудиторії та мають вищу конверсію завдяки аналітиці й тестуванню.',
+      t('BannerAdsPage.faq.a1'),
     },
     {
       question:
-        '2. Чи можна зробити банери під конкретні розміри та платформи?',
+      t('BannerAdsPage.faq.q2'),
       answer:
-        'Так, ми генеруємо банери для будь-яких форматів: Google Ads, Facebook, Instagram, сайти тощо.',
+      t('BannerAdsPage.faq.a2'),
     },
     {
-      question: '3. Чи буде банер унікальним?',
+      question: t('BannerAdsPage.faq.q3'),
       answer:
-        'Так. ШІ створює оригінальний візуал і текст під кожен запит, враховуючи бренд і стиль.',
+      t('BannerAdsPage.faq.a3'),
     },
     {
-      question: '4. Чи потрібні технічні знання, щоб замовити банер?',
-      answer: 'Ні. Ви просто надаєте коротке ТЗ, а ми беремо на себе все інше.',
+      question: t('BannerAdsPage.faq.q4'),
+      answer:  t('BannerAdsPage.faq.a4'),
     },
     {
-      question: '5. Чи можна додати свій логотип або кольори бренду?',
+      question: t('BannerAdsPage.faq.q5'),
       answer:
-        'Звісно. ШІ адаптує банер до вашого брендбуку – кольори, шрифти, стиль.',
+      t('BannerAdsPage.faq.a5'),
     },
     {
-      question: '6. Скільки часу займає створення банеру з ШІ?',
+      question: t('BannerAdsPage.faq.q6'),
       answer:
-        'Від 1 до 24 годин, залежно від складності й кількості варіантів.',
+      t('BannerAdsPage.faq.a6'),
     },
     {
-      question: '7. Чи можна протестувати кілька варіантів банерів?',
+      question: t('BannerAdsPage.faq.q7'),
       answer:
-        'Так, ми пропонуємо A/B варіанти, щоб ви могли вибрати найефективніший.',
+      t('BannerAdsPage.faq.a7'),
     },
   ];
 
@@ -3465,19 +3495,17 @@ const BannerAds = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Рекламні банери з <span>ШІ</span> – швидко, точно, ефективно
+              {t('BannerAdsPage.hero.title')}
             </HeroTitle>
-            
+
             <HeroDescription
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              Підвищіть ефективність вашого маркетингу з рекламними банерами, 
-              створеними за допомогою штучного інтелекту. Економія часу, 
-              персоналізація та висока конверсія.
+              {t('BannerAdsPage.hero.subtitle')}
             </HeroDescription>
-            
+
             <HeroButtons
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -3488,119 +3516,164 @@ const BannerAds = () => {
                 whileTap={{ scale: 0.98 }}
                 onClick={openModal}
               >
-                Замовити банер <FaArrowRight />
+                {t('BannerAdsPage.hero.buttonText')} <FaArrowRight />
               </PrimaryButton>
             </HeroButtons>
-            
+
             <HeroFeatures
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <FeatureItem>
-                <HeroFeatureIcon><FaClock /></HeroFeatureIcon>
-                <FeatureText>Швидко</FeatureText>
+                <HeroFeatureIcon>
+                  <FaClock />
+                </HeroFeatureIcon>
+                <FeatureText>
+                  {t('BannerAdsPage.hero.features.fast')}{' '}
+                </FeatureText>
               </FeatureItem>
-              
+
               <FeatureItem>
-                <HeroFeatureIcon><FaCheck /></HeroFeatureIcon>
-                <FeatureText>Якісно</FeatureText>
+                <HeroFeatureIcon>
+                  <FaCheck />
+                </HeroFeatureIcon>
+                <FeatureText>
+                  {t('BannerAdsPage.hero.features.quality')}
+                </FeatureText>
               </FeatureItem>
-              
+
               <FeatureItem>
-                <HeroFeatureIcon><FaChartLine /></HeroFeatureIcon>
-                <FeatureText>Ефективно</FeatureText>
+                <HeroFeatureIcon>
+                  <FaChartLine />
+                </HeroFeatureIcon>
+                <FeatureText>
+                  {t('BannerAdsPage.hero.features.effective')}
+                </FeatureText>
               </FeatureItem>
             </HeroFeatures>
           </HeroContent>
-          
+
           <HeroBanner
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <BannerGlow 
-              animate={{ 
-                opacity: [0.2, 0.5, 0.2], 
+            <BannerGlow
+              animate={{
+                opacity: [0.2, 0.5, 0.2],
                 scale: [0.8, 1.1, 0.8],
-                rotate: [0, 360]
+                rotate: [0, 360],
               }}
-              transition={{ 
+              transition={{
                 duration: 15,
                 repeat: Infinity,
-                ease: "linear"
+                ease: 'linear',
               }}
             />
-            
+
             <BannerContainer
-              animate={{ 
-                y: [0, -15, 0], 
+              animate={{
+                y: [0, -15, 0],
                 rotateY: [5, -5, 5],
-                rotateX: [5, 2, 5]
+                rotateX: [5, 2, 5],
               }}
-              transition={{ 
+              transition={{
                 duration: 6,
                 repeat: Infinity,
-                ease: "easeInOut"
+                ease: 'easeInOut',
               }}
             >
               <Banner3D>
                 <BannerElements>
                   <BannerHeader>
                     <BannerLogo>AI</BannerLogo>
-                    <BannerTagline>Спеціальна пропозиція</BannerTagline>
+                    <BannerTagline>
+                      {t('BannerAdsPage.imgText.text1')}
+                    </BannerTagline>
                   </BannerHeader>
-                  
+
                   <BannerContent>
-                    <HeroBannerTitle>Літня знижка 50%</HeroBannerTitle>
-                    <BannerText>На всі види рекламних банерів для вашого бізнесу</BannerText>
+                    <HeroBannerTitle>
+                      {t('BannerAdsPage.imgText.text2')}
+                    </HeroBannerTitle>
+                    <BannerText>{t('BannerAdsPage.imgText.text3')}</BannerText>
                   </BannerContent>
-                  
+
                   <BannerFooter>
-                    <BannerPrice><span>₴2000</span> ₴1000</BannerPrice>
-                    <BannerCta onClick={openModal}>Замовити</BannerCta>
+                    <BannerPrice>
+                      <span>₴2000</span> ₴1000
+                    </BannerPrice>
+                    <BannerCta onClick={openModal}>
+                      {t('BannerAdsPage.imgText.text4')}
+                    </BannerCta>
                   </BannerFooter>
                 </BannerElements>
               </Banner3D>
-              
+
               <FloatingObject
                 style={{ top: '-10%', right: '0%' }}
                 animate={{ y: [0, -15, 0], rotate: [0, -5, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
               >
                 <FaPalette />
               </FloatingObject>
-              
+
               <FloatingObject
                 style={{ bottom: '5%', left: '5%' }}
                 animate={{ y: [0, 15, 0], rotate: [0, 5, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
               >
                 <FaRobot />
               </FloatingObject>
-              
+
               <FloatingBar
                 style={{ width: '80px', top: '20%', left: '-15%' }}
                 animate={{ rotate: [0, 5, 0], x: [0, -10, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
               />
-              
+
               <FloatingBar
                 style={{ width: '60px', bottom: '30%', right: '-10%' }}
                 animate={{ rotate: [0, -5, 0], x: [0, 10, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
               />
-              
+
               <FloatingDot
                 style={{ top: '40%', left: '-5%' }}
                 animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
               />
-              
+
               <FloatingDot
                 style={{ bottom: '10%', right: '20%' }}
                 animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                  delay: 1,
+                }}
               />
             </BannerContainer>
           </HeroBanner>
@@ -3608,7 +3681,7 @@ const BannerAds = () => {
       </HeroSection>
 
       <SliderTitle style={{ marginTop: '4rem', marginBottom: '2rem' }}>
-        Чому варто використовувати ШІ для створення банерів
+        {t('BannerAdsPage.benefits.title')}
       </SliderTitle>
       <Subtitle
         style={{
@@ -3617,25 +3690,24 @@ const BannerAds = () => {
           margin: '0 auto 3rem',
         }}
       >
-        Сучасні інструменти на основі ШІ змінюють правила гри в дизайні реклами.
-        Ось кілька причин, чому наші клієнти обирають саме цей підхід:
+        {t('BannerAdsPage.benefits.subTitle')}
       </Subtitle>
 
       <FeaturesContainer>
-      <FeaturesGrid>
+        <FeaturesGrid>
           {features.slice(0, 3).map((feature, index) => (
-          <FeatureCard
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-          >
-            <FeatureIcon>{feature.icon}</FeatureIcon>
-            <FeatureTitle>{feature.title}</FeatureTitle>
-            <FeatureDescription>{feature.description}</FeatureDescription>
-          </FeatureCard>
-        ))}
-      </FeaturesGrid>
+            <FeatureCard
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <FeatureIcon>{feature.icon}</FeatureIcon>
+              <FeatureTitle>{feature.title}</FeatureTitle>
+              <FeatureDescription>{feature.description}</FeatureDescription>
+            </FeatureCard>
+          ))}
+        </FeaturesGrid>
 
         <FeaturesSecondGrid>
           {features.slice(3, 5).map((feature, index) => (
@@ -3654,13 +3726,8 @@ const BannerAds = () => {
       </FeaturesContainer>
 
       <SliderSection>
-        <SliderTitle>Що ми пропонуємо</SliderTitle>
-        <SliderIntro>
-          Ми спеціалізуємося на створенні рекламних банерів з використанням
-          інструментів штучного інтелекту. Це дозволяє швидко генерувати якісні
-          візуали, адаптовані до різних платформ і завдань. Наші послуги
-          охоплюють повний спектр банерної реклами:
-        </SliderIntro>
+        <SliderTitle>{t('BannerAdsPage.services.title')}</SliderTitle>
+        <SliderIntro>{t('BannerAdsPage.services.subTitle')}</SliderIntro>
 
         <SliderContainer>
           <Slider style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
@@ -3680,33 +3747,32 @@ const BannerAds = () => {
           </Slider>
         </SliderContainer>
 
-          <SliderControls>
-            <SliderButton onClick={prevSlide}>
-              <FaChevronLeft />
-            </SliderButton>
-            <SliderButton onClick={nextSlide}>
-              <FaChevronRight />
-            </SliderButton>
-          </SliderControls>
+        <SliderControls>
+          <SliderButton onClick={prevSlide}>
+            <FaChevronLeft />
+          </SliderButton>
+          <SliderButton onClick={nextSlide}>
+            <FaChevronRight />
+          </SliderButton>
+        </SliderControls>
 
         <SliderIntro style={{ marginTop: '2rem', fontStyle: 'italic' }}>
-          Кожен банер проходить ручну перевірку та доопрацювання дизайнером для
-          досягнення високої якості.
+          {t('BannerAdsPage.services.footerText')}
         </SliderIntro>
       </SliderSection>
 
       <ProcessSection>
-        <ProcessTitle>Як працює процес</ProcessTitle>
+        <ProcessTitle>{t('BannerAdsPage.process.title')}</ProcessTitle>
         <SliderIntro style={{ marginBottom: '4rem' }}>
-          Ми зробили процес створення рекламних банерів з ШІ максимально
-          простим, прозорим і зручним для замовника. Уся робота займає від
-          кількох годин до кількох днів — залежно від складності та обсягу.
+          {t('BannerAdsPage.process.subTitle')}
         </SliderIntro>
         <ProcessTimeline>
           {processSteps.map((step, index) => (
             <ProcessStep key={index}>
               <ProcessIcon>{step.icon}</ProcessIcon>
-              <ProcessNumber>Крок {step.number}</ProcessNumber>
+              <ProcessNumber>
+                {t('BannerAdsPage.process.text')} {step.number}
+              </ProcessNumber>
               <FeatureTitle>{step.title}</FeatureTitle>
               <ProcessText>{step.description}</ProcessText>
               <ProcessDetails>
@@ -3723,15 +3789,9 @@ const BannerAds = () => {
       </ProcessSection>
 
       <ExamplesSection>
-        <ExamplesTitle>
-          Приклади рекламних банерів, створених з ШІ
-        </ExamplesTitle>
+        <ExamplesTitle>{t('BannerAdsPage.examples.title')}</ExamplesTitle>
         <ExamplesDescription>
-          Штучний інтелект відкриває нові можливості у створенні рекламних
-          банерів. Завдяки сучасним генеративним моделям, ми створюємо візуали,
-          які ідеально відповідають цілям бізнесу та потребам аудиторії.
-          Гнучкість, масштабованість і висока якість — ключові переваги нашого
-          підходу.
+          {t('BannerAdsPage.examples.subTitle')}
         </ExamplesDescription>
 
         <FilterContainer>
@@ -3783,30 +3843,22 @@ const BannerAds = () => {
         </GalleryGrid>
 
         <AdditionalInfo>
-          <AdditionalInfoTitle>Додаткова інформація</AdditionalInfoTitle>
+          <AdditionalInfoTitle>
+            {t('BannerAdsPage.examples.footerTitle')}
+          </AdditionalInfoTitle>
           <AdditionalInfoText>
-            Ми надаємо приклади банерів у форматі PNG, JPEG, GIF або HTML5. За
-            потреби — підготуємо банер-сет під Google Ads, Meta Ads або будь-яку
-            DSP-платформу.
+            {t('BannerAdsPage.examples.footerText1')}
           </AdditionalInfoText>
           <AdditionalInfoText>
-            Крім того, для кожного замовлення ми можемо запропонувати декілька
-            варіантів дизайну — щоб ви могли обрати той, що працює найкраще. Усе
-            це — без значного підвищення ціни, адже генерація відбувається
-            автоматизовано.
+            {t('BannerAdsPage.examples.footerText2')}
           </AdditionalInfoText>
         </AdditionalInfo>
       </ExamplesSection>
 
       <AdvantagesSection>
-        <AdvantagesTitle>
-          Переваги використання ШІ в створенні банерів
-        </AdvantagesTitle>
+        <AdvantagesTitle>{t('BannerAdsPage.advantages.title')}</AdvantagesTitle>
         <AdvantagesDescription>
-          Використання штучного інтелекту в дизайні рекламних банерів — це не
-          просто модний тренд, а практичне рішення, що дає конкретні переваги
-          бізнесу. Нижче — ключові причини, чому все більше компаній обирають
-          саме AI-дизайн:
+          {t('BannerAdsPage.advantages.subTitle')}
         </AdvantagesDescription>
 
         <AdvantagesGrid>
@@ -3831,15 +3883,8 @@ const BannerAds = () => {
       </AdvantagesSection>
 
       <TargetSection>
-        <TargetTitle>
-          Для кого підходить ця послуга та чому обирають нас
-        </TargetTitle>
-        <TargetDescription>
-          Послуга створення рекламних банерів з використанням ШІ — це ефективне
-          рішення для будь-якого бізнесу, який прагне швидко та вигідно
-          просуватися в інтернеті. І незалежно від ніші, ми знаємо, як дати вам
-          результат.
-        </TargetDescription>
+        <TargetTitle>{t('BannerAdsPage.target.title')}</TargetTitle>
+        <TargetDescription>{t('BannerAdsPage.target.text')}</TargetDescription>
 
         <TabContainer>
           <TabsHeader>
@@ -3847,13 +3892,13 @@ const BannerAds = () => {
               active={activeTab === 'forWhom'}
               onClick={() => setActiveTab('forWhom')}
             >
-              Кому буде корисно
+              {t('BannerAdsPage.target.subTitle1')}
             </TabButton>
             <TabButton
               active={activeTab === 'whyUs'}
               onClick={() => setActiveTab('whyUs')}
             >
-              Чому обирають нас
+              {t('BannerAdsPage.target.subTitle2')}
             </TabButton>
           </TabsHeader>
 
@@ -3913,72 +3958,35 @@ const BannerAds = () => {
         </TabContainer>
       </TargetSection>
 
-      <AdvantagesSection>
-        <AdvantagesTitle>
-          Переваги використання ШІ в створенні банерів
-        </AdvantagesTitle>
-        <AdvantagesDescription>
-          Використання штучного інтелекту в дизайні рекламних банерів — це не
-          просто модний тренд, а практичне рішення, що дає конкретні переваги
-          бізнесу. Нижче — ключові причини, чому все більше компаній обирають
-          саме AI-дизайн:
-        </AdvantagesDescription>
-
-        <AdvantagesGrid>
-          {advantages.map((advantage, index) => (
-            <AdvantageCard
-              key={advantage.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true, margin: '-100px' }}
-              whileHover={{ y: -10, boxShadow: '0 20px 40px rgba(0,0,0,0.2)' }}
-            >
-              <AdvantageNumber>{advantage.number}</AdvantageNumber>
-              <AdvantageIcon>{advantage.icon}</AdvantageIcon>
-              <AdvantageTitle>{advantage.title}</AdvantageTitle>
-              <AdvantageDescription>
-                {advantage.description}
-              </AdvantageDescription>
-            </AdvantageCard>
-          ))}
-        </AdvantagesGrid>
-      </AdvantagesSection>
-
       {/* Добавляю новый финальный блок с призывом к действию */}
       <FinalCTASection>
-        <FinalCTATitle>
-          Замовляйте сучасні рекламні банери вже сьогодні
-        </FinalCTATitle>
-        <FinalCTAText>
-          Світ цифрового маркетингу змінюється, і банери, створені за допомогою
-          ШІ, — це не просто тренд, а ефективний інструмент просування. Вони
-          привертають увагу, передають меседж, стимулюють кліки — і все це з
-          мінімальними витратами часу та бюджету.
-        </FinalCTAText>
+        <FinalCTATitle>{t('BannerAdsPage.checklist.title')}</FinalCTATitle>
+        <FinalCTAText>{t('BannerAdsPage.checklist.subTitle')}</FinalCTAText>
 
         <ChecklistContainer>
-          <ChecklistTitle>Якщо вам потрібно:</ChecklistTitle>
+          <ChecklistTitle>{t('BannerAdsPage.checklist.text')}</ChecklistTitle>
           <ChecklistItems>
-            <ChecklistItem>привернути нових клієнтів</ChecklistItem>
             <ChecklistItem>
-              запустити рекламну кампанію якомога швидше
+              {t('BannerAdsPage.checklist.items.item1')}
             </ChecklistItem>
-            <ChecklistItem>оновити креативи під нову пропозицію</ChecklistItem>
             <ChecklistItem>
-              підготувати адаптивні банери для різних платформ
+              {t('BannerAdsPage.checklist.items.item2')}
+            </ChecklistItem>
+            <ChecklistItem>
+              {t('BannerAdsPage.checklist.items.item3')}
+            </ChecklistItem>
+            <ChecklistItem>
+              {t('BannerAdsPage.checklist.items.item4')}
             </ChecklistItem>
           </ChecklistItems>
         </ChecklistContainer>
 
         <FinalCTAText>
-          Замовляйте рекламні банери з використанням ШІ прямо зараз — і
-          отримайте сучасний дизайн, що працює на результат.
+        {t('BannerAdsPage.checklist.footerText')}
         </FinalCTAText>
 
         <FinalNote>
-          Зв'яжіться з нами для консультації або залиште заявку — відповімо
-          протягом 1 робочого дня.
+        {t('BannerAdsPage.checklist.footerSub')}
         </FinalNote>
       </FinalCTASection>
 
@@ -3991,7 +3999,7 @@ const BannerAds = () => {
         transition={{ duration: 0.8 }}
       >
         <FaqWaveTop />
-        
+
         <FaqContainer>
           <FaqGlowCircle className="circle-1" />
           <FaqGlowCircle className="circle-2" />
@@ -4061,7 +4069,7 @@ const BannerAds = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.2 }}
           >
-            <FaqCtaText>Не знайшли відповідь на своє питання?</FaqCtaText>
+            <FaqCtaText>{t('BannerAdsPage.faq.ctaText')}</FaqCtaText>
             <FaqCtaButton
               whileHover={{
                 scale: 1.03,
@@ -4070,16 +4078,15 @@ const BannerAds = () => {
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
             >
-              Напишіть нам
+              {t('BannerAdsPage.faq.ctaButton')}
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
       </FaqSection>
-      
+
       <Modal isOpen={isModalOpen} onClose={closeModal} />
     </PageContainer>
   );
 };
 
-export default BannerAds; 
-
+export default BannerAds;

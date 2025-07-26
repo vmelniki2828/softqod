@@ -15,6 +15,7 @@ import {
   FaPlus,
 } from 'react-icons/fa';
 import Modal from '../../components/Modal';
+import { useTranslation } from 'react-i18next';
 
 // Анимации
 const pulse = keyframes`
@@ -2521,6 +2522,8 @@ const MobileAppsPage = () => {
   const [expandedFaqs, setExpandedFaqs] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const { t } = useTranslation();
+
   useEffect(() => {
     // Генерация звезд для фона
     const generatedStars = [];
@@ -2554,21 +2557,18 @@ const MobileAppsPage = () => {
   const benefitsData = [
     {
       icon: <FaMobile />,
-      title: 'Нативна розробка',
-      description:
-        'Створюємо унікальні додатки з максимальною продуктивністю для iOS та Android.',
+      title: t('MobileAppsPage.benefits.title1'),
+      description: t('MobileAppsPage.benefits.desc1'),
     },
     {
       icon: <FaRocket />,
-      title: 'Крос-платформенні рішення',
-      description:
-        'Економія часу та бюджету з додатками, що працюють на всіх платформах.',
+      title: t('MobileAppsPage.benefits.title2'),
+      description: t('MobileAppsPage.benefits.desc2'),
     },
     {
       icon: <FaCheck />,
-      title: 'Підтримка та оновлення',
-      description:
-        'Забезпечуємо стабільну роботу та випускаємо нові версії з додатковим функціоналом.',
+      title: t('MobileAppsPage.benefits.title3'),
+      description: t('MobileAppsPage.benefits.desc3'),
     },
   ];
 
@@ -2587,21 +2587,18 @@ const MobileAppsPage = () => {
   const appTypes = [
     {
       icon: <FaApple />,
-      title: 'Нативні додатки для iOS та Android',
-      description:
-        'Нативна розробка дозволяє створювати максимально швидкі та стабільні додатки, що повністю використовують можливості операційних систем iOS та Android. Такі додатки відрізняються високою продуктивністю, якісною графікою та глибокою інтеграцією з пристроями користувача.',
+      title: t('MobileAppsPage.appTypes.nativeTitle'),
+      description: t('MobileAppsPage.appTypes.nativeDesc'),
     },
     {
       icon: <FaRocket />,
-      title: 'Кросплатформенні додатки на Flutter та React Native',
-      description:
-        'Кросплатформенні рішення дають змогу розробити один додаток для двох платформ одночасно, що економить час та бюджет. Технології Flutter і React Native забезпечують високу швидкість роботи, гарну якість інтерфейсу та простоту масштабування проєкту.',
+      title: t('MobileAppsPage.appTypes.crossTitle'),
+      description: t('MobileAppsPage.appTypes.crossDesc'),
     },
     {
       icon: <FaMobile />,
-      title: 'Прогресивні вебдодатки (PWA)',
-      description:
-        'Прогресивні вебдодатки поєднують переваги вебсайтів та нативних додатків. Вони працюють у браузері, не потребують встановлення, можуть працювати в офлайн-режимі та підтримують push-сповіщення. PWA — чудовий вибір для бізнесу, який хоче швидко запустити мобільний продукт із мінімальними витратами.',
+      title: t('MobileAppsPage.appTypes.pwaTitle'),
+      description: t('MobileAppsPage.appTypes.pwaDesc'),
     },
   ];
 
@@ -2667,7 +2664,7 @@ const MobileAppsPage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          Розробка мобільних додатків на замовлення
+          {t('MobileAppsPage.hero.title')}
         </Title>
 
         <Subtitle
@@ -2675,12 +2672,7 @@ const MobileAppsPage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          Створення мобільного додатку — це ефективний інструмент для бізнесу,
-          який допомагає залучати нових клієнтів, підвищувати лояльність та
-          збільшувати продажі. У сучасному світі понад 70% інтернет-трафіку
-          надходить саме з мобільних пристроїв, тому наявність власного
-          мобільного додатку для iOS або Android стає важливою конкурентною
-          перевагою.
+          {t('MobileAppsPage.hero.subtitle')}
         </Subtitle>
 
         <PhoneContainer
@@ -2750,11 +2742,7 @@ const MobileAppsPage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.9 }}
         >
-          Наша компанія пропонує професійні послуги з розробки мобільних
-          додатків "під ключ" — від аналітики і проєктування до запуску та
-          підтримки. Ми створюємо нативні додатки, кросплатформенні рішення та
-          прогресивні вебдодатки (PWA), які працюють швидко, стабільно та
-          безпечно.
+          {t('MobileAppsPage.hero.subtitle2')}
         </Subtitle>
 
         <HeroBenefitsList
@@ -2786,7 +2774,7 @@ const MobileAppsPage = () => {
           whileTap={{ scale: 0.95 }}
           onClick={openModal}
         >
-          Замовити консультацію
+          {t('MobileAppsPage.hero.buttonText')}
         </CTAButton>
       </HeroSection>
 
@@ -2824,7 +2812,7 @@ const MobileAppsPage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Чому вашому бізнесу потрібно мобільний додаток
+            {t('MobileAppsPage.business.title')}
           </BusinessTitle>
 
           <BusinessContent>
@@ -2833,11 +2821,7 @@ const MobileAppsPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Мобільний додаток відкриває для бізнесу нові можливості взаємодії
-              з клієнтами та ринку просування. Він дозволяє бути на зв'язку з
-              аудиторією 24/7, надсилати push-сповіщення про акції, новини та
-              спеціальні пропозиції, а також збирати аналітику для покращення
-              сервісу.
+              {t('MobileAppsPage.business.text1')}
             </BusinessText>
 
             <BusinessText
@@ -2845,11 +2829,7 @@ const MobileAppsPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Крім того, наявність мобільного додатку сприяє зміцненню бренду.
-              Яскравий та зручний інтерфейс, бездоганна функціональність і
-              швидка робота допомагають формувати позитивний імідж компанії.
-              Бізнеси, що пропонують мобільний досвід, значно випереджають
-              конкурентів за рівнем залученості клієнтів та обсягом продажів.
+              {t('MobileAppsPage.business.text2')}
             </BusinessText>
 
             <BusinessHighlight
@@ -2857,8 +2837,7 @@ const MobileAppsPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Інвестуючи у розробку мобільного додатку, ви отримуєте потужний
-              маркетинговий інструмент, який працює на ваш успіх кожного дня.
+              {t('MobileAppsPage.business.highlight')}
             </BusinessHighlight>
           </BusinessContent>
         </BusinessContainer>
@@ -2875,7 +2854,7 @@ const MobileAppsPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Які мобільні додатки ми створюємо
+            {t('MobileAppsPage.appTypes.title')}
           </AppsTitle>
 
           <AppsDescription
@@ -2883,10 +2862,7 @@ const MobileAppsPage = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Наша команда розробляє мобільні рішення для бізнесу будь-якої
-            складності — від стартапів до великих корпорацій. Ми створюємо
-            додатки, що ідеально підходять для вашої цільової аудиторії та
-            бізнес-цілей.
+            {t('MobileAppsPage.appTypes.description')}
           </AppsDescription>
 
           <AppsGrid
@@ -2964,7 +2940,7 @@ const MobileAppsPage = () => {
               textShadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
             }}
           >
-            Етапи розробки мобільного додатку
+            {t('MobileAppsPage.stages.title')}
             <motion.div
               style={{
                 position: 'absolute',
@@ -2998,9 +2974,7 @@ const MobileAppsPage = () => {
               padding: '0 1rem',
             }}
           >
-            Процес створення мобільного додатку складається з кількох важливих
-            етапів, кожен з яких впливає на якість кінцевого продукту та його
-            успіх серед користувачів.
+            {t('MobileAppsPage.stages.description')}
           </motion.p>
 
           <motion.div
@@ -3025,33 +2999,28 @@ const MobileAppsPage = () => {
             {[
               {
                 icon: <FaSearch />,
-                title: 'Аналіз та планування',
-                description:
-                  'Ми вивчаємо ваш бізнес, аудиторію, конкурентів і формулюємо чіткі вимоги до майбутнього додатку. Створюємо технічне завдання та обираємо оптимальні технології.',
+                title: t('MobileAppsPage.stages.step1Title'),
+                description: t('MobileAppsPage.stages.step1Desc'),
               },
               {
                 icon: <FaPencilRuler />,
-                title: 'Дизайн UX/UI',
-                description:
-                  'Проєктуємо логічну структуру додатку, створюємо прототипи та дизайн, який забезпечує зручність використання й привабливий вигляд.',
+                title: t('MobileAppsPage.stages.step2Title'),
+                description: t('MobileAppsPage.stages.step2Desc'),
               },
               {
                 icon: <FaCode />,
-                title: 'Розробка',
-                description:
-                  'Наші програмісти реалізують функціонал, інтегрують необхідні сервіси, забезпечують безпеку та оптимізацію продуктивності додатку.',
+                title: t('MobileAppsPage.stages.step3Title'),
+                description: t('MobileAppsPage.stages.step3Desc'),
               },
               {
                 icon: <FaBug />,
-                title: 'Тестування',
-                description:
-                  'Проводимо комплексне тестування для виявлення та виправлення помилок. Гарантуємо стабільну роботу додатку на різних пристроях та версіях операційних систем.',
+                title: t('MobileAppsPage.stages.step4Title'),
+                description: t('MobileAppsPage.stages.step4Desc'),
               },
               {
                 icon: <FaRocket />,
-                title: 'Запуск і підтримка',
-                description:
-                  'Публікуємо додаток у App Store та Google Play, надаємо технічну підтримку, розвиваємо та оновлюємо продукт відповідно до нових потреб бізнесу.',
+                title: t('MobileAppsPage.stages.step5Title'),
+                description: t('MobileAppsPage.stages.step5Desc'),
               },
             ].map((step, index) => (
               <React.Fragment key={index}>
@@ -3087,13 +3056,19 @@ const MobileAppsPage = () => {
                   }}
                 >
                   {/* Контейнер для номера и иконки на мобильных */}
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 'clamp(1rem, 3vw, 2rem)',
-                    flexDirection: window.innerWidth <= 480 ? 'column' : 'row',
-                    ...(window.innerWidth <= 768 && { width: '100%', justifyContent: 'center' })
-                  }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 'clamp(1rem, 3vw, 2rem)',
+                      flexDirection:
+                        window.innerWidth <= 480 ? 'column' : 'row',
+                      ...(window.innerWidth <= 768 && {
+                        width: '100%',
+                        justifyContent: 'center',
+                      }),
+                    }}
+                  >
                     {/* Номер этапа */}
                     <motion.div
                       style={{
@@ -3167,15 +3142,19 @@ const MobileAppsPage = () => {
                       background: 'rgba(10, 15, 25, 0.85)',
                       backdropFilter: 'blur(10px)',
                       borderRadius: 'clamp(12px, 3vw, 20px)',
-                      padding: 'clamp(1rem, 3vw, 1.5rem) clamp(1rem, 4vw, 2rem)',
+                      padding:
+                        'clamp(1rem, 3vw, 1.5rem) clamp(1rem, 4vw, 2rem)',
                       border: '1px solid rgba(94, 234, 212, 0.3)',
                       boxShadow: '0 15px 40px rgba(0, 0, 0, 0.3)',
-                      width: window.innerWidth <= 768 ? '100%' : 'calc(100% - 250px)',
+                      width:
+                        window.innerWidth <= 768
+                          ? '100%'
+                          : 'calc(100% - 250px)',
                       minHeight: 'clamp(120px, 18vw, 160px)',
                       display: 'flex',
                       flexDirection: 'column',
                       justifyContent: 'center',
-                      ...(window.innerWidth <= 768 && { marginTop: '1rem' })
+                      ...(window.innerWidth <= 768 && { marginTop: '1rem' }),
                     }}
                   >
                     <h3
@@ -3252,7 +3231,7 @@ const MobileAppsPage = () => {
             }}
             onClick={openModal}
           >
-            Замовити розробку
+            {t('MobileAppsPage.stages.buttonText')}
           </motion.button>
         </div>
       </MobileStagesSection>
@@ -3270,7 +3249,7 @@ const MobileAppsPage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Переваги роботи з нашою командою
+            {t('MobileAppsPage.whyUs.title')}
           </WhyUsTitle>
 
           <WhyUsSubtitle
@@ -3278,9 +3257,7 @@ const MobileAppsPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Замовляючи розробку мобільного додатку у нас, ви отримуєте не просто
-            виконавця, а надійного технологічного партнера, який зацікавлений у
-            вашому успіху.
+            {t('MobileAppsPage.whyUs.subtitle')}
           </WhyUsSubtitle>
 
           <WhyUsCardsContainer
@@ -3301,11 +3278,11 @@ const MobileAppsPage = () => {
               <WhyUsIconWrapper>
                 <FaCode />
               </WhyUsIconWrapper>
-              <WhyUsCardTitle>Досвідчена команда розробників</WhyUsCardTitle>
+              <WhyUsCardTitle>
+                {t('MobileAppsPage.whyUs.card1Title')}
+              </WhyUsCardTitle>
               <WhyUsCardDescription>
-                Ми працюємо у сфері мобільної розробки багато років і маємо
-                успішні кейси у різних нішах — від e-commerce і фінансів до
-                освіти та медицини.
+                {t('MobileAppsPage.whyUs.card1Desc')}
               </WhyUsCardDescription>
               <CardAccent />
             </WhyUsCard>
@@ -3324,11 +3301,10 @@ const MobileAppsPage = () => {
                 <FaPencilRuler />
               </WhyUsIconWrapper>
               <WhyUsCardTitle>
-                Індивідуальний підхід до кожного проєкту
+                {t('MobileAppsPage.whyUs.card2Title')}
               </WhyUsCardTitle>
               <WhyUsCardDescription>
-                Кожен бізнес унікальний, тому ми пропонуємо рішення, які
-                враховують ваші цілі, потреби цільової аудиторії та бюджет.
+                {t('MobileAppsPage.whyUs.card2Desc')}
               </WhyUsCardDescription>
               <CardAccent />
             </WhyUsCard>
@@ -3347,12 +3323,10 @@ const MobileAppsPage = () => {
                 <FaRocket />
               </WhyUsIconWrapper>
               <WhyUsCardTitle>
-                Гарантія якості та дотримання термінів
+                {t('MobileAppsPage.whyUs.card3Title')}
               </WhyUsCardTitle>
               <WhyUsCardDescription>
-                Ми суворо контролюємо якість на кожному етапі розробки та завжди
-                дотримуємося узгоджених термінів. Ваш проєкт буде реалізований
-                вчасно та відповідатиме всім сучасним стандартам.
+                {t('MobileAppsPage.whyUs.card3Desc')}
               </WhyUsCardDescription>
               <CardAccent />
             </WhyUsCard>
@@ -3368,7 +3342,7 @@ const MobileAppsPage = () => {
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
             >
-              Замовити розробку
+              {t('MobileAppsPage.whyUs.buttonText')}
             </PulsingButton>
           </WhyUsAction>
         </WhyUsContainer>
@@ -3389,7 +3363,7 @@ const MobileAppsPage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Вартість мобільного додатку
+            {t('MobileAppsPage.pricing.title')}
           </PricingTitle>
 
           <PricingContent>
@@ -3398,10 +3372,7 @@ const MobileAppsPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Ціна розробки мобільного додатку залежить від кількох факторів:
-              складності функціоналу, вибору платформи, технологій та термінів
-              реалізації. Ми пропонуємо гнучкі рішення, які дозволяють підібрати
-              оптимальний варіант під ваш бюджет і потреби.
+              {t('MobileAppsPage.pricing.description')}
             </PricingText>
 
             <PricingFactorsTitle
@@ -3409,7 +3380,7 @@ const MobileAppsPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              Основні фактори, що впливають на вартість:
+              {t('MobileAppsPage.pricing.factorsTitle')}
             </PricingFactorsTitle>
 
             <PricingFactorsList
@@ -3420,26 +3391,23 @@ const MobileAppsPage = () => {
               {[
                 {
                   icon: <FaMobile />,
-                  title: 'Тип додатку',
-                  description: 'Нативний, кросплатформенний чи PWA.',
+                  title: t('MobileAppsPage.pricing.factor1Title'),
+                  description: t('MobileAppsPage.pricing.factor1Desc'),
                 },
                 {
                   icon: <FaCode />,
-                  title: 'Складність функціоналу',
-                  description:
-                    'Додаткові можливості, такі як інтеграція з платіжними системами, геолокація, відео/аудіо функції тощо.',
+                  title: t('MobileAppsPage.pricing.factor2Title'),
+                  description: t('MobileAppsPage.pricing.factor2Desc'),
                 },
                 {
                   icon: <FaPencilRuler />,
-                  title: 'Дизайн та UX/UI',
-                  description:
-                    'Унікальний дизайн може збільшити вартість, але він завжди сприяє кращому користувацькому досвіду.',
+                  title: t('MobileAppsPage.pricing.factor3Title'),
+                  description: t('MobileAppsPage.pricing.factor3Desc'),
                 },
                 {
                   icon: <FaRocket />,
-                  title: 'Термін реалізації',
-                  description:
-                    'Чим швидше потрібно завершити проєкт, тим більше можуть бути витрати на ресурси.',
+                  title: t('MobileAppsPage.pricing.factor4Title'),
+                  description: t('MobileAppsPage.pricing.factor4Desc'),
                 },
               ].map((factor, index) => (
                 <FactorItem
@@ -3462,9 +3430,7 @@ const MobileAppsPage = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <PricingCTAText>
-                Для точного розрахунку вартості вашого мобільного додатку ми
-                пропонуємо безкоштовну консультацію, під час якої ми визначимо
-                обсяг робіт та створимо індивідуальну пропозицію.
+                {t('MobileAppsPage.pricing.ctaText')}
               </PricingCTAText>
 
               <PricingButton
@@ -3472,7 +3438,7 @@ const MobileAppsPage = () => {
                 whileTap={{ scale: 0.98 }}
                 onClick={openModal}
               >
-                Отримати консультацію
+                {t('MobileAppsPage.pricing.buttonText')}
               </PricingButton>
             </PricingCTA>
           </PricingContent>
@@ -3505,38 +3471,28 @@ const MobileAppsPage = () => {
           >
             {[
               {
-                question: 'Скільки часу займає розробка мобільного додатку?',
-                answer:
-                  'Час на розробку мобільного додатку залежить від складності проекту та функцій, які ви хочете реалізувати. Зазвичай, розробка займає від 2 до 6 місяців для стандартних додатків, але для складних рішень цей термін може бути довшим.',
+                question: t('MobileAppsPage.faq.q1'),
+                answer: t('MobileAppsPage.faq.a1'),
               },
               {
-                question:
-                  'Чим відрізняється нативний додаток від кросплатформеного?',
-                answer:
-                  'Нативний додаток розробляється окремо для кожної операційної системи (iOS чи Android), що дозволяє досягти високої продуктивності та інтеграції з функціями пристроїв. Кросплатформенні додатки розробляються за допомогою технологій, які дозволяють використовувати один код для двох платформ, що економить час і бюджет, але може бути менш оптимальним за швидкістю та стабільністю.',
+                question: t('MobileAppsPage.faq.q2'),
+                answer: t('MobileAppsPage.faq.a2'),
               },
               {
-                question: 'Що таке прогресивний вебдодаток (PWA)?',
-                answer:
-                  'Прогресивний вебдодаток — це вебдодаток, який поєднує переваги вебсайтів і нативних додатків. PWA може працювати офлайн, отримувати push-сповіщення і запускатися на будь-якому пристрої без необхідності встановлення.',
+                question: t('MobileAppsPage.faq.q3'),
+                answer: t('MobileAppsPage.faq.a3'),
               },
               {
-                question:
-                  'Які переваги має мобільний додаток для мого бізнесу?',
-                answer:
-                  'Мобільний додаток дозволяє вашому бізнесу бути доступним для клієнтів 24/7, сприяє збільшенню лояльності, покращує користувацький досвід і дозволяє проводити ефективні маркетингові кампанії. Додаток також допомагає зібрати аналітику для покращення сервісу та розширення бізнесу.',
+                question: t('MobileAppsPage.faq.q4'),
+                answer: t('MobileAppsPage.faq.a4'),
               },
               {
-                question:
-                  'Які додаткові функції можна додати до мобільного додатку?',
-                answer:
-                  'До мобільного додатку можна додавати різноманітні функції, такі як геолокація, push-сповіщення, інтеграція з платіжними системами, чат-боти, соціальні мережі, офлайн-режим, підтримка мультимедіа (відео, фото) і багато інших, залежно від ваших потреб.',
+                question: t('MobileAppsPage.faq.q5'),
+                answer: t('MobileAppsPage.faq.a5'),
               },
               {
-                question:
-                  'Як я можу отримати точну вартість розробки мобільного додатку?',
-                answer:
-                  'Для точного розрахунку вартості потрібно обговорити деталі проєкту: його складність, бажану платформу, функціонал та терміни. Ми пропонуємо безкоштовну консультацію, під час якої ми зберемо всю необхідну інформацію і надамо вам індивідуальну пропозицію.',
+                question: t('MobileAppsPage.faq.q6'),
+                answer: t('MobileAppsPage.faq.a6'),
               },
             ].map((faq, index) => (
               <FaqItem
@@ -3578,7 +3534,7 @@ const MobileAppsPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.2 }}
           >
-            <FaqCtaText>Не знайшли відповідь на своє питання?</FaqCtaText>
+            <FaqCtaText>{t('MobileAppsPage.faq.ctaText')}</FaqCtaText>
             <FaqCtaButton
               whileHover={{
                 scale: 1.03,
@@ -3587,7 +3543,7 @@ const MobileAppsPage = () => {
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
             >
-              Напишіть нам
+              {t('MobileAppsPage.faq.ctaButton')}
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
