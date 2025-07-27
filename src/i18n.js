@@ -1585,19 +1585,23 @@ const resources = {
         },
         howItLooks: {
           title: 'What a Ready Brandbook Looks Like',
-          subTitle: 'A ready-made brand book is a structured PDF or interactive document that is easy to understand and convenient to use on a daily basis. It contains not only visual elements, but also explanations of how and where to apply them.',
+          subTitle:
+            'A ready-made brand book is a structured PDF or interactive document that is easy to understand and convenient to use on a daily basis. It contains not only visual elements, but also explanations of how and where to apply them.',
           sections: {
             titlePage: {
               title: 'Title Page',
-              description: 'Every brandbook starts with a title page that includes the brand name, logo, and document version. It is the first visual point of contact with your brand.',
+              description:
+                'Every brandbook starts with a title page that includes the brand name, logo, and document version. It is the first visual point of contact with your brand.',
             },
             visualElements: {
               title: 'Sections with Visual Elements',
-              description: 'Clear sections with logo, color palette, typography, and other visual parameters. Each element is accompanied by usage rules and technical specifications.',
+              description:
+                'Clear sections with logo, color palette, typography, and other visual parameters. Each element is accompanied by usage rules and technical specifications.',
             },
             usageExamples: {
               title: 'Usage Examples',
-              description: 'Layouts for various communication channels: how the brand looks on social networks, on business cards, advertising banners, website pages, and other points of contact with the audience.',
+              description:
+                'Layouts for various communication channels: how the brand looks on social networks, on business cards, advertising banners, website pages, and other points of contact with the audience.',
             },
             realScenarios: {
               title: 'Real Application Scenarios',
@@ -1633,7 +1637,8 @@ const resources = {
         },
         process: {
           title: 'How We Create a Brandbook — Work Stages',
-           subTitle: 'Creating a brand book is a clearly structured process that includes analysis, design, and coordination of all components of the brand style. We work transparently and in stages so that you get not just a beautiful presentation, but an effective tool for your business.',
+          subTitle:
+            'Creating a brand book is a clearly structured process that includes analysis, design, and coordination of all components of the brand style. We work transparently and in stages so that you get not just a beautiful presentation, but an effective tool for your business.',
           steps: {
             step1: {
               title: 'Briefing and Analysis',
@@ -1661,11 +1666,13 @@ const resources = {
                 'You receive the final brand book in a convenient format (PDF, Figma or other). We explain how to use it and answer all your questions. We provide consulting support when implementing a new corporate identity and help resolve any issues.',
             },
           },
-          footerText: "We don't just design — we build a system that strengthens your brand for years to come.",
+          footerText:
+            "We don't just design — we build a system that strengthens your brand for years to come.",
         },
         whyUs: {
           title: 'Why You Should Order a Brandbook from Us',
-          subTitle: "We don't create template documents, but living brand books that actually work to develop your business. Our approach is a combination of a deep understanding of marketing, design, and strategy.",
+          subTitle:
+            "We don't create template documents, but living brand books that actually work to develop your business. Our approach is a combination of a deep understanding of marketing, design, and strategy.",
           advantages: {
             individual: {
               title: 'Individual Approach',
@@ -1684,19 +1691,22 @@ const resources = {
             },
             deadlines: {
               title: 'Clear Deadlines',
-              description: 'We adhere to deadlines and always inform you about the status of the project. You will know at what stage the work is, and you will receive the finished brand book exactly on time without delays and missed deadlines.',
+              description:
+                'We adhere to deadlines and always inform you about the status of the project. You will know at what stage the work is, and you will receive the finished brand book exactly on time without delays and missed deadlines.',
             },
             support: {
               title: 'Post-Delivery Support',
               description:
-                "Even after the work is completed, we are in touch and ready to help with clarifications or adaptations. We do not disappear after receiving payment, but remain your partner and brand consultant.",
+                'Even after the work is completed, we are in touch and ready to help with clarifications or adaptations. We do not disappear after receiving payment, but remain your partner and brand consultant.',
             },
           },
-          footerText: 'Our goal is not just to “design,” but to strengthen your brand and help it grow.',
+          footerText:
+            'Our goal is not just to “design,” but to strengthen your brand and help it grow.',
         },
         target: {
           title: 'Who Brandbook is Suitable For',
-          subTitle: 'A brand book is a universal tool that is needed not only by large companies. It is useful for any business that seeks to appear holistic and professional.',
+          subTitle:
+            'A brand book is a universal tool that is needed not only by large companies. It is useful for any business that seeks to appear holistic and professional.',
           categories: {
             startups: {
               title: 'Startups',
@@ -1712,7 +1722,8 @@ const resources = {
               title: 'Companies at Rebranding Stage',
               des: 'If you update your style or change your positioning, a brand book will solidify the new identity and ensure a consistent transition.',
               benefits: {
-                item1: 'Clear instructions for gradual updating of all materials',
+                item1:
+                  'Clear instructions for gradual updating of all materials',
                 item2: 'Prevention of mixing old and new style elements',
                 item3: 'Rules for the rebranding transition period',
               },
@@ -1728,34 +1739,36 @@ const resources = {
             },
             education: {
               title: 'Educational and Creative Projects',
-              des:
-                'Identity helps clearly convey ideas and enhances communication. Especially important for projects where the visual component is closely related to the essence.',
+              des: 'Identity helps clearly convey ideas and enhances communication. Especially important for projects where the visual component is closely related to the essence.',
               benefits: {
-                item1:'Emphasizing the uniqueness of your approach',
-                item2:'Systematic presentation of visual content',
-                item3:'Additional value of the creative product',
+                item1: 'Emphasizing the uniqueness of your approach',
+                item2: 'Systematic presentation of visual content',
+                item3: 'Additional value of the creative product',
               },
             },
             remote: {
               title: 'Teams with Remote Contractors',
-              des: 'The brand book provides clear instructions on how to work with style, regardless of who is doing the work and where it comes from.',  
+              des: 'The brand book provides clear instructions on how to work with style, regardless of who is doing the work and where it comes from.',
               benefits: {
-                item1:'Unified standards for all performers',
-                item2:'Quick onboarding of new designers and marketers',
+                item1: 'Unified standards for all performers',
+                item2: 'Quick onboarding of new designers and marketers',
                 item3: 'Preserving brand integrity when changing contractors',
               },
             },
           },
-          footerText: 'A brand book is not an "option", but a basic tool for sustainable growth and brand recognition, regardless of the size of your business.',
+          footerText:
+            'A brand book is not an "option", but a basic tool for sustainable growth and brand recognition, regardless of the size of your business.',
         },
         cta: {
           title: 'Order a brand book today - make your brand recognizable',
           description:
             'If you want your brand to inspire trust, look professional and be easily memorable — a brandbook will become a reliable foundation. This is an investment in stability, recognition and growth.',
-          
-          subtitle1: 'We are ready to create a brand book for you that speaks the language of your business;',
+
+          subtitle1:
+            'We are ready to create a brand book for you that speaks the language of your business;',
           subtitle2: 'looks modern and consistent',
-          subtitle3: 'works equally effectively in digital and offline environments.',
+          subtitle3:
+            'works equally effectively in digital and offline environments.',
           buttonText: 'Leave Application',
           additionalText:
             'Leave an application, and we will contact you for a short briefing. In just a few weeks, you will receive a powerful tool that will make your brand stronger.',
@@ -1779,6 +1792,206 @@ const resources = {
           ctaText: "Didn't find the answer to your question?",
           ctaButton: 'Write to us',
         },
+      },
+      webDesign: {
+        // Hero Section
+        heroTitle: 'Web Design: Creating a Unique Digital Image',
+        heroDescription:
+          'Professional web design is not just a beautiful picture, but an effective communication tool. Quality design forms first impressions, builds trust and directly affects the effectiveness of the site.',
+        orderDesignButton: 'Order Design',
+        adaptability: 'Adaptability',
+        creativity: 'Creativity',
+        conversion: 'Conversion',
+
+        // About Section
+        whatIsWebDesign: 'What is Web Design?',
+        aboutDescription1:
+          'Web design is the process of creating the appearance and interface of a website that combines visual appeal and user convenience. Its main goal is to make interaction with the resource simple, pleasant and effective.',
+        aboutDescription2:
+          'Modern web design performs several key functions: increases brand recognition, builds trust in the company and ensures a positive user experience (UX). Current trends include responsiveness (adaptation to different devices), minimalism in design, as well as the use of animations and interactive elements to engage attention.',
+
+        // Function Cards
+        brandingTitle: 'Branding and Recognition',
+        brandingText:
+          'Quality web design emphasizes the uniqueness of your brand, reflects its values and stands out among competitors.',
+        uxTitle: 'User Experience (UX)',
+        uxText:
+          'Convenient navigation, intuitive interface and logical structure ensure comfortable interaction of visitors with the site.',
+        businessGoalsTitle: 'Achieving Business Goals',
+        businessGoalsText:
+          'Effective design guides users to target actions: orders, form filling, subscriptions, calls and other conversion actions.',
+
+        // Importance Section
+        whyImportantTitle: 'Why is Web Design Important for Your Business?',
+        importanceIntro:
+          'A website is often the first thing a potential client encounters. Quality design builds trust and turns visitors into clients.',
+
+        // Stats
+        seconds: 'seconds',
+        firstImpressionTime:
+          'Time it takes to form a first impression of the site and company',
+        users: 'users',
+        leaveSite: 'Leave the site if the design is unattractive or outdated',
+        toConversion: 'to conversion',
+        qualityDesignAdds:
+          'Quality design with thoughtful user experience adds',
+
+        // Benefits
+        firstImpressionTitle: 'First Impression',
+        firstImpressionText:
+          'If the design looks outdated or inconvenient, the user will quickly leave the page. Quality web design forms a positive first impression and increases the level of trust in the company.',
+        userExperienceTitle: 'User Experience',
+        userExperienceText:
+          'Convenient navigation, logical structure and fast page loading directly affect user behavior and conversion. An intuitive interface holds attention and pushes to target actions.',
+        seoTitle: 'SEO Promotion',
+        seoText:
+          'Search engines consider site interaction metrics: time spent, viewing depth, mobile optimization. Modern design is also a contribution to SEO promotion and organic visibility.',
+        imgText: 'Order',
+
+        // Services Section
+        ourServicesTitle: 'Our Web Design Services',
+        servicesDescription:
+          'We offer a full range of website design services — from concept creation to full project implementation, taking into account all modern trends and requirements.',
+
+        // Service Cards
+        createFromScratchTitle: 'Creating Website Design from Scratch',
+        createFromScratchText:
+          'We develop individual design that reflects the values of your brand. We start with a concept, form the structure (Wireframes) and create a visual style that harmoniously combines aesthetics with functionality.',
+        createFromScratchFeatures: {
+          item1: 'Concept development and prototypes',
+          item2: 'Creating unique visual style',
+          item3: 'UX/UI design of all interface elements',
+          item4: 'Preparing layouts for developers',
+        },
+
+        restylingTitle: 'Restyling Existing Websites',
+        restylingText:
+          "Your site looks outdated or doesn't bring results? We will update the design according to modern requirements, improve the structure, make the interface more convenient and attractive for the user.",
+        restylingFeatures: {
+          item1: 'Analysis of current design shortcomings',
+          item2: 'Updating visual style',
+          item3: 'Improving structure and navigation',
+          item4: 'Optimization of conversion paths',
+        },
+
+        responsiveTitle: 'Responsive Design',
+        responsiveText:
+          'We create interfaces that display correctly on smartphones, tablets and desktops. This guarantees convenience of use from any device and positively affects behavioral factors.',
+        responsiveFeatures: {
+          item1: 'Optimization for all types of devices',
+          item2: 'Flexible layouts and interface elements',
+          item3: 'Content adaptation for different resolutions',
+          item4: 'Testing on all popular devices',
+        },
+
+        ecommerceTitle: 'Design for eCommerce',
+        ecommerceText:
+          'We develop UX/UI design for online stores taking into account buyer behavior. We optimize the user path to purchase to increase conversion and average check.',
+        ecommerceFeatures: {
+          item1: 'Designing convenient catalogs and filters',
+          item2: 'Development of converting product cards',
+          item3: 'Optimization of the order process',
+          item4: 'Integration with payment systems',
+        },
+
+        additionalServicesTitle: 'Additional Services',
+        additionalServicesText:
+          'We offer design of landing pages, blogs, corporate websites, as well as preparation of graphic elements: banners, icons, presentations. We work with ready-made CMS or in partnership with developers.',
+        additionalServicesFeatures: {
+          item1: 'Design of banners and advertising materials',
+          item2: 'Creating icons and graphic elements',
+          item3: 'Interface design for CMS',
+          item4: 'UX audit of existing projects',
+        },
+
+        // Benefits Section
+        advantagesTitle: 'Benefits of Working With Us',
+
+        // Benefit Cards
+        experiencedTeamTitle: 'Experienced Team',
+        experiencedTeamText:
+          'Our designers have practical experience in creating projects for various niches — from small business to eCommerce platforms.',
+        expertise: 'Expertise',
+
+        modernToolsTitle: 'Modern Tools and Technologies',
+        modernToolsText:
+          'We work with Figma, Adobe XD, Sketch, follow the latest web design and UI/UX standards.',
+        innovation: 'Innovation',
+
+        individualApproachTitle: 'Individual Approach',
+        individualApproachText:
+          'Each project is unique. We take into account business goals, market specifics and target audience preferences.',
+        clientOriented: 'Client-Oriented',
+
+        uniqueDesignTitle: 'Guarantee of Unique Design',
+        uniqueDesignText:
+          'No templates — only original solutions created specifically for your brand.',
+        originality: 'Originality',
+
+        uxStandardsTitle: 'Compliance with UX/UI Standards',
+        uxStandardsText:
+          'Design is not only attractive, but also convenient. We test prototypes and optimize the interface for maximum efficiency.',
+        efficiency: 'Efficiency',
+
+        timelyDeliveryTitle: 'Timely Delivery',
+        timelyDeliveryText:
+          'We adhere to agreed terms and ensure smooth workflow. You always know at what stage your project is.',
+        punctuality: 'Punctuality',
+
+        // CTA Section
+        ctaTitle: 'Order Web Design That Brings Results',
+        ctaDescription:
+          'Professional web design is not just an expense, but an investment in the growth of your business. A well-designed site attracts more visitors, converts more leads and helps your business stand out among competitors in the digital space.',
+        orderConsultationButton: 'Order Free Consultation',
+
+        // FAQ Section
+        faqTitle: 'FAQ',
+        faqNotFound: "Didn't find the answer to your question?",
+        writeToUsButton: 'Write to Us',
+
+        // FAQ Questions and Answers
+        faqData: {
+          question1:
+            'What is web design and why is it important for a brand?',
+          answer1:
+            'Web design is the process of creating the appearance and functionality of a website. It forms the first impression of the brand, affects user trust and encourages interaction with your product or service.',
+
+          question2: 'What elements form a unique digital brand image?',
+          answer2:
+            'These are brand colors, typography, logo, illustrations, interface style, site structure and general visual language that emphasizes the individuality of your brand.',
+
+          question3:
+            'What is the difference between template and individual web design?',
+          answer3:
+            'Template design is ready-made solutions with limited customization options. Individual web design is created from scratch for the needs of a specific business, ensuring maximum brand compliance and uniqueness.',
+
+          question4: 'How does web design affect user behavior?',
+          answer4:
+            'Well-thought-out design facilitates navigation, speeds up decision-making, increases time spent on the site and reduces bounce rate, which directly affects conversions.',
+
+          question5: 'How long does it take to create a unique web design?',
+          answer5:
+            'Depending on the complexity of the project, development of a unique design can take from 2 to 8 weeks. This is influenced by the number of pages, functionality, client participation in the process.',
+
+          question6:
+            'Is mobile adaptation taken into account during design creation?',
+          answer6:
+            'Yes, responsive design is a mandatory standard. The site should be convenient and functional on all devices — smartphones, tablets and PCs.',
+
+          question7:
+            'How to maintain the integrity of the digital brand image after the site launch?',
+          answer7:
+            "It is important to follow the brand guidelines, use a unified style in all digital channels, update content according to the brand's tone of voice and regularly conduct UX/UI audits.",
+        },
+
+        // Modal
+        modalTitle: 'Order Web Design',
+        modalSubtitle:
+          'Leave a request and we will contact you to discuss project details',
+
+        // Mock content
+        yourBrand: 'Your Brand',
+        order: 'Order',
       },
     },
   },
@@ -3379,23 +3592,28 @@ const resources = {
         },
         howItLooks: {
           title: 'Як виглядає готовий брендбук',
-          subTitle: 'Готовий брендбук — це структурований PDF або інтерактивний документ, який легко зрозуміти і зручно використовувати щодня. Він містить не лише візуальні елементи, а й пояснення, як і де саме їх застосовувати.',
+          subTitle:
+            'Готовий брендбук — це структурований PDF або інтерактивний документ, який легко зрозуміти і зручно використовувати щодня. Він містить не лише візуальні елементи, а й пояснення, як і де саме їх застосовувати.',
           sections: {
             titlePage: {
               title: 'Титульна сторінка',
-              description: 'Кожен брендбук починається з титульної сторінки, яка містить назву бренду, логотип та версію документа. Це перша візуальна точка контакту з вашим брендом.',
+              description:
+                'Кожен брендбук починається з титульної сторінки, яка містить назву бренду, логотип та версію документа. Це перша візуальна точка контакту з вашим брендом.',
             },
             visualElements: {
               title: 'Розділи з візуальними елементами',
-              description: 'Чіткі розділи з логотипом, кольоровою палітрою, типографікою та іншими візуальними параметрами. Кожен елемент супроводжується правилами використання та технічними специфікаціями.',
+              description:
+                'Чіткі розділи з логотипом, кольоровою палітрою, типографікою та іншими візуальними параметрами. Кожен елемент супроводжується правилами використання та технічними специфікаціями.',
             },
             usageExamples: {
               title: 'Приклади використання',
-              description: 'Макети для різних каналів комунікації: як бренд виглядає в соцмережах, на візитках, рекламних банерах, сторінках сайту та інших точках контакту з аудиторією.',
+              description:
+                'Макети для різних каналів комунікації: як бренд виглядає в соцмережах, на візитках, рекламних банерах, сторінках сайту та інших точках контакту з аудиторією.',
             },
             realScenarios: {
               title: 'Реальні сценарії застосування',
-              description: 'Надаємо адаптації для реальних сценаріїв: як ваша айдентика виглядає в Instagram, у розсилці, на упаковці чи в презентації для інвесторів — щоб побачити, як бренд працює в дії.',
+              description:
+                'Надаємо адаптації для реальних сценаріїв: як ваша айдентика виглядає в Instagram, у розсилці, на упаковці чи в презентації для інвесторів — щоб побачити, як бренд працює в дії.',
             },
           },
           mockup: {
@@ -3426,7 +3644,8 @@ const resources = {
         },
         process: {
           title: 'Як ми створюємо брендбук — етапи роботи',
-          subTitle: 'Створення брендбуку — це чітко структурований процес, який включає аналіз, дизайн і узгодження всіх складових стилю бренду. Ми працюємо прозоро й етапно, щоб ви отримали не просто красиву презентацію, а дієвий інструмент для бізнесу.',
+          subTitle:
+            'Створення брендбуку — це чітко структурований процес, який включає аналіз, дизайн і узгодження всіх складових стилю бренду. Ми працюємо прозоро й етапно, щоб ви отримали не просто красиву презентацію, а дієвий інструмент для бізнесу.',
           steps: {
             step1: {
               title: 'Брифінг та аналіз',
@@ -3454,11 +3673,13 @@ const resources = {
                 'Ви отримуєте фінальний брендбук у зручному форматі (PDF, Figma або інше). Пояснюємо, як ним користуватися, і відповідаємо на всі запитання. Надаємо консультаційну підтримку при впровадженні нового фірмового стилю та допомагаємо у вирішенні будь-яких питань.',
             },
           },
-          footerText: 'Ми не просто оформлюємо — ми будуємо систему, яка підсилює ваш бренд на роки вперед.',
+          footerText:
+            'Ми не просто оформлюємо — ми будуємо систему, яка підсилює ваш бренд на роки вперед.',
         },
         whyUs: {
           title: 'Чому варто замовити брендбук саме у нас',
-          subTitle: 'Ми створюємо не шаблонні документи, а живі брендбуки, які реально працюють на розвиток бізнесу. Наш підхід — це поєднання глибокого розуміння маркетингу, дизайну та стратегії.',
+          subTitle:
+            'Ми створюємо не шаблонні документи, а живі брендбуки, які реально працюють на розвиток бізнесу. Наш підхід — це поєднання глибокого розуміння маркетингу, дизайну та стратегії.',
           advantages: {
             individual: {
               title: 'Індивідуальний підхід',
@@ -3477,7 +3698,8 @@ const resources = {
             },
             deadlines: {
               title: 'Чіткі дедлайни',
-              description: 'Ми дотримуємось термінів і завжди інформуємо про статус проєкту. Ви будете знати, на якому етапі знаходиться робота, і отримаєте готовий брендбук точно в обумовлений час без затримок і зривів термінів.',
+              description:
+                'Ми дотримуємось термінів і завжди інформуємо про статус проєкту. Ви будете знати, на якому етапі знаходиться робота, і отримаєте готовий брендбук точно в обумовлений час без затримок і зривів термінів.',
             },
             support: {
               title: 'Підтримка після здачі',
@@ -3485,11 +3707,13 @@ const resources = {
                 "Навіть після завершення роботи ми на зв'язку й готові допомогти з уточненнями або адаптаціями. Ми не зникаємо після отримання оплати, а залишаємося вашим партнером і консультантом з питань бренду.",
             },
           },
-          footerText: 'Наша мета — не просто «зробити дизайн», а посилити ваш бренд і допомогти йому зростати.',
+          footerText:
+            'Наша мета — не просто «зробити дизайн», а посилити ваш бренд і допомогти йому зростати.',
         },
         target: {
           title: 'Для кого підходить брендбук',
-          subTitle: 'Брендбук — це універсальний інструмент, який потрібен не лише великим компаніям. Він корисний будь-якому бізнесу, що прагне виглядати цілісно та професійно.',
+          subTitle:
+            'Брендбук — це універсальний інструмент, який потрібен не лише великим компаніям. Він корисний будь-якому бізнесу, що прагне виглядати цілісно та професійно.',
           categories: {
             startups: {
               title: 'Стартапам',
@@ -3505,7 +3729,8 @@ const resources = {
               title: 'Компаніям на етапі ребрендингу',
               des: 'Якщо ви оновлюєте стиль або змінюєте позиціонування — брендбук закріпить нову ідентичність та забезпечить послідовний перехід.',
               benefits: {
-                item1: 'Чіткі інструкції для поступового оновлення всіх матеріалів',
+                item1:
+                  'Чіткі інструкції для поступового оновлення всіх матеріалів',
                 item2: 'Запобігання змішування старих і нових елементів стилю',
                 item3: 'Правила транзитного періоду ребрендингу',
               },
@@ -3514,15 +3739,14 @@ const resources = {
               title: 'Малому та середньому бізнесу',
               des: 'Щоб конкурувати з великими гравцями, потрібно мати професійний вигляд у кожному дотику з клієнтом, незалежно від розміру вашої компанії.',
               benefits: {
-                 item1: 'Виглядати на рівні з великими компаніями',
-                 item2: 'Економія на дизайні завдяки готовим шаблонам',
-                 item3: 'Системність комунікації з клієнтами',
+                item1: 'Виглядати на рівні з великими компаніями',
+                item2: 'Економія на дизайні завдяки готовим шаблонам',
+                item3: 'Системність комунікації з клієнтами',
               },
             },
             education: {
               title: 'Освітнім і креативним проєктам',
-              des:
-                "Айдентика допомагає чітко доносити ідеї та підсилює комунікацію. Особливо важливо для проєктів, де візуальна складова тісно пов'язана з суттю.",
+              des: "Айдентика допомагає чітко доносити ідеї та підсилює комунікацію. Особливо важливо для проєктів, де візуальна складова тісно пов'язана з суттю.",
               benefits: {
                 item1: 'Підкреслення унікальності вашого підходу',
                 item2: 'Системна подача візуального контенту',
@@ -3539,15 +3763,19 @@ const resources = {
               },
             },
           },
-          footerText: 'Брендбук — це не «опція», а базовий інструмент для стабільного зростання та впізнаваності бренду, незалежно від розміру вашого бізнесу.',
+          footerText:
+            'Брендбук — це не «опція», а базовий інструмент для стабільного зростання та впізнаваності бренду, незалежно від розміру вашого бізнесу.',
         },
         cta: {
-          title: 'Замовте брендбук уже сьогодні — зробіть свій бренд впізнаваним',
+          title:
+            'Замовте брендбук уже сьогодні — зробіть свій бренд впізнаваним',
           description:
             "Якщо ви хочете, щоб ваш бренд викликав довіру, виглядав професійно та легко запам'ятовувався — брендбук стане надійною основою. Це інвестиція в стабільність, впізнаваність і ріст.",
-          subtitle1: 'Ми готові створити для вас брендбук, який говорить мовою вашого бізнесу;',
+          subtitle1:
+            'Ми готові створити для вас брендбук, який говорить мовою вашого бізнесу;',
           subtitle2: 'виглядає сучасно й послідовно',
-          subtitle3: 'працює однаково ефективно в цифровому та офлайн-середовищі.',
+          subtitle3:
+            'працює однаково ефективно в цифровому та офлайн-середовищі.',
           buttonText: 'Залишити заявку',
           additionalText:
             "Залиште заявку, і ми зв'яжемося з вами для короткого брифінгу. Вже за кілька тижнів ви отримаєте потужний інструмент, що зробить ваш бренд сильнішим.",
@@ -3570,6 +3798,205 @@ const resources = {
           ctaText: 'Не знайшли відповідь на своє питання?',
           ctaButton: 'Напишіть нам',
         },
+      },
+      webDesign: {
+        // Hero Section
+        heroTitle: 'Веб-дизайн: створення унікального цифрового образу',
+        heroDescription:
+          'Професійний веб-дизайн — це не просто красива картинка, а ефективний інструмент комунікації. Якісний дизайн формує перше враження, підвищує довіру та безпосередньо впливає на результативність сайту.',
+        orderDesignButton: 'Замовити дизайн',
+        adaptability: 'Адаптивність',
+        creativity: 'Креативність',
+        conversion: 'Конверсійність',
+
+        // About Section
+        whatIsWebDesign: 'Що таке веб-дизайн?',
+        aboutDescription1:
+          'Веб-дизайн — це процес створення зовнішнього вигляду та інтерфейсу сайту, що поєднує в собі візуальну привабливість і зручність для користувача. Його головна мета — зробити взаємодію з ресурсом простою, приємною та ефективною.',
+        aboutDescription2:
+          'Сучасний веб-дизайн виконує кілька ключових функцій: підвищує впізнаваність бренду, формує довіру до компанії та забезпечує позитивний користувацький досвід (UX). Актуальні тенденції включають адаптивність (підлаштування під різні пристрої), мінімалізм у дизайні, а також використання анімацій та інтерактивних елементів для залучення уваги.',
+
+        // Function Cards
+        brandingTitle: 'Брендинг та впізнаваність',
+        brandingText:
+          'Якісний веб-дизайн підкреслює унікальність вашого бренду, відображає його цінності та виділяє серед конкурентів.',
+        uxTitle: 'Користувацький досвід (UX)',
+        uxText:
+          'Зручність навігації, інтуїтивно зрозумілий інтерфейс та логічна структура забезпечують комфортну взаємодію відвідувачів із сайтом.',
+        businessGoalsTitle: 'Досягнення бізнес-цілей',
+        businessGoalsText:
+          'Ефективний дизайн спрямовує користувачів до цільових дій: замовлень, заповнення форм, підписок, дзвінків та інших конверсійних дій.',
+
+        // Importance Section
+        whyImportantTitle: 'Чому веб-дизайн важливий для вашого бізнесу?',
+        importanceIntro:
+          'Сайт — це часто перше, з чим стикається потенційний клієнт. Якісний дизайн формує довіру і перетворює відвідувачів на клієнтів.',
+
+        // Stats
+        seconds: 'секунди',
+        firstImpressionTime:
+          'Час, за який формується перше враження про сайт та компанію',
+        users: 'користувачів',
+        leaveSite: 'Залишають сайт, якщо дизайн непривабливий або застарілий',
+        toConversion: 'до конверсії',
+        qualityDesignAdds:
+          'Додає якісний дизайн з продуманим користувацьким досвідом',
+
+        // Benefits
+        firstImpressionTitle: 'Перше враження',
+        firstImpressionText:
+          'Якщо дизайн виглядає застарілим або незручним, користувач швидко залишить сторінку. Якісний веб-дизайн формує позитивне перше враження та підвищує рівень довіри до компанії.',
+        userExperienceTitle: 'Користувацький досвід',
+        userExperienceText:
+          'Зручна навігація, логічна структура та швидке завантаження сторінок напряму впливають на поведінку користувачів і конверсію. Інтуїтивний інтерфейс утримує увагу та підштовхує до цільових дій.',
+        seoTitle: 'SEO-просування',
+        seoText:
+          'Пошукові системи враховують показники взаємодії з сайтом: час перебування, глибину перегляду, мобільну оптимізацію. Сучасний дизайн — це ще й внесок у SEO-просування та органічну видимість.',
+        imgText: 'Замовити',
+
+        // Services Section
+        ourServicesTitle: 'Наші послуги у сфері веб-дизайну',
+        servicesDescription:
+          'Ми пропонуємо повний спектр послуг з дизайну сайтів — від створення концепції до повної реалізації проєкту, враховуючи всі сучасні тенденції та вимоги.',
+
+        // Service Cards
+        createFromScratchTitle: 'Створення дизайну сайту з нуля',
+        createFromScratchText:
+          'Ми розробляємо індивідуальний дизайн, який відображає цінності вашого бренду. Починаємо з концепції, формуємо структуру (Wireframes) і створюємо візуальний стиль, який гармонійно поєднує естетику з функціональністю.',
+        createFromScratchFeatures: {
+          item1: 'Розробка концепції та прототипів',
+          item2: 'Створення унікального візуального стилю',
+          item3: 'UX/UI проектування всіх елементів інтерфейсу',
+          item4: 'Підготовка макетів для розробників',
+        },
+
+        restylingTitle: 'Рестайлінг існуючих сайтів',
+        restylingText:
+          'Ваш сайт виглядає застаріло або не приносить результатів? Ми оновимо дизайн відповідно до сучасних вимог, поліпшимо структуру, зробимо інтерфейс більш зручним і привабливим для користувача.',
+        restylingFeatures: {
+          item1: 'Аналіз недоліків поточного дизайну',
+          item2: 'Оновлення візуального стилю',
+          item3: 'Поліпшення структури та навігації',
+          item4: 'Оптимізація конверсійних шляхів',
+        },
+
+        responsiveTitle: 'Адаптивний дизайн',
+        responsiveText:
+          'Створюємо інтерфейси, які коректно відображаються на смартфонах, планшетах і десктопах. Це гарантує зручність користування з будь-якого пристрою та позитивно впливає на поведенкові фактори.',
+        responsiveFeatures: {
+          item1: 'Оптимізація для всіх типів пристроїв',
+          item2: 'Гнучкі макети та елементи інтерфейсу',
+          item3: 'Адаптація контенту для різних роздільних здатностей',
+          item4: 'Тестування на всіх популярних пристроях',
+        },
+
+        ecommerceTitle: 'Дизайн для eCommerce',
+        ecommerceText:
+          'Розробляємо UX/UI-дизайн для інтернет-магазинів з урахуванням поведінки покупців. Оптимізуємо шлях користувача до покупки, щоб збільшити конверсію та середній чек.',
+        ecommerceFeatures: {
+          item1: 'Проектування зручних каталогів та фільтрів',
+          item2: 'Розробка карток товарів, що конвертують',
+          item3: 'Оптимізація процесу оформлення замовлення',
+          item4: 'Інтеграція з платіжними системами',
+        },
+
+        additionalServicesTitle: 'Додаткові послуги',
+        additionalServicesText:
+          'Пропонуємо дизайн лендінгів, блогів, корпоративних сайтів, а також підготовку графічних елементів: банерів, іконок, презентацій. Працюємо з готовими CMS або в парі з розробниками.',
+        additionalServicesFeatures: {
+          item1: 'Дизайн банерів та рекламних матеріалів',
+          item2: 'Створення іконок та графічних елементів',
+          item3: 'Дизайн інтерфейсів для CMS',
+          item4: 'UX-аудит існуючих проектів',
+        },
+
+        // Benefits Section
+        advantagesTitle: 'Переваги співпраці з нами',
+
+        // Benefit Cards
+        experiencedTeamTitle: 'Досвідчена команда',
+        experiencedTeamText:
+          'Наші дизайнери мають практичний досвід у створенні проєктів для різних ніш — від малого бізнесу до eCommerce-платформ.',
+        expertise: 'Експертність',
+
+        modernToolsTitle: 'Сучасні інструменти та технології',
+        modernToolsText:
+          'Ми працюємо з Figma, Adobe XD, Sketch, дотримуємося найновіших стандартів веб-дизайну та UI/UX.',
+        innovation: 'Інновації',
+
+        individualApproachTitle: 'Індивідуальний підхід',
+        individualApproachText:
+          'Кожен проєкт — унікальний. Ми враховуємо цілі бізнесу, специфіку ринку та вподобання цільової аудиторії.',
+        clientOriented: 'Клієнтоорієнтованість',
+
+        uniqueDesignTitle: 'Гарантія унікального дизайну',
+        uniqueDesignText:
+          'Жодних шаблонів — лише оригінальні рішення, створені спеціально під ваш бренд.',
+        originality: 'Оригінальність',
+
+        uxStandardsTitle: 'Відповідність UX/UI стандартам',
+        uxStandardsText:
+          'Дизайн не лише привабливий, а й зручний. Ми тестуємо прототипи та оптимізуємо інтерфейс для максимальної ефективності.',
+        efficiency: 'Ефективність',
+
+        timelyDeliveryTitle: 'Своєчасна доставка',
+        timelyDeliveryText:
+          'Дотримуємося узгоджених термінів та забезпечуємо плавний процес роботи. Ви завжди знаєте, на якому етапі знаходиться ваш проєкт.',
+        punctuality: 'Пунктуальність',
+
+        // CTA Section
+        ctaTitle: 'Замовте веб-дизайн, який приносить результати',
+        ctaDescription:
+          'Професійний веб-дизайн — це не просто витрата, а інвестиція у зростання вашого бізнесу. Добре спроектований сайт приваблює більше відвідувачів, конвертує більше лідів і допомагає вашому бізнесу виділитися серед конкурентів у цифровому просторі.',
+        orderConsultationButton: 'Замовити безкоштовну консультацію',
+
+        // FAQ Section
+        faqTitle: 'FAQ',
+        faqNotFound: 'Не знайшли відповідь на своє питання?',
+        writeToUsButton: 'Напишіть нам',
+
+        // FAQ Questions and Answers
+        faqData: {
+          question1: 'Що таке веб-дизайн і чому він важливий для бренду?',
+          answer1:
+            'Веб-дизайн — це процес створення зовнішнього вигляду та функціональності сайту. Він формує перше враження про бренд, впливає на довіру користувачів і спонукає до взаємодії з вашим продуктом або послугою.',
+
+          question2: 'Які елементи формують унікальний цифровий образ бренду?',
+          answer2:
+            'Це фірмові кольори, типографіка, логотип, ілюстрації, стиль інтерфейсу, структура сайту та загальна візуальна мова, яка підкреслює індивідуальність вашого бренду.',
+
+          question3:
+            'У чому різниця між шаблонним та індивідуальним веб-дизайном?',
+          answer3:
+            'Шаблонний дизайн — це готові рішення з обмеженими можливостями налаштування. Індивідуальний веб-дизайн створюється з нуля під потреби конкретного бізнесу, забезпечуючи максимальну відповідність бренду та унікальність.',
+
+          question4: 'Як веб-дизайн впливає на поведінку користувачів?',
+          answer4:
+            'Добре продуманий дизайн полегшує навігацію, прискорює прийняття рішень, підвищує час перебування на сайті та знижує рівень відмов, що прямо впливає на конверсії.',
+
+          question5: 'Скільки часу займає створення унікального веб-дизайну?',
+          answer5:
+            'Залежно від складності проєкту, розробка унікального дизайну може тривати від 2 до 8 тижнів. На це впливає кількість сторінок, функціонал, участь замовника в процесі.',
+
+          question6:
+            'Чи враховується мобільна адаптація під час створення дизайну?',
+          answer6:
+            "Так, адаптивний дизайн є обов'язковим стандартом. Сайт має бути зручним і функціональним на всіх пристроях — смартфонах, планшетах та ПК.",
+
+          question7:
+            'Як підтримувати цілісність цифрового образу бренду після запуску сайту?',
+          answer7:
+            'Важливо дотримуватися гайдлайну бренду, використовувати єдину стилістику в усіх цифрових каналах, оновлювати контент відповідно до tone of voice бренду та регулярно проводити аудит UX/UI.',
+        },
+
+        // Modal
+        modalTitle: 'Замовити веб-дизайн',
+        modalSubtitle:
+          "Залиште заявку і ми зв'яжемося з вами для обговорення деталей проєкту",
+
+        // Mock content
+        yourBrand: 'Your Brand',
+        order: 'Замовити',
       },
     },
   },
