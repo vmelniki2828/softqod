@@ -1951,8 +1951,7 @@ const resources = {
 
         // FAQ Questions and Answers
         faqData: {
-          question1:
-            'What is web design and why is it important for a brand?',
+          question1: 'What is web design and why is it important for a brand?',
           answer1:
             'Web design is the process of creating the appearance and functionality of a website. It forms the first impression of the brand, affects user trust and encourages interaction with your product or service.',
 
@@ -1992,6 +1991,180 @@ const resources = {
         // Mock content
         yourBrand: 'Your Brand',
         order: 'Order',
+      },
+      uxUiDesignPage: {
+        // Hero Section
+        heroTitle:
+          'UX/UI design for business — we create convenient and effective digital interfaces',
+        heroDescription:
+          'UX/UI design is not just about aesthetics, but a strategic tool that turns visitors into clients. We create interfaces that increase conversion, usability, and customer loyalty.',
+        orderDesignButton: 'Order UX/UI design',
+        featureIntuitive: 'Intuitiveness',
+        featureUserOriented: 'User-oriented',
+        featureEffective: 'Effectiveness',
+        // Philosophy Section
+        philosophyTitle: 'Thoughtful design that works for results',
+        philosophyResearch: 'Research',
+        philosophyResearchDesc:
+          'Analysis of user needs, competitors, and business requirements. Identifying problems and opportunities to improve interaction.',
+        philosophyDesign: 'Design',
+        philosophyDesignDesc:
+          'Development of visual style, UI components, and detailed elaboration of all screens with attention to detail.',
+        philosophyPrototyping: 'Prototyping',
+        philosophyPrototypingDesc:
+          'Creating information architecture, user scenarios, and prototypes of various detail levels.',
+        philosophyTesting: 'Testing',
+        philosophyTestingDesc:
+          'Usability testing, analysis of behavioral metrics, and iterative improvement based on real data.',
+        philosophyApproach: 'Our approach',
+        philosophyApproachText1:
+          'Our team creates not just beautiful interfaces, but holistic digital ecosystems that take into account user psychology, business goals, and technical capabilities.',
+        philosophyApproachText2:
+          'We use a data-driven approach, collecting and analyzing data at every stage of the design process. This allows us to make informed decisions and create interfaces that are not only aesthetically pleasing but also as effective as possible.',
+        philosophyAdvantage1: 'Increased conversion and engagement',
+        philosophyAdvantage2: 'Reduced user churn',
+        philosophyAdvantage3: 'Faster achievement of business goals',
+        philosophyResult:
+          'The result is a digital product that is intuitive, aesthetically pleasing, technically perfect, and, most importantly, effectively solves business problems.',
+        
+        //Approach to UX/UI design — functionality, logic, aesthetics 
+        approachTitle: 'Approach to UX/UI design — functionality, logic, aesthetics',
+        approachText: 'Our approach to UX/UI design is based on global best practices for creating interfaces that work equally well for both users and businesses. We offer solutions that are based on real data and research.',
+        items1:{
+          title: 'User and competitor research',
+          text: 'We analyze the behavior of the target audience and the competitive environment to develop effective UX/UI solutions.',
+          item1: "Interview",
+          item2: 'Data analysis',
+          item3: 'User profiling',
+          item4: 'Audience',
+          item5: 'Analytics',
+          item6: 'Competitors',
+          item7: 'Scenarios',
+        },
+        items2:{
+          title: 'UX architecture and prototyping',
+          text: 'We design logical structures and interaction scenarios to create intuitive navigation and a user-friendly interface.',
+          item1: "Custom flows",
+          item2: 'Wireframes',
+          item3: 'Prototypes',
+        },
+         items3:{
+          title: 'Brand-style UI design',
+          text: 'We develop visual elements in accordance with your corporate identity, ensuring accessibility and consistency of the user experience.',
+          item1: "Visual design",
+          item2: 'Accessibility',
+          item3: 'Components',
+        },
+         items4:{
+          title: 'Testing, UX optimization and transfer to development',
+          text: 'We test our solutions with real users, optimize them for a seamless experience, and prepare files for the frontend team.',
+          item1: "Usability testing",
+          item2: 'Optimization',
+          item3: 'Documentation',
+        },
+        
+          // Business Benefits Section
+        benefitsTitle: 'What UX/UI design gives your business',
+        benefitsSubtitle:
+          'By ordering UX/UI design from us, you get not just a beautiful picture — but a full-fledged tool for business growth.',
+        benefit1Title: 'Clear interface for users',
+        benefit1Text:
+          'Minimum unnecessary — maximum convenience. Every element has logic and meaning.',
+        benefit2Title: 'Adaptivity and cross-browser compatibility',
+        benefit2Text:
+          'The interface works correctly on smartphones, tablets, and any screen resolutions.',
+        benefit3Title: 'Increased conversion',
+        benefit3Text:
+          'Intuitive navigation and competent UX structure contribute to achieving target actions.',
+        benefit4Title: 'Unique visual style',
+        benefit4Text:
+          'Design that reflects your brand’s character and distinguishes you from competitors.',
+        benefit5Title: 'Design system and guidelines',
+        benefit5Text:
+          'Complete documentation that simplifies further development, scaling, and support.',
+        benefitsCta:
+          'The goal of UX/UI is not only aesthetics, but also business results expressed in numbers.',
+        benefitsCtaButton: 'Order UX/UI design',
+        // Solutions Section
+        solutionsTitle:
+          'Examples of UX/UI design solutions — typical tasks we solve',
+        solutionsSubtitle:
+          'We create design for various niches and business formats. Here are the tasks we most often solve:',
+        solution1Type: 'UX/UI for corporate websites',
+        solution1Feature1: 'Clear structure',
+        solution1Feature2: 'Strong visual accents',
+        solution1Feature3: 'Clear navigation for different target groups',
+        solution1Result:
+          'Result:',
+        solution1ResultItem:
+          'brand reputation + trust from the first click',
+        solution2Type: 'UX/UI for online stores',
+        solution2Feature1: 'Convenient catalog',
+        solution2Feature2: 'Optimized checkout',
+        solution2Feature3: 'Mobile adaptation focused on speed',
+        solution2Result:
+          'Result: ',
+        solution2ResultItem:
+          'increased conversion and reduced cart abandonment',
+        solution3Type: 'UX/UI for startups and MVP',
+        solution3Feature1: 'Quick prototype for testing',
+        solution3Feature2: 'Minimalistic UI with MVP logic',
+        solution3Feature3: 'Scalability',
+        solution3Result:
+          'Result: ',
+        solution3ResultItem:
+          'fast market entry with a quality first impression',
+        solution4Type: 'UX/UI for mobile applications',
+        solution4Feature1: 'Icons, gestures, micro-animation',
+        solution4Feature2: 'UX models for iOS/Android',
+        solution4Feature3: 'User scenario testing',
+        solution4Result: 'Result: ',
+        solution4ResultItem: 'user engagement and positive experience',
+        solutionsCta: 'Get a UX/UI solution that fits your business',
+        solutionsCtaButton: 'Discuss the project',
+        // Testimonials Section
+        testimonialsTitle: 'What clients say about our UX/UI design',
+        testimonialsDescription:
+          'We work with businesses that care not just about a beautiful interface, but about results. Here’s what they write to us after launch:',
+        testimonial1Text:
+          'After the site redesign, user time on site increased by 1.5 times. The design looks modern, but most importantly — everything is logical and works as it should.',
+        testimonial1Author: 'Founder of an IT company',
+        testimonial2Text:
+          'It was a pleasure to work: they quickly understood what we wanted and offered solutions we hadn’t thought of ourselves. The new design really simplified the client’s path to the application.',
+        testimonial2Author: 'Head of marketing in the service sector',
+        testimonial3Text:
+          'We received not just layouts, but a complete design system. The team strictly adhered to deadlines and provided technical support after project handover.',
+        testimonial3Author: 'CEO of an eCommerce brand',
+        testimonialsCtaButton: 'Join the clients',
+        // FAQ Section
+        faqTitle: 'FAQ',
+        faqData: {
+          question1: '1. What is the difference between UX and UI design?',
+          answer1:
+            'UX (User Experience) is responsible for the logic, structure, and usability of the interface. UI (User Interface) — for the visual design: colors, fonts, styles, buttons. Both directions work together to achieve the perfect user experience.',
+          question2: '2. Is it necessary to do UX research?',
+          answer2:
+            'Yes. Without analyzing user behavior and project goals, the design may be aesthetic but ineffective. UX research is the foundation of functionality.',
+          question3: '3. How long does UX/UI design take?',
+          answer3:
+            'On average, from 2 to 6 weeks, depending on the project scope. If you need it faster — we consider phased work or an accelerated MVP launch.',
+          question4: '4. Do you adapt the design for mobile devices?',
+          answer4:
+            'Yes, mobile adaptation is a standard part of every project. We create responsive design for all key device types.',
+          question5:
+            '5. Do you work with an existing site or only from scratch?',
+          answer5:
+            'We can conduct a UX audit of an existing resource, suggest a redesign, or work from scratch. It all depends on your goals.',
+          question6:
+            '6. What result will I get after the project is completed?',
+          answer6:
+            'You will receive ready-made design layouts in Figma (or another convenient format), a guideline for developers, and, if necessary, consultation during implementation.',
+          question7: '7. What is needed to start cooperation?',
+          answer7:
+            'Send a short description of your project or contact us for a briefing. We will clarify the tasks, offer an approach, and calculate the cost.',
+        },
+        faqCta: 'Have additional questions about UX/UI design?',
+        faqCtaButton: 'Contact us',
       },
     },
   },
@@ -3997,6 +4170,179 @@ const resources = {
         // Mock content
         yourBrand: 'Your Brand',
         order: 'Замовити',
+      },
+      uxUiDesignPage: {
+        // Hero Section
+        heroTitle:
+          'UX/UI дизайн для бізнесу — створюємо зручні та ефективні цифрові інтерфейси',
+        heroDescription:
+          'UX/UI дизайн — це не просто естетичне оформлення, а стратегічний інструмент, який перетворює відвідувачів на клієнтів. Ми створюємо інтерфейси, які підвищують конверсію, зручність користування та лояльність клієнтів.',
+        orderDesignButton: 'Замовити UX/UI дизайн',
+        featureIntuitive: 'Інтуїтивність',
+        featureUserOriented: 'Орієнтація на користувача',
+        featureEffective: 'Ефективність',
+        // Philosophy Section
+        philosophyTitle: 'Продуманий дизайн, який працює на результат',
+        philosophyResearch: 'Дослідження',
+        philosophyResearchDesc:
+          'Аналіз потреб користувачів, конкурентів та бізнес-вимог. Виявлення проблем та можливостей для покращення взаємодії.',
+        philosophyDesign: 'Дизайн',
+        philosophyDesignDesc:
+          'Розробка візуального стилю, UI компонентів та детальне опрацювання всіх екранів з увагою до деталей.',
+        philosophyPrototyping: 'Проектування',
+        philosophyPrototypingDesc:
+          'Створення інформаційної архітектури, користувацьких сценаріїв та прототипів різної деталізації.',
+        philosophyTesting: 'Тестування',
+        philosophyTestingDesc:
+          'Юзабіліті-тестування, аналіз поведінкових метрик та ітеративне вдосконалення на основі реальних даних.',
+        philosophyApproach: 'Наш підхід',
+        philosophyApproachText1:
+          'Наша команда створює не просто гарні інтерфейси, а цілісні екосистеми цифрової взаємодії, які враховують психологію користувачів, бізнес-цілі та технічні можливості.',
+        philosophyApproachText2:
+          'Ми використовуємо data-driven підхід, збираючи та аналізуючи дані на кожному етапі дизайн-процесу. Це дозволяє приймати обґрунтовані рішення та створювати інтерфейси, які не тільки естетично привабливі, але й максимально ефективні.',
+        philosophyAdvantage1: 'Підвищення конверсії і залученості',
+        philosophyAdvantage2: 'Зниження відтоку користувачів',
+        philosophyAdvantage3: 'Прискорення досягнення бізнес-цілей',
+        philosophyResult:
+          'Результат — цифровий продукт, який інтуїтивно зрозумілий, естетично привабливий, технічно досконалий і, головне, ефективно вирішує бізнес-завдання.',
+
+        //Approach to UX/UI design — functionality, logic, aesthetics 
+         approachTitle: 'Підхід до UX/UI дизайну — функціональність, логіка, естетика',
+         approachText: 'Наш підхід до UX/UI дизайну базується на найкращих світових практиках створення інтерфейсів, що однаково добре працюють як для користувачів, так і для бізнесу. Ми пропонуємо рішення, обґрунтовані реальними даними та дослідженнями.',
+         items1:{
+          title: 'Дослідження користувачів і конкурентів',
+          text: 'Аналізуємо поведінку цільової аудиторії та конкурентне середовище, щоб розробити ефективні UX/UI рішення.',
+          item1: "Інтерв'ю",
+          item2: 'Аналіз даних',
+          item3: 'Профілювання користувачів',
+          item4: 'Аудиторія',
+          item5: 'Аналітика',
+          item6: 'Конкуренти',
+          item7: 'Сценарії',
+        },
+         items2:{
+          title: 'UX-архітектура та прототипування',
+          text: 'Проектуємо логічні структури та сценарії взаємодії для створення інтуїтивно зрозумілої навігації та зручного інтерфейсу.',
+          item1: "Користувацькі потоки",
+          item2: 'Вайрфрейми',
+          item3: 'Прототипи',
+        },
+         items3:{
+          title: 'UI-дизайн у стилі бренду',
+          text: 'Розробляємо візуальні елементи відповідно до вашої фірмової айдентики, забезпечуючи доступність та узгодженість користувацького досвіду.',
+          item1: "Візуальний дизайн",
+          item2: 'Доступність',
+          item3: 'Компоненти',
+        },
+         items4:{
+          title: 'Тестування, UX-оптимізація та передача в розробку',
+          text: 'Тестуємо наші рішення з реальними користувачами, оптимізуємо їх для безперебійного досвіду та готуємо файли для фронтенд-команди.',
+          item1: "Юзабіліті-тестування",
+          item2: 'Оптимізація',
+          item3: 'Документація',
+        },
+        
+         // Business Benefits Section
+        benefitsTitle: 'Що дає UX/UI дизайн для вашого бізнесу',
+        benefitsSubtitle:
+          'Замовляючи UX/UI дизайн у нас, ви отримуєте не просто красиву картинку — а повноцінний інструмент для зростання бізнесу.',
+        benefit1Title: 'Зрозумілий інтерфейс для користувачів',
+        benefit1Text:
+          'Мінімум зайвого — максимум зручності. Кожен елемент має логіку та сенс.',
+        benefit2Title: 'Адаптивність і кросбраузерність',
+        benefit2Text:
+          'Інтерфейс коректно працює на смартфонах, планшетах і будь-яких розширеннях екрана.',
+        benefit3Title: 'Підвищення конверсії',
+        benefit3Text:
+          'Інтуїтивна навігація та грамотна UX-структура сприяють досягненню цільових дій.',
+        benefit4Title: 'Унікальний візуальний стиль',
+        benefit4Text:
+          'Дизайн, що відображає характер вашого бренду та виділяє вас на фоні конкурентів.',
+        benefit5Title: 'Дизайн-система та гайдлайни',
+        benefit5Text:
+          'Повна документація, що спрощує подальшу розробку, масштабування і підтримку.',
+        benefitsCta:
+          'Мета UX/UI — не лише естетика, а й бізнес-результат, виражений у цифрах.',
+        benefitsCtaButton: 'Замовити UX/UI дизайн',
+        // Solutions Section
+        solutionsTitle:
+          'Приклади рішень у UX/UI дизайні — типові задачі, які ми закриваємо',
+        solutionsSubtitle:
+          'Ми створюємо дизайн для різних ніш і форматів бізнесу. Ось які задачі найчастіше вирішуємо:',
+        solution1Type: 'UX/UI для корпоративних сайтів',
+        solution1Feature1: 'Чітка структура',
+        solution1Feature2: 'Сильні візуальні акценти',
+        solution1Feature3: 'Зрозуміла навігація для різних цільових груп',
+        solution1Result: 'Результат: ',
+        solution1ResultItem: 'репутація бренду + довіра з першого кліку',
+        solution2Type: 'UX/UI для інтернет-магазинів',
+        solution2Feature1: 'Зручний каталог',
+        solution2Feature2: 'Оптимізований чек-аут',
+        solution2Feature3: 'Мобільна адаптація з фокусом на швидкість',
+        solution2Result:
+          'Результат:',
+        solution2ResultItem:
+          'зростання конверсії та зменшення покинутого кошика',
+        solution3Type: 'UX/UI для стартапів та MVP',
+        solution3Feature1: 'Швидкий прототип для тестування',
+        solution3Feature2: 'Мінімалістичний UI з логікою MVP',
+        solution3Feature3: 'Можливість масштабування',
+        solution3Result:
+          'Результат: ',
+        solution3ResultItem:
+          'швидкий вихід на ринок із якісним першим враженням',
+        solution4Type: 'UX/UI для мобільних застосунків',
+        solution4Feature1: 'Іконки, жести, мікроанімація',
+        solution4Feature2: 'UX-моделі під iOS/Android',
+        solution4Feature3: 'Тестування сценаріїв користувачів',
+        solution4Result:
+          'Результат:',
+        solution4ResultItem:
+          'залученість користувачів та позитивний досвід',
+        solutionsCta:
+          'Отримайте UX/UI рішення, яке підходить саме вашому бізнесу',
+        solutionsCtaButton: 'Обговорити проєкт',
+        // Testimonials Section
+        testimonialsTitle: 'Що кажуть клієнти про наш UX/UI дизайн',
+        testimonialsDescription:
+          'Ми працюємо з бізнесами, яким важливий не просто красивий інтерфейс, а результат. Ось що нам пишуть після запуску:',
+        testimonial1Text:
+          'Після редизайну сайту час перебування користувачів зріс у 1,5 раза. Дизайн виглядає сучасно, але найголовніше — все логічно і працює як треба.',
+        testimonial1Author: 'Засновник IT-компанії',
+        testimonial2Text:
+          'Було приємно працювати: швидко зрозуміли, чого ми хочемо, і запропонували рішення, про які ми самі не подумали. Новий дизайн реально спростив клієнтам шлях до заявки.',
+        testimonial2Author: 'Керівник відділу маркетингу у сфері послуг',
+        testimonial3Text:
+          'Ми отримали не просто макети, а повну дизайн-систему. Команда чітко дотримувалась дедлайнів і дала технічну підтримку після передачі проєкту.',
+        testimonial3Author: 'СЕО eCommerce-бренду',
+        testimonialsCtaButton: 'Приєднатися до клієнтів',
+        // FAQ Section
+        faqTitle: 'FAQ',
+        faqData: {
+          question1: 'У чому різниця між UX і UI дизайном?',
+          answer1:
+            'UX (User Experience) відповідає за логіку, структуру і зручність використання інтерфейсу. UI (User Interface) — за візуальне оформлення: кольори, шрифти, стилі, кнопки. Обидва напрями працюють разом для досягнення ідеального користувацького досвіду.',
+          question2: "Чи обов'язково робити UX-дослідження?",
+          answer2:
+            'Так. Без аналізу поведінки користувачів і цілей проєкту дизайн може вийти естетичним, але неефективним. UX-дослідження — основа функціональності.',
+          question3: 'Скільки триває розробка UX/UI дизайну?',
+          answer3:
+            'У середньому від 2 до 6 тижнів, залежно від обсягу проєкту. Якщо потрібно швидше — розглядаємо варіант поетапної роботи або прискореного запуску MVP.',
+          question4: 'Чи адаптуєте ви дизайн під мобільні пристрої?',
+          answer4:
+            'Так, мобільна адаптація — стандартна частина кожного проєкту. Ми створюємо responsive-дизайн для усіх ключових типів пристроїв.',
+          question5: 'Ви працюєте з готовим сайтом чи тільки з нуля?',
+          answer5:
+            'Можемо провести UX-аудит вже існуючого ресурсу, запропонувати редизайн або працювати з чистого аркуша. Усе залежить від ваших цілей.',
+          question6: 'Який результат я отримаю після завершення проєкту?',
+          answer6:
+            'Ви отримаєте готові дизайн-макети у Figma (або іншому зручному форматі), гайдлайн для розробників і за потреби — консультацію під час впровадження.',
+          question7: 'Що потрібно, щоб розпочати співпрацю?',
+          answer7:
+            "Надішліть короткий опис вашого проєкту або зв'яжіться з нами для брифінгу. Ми уточнимо задачі, запропонуємо підхід і розрахуємо вартість.",
+        },
+        faqCta: 'Маєте додаткові запитання щодо UX/UI дизайну?',
+        faqCtaButton: "Зв'язатися з нами",
       },
     },
   },

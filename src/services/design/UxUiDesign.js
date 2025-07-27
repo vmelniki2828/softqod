@@ -24,6 +24,7 @@ import {
   FaUser,
   FaPlus
 } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 // Page container
 const PageContainer = styled.div`
@@ -504,6 +505,8 @@ const Cursor = styled(motion.div)`
 
 // Main component
 const UxUiDesign = () => {
+  const { t } = useTranslation();
+  
   // FAQ state
   const [expandedFaqs, setExpandedFaqs] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -514,32 +517,32 @@ const UxUiDesign = () => {
   // FAQ data
   const faqData = [
     {
-      question: '1. У чому різниця між UX і UI дизайном?',
-      answer: 'UX (User Experience) відповідає за логіку, структуру і зручність використання інтерфейсу. UI (User Interface) — за візуальне оформлення: кольори, шрифти, стилі, кнопки. Обидва напрями працюють разом для досягнення ідеального користувацького досвіду.'
+      question: t('uxUiDesignPage.faqData.question1'),
+      answer:  t('uxUiDesignPage.faqData.answer1'),
     },
     {
-      question: '2. Чи обов\'язково робити UX-дослідження?',
-      answer: 'Так. Без аналізу поведінки користувачів і цілей проєкту дизайн може вийти естетичним, але неефективним. UX-дослідження — основа функціональності.'
+      question:  t('uxUiDesignPage.faqData.question2'),
+      answer: t('uxUiDesignPage.faqData.answer2'),
     },
     {
-      question: '3. Скільки триває розробка UX/UI дизайну?',
-      answer: 'У середньому від 2 до 6 тижнів, залежно від обсягу проєкту. Якщо потрібно швидше — розглядаємо варіант поетапної роботи або прискореного запуску MVP.'
+      question:  t('uxUiDesignPage.faqData.question3'),
+      answer: t('uxUiDesignPage.faqData.answer3'),
     },
     {
-      question: '4. Чи адаптуєте ви дизайн під мобільні пристрої?',
-      answer: 'Так, мобільна адаптація — стандартна частина кожного проєкту. Ми створюємо responsive-дизайн для усіх ключових типів пристроїв.'
+      question:  t('uxUiDesignPage.faqData.question4'),
+      answer: t('uxUiDesignPage.faqData.answer4'),
     },
     {
-      question: '5. Ви працюєте з готовим сайтом чи тільки з нуля?',
-      answer: 'Можемо провести UX-аудит вже існуючого ресурсу, запропонувати редизайн або працювати з чистого аркуша. Усе залежить від ваших цілей.'
+      question:  t('uxUiDesignPage.faqData.question5'),
+      answer: t('uxUiDesignPage.faqData.answer5'),
     },
     {
-      question: '6. Який результат я отримаю після завершення проєкту?',
-      answer: 'Ви отримаєте готові дизайн-макети у Figma (або іншому зручному форматі), гайдлайн для розробників і за потреби — консультацію під час впровадження.'
+      question:  t('uxUiDesignPage.faqData.question6'),
+      answer: t('uxUiDesignPage.faqData.answer6'),
     },
     {
-      question: '7. Що потрібно, щоб розпочати співпрацю?',
-      answer: 'Надішліть короткий опис вашого проєкту або зв\'яжіться з нами для брифінгу. Ми уточнимо задачі, запропонуємо підхід і розрахуємо вартість.'
+      question:  t('uxUiDesignPage.faqData.question7'),
+      answer: t('uxUiDesignPage.faqData.answer7'),
     }
   ];
 
@@ -564,8 +567,7 @@ const UxUiDesign = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              UX/UI дизайн для <span>бізнесу</span> — створюємо зручні та
-              ефективні цифрові інтерфейси
+              {t('uxUiDesignPage.heroTitle')}
             </HeroTitle>
 
             <HeroDescription
@@ -573,10 +575,7 @@ const UxUiDesign = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              UX/UI дизайн — це не просто естетичне оформлення, а стратегічний
-              інструмент, який перетворює відвідувачів на клієнтів. Ми створюємо
-              інтерфейси, які підвищують конверсію, зручність користування та
-              лояльність клієнтів.
+              {t('uxUiDesignPage.heroDescription')}
             </HeroDescription>
 
             <HeroButtons
@@ -589,7 +588,7 @@ const UxUiDesign = () => {
                 whileTap={{ scale: 0.98 }}
                 onClick={openModal}
               >
-                Замовити UX/UI дизайн <FaArrowRight />
+                {t('uxUiDesignPage.orderDesignButton')} <FaArrowRight />
               </PrimaryButton>
             </HeroButtons>
 
@@ -602,21 +601,21 @@ const UxUiDesign = () => {
                 <HeroFeatureIcon>
                   <FaRegEye />
                 </HeroFeatureIcon>
-                <FeatureText>Інтуїтивність</FeatureText>
+                <FeatureText>{t('uxUiDesignPage.featureIntuitive')}</FeatureText>
               </FeatureItem>
 
               <FeatureItem>
                 <HeroFeatureIcon>
                   <FaUsers />
                 </HeroFeatureIcon>
-                <FeatureText>Орієнтація на користувача</FeatureText>
+                <FeatureText>{t('uxUiDesignPage.featureUserOriented')}</FeatureText>
               </FeatureItem>
 
               <FeatureItem>
                 <HeroFeatureIcon>
                   <FaChartLine />
                 </HeroFeatureIcon>
-                <FeatureText>Ефективність</FeatureText>
+                <FeatureText>{t('uxUiDesignPage.featureEffective')}</FeatureText>
               </FeatureItem>
             </HeroFeatures>
           </HeroContent>
@@ -738,7 +737,7 @@ const UxUiDesign = () => {
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7 }}
           >
-            Продуманий дизайн, який працює на результат
+            {t('uxUiDesignPage.philosophyTitle')}
           </PhilosophyTitle>
 
           <PhilosophyContent>
@@ -757,10 +756,9 @@ const UxUiDesign = () => {
                 </PhaseIndicator>
                 <PhaseLine />
                 <PhaseContent>
-                  <PhaseTitle>Дослідження</PhaseTitle>
+                  <PhaseTitle>{t('uxUiDesignPage.philosophyResearch')}</PhaseTitle>
                   <PhaseDescription>
-                    Аналіз потреб користувачів, конкурентів та бізнес-вимог.
-                    Виявлення проблем та можливостей для покращення взаємодії.
+                  {t('uxUiDesignPage.philosophyResearchDesc')}
                   </PhaseDescription>
                 </PhaseContent>
               </ProcessPhase>
@@ -774,10 +772,9 @@ const UxUiDesign = () => {
                 </PhaseIndicator>
                 <PhaseLine />
                 <PhaseContent>
-                  <PhaseTitle>Проектування</PhaseTitle>
+                  <PhaseTitle>{t('uxUiDesignPage.philosophyPrototyping')}</PhaseTitle>
                   <PhaseDescription>
-                    Створення інформаційної архітектури, користувацьких
-                    сценаріїв та прототипів різної деталізації.
+                  {t('uxUiDesignPage.philosophyPrototypingDesc')}
                   </PhaseDescription>
                 </PhaseContent>
               </ProcessPhase>
@@ -791,10 +788,9 @@ const UxUiDesign = () => {
                 </PhaseIndicator>
                 <PhaseLine />
                 <PhaseContent>
-                  <PhaseTitle>Дизайн</PhaseTitle>
+                  <PhaseTitle>{t('uxUiDesignPage.philosophyDesign')}</PhaseTitle>
                   <PhaseDescription>
-                    Розробка візуального стилю, UI компонентів та детальне
-                    опрацювання всіх екранів з увагою до деталей.
+                  {t('uxUiDesignPage.philosophyDesignDesc')}
                   </PhaseDescription>
                 </PhaseContent>
               </ProcessPhase>
@@ -808,10 +804,9 @@ const UxUiDesign = () => {
                 </PhaseIndicator>
                 <PhaseLine className="last" />
                 <PhaseContent>
-                  <PhaseTitle>Тестування</PhaseTitle>
+                  <PhaseTitle>{t('uxUiDesignPage.philosophyTesting')}</PhaseTitle>
                   <PhaseDescription>
-                    Юзабіліті-тестування, аналіз поведінкових метрик та
-                    ітеративне вдосконалення на основі реальних даних.
+                  {t('uxUiDesignPage.philosophyTestingDesc')}
                   </PhaseDescription>
                 </PhaseContent>
               </ProcessPhase>
@@ -825,24 +820,15 @@ const UxUiDesign = () => {
             >
               <PhilosophyTagline>
                 <TaglineLine />
-                <TaglineText>Наш підхід</TaglineText>
+                <TaglineText>{t('uxUiDesignPage.philosophyApproach')}</TaglineText>
               </PhilosophyTagline>
 
               <PhilosophyParagraph>
-                Наша команда{' '}
-                <HighlightText>
-                  створює не просто гарні інтерфейси
-                </HighlightText>
-                , а цілісні екосистеми цифрової взаємодії, які враховують
-                психологію користувачів, бізнес-цілі та технічні можливості.
+              {t('uxUiDesignPage.philosophyApproachText1')}
               </PhilosophyParagraph>
 
               <PhilosophyParagraph>
-                Ми використовуємо{' '}
-                <HighlightText>data-driven підхід</HighlightText>, збираючи та
-                аналізуючи дані на кожному етапі дизайн-процесу. Це дозволяє
-                приймати обґрунтовані рішення та створювати інтерфейси, які не
-                тільки естетично привабливі, але й максимально ефективні.
+              {t('uxUiDesignPage.philosophyApproachText2')}
               </PhilosophyParagraph>
 
               <AdvantagesList>
@@ -851,7 +837,7 @@ const UxUiDesign = () => {
                     <FaRegEye />
                   </AdvantageIcon>
                   <AdvantageText>
-                    Підвищення конверсії і залученості
+                  {t('uxUiDesignPage.philosophyAdvantage1')}
                   </AdvantageText>
                 </AdvantageItem>
 
@@ -859,7 +845,7 @@ const UxUiDesign = () => {
                   <AdvantageIcon>
                     <FaChartLine />
                   </AdvantageIcon>
-                  <AdvantageText>Зниження відтоку користувачів</AdvantageText>
+                  <AdvantageText>{t('uxUiDesignPage.philosophyAdvantage2')}</AdvantageText>
                 </AdvantageItem>
 
                 <AdvantageItem>
@@ -867,7 +853,7 @@ const UxUiDesign = () => {
                     <FaRocket />
                   </AdvantageIcon>
                   <AdvantageText>
-                    Прискорення досягнення бізнес-цілей
+                  {t('uxUiDesignPage.philosophyAdvantage3')}
                   </AdvantageText>
                 </AdvantageItem>
               </AdvantagesList>
@@ -877,9 +863,7 @@ const UxUiDesign = () => {
                   <FaLightbulb />
                 </NoteIcon>
                 <NoteText>
-                  Результат — <b>цифровий продукт</b>, який інтуїтивно
-                  зрозумілий, естетично привабливий, технічно досконалий і,
-                  головне, ефективно вирішує бізнес-завдання.
+                {t('uxUiDesignPage.philosophyResult')}
                 </NoteText>
               </PhilosophyNote>
             </PhilosophyTextContainer>
@@ -913,10 +897,9 @@ const UxUiDesign = () => {
             transition={{ duration: 0.7 }}
           >
             <BenefitsHeadingGlow />
-            <BenefitsTitle>Що дає UX/UI дизайн для вашого бізнесу</BenefitsTitle>
+            <BenefitsTitle>{t('uxUiDesignPage.benefitsTitle')}</BenefitsTitle>
             <BenefitsSubtitle>
-              Замовляючи UX/UI дизайн у нас, ви отримуєте не просто красиву картинку — 
-              а повноцінний інструмент для зростання бізнесу.
+            {t('uxUiDesignPage.benefitsSubtitle')}
             </BenefitsSubtitle>
           </BenefitsHeading>
           
@@ -936,8 +919,8 @@ const UxUiDesign = () => {
                     </BenefitIcon>
                   </BenefitIconWrapper>
                   <BenefitCardContent>
-                    <BenefitCardTitle>Зрозумілий інтерфейс для користувачів</BenefitCardTitle>
-                    <BenefitCardText>Мінімум зайвого — максимум зручності. Кожен елемент має логіку та сенс.</BenefitCardText>
+                    <BenefitCardTitle>{t('uxUiDesignPage.benefit1Title')}</BenefitCardTitle>
+                    <BenefitCardText>{t('uxUiDesignPage.benefit1Text')}</BenefitCardText>
                   </BenefitCardContent>
                   <BenefitCardNumber>01</BenefitCardNumber>
                   <BenefitCardGlow className="glow-1" />
@@ -958,8 +941,8 @@ const UxUiDesign = () => {
                     </BenefitIcon>
                   </BenefitIconWrapper>
                   <BenefitCardContent>
-                    <BenefitCardTitle>Адаптивність і кросбраузерність</BenefitCardTitle>
-                    <BenefitCardText>Інтерфейс коректно працює на смартфонах, планшетах і будь-яких розширеннях екрана.</BenefitCardText>
+                    <BenefitCardTitle>{t('uxUiDesignPage.benefit2Title')}</BenefitCardTitle>
+                    <BenefitCardText>{t('uxUiDesignPage.benefit2Text')}</BenefitCardText>
                   </BenefitCardContent>
                   <BenefitCardNumber>02</BenefitCardNumber>
                   <BenefitCardGlow className="glow-2" />
@@ -980,8 +963,8 @@ const UxUiDesign = () => {
                     </BenefitIcon>
                   </BenefitIconWrapper>
                   <BenefitCardContent>
-                    <BenefitCardTitle>Підвищення конверсії</BenefitCardTitle>
-                    <BenefitCardText>Інтуїтивна навігація та грамотна UX-структура сприяють досягненню цільових дій.</BenefitCardText>
+                    <BenefitCardTitle>{t('uxUiDesignPage.benefit3Title')}</BenefitCardTitle>
+                    <BenefitCardText>{t('uxUiDesignPage.benefit3Text')}</BenefitCardText>
                   </BenefitCardContent>
                   <BenefitCardNumber>03</BenefitCardNumber>
                   <BenefitCardGlow className="glow-3" />
@@ -1004,8 +987,8 @@ const UxUiDesign = () => {
                     </BenefitIcon>
                   </BenefitIconWrapper>
                   <BenefitCardContent>
-                    <BenefitCardTitle>Унікальний візуальний стиль</BenefitCardTitle>
-                    <BenefitCardText>Дизайн, що відображає характер вашого бренду та виділяє вас на фоні конкурентів.</BenefitCardText>
+                    <BenefitCardTitle>{t('uxUiDesignPage.benefit4Title')}</BenefitCardTitle>
+                    <BenefitCardText>{t('uxUiDesignPage.benefit4Text')}</BenefitCardText>
                   </BenefitCardContent>
                   <BenefitCardNumber>04</BenefitCardNumber>
                   <BenefitCardGlow className="glow-4" />
@@ -1026,8 +1009,8 @@ const UxUiDesign = () => {
                     </BenefitIcon>
                   </BenefitIconWrapper>
                   <BenefitCardContent>
-                    <BenefitCardTitle>Дизайн-система та гайдлайни</BenefitCardTitle>
-                    <BenefitCardText>Повна документація, що спрощує подальшу розробку, масштабування і підтримку.</BenefitCardText>
+                    <BenefitCardTitle>{t('uxUiDesignPage.benefit5Title')}</BenefitCardTitle>
+                    <BenefitCardText>{t('uxUiDesignPage.benefit5Text')}</BenefitCardText>
                   </BenefitCardContent>
                   <BenefitCardNumber>05</BenefitCardNumber>
                   <BenefitCardGlow className="glow-5" />
@@ -1043,14 +1026,14 @@ const UxUiDesign = () => {
             transition={{ duration: 0.7, delay: 0.6 }}
           >
             <BenefitsCtaText>
-              Мета UX/UI — не лише естетика, а й бізнес-результат, виражений у цифрах.
+            {t('uxUiDesignPage.benefitsCta')}
             </BenefitsCtaText>
             <BenefitsCtaButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
             >
-              Замовити UX/UI дизайн
+              {t('uxUiDesignPage.benefitsCtaButton')}
             </BenefitsCtaButton>
           </BenefitsCta>
           
@@ -1071,10 +1054,10 @@ const UxUiDesign = () => {
         <SolutionsContainer>
           <SolutionsHeader>
             <SolutionsTitle>
-              Приклади рішень у UX/UI дизайні — типові задачі, які ми закриваємо
+            {t('uxUiDesignPage.solutionsTitle')}
             </SolutionsTitle>
             <SolutionsSubtitle>
-              Ми створюємо дизайн для різних ніш і форматів бізнесу. Ось які задачі найчастіше вирішуємо:
+            {t('uxUiDesignPage.solutionsSubtitle')}
             </SolutionsSubtitle>
           </SolutionsHeader>
           
@@ -1087,24 +1070,24 @@ const UxUiDesign = () => {
               whileHover={{ y: -10 }}
             >
               <SolutionCardInner>
-                <SolutionType>UX/UI для корпоративних сайтів</SolutionType>
+                <SolutionType>{t('uxUiDesignPage.solution1Type')}</SolutionType>
                 <SolutionFeatures>
                   <SolutionFeature>
                     <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
-                    <SolutionFeatureText>Чітка структура</SolutionFeatureText>
+                    <SolutionFeatureText>{t('uxUiDesignPage.solution1Feature1')}</SolutionFeatureText>
                   </SolutionFeature>
                   <SolutionFeature>
                     <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
-                    <SolutionFeatureText>Сильні візуальні акценти</SolutionFeatureText>
+                    <SolutionFeatureText>{t('uxUiDesignPage.solution1Feature2')}</SolutionFeatureText>
                   </SolutionFeature>
                   <SolutionFeature>
                     <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
-                    <SolutionFeatureText>Зрозуміла навігація для різних цільових груп</SolutionFeatureText>
+                    <SolutionFeatureText>{t('uxUiDesignPage.solution1Feature3')}</SolutionFeatureText>
                   </SolutionFeature>
                 </SolutionFeatures>
                 <SolutionResult>
-                  <ResultLabel>Результат:</ResultLabel>
-                  <ResultText>репутація бренду + довіра з першого кліку</ResultText>
+                  <ResultLabel>{t('uxUiDesignPage.solution1Result')}</ResultLabel>
+                  <ResultText>{t('uxUiDesignPage.solution1ResultItem')}</ResultText>
                 </SolutionResult>
                 <SolutionIllustration className="corporate">
                   <IllustrationImage></IllustrationImage>
@@ -1127,24 +1110,24 @@ const UxUiDesign = () => {
               whileHover={{ y: -10 }}
             >
               <SolutionCardInner>
-                <SolutionType>UX/UI для інтернет-магазинів</SolutionType>
+                <SolutionType>{t('uxUiDesignPage.solution2Type')}</SolutionType>
                 <SolutionFeatures>
                   <SolutionFeature>
                     <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
-                    <SolutionFeatureText>Зручний каталог</SolutionFeatureText>
+                    <SolutionFeatureText>{t('uxUiDesignPage.solution2Feature1')}</SolutionFeatureText>
                   </SolutionFeature>
                   <SolutionFeature>
                     <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
-                    <SolutionFeatureText>Оптимізований чек-аут</SolutionFeatureText>
+                    <SolutionFeatureText>{t('uxUiDesignPage.solution2Feature2')}</SolutionFeatureText>
                   </SolutionFeature>
                   <SolutionFeature>
                     <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
-                    <SolutionFeatureText>Мобільна адаптація з фокусом на швидкість</SolutionFeatureText>
+                    <SolutionFeatureText>{t('uxUiDesignPage.solution2Feature3')}</SolutionFeatureText>
                   </SolutionFeature>
                 </SolutionFeatures>
                 <SolutionResult>
-                  <ResultLabel>Результат:</ResultLabel>
-                  <ResultText>зростання конверсії та зменшення покинутого кошика</ResultText>
+                  <ResultLabel>{t('uxUiDesignPage.solution2Result')}</ResultLabel>
+                  <ResultText>{t('uxUiDesignPage.solution2ResultItem')}</ResultText>
                 </SolutionResult>
                 <SolutionIllustration className="ecommerce">
                   <IllustrationImage></IllustrationImage>
@@ -1167,24 +1150,24 @@ const UxUiDesign = () => {
               whileHover={{ y: -10 }}
             >
               <SolutionCardInner>
-                <SolutionType>UX/UI для стартапів та MVP</SolutionType>
+                <SolutionType>{t('uxUiDesignPage.solution3Type')}</SolutionType>
                 <SolutionFeatures>
                   <SolutionFeature>
                     <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
-                    <SolutionFeatureText>Швидкий прототип для тестування</SolutionFeatureText>
+                    <SolutionFeatureText>{t('uxUiDesignPage.solution3Feature1')}</SolutionFeatureText>
                   </SolutionFeature>
                   <SolutionFeature>
                     <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
-                    <SolutionFeatureText>Мінімалістичний UI з логікою MVP</SolutionFeatureText>
+                    <SolutionFeatureText>{t('uxUiDesignPage.solution3Feature2')}</SolutionFeatureText>
                   </SolutionFeature>
                   <SolutionFeature>
                     <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
-                    <SolutionFeatureText>Можливість масштабування</SolutionFeatureText>
+                    <SolutionFeatureText>{t('uxUiDesignPage.solution3Feature3')}</SolutionFeatureText>
                   </SolutionFeature>
                 </SolutionFeatures>
                 <SolutionResult>
-                  <ResultLabel>Результат:</ResultLabel>
-                  <ResultText>швидкий вихід на ринок із якісним першим враженням</ResultText>
+                  <ResultLabel>{t('uxUiDesignPage.solution3Result')}</ResultLabel>
+                  <ResultText>{t('uxUiDesignPage.solution3ResultItem')}</ResultText>
                 </SolutionResult>
                 <SolutionIllustration className="startup">
                   <IllustrationImage></IllustrationImage>
@@ -1206,24 +1189,24 @@ const UxUiDesign = () => {
               whileHover={{ y: -10 }}
             >
               <SolutionCardInner>
-                <SolutionType>UX/UI для мобільних застосунків</SolutionType>
+                <SolutionType>{t('uxUiDesignPage.solution4Type')}</SolutionType>
                 <SolutionFeatures>
                   <SolutionFeature>
                     <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
-                    <SolutionFeatureText>Іконки, жести, мікроанімація</SolutionFeatureText>
+                    <SolutionFeatureText>{t('uxUiDesignPage.solution4Feature1')}</SolutionFeatureText>
                   </SolutionFeature>
                   <SolutionFeature>
                     <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
-                    <SolutionFeatureText>UX-моделі під iOS/Android</SolutionFeatureText>
+                    <SolutionFeatureText>{t('uxUiDesignPage.solution4Feature2')}</SolutionFeatureText>
                   </SolutionFeature>
                   <SolutionFeature>
                     <SolutionFeatureIcon><FaCheck /></SolutionFeatureIcon>
-                    <SolutionFeatureText>Тестування сценаріїв користувачів</SolutionFeatureText>
+                    <SolutionFeatureText>{t('uxUiDesignPage.solution4Feature3')}</SolutionFeatureText>
                   </SolutionFeature>
                 </SolutionFeatures>
                 <SolutionResult>
-                  <ResultLabel>Результат:</ResultLabel>
-                  <ResultText>залученість користувачів та позитивний досвід</ResultText>
+                  <ResultLabel>{t('uxUiDesignPage.solution4Result')}</ResultLabel>
+                  <ResultText>{t('uxUiDesignPage.solution4ResultItem')}</ResultText>
                 </SolutionResult>
                 <SolutionIllustration className="mobile">
                   <IllustrationImage></IllustrationImage>
@@ -1240,14 +1223,14 @@ const UxUiDesign = () => {
           
           <SolutionsCta>
             <SolutionsCtaText>
-              Отримайте UX/UI рішення, яке підходить саме вашому бізнесу
+            {t('uxUiDesignPage.solutionsCta')}
             </SolutionsCtaText>
             <SolutionsCtaButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={openModal}
             >
-              Обговорити проєкт
+              {t('uxUiDesignPage.solutionsCtaButton')}
             </SolutionsCtaButton>
           </SolutionsCta>
         </SolutionsContainer>
@@ -1258,11 +1241,10 @@ const UxUiDesign = () => {
         <TestimonialsContainer>
           <TestimonialsHeader>
             <TestimonialsTitle>
-              Що кажуть клієнти про наш UX/UI дизайн
+            {t('uxUiDesignPage.testimonialsTitle')}
             </TestimonialsTitle>
             <TestimonialsDescription>
-              Ми працюємо з бізнесами, яким важливий не просто красивий інтерфейс, а результат. 
-              Ось що нам пишуть після запуску:
+            {t('uxUiDesignPage.testimonialsDescription')}
             </TestimonialsDescription>
           </TestimonialsHeader>
           
@@ -1278,8 +1260,7 @@ const UxUiDesign = () => {
                 <TestimonialQuoteMark>❝</TestimonialQuoteMark>
                 <TestimonialContent>
                   <TestimonialText>
-                    Після редизайну сайту час перебування користувачів зріс у 1,5 раза. 
-                    Дизайн виглядає сучасно, але найголовніше — все логічно і працює як треба.
+                  {t('uxUiDesignPage.testimonial1Text')}
                   </TestimonialText>
                 </TestimonialContent>
                 <TestimonialAuthor>
@@ -1287,7 +1268,7 @@ const UxUiDesign = () => {
                     <FaUser />
                   </TestimonialAvatar>
                   <TestimonialAuthorInfo>
-                    <TestimonialAuthorName>Засновник IT-компанії</TestimonialAuthorName>
+                    <TestimonialAuthorName>{t('uxUiDesignPage.testimonial1Author')}</TestimonialAuthorName>
                     <TestimonialMeter>
                       <TestimonialMeterFill style={{width: '90%'}} />
                     </TestimonialMeter>
@@ -1311,9 +1292,7 @@ const UxUiDesign = () => {
                 <TestimonialQuoteMark>❝</TestimonialQuoteMark>
                 <TestimonialContent>
                   <TestimonialText>
-                    Було приємно працювати: швидко зрозуміли, чого ми хочемо, і запропонували 
-                    рішення, про які ми самі не подумали. Новий дизайн реально спростив 
-                    клієнтам шлях до заявки.
+                  {t('uxUiDesignPage.testimonial2Text')}
                   </TestimonialText>
                 </TestimonialContent>
                 <TestimonialAuthor>
@@ -1321,7 +1300,7 @@ const UxUiDesign = () => {
                     <FaUser />
                   </TestimonialAvatar>
                   <TestimonialAuthorInfo>
-                    <TestimonialAuthorName>Керівник відділу маркетингу у сфері послуг</TestimonialAuthorName>
+                    <TestimonialAuthorName>{t('uxUiDesignPage.testimonial2Author')}</TestimonialAuthorName>
                     <TestimonialMeter>
                       <TestimonialMeterFill style={{width: '95%'}} />
                     </TestimonialMeter>
@@ -1345,8 +1324,7 @@ const UxUiDesign = () => {
                 <TestimonialQuoteMark>❝</TestimonialQuoteMark>
                 <TestimonialContent>
                   <TestimonialText>
-                    Ми отримали не просто макети, а повну дизайн-систему. Команда чітко 
-                    дотримувалась дедлайнів і дала технічну підтримку після передачі проєкту.
+                  {t('uxUiDesignPage.testimonial3Text')}
                   </TestimonialText>
                 </TestimonialContent>
                 <TestimonialAuthor>
@@ -1354,7 +1332,7 @@ const UxUiDesign = () => {
                     <FaUser />
                   </TestimonialAvatar>
                   <TestimonialAuthorInfo>
-                    <TestimonialAuthorName>СЕО eCommerce-бренду</TestimonialAuthorName>
+                    <TestimonialAuthorName>{t('uxUiDesignPage.testimonial3Author')}</TestimonialAuthorName>
                     <TestimonialMeter>
                       <TestimonialMeterFill style={{width: '85%'}} />
                     </TestimonialMeter>
@@ -1382,7 +1360,7 @@ const UxUiDesign = () => {
               whileTap={{ scale: 0.95 }}
               onClick={openModal}
             >
-              Приєднатися до клієнтів <FaArrowRight />
+              {t('uxUiDesignPage.testimonialsCtaButton')} <FaArrowRight />
             </TestimonialsCtaButton>
           </TestimonialsCta>
         </TestimonialsContainer>
@@ -1476,14 +1454,14 @@ const UxUiDesign = () => {
           
           <FaqCta>
             <FaqCtaText>
-              Маєте додаткові запитання щодо UX/UI дизайну?
+            {t('uxUiDesignPage.faqCta')}
             </FaqCtaText>
             <FaqCtaButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={openModal}
             >
-              Зв'язатися з нами <FaArrowRight />
+              {t('uxUiDesignPage.faqCtaButton')} <FaArrowRight />
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
@@ -1581,23 +1559,6 @@ const PhilosophyParagraph = styled.p`
   line-height: 1.8;
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
-`;
-
-const HighlightText = styled.span`
-  color: var(--accent-color-light);
-  font-weight: 600;
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--accent-color);
-    opacity: 0.3;
-  }
 `;
 
 const AdvantagesList = styled.div`
@@ -1887,18 +1848,16 @@ const GraphicLine = styled.div`
 `;
 
 const ApproachSection = () => {
+  const { t } = useTranslation();
   return (
     <ApproachSectionContainer>
       <ApproachContainer>
         <ApproachHeader>
           <ApproachTitle>
-            Підхід до UX/UI дизайну — функціональність, логіка, естетика
+            {t('uxUiDesignPage.approachTitle')}
           </ApproachTitle>
           <ApproachDescription>
-            Наш підхід до UX/UI дизайну базується на найкращих світових
-            практиках створення інтерфейсів, що однаково добре працюють як для
-            користувачів, так і для бізнесу. Ми пропонуємо рішення, обґрунтовані
-            реальними даними та дослідженнями.
+          {t('uxUiDesignPage.approachText')}
           </ApproachDescription>
         </ApproachHeader>
 
@@ -1942,6 +1901,8 @@ const ApproachDescription = styled.p`
 `;
 
 const ApproachContent = () => {
+
+  const { t } = useTranslation();
   return (
     <ApproachStages>
       <ApproachStage
@@ -1954,16 +1915,15 @@ const ApproachContent = () => {
           <FaSearch />
         </ApproachStageIconContainer>
         <ApproachStageTitle>
-          Дослідження користувачів і конкурентів
+        {t('uxUiDesignPage.items1.title')}
         </ApproachStageTitle>
         <ApproachStageDescription>
-          Аналізуємо поведінку цільової аудиторії та конкурентне середовище, щоб
-          розробити ефективні UX/UI рішення.
+        {t('uxUiDesignPage.items1.text')}
         </ApproachStageDescription>
         <ApproachStageTags>
-          <ApproachStageTag>Інтерв'ю</ApproachStageTag>
-          <ApproachStageTag>Аналіз даних</ApproachStageTag>
-          <ApproachStageTag>Профілювання користувачів</ApproachStageTag>
+          <ApproachStageTag>{t('uxUiDesignPage.items1.item1')}</ApproachStageTag>
+          <ApproachStageTag>{t('uxUiDesignPage.items1.item2')}</ApproachStageTag>
+          <ApproachStageTag>{t('uxUiDesignPage.items1.item3')}</ApproachStageTag>
         </ApproachStageTags>
         <ApproachStageIllustration className="research">
           <div className="research-circle"></div>
@@ -1971,25 +1931,25 @@ const ApproachContent = () => {
             <div className="research-icon">
               <FaUser />
             </div>
-            <span className="research-label">Аудиторія</span>
+            <span className="research-label">{t('uxUiDesignPage.items1.item4')}</span>
           </div>
           <div className="research-item research-item-2">
             <div className="research-icon">
               <FaChartBar />
             </div>
-            <span className="research-label">Аналітика</span>
+            <span className="research-label">{t('uxUiDesignPage.items1.item5')}</span>
           </div>
           <div className="research-item research-item-3">
             <div className="research-icon">
               <FaUsers />
             </div>
-            <span className="research-label">Конкуренти</span>
+            <span className="research-label">{t('uxUiDesignPage.items1.item6')}</span>
           </div>
           <div className="research-item research-item-4">
             <div className="research-icon">
               <FaTasks />
             </div>
-            <span className="research-label">Сценарії</span>
+            <span className="research-label">{t('uxUiDesignPage.items1.item7')}</span>
           </div>
           <div className="research-connection research-connection-1"></div>
           <div className="research-connection research-connection-2"></div>
@@ -2007,16 +1967,15 @@ const ApproachContent = () => {
           <FaSitemap />
         </ApproachStageIconContainer>
         <ApproachStageTitle>
-          UX-архітектура та прототипування
+        {t('uxUiDesignPage.items2.title')}
         </ApproachStageTitle>
         <ApproachStageDescription>
-          Проектуємо логічні структури та сценарії взаємодії для створення
-          інтуїтивно зрозумілої навігації та зручного інтерфейсу.
+        {t('uxUiDesignPage.items2.text')}
         </ApproachStageDescription>
         <ApproachStageTags>
-          <ApproachStageTag>Користувацькі потоки</ApproachStageTag>
-          <ApproachStageTag>Вайрфрейми</ApproachStageTag>
-          <ApproachStageTag>Прототипи</ApproachStageTag>
+          <ApproachStageTag>{t('uxUiDesignPage.items2.item1')}</ApproachStageTag>
+          <ApproachStageTag>{t('uxUiDesignPage.items2.item2')}</ApproachStageTag>
+          <ApproachStageTag>{t('uxUiDesignPage.items2.item3')}</ApproachStageTag>
         </ApproachStageTags>
         <ApproachStageIllustration className="architecture">
           <div className="wireframe wireframe-1">
@@ -2059,15 +2018,14 @@ const ApproachContent = () => {
         <ApproachStageIconContainer className="design">
           <FaPalette />
         </ApproachStageIconContainer>
-        <ApproachStageTitle>UI-дизайн у стилі бренду</ApproachStageTitle>
+        <ApproachStageTitle>{t('uxUiDesignPage.items3.title')}</ApproachStageTitle>
         <ApproachStageDescription>
-          Розробляємо візуальні елементи відповідно до вашої фірмової айдентики,
-          забезпечуючи доступність та узгодженість користувацького досвіду.
+        {t('uxUiDesignPage.items2.text')}
         </ApproachStageDescription>
         <ApproachStageTags>
-          <ApproachStageTag>Візуальний дизайн</ApproachStageTag>
-          <ApproachStageTag>Доступність</ApproachStageTag>
-          <ApproachStageTag>Компоненти</ApproachStageTag>
+          <ApproachStageTag>{t('uxUiDesignPage.items3.item1')}</ApproachStageTag>
+          <ApproachStageTag>{t('uxUiDesignPage.items3.item2')}</ApproachStageTag>
+          <ApproachStageTag>{t('uxUiDesignPage.items3.item3')}</ApproachStageTag>
         </ApproachStageTags>
         <ApproachStageIllustration className="design">
           <div className="color-palette">
@@ -2100,16 +2058,15 @@ const ApproachContent = () => {
           <FaCheck />
         </ApproachStageIconContainer>
         <ApproachStageTitle>
-          Тестування, UX-оптимізація та передача в розробку
+        {t('uxUiDesignPage.items4.title')}
         </ApproachStageTitle>
         <ApproachStageDescription>
-          Тестуємо наші рішення з реальними користувачами, оптимізуємо їх для
-          безперебійного досвіду та готуємо файли для фронтенд-команди.
+        {t('uxUiDesignPage.items4.text')}
         </ApproachStageDescription>
         <ApproachStageTags>
-          <ApproachStageTag>Юзабіліті-тестування</ApproachStageTag>
-          <ApproachStageTag>Оптимізація</ApproachStageTag>
-          <ApproachStageTag>Документація</ApproachStageTag>
+          <ApproachStageTag>{t('uxUiDesignPage.items4.item1')}</ApproachStageTag>
+          <ApproachStageTag>{t('uxUiDesignPage.items4.item2')}</ApproachStageTag>
+          <ApproachStageTag>{t('uxUiDesignPage.items4.item')}</ApproachStageTag>
         </ApproachStageTags>
         <ApproachStageIllustration className="testing">
           <div className="device-container">
