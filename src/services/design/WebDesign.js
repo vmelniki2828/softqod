@@ -32,6 +32,7 @@ import {
   FaShoppingCart,
   FaPlus,
 } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 // Page container
 const PageContainer = styled.div`
@@ -230,11 +231,6 @@ const float = keyframes`
   100% { transform: translateY(0) rotate(0); }
 `;
 
-const shimmer = keyframes`
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-`;
-
 const ripple = keyframes`
   0% { transform: scale(0.8); opacity: 1; }
   100% { transform: scale(2); opacity: 0; }
@@ -423,32 +419,6 @@ const AboutDescription = styled(motion.p)`
   line-height: 1.8;
   color: var(--text-secondary);
   margin-bottom: 2rem;
-`;
-
-const Highlight = styled.span`
-  color: var(--accent-color-light);
-  font-weight: 600;
-  position: relative;
-  padding: 0 0.2rem;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 0.2rem;
-    background: linear-gradient(
-      90deg,
-      var(--accent-color),
-      var(--accent-color-light),
-      var(--accent-color)
-    );
-    background-size: 200% auto;
-    animation: ${shimmer} 3s linear infinite;
-    border-radius: 4px;
-    opacity: 0.5;
-  }
 `;
 
 const FunctionsList = styled(motion.div)`
@@ -2808,6 +2778,8 @@ const WebDesign = () => {
   // State for FAQ section
   const [expandedFaqs, setExpandedFaqs] = useState([]);
 
+  const { t } = useTranslation();
+
   // State for modal
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -2818,42 +2790,42 @@ const WebDesign = () => {
   // FAQ data
   const faqData = [
     {
-      question: '1. Що таке веб-дизайн і чому він важливий для бренду?',
+      question: t('webDesign.faqData.question1'),
       answer:
-        'Веб-дизайн — це процес створення зовнішнього вигляду та функціональності сайту. Він формує перше враження про бренд, впливає на довіру користувачів і спонукає до взаємодії з вашим продуктом або послугою.',
+      t('webDesign.faqData.answer1'),
     },
     {
-      question: '2. Які елементи формують унікальний цифровий образ бренду?',
+      question: t('webDesign.faqData.question2'),
       answer:
-        'Це фірмові кольори, типографіка, логотип, ілюстрації, стиль інтерфейсу, структура сайту та загальна візуальна мова, яка підкреслює індивідуальність вашого бренду.',
-    },
-    {
-      question:
-        '3. У чому різниця між шаблонним та індивідуальним веб-дизайном?',
-      answer:
-        'Шаблонний дизайн — це готові рішення з обмеженими можливостями налаштування. Індивідуальний веб-дизайн створюється з нуля під потреби конкретного бізнесу, забезпечуючи максимальну відповідність бренду та унікальність.',
-    },
-    {
-      question: '4. Як веб-дизайн впливає на поведінку користувачів?',
-      answer:
-        'Добре продуманий дизайн полегшує навігацію, прискорює прийняття рішень, підвищує час перебування на сайті та знижує рівень відмов, що прямо впливає на конверсії.',
-    },
-    {
-      question: '5. Скільки часу займає створення унікального веб-дизайну?',
-      answer:
-        'Залежно від складності проєкту, розробка унікального дизайну може тривати від 2 до 8 тижнів. На це впливає кількість сторінок, функціонал, участь замовника в процесі.',
+      t('webDesign.faqData.answer2'),
     },
     {
       question:
-        '6. Чи враховується мобільна адаптація під час створення дизайну?',
+      t('webDesign.faqData.question3'),
       answer:
-        "Так, адаптивний дизайн є обов'язковим стандартом. Сайт має бути зручним і функціональним на всіх пристроях — смартфонах, планшетах та ПК.",
+      t('webDesign.faqData.answer3'),
+    },
+    {
+      question: t('webDesign.faqData.question4'),
+      answer:
+      t('webDesign.faqData.answer4'),
+    },
+    {
+      question: t('webDesign.faqData.question5'),
+      answer:
+      t('webDesign.faqData.answer5'),
     },
     {
       question:
-        '7. Як підтримувати цілісність цифрового образу бренду після запуску сайту?',
+      t('webDesign.faqData.question6'),
       answer:
-        'Важливо дотримуватися гайдлайну бренду, використовувати єдину стилістику в усіх цифрових каналах, оновлювати контент відповідно до tone of voice бренду та регулярно проводити аудит UX/UI.',
+      t('webDesign.faqData.answer6'),
+    },
+    {
+      question:
+      t('webDesign.faqData.question7'),
+      answer:
+      t('webDesign.faqData.answer7'),
     },
   ];
 
@@ -2878,7 +2850,7 @@ const WebDesign = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Веб-дизайн: створення <span>унікального</span> цифрового образу
+              {t('webDesign.heroTitle')}
             </HeroTitle>
 
             <HeroDescription
@@ -2886,10 +2858,7 @@ const WebDesign = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              Професійний веб-дизайн — це не просто красива картинка, а
-              ефективний інструмент комунікації. Якісний дизайн формує перше
-              враження, підвищує довіру та безпосередньо впливає на
-              результативність сайту.
+              {t('webDesign.heroDescription')}
             </HeroDescription>
 
             <HeroButtons
@@ -2902,7 +2871,7 @@ const WebDesign = () => {
                 whileTap={{ scale: 0.98 }}
                 onClick={openModal}
               >
-                Замовити дизайн <FaArrowRight />
+                 {t('webDesign.orderDesignButton')} <FaArrowRight />
               </PrimaryButton>
             </HeroButtons>
 
@@ -2915,21 +2884,21 @@ const WebDesign = () => {
                 <HeroFeatureIcon>
                   <FaDesktop />
                 </HeroFeatureIcon>
-                <FeatureText>Адаптивність</FeatureText>
+                <FeatureText>{t('webDesign.adaptability')}</FeatureText>
               </FeatureItem>
 
               <FeatureItem>
                 <HeroFeatureIcon>
                   <FaPaintBrush />
                 </HeroFeatureIcon>
-                <FeatureText>Креативність</FeatureText>
+                <FeatureText>{t('webDesign.creativity')}</FeatureText>
               </FeatureItem>
 
               <FeatureItem>
                 <HeroFeatureIcon>
                   <FaChartLine />
                 </HeroFeatureIcon>
-                <FeatureText>Конверсійність</FeatureText>
+                <FeatureText>{t('webDesign.conversion')}</FeatureText>
               </FeatureItem>
             </HeroFeatures>
           </HeroContent>
@@ -3014,7 +2983,7 @@ const WebDesign = () => {
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7 }}
           >
-            Що таке веб-дизайн?
+            {t('webDesign.whatIsWebDesign')}
           </AboutTitle>
 
           <AboutGrid>
@@ -3025,12 +2994,7 @@ const WebDesign = () => {
                 viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.7, delay: 0.2 }}
               >
-                Веб-дизайн — це процес створення зовнішнього вигляду та
-                інтерфейсу сайту, що поєднує в собі{' '}
-                <Highlight>візуальну привабливість</Highlight> і{' '}
-                <Highlight>зручність для користувача</Highlight>. Його головна
-                мета — зробити взаємодію з ресурсом простою, приємною та
-                ефективною.
+                {t('webDesign.aboutDescription1')}
               </AboutDescription>
 
               <AboutDescription
@@ -3039,12 +3003,7 @@ const WebDesign = () => {
                 viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.7, delay: 0.3 }}
               >
-                Сучасний веб-дизайн виконує кілька ключових функцій: підвищує
-                впізнаваність бренду, формує довіру до компанії та забезпечує
-                позитивний користувацький досвід (UX). Актуальні тенденції
-                включають адаптивність (підлаштування під різні пристрої),
-                мінімалізм у дизайні, а також використання анімацій та
-                інтерактивних елементів для залучення уваги.
+                {t('webDesign.aboutDescription2')}
               </AboutDescription>
 
               <FunctionsList
@@ -3063,10 +3022,9 @@ const WebDesign = () => {
                     <FaMagic />
                   </FunctionIconContainer>
                   <FunctionContent>
-                    <FunctionTitle>Брендинг та впізнаваність</FunctionTitle>
+                    <FunctionTitle>{t('webDesign.brandingTitle')}</FunctionTitle>
                     <FunctionText>
-                      Якісний веб-дизайн підкреслює унікальність вашого бренду,
-                      відображає його цінності та виділяє серед конкурентів.
+                    {t('webDesign.brandingText')}
                     </FunctionText>
                   </FunctionContent>
                 </FunctionCard>
@@ -3081,11 +3039,9 @@ const WebDesign = () => {
                     <FaUserFriends />
                   </FunctionIconContainer>
                   <FunctionContent>
-                    <FunctionTitle>Користувацький досвід (UX)</FunctionTitle>
+                    <FunctionTitle>{t('webDesign.uxTitle')}</FunctionTitle>
                     <FunctionText>
-                      Зручність навігації, інтуїтивно зрозумілий інтерфейс та
-                      логічна структура забезпечують комфортну взаємодію
-                      відвідувачів із сайтом.
+                    {t('webDesign.uxText')}
                     </FunctionText>
                   </FunctionContent>
                 </FunctionCard>
@@ -3100,11 +3056,9 @@ const WebDesign = () => {
                     <FaBullseye />
                   </FunctionIconContainer>
                   <FunctionContent>
-                    <FunctionTitle>Досягнення бізнес-цілей</FunctionTitle>
+                    <FunctionTitle>{t('webDesign.businessGoalsTitle')}</FunctionTitle>
                     <FunctionText>
-                      Ефективний дизайн спрямовує користувачів до цільових дій:
-                      замовлень, заповнення форм, підписок, дзвінків та інших
-                      конверсійних дій.
+                    {t('webDesign.businessGoalsText')}
                     </FunctionText>
                   </FunctionContent>
                 </FunctionCard>
@@ -3233,7 +3187,7 @@ const WebDesign = () => {
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7 }}
           >
-            Чому веб-дизайн важливий для вашого бізнесу?
+            {t('webDesign.whyImportantTitle')}
           </ImportanceTitle>
 
           <IntroText
@@ -3242,8 +3196,7 @@ const WebDesign = () => {
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            Сайт — це часто перше, з чим стикається потенційний клієнт. Якісний
-            дизайн формує довіру і перетворює відвідувачів на клієнтів.
+            {t('webDesign.importanceIntro')}
           </IntroText>
 
           <StatsContainer>
@@ -3257,9 +3210,9 @@ const WebDesign = () => {
                 <FaRegClock />
               </StatIcon>
               <StatValue className="stat-value">0.05</StatValue>
-              <StatLabel>секунди</StatLabel>
+              <StatLabel>{t('webDesign.seconds')}</StatLabel>
               <StatDescription>
-                Час, за який формується перше враження про сайт та компанію
+              {t('webDesign.firstImpressionTime')}
               </StatDescription>
             </StatCard>
 
@@ -3273,9 +3226,9 @@ const WebDesign = () => {
                 <FaArrowUp />
               </StatIcon>
               <StatValue className="stat-value">38%</StatValue>
-              <StatLabel>користувачів</StatLabel>
+              <StatLabel>{t('webDesign.users')}</StatLabel>
               <StatDescription>
-                Залишають сайт, якщо дизайн непривабливий або застарілий
+              {t('webDesign.leaveSite')}
               </StatDescription>
             </StatCard>
 
@@ -3289,9 +3242,9 @@ const WebDesign = () => {
                 <FaPercent />
               </StatIcon>
               <StatValue className="stat-value">+75%</StatValue>
-              <StatLabel>до конверсії</StatLabel>
+              <StatLabel>{t('webDesign.toConversion')}</StatLabel>
               <StatDescription>
-                Додає якісний дизайн з продуманим користувацьким досвідом
+              {t('webDesign.qualityDesignAdds')}
               </StatDescription>
             </StatCard>
           </StatsContainer>
@@ -3309,12 +3262,9 @@ const WebDesign = () => {
                 </BenefitIconContainer>
                 <BenefitProgress delay="0.3s" />
                 <BenefitContent>
-                  <BenefitTitle>Перше враження</BenefitTitle>
+                  <BenefitTitle>{t('webDesign.firstImpressionTitle')}</BenefitTitle>
                   <BenefitText>
-                    Якщо дизайн виглядає застарілим або незручним, користувач
-                    швидко залишить сторінку. Якісний веб-дизайн формує
-                    позитивне перше враження та підвищує рівень довіри до
-                    компанії.
+                  {t('webDesign.firstImpressionText')}
                   </BenefitText>
                 </BenefitContent>
               </BenefitItem>
@@ -3330,12 +3280,9 @@ const WebDesign = () => {
                 </BenefitIconContainer>
                 <BenefitProgress delay="0.5s" />
                 <BenefitContent>
-                  <BenefitTitle>Користувацький досвід</BenefitTitle>
+                  <BenefitTitle>{t('webDesign.userExperienceTitle')}</BenefitTitle>
                   <BenefitText>
-                    Зручна навігація, логічна структура та швидке завантаження
-                    сторінок напряму впливають на поведінку користувачів і
-                    конверсію. Інтуїтивний інтерфейс утримує увагу та підштовхує
-                    до цільових дій.
+                  {t('webDesign.userExperienceText')}
                   </BenefitText>
                 </BenefitContent>
               </BenefitItem>
@@ -3351,12 +3298,9 @@ const WebDesign = () => {
                   <FaSearchDollar />
                 </BenefitIconContainer>
                 <BenefitContent>
-                  <BenefitTitle>SEO-просування</BenefitTitle>
+                  <BenefitTitle>{t('webDesign.seoTitle')}</BenefitTitle>
                   <BenefitText>
-                    Пошукові системи враховують показники взаємодії з сайтом:
-                    час перебування, глибину перегляду, мобільну оптимізацію.
-                    Сучасний дизайн — це ще й внесок у SEO-просування та
-                    органічну видимість.
+                  {t('webDesign.seoText')}
                   </BenefitText>
                 </BenefitContent>
               </BenefitItem>
@@ -3382,7 +3326,7 @@ const WebDesign = () => {
                 <MockHero>
                   <div className="title"></div>
                   <div className="subtitle"></div>
-                  <div className="cta">Замовити</div>
+                  <div className="cta">{t('webDesign.imgText')}</div>
                 </MockHero>
                 <MockContent>
                   <div className="card" style={{ animationDelay: '1s' }}>
@@ -3429,7 +3373,7 @@ const WebDesign = () => {
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7 }}
           >
-            Наші послуги у сфері веб-дизайну
+            {t('webDesign.ourServicesTitle')}
           </ServicesTitle>
 
           <ServicesDescription
@@ -3438,9 +3382,7 @@ const WebDesign = () => {
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            Ми пропонуємо повний спектр послуг з дизайну сайтів — від створення
-            концепції до повної реалізації проєкту, враховуючи всі сучасні
-            тенденції та вимоги.
+            {t('webDesign.servicesDescription')}
           </ServicesDescription>
 
           <ServicesGrid>
@@ -3461,29 +3403,25 @@ const WebDesign = () => {
                 </ServiceIcon>
 
                 <ServiceTitle className="service-title">
-                  Створення дизайну сайту з нуля
+                {t('webDesign.createFromScratchTitle')}
                 </ServiceTitle>
 
                 <ServiceText>
-                  Ми розробляємо індивідуальний дизайн, який відображає цінності
-                  вашого бренду. Починаємо з концепції, формуємо структуру
-                  (Wireframes) і створюємо візуальний стиль, який гармонійно
-                  поєднує естетику з функціональністю.
+                {t('webDesign.createFromScratchText')}
                 </ServiceText>
 
                 <ServiceFeatures>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> Розробка концепції та прототипів
+                    <FaCheckCircle /> {t('webDesign.createFromScratchFeatures.item1')}
                   </ServiceFeatureItem>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> Створення унікального візуального стилю
+                    <FaCheckCircle /> {t('webDesign.createFromScratchFeatures.item2')}
                   </ServiceFeatureItem>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> UX/UI проектування всіх елементів
-                    інтерфейсу
+                    <FaCheckCircle /> {t('webDesign.createFromScratchFeatures.item3')}
                   </ServiceFeatureItem>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> Підготовка макетів для розробників
+                    <FaCheckCircle /> {t('webDesign.createFromScratchFeatures.item4')}
                   </ServiceFeatureItem>
                 </ServiceFeatures>
 
@@ -3514,28 +3452,25 @@ const WebDesign = () => {
                 </ServiceIcon>
 
                 <ServiceTitle className="service-title">
-                  Рестайлінг існуючих сайтів
+                {t('webDesign.restylingTitle')}
                 </ServiceTitle>
 
                 <ServiceText>
-                  Ваш сайт виглядає застаріло або не приносить результатів? Ми
-                  оновимо дизайн відповідно до сучасних вимог, поліпшимо
-                  структуру, зробимо інтерфейс більш зручним і привабливим для
-                  користувача.
+                {t('webDesign.restylingText')}
                 </ServiceText>
 
                 <ServiceFeatures>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> Аналіз недоліків поточного дизайну
+                    <FaCheckCircle /> {t('webDesign.restylingFeatures.item1')}
                   </ServiceFeatureItem>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> Оновлення візуального стилю
+                    <FaCheckCircle /> {t('webDesign.restylingFeatures.item2')}
                   </ServiceFeatureItem>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> Поліпшення структури та навігації
+                    <FaCheckCircle /> {t('webDesign.restylingFeatures.item3')}
                   </ServiceFeatureItem>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> Оптимізація конверсійних шляхів
+                    <FaCheckCircle /> {t('webDesign.restylingFeatures.item4')}
                   </ServiceFeatureItem>
                 </ServiceFeatures>
 
@@ -3569,29 +3504,25 @@ const WebDesign = () => {
                 </ServiceIcon>
 
                 <ServiceTitle className="service-title">
-                  Адаптивний дизайн
+                {t('webDesign.responsiveTitle')}
                 </ServiceTitle>
 
                 <ServiceText>
-                  Створюємо інтерфейси, які коректно відображаються на
-                  смартфонах, планшетах і десктопах. Це гарантує зручність
-                  користування з будь-якого пристрою та позитивно впливає на
-                  поведенкові фактори.
+                {t('webDesign.responsiveText')}
                 </ServiceText>
 
                 <ServiceFeatures>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> Оптимізація для всіх типів пристроїв
+                    <FaCheckCircle /> {t('webDesign.responsiveFeatures.item1')}
                   </ServiceFeatureItem>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> Гнучкі макети та елементи інтерфейсу
+                    <FaCheckCircle /> {t('webDesign.responsiveFeatures.item2')}
                   </ServiceFeatureItem>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> Адаптація контенту для різних роздільних
-                    здатностей
+                    <FaCheckCircle /> {t('webDesign.responsiveFeatures.item3')}
                   </ServiceFeatureItem>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> Тестування на всіх популярних пристроях
+                    <FaCheckCircle /> {t('webDesign.responsiveFeatures.item4')}
                   </ServiceFeatureItem>
                 </ServiceFeatures>
 
@@ -3628,27 +3559,25 @@ const WebDesign = () => {
                 </ServiceIcon>
 
                 <ServiceTitle className="service-title">
-                  Дизайн для eCommerce
+                {t('webDesign.ecommerceTitle')}
                 </ServiceTitle>
 
                 <ServiceText>
-                  Розробляємо UX/UI-дизайн для інтернет-магазинів з урахуванням
-                  поведінки покупців. Оптимізуємо шлях користувача до покупки,
-                  щоб збільшити конверсію та середній чек.
+                {t('webDesign.ecommerceText')}
                 </ServiceText>
 
                 <ServiceFeatures>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> Проектування зручних каталогів та фільтрів
+                    <FaCheckCircle /> {t('webDesign.ecommerceFeatures.item1')}
                   </ServiceFeatureItem>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> Розробка карток товарів, що конвертують
+                    <FaCheckCircle /> {t('webDesign.ecommerceFeatures.item2')}
                   </ServiceFeatureItem>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> Оптимізація процесу оформлення замовлення
+                    <FaCheckCircle /> {t('webDesign.ecommerceFeatures.item3')}
                   </ServiceFeatureItem>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> Інтеграція з платіжними системами
+                    <FaCheckCircle /> {t('webDesign.ecommerceFeatures.item4')}
                   </ServiceFeatureItem>
                 </ServiceFeatures>
 
@@ -3681,28 +3610,25 @@ const WebDesign = () => {
                 </ServiceIcon>
 
                 <ServiceTitle className="service-title">
-                  Додаткові послуги
+                {t('webDesign.additionalServicesTitle')}
                 </ServiceTitle>
 
                 <ServiceText>
-                  Пропонуємо дизайн лендінгів, блогів, корпоративних сайтів, а
-                  також підготовку графічних елементів: банерів, іконок,
-                  презентацій. Працюємо з готовими CMS або в парі з
-                  розробниками.
+                {t('webDesign.additionalServicesText')}
                 </ServiceText>
 
                 <ServiceFeatures>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> Дизайн банерів та рекламних матеріалів
+                    <FaCheckCircle /> {t('webDesign.additionalServicesFeatures.item1')}
                   </ServiceFeatureItem>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> Створення іконок та графічних елементів
+                    <FaCheckCircle /> {t('webDesign.additionalServicesFeatures.item2')}
                   </ServiceFeatureItem>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> Дизайн інтерфейсів для CMS
+                    <FaCheckCircle />{t('webDesign.additionalServicesFeatures.item3')}
                   </ServiceFeatureItem>
                   <ServiceFeatureItem>
-                    <FaCheckCircle /> UX-аудит існуючих проектів
+                    <FaCheckCircle /> {t('webDesign.additionalServicesFeatures.item4')}
                   </ServiceFeatureItem>
                 </ServiceFeatures>
 
@@ -3736,7 +3662,7 @@ const WebDesign = () => {
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.7 }}
             >
-              Переваги співпраці з нами
+              {t('webDesign.advantagesTitle')}
             </AdvantagesTitle>
           </BenefitsHeader>
 
@@ -3753,14 +3679,13 @@ const WebDesign = () => {
                 </BenefitIcon>
                 <BenefitNumber className="benefit-number">01</BenefitNumber>
               </BenefitIconWrapper>
-              <AdvantageTitle>Досвідчена команда</AdvantageTitle>
+              <AdvantageTitle>{t('webDesign.experiencedTeamTitle')}</AdvantageTitle>
               <BenefitDescription>
-                Наші дизайнери мають практичний досвід у створенні проєктів для
-                різних ніш — від малого бізнесу до eCommerce-платформ.
+              {t('webDesign.experiencedTeamText')}
               </BenefitDescription>
               <BenefitTag>
                 <FaLightbulb />
-                Експертність
+                {t('webDesign.expertise')}
               </BenefitTag>
             </BenefitCard>
 
@@ -3776,14 +3701,13 @@ const WebDesign = () => {
                 </BenefitIcon>
                 <BenefitNumber className="benefit-number">02</BenefitNumber>
               </BenefitIconWrapper>
-              <AdvantageTitle>Сучасні інструменти та технології</AdvantageTitle>
+              <AdvantageTitle>{t('webDesign.modernToolsTitle')}</AdvantageTitle>
               <BenefitDescription>
-                Ми працюємо з Figma, Adobe XD, Sketch, дотримуємося найновіших
-                стандартів веб-дизайну та UI/UX.
+              {t('webDesign.modernToolsText')}
               </BenefitDescription>
               <BenefitTag>
                 <FaRocket />
-                Інновації
+                {t('webDesign.innovation')}
               </BenefitTag>
             </BenefitCard>
 
@@ -3799,14 +3723,13 @@ const WebDesign = () => {
                 </BenefitIcon>
                 <BenefitNumber className="benefit-number">03</BenefitNumber>
               </BenefitIconWrapper>
-              <AdvantageTitle>Індивідуальний підхід</AdvantageTitle>
+              <AdvantageTitle>{t('webDesign.individualApproachTitle')}</AdvantageTitle>
               <BenefitDescription>
-                Кожен проєкт — унікальний. Ми враховуємо цілі бізнесу, специфіку
-                ринку та вподобання цільової аудиторії.
+              {t('webDesign.individualApproachText')}
               </BenefitDescription>
               <BenefitTag>
                 <FaBullseye />
-                Клієнтоорієнтованість
+                {t('webDesign.clientOriented')}
               </BenefitTag>
             </BenefitCard>
 
@@ -3822,14 +3745,13 @@ const WebDesign = () => {
                 </BenefitIcon>
                 <BenefitNumber className="benefit-number">04</BenefitNumber>
               </BenefitIconWrapper>
-              <AdvantageTitle>Гарантія унікального дизайну</AdvantageTitle>
+              <AdvantageTitle>{t('webDesign.uniqueDesignTitle')}</AdvantageTitle>
               <BenefitDescription>
-                Жодних шаблонів — лише оригінальні рішення, створені спеціально
-                під ваш бренд.
+              {t('webDesign.uniqueDesignText')}
               </BenefitDescription>
               <BenefitTag>
                 <FaPaintBrush />
-                Оригінальність
+                {t('webDesign.originality')}
               </BenefitTag>
             </BenefitCard>
 
@@ -3845,14 +3767,13 @@ const WebDesign = () => {
                 </BenefitIcon>
                 <BenefitNumber className="benefit-number">05</BenefitNumber>
               </BenefitIconWrapper>
-              <AdvantageTitle>Відповідність UX/UI стандартам</AdvantageTitle>
+              <AdvantageTitle>{t('webDesign.uxStandardsTitle')}</AdvantageTitle>
               <BenefitDescription>
-                Дизайн не лише привабливий, а й зручний. Ми тестуємо прототипи
-                та оптимізуємо інтерфейс для максимальної ефективності.
+              {t('webDesign.uxStandardsText')}
               </BenefitDescription>
               <BenefitTag>
                 <FaChartLine />
-                Ефективність
+                {t('webDesign.efficiency')}
               </BenefitTag>
             </BenefitCard>
 
@@ -3868,14 +3789,13 @@ const WebDesign = () => {
                 </BenefitIcon>
                 <BenefitNumber className="benefit-number">06</BenefitNumber>
               </BenefitIconWrapper>
-              <AdvantageTitle>Своєчасна доставка</AdvantageTitle>
+              <AdvantageTitle>{t('webDesign.timelyDeliveryTitle')}</AdvantageTitle>
               <BenefitDescription>
-                Дотримуємося узгоджених термінів та забезпечуємо плавний процес
-                роботи. Ви завжди знаєте, на якому етапі знаходиться ваш проєкт.
+              {t('webDesign.timelyDeliveryText')}
               </BenefitDescription>
               <BenefitTag>
                 <FaClock />
-                Пунктуальність
+                {t('webDesign.punctuality')}
               </BenefitTag>
             </BenefitCard>
           </BenefitsGrid>
@@ -3892,14 +3812,10 @@ const WebDesign = () => {
         <CTAContainer>
           <CTAContent>
             <CTATitle>
-              Замовте <span className="highlight">веб-дизайн</span>, який
-              приносить результати
+            {t('webDesign.ctaTitle')}
             </CTATitle>
             <CTADescription>
-              Професійний веб-дизайн — це не просто витрата, а інвестиція у
-              зростання вашого бізнесу. Добре спроектований сайт приваблює
-              більше відвідувачів, конвертує більше лідів і допомагає вашому
-              бізнесу виділитися серед конкурентів у цифровому просторі.
+            {t('webDesign.ctaDescription')}
             </CTADescription>
             <CTAButton
               whileHover={{ scale: 1.05 }}
@@ -3909,7 +3825,7 @@ const WebDesign = () => {
               transition={{ delay: 0.2 }}
               onClick={openModal}
             >
-              Замовити безкоштовну консультацію
+              {t('webDesign.orderConsultationButton')}
               <ButtonGlow />
             </CTAButton>
           </CTAContent>
@@ -4117,7 +4033,7 @@ const WebDesign = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.2 }}
           >
-            <FaqCtaText>Не знайшли відповідь на своє питання?</FaqCtaText>
+            <FaqCtaText>{t('webDesign.faqNotFound')}</FaqCtaText>
             <FaqCtaButton
               whileHover={{
                 scale: 1.03,
@@ -4126,7 +4042,7 @@ const WebDesign = () => {
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
             >
-              Напишіть нам
+              {t('webDesign.writeToUsButton')}
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
