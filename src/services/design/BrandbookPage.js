@@ -24,6 +24,7 @@ import {
   FaLaptopCode,
   FaPlus,
 } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 // Animation keyframes
 const floatVertical = keyframes`
@@ -828,14 +829,14 @@ const StepConnector = styled.svg`
   width: 100%;
   height: 100%;
   z-index: 0;
-  
+
   path {
     stroke: var(--accent-color);
     stroke-width: 3;
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
     fill: none;
-    
+
     &.animate {
       animation: ${lineDrawing} 2s forwards ease-in-out;
     }
@@ -848,7 +849,7 @@ const StepsContainer = styled.div`
   gap: 7rem;
   position: relative;
   z-index: 1;
-  
+
   @media (max-width: 768px) {
     gap: 5rem;
   }
@@ -859,15 +860,15 @@ const Step = styled(motion.div)`
   grid-template-columns: 120px 1fr;
   gap: 2rem;
   position: relative;
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 80px 1fr;
     gap: 1.5rem;
   }
-  
+
   &:nth-child(even) {
     margin-left: 4rem;
-    
+
     @media (max-width: 768px) {
       margin-left: 0;
     }
@@ -899,11 +900,11 @@ const StepNumber = styled.div`
   box-shadow: 0 10px 20px rgba(var(--accent-color-rgb), 0.3);
   position: relative;
   z-index: 2;
-  
+
   &.pulse {
     animation: ${pulseAnimation} 2s infinite;
   }
-  
+
   @media (max-width: 768px) {
     width: 60px;
     height: 60px;
@@ -926,7 +927,7 @@ const StepIcon = styled.div`
   font-size: 1.2rem;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   z-index: 3;
-  
+
   @media (max-width: 768px) {
     width: 30px;
     height: 30px;
@@ -943,7 +944,7 @@ const StepTitle = styled.h3`
   font-weight: 700;
   margin-bottom: 1.2rem;
   color: var(--text-primary);
-  
+
   @media (max-width: 768px) {
     font-size: 1.4rem;
   }
@@ -953,7 +954,7 @@ const StepDescription = styled.p`
   font-size: 1.1rem;
   line-height: 1.7;
   color: var(--text-secondary);
-  
+
   @media (max-width: 768px) {
     font-size: 1rem;
   }
@@ -970,7 +971,7 @@ const ProcessNoteBox = styled(motion.div)`
   );
   position: relative;
   text-align: center;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -986,7 +987,7 @@ const ProcessNoteBox = styled(motion.div)`
     justify-content: center;
     box-shadow: 0 10px 20px rgba(var(--accent-color-rgb), 0.3);
   }
-  
+
   svg {
     position: absolute;
     top: -18px;
@@ -1026,7 +1027,6 @@ const BrandbookShowcaseContainer = styled.div`
   position: relative;
   z-index: 1;
 `;
-
 
 const ShowcaseGrid = styled.div`
   display: grid;
@@ -1160,7 +1160,7 @@ const PageTitle = styled.div`
   color: #333;
   margin-bottom: 2rem;
   position: relative;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -1319,7 +1319,7 @@ const HideOnMobile = styled.div`
 
 const ShowOnMobile = styled.div`
   display: none;
-  
+
   @media (max-width: 992px) {
     display: block;
     margin-top: 2rem;
@@ -1375,17 +1375,16 @@ const numberAppearAnimation = keyframes`
   100% { opacity: 0.1; transform: scale(1); }
 `;
 
-
 const AdvantageRow = styled.div`
   display: flex;
   justify-content: center;
   gap: 1.5rem;
   margin-top: 1.5rem;
-  
+
   @media (max-width: 992px) {
     flex-wrap: wrap;
   }
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -1401,64 +1400,78 @@ const AdvantageCard = styled(motion.div)`
   height: 100%;
   overflow: hidden;
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-5px);
     animation: ${cardHoverAnimation} 2s infinite;
-    
+
     .card-icon {
       animation: ${iconFloatAnimation} 2s ease-in-out infinite;
     }
-    
+
     .card-number {
       animation: ${numberAppearAnimation} 1s forwards;
     }
-    
-    .border-top, .border-bottom {
+
+    .border-top,
+    .border-bottom {
       transform: scaleX(1);
     }
-    
-    .border-left, .border-right {
+
+    .border-left,
+    .border-right {
       transform: scaleY(1);
     }
   }
-  
-  .border-top, .border-bottom {
+
+  .border-top,
+  .border-bottom {
     position: absolute;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-color),
+      transparent
+    );
     width: 100%;
     transform: scaleX(0);
     transition: transform 0.6s ease;
   }
-  
-  .border-left, .border-right {
+
+  .border-left,
+  .border-right {
     position: absolute;
     width: 2px;
-    background: linear-gradient(180deg, transparent, var(--accent-color), transparent);
+    background: linear-gradient(
+      180deg,
+      transparent,
+      var(--accent-color),
+      transparent
+    );
     height: 100%;
     transform: scaleY(0);
     transition: transform 0.6s ease;
   }
-  
+
   .border-top {
     top: 0;
     left: 0;
     transform-origin: left;
   }
-  
+
   .border-bottom {
     bottom: 0;
     right: 0;
     transform-origin: right;
   }
-  
+
   .border-left {
     left: 0;
     bottom: 0;
     transform-origin: bottom;
   }
-  
+
   .border-right {
     right: 0;
     top: 0;
@@ -1525,7 +1538,7 @@ const ConclusionBox = styled(motion.div)`
     rgba(var(--accent-color-rgb), 0.1) 0%,
     rgba(var(--accent-color-rgb), 0.02) 100%
   );
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -1540,7 +1553,7 @@ const ConclusionBox = styled(motion.div)`
     align-items: center;
     justify-content: center;
   }
-  
+
   svg {
     position: absolute;
     top: -12px;
@@ -1574,22 +1587,23 @@ const AdvantagesBackground = styled.div`
   height: 100%;
   z-index: 0;
   overflow: hidden;
-  
+
   .chess-pattern {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-      linear-gradient(45deg, 
-        rgba(var(--accent-color-rgb), 0.05) 25%, 
+    background-image: linear-gradient(
+        45deg,
+        rgba(var(--accent-color-rgb), 0.05) 25%,
         transparent 25%,
         transparent 75%,
         rgba(var(--accent-color-rgb), 0.05) 75%
       ),
-      linear-gradient(45deg, 
-        rgba(var(--accent-color-rgb), 0.05) 25%, 
+      linear-gradient(
+        45deg,
+        rgba(var(--accent-color-rgb), 0.05) 25%,
         transparent 25%,
         transparent 75%,
         rgba(var(--accent-color-rgb), 0.05) 75%
@@ -1598,7 +1612,7 @@ const AdvantagesBackground = styled.div`
     background-position: 0 0, 30px 30px;
     animation: ${fadeInOut} 8s infinite;
   }
-  
+
   .gradient-1 {
     position: absolute;
     top: -200px;
@@ -1614,7 +1628,7 @@ const AdvantagesBackground = styled.div`
     filter: blur(50px);
     opacity: 0.5;
   }
-  
+
   .gradient-2 {
     position: absolute;
     bottom: -200px;
@@ -1684,7 +1698,7 @@ const CardGrid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   gap: 2rem;
   margin: 5rem 0;
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
@@ -1712,7 +1726,7 @@ const CardInner = styled.div`
   transition: transform 0.8s;
   transform-style: preserve-3d;
   border-radius: 16px;
-  
+
   &:hover {
     transform: rotateY(10deg) scale(1.02);
     animation: ${cardGlow} 2s infinite;
@@ -1803,21 +1817,21 @@ const CardFeatureList = styled.ul`
     color: var(--text-secondary);
     opacity: 0;
     animation: ${cardReveal} 0.5s forwards;
-    
+
     &:nth-child(1) {
       animation-delay: 0.3s;
     }
-    
+
     &:nth-child(2) {
       animation-delay: 0.5s;
     }
-    
+
     &:nth-child(3) {
       animation-delay: 0.7s;
     }
-    
+
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       top: 0.5rem;
@@ -1862,7 +1876,7 @@ const NoteBox = styled(motion.div)`
   border-left: 4px solid var(--accent-color);
   background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(10px);
-  
+
   p {
     font-size: 1.3rem;
     line-height: 1.6;
@@ -1880,7 +1894,7 @@ const AudienceSectionBackground = styled.div`
   width: 100%;
   height: 100%;
   z-index: 0;
-  
+
   .pattern {
     position: absolute;
     width: 100%;
@@ -1888,7 +1902,7 @@ const AudienceSectionBackground = styled.div`
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2V6h4V4H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     opacity: 0.3;
   }
-  
+
   .gradient {
     position: absolute;
     top: 50%;
@@ -1933,7 +1947,11 @@ const CTAContainer = styled.div`
   padding: 4rem;
   position: relative;
   z-index: 2;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.01) 100%
+  );
   backdrop-filter: blur(10px);
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1951,7 +1969,7 @@ const CTABackgroundElements = styled.div`
   height: 100%;
   z-index: 0;
   overflow: hidden;
-  
+
   .circle-1 {
     position: absolute;
     top: -150px;
@@ -1966,7 +1984,7 @@ const CTABackgroundElements = styled.div`
     );
     filter: blur(80px);
   }
-  
+
   .circle-2 {
     position: absolute;
     bottom: -200px;
@@ -1981,20 +1999,16 @@ const CTABackgroundElements = styled.div`
     );
     filter: blur(60px);
   }
-  
+
   .lines {
     position: absolute;
     width: 100%;
     height: 100%;
     background-image: linear-gradient(
-      rgba(255, 255, 255, 0.02) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0.02) 1px,
-      transparent 1px
-    );
+        rgba(255, 255, 255, 0.02) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 `;
@@ -2007,7 +2021,7 @@ const CTATitle = styled(motion.h2)`
   text-align: center;
   position: relative;
   line-height: 1.2;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -2019,7 +2033,7 @@ const CTATitle = styled(motion.h2)`
     background: var(--accent-color);
     border-radius: 2px;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2.5rem;
   }
@@ -2032,7 +2046,7 @@ const CTADescription = styled(motion.p)`
   margin: 3rem auto 4rem;
   max-width: 800px;
   text-align: center;
-  
+
   @media (max-width: 768px) {
     font-size: 1.1rem;
   }
@@ -2060,7 +2074,7 @@ const BenefitItem = styled(motion.div)`
   margin-bottom: 1.5rem;
   position: relative;
   padding-left: 2rem;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -2072,11 +2086,11 @@ const BenefitItem = styled(motion.div)`
     background: var(--accent-color);
     border-radius: 50%;
   }
-  
+
   span {
     position: relative;
     display: inline-block;
-    
+
     &::after {
       content: '';
       position: absolute;
@@ -2096,7 +2110,7 @@ const BenefitItem = styled(motion.div)`
       border-radius: 2px;
     }
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1.1rem;
   }
@@ -2124,7 +2138,7 @@ const FinalCTAButton = styled(motion.button)`
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -2140,20 +2154,20 @@ const FinalCTAButton = styled(motion.button)`
     );
     transition: all 0.5s ease;
   }
-  
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 40px rgba(var(--accent-color-rgb), 0.4);
-    
+
     &::before {
       left: 100%;
     }
   }
-  
+
   svg {
     font-size: 1.5rem;
   }
-  
+
   @media (max-width: 768px) {
     padding: 1.2rem 2.5rem;
     font-size: 1.1rem;
@@ -2172,7 +2186,6 @@ const CTANote = styled(motion.div)`
 `;
 
 // Копируем стили для FAQ из BannerAds.js
-
 
 const FaqSection = styled(motion.section)`
   position: relative;
@@ -2225,7 +2238,11 @@ const FaqWaveTop = styled.div`
   left: 0;
   width: 100%;
   height: 120px;
-  background: linear-gradient(to top left, transparent 49%, var(--bg-primary) 51%);
+  background: linear-gradient(
+    to top left,
+    transparent 49%,
+    var(--bg-primary) 51%
+  );
   z-index: 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 `;
@@ -2803,6 +2820,7 @@ const BrandbookPage = () => {
   // Добавляем состояние для управления FAQ
   const [expandedFaqs, setExpandedFaqs] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { t } = useTranslation();
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -2810,33 +2828,33 @@ const BrandbookPage = () => {
   // Данные FAQ с новым контентом
   const faqData = [
     {
-      question: '1. Що таке брендбук?',
-      answer: 'Брендбук — це набір правил для використання візуальних та вербальних елементів вашого бренду, щоб забезпечити його єдність і впізнаваність.'
+      question: t('BrandbookPage.faq.q1'),
+      answer: t('BrandbookPage.faq.a1'),
     },
     {
-      question: '2. Навіщо мені брендбук, якщо я маю логотип?',
-      answer: 'Логотип — лише частина бренду. Брендбук визначає, як використовувати логотип, кольори, шрифти та інші елементи для створення єдиного стилю.'
+      question: t('BrandbookPage.faq.q2'),
+      answer: t('BrandbookPage.faq.a2'),
     },
     {
-      question: '3. Які елементи входять до брендбуку?',
-      answer: 'До брендбуку входять логотип, кольорова палітра, шрифти, графічні елементи, правила використання та інші важливі аспекти комунікації.'
+      question: t('BrandbookPage.faq.q3'),
+      answer: t('BrandbookPage.faq.a3'),
     },
     {
-      question: '4. Чи потрібно оновлювати брендбук з часом?',
-      answer: 'Так, брендбук може потребувати оновлення, особливо при ребрендингу або зміні стратегії компанії.'
+      question: t('BrandbookPage.faq.q4'),
+      answer: t('BrandbookPage.faq.a4'),
     },
     {
-      question: '5. Скільки часу займає створення брендбуку?',
-      answer: 'Зазвичай створення брендбуку займає від 2 до 4 тижнів, залежно від складності проєкту.'
+      question: t('BrandbookPage.faq.q5'),
+      answer: t('BrandbookPage.faq.a5'),
     },
     {
-      question: '6. Чи можу я використовувати брендбук для різних форматів, наприклад, соцмереж та реклами?',
-      answer: 'Так, брендбук містить правила для всіх типів комунікацій, включаючи соцмережі, рекламу та веб-дизайн.'
+      question: t('BrandbookPage.faq.q6'),
+      answer: t('BrandbookPage.faq.a6'),
     },
     {
-      question: '7. Чи потрібні спеціальні навички для використання брендбуку?',
-      answer: 'Ні, брендбук призначений для всіх членів команди — від дизайнерів до маркетологів. Він надає чіткі інструкції для кожного елемента бренду.'
-    }
+      question: t('BrandbookPage.faq.q7'),
+      answer: t('BrandbookPage.faq.a7'),
+    },
   ];
 
   // Функция для переключения FAQ
@@ -2860,8 +2878,7 @@ const BrandbookPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Брендбук для вашого бізнесу — візуальна <span>ідентичність</span>,
-              яка працює
+              {t('BrandbookPage.hero.title')}
             </HeroTitle>
 
             <HeroDescription
@@ -2869,10 +2886,7 @@ const BrandbookPage = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              У сучасному конкурентному середовищі компаніям недостатньо просто
-              мати логотип. Потрібно мати цілісну, зрозумілу систему візуальної
-              ідентичності. Брендбук — це інструмент, який гарантує стабільність
-              бренду у всіх точках контакту з аудиторією.
+              {t('BrandbookPage.hero.subtitle')}
             </HeroDescription>
 
             <HeroButtons
@@ -2885,7 +2899,7 @@ const BrandbookPage = () => {
                 whileTap={{ scale: 0.98 }}
                 onClick={openModal}
               >
-                Замовити брендбук <FaArrowRight />
+                {t('BrandbookPage.hero.buttonText')} <FaArrowRight />
               </PrimaryButton>
             </HeroButtons>
 
@@ -2898,21 +2912,27 @@ const BrandbookPage = () => {
                 <HeroFeatureIcon>
                   <FaLightbulb />
                 </HeroFeatureIcon>
-                <FeatureText>Унікальність</FeatureText>
+                <FeatureText>
+                  {t('BrandbookPage.hero.features.uniqueness')}
+                </FeatureText>
               </FeatureItem>
 
               <FeatureItem>
                 <HeroFeatureIcon>
                   <FaUsers />
                 </HeroFeatureIcon>
-                <FeatureText>Впізнаваність</FeatureText>
+                <FeatureText>
+                  {t('BrandbookPage.hero.features.recognition')}
+                </FeatureText>
               </FeatureItem>
 
               <FeatureItem>
                 <HeroFeatureIcon>
                   <FaRocket />
                 </HeroFeatureIcon>
-                <FeatureText>Ефективність</FeatureText>
+                <FeatureText>
+                  {t('BrandbookPage.hero.features.effectiveness')}
+                </FeatureText>
               </FeatureItem>
             </HeroFeatures>
           </HeroContent>
@@ -2959,8 +2979,12 @@ const BrandbookPage = () => {
                     marginTop: '1rem',
                   }}
                 >
-                  <p style={{ fontWeight: 'bold' }}>КОМПАНІЯ</p>
-                  <p style={{ fontSize: '0.9rem' }}>Фірмовий стиль</p>
+                  <p style={{ fontWeight: 'bold' }}>
+                    {t('BrandbookPage.hero.phoneText')}
+                  </p>
+                  <p style={{ fontSize: '0.9rem' }}>
+                    {t('BrandbookPage.hero.phoneText2')}
+                  </p>
                 </div>
               </BrandbookCover>
 
@@ -3018,7 +3042,7 @@ const BrandbookPage = () => {
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7 }}
           >
-            Що таке брендбук і навіщо він потрібен
+            {t('BrandbookPage.whatIs.title')}
             <Sparkle top="-15px" left="25%" delay="0s" />
             <Sparkle top="10px" left="65%" delay="0.5s" />
             <Sparkle top="30px" left="45%" delay="1s" />
@@ -3030,10 +3054,7 @@ const BrandbookPage = () => {
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            Брендбук — це документ, який містить всі правила візуального та
-            вербального оформлення бренду. Його основна мета — забезпечити
-            єдиний стиль компанії незалежно від того, хто створює контент:
-            дизайнер, маркетолог чи підрядник.
+            {t('BrandbookPage.whatIs.description')}
           </BrandbookDescription>
 
           <SimpleBookContainer
@@ -3065,7 +3086,9 @@ const BrandbookPage = () => {
               </BookLogo>
               <BookContent>
                 <BookTitle>BRAND BOOK</BookTitle>
-                <BookSubtitle>Повне керівництво</BookSubtitle>
+                <BookSubtitle>
+                  {t('BrandbookPage.whatIs.subtitle')}
+                </BookSubtitle>
               </BookContent>
               <BookEdge className="right" />
               <BookEdge className="bottom" />
@@ -3082,11 +3105,12 @@ const BrandbookPage = () => {
               <FeatureIcon>
                 <FaCubes />
               </FeatureIcon>
-              <FeatureTitle>Системність</FeatureTitle>
+              <FeatureTitle>
+                {' '}
+                {t('BrandbookPage.whatIs.features.systematic.title')}
+              </FeatureTitle>
               <FeatureDescription>
-                Усі елементи бренду використовуються послідовно, без
-                випадковостей. Логотип, кольори, шрифти та графічні елементи
-                становлять єдине ціле.
+                {t('BrandbookPage.whatIs.features.systematic.description')}
               </FeatureDescription>
             </FeatureCardContainer>
 
@@ -3099,11 +3123,11 @@ const BrandbookPage = () => {
               <FeatureIcon>
                 <FaBuilding />
               </FeatureIcon>
-              <FeatureTitle>Професійність</FeatureTitle>
+              <FeatureTitle>
+                {t('BrandbookPage.whatIs.features.professional.title')}
+              </FeatureTitle>
               <FeatureDescription>
-                Ваш бренд виглядає серйозно й надійно на всіх платформах.
-                Клієнти та партнери сприймають компанію як стабільну та
-                професійну.
+                {t('BrandbookPage.whatIs.features.professional.description')}
               </FeatureDescription>
             </FeatureCardContainer>
 
@@ -3116,11 +3140,11 @@ const BrandbookPage = () => {
               <FeatureIcon>
                 <FaUsers />
               </FeatureIcon>
-              <FeatureTitle>Впізнаваність</FeatureTitle>
+              <FeatureTitle>
+                {t('BrandbookPage.whatIs.features.recognition.title')}
+              </FeatureTitle>
               <FeatureDescription>
-                Клієнт швидше запам'ятовує і довіряє бренду зі стабільною
-                айдентикою. Регулярність візуальних елементів підвищує
-                лояльність і довіру.
+                {t('BrandbookPage.whatIs.features.recognition.description')}
               </FeatureDescription>
             </FeatureCardContainer>
 
@@ -3133,11 +3157,11 @@ const BrandbookPage = () => {
               <FeatureIcon>
                 <FaTools />
               </FeatureIcon>
-              <FeatureTitle>Зручність для команди</FeatureTitle>
+              <FeatureTitle>
+                {t('BrandbookPage.whatIs.features.convenience.title')}
+              </FeatureTitle>
               <FeatureDescription>
-                Замість тисячі пояснень ви просто надсилаєте брендбук. Економія
-                часу та зусиль при роботі з підрядниками та новими
-                співробітниками.
+                {t('BrandbookPage.whatIs.features.convenience.description')}
               </FeatureDescription>
             </FeatureCardContainer>
           </CardsContainer>
@@ -3150,14 +3174,9 @@ const BrandbookPage = () => {
           >
             <WarningTitle>
               <FaBrain />
-              Без брендбуку бренд втрачає цілісність
+              {t('BrandbookPage.whatIs.footerTitle')}
             </WarningTitle>
-            <WarningText>
-              Без брендбуку бренд легко «розпадається»: кольори, шрифти та
-              меседжі втрачають логіку, а враження від компанії — чіткість. Це
-              як оркестр без диригента — кожен грає свою мелодію, але гармонії
-              не виникає.
-            </WarningText>
+            <WarningText>{t('BrandbookPage.whatIs.footerText')}</WarningText>
           </WarningBox>
         </AboutContainer>
       </AboutBrandbookSection>
@@ -3166,17 +3185,17 @@ const BrandbookPage = () => {
       <FinalBrandbookSection>
         <SectionCircle className="top-right" />
         <SectionCircle className="bottom-left" />
-        
+
         <BrandbookShowcaseContainer>
           <ComponentsIntro
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7 }}
           >
-            <SectionTitle>Як виглядає готовий брендбук</SectionTitle>
+            <SectionTitle>{t('BrandbookPage.howItLooks.title')}</SectionTitle>
             <BrandbookDescription>
-              Готовий брендбук — це структурований PDF або інтерактивний документ, який легко зрозуміти і зручно використовувати щодня. Він містить не лише візуальні елементи, а й пояснення, як і де саме їх застосовувати.
+              {t('BrandbookPage.howItLooks.subTitle')}
             </BrandbookDescription>
           </ComponentsIntro>
 
@@ -3185,14 +3204,18 @@ const BrandbookPage = () => {
               <ShowcasePoint
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
                 <PointNumber>1</PointNumber>
                 <PointContent>
-                  <PointTitle>Титульна сторінка</PointTitle>
+                  <PointTitle>
+                    {t('BrandbookPage.howItLooks.sections.titlePage.title')}
+                  </PointTitle>
                   <PointDescription>
-                    Кожен брендбук починається з титульної сторінки, яка містить назву бренду, логотип та версію документа. Це перша візуальна точка контакту з вашим брендом.
+                    {t(
+                      'BrandbookPage.howItLooks.sections.titlePage.description'
+                    )}
                   </PointDescription>
                 </PointContent>
               </ShowcasePoint>
@@ -3200,14 +3223,20 @@ const BrandbookPage = () => {
               <ShowcasePoint
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <PointNumber>2</PointNumber>
                 <PointContent>
-                  <PointTitle>Розділи з візуальними елементами</PointTitle>
+                  <PointTitle>
+                    {t(
+                      'BrandbookPage.howItLooks.sections.visualElements.title'
+                    )}
+                  </PointTitle>
                   <PointDescription>
-                    Чіткі розділи з логотипом, кольоровою палітрою, типографікою та іншими візуальними параметрами. Кожен елемент супроводжується правилами використання та технічними специфікаціями.
+                    {t(
+                      'BrandbookPage.howItLooks.sections.visualElements.description'
+                    )}
                   </PointDescription>
                 </PointContent>
               </ShowcasePoint>
@@ -3215,14 +3244,18 @@ const BrandbookPage = () => {
               <ShowcasePoint
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
                 <PointNumber>3</PointNumber>
                 <PointContent>
-                  <PointTitle>Приклади використання</PointTitle>
+                  <PointTitle>
+                    {t('BrandbookPage.howItLooks.sections.usageExamples.title')}
+                  </PointTitle>
                   <PointDescription>
-                    Макети для різних каналів комунікації: як бренд виглядає в соцмережах, на візитках, рекламних банерах, сторінках сайту та інших точках контакту з аудиторією.
+                    {t(
+                      'BrandbookPage.howItLooks.sections.usageExamples.description'
+                    )}
                   </PointDescription>
                 </PointContent>
               </ShowcasePoint>
@@ -3230,218 +3263,314 @@ const BrandbookPage = () => {
               <ShowcasePoint
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
                 <PointNumber>4</PointNumber>
                 <PointContent>
-                  <PointTitle>Реальні сценарії застосування</PointTitle>
+                  <PointTitle>
+                    {t('BrandbookPage.howItLooks.sections.realScenarios.title')}
+                  </PointTitle>
                   <PointDescription>
-                    Надаємо адаптації для реальних сценаріїв: як ваша айдентика виглядає в Instagram, у розсилці, на упаковці чи в презентації для інвесторів — щоб побачити, як бренд працює в дії.
+                    {t(
+                      'BrandbookPage.howItLooks.sections.realScenarios.description'
+                    )}
                   </PointDescription>
                 </PointContent>
               </ShowcasePoint>
 
-              <ShowOnMobile>
-              </ShowOnMobile>
+              <ShowOnMobile></ShowOnMobile>
             </ShowcaseContent>
 
             <HideOnMobile>
               <BrandbookPreviewContainer
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.7, delay: 0.2 }}
-                whileHover={{ 
-                  boxShadow: "0 35px 60px rgba(0, 0, 0, 0.3)"
+                whileHover={{
+                  boxShadow: '0 35px 60px rgba(0, 0, 0, 0.3)',
                 }}
               >
                 <BrandbookScroller>
                   <BrandbookPage1>
                     <PageTitle>BRANDBOOK</PageTitle>
-                    <PageSubtitle>Фірмовий стиль компанії "BRAND"</PageSubtitle>
+                    <PageSubtitle>
+                      {t('BrandbookPage.howItLooks.mockup.brandStyle')}
+                    </PageSubtitle>
                     <div style={{ textAlign: 'center', marginTop: '4rem' }}>
-                      <div style={{ 
-                        width: '150px', 
-                        height: '150px', 
-                        background: 'var(--accent-color)', 
-                        borderRadius: '50%', 
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        margin: '0 auto',
-                        fontSize: '5rem',
-                        fontWeight: 'bold',
-                        color: 'white'
-                      }}>
+                      <div
+                        style={{
+                          width: '150px',
+                          height: '150px',
+                          background: 'var(--accent-color)',
+                          borderRadius: '50%',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          margin: '0 auto',
+                          fontSize: '5rem',
+                          fontWeight: 'bold',
+                          color: 'white',
+                        }}
+                      >
                         B
                       </div>
-                      <div style={{ marginTop: '2rem', fontSize: '1.2rem', color: '#666' }}>
-                        Версія 1.0 • 2023
+                      <div
+                        style={{
+                          marginTop: '2rem',
+                          fontSize: '1.2rem',
+                          color: '#666',
+                        }}
+                      >
+                        {t('BrandbookPage.howItLooks.mockup.versionText')} 1.0 •
+                        2023
                       </div>
                     </div>
                   </BrandbookPage1>
-                  
+
                   <BrandbookPage2>
-                    <PageTitle>Логотип</PageTitle>
-                    <PageSubtitle>Основний елемент фірмового стилю</PageSubtitle>
-                    
+                    <PageTitle>
+                      {t('BrandbookPage.howItLooks.mockup.logo.title')}
+                    </PageTitle>
+                    <PageSubtitle>
+                      {t('BrandbookPage.howItLooks.mockup.logo.subtitle')}
+                    </PageSubtitle>
+
                     <LogoShowcase>
-                      <div style={{ 
-                        width: '200px', 
-                        height: '200px', 
-                        background: 'var(--accent-color)', 
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        borderRadius: '8px',
-                        fontSize: '6rem',
-                        fontWeight: 'bold',
-                        color: 'white',
-                        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
-                      }}>
+                      <div
+                        style={{
+                          width: '200px',
+                          height: '200px',
+                          background: 'var(--accent-color)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          borderRadius: '8px',
+                          fontSize: '6rem',
+                          fontWeight: 'bold',
+                          color: 'white',
+                          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+                        }}
+                      >
                         B
                       </div>
                     </LogoShowcase>
-                    
-                    <div style={{ fontSize: '1rem', color: '#666', marginTop: '1.5rem' }}>
-                      Варіанти використання логотипу:
+
+                    <div
+                      style={{
+                        fontSize: '1rem',
+                        color: '#666',
+                        marginTop: '1.5rem',
+                      }}
+                    >
+                      {t('BrandbookPage.howItLooks.mockup.textItem1')}
                     </div>
-                    
+
                     <LogoVariants>
                       <LogoVariant className="primary">B</LogoVariant>
                       <LogoVariant className="inverse">B</LogoVariant>
                       <LogoVariant className="light">B</LogoVariant>
-                      <div style={{ 
-                        width: '80px', 
-                        height: '80px', 
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '1rem',
-                        fontWeight: 'bold',
-                        border: '2px solid var(--accent-color)',
-                        borderRadius: '8px',
-                        color: 'var(--accent-color)'
-                      }}>
+                      <div
+                        style={{
+                          width: '80px',
+                          height: '80px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '1rem',
+                          fontWeight: 'bold',
+                          border: '2px solid var(--accent-color)',
+                          borderRadius: '8px',
+                          color: 'var(--accent-color)',
+                        }}
+                      >
                         BRAND
                       </div>
                     </LogoVariants>
                   </BrandbookPage2>
-                  
+
                   <BrandbookPage3>
-                    <PageTitle>Кольорова палітра та типографіка</PageTitle>
-                    <PageSubtitle>Єдиний стиль у всіх комунікаціях</PageSubtitle>
-                    
+                    <PageTitle>
+                      {t('BrandbookPage.howItLooks.mockup.colors.title')}
+                    </PageTitle>
+                    <PageSubtitle>
+                      {t('BrandbookPage.howItLooks.mockup.colors.subtitle')}
+                    </PageSubtitle>
+
                     <ColorShowcase>
                       <ColorBox>
-                        <div className="color-preview" style={{ background: 'var(--accent-color)' }}>
+                        <div
+                          className="color-preview"
+                          style={{ background: 'var(--accent-color)' }}
+                        >
                           Primary
                         </div>
                         <div className="color-code">#FF5500</div>
                       </ColorBox>
-                      
+
                       <ColorBox>
-                        <div className="color-preview" style={{ background: 'var(--accent-color-dark)' }}>
+                        <div
+                          className="color-preview"
+                          style={{ background: 'var(--accent-color-dark)' }}
+                        >
                           Secondary
                         </div>
                         <div className="color-code">#CC4400</div>
                       </ColorBox>
-                      
+
                       <ColorBox textColor="#333">
-                        <div className="color-preview" style={{ background: '#F8F9FA' }}>
+                        <div
+                          className="color-preview"
+                          style={{ background: '#F8F9FA' }}
+                        >
                           Light
                         </div>
                         <div className="color-code">#F8F9FA</div>
                       </ColorBox>
-                      
+
                       <ColorBox>
-                        <div className="color-preview" style={{ background: '#212529' }}>
+                        <div
+                          className="color-preview"
+                          style={{ background: '#212529' }}
+                        >
                           Dark
                         </div>
                         <div className="color-code">#212529</div>
                       </ColorBox>
                     </ColorShowcase>
-                    
+
                     <FontShowcase>
                       <FontFamily>
-                        <FontName>Montserrat (заголовки)</FontName>
-                        <BrandFontSample family="Montserrat, sans-serif" weight="800" size="2rem">
+                        <FontName>
+                          {t(
+                            'BrandbookPage.howItLooks.mockup.colors.montserrat'
+                          )}
+                        </FontName>
+                        <BrandFontSample
+                          family="Montserrat, sans-serif"
+                          weight="800"
+                          size="2rem"
+                        >
                           Aa Bb Cc Dd 1234
                         </BrandFontSample>
                       </FontFamily>
-                      
+
                       <FontFamily>
-                        <FontName>Open Sans (основний текст)</FontName>
-                        <BrandFontSample family="Open Sans, sans-serif" size="1.2rem">
+                        <FontName>
+                          {t('BrandbookPage.howItLooks.mockup.fonts.openSans')}
+                        </FontName>
+                        <BrandFontSample
+                          family="Open Sans, sans-serif"
+                          size="1.2rem"
+                        >
                           Aa Bb Cc Dd 1234
                         </BrandFontSample>
                       </FontFamily>
                     </FontShowcase>
-                    
-                    <div style={{ fontSize: '1rem', color: '#666', marginTop: '1.5rem' }}>
-                      Приклади застосування стилю:
+
+                    <div
+                      style={{
+                        fontSize: '1rem',
+                        color: '#666',
+                        marginTop: '1.5rem',
+                      }}
+                    >
+                      {t('BrandbookPage.howItLooks.mockup.textItem2')}
                     </div>
-                    
+
                     <MockupShowcase>
                       <Mockup style={{ background: 'var(--accent-color)' }}>
                         <div style={{ color: 'white', textAlign: 'center' }}>
-                          <div style={{ fontSize: '2rem', fontWeight: 'bold' }}>B</div>
-                          <div style={{ fontSize: '0.7rem', marginTop: '0.5rem' }}>BRAND</div>
+                          <div style={{ fontSize: '2rem', fontWeight: 'bold' }}>
+                            B
+                          </div>
+                          <div
+                            style={{ fontSize: '0.7rem', marginTop: '0.5rem' }}
+                          >
+                            BRAND
+                          </div>
                         </div>
-                        <div className="mockup-title">Візитка</div>
+                        <div className="mockup-title">
+                          {t(
+                            'BrandbookPage.howItLooks.mockup.examples.businessCard'
+                          )}
+                        </div>
                       </Mockup>
-                      
-                      <Mockup style={{ 
-                        background: 'white', 
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'space-between',
-                        padding: '10px'
-                      }}>
-                        <div style={{ 
-                          background: 'var(--accent-color)',
-                          padding: '5px',
-                          borderRadius: '4px',
-                          color: 'white',
-                          fontSize: '0.7rem',
-                          textAlign: 'center'
-                        }}>BRAND</div>
-                        
-                        <div style={{ 
-                          height: '20px',
-                          background: '#eee',
-                          marginTop: '5px',
-                          width: '100%'
-                        }}></div>
-                        
-                        <div style={{ 
-                          height: '10px',
-                          background: '#eee',
-                          marginTop: '5px',
-                          width: '70%'
-                        }}></div>
-                        
-                        <div className="mockup-title">Сайт</div>
-                      </Mockup>
-                      
-                      <Mockup style={{ 
-                        background: 'linear-gradient(45deg, var(--accent-color), var(--accent-color-dark))',
-                        padding: '10px'
-                      }}>
-                        <div style={{ 
-                          background: 'rgba(255,255,255,0.8)',
-                          borderRadius: '50%',
-                          width: '40px',
-                          height: '40px',
+
+                      <Mockup
+                        style={{
+                          background: 'white',
                           display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          fontSize: '1.2rem',
-                          fontWeight: 'bold',
-                          color: 'var(--accent-color)'
-                        }}>B</div>
-                        <div className="mockup-title">Банер</div>
+                          flexDirection: 'column',
+                          justifyContent: 'space-between',
+                          padding: '10px',
+                        }}
+                      >
+                        <div
+                          style={{
+                            background: 'var(--accent-color)',
+                            padding: '5px',
+                            borderRadius: '4px',
+                            color: 'white',
+                            fontSize: '0.7rem',
+                            textAlign: 'center',
+                          }}
+                        >
+                          BRAND
+                        </div>
+
+                        <div
+                          style={{
+                            height: '20px',
+                            background: '#eee',
+                            marginTop: '5px',
+                            width: '100%',
+                          }}
+                        ></div>
+
+                        <div
+                          style={{
+                            height: '10px',
+                            background: '#eee',
+                            marginTop: '5px',
+                            width: '70%',
+                          }}
+                        ></div>
+
+                        <div className="mockup-title">
+                          {t(
+                            'BrandbookPage.howItLooks.mockup.examples.website'
+                          )}
+                        </div>
+                      </Mockup>
+
+                      <Mockup
+                        style={{
+                          background:
+                            'linear-gradient(45deg, var(--accent-color), var(--accent-color-dark))',
+                          padding: '10px',
+                        }}
+                      >
+                        <div
+                          style={{
+                            background: 'rgba(255,255,255,0.8)',
+                            borderRadius: '50%',
+                            width: '40px',
+                            height: '40px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            fontSize: '1.2rem',
+                            fontWeight: 'bold',
+                            color: 'var(--accent-color)',
+                          }}
+                        >
+                          B
+                        </div>
+                        <div className="mockup-title">
+                          {t('BrandbookPage.howItLooks.mockup.examples.banner')}
+                        </div>
                       </Mockup>
                     </MockupShowcase>
                   </BrandbookPage3>
@@ -3456,33 +3585,33 @@ const BrandbookPage = () => {
       <ProcessSection>
         <SectionCircle className="top-right" />
         <SectionCircle className="bottom-left" />
-        
+
         <ProcessContainer>
           <ProcessIntro
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7 }}
           >
-            <SectionTitle>Як ми створюємо брендбук — етапи роботи</SectionTitle>
+            <SectionTitle>{t('BrandbookPage.process.title')}</SectionTitle>
             <BrandbookDescription>
-              Створення брендбуку — це чітко структурований процес, який включає аналіз, дизайн і узгодження всіх складових стилю бренду. Ми працюємо прозоро й етапно, щоб ви отримали не просто красиву презентацію, а дієвий інструмент для бізнесу.
+              {t('BrandbookPage.process.subTitle')}
             </BrandbookDescription>
           </ProcessIntro>
-          
+
           <StepsWrapper>
             <StepConnector>
-              <path 
-                d="M100,50 C150,150 250,150 300,250 C350,350 450,350 500,450 C550,550 650,550 700,650 C750,750 850,750 900,850" 
+              <path
+                d="M100,50 C150,150 250,150 300,250 C350,350 450,350 500,450 C550,550 650,550 700,650 C750,750 850,750 900,850"
                 className="animate"
               />
             </StepConnector>
-            
+
             <StepsContainer>
               <Step
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.5 }}
               >
                 <StepNumberContainer>
@@ -3491,19 +3620,21 @@ const BrandbookPage = () => {
                     <FaUsers />
                   </StepIcon>
                 </StepNumberContainer>
-                
+
                 <StepContent>
-                  <StepTitle>Брифінг та аналіз</StepTitle>
+                  <StepTitle>
+                    {t('BrandbookPage.process.steps.step1.title')}
+                  </StepTitle>
                   <StepDescription>
-                    Ми вивчаємо ваш бізнес, конкурентів, цільову аудиторію, ринок і цінності бренду. Збираємо все необхідне для створення унікального стилю. Проводимо аналіз тенденцій у вашій галузі та створюємо детальний звіт з рекомендаціями для майбутньої айдентики.
+                    {t('BrandbookPage.process.steps.step1.description')}
                   </StepDescription>
                 </StepContent>
               </Step>
-              
+
               <Step
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
                 <StepNumberContainer>
@@ -3512,19 +3643,21 @@ const BrandbookPage = () => {
                     <FaLightbulb />
                   </StepIcon>
                 </StepNumberContainer>
-                
+
                 <StepContent>
-                  <StepTitle>Концепція візуального стилю</StepTitle>
+                  <StepTitle>
+                    {t('BrandbookPage.process.steps.step2.title')}
+                  </StepTitle>
                   <StepDescription>
-                    Розробляємо кілька варіантів логотипу, підбираємо палітру кольорів, шрифти та формуємо початкову айдентику. Ви обираєте найбільш вдалий напрям. Презентуємо концепції, пояснюємо ідею та символізм кожного елемента. Допомагаємо обрати найкращий варіант.
+                    {t('BrandbookPage.process.steps.step2.description')}
                   </StepDescription>
                 </StepContent>
               </Step>
-              
+
               <Step
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <StepNumberContainer>
@@ -3533,19 +3666,21 @@ const BrandbookPage = () => {
                     <FaCubes />
                   </StepIcon>
                 </StepNumberContainer>
-                
+
                 <StepContent>
-                  <StepTitle>Створення бренд-системи</StepTitle>
+                  <StepTitle>
+                    {t('BrandbookPage.process.steps.step3.title')}
+                  </StepTitle>
                   <StepDescription>
-                    Після затвердження концепції ми готуємо повний пакет візуальних рішень: правила використання логотипу, шрифти, кольори, графічні елементи, шаблони тощо. Створюємо гармонійну систему, де кожен елемент доповнює інший і працює на єдину ідею бренду.
+                    {t('BrandbookPage.process.steps.step3.description')}
                   </StepDescription>
                 </StepContent>
               </Step>
-              
+
               <Step
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
                 <StepNumberContainer>
@@ -3554,19 +3689,21 @@ const BrandbookPage = () => {
                     <FaSwatchbook />
                   </StepIcon>
                 </StepNumberContainer>
-                
+
                 <StepContent>
-                  <StepTitle>Розробка гайдлайнів і фінального документа</StepTitle>
+                  <StepTitle>
+                    {t('BrandbookPage.process.steps.step4.title')}
+                  </StepTitle>
                   <StepDescription>
-                    Оформлюємо все в структурований документ з прикладами використання. За потреби — додаємо рекомендації з тону комунікації та стилю візуального контенту. Продумуємо структуру документа так, щоб нею було легко користуватися як вашій команді, так і підрядникам.
+                    {t('BrandbookPage.process.steps.step4.description')}
                   </StepDescription>
                 </StepContent>
               </Step>
-              
+
               <Step
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
                 <StepNumberContainer>
@@ -3575,31 +3712,33 @@ const BrandbookPage = () => {
                     <FaRocket />
                   </StepIcon>
                 </StepNumberContainer>
-                
+
                 <StepContent>
-                  <StepTitle>Передача брендбуку та консультації</StepTitle>
+                  <StepTitle>
+                    {t('BrandbookPage.process.steps.step5.title')}
+                  </StepTitle>
                   <StepDescription>
-                    Ви отримуєте фінальний брендбук у зручному форматі (PDF, Figma або інше). Пояснюємо, як ним користуватися, і відповідаємо на всі запитання. Надаємо консультаційну підтримку при впровадженні нового фірмового стилю та допомагаємо у вирішенні будь-яких питань.
+                    {t('BrandbookPage.process.steps.step5.description')}
                   </StepDescription>
                 </StepContent>
               </Step>
             </StepsContainer>
           </StepsWrapper>
-          
+
           <ProcessNoteBox
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7, delay: 0.5 }}
           >
             <FaBuilding />
             <ProcessNoteText>
-              Ми не просто оформлюємо — ми будуємо систему, яка підсилює ваш бренд на роки вперед.
+              {t('BrandbookPage.process.footerText')}
             </ProcessNoteText>
           </ProcessNoteBox>
         </ProcessContainer>
       </ProcessSection>
-      
+
       {/* Новый блок "Чому варто замовити брендбук саме у нас" */}
       <AdvantagesSection>
         <AdvantagesBackground>
@@ -3607,213 +3746,240 @@ const BrandbookPage = () => {
           <div className="gradient-1"></div>
           <div className="gradient-2"></div>
         </AdvantagesBackground>
-        
+
         <AdvantagesContainer>
           <AdvantagesIntro
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7 }}
           >
-            <SectionTitle>Чому варто замовити брендбук саме у нас</SectionTitle>
+            <SectionTitle>{t('BrandbookPage.whyUs.title')}</SectionTitle>
             <AdvantagesDescription
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.7, delay: 0.2 }}
             >
-              Ми створюємо не шаблонні документи, а живі брендбуки, які реально працюють на розвиток бізнесу. Наш підхід — це поєднання глибокого розуміння маркетингу, дизайну та стратегії.
+              {t('BrandbookPage.whyUs.subTitle')}
             </AdvantagesDescription>
           </AdvantagesIntro>
-          
+
           <div>
             <AdvantageRow
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.7, delay: 0.3 }}
             >
               <AdvantageCard
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
               >
                 <div className="border-top"></div>
                 <div className="border-right"></div>
                 <div className="border-bottom"></div>
                 <div className="border-left"></div>
-                
+
                 <AdvantageNumber className="card-number">1</AdvantageNumber>
                 <AdvantageIconWrapper className="card-icon">
                   <FaUserEdit />
                 </AdvantageIconWrapper>
-                <AdvantageTitle>Індивідуальний підхід</AdvantageTitle>
+                <AdvantageTitle>
+                  {t('BrandbookPage.whyUs.advantages.individual.title')}
+                </AdvantageTitle>
                 <AdvantageDescription>
-                  Ми не копіюємо чужі рішення. Кожен брендбук — це унікальна система, створена спеціально під ваш бренд, ринок і цілі. Ми вивчаємо особливості вашого бізнесу і створюємо дизайн, який відображає його сутність.
+                  {t('BrandbookPage.whyUs.advantages.individual.description')}
                 </AdvantageDescription>
               </AdvantageCard>
-              
+
               <AdvantageCard
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
               >
                 <div className="border-top"></div>
                 <div className="border-right"></div>
                 <div className="border-bottom"></div>
                 <div className="border-left"></div>
-                
+
                 <AdvantageNumber className="card-number">2</AdvantageNumber>
                 <AdvantageIconWrapper className="card-icon">
                   <FaAward />
                 </AdvantageIconWrapper>
-                <AdvantageTitle>Досвід і експертиза</AdvantageTitle>
+                <AdvantageTitle>
+                  {t('BrandbookPage.whyUs.advantages.experience.title')}
+                </AdvantageTitle>
                 <AdvantageDescription>
-                  У нашому портфоліо — десятки проєктів для малого бізнесу, стартапів, онлайн-сервісів, виробництва та інфобізнесу. Наша команда має експертизу в різних галузях, що дозволяє створювати ефективні візуальні рішення.
+                  {t('BrandbookPage.whyUs.advantages.experience.description')}
                 </AdvantageDescription>
               </AdvantageCard>
-              
+
               <AdvantageCard
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
               >
                 <div className="border-top"></div>
                 <div className="border-right"></div>
                 <div className="border-bottom"></div>
                 <div className="border-left"></div>
-                
+
                 <AdvantageNumber className="card-number">3</AdvantageNumber>
                 <AdvantageIconWrapper className="card-icon">
                   <FaLayerGroup />
                 </AdvantageIconWrapper>
-                <AdvantageTitle>Комплексний підхід</AdvantageTitle>
+                <AdvantageTitle>
+                  {t('BrandbookPage.whyUs.advantages.comprehensive.title')}
+                </AdvantageTitle>
                 <AdvantageDescription>
-                  Ми не просто малюємо логотип, а створюємо повноцінну візуальну мову, яка працює в будь-якому середовищі — від соцмереж до упаковки. Всі елементи бренду взаємопов'язані і доповнюють один одного.
+                  {t(
+                    'BrandbookPage.whyUs.advantages.comprehensive.description'
+                  )}
                 </AdvantageDescription>
               </AdvantageCard>
             </AdvantageRow>
-            
+
             <AdvantageRow
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.7, delay: 0.4 }}
               style={{ justifyContent: 'center' }}
             >
               <AdvantageCard
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
               >
                 <div className="border-top"></div>
                 <div className="border-right"></div>
                 <div className="border-bottom"></div>
                 <div className="border-left"></div>
-                
+
                 <AdvantageNumber className="card-number">4</AdvantageNumber>
                 <AdvantageIconWrapper className="card-icon">
                   <FaClock />
                 </AdvantageIconWrapper>
-                <AdvantageTitle>Чіткі дедлайни</AdvantageTitle>
+                <AdvantageTitle>
+                  {t('BrandbookPage.whyUs.advantages.deadlines.title')}
+                </AdvantageTitle>
                 <AdvantageDescription>
-                  Ми дотримуємось термінів і завжди інформуємо про статус проєкту. Ви будете знати, на якому етапі знаходиться робота, і отримаєте готовий брендбук точно в обумовлений час без затримок і зривів термінів.
+                  {t('BrandbookPage.whyUs.advantages.deadlines.description')}
                 </AdvantageDescription>
               </AdvantageCard>
-              
+
               <AdvantageCard
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
               >
                 <div className="border-top"></div>
                 <div className="border-right"></div>
                 <div className="border-bottom"></div>
                 <div className="border-left"></div>
-                
+
                 <AdvantageNumber className="card-number">5</AdvantageNumber>
                 <AdvantageIconWrapper className="card-icon">
                   <FaHeadset />
                 </AdvantageIconWrapper>
-                <AdvantageTitle>Підтримка після здачі</AdvantageTitle>
+                <AdvantageTitle>
+                  {t('BrandbookPage.whyUs.advantages.support.title')}
+                </AdvantageTitle>
                 <AdvantageDescription>
-                  Навіть після завершення роботи ми на зв'язку й готові допомогти з уточненнями або адаптаціями. Ми не зникаємо після отримання оплати, а залишаємося вашим партнером і консультантом з питань бренду.
+                  {t('BrandbookPage.whyUs.advantages.support.description')}
                 </AdvantageDescription>
               </AdvantageCard>
             </AdvantageRow>
           </div>
-          
+
           <ConclusionBox
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7, delay: 0.5 }}
           >
             <FaFlag />
             <ConclusionText>
-              Наша мета — не просто «зробити дизайн», а посилити ваш бренд і допомогти йому зростати.
+              {t('BrandbookPage.whyUs.footerText')}
             </ConclusionText>
           </ConclusionBox>
         </AdvantagesContainer>
       </AdvantagesSection>
-      
+
       {/* Новый блок "Для кого підходить брендбук" */}
       <AudienceSection>
         <AudienceSectionBackground>
           <div className="pattern"></div>
           <div className="gradient"></div>
         </AudienceSectionBackground>
-        
+
         <AudienceContainer>
           <AudienceIntro
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7 }}
           >
-            <SectionTitle>Для кого підходить брендбук</SectionTitle>
+            <SectionTitle>{t('BrandbookPage.target.title')}</SectionTitle>
             <AudienceDescription
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.7, delay: 0.2 }}
             >
-              Брендбук — це універсальний інструмент, який потрібен не лише великим компаніям. Він корисний будь-якому бізнесу, що прагне виглядати цілісно та професійно.
+              {t('BrandbookPage.target.subTitle')}
             </AudienceDescription>
-          
           </AudienceIntro>
-          
+
           <CardGrid>
             <Card
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5 }}
             >
               <CardInner>
                 <CardFace delay="0.1s">
-                  <CardBadge>Ідеально</CardBadge>
+                  <CardBadge>
+                    {t('BrandbookPage.target.categories.startups.badge')}
+                  </CardBadge>
                   <CardIconContainer>
                     <FaRocket />
                   </CardIconContainer>
-                  <CardTitle>Стартапам</CardTitle>
+                  <CardTitle>
+                    {t('BrandbookPage.target.categories.startups.title')}
+                  </CardTitle>
                   <CardDescription>
-                    На старті важливо сформувати сильний, послідовний образ, щоб швидше зайняти свою нішу. Брендбук допоможе стартапу створити впізнаваний стиль з перших кроків.
+                    {t('BrandbookPage.target.categories.startups.des')}
                   </CardDescription>
                   <CardFeatureList>
-                    <li>Формування чіткої ідентичності з самого початку</li>
-                    <li>Професійний вигляд для інвесторів та клієнтів</li>
-                    <li>Швидша інтеграція нових членів команди</li>
+                    <li>
+                      {t(
+                        'BrandbookPage.target.categories.startups.benefits.item1'
+                      )}
+                    </li>
+                    <li>
+                      {t(
+                        'BrandbookPage.target.categories.startups.benefits.item2'
+                      )}
+                    </li>
+                    <li>
+                      {t(
+                        'BrandbookPage.target.categories.startups.benefits.item3'
+                      )}
+                    </li>
                   </CardFeatureList>
                   <CardPattern pattern={patternStartup} />
                 </CardFace>
               </CardInner>
             </Card>
-            
+
             <Card
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               <CardInner>
@@ -3821,24 +3987,38 @@ const BrandbookPage = () => {
                   <CardIconContainer>
                     <FaSyncAlt />
                   </CardIconContainer>
-                  <CardTitle>Компаніям на етапі ребрендингу</CardTitle>
+                  <CardTitle>
+                    {t('BrandbookPage.target.categories.rebranding.title')}
+                  </CardTitle>
                   <CardDescription>
-                    Якщо ви оновлюєте стиль або змінюєте позиціонування — брендбук закріпить нову ідентичність та забезпечить послідовний перехід.
+                    {t('BrandbookPage.target.categories.rebranding.des')}
                   </CardDescription>
                   <CardFeatureList>
-                    <li>Чіткі інструкції для поступового оновлення всіх матеріалів</li>
-                    <li>Запобігання змішування старих і нових елементів стилю</li>
-                    <li>Правила транзитного періоду ребрендингу</li>
+                    <li>
+                      {t(
+                        'BrandbookPage.target.categories.rebranding.benefits.item1'
+                      )}
+                    </li>
+                    <li>
+                      {t(
+                        'BrandbookPage.target.categories.rebranding.benefits.item2'
+                      )}
+                    </li>
+                    <li>
+                      {t(
+                        'BrandbookPage.target.categories.rebranding.benefits.item3'
+                      )}
+                    </li>
                   </CardFeatureList>
                   <CardPattern pattern={patternRebrand} />
                 </CardFace>
               </CardInner>
             </Card>
-            
+
             <Card
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <CardInner>
@@ -3846,24 +4026,32 @@ const BrandbookPage = () => {
                   <CardIconContainer>
                     <FaStoreAlt />
                   </CardIconContainer>
-                  <CardTitle>Малому та середньому бізнесу</CardTitle>
+                  <CardTitle>
+                    {t('BrandbookPage.target.categories.smb.title')}
+                  </CardTitle>
                   <CardDescription>
-                    Щоб конкурувати з великими гравцями, потрібно мати професійний вигляд у кожному дотику з клієнтом, незалежно від розміру вашої компанії.
+                    {t('BrandbookPage.target.categories.smb.des')}
                   </CardDescription>
                   <CardFeatureList>
-                    <li>Виглядати на рівні з великими компаніями</li>
-                    <li>Економія на дизайні завдяки готовим шаблонам</li>
-                    <li>Системність комунікації з клієнтами</li>
+                    <li>
+                      {t('BrandbookPage.target.categories.smb.benefits.item1')}
+                    </li>
+                    <li>
+                      {t('BrandbookPage.target.categories.smb.benefits.item2')}
+                    </li>
+                    <li>
+                      {t('BrandbookPage.target.categories.smb.benefits.item3')}
+                    </li>
                   </CardFeatureList>
                   <CardPattern pattern={patternSme} />
                 </CardFace>
               </CardInner>
             </Card>
-            
+
             <Card
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               <CardInner>
@@ -3871,24 +4059,38 @@ const BrandbookPage = () => {
                   <CardIconContainer>
                     <FaPalette />
                   </CardIconContainer>
-                  <CardTitle>Освітнім і креативним проєктам</CardTitle>
+                  <CardTitle>
+                    {t('BrandbookPage.target.categories.education.title')}
+                  </CardTitle>
                   <CardDescription>
-                    Айдентика допомагає чітко доносити ідеї та підсилює комунікацію. Особливо важливо для проєктів, де візуальна складова тісно пов'язана з суттю.
+                    {t('BrandbookPage.target.categories.education.des')}
                   </CardDescription>
                   <CardFeatureList>
-                    <li>Підкреслення унікальності вашого підходу</li>
-                    <li>Системна подача візуального контенту</li>
-                    <li>Додаткова цінність креативного продукту</li>
+                    <li>
+                      {t(
+                        'BrandbookPage.target.categories.education.benefits.item1'
+                      )}
+                    </li>
+                    <li>
+                      {t(
+                        'BrandbookPage.target.categories.education.benefits.item2'
+                      )}
+                    </li>
+                    <li>
+                      {t(
+                        'BrandbookPage.target.categories.education.benefits.item3'
+                      )}
+                    </li>
                   </CardFeatureList>
                   <CardPattern pattern={patternCreative} />
                 </CardFace>
               </CardInner>
             </Card>
-            
+
             <Card
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
               <CardInner>
@@ -3896,34 +4098,46 @@ const BrandbookPage = () => {
                   <CardIconContainer>
                     <FaLaptopCode />
                   </CardIconContainer>
-                  <CardTitle>Командам із віддаленими підрядниками</CardTitle>
+                  <CardTitle>
+                    {t('BrandbookPage.target.categories.remote.title')}
+                  </CardTitle>
                   <CardDescription>
-                    Брендбук дає зрозумілі інструкції, як працювати зі стилем, незалежно від того, хто виконує роботу та звідки.
+                    {t('BrandbookPage.target.categories.remote.des')}
                   </CardDescription>
                   <CardFeatureList>
-                    <li>Єдині стандарти для всіх виконавців</li>
-                    <li>Швидке долучення нових дизайнерів та маркетологів</li>
-                    <li>Збереження цілісності бренду при зміні підрядників</li>
+                    <li>
+                      {t(
+                        'BrandbookPage.target.categories.remote.benefits.item1'
+                      )}
+                    </li>
+                    <li>
+                      {t(
+                        'BrandbookPage.target.categories.remote.benefits.item2'
+                      )}
+                    </li>
+                    <li>
+                      {t(
+                        'BrandbookPage.target.categories.remote.benefits.item3'
+                      )}
+                    </li>
                   </CardFeatureList>
                   <CardPattern pattern={patternRemote} />
                 </CardFace>
               </CardInner>
             </Card>
           </CardGrid>
-          
+
           <NoteBox
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7, delay: 0.6 }}
           >
-            <p>
-              Брендбук — це не «опція», а базовий інструмент для стабільного зростання та впізнаваності бренду, незалежно від розміру вашого бізнесу.
-            </p>
+            <p>{t('BrandbookPage.target.footerText')}</p>
           </NoteBox>
         </AudienceContainer>
       </AudienceSection>
-      
+
       {/* Новый блок "Замовте брендбук уже сьогодні" */}
       <FinalCTASection>
         <CTABackgroundElements>
@@ -3931,77 +4145,72 @@ const BrandbookPage = () => {
           <div className="circle-2"></div>
           <div className="lines"></div>
         </CTABackgroundElements>
-        
+
         <CTAContainer>
           <CTATitle
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7 }}
           >
-            Замовте брендбук уже сьогодні — зробіть свій бренд впізнаваним
+            {t('BrandbookPage.cta.title')}
           </CTATitle>
-          
+
           <CTADescription
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            Якщо ви хочете, щоб ваш бренд викликав довіру, виглядав професійно та легко запам'ятовувався — брендбук стане надійною основою. Це інвестиція в стабільність, впізнаваність і ріст.
+            {t('BrandbookPage.cta.description')}
           </CTADescription>
-          
+
           <BenefitsList
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
+            <BenefitItem>{t('BrandbookPage.cta.subtitle1')}</BenefitItem>
+
             <BenefitItem>
-              Ми готові створити для вас брендбук, який говорить мовою вашого бізнесу;
+              <span>{t('BrandbookPage.cta.subtitle2')}</span>;
             </BenefitItem>
-            
-            <BenefitItem>
-              <span>виглядає сучасно й послідовно</span>;
-            </BenefitItem>
-            
-            <BenefitItem>
-              працює однаково ефективно в цифровому та офлайн-середовищі.
-            </BenefitItem>
+
+            <BenefitItem>{t('BrandbookPage.cta.subtitle3')}</BenefitItem>
           </BenefitsList>
-          
+
           <FinalCTAButton
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7, delay: 0.4 }}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
             onClick={openModal}
           >
-            Замовити брендбук <FaArrowRight />
+            {t('BrandbookPage.cta.buttonText')} <FaArrowRight />
           </FinalCTAButton>
-          
+
           <CTANote
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7, delay: 0.5 }}
           >
-            Залиште заявку, і ми зв'яжемося з вами для короткого брифінгу. Вже за кілька тижнів ви отримаєте потужний інструмент, що зробить ваш бренд сильнішим.
+            {t('BrandbookPage.cta.additionalText')}
           </CTANote>
         </CTAContainer>
       </FinalCTASection>
 
-
-           {/* Добавляем блок FAQ перед FinalCTASection */}
+      {/* Добавляем блок FAQ перед FinalCTASection */}
       <FaqSection
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
         <FaqWaveTop />
-        
+
         <FaqContainer>
           <FaqGlowCircle className="circle-1" />
           <FaqGlowCircle className="circle-2" />
@@ -4032,7 +4241,7 @@ const BrandbookPage = () => {
                     initial={{ borderRadius: 16 }}
                     key={`faq-${index}`}
                     transition={{
-                      layout: { duration: 0.4, ease: "easeOut" }
+                      layout: { duration: 0.4, ease: 'easeOut' },
                     }}
                   >
                     <FaqQuestion
@@ -4054,15 +4263,23 @@ const BrandbookPage = () => {
                     <AnimatePresence>
                       {expandedFaqs.includes(index) && (
                         <FaqAnswer
-                          initial={{ opacity: 0, height: 0, overflow: "hidden" }}
-                          animate={{ opacity: 1, height: "auto", overflow: "visible" }}
-                          exit={{ opacity: 0, height: 0, overflow: "hidden" }}
-                          transition={{ 
-                            type: "spring",
+                          initial={{
+                            opacity: 0,
+                            height: 0,
+                            overflow: 'hidden',
+                          }}
+                          animate={{
+                            opacity: 1,
+                            height: 'auto',
+                            overflow: 'visible',
+                          }}
+                          exit={{ opacity: 0, height: 0, overflow: 'hidden' }}
+                          transition={{
+                            type: 'spring',
                             damping: 25,
                             stiffness: 120,
                             duration: 0.6,
-                            opacity: { duration: 0.35 }
+                            opacity: { duration: 0.35 },
                           }}
                         >
                           {faq.answer}
@@ -4080,7 +4297,7 @@ const BrandbookPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.2 }}
           >
-            <FaqCtaText>Не знайшли відповідь на своє питання?</FaqCtaText>
+            <FaqCtaText>{t('BrandbookPage.faq.ctaText')}</FaqCtaText>
             <FaqCtaButton
               whileHover={{
                 scale: 1.03,
@@ -4089,7 +4306,7 @@ const BrandbookPage = () => {
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
             >
-              Напишіть нам
+              {t('BrandbookPage.faq.ctaButton')}
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
