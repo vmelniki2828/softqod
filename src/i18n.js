@@ -1516,7 +1516,7 @@ const resources = {
           footerText:
             'Order AI-powered banner ads right now and get a modern design that delivers results.',
           footerSub:
-            "Contact us for a consultation or leave a request - we will respond within 1 business day.",
+            'Contact us for a consultation or leave a request - we will respond within 1 business day.',
         },
         faq: {
           title: 'Frequently Asked Questions',
@@ -1534,6 +1534,248 @@ const resources = {
           a6: 'Depends on complexity, but usually 2-24 hours. For complex projects it may take up to 2-3 days.',
           q7: 'Can I test several banner variants?',
           a7: 'Yes! We create several variations for A/B testing so you can choose the most effective option.',
+          ctaText: "Didn't find the answer to your question?",
+          ctaButton: 'Write to us',
+        },
+      },
+      BrandbookPage: {
+        hero: {
+          title: 'Brandbook for Your Business — Visual Identity',
+          subtitle:
+            "In today's competitive environment, it's not enough for companies to simply have a logo. They need to have a holistic, understandable visual identity system. A brand book is a tool that guarantees brand stability at all points of contact with the audience.",
+          buttonText: 'Order Brandbook',
+          features: {
+            uniqueness: 'Uniqueness',
+            recognition: 'Recognition',
+            effectiveness: 'Effectiveness',
+          },
+          phoneText: 'COMPANY',
+          phoneText2: 'Corporate style',
+        },
+        whatIs: {
+          title: 'What is a Brandbook and Why You Need It',
+          subtitle: 'Complete Guide',
+          description:
+            'A brand book is a document that contains all the rules for the visual and verbal design of a brand. Its main goal is to ensure a single style for the company, regardless of who creates the content: a designer, a marketer, or a contractor.',
+          features: {
+            systematic: {
+              title: 'Systematic Approach',
+              description:
+                'All brand elements are used consistently, without coincidences. The logo, colors, fonts, and graphic elements form a single whole.',
+            },
+            professional: {
+              title: 'Professionalism',
+              description:
+                'Your brand looks serious and reliable on all platforms. Customers and partners perceive the company as stable and professional.',
+            },
+            recognition: {
+              title: 'Recognition',
+              description:
+                'Customers are more likely to remember and trust a brand with a consistent identity. The regularity of visual elements increases loyalty and trust.',
+            },
+            convenience: {
+              title: 'Team Convenience',
+              description:
+                'Instead of a thousand explanations, you simply send a brand book. Save time and effort when working with contractors and new employees.',
+            },
+          },
+          footerTitle: 'Without a brand book, the brand loses its integrity.',
+          footerText:
+            "Without a brand book, a brand easily 'falls apart': colors, fonts, and messages lose logic, and the impression of the company loses clarity. It's like an orchestra without a conductor - everyone plays their own melody, but there is no harmony.",
+        },
+        howItLooks: {
+          title: 'What a Ready Brandbook Looks Like',
+          subTitle: 'A ready-made brand book is a structured PDF or interactive document that is easy to understand and convenient to use on a daily basis. It contains not only visual elements, but also explanations of how and where to apply them.',
+          sections: {
+            titlePage: {
+              title: 'Title Page',
+              description: 'Every brandbook starts with a title page that includes the brand name, logo, and document version. It is the first visual point of contact with your brand.',
+            },
+            visualElements: {
+              title: 'Sections with Visual Elements',
+              description: 'Clear sections with logo, color palette, typography, and other visual parameters. Each element is accompanied by usage rules and technical specifications.',
+            },
+            usageExamples: {
+              title: 'Usage Examples',
+              description: 'Layouts for various communication channels: how the brand looks on social networks, on business cards, advertising banners, website pages, and other points of contact with the audience.',
+            },
+            realScenarios: {
+              title: 'Real Application Scenarios',
+              description:
+                'We provide adaptations for real-world scenarios: how your identity looks on Instagram, in a newsletter, on packaging, or in a presentation for investors — to see how the brand works in action.',
+            },
+          },
+          mockup: {
+            companyName: 'COMPANY',
+            companyType: 'Corporate Style',
+            brandStyle: 'Corporate Style of "BRAND" Company',
+            versionText: 'Version',
+            textItem1: 'Logo usage options:',
+            textItem2: 'Examples of using the style:',
+            logo: {
+              title: 'Logo',
+              subtitle: 'Main element of corporate style',
+            },
+            colors: {
+              title: 'Color Palette and Typography',
+              subtitle: 'Unified style in all communications',
+            },
+            fonts: {
+              montserrat: 'Montserrat (headings)',
+              openSans: 'Open Sans (main text)',
+            },
+            examples: {
+              businessCard: 'Business Card',
+              website: 'Website',
+              banner: 'Banner',
+            },
+          },
+        },
+        process: {
+          title: 'How We Create a Brandbook — Work Stages',
+           subTitle: 'Creating a brand book is a clearly structured process that includes analysis, design, and coordination of all components of the brand style. We work transparently and in stages so that you get not just a beautiful presentation, but an effective tool for your business.',
+          steps: {
+            step1: {
+              title: 'Briefing and Analysis',
+              description:
+                'We study your business, competitors, target audience, market and brand values. We collect everything you need to create a unique style. We analyze trends in your industry and create a detailed report with recommendations for your future identity.',
+            },
+            step2: {
+              title: 'Visual Style Concept',
+              description:
+                'We develop several logo options, select a color palette, fonts, and form an initial identity. You choose the most successful direction. We present concepts, explain the idea and symbolism of each element. We help you choose the best option.',
+            },
+            step3: {
+              title: 'Brand System Creation',
+              description:
+                'After approving the concept, we prepare a full package of visual solutions: rules for using the logo, fonts, colors, graphic elements, templates, etc. We create a harmonious system where each element complements the other and works towards a single brand idea.',
+            },
+            step4: {
+              title: 'Guidelines Development and Final Document',
+              description:
+                'We organize everything into a structured document with examples of use. If necessary, we add recommendations on the tone of communication and style of visual content. We think through the structure of the document so that it is easy to use for both your team and contractors.',
+            },
+            step5: {
+              title: 'Brandbook Handover and Consultations',
+              description:
+                'You receive the final brand book in a convenient format (PDF, Figma or other). We explain how to use it and answer all your questions. We provide consulting support when implementing a new corporate identity and help resolve any issues.',
+            },
+          },
+          footerText: "We don't just design — we build a system that strengthens your brand for years to come.",
+        },
+        whyUs: {
+          title: 'Why You Should Order a Brandbook from Us',
+          subTitle: "We don't create template documents, but living brand books that actually work to develop your business. Our approach is a combination of a deep understanding of marketing, design, and strategy.",
+          advantages: {
+            individual: {
+              title: 'Individual Approach',
+              description:
+                "We don't copy other people's solutions. Each brandbook is a unique system, created specifically for your brand, market and goals. We study the specifics of your business and create a design that reflects its essence.",
+            },
+            experience: {
+              title: 'Experience and Expertise',
+              description:
+                'Our portfolio includes dozens of projects for small businesses, startups, online services, manufacturing, and infobusiness. Our team has expertise in various industries, which allows us to create effective visual solutions.',
+            },
+            comprehensive: {
+              title: 'Comprehensive Approach',
+              description:
+                "We don't just draw a logo, we create a complete visual language that works in any environment - from social media to packaging. All brand elements are interconnected and complement each other.",
+            },
+            deadlines: {
+              title: 'Clear Deadlines',
+              description: 'We adhere to deadlines and always inform you about the status of the project. You will know at what stage the work is, and you will receive the finished brand book exactly on time without delays and missed deadlines.',
+            },
+            support: {
+              title: 'Post-Delivery Support',
+              description:
+                "Even after the work is completed, we are in touch and ready to help with clarifications or adaptations. We do not disappear after receiving payment, but remain your partner and brand consultant.",
+            },
+          },
+          footerText: 'Our goal is not just to “design,” but to strengthen your brand and help it grow.',
+        },
+        target: {
+          title: 'Who Brandbook is Suitable For',
+          subTitle: 'A brand book is a universal tool that is needed not only by large companies. It is useful for any business that seeks to appear holistic and professional.',
+          categories: {
+            startups: {
+              title: 'Startups',
+              badge: 'Perfect',
+              des: 'At the start, it is important to form a strong, consistent image to quickly occupy your niche. A brand book will help a startup create a recognizable style from the very first steps.',
+              benefits: {
+                item1: 'Formation of clear identity from the very beginning',
+                item2: 'Professional appearance for investors and clients',
+                item3: 'Faster integration of new team members',
+              },
+            },
+            rebranding: {
+              title: 'Companies at Rebranding Stage',
+              des: 'If you update your style or change your positioning, a brand book will solidify the new identity and ensure a consistent transition.',
+              benefits: {
+                item1: 'Clear instructions for gradual updating of all materials',
+                item2: 'Prevention of mixing old and new style elements',
+                item3: 'Rules for the rebranding transition period',
+              },
+            },
+            smb: {
+              title: 'Small and Medium Business',
+              des: 'To compete with the big players, you need to have a professional appearance in every touch with the customer, regardless of the size of your company.',
+              benefits: {
+                item1: 'Look on par with large companies',
+                item2: 'Savings on design thanks to ready-made templates',
+                item3: 'Systematic communication with clients',
+              },
+            },
+            education: {
+              title: 'Educational and Creative Projects',
+              des:
+                'Identity helps clearly convey ideas and enhances communication. Especially important for projects where the visual component is closely related to the essence.',
+              benefits: {
+                item1:'Emphasizing the uniqueness of your approach',
+                item2:'Systematic presentation of visual content',
+                item3:'Additional value of the creative product',
+              },
+            },
+            remote: {
+              title: 'Teams with Remote Contractors',
+              des: 'The brand book provides clear instructions on how to work with style, regardless of who is doing the work and where it comes from.',  
+              benefits: {
+                item1:'Unified standards for all performers',
+                item2:'Quick onboarding of new designers and marketers',
+                item3: 'Preserving brand integrity when changing contractors',
+              },
+            },
+          },
+          footerText: 'A brand book is not an "option", but a basic tool for sustainable growth and brand recognition, regardless of the size of your business.',
+        },
+        cta: {
+          title: 'Order a brand book today - make your brand recognizable',
+          description:
+            'If you want your brand to inspire trust, look professional and be easily memorable — a brandbook will become a reliable foundation. This is an investment in stability, recognition and growth.',
+          
+          subtitle1: 'We are ready to create a brand book for you that speaks the language of your business;',
+          subtitle2: 'looks modern and consistent',
+          subtitle3: 'works equally effectively in digital and offline environments.',
+          buttonText: 'Leave Application',
+          additionalText:
+            'Leave an application, and we will contact you for a short briefing. In just a few weeks, you will receive a powerful tool that will make your brand stronger.',
+        },
+        faq: {
+          title: 'Frequently Asked Questions',
+          q1: 'What is a brandbook?',
+          a1: 'A brandbook is a set of rules for using visual and verbal elements of your brand to ensure its unity and recognition.',
+          q2: 'Why do I need a brandbook if I have a logo?',
+          a2: 'A logo is only part of a brand. A brandbook defines how to use the logo, colors, fonts and other elements to create a unified style.',
+          q3: 'What elements are included in a brandbook?',
+          a3: 'A brandbook includes logo, color palette, fonts, graphic elements, usage rules and other important aspects of communication.',
+          q4: 'Do I need to update the brandbook over time?',
+          a4: 'Yes, a brandbook may require updates, especially during rebranding or changes in company strategy.',
+          q5: 'How long does it take to create a brandbook?',
+          a5: 'Usually creating a brandbook takes from 2 to 4 weeks, depending on the complexity of the project.',
+          q6: 'Can I use a brandbook for different formats, such as social networks and advertising?',
+          a6: 'Yes, a brandbook contains rules for all types of communications, including social networks, advertising and web design.',
+          q7: 'Do I need special skills to use a brandbook?',
+          a7: 'No, a brandbook is designed for all team members — from designers to marketers. It provides clear instructions for each brand element.',
           ctaText: "Didn't find the answer to your question?",
           ctaButton: 'Write to us',
         },
@@ -3086,6 +3328,245 @@ const resources = {
           a6: 'Залежить від складності, але зазвичай 2-24 години. Для складних проєктів може знадобитися до 2-3 днів.',
           q7: 'Чи можна протестувати кілька варіантів банерів?',
           a7: 'Так! Ми створюємо кілька варіацій для A/B-тестування, щоб ви могли вибрати найефективніший варіант.',
+          ctaText: 'Не знайшли відповідь на своє питання?',
+          ctaButton: 'Напишіть нам',
+        },
+      },
+      BrandbookPage: {
+        hero: {
+          title: 'Брендбук для вашого бізнесу — візуальна ідентичність',
+          subtitle:
+            'У сучасному конкурентному середовищі компаніям недостатньо просто мати логотип. Потрібно мати цілісну, зрозумілу систему візуальної ідентичності. Брендбук — це інструмент, який гарантує стабільність бренду у всіх точках контакту з аудиторією.',
+          buttonText: 'Замовити брендбук',
+          features: {
+            uniqueness: 'Унікальність',
+            recognition: 'Впізнаваність',
+            effectiveness: 'Ефективність',
+          },
+          phoneText: 'КОМПАНІЯ',
+          phoneText2: 'Фірмовий стиль',
+        },
+        whatIs: {
+          title: 'Що таке брендбук і навіщо він потрібен',
+          subtitle: 'Повне керівництво',
+          description:
+            'Брендбук — це документ, який містить всі правила візуального та вербального оформлення бренду. Його основна мета — забезпечити єдиний стиль компанії незалежно від того, хто створює контент: дизайнер, маркетолог чи підрядник.',
+          features: {
+            systematic: {
+              title: 'Системність',
+              description:
+                'Усі елементи бренду використовуються послідовно, без випадковостей. Логотип, кольори, шрифти та графічні елементи становлять єдине ціле.',
+            },
+            professional: {
+              title: 'Професійність',
+              description:
+                'Ваш бренд виглядає серйозно й надійно на всіх платформах. Клієнти та партнери сприймають компанію як стабільну та професійну.',
+            },
+            recognition: {
+              title: 'Впізнаваність',
+              description:
+                "Клієнт швидше запам'ятовує і довіряє бренду зі стабільною айдентикою. Регулярність візуальних елементів підвищує лояльність і довіру.",
+            },
+            convenience: {
+              title: 'Зручність для команди',
+              description:
+                'Замість тисячі пояснень ви просто надсилаєте брендбук. Економія часу та зусиль при роботі з підрядниками та новими співробітниками.',
+            },
+          },
+          footerTitle: 'Без брендбуку бренд втрачає цілісність',
+          footerText:
+            'Без брендбуку бренд легко «розпадається»: кольори, шрифти та меседжі втрачають логіку, а враження від компанії — чіткість. Це як оркестр без диригента — кожен грає свою мелодію, але гармонії не виникає.',
+        },
+        howItLooks: {
+          title: 'Як виглядає готовий брендбук',
+          subTitle: 'Готовий брендбук — це структурований PDF або інтерактивний документ, який легко зрозуміти і зручно використовувати щодня. Він містить не лише візуальні елементи, а й пояснення, як і де саме їх застосовувати.',
+          sections: {
+            titlePage: {
+              title: 'Титульна сторінка',
+              description: 'Кожен брендбук починається з титульної сторінки, яка містить назву бренду, логотип та версію документа. Це перша візуальна точка контакту з вашим брендом.',
+            },
+            visualElements: {
+              title: 'Розділи з візуальними елементами',
+              description: 'Чіткі розділи з логотипом, кольоровою палітрою, типографікою та іншими візуальними параметрами. Кожен елемент супроводжується правилами використання та технічними специфікаціями.',
+            },
+            usageExamples: {
+              title: 'Приклади використання',
+              description: 'Макети для різних каналів комунікації: як бренд виглядає в соцмережах, на візитках, рекламних банерах, сторінках сайту та інших точках контакту з аудиторією.',
+            },
+            realScenarios: {
+              title: 'Реальні сценарії застосування',
+              description: 'Надаємо адаптації для реальних сценаріїв: як ваша айдентика виглядає в Instagram, у розсилці, на упаковці чи в презентації для інвесторів — щоб побачити, як бренд працює в дії.',
+            },
+          },
+          mockup: {
+            companyName: 'КОМПАНІЯ',
+            companyType: 'Фірмовий стиль',
+            brandStyle: 'Фірмовий стиль компанії "BRAND"',
+            versionText: 'Версія',
+            textItem1: 'Варіанти використання логотипу:',
+            textItem2: 'Приклади застосування стилю:',
+            logo: {
+              title: 'Логотип',
+              subtitle: 'Основний елемент фірмового стилю',
+            },
+            colors: {
+              title: 'Кольорова палітра та типографіка',
+              subtitle: 'Єдиний стиль у всіх комунікаціях',
+            },
+            fonts: {
+              montserrat: 'Montserrat (заголовки)',
+              openSans: 'Open Sans (основний текст)',
+            },
+            examples: {
+              businessCard: 'Візитка',
+              website: 'Сайт',
+              banner: 'Банер',
+            },
+          },
+        },
+        process: {
+          title: 'Як ми створюємо брендбук — етапи роботи',
+          subTitle: 'Створення брендбуку — це чітко структурований процес, який включає аналіз, дизайн і узгодження всіх складових стилю бренду. Ми працюємо прозоро й етапно, щоб ви отримали не просто красиву презентацію, а дієвий інструмент для бізнесу.',
+          steps: {
+            step1: {
+              title: 'Брифінг та аналіз',
+              description:
+                'Ми вивчаємо ваш бізнес, конкурентів, цільову аудиторію, ринок і цінності бренду. Збираємо все необхідне для створення унікального стилю. Проводимо аналіз тенденцій у вашій галузі та створюємо детальний звіт з рекомендаціями для майбутньої айдентики.',
+            },
+            step2: {
+              title: 'Концепція візуального стилю',
+              description:
+                'Розробляємо кілька варіантів логотипу, підбираємо палітру кольорів, шрифти та формуємо початкову айдентику. Ви обираєте найбільш вдалий напрям. Презентуємо концепції, пояснюємо ідею та символізм кожного елемента. Допомагаємо обрати найкращий варіант.',
+            },
+            step3: {
+              title: 'Створення бренд-системи',
+              description:
+                'Після затвердження концепції ми готуємо повний пакет візуальних рішень: правила використання логотипу, шрифти, кольори, графічні елементи, шаблони тощо. Створюємо гармонійну систему, де кожен елемент доповнює інший і працює на єдину ідею бренду.',
+            },
+            step4: {
+              title: 'Розробка гайдлайнів і фінального документа',
+              description:
+                'Оформлюємо все в структурований документ з прикладами використання. За потреби — додаємо рекомендації з тону комунікації та стилю візуального контенту. Продумуємо структуру документа так, щоб нею було легко користуватися як вашій команді, так і підрядникам.',
+            },
+            step5: {
+              title: 'Передача брендбуку та консультації',
+              description:
+                'Ви отримуєте фінальний брендбук у зручному форматі (PDF, Figma або інше). Пояснюємо, як ним користуватися, і відповідаємо на всі запитання. Надаємо консультаційну підтримку при впровадженні нового фірмового стилю та допомагаємо у вирішенні будь-яких питань.',
+            },
+          },
+          footerText: 'Ми не просто оформлюємо — ми будуємо систему, яка підсилює ваш бренд на роки вперед.',
+        },
+        whyUs: {
+          title: 'Чому варто замовити брендбук саме у нас',
+          subTitle: 'Ми створюємо не шаблонні документи, а живі брендбуки, які реально працюють на розвиток бізнесу. Наш підхід — це поєднання глибокого розуміння маркетингу, дизайну та стратегії.',
+          advantages: {
+            individual: {
+              title: 'Індивідуальний підхід',
+              description:
+                'Ми не копіюємо чужі рішення. Кожен брендбук — це унікальна система, створена спеціально під ваш бренд, ринок і цілі. Ми вивчаємо особливості вашого бізнесу і створюємо дизайн, який відображає його сутність.',
+            },
+            experience: {
+              title: 'Досвід і експертиза',
+              description:
+                'У нашому портфоліо — десятки проєктів для малого бізнесу, стартапів, онлайн-сервісів, виробництва та інфобізнесу. Наша команда має експертизу в різних галузях, що дозволяє створювати ефективні візуальні рішення.',
+            },
+            comprehensive: {
+              title: 'Комплексний підхід',
+              description:
+                "Ми не просто малюємо логотип, а створюємо повноцінну візуальну мову, яка працює в будь-якому середовищі — від соцмереж до упаковки. Всі елементи бренду взаємопов'язані і доповнюють один одного.",
+            },
+            deadlines: {
+              title: 'Чіткі дедлайни',
+              description: 'Ми дотримуємось термінів і завжди інформуємо про статус проєкту. Ви будете знати, на якому етапі знаходиться робота, і отримаєте готовий брендбук точно в обумовлений час без затримок і зривів термінів.',
+            },
+            support: {
+              title: 'Підтримка після здачі',
+              description:
+                "Навіть після завершення роботи ми на зв'язку й готові допомогти з уточненнями або адаптаціями. Ми не зникаємо після отримання оплати, а залишаємося вашим партнером і консультантом з питань бренду.",
+            },
+          },
+          footerText: 'Наша мета — не просто «зробити дизайн», а посилити ваш бренд і допомогти йому зростати.',
+        },
+        target: {
+          title: 'Для кого підходить брендбук',
+          subTitle: 'Брендбук — це універсальний інструмент, який потрібен не лише великим компаніям. Він корисний будь-якому бізнесу, що прагне виглядати цілісно та професійно.',
+          categories: {
+            startups: {
+              title: 'Стартапам',
+              badge: 'Ідеально',
+              des: 'На старті важливо сформувати сильний, послідовний образ, щоб швидше зайняти свою нішу. Брендбук допоможе стартапу створити впізнаваний стиль з перших кроків.',
+              benefits: {
+                item1: 'Формування чіткої ідентичності з самого початку',
+                item2: 'Професійний вигляд для інвесторів та клієнтів',
+                item3: 'Швидша інтеграція нових членів команди',
+              },
+            },
+            rebranding: {
+              title: 'Компаніям на етапі ребрендингу',
+              des: 'Якщо ви оновлюєте стиль або змінюєте позиціонування — брендбук закріпить нову ідентичність та забезпечить послідовний перехід.',
+              benefits: {
+                item1: 'Чіткі інструкції для поступового оновлення всіх матеріалів',
+                item2: 'Запобігання змішування старих і нових елементів стилю',
+                item3: 'Правила транзитного періоду ребрендингу',
+              },
+            },
+            smb: {
+              title: 'Малому та середньому бізнесу',
+              des: 'Щоб конкурувати з великими гравцями, потрібно мати професійний вигляд у кожному дотику з клієнтом, незалежно від розміру вашої компанії.',
+              benefits: {
+                 item1: 'Виглядати на рівні з великими компаніями',
+                 item2: 'Економія на дизайні завдяки готовим шаблонам',
+                 item3: 'Системність комунікації з клієнтами',
+              },
+            },
+            education: {
+              title: 'Освітнім і креативним проєктам',
+              des:
+                "Айдентика допомагає чітко доносити ідеї та підсилює комунікацію. Особливо важливо для проєктів, де візуальна складова тісно пов'язана з суттю.",
+              benefits: {
+                item1: 'Підкреслення унікальності вашого підходу',
+                item2: 'Системна подача візуального контенту',
+                item3: 'Додаткова цінність креативного продукту',
+              },
+            },
+            remote: {
+              title: 'Командам із віддаленими підрядниками',
+              des: 'Брендбук дає зрозумілі інструкції, як працювати зі стилем, незалежно від того, хто виконує роботу та звідки.',
+              benefits: {
+                item1: 'Єдині стандарти для всіх виконавців',
+                item2: 'Швидке долучення нових дизайнерів та маркетологів',
+                item3: 'Збереження цілісності бренду при зміні підрядників',
+              },
+            },
+          },
+          footerText: 'Брендбук — це не «опція», а базовий інструмент для стабільного зростання та впізнаваності бренду, незалежно від розміру вашого бізнесу.',
+        },
+        cta: {
+          title: 'Замовте брендбук уже сьогодні — зробіть свій бренд впізнаваним',
+          description:
+            "Якщо ви хочете, щоб ваш бренд викликав довіру, виглядав професійно та легко запам'ятовувався — брендбук стане надійною основою. Це інвестиція в стабільність, впізнаваність і ріст.",
+          subtitle1: 'Ми готові створити для вас брендбук, який говорить мовою вашого бізнесу;',
+          subtitle2: 'виглядає сучасно й послідовно',
+          subtitle3: 'працює однаково ефективно в цифровому та офлайн-середовищі.',
+          buttonText: 'Залишити заявку',
+          additionalText:
+            "Залиште заявку, і ми зв'яжемося з вами для короткого брифінгу. Вже за кілька тижнів ви отримаєте потужний інструмент, що зробить ваш бренд сильнішим.",
+        },
+        faq: {
+          q1: 'Що таке брендбук?',
+          a1: 'Брендбук — це набір правил для використання візуальних та вербальних елементів вашого бренду, щоб забезпечити його єдність і впізнаваність.',
+          q2: 'Навіщо мені брендбук, якщо я маю логотип?',
+          a2: 'Логотип — лише частина бренду. Брендбук визначає, як використовувати логотип, кольори, шрифти та інші елементи для створення єдиного стилю.',
+          q3: 'Які елементи входять до брендбуку?',
+          a3: 'До брендбуку входять логотип, кольорова палітра, шрифти, графічні елементи, правила використання та інші важливі аспекти комунікації.',
+          q4: 'Чи потрібно оновлювати брендбук з часом?',
+          a4: 'Так, брендбук може потребувати оновлення, особливо при ребрендингу або зміні стратегії компанії.',
+          q5: 'Скільки часу займає створення брендбуку?',
+          a5: 'Зазвичай створення брендбуку займає від 2 до 4 тижнів, залежно від складності проєкту.',
+          q6: 'Чи можу я використовувати брендбук для різних форматів, наприклад, соцмереж та реклами?',
+          a6: 'Так, брендбук містить правила для всіх типів комунікацій, включаючи соцмережі, рекламу та веб-дизайн.',
+          q7: 'Чи потрібні спеціальні навички для використання брендбуку?',
+          a7: 'Ні, брендбук призначений для всіх членів команди — від дизайнерів до маркетологів. Він надає чіткі інструкції для кожного елемента бренду.',
           ctaText: 'Не знайшли відповідь на своє питання?',
           ctaButton: 'Напишіть нам',
         },
