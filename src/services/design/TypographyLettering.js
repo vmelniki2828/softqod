@@ -32,6 +32,7 @@ import {
 } from 'react-icons/fa';
 import { MdTextFields } from 'react-icons/md';
 import Modal from '../../components/Modal';
+import { useTranslation } from 'react-i18next';
 
 // Анимации
 const float = keyframes`
@@ -454,6 +455,8 @@ const TypographyLettering = () => {
   // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const { t } = useTranslation();
+
   // FAQ state
   const [expandedFaqs, setExpandedFaqs] = useState([]);
 
@@ -465,37 +468,37 @@ const TypographyLettering = () => {
   const faqData = [
     {
       question:
-        '1. Чи можна використовувати один шрифт для всіх носіїв бренду?',
+        t('typographyLetteringPage.faqData.question1'),
       answer:
-        'Ні, зазвичай створюється типографічна система з кількох шрифтів — основного, акцентного та допоміжного. Вони виконують різні функції: заголовки, тіла текстів, підписи тощо. Це забезпечує гнучкість і зберігає єдність стилю.',
+      t('typographyLetteringPage.faqData.answer1'),
     },
     {
-      question: '2. Чи потрібно купувати ліцензії на шрифти?',
+      question: t('typographyLetteringPage.faqData.question2'),
       answer:
-        'Так, якщо ви використовуєте комерційні шрифти. Ми завжди підбираємо шрифти з урахуванням прав на використання — з відкритих бібліотек або з чіткою ліцензією. Безкоштовні шрифти — не завжди якісні або унікальні.',
-    },
-    {
-      question:
-        '3. У чому перевага кастомного летерингу порівняно з логотипом на основі шрифту?',
-      answer:
-        'Кастомний летеринг створюється з нуля і враховує форму, ритм і унікальність назви бренду. Це забезпечує абсолютну ексклюзивність. Шрифтова основа — це швидше, але не завжди достатньо відмінно від конкурентів.',
+      t('typographyLetteringPage.faqData.answer2'),
     },
     {
       question:
-        "4. Чи можу я отримати шрифт у форматі для встановлення на комп'ютер?",
+      t('typographyLetteringPage.faqData.question3'),
       answer:
-        'Так, якщо розробляється кастомний шрифт або обрана типографіка включає завантажувані файли. Ви отримаєте файли у форматах OTF/TTF/WOFF + інструкції з установлення та використання.',
+      t('typographyLetteringPage.faqData.answer3'),
     },
     {
       question:
-        '5. Чи можна замовити лише летеринг без повного фірмового стилю?',
+      t('typographyLetteringPage.faqData.question4'),
       answer:
-        'Звісно. Летеринг — це окрема послуга. Він може бути використаний як акцент на упаковці, постері, мерчі або навіть у соціальних мережах. Ми адаптуємо результат під ваші задачі.',
+      t('typographyLetteringPage.faqData.answer4'),
     },
     {
-      question: '6. Скільки часу займає створення типографіки або летерингу?',
+      question:
+      t('typographyLetteringPage.faqData.question5'),
       answer:
-        'У середньому — від 5 до 15 робочих днів, залежно від складності. Простий підбір типографіки — швидше. Унікальний летеринг або система зі шрифтами для різних носіїв — потребують більше часу для дослідження й опрацювання деталей.',
+      t('typographyLetteringPage.faqData.answer5'),
+    },
+    {
+      question: t('typographyLetteringPage.faqData.question6'),
+      answer:
+      t('typographyLetteringPage.faqData.answer6'),
     },
   ];
 
@@ -520,8 +523,7 @@ const TypographyLettering = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Типографіка і <span>летеринг</span> — унікальний стиль вашого
-              бренду
+              {t('typographyLetteringPage.heroTitle')}
             </HeroTitle>
 
             <HeroDescription
@@ -529,11 +531,7 @@ const TypographyLettering = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              Типографіка й летеринг — це не просто оформлення тексту. Це
-              потужний інструмент комунікації, що формує перше враження про
-              бренд. Вдалий вибір шрифтів та індивідуальне написання слів здатні
-              підкреслити характер компанії, передати її цінності та викликати
-              довіру.
+              {t('typographyLetteringPage.heroDescription')}
             </HeroDescription>
 
             <HeroButtons
@@ -546,7 +544,7 @@ const TypographyLettering = () => {
                 whileTap={{ scale: 0.98 }}
                 onClick={openModal}
               >
-                Замовити розробку <FaArrowRight />
+                {t('typographyLetteringPage.orderButton')} <FaArrowRight />
               </PrimaryButton>
             </HeroButtons>
 
@@ -559,21 +557,21 @@ const TypographyLettering = () => {
                 <HeroFeatureIcon>
                   <FaFont />
                 </HeroFeatureIcon>
-                <FeatureText>Унікальність</FeatureText>
+                <FeatureText>{t('typographyLetteringPage.feature1')}</FeatureText>
               </FeatureItem>
 
               <FeatureItem>
                 <HeroFeatureIcon>
                   <FaRegEye />
                 </HeroFeatureIcon>
-                <FeatureText>Виразність</FeatureText>
+                <FeatureText>{t('typographyLetteringPage.feature2')}</FeatureText>
               </FeatureItem>
 
               <FeatureItem>
                 <HeroFeatureIcon>
                   <FaPalette />
                 </HeroFeatureIcon>
-                <FeatureText>Індивідуальність</FeatureText>
+                <FeatureText>{t('typographyLetteringPage.feature3')}</FeatureText>
               </FeatureItem>
             </HeroFeatures>
           </HeroContent>
@@ -653,7 +651,7 @@ const TypographyLettering = () => {
           >
             <SectionHeading>
               <SectionHeadingGlow />
-              Значення типографіки для брендингу
+              {t('typographyLetteringPage.importanceTitle')}
             </SectionHeading>
           </motion.div>
 
@@ -668,24 +666,15 @@ const TypographyLettering = () => {
                 <SubHeadingIcon>
                   <FaFont />
                 </SubHeadingIcon>
-                <SubHeadingText>Що таке типографіка?</SubHeadingText>
+                <SubHeadingText>{t('typographyLetteringPage.whatIsTypography')}</SubHeadingText>
               </SubHeading>
 
               <DefinitionText>
-                Типографіка — це мистецтво та техніка розміщення, вибору та
-                оформлення тексту для передачі ідей та створення враження. Це
-                те, як текст
-                <HighlightText>
-                  виглядає, відчувається та сприймається
-                </HighlightText>
-                , і це невід'ємна частина дизайну та комунікації.
+              {t('typographyLetteringPage.whatIsTypographyText1')}
               </DefinitionText>
 
               <DefinitionText>
-                Хороша типографія створює ієрархію, встановлює тон, настрій та
-                атмосферу, а також створює
-                <HighlightText> відомий бренд-образ</HighlightText> для вашої
-                компанії, щоб бути легко впізнаваною для аудиторії.
+              {t('typographyLetteringPage.whatIsTypographyText2')}
               </DefinitionText>
 
               <FontExamplesWrapper
@@ -712,15 +701,11 @@ const TypographyLettering = () => {
                 <SubHeadingIcon>
                   <FaPalette />
                 </SubHeadingIcon>
-                <SubHeadingText>Вплив на бренд</SubHeadingText>
+                <SubHeadingText>{t('typographyLetteringPage.influenceTitle')}</SubHeadingText>
               </SubHeading>
 
               <InfluenceText>
-                Правильно підібрана типографіка робить більше, ніж просто
-                передає інформацію. Вона формує сприйняття вашого бренду та може
-                впливати на
-                <HighlightText>прийняття рішень вашими клієнтами</HighlightText>
-                .
+              {t('typographyLetteringPage.influenceText')}
               </InfluenceText>
 
               <InfluenceList>
@@ -734,7 +719,7 @@ const TypographyLettering = () => {
                     <FaCommentAlt />
                   </InfluenceIcon>
                   <InfluenceItemText>
-                    Формує невербальну комунікацію вашого бренду
+                  {t('typographyLetteringPage.influenceList1')}
                   </InfluenceItemText>
                 </InfluenceItem>
 
@@ -748,7 +733,7 @@ const TypographyLettering = () => {
                     <FaIdCard />
                   </InfluenceIcon>
                   <InfluenceItemText>
-                    Створює та зміцнює ідентичність бренду
+                  {t('typographyLetteringPage.influenceList2')}
                   </InfluenceItemText>
                 </InfluenceItem>
 
@@ -762,7 +747,7 @@ const TypographyLettering = () => {
                     <FaLayerGroup />
                   </InfluenceIcon>
                   <InfluenceItemText>
-                    Вибудовує інформаційну ієрархію та покращує читабельність
+                  {t('typographyLetteringPage.influenceList3')}
                   </InfluenceItemText>
                 </InfluenceItem>
 
@@ -776,15 +761,13 @@ const TypographyLettering = () => {
                     <FaHeart />
                   </InfluenceIcon>
                   <InfluenceItemText>
-                    Викликає емоційний відгук у аудиторії
+                  {t('typographyLetteringPage.influenceList4')}
                   </InfluenceItemText>
                 </InfluenceItem>
               </InfluenceList>
 
               <InfluenceConclusion>
-                Вибір типографіки - це стратегічне рішення, яке має відображати
-                цінності та позиціонування вашого бренду, резонувати з цільовою
-                аудиторією та виділяти вас серед конкурентів.
+              {t('typographyLetteringPage.influenceConclusion')}
               </InfluenceConclusion>
             </InfluenceBlock>
           </TypographyExplainer>
@@ -802,7 +785,7 @@ const TypographyLettering = () => {
                 transition={{ duration: 0.3 }}
               >
                 <BrandExampleTitle className="tech">TECHIFY</BrandExampleTitle>
-                <BrandExampleTag>Технологічний</BrandExampleTag>
+                <BrandExampleTag>{t('typographyLetteringPage.item1')}</BrandExampleTag>
               </BrandExample>
 
               <BrandExample
@@ -813,7 +796,7 @@ const TypographyLettering = () => {
                 <BrandExampleTitle className="creative">
                   Creative
                 </BrandExampleTitle>
-                <BrandExampleTag>Креативний</BrandExampleTag>
+                <BrandExampleTag>{t('typographyLetteringPage.item2')}</BrandExampleTag>
               </BrandExample>
 
               <BrandExample
@@ -824,7 +807,7 @@ const TypographyLettering = () => {
                 <BrandExampleTitle className="luxury">
                   LUXURIO
                 </BrandExampleTitle>
-                <BrandExampleTag>Преміальний</BrandExampleTag>
+                <BrandExampleTag>{t('typographyLetteringPage.item3')}</BrandExampleTag>
               </BrandExample>
 
               <BrandExample
@@ -835,7 +818,7 @@ const TypographyLettering = () => {
                 <BrandExampleTitle className="friendly">
                   Friendly
                 </BrandExampleTitle>
-                <BrandExampleTag>Доброзичливий</BrandExampleTag>
+                <BrandExampleTag>{t('typographyLetteringPage.item4')}</BrandExampleTag>
               </BrandExample>
             </BrandExamples>
           </motion.div>
@@ -862,7 +845,7 @@ const TypographyLettering = () => {
             viewport={{ once: true }}
           >
             <LetteringArtTitle>
-              Летеринг як мистецтво індивідуального стилю
+            {t('typographyLetteringPage.letteringArtTitle')}
             </LetteringArtTitle>
           </LetteringArtHeader>
 
@@ -878,24 +861,16 @@ const TypographyLettering = () => {
                   <MdTextFields />
                 </LetteringSubheadingIcon>
                 <LetteringSubheadingText>
-                  Чим летеринг відрізняється від шрифтів
+                {t('typographyLetteringPage.letteringDiffTitle')}
                 </LetteringSubheadingText>
               </LetteringSubheading>
 
               <LetteringText>
-                Шрифт — це готовий набір символів. Летеринг — це індивідуально
-                намальовані літери. Він не повторюється, створюється під
-                конкретне слово, проєкт чи логотип. Це{' '}
-                <HighlightText>
-                  максимально персоналізований елемент
-                </HighlightText>
-                , який неможливо скопіювати чи підробити.
+              {t('typographyLetteringPage.letteringDiffText1')}
               </LetteringText>
 
               <LetteringText>
-                Летеринг доречний, коли потрібен унікальний акцент — у назві
-                бренду, логотипі, упаковці, афіші. Він додає характеру та живої
-                емоції, якої не дає стандартний шрифт.
+              {t('typographyLetteringPage.letteringDiffText2')}
               </LetteringText>
 
               <LetteringFeatures>
@@ -909,7 +884,7 @@ const TypographyLettering = () => {
                   <LetteringFeatureIcon>
                     <FaPalette />
                   </LetteringFeatureIcon>
-                  <LetteringFeatureText>Унікальність</LetteringFeatureText>
+                  <LetteringFeatureText>{t('typographyLetteringPage.letteringFeature1')}</LetteringFeatureText>
                 </LetteringFeature>
 
                 <LetteringFeature
@@ -922,7 +897,7 @@ const TypographyLettering = () => {
                   <LetteringFeatureIcon>
                     <FaHeart />
                   </LetteringFeatureIcon>
-                  <LetteringFeatureText>Емоційність</LetteringFeatureText>
+                  <LetteringFeatureText>{t('typographyLetteringPage.letteringFeature2')}</LetteringFeatureText>
                 </LetteringFeature>
 
                 <LetteringFeature
@@ -935,7 +910,7 @@ const TypographyLettering = () => {
                   <LetteringFeatureIcon>
                     <FaRegEye />
                   </LetteringFeatureIcon>
-                  <LetteringFeatureText>Оригінальність</LetteringFeatureText>
+                  <LetteringFeatureText>{t('typographyLetteringPage.letteringFeature3')}</LetteringFeatureText>
                 </LetteringFeature>
               </LetteringFeatures>
             </LetteringComparisonColumn>
@@ -948,53 +923,53 @@ const TypographyLettering = () => {
             >
               <LetteringVisualContainer>
                 <LetteringVisualHeader>
-                  <LetteringVisualTitle>Шрифт vs Летеринг</LetteringVisualTitle>
+                  <LetteringVisualTitle>{t('typographyLetteringPage.letteringVsTitle')}</LetteringVisualTitle>
                   <LetteringVisualSubtitle>
-                    Візуальне порівняння
+                  {t('typographyLetteringPage.letteringVsSubtitle')}
                   </LetteringVisualSubtitle>
                 </LetteringVisualHeader>
 
                 <LetteringExample>
-                  <LetteringExampleLabel>Шрифт</LetteringExampleLabel>
-                  <LetteringExampleFont>Бренд</LetteringExampleFont>
-                  <LetteringExampleNote>Ідентичні символи</LetteringExampleNote>
+                  <LetteringExampleLabel>{t('typographyLetteringPage.itemLettering1')}</LetteringExampleLabel>
+                  <LetteringExampleFont>{t('typographyLetteringPage.itemLettering2')}</LetteringExampleFont>
+                  <LetteringExampleNote>{t('typographyLetteringPage.itemLettering3')}</LetteringExampleNote>
                 </LetteringExample>
 
                 <LetteringVersusIcon>VS</LetteringVersusIcon>
 
                 <LetteringExample className="hand-drawn">
-                  <LetteringExampleLabel>Летеринг</LetteringExampleLabel>
-                  <LetteringExampleDrawn>Бренд</LetteringExampleDrawn>
+                  <LetteringExampleLabel>{t('typographyLetteringPage.itemLettering4')}</LetteringExampleLabel>
+                  <LetteringExampleDrawn>{t('typographyLetteringPage.itemLettering5')}</LetteringExampleDrawn>
                   <LetteringExampleNote>
-                    Унікальні, намальовані символи
+                  {t('typographyLetteringPage.itemLettering6')}
                   </LetteringExampleNote>
                 </LetteringExample>
 
                 <LetteringUseCases>
-                  <LetteringUseCaseTitle>Застосування:</LetteringUseCaseTitle>
+                  <LetteringUseCaseTitle>{t('typographyLetteringPage.itemLettering7')}</LetteringUseCaseTitle>
                   <LetteringUseCaseList>
                     <LetteringUseCaseItem>
                       <LetteringUseCaseIcon />
                       <LetteringUseCaseText>
-                        Логотипи та заголовки
+                      {t('typographyLetteringPage.itemLettering8')}
                       </LetteringUseCaseText>
                     </LetteringUseCaseItem>
                     <LetteringUseCaseItem>
                       <LetteringUseCaseIcon />
                       <LetteringUseCaseText>
-                        Упаковка та етикетки
+                      {t('typographyLetteringPage.itemLettering9')}
                       </LetteringUseCaseText>
                     </LetteringUseCaseItem>
                     <LetteringUseCaseItem>
                       <LetteringUseCaseIcon />
                       <LetteringUseCaseText>
-                        Плакати та вивіски
+                      {t('typographyLetteringPage.itemLettering10')}
                       </LetteringUseCaseText>
                     </LetteringUseCaseItem>
                     <LetteringUseCaseItem>
                       <LetteringUseCaseIcon />
                       <LetteringUseCaseText>
-                        Обкладинки книг
+                      {t('typographyLetteringPage.itemLettering11')}
                       </LetteringUseCaseText>
                     </LetteringUseCaseItem>
                   </LetteringUseCaseList>
@@ -1015,7 +990,7 @@ const TypographyLettering = () => {
             >
               <LetteringShowcaseHeaderLine />
               <LetteringShowcaseHeaderText>
-                Приклади летерингу
+              {t('typographyLetteringPage.letteringShowcaseTitle')}
               </LetteringShowcaseHeaderText>
               <LetteringShowcaseHeaderLine />
             </LetteringShowcaseHeader>
@@ -1065,14 +1040,14 @@ const TypographyLettering = () => {
             viewport={{ once: true }}
           >
             <LetteringCtaText>
-              Бажаєте розробити унікальний летеринг для вашого проєкту?
+            {t('typographyLetteringPage.letteringCta')}
             </LetteringCtaText>
             <LetteringCtaButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={openModal}
             >
-              Замовити летеринг <FaLongArrowAltRight />
+              {t('typographyLetteringPage.letteringCtaButton')} <FaLongArrowAltRight />
             </LetteringCtaButton>
           </LetteringCta>
         </LetteringArtContainer>
@@ -1098,7 +1073,7 @@ const TypographyLettering = () => {
             viewport={{ once: true }}
           >
             <MethodologyTitle>
-              Наш підхід до типографіки та летерингу
+            {t('typographyLetteringPage.methodologyTitle')}
             </MethodologyTitle>
             <MethodologyUnderline />
           </MethodologyHeader>
@@ -1108,7 +1083,7 @@ const TypographyLettering = () => {
               <MethodologyStepHeader>
                 <MethodologyStepNumber>01</MethodologyStepNumber>
                 <MethodologyStepTitle>
-                  Аналіз бренду та цільової аудиторії
+                {t('typographyLetteringPage.methodologyStep1Title')}
                 </MethodologyStepTitle>
               </MethodologyStepHeader>
 
@@ -1120,12 +1095,7 @@ const TypographyLettering = () => {
                 </MethodologyStepIcon>
 
                 <MethodologyStepText>
-                  Перш ніж створювати типографічну систему або летеринг, ми
-                  вивчаємо бренд: його позиціонування, цінності, цільову
-                  аудиторію, візуальні рішення конкурентів. Це дозволяє
-                  працювати в контексті та створювати{' '}
-                  <HighlightText>доречні, а не випадкові</HighlightText>{' '}
-                  елементи.
+                {t('typographyLetteringPage.methodologyStep1Text')}
                 </MethodologyStepText>
 
                 <AnalysisPoints>
@@ -1133,21 +1103,21 @@ const TypographyLettering = () => {
                     <AnalysisPointIcon>
                       <FaUsers />
                     </AnalysisPointIcon>
-                    <AnalysisPointText>Аналіз аудиторії</AnalysisPointText>
+                    <AnalysisPointText>{t('typographyLetteringPage.methodologyStep1Point1')}</AnalysisPointText>
                   </AnalysisPoint>
 
                   <AnalysisPoint>
                     <AnalysisPointIcon>
                       <FaChartBar />
                     </AnalysisPointIcon>
-                    <AnalysisPointText>Аналіз конкурентів</AnalysisPointText>
+                    <AnalysisPointText>{t('typographyLetteringPage.methodologyStep1Point2')}</AnalysisPointText>
                   </AnalysisPoint>
 
                   <AnalysisPoint>
                     <AnalysisPointIcon>
                       <FaFont />
                     </AnalysisPointIcon>
-                    <AnalysisPointText>Підбір шрифтових пар</AnalysisPointText>
+                    <AnalysisPointText>{t('typographyLetteringPage.methodologyStep1Point3')}</AnalysisPointText>
                   </AnalysisPoint>
                 </AnalysisPoints>
               </MethodologyStepContent>
@@ -1157,7 +1127,7 @@ const TypographyLettering = () => {
               <MethodologyStepHeader>
                 <MethodologyStepNumber>02</MethodologyStepNumber>
                 <MethodologyStepTitle>
-                  Підбір стилю: класика, мінімалізм, експеримент
+                {t('typographyLetteringPage.methodologyStep2Title')}
                 </MethodologyStepTitle>
               </MethodologyStepHeader>
 
@@ -1169,37 +1139,33 @@ const TypographyLettering = () => {
                 </MethodologyStepIcon>
 
                 <MethodologyStepText>
-                  Залежно від завдань ми обираємо стилістику: гротески чи
-                  антиква, мінімалізм чи вибагливий дизайн. Класичні рішення
-                  додають солідності, експериментальні — виділяють серед
-                  конкурентів.
+                {t('typographyLetteringPage.methodologyStep2Text')}
                 </MethodologyStepText>
 
                 <StyleOptions>
                   <StyleOption>
-                    <StyleOptionTitle>Класика</StyleOptionTitle>
+                    <StyleOptionTitle>{t('typographyLetteringPage.methodologyStep2Option1')}</StyleOptionTitle>
                     <StyleOptionDivider />
                     <StyleOptionDescription>
-                      для брендів з акцентом на надійність та престиж
+                    {t('typographyLetteringPage.methodologyStep2Option11')}
                     </StyleOptionDescription>
                     <StyleOptionSample className="classic">A</StyleOptionSample>
                   </StyleOption>
 
                   <StyleOption>
-                    <StyleOptionTitle>Мінімалізм</StyleOptionTitle>
+                    <StyleOptionTitle>{t('typographyLetteringPage.methodologyStep2Option2')}</StyleOptionTitle>
                     <StyleOptionDivider />
                     <StyleOptionDescription>
-                      для сучасних технологічних брендів
+                    {t('typographyLetteringPage.methodologyStep2Option22')}
                     </StyleOptionDescription>
                     <StyleOptionSample className="minimal">A</StyleOptionSample>
                   </StyleOption>
 
                   <StyleOption>
-                    <StyleOptionTitle>Експеримент</StyleOptionTitle>
+                    <StyleOptionTitle>{t('typographyLetteringPage.methodologyStep2Option3')}</StyleOptionTitle>
                     <StyleOptionDivider />
                     <StyleOptionDescription>
-                      для креативних індустрій та брендів, які хочуть вийти за
-                      рамки
+                    {t('typographyLetteringPage.methodologyStep2Option33')}
                     </StyleOptionDescription>
                     <StyleOptionSample className="experimental">
                       A
@@ -1208,8 +1174,7 @@ const TypographyLettering = () => {
                 </StyleOptions>
 
                 <MethodologyStepText className="note">
-                  Стиль визначається не модою, а ціллю: яку реакцію має
-                  викликати візуальне рішення.
+                {t('typographyLetteringPage.methodologyStepTextItem')}
                 </MethodologyStepText>
               </MethodologyStepContent>
             </MethodologyStep>
@@ -1219,7 +1184,7 @@ const TypographyLettering = () => {
             <MethodologyStepHeader>
               <MethodologyStepNumber>03</MethodologyStepNumber>
               <MethodologyStepTitle>
-                Узгодження з загальним дизайном бренду
+              {t('typographyLetteringPage.methodologyStep3Title')}
               </MethodologyStepTitle>
             </MethodologyStepHeader>
 
@@ -1231,11 +1196,7 @@ const TypographyLettering = () => {
               </MethodologyStepIcon>
 
               <MethodologyStepText>
-                Типографіка та летеринг не існують ізольовано. Вони вплітаються
-                в айдентику — логотип, кольори, макети. Ми добиваємося
-                <HighlightText> повної візуальної цілісності</HighlightText>.
-                Все виглядає злагоджено, логічно і стильно на всіх носіях — від
-                веб-сайту до офлайнових матеріалів.
+              {t('typographyLetteringPage.methodologyStep3Text')}
               </MethodologyStepText>
 
               <IntegrationPoints>
@@ -1253,7 +1214,7 @@ const TypographyLettering = () => {
                       <IntegrationDeviceText />
                     </IntegrationDeviceContent>
                   </IntegrationDeviceScreen>
-                  <IntegrationDeviceLabel>Веб</IntegrationDeviceLabel>
+                  <IntegrationDeviceLabel>{t('typographyLetteringPage.methodologyStepItem1')}</IntegrationDeviceLabel>
                 </IntegrationDevice>
 
                 <IntegrationDevice
@@ -1268,7 +1229,7 @@ const TypographyLettering = () => {
                     <IntegrationPrintElement className="text" />
                     <IntegrationPrintElement className="text" />
                   </IntegrationDeviceScreen>
-                  <IntegrationDeviceLabel>Поліграфія</IntegrationDeviceLabel>
+                  <IntegrationDeviceLabel>{t('typographyLetteringPage.methodologyStepItem2')}</IntegrationDeviceLabel>
                 </IntegrationDevice>
 
                 <IntegrationDevice
@@ -1285,7 +1246,7 @@ const TypographyLettering = () => {
                       <IntegrationDeviceText className="mobile" />
                     </IntegrationDeviceContent>
                   </IntegrationDeviceScreen>
-                  <IntegrationDeviceLabel>Мобільний</IntegrationDeviceLabel>
+                  <IntegrationDeviceLabel>{t('typographyLetteringPage.methodologyStepItem3')}</IntegrationDeviceLabel>
                 </IntegrationDevice>
               </IntegrationPoints>
             </MethodologyStepContent>
@@ -1337,7 +1298,7 @@ const TypographyLettering = () => {
                 viewport={{ once: true }}
               >
                 <BenefitsTitle>
-                  Переваги професійної типографіки та летерингу
+                {t('typographyLetteringPage.benefitsTitle')}
                 </BenefitsTitle>
                 <BenefitsTitleAccent />
               </BenefitsHeader>
@@ -1359,37 +1320,31 @@ const TypographyLettering = () => {
 
                     <BenefitCardContent>
                       <BenefitCardTitle>
-                        Підвищення впізнаваності
+                      {t('typographyLetteringPage.benefit1Title')}
                       </BenefitCardTitle>
                       <BenefitCardText>
-                        Унікальна типографіка робить бренд пізнаваним навіть без
-                        логотипа. Вона створює візуальні асоціації, які
-                        закріплюються в пам'яті.
-                        <HighlightText>
-                          {' '}
-                          Один шрифт — і користувач згадує вас.
-                        </HighlightText>
+                      {t('typographyLetteringPage.benefit1Text')}
                       </BenefitCardText>
                     </BenefitCardContent>
 
                     <BenefitIllustration className="recognition">
                       <BenefitIllustrationItem className="logo-hidden">
                         <BenefitIllustrationLabel>
-                          Логотип
+                        {t('typographyLetteringPage.benefitItem1')}
                         </BenefitIllustrationLabel>
                         <FaEyeSlash />
                       </BenefitIllustrationItem>
                       <BenefitIllustrationDivider>+</BenefitIllustrationDivider>
                       <BenefitIllustrationItem className="typography">
                         <BenefitIllustrationLabel>
-                          Типографіка
+                        {t('typographyLetteringPage.benefitItem2')}
                         </BenefitIllustrationLabel>
                         <BenefitIllustrationTypo>Aa</BenefitIllustrationTypo>
                       </BenefitIllustrationItem>
                       <BenefitIllustrationDivider>=</BenefitIllustrationDivider>
                       <BenefitIllustrationItem className="recognition">
                         <BenefitIllustrationLabel>
-                          Впізнаваність
+                        {t('typographyLetteringPage.benefitItem3')}
                         </BenefitIllustrationLabel>
                         <FaBrain />
                       </BenefitIllustrationItem>
@@ -1415,14 +1370,9 @@ const TypographyLettering = () => {
                     </BenefitIconContainer>
 
                     <BenefitCardContent>
-                      <BenefitCardTitle>Унікальність бренду</BenefitCardTitle>
+                      <BenefitCardTitle>{t('typographyLetteringPage.benefit2Title')}</BenefitCardTitle>
                       <BenefitCardText>
-                        Ми створюємо нетипові рішення — летеринг або кастомну
-                        типографіку, яких немає у шаблонних генераторах.
-                        <HighlightText>
-                          {' '}
-                          Ваш бренд отримує власну візуальну мову.
-                        </HighlightText>
+                      {t('typographyLetteringPage.benefit2Text')}
                       </BenefitCardText>
                     </BenefitCardContent>
 
@@ -1430,7 +1380,7 @@ const TypographyLettering = () => {
                       <BenefitIllustrationCompare>
                         <BenefitIllustrationCompareItem className="template">
                           <BenefitIllustrationLabel>
-                            Шаблон
+                          {t('typographyLetteringPage.benefitItem4')}
                           </BenefitIllustrationLabel>
                           <BenefitIllustrationTemplate>
                             Aa
@@ -1441,7 +1391,7 @@ const TypographyLettering = () => {
                         </BenefitIllustrationCompareVs>
                         <BenefitIllustrationCompareItem className="custom">
                           <BenefitIllustrationLabel>
-                            Кастом
+                          {t('typographyLetteringPage.benefitItem5')}
                           </BenefitIllustrationLabel>
                           <BenefitIllustrationCustom>
                             Aa
@@ -1471,16 +1421,10 @@ const TypographyLettering = () => {
 
                     <BenefitCardContent>
                       <BenefitCardTitle>
-                        Краще візуальне сприйняття
+                      {t('typographyLetteringPage.benefit3Title')}
                       </BenefitCardTitle>
                       <BenefitCardText>
-                        Якісна типографіка підвищує читабельність, структурує
-                        контент, направляє увагу.
-                        <HighlightText>
-                          {' '}
-                          Це особливо критично в інтерфейсах, презентаціях,
-                          рекламі.
-                        </HighlightText>
+                      {t('typographyLetteringPage.benefit3Text')}
                       </BenefitCardText>
                     </BenefitCardContent>
 
@@ -1488,7 +1432,7 @@ const TypographyLettering = () => {
                       <BenefitReadabilityExample>
                         <BenefitReadabilityBefore>
                           <BenefitIllustrationLabel>
-                            До
+                          {t('typographyLetteringPage.benefitItem6')}
                           </BenefitIllustrationLabel>
                           <BenefitReadabilityBeforeContent>
                             <BenefitReadabilityLine className="line-1" />
@@ -1499,7 +1443,7 @@ const TypographyLettering = () => {
                         </BenefitReadabilityBefore>
                         <BenefitReadabilityAfter>
                           <BenefitIllustrationLabel>
-                            Після
+                          {t('typographyLetteringPage.benefitItem7')}
                           </BenefitIllustrationLabel>
                           <BenefitReadabilityAfterContent>
                             <BenefitReadabilityTitle />
@@ -1525,16 +1469,12 @@ const TypographyLettering = () => {
       <WorkflowSection>
         <WorkflowContainer>
           <WorkflowHeader>
-            <WorkflowHeadingAccent>Процес</WorkflowHeadingAccent>
+            <WorkflowHeadingAccent>{t('typographyLetteringPage.workflowTextItem')}</WorkflowHeadingAccent>
             <WorkflowTitle>
-              Як ми працюємо — приклад підходу до кожного проєкту
+            {t('typographyLetteringPage.workflowTitle')}
             </WorkflowTitle>
             <WorkflowDescription>
-              Кожен бренд — це окрема історія, тому ми не використовуємо
-              шаблони. Наш підхід — це поєднання аналітики, дизайнерської
-              експертизи та уваги до деталей. Ми не просто підбираємо шрифти —
-              ми формуємо типографічну систему, яка працює на ідентичність
-              бренду.
+            {t('typographyLetteringPage.workflowDescription')}
             </WorkflowDescription>
           </WorkflowHeader>
 
@@ -1548,29 +1488,26 @@ const TypographyLettering = () => {
                   <div className="icon">
                     <FaSearch />
                   </div>
-                  Брифінг та початкове занурення
+                  {t('typographyLetteringPage.workflowStep1.title')}
                 </StepTitle>
                 <StepDescription>
-                  Починаємо з глибокого розуміння вашого бізнесу: хто ви, чим
-                  відрізняєтесь, яка ваша аудиторія, у якому стилі ви хочете з
-                  нею спілкуватися. Ми вивчаємо продукти, послуги, місію бренду,
-                  вже наявні візуальні елементи.
+                {t('typographyLetteringPage.workflowStep1.description')}
                 </StepDescription>
                 <StepVisual className="briefing">
                   <div className="tag">
-                    <span className="dot"></span>Місія бренду
+                    <span className="dot"></span>{t('typographyLetteringPage.workflowStep1.items.item1')}
                   </div>
                   <div className="tag">
-                    <span className="dot"></span>Цільова аудиторія
+                    <span className="dot"></span>{t('typographyLetteringPage.workflowStep1.items.item2')}
                   </div>
                   <div className="tag">
-                    <span className="dot"></span>Стиль комунікації
+                    <span className="dot"></span>{t('typographyLetteringPage.workflowStep1.items.item3')}
                   </div>
                   <div className="tag">
-                    <span className="dot"></span>Візуальні елементи
+                    <span className="dot"></span>{t('typographyLetteringPage.workflowStep1.items.item4')}
                   </div>
                   <div className="tag">
-                    <span className="dot"></span>Продукти/послуги
+                    <span className="dot"></span>{t('typographyLetteringPage.workflowStep1.items.item5')}
                   </div>
                 </StepVisual>
                 <StepAccent>01</StepAccent>
@@ -1586,18 +1523,15 @@ const TypographyLettering = () => {
                   <div className="icon">
                     <FaChartBar />
                   </div>
-                  Аналіз ринку та конкурентів
+                  {t('typographyLetteringPage.workflowStep2.title')}
                 </StepTitle>
                 <StepDescription>
-                  Досліджуємо середовище, в якому працює ваш бренд. Вивчаємо
-                  візуальні рішення конкурентів, шрифтові тренди у вашій ніші,
-                  аналізуємо типові підходи, щоб уникнути повторів та створити
-                  відмінність.
+                {t('typographyLetteringPage.workflowStep2.description')}
                 </StepDescription>
                 <StepVisual className="market">
-                  <div className="competitor">Конкурент А</div>
-                  <div className="competitor">Конкурент Б</div>
-                  <div className="competitor">Конкурент В</div>
+                  <div className="competitor">{t('typographyLetteringPage.workflowStep2.items.item1')}</div>
+                  <div className="competitor">{t('typographyLetteringPage.workflowStep2.items.item2')}</div>
+                  <div className="competitor">{t('typographyLetteringPage.workflowStep2.items.item3')}</div>
                 </StepVisual>
                 <StepAccent>02</StepAccent>
               </StepContent>
@@ -1612,13 +1546,10 @@ const TypographyLettering = () => {
                   <div className="icon">
                     <FaLightbulb />
                   </div>
-                  Розробка концепції
+                  {t('typographyLetteringPage.workflowStep3.title')}
                 </StepTitle>
                 <StepDescription>
-                  На цьому етапі ми пропонуємо декілька напрямків: типографічні
-                  пари, стильові референси, варіанти летерингу. Якщо потрібно —
-                  створюємо начерки рукописних рішень, які підкреслюють
-                  індивідуальність.
+                {t('typographyLetteringPage.workflowStep3.description')}
                 </StepDescription>
                 <StepVisual className="concept">
                   <div className="font-sample">Aa</div>
@@ -1639,13 +1570,10 @@ const TypographyLettering = () => {
                   <div className="icon">
                     <FaDesktop />
                   </div>
-                  Дизайн і тестування
+                  {t('typographyLetteringPage.workflowStep4.title')}
                 </StepTitle>
                 <StepDescription>
-                  Створюємо фінальну версію типографіки або летерингу,
-                  перевіряємо, як вона виглядає в реальних сценаріях: у
-                  логотипі, на сайті, в макетах, у соціальних мережах.
-                  Враховуємо адаптивність, читабельність на різних носіях.
+                {t('typographyLetteringPage.workflowStep4.description')}
                 </StepDescription>
                 <StepVisual className="testing">
                   <div className="device">
@@ -1671,13 +1599,10 @@ const TypographyLettering = () => {
                   <div className="icon">
                     <FaLayerGroup />
                   </div>
-                  Узгодження і підготовка фінальних матеріалів
+                  {t('typographyLetteringPage.workflowStep5.title')}
                 </StepTitle>
                 <StepDescription>
-                  Після затвердження ми передаємо всі необхідні файли — у
-                  форматах для друку та цифрового використання. За запитом —
-                  готуємо міні-гайдлайн або інструкції з правильного
-                  використання шрифтів чи летерингу.
+                {t('typographyLetteringPage.workflowStep5.description')}
                 </StepDescription>
                 <StepVisual className="delivery">
                   <div className="file">
@@ -1696,7 +1621,7 @@ const TypographyLettering = () => {
                     <div className="icon">
                       <FaLayerGroup />
                     </div>
-                    <div className="label">Гайдлайн</div>
+                    <div className="label">{t('typographyLetteringPage.workflowStep5.textItem')}</div>
                   </div>
                 </StepVisual>
                 <StepAccent>05</StepAccent>
@@ -1731,11 +1656,10 @@ const TypographyLettering = () => {
       <OrderProcessSection>
         <OrderProcessContainer>
           <OrderProcessHeader>
-            <OrderProcessTitle>Як замовити послугу</OrderProcessTitle>
-            <OrderProcessSubtitle>Етапи співпраці</OrderProcessSubtitle>
+            <OrderProcessTitle>{t('typographyLetteringPage.orderTitle')}</OrderProcessTitle>
+            <OrderProcessSubtitle>{t('typographyLetteringPage.orderSubtitle')}</OrderProcessSubtitle>
             <OrderProcessDescription>
-              Ми зробили процес максимально зручним для клієнта — без зайвої
-              бюрократії, але з повним контролем якості на кожному етапі.
+            {t('typographyLetteringPage.orderDescription')}
             </OrderProcessDescription>
           </OrderProcessHeader>
 
@@ -1757,12 +1681,10 @@ const TypographyLettering = () => {
                   <div className="icon">
                     <FaPencilAlt />
                   </div>
-                  Заявка
+                  {t('typographyLetteringPage.orderStep1.title')}
                 </ProcessStepTitle>
                 <ProcessStepDescription>
-                  Залишаєте запит через форму на сайті або надсилаєте листа з
-                  коротким описом задачі. Ми відповідаємо протягом одного
-                  робочого дня.
+                {t('typographyLetteringPage.orderStep1.description')}
                 </ProcessStepDescription>
                 <ProcessStepDecoration>01</ProcessStepDecoration>
               </ProcessStepContent>
@@ -1788,12 +1710,10 @@ const TypographyLettering = () => {
                   <div className="icon">
                     <FaCommentAlt />
                   </div>
-                  Обговорення задачі
+                  {t('typographyLetteringPage.orderStep2.title')}
                 </ProcessStepTitle>
                 <ProcessStepDescription>
-                  Ми ставимо уточнювальні запитання, обговорюємо очікування,
-                  стиль, обсяг роботи. За потреби — надсилаємо короткий бриф для
-                  заповнення.
+                {t('typographyLetteringPage.orderStep2.description')}
                 </ProcessStepDescription>
                 <ProcessStepDecoration>02</ProcessStepDecoration>
               </ProcessStepContent>
@@ -1819,12 +1739,10 @@ const TypographyLettering = () => {
                   <div className="icon">
                     <FaFileAlt />
                   </div>
-                  Комерційна пропозиція
+                  {t('typographyLetteringPage.orderStep3.title')}
                 </ProcessStepTitle>
                 <ProcessStepDescription>
-                  Формуємо чітку пропозицію із вартістю, термінами та обсягом.
-                  Ви розумієте, що саме отримаєте, скільки це коштує і коли буде
-                  готово.
+                {t('typographyLetteringPage.orderStep3.description')}
                 </ProcessStepDescription>
                 <ProcessStepDecoration>03</ProcessStepDecoration>
               </ProcessStepContent>
@@ -1850,12 +1768,10 @@ const TypographyLettering = () => {
                   <div className="icon">
                     <FaRocket />
                   </div>
-                  Початок роботи
+                  {t('typographyLetteringPage.orderStep4.title')}
                 </ProcessStepTitle>
                 <ProcessStepDescription>
-                  Після узгодження умов ми підписуємо договір або підтвердження
-                  про старт. Починається етап розробки: дослідження, концепції,
-                  ескізи.
+                {t('typographyLetteringPage.orderStep4.description')}
                 </ProcessStepDescription>
                 <ProcessStepDecoration>04</ProcessStepDecoration>
               </ProcessStepContent>
@@ -1881,12 +1797,10 @@ const TypographyLettering = () => {
                   <div className="icon">
                     <FaRegEye />
                   </div>
-                  Проміжне погодження
+                  {t('typographyLetteringPage.orderStep5.title')}
                 </ProcessStepTitle>
                 <ProcessStepDescription>
-                  На етапі чорнових рішень ми показуємо проміжні варіанти, щоб
-                  узгодити напрямок і внести правки до фіналізації. Ви залучені
-                  до процесу.
+                {t('typographyLetteringPage.orderStep5.description')}
                 </ProcessStepDescription>
                 <ProcessStepDecoration>05</ProcessStepDecoration>
               </ProcessStepContent>
@@ -1912,12 +1826,10 @@ const TypographyLettering = () => {
                   <div className="icon">
                     <FaCheck />
                   </div>
-                  Завершення та передача результату
+                  {t('typographyLetteringPage.orderStep6.title')}
                 </ProcessStepTitle>
                 <ProcessStepDescription>
-                  Ви отримуєте всі файли у зручних форматах, а також пояснення
-                  щодо їх використання. Після завершення — залишаєтесь із
-                  візуальним активом, що працює на бренд.
+                {t('typographyLetteringPage.orderStep6.description')}
                 </ProcessStepDescription>
                 <ProcessStepDecoration>06</ProcessStepDecoration>
               </ProcessStepContent>
@@ -2027,7 +1939,7 @@ const TypographyLettering = () => {
             transition={{ duration: 0.6, delay: 1.2 }}
           >
             <FaqCtaText>
-              Маєте додаткові запитання щодо типографіки або летерингу?
+            {t('typographyLetteringPage.faqCta')}
             </FaqCtaText>
             <FaqCtaButton
               whileHover={{
@@ -2037,7 +1949,7 @@ const TypographyLettering = () => {
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
             >
-              Зв'язатися з нами <FaArrowRight />
+              {t('typographyLetteringPage.faqCtaButton')} <FaArrowRight />
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
@@ -2259,23 +2171,6 @@ const DefinitionText = styled.p`
   line-height: 1.8;
   color: var(--text-secondary);
   margin-bottom: 2rem;
-`;
-
-const HighlightText = styled.span`
-  color: var(--accent-color-light);
-  font-weight: 600;
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--accent-color);
-    opacity: 0.3;
-  }
 `;
 
 const FontExamplesWrapper = styled(motion.div)`

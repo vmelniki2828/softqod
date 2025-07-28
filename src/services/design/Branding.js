@@ -23,6 +23,7 @@ import {
   FaHeart,
   FaFileAlt,
 } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const pulse = keyframes`
   0% { transform: scale(1); }
@@ -785,7 +786,7 @@ const BrandElement = styled(motion.div)`
 
 const BrandElementWide = styled(BrandElement)`
   grid-column: 1 / span 2;
-  
+
   @media (max-width: 576px) {
     grid-column: 1;
   }
@@ -2602,31 +2603,6 @@ const InspirationParagraph = styled(motion.p)`
   }
 `;
 
-const highlight = keyframes`
-  0% { background-position: -100% 0; }
-  100% { background-position: 200% 0; }
-`;
-
-const InspirationHighlight = styled.span`
-  position: relative;
-  color: var(--accent-color);
-  font-weight: 700;
-  background: linear-gradient(
-    90deg,
-    var(--text-secondary) 0%,
-    var(--accent-color) 50%,
-    var(--text-secondary) 100%
-  );
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-
-  &:hover {
-    animation: ${highlight} 2s linear infinite;
-  }
-`;
-
 const InspirationVisual = styled.div`
   flex: 1;
   position: relative;
@@ -3564,7 +3540,11 @@ const FaqWaveTop = styled.div`
   left: 0;
   width: 100%;
   height: 120px;
-  background: linear-gradient(to top left, transparent 49%, var(--bg-primary) 51%);
+  background: linear-gradient(
+    to top left,
+    transparent 49%,
+    var(--bg-primary) 51%
+  );
   z-index: 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 
@@ -3846,12 +3826,12 @@ const FaqQuestion = styled(motion.div)`
     border-radius: 50%;
     transition: all 0.3s ease;
     padding: 6px;
-    transform: ${props => props['data-open'] === 'true' ? 'rotate(45deg)' : 'rotate(0deg)'};
-    background-color: ${props => 
-      props['data-open'] === 'true' 
-        ? 'rgba(var(--accent-color-rgb), 0.15)' 
-        : 'rgba(var(--accent-color-rgb), 0.05)'
-    };
+    transform: ${props =>
+      props['data-open'] === 'true' ? 'rotate(45deg)' : 'rotate(0deg)'};
+    background-color: ${props =>
+      props['data-open'] === 'true'
+        ? 'rgba(var(--accent-color-rgb), 0.15)'
+        : 'rgba(var(--accent-color-rgb), 0.05)'};
   }
 
   &:hover svg {
@@ -4136,7 +4116,9 @@ const FaqCtaButton = styled(motion.button)`
 const Branding = () => {
   // Add modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
+  const { t } = useTranslation();
+
   // Modal functions
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -4147,34 +4129,28 @@ const Branding = () => {
   // FAQ data specific to branding
   const faqData = [
     {
-      question: '1. Яка різниця між логотипом і фірмовим стилем?',
-      answer:
-        'Логотип — це лише один елемент. Фірмовий стиль включає повний візуальний комплект: кольори, шрифти, візуальні правила, іконки, оформлення соцмереж і т. д.',
+      question: t('brandingPage.faqData.question1'),
+      answer: t('brandingPage.faqData.answer1'),
     },
     {
-      question: '2. Чи можна замовити лише частину фірмового стилю?',
-      answer:
-        'Так, ми можемо адаптувати послугу під ваш запит — наприклад, розробити лише логотип або оновити палітру й типографіку для вже існуючого бренду.',
+      question: t('brandingPage.faqData.question2'),
+      answer: t('brandingPage.faqData.answer2'),
     },
     {
-      question: '3. Чи отримаю я брендбук?',
-      answer:
-        'Так, у базовий пакет входить гайдлайн з основними правилами використання стилю. За потреби ми можемо створити повноцінний брендбук з розширеними прикладами.',
+      question: t('brandingPage.faqData.question3'),
+      answer: t('brandingPage.faqData.answer3'),
     },
     {
-      question: '4. Скільки часу триває розробка фірмового стилю?',
-      answer:
-        'В середньому — від 2 до 4 тижнів, залежно від обсягу робіт і швидкості погодження. Ми погоджуємо дедлайни ще до старту.',
+      question: t('brandingPage.faqData.question4'),
+      answer: t('brandingPage.faqData.answer4'),
     },
     {
-      question: '5. Чи можу я внести правки до запропонованого дизайну?',
-      answer:
-        'Так, передбачено 1–2 раунди коригувань у межах затвердженої концепції. Ми враховуємо ваші побажання, зберігаючи професійну якість.',
+      question: t('brandingPage.faqData.question5'),
+      answer: t('brandingPage.faqData.answer5'),
     },
     {
-      question: '6. У яких форматах я отримаю фінальні матеріали?',
-      answer:
-        'Ми передаємо логотип і елементи стилю у форматах для друку (.ai, .pdf) і для digital (.png, .svg, .jpg). Шрифти — з ліцензіями або рекомендаціями.',
+      question: t('brandingPage.faqData.question6'),
+      answer: t('brandingPage.faqData.answer6'),
     },
   ];
 
@@ -4199,8 +4175,7 @@ const Branding = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Розробка фірмового стилю — <span>візуальна ДНК</span> вашого
-              бізнесу
+              {t('brandingPage.heroTitle')}
             </HeroTitle>
 
             <HeroDescription
@@ -4208,10 +4183,7 @@ const Branding = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              Айдентика — це не просто логотип чи кольори. Це візуальна мова,
-              яка доносить ваш характер, цінності та настрій до аудиторії. Ми
-              створюємо фірмовий стиль, що працює на вас — кожен елемент
-              підсилює впізнаваність і відрізняє бренд серед конкурентів.
+              {t('brandingPage.heroDescription')}
             </HeroDescription>
 
             <HeroButtons
@@ -4224,7 +4196,7 @@ const Branding = () => {
                 whileTap={{ scale: 0.98 }}
                 onClick={openModal}
               >
-                Замовити розробку <FaArrowRight />
+                {t('brandingPage.orderButton')} <FaArrowRight />
               </PrimaryButton>
             </HeroButtons>
 
@@ -4237,21 +4209,21 @@ const Branding = () => {
                 <HeroFeatureIcon>
                   <FaFingerprint />
                 </HeroFeatureIcon>
-                <FeatureText>Унікальність</FeatureText>
+                <FeatureText>{t('brandingPage.feature1')}</FeatureText>
               </FeatureItem>
 
               <FeatureItem>
                 <HeroFeatureIcon>
                   <FaRegEye />
                 </HeroFeatureIcon>
-                <FeatureText>Впізнаваність</FeatureText>
+                <FeatureText>{t('brandingPage.feature2')}</FeatureText>
               </FeatureItem>
 
               <FeatureItem>
                 <HeroFeatureIcon>
                   <FaSwatchbook />
                 </HeroFeatureIcon>
-                <FeatureText>Системність</FeatureText>
+                <FeatureText>{t('brandingPage.feature3')}</FeatureText>
               </FeatureItem>
             </HeroFeatures>
           </HeroContent>
@@ -4322,7 +4294,7 @@ const Branding = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              Що таке фірмовий стиль і навіщо він потрібен
+              {t('brandingPage.aboutTitle')}
             </BrandStyleTitle>
           </BrandStyleHeader>
 
@@ -4334,7 +4306,7 @@ const Branding = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                Основні елементи айдентики
+                {t('brandingPage.elementsTitle')}
               </ElementsSectionTitle>
 
               <ElementsDescription
@@ -4343,8 +4315,7 @@ const Branding = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Фірмовий стиль — це комплекс візуальних рішень, які формують
-                цілісне сприйняття бренду. До нього входять:
+                {t('brandingPage.elementsDescription')}
               </ElementsDescription>
 
               <BrandElements>
@@ -4358,10 +4329,11 @@ const Branding = () => {
                     <FaFingerprint />
                   </ElementIcon>
                   <ElementContent>
-                    <ElementTitle>Логотип та його варіації</ElementTitle>
+                    <ElementTitle>
+                      {t('brandingPage.elementLogoTitle')}
+                    </ElementTitle>
                     <ElementDescription>
-                      Унікальний графічний символ для миттєвої ідентифікації
-                      бренду
+                      {t('brandingPage.elementLogoDesc')}
                     </ElementDescription>
                   </ElementContent>
                 </BrandElement>
@@ -4376,10 +4348,11 @@ const Branding = () => {
                     <FaPalette />
                   </ElementIcon>
                   <ElementContent>
-                    <ElementTitle>Колірна палітра</ElementTitle>
+                    <ElementTitle>
+                      {t('brandingPage.elementPaletteTitle')}
+                    </ElementTitle>
                     <ElementDescription>
-                      Характерні кольори, що викликають потрібні емоції та
-                      асоціації
+                      {t('brandingPage.elementPaletteDesc')}
                     </ElementDescription>
                   </ElementContent>
                 </BrandElement>
@@ -4394,9 +4367,11 @@ const Branding = () => {
                     <FaFont />
                   </ElementIcon>
                   <ElementContent>
-                    <ElementTitle>Шрифти й типографічна сітка</ElementTitle>
+                    <ElementTitle>
+                      {t('brandingPage.elementTypographyTitle')}
+                    </ElementTitle>
                     <ElementDescription>
-                      Стильове оформлення текстів для узгодженої комунікації
+                      {t('brandingPage.elementTypographyDesc')}
                     </ElementDescription>
                   </ElementContent>
                 </BrandElement>
@@ -4411,9 +4386,11 @@ const Branding = () => {
                     <FaPencilAlt />
                   </ElementIcon>
                   <ElementContent>
-                    <ElementTitle>Іконки, патерни, ілюстрації</ElementTitle>
+                    <ElementTitle>
+                      {t('brandingPage.elementIconsTitle')}
+                    </ElementTitle>
                     <ElementDescription>
-                      Графічні елементи, що доповнюють загальну концепцію
+                      {t('brandingPage.elementIconsDesc')}
                     </ElementDescription>
                   </ElementContent>
                 </BrandElement>
@@ -4428,10 +4405,11 @@ const Branding = () => {
                     <FaSwatchbook />
                   </ElementIcon>
                   <ElementContent>
-                    <ElementTitle>Гайдлайн або брендбук</ElementTitle>
+                    <ElementTitle>
+                      {t('brandingPage.elementGuideTitle')}
+                    </ElementTitle>
                     <ElementDescription>
-                      Повний документ зі стандартами використання всіх елементів
-                      бренду для різних носіїв — від візиток до digital-кампаній
+                      {t('brandingPage.elementGuideDesc')}
                     </ElementDescription>
                   </ElementContent>
                 </BrandElementWide>
@@ -4445,7 +4423,7 @@ const Branding = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                Як стиль впливає на імідж компанії
+                {t('brandingPage.impactTitle')}
               </ElementsSectionTitle>
 
               <ElementsDescription
@@ -4454,8 +4432,7 @@ const Branding = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Фірмовий стиль — це перше враження, яке формується ще до
-                знайомства з продуктом. Якісний стиль:
+                {t('brandingPage.impactDescription')}
               </ElementsDescription>
 
               <ImpactGraphic
@@ -4475,28 +4452,28 @@ const Branding = () => {
                   <ImpactItemIcon>
                     <FaLightbulb />
                   </ImpactItemIcon>
-                  <ImpactItemText>Цінності компанії</ImpactItemText>
+                  <ImpactItemText>{t('brandingPage.impact1')}</ImpactItemText>
                 </ImpactItem>
 
                 <ImpactItem className="item2">
                   <ImpactItemIcon>
                     <FaUsers />
                   </ImpactItemIcon>
-                  <ImpactItemText>Довіра клієнтів</ImpactItemText>
+                  <ImpactItemText>{t('brandingPage.impact2')}</ImpactItemText>
                 </ImpactItem>
 
                 <ImpactItem className="item3">
                   <ImpactItemIcon>
                     <FaHeart />
                   </ImpactItemIcon>
-                  <ImpactItemText>Емоційний зв'язок</ImpactItemText>
+                  <ImpactItemText>{t('brandingPage.impact3')}</ImpactItemText>
                 </ImpactItem>
 
                 <ImpactItem className="item4">
                   <ImpactItemIcon>
                     <FaRegEye />
                   </ImpactItemIcon>
-                  <ImpactItemText>Впізнаваність</ImpactItemText>
+                  <ImpactItemText>{t('brandingPage.impact4')}</ImpactItemText>
                 </ImpactItem>
               </ImpactGraphic>
 
@@ -4513,11 +4490,10 @@ const Branding = () => {
                     </ImpactListIcon>
                     <ImpactListText>
                       <ImpactListTitle>
-                        Підкреслює цінності компанії
+                        {t('brandingPage.impactList1Title')}
                       </ImpactListTitle>
                       <ImpactListDescription>
-                        Візуальна мова передає філософію бренду та підкреслює
-                        його ключові цінності для аудиторії.
+                        {t('brandingPage.impactList1Desc')}
                       </ImpactListDescription>
                     </ImpactListText>
                   </ImpactListItem>
@@ -4528,11 +4504,10 @@ const Branding = () => {
                     </ImpactListIcon>
                     <ImpactListText>
                       <ImpactListTitle>
-                        Формує довіру й професійний імідж
+                        {t('brandingPage.impactList2Title')}
                       </ImpactListTitle>
                       <ImpactListDescription>
-                        Якісний дизайн демонструє увагу до деталей і
-                        професіоналізм компанії на всіх рівнях взаємодії.
+                        {t('brandingPage.impactList2Desc')}
                       </ImpactListDescription>
                     </ImpactListText>
                   </ImpactListItem>
@@ -4543,11 +4518,10 @@ const Branding = () => {
                     </ImpactListIcon>
                     <ImpactListText>
                       <ImpactListTitle>
-                        Створює емоційний зв'язок із клієнтом
+                        {t('brandingPage.impactList3Title')}
                       </ImpactListTitle>
                       <ImpactListDescription>
-                        Гармонійний візуальний стиль викликає потрібні емоції та
-                        будує міцний зв'язок з аудиторією.
+                        {t('brandingPage.impactList3Desc')}
                       </ImpactListDescription>
                     </ImpactListText>
                   </ImpactListItem>
@@ -4558,11 +4532,10 @@ const Branding = () => {
                     </ImpactListIcon>
                     <ImpactListText>
                       <ImpactListTitle>
-                        Сприяє впізнаванню в офлайн та онлайн середовищі
+                        {t('brandingPage.impactList4Title')}
                       </ImpactListTitle>
                       <ImpactListDescription>
-                        Єдиний стиль забезпечує миттєве впізнавання бренду
-                        незалежно від каналу комунікації.
+                        {t('brandingPage.impactList4Desc')}
                       </ImpactListDescription>
                     </ImpactListText>
                   </ImpactListItem>
@@ -4590,7 +4563,7 @@ const Branding = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              Що входить до послуги розробки фірмового стилю
+              {t('brandingPage.servicesTitle')}
             </ServicesTitle>
           </ServicesHeader>
 
@@ -4601,7 +4574,7 @@ const Branding = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <ServiceBadge>Основа бренду</ServiceBadge>
+              <ServiceBadge>{t('brandingPage.serviceLogoBadge')}</ServiceBadge>
               <ServiceIconContainer>
                 <ServiceIconBg />
                 <ServiceIcon>
@@ -4609,11 +4582,9 @@ const Branding = () => {
                 </ServiceIcon>
               </ServiceIconContainer>
 
-              <ServiceTitle>Логотип</ServiceTitle>
+              <ServiceTitle>{t('brandingPage.serviceLogoTitle')}</ServiceTitle>
               <ServiceDescription>
-                Створюємо оригінальний знак, який передає сутність бренду.
-                Пропонуємо кілька концептів, адаптуємо логотип для різних
-                форматів — від мобільного додатку до білборду.
+                {t('brandingPage.serviceLogoDesc')}
               </ServiceDescription>
 
               <ServiceVisual>
@@ -4637,7 +4608,10 @@ const Branding = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <ServiceBadge>Емоційний вплив</ServiceBadge>
+              <ServiceBadge>
+                {' '}
+                {t('brandingPage.servicePaletteBadge')}
+              </ServiceBadge>
               <ServiceIconContainer>
                 <ServiceIconBg />
                 <ServiceIcon>
@@ -4645,11 +4619,11 @@ const Branding = () => {
                 </ServiceIcon>
               </ServiceIconContainer>
 
-              <ServiceTitle>Колірна палітра</ServiceTitle>
+              <ServiceTitle>
+                {t('brandingPage.servicePaletteTitle')}
+              </ServiceTitle>
               <ServiceDescription>
-                Підбираємо кольори, які відповідають емоційному тону бренду,
-                враховуємо психологію кольору, контрастність і практичність
-                використання на різних фонах.
+                {t('brandingPage.servicePaletteDesc')}
               </ServiceDescription>
 
               <ServiceVisual>
@@ -4669,7 +4643,9 @@ const Branding = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <ServiceBadge>Текстова комунікація</ServiceBadge>
+              <ServiceBadge>
+                {t('brandingPage.serviceTypographyBadge')}
+              </ServiceBadge>
               <ServiceIconContainer>
                 <ServiceIconBg />
                 <ServiceIcon>
@@ -4677,11 +4653,11 @@ const Branding = () => {
                 </ServiceIcon>
               </ServiceIconContainer>
 
-              <ServiceTitle>Шрифти та типографіка</ServiceTitle>
+              <ServiceTitle>
+                {t('brandingPage.serviceTypographyTitle')}
+              </ServiceTitle>
               <ServiceDescription>
-                Формуємо типографічну систему: основні та акцентні шрифти, стилі
-                заголовків, розміри та міжрядкові інтервали. Забезпечуємо
-                зручність читання й послідовність у візуальних комунікаціях.
+                {t('brandingPage.serviceTypographyDesc')}
               </ServiceDescription>
 
               <ServiceVisual>
@@ -4712,7 +4688,7 @@ const Branding = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <ServiceBadge>Стандарти використання</ServiceBadge>
+              <ServiceBadge>{t('brandingPage.serviceGuideBadge')}</ServiceBadge>
               <ServiceIconContainer>
                 <ServiceIconBg />
                 <ServiceIcon>
@@ -4720,11 +4696,9 @@ const Branding = () => {
                 </ServiceIcon>
               </ServiceIconContainer>
 
-              <ServiceTitle>Гайдлайн (брендбук)</ServiceTitle>
+              <ServiceTitle>{t('brandingPage.serviceGuideTitle')}</ServiceTitle>
               <ServiceDescription>
-                Готуємо документ з чіткими правилами використання всіх елементів
-                стилю. Це забезпечує цілісність візуального образу незалежно від
-                того, хто займається дизайном у майбутньому.
+                {t('brandingPage.serviceGuideDesc')}
               </ServiceDescription>
 
               <ServiceVisual>
@@ -4760,7 +4734,7 @@ const Branding = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              Наш підхід до створення айдентики
+              {t('brandingPage.approachTitle')}
             </ApproachTitle>
           </ApproachHeader>
 
@@ -4777,12 +4751,9 @@ const Branding = () => {
               }}
             >
               <StepNumber>01</StepNumber>
-              <StepTitle>Брифінг і дослідження ринку</StepTitle>
+              <StepTitle>{t('brandingPage.approachStep1Title')}</StepTitle>
               <StepDescription>
-                Починаємо з діалогу. Вивчаємо бренд, його аудиторію, цінності,
-                конкурентів. Аналізуємо ринок, визначаємо позиціонування. Це
-                формує основу для дизайну, який не просто гарний, а стратегічно
-                влучний.
+                {t('brandingPage.approachStep1Desc')}
               </StepDescription>
 
               <ProcessVisualizer>
@@ -4792,7 +4763,9 @@ const Branding = () => {
                       <FaUsers />
                     </div>
                     <div className="element-bar bar1"></div>
-                    <div className="element-label">Аудиторія</div>
+                    <div className="element-label">
+                      {t('brandingPage.approachStepItem1')}
+                    </div>
                   </div>
 
                   <div className="research-element">
@@ -4800,7 +4773,9 @@ const Branding = () => {
                       <FaLightbulb />
                     </div>
                     <div className="element-bar bar2"></div>
-                    <div className="element-label">Цінності</div>
+                    <div className="element-label">
+                      {t('brandingPage.approachStepItem2')}
+                    </div>
                   </div>
 
                   <div className="research-element">
@@ -4808,7 +4783,9 @@ const Branding = () => {
                       <FaLayerGroup />
                     </div>
                     <div className="element-bar bar3"></div>
-                    <div className="element-label">Конкуренти</div>
+                    <div className="element-label">
+                      {t('brandingPage.approachStepItem3')}
+                    </div>
                   </div>
 
                   <div className="research-element">
@@ -4816,7 +4793,9 @@ const Branding = () => {
                       <FaTag />
                     </div>
                     <div className="element-bar bar4"></div>
-                    <div className="element-label">Позиціонування</div>
+                    <div className="element-label">
+                      {t('brandingPage.approachStepItem4')}
+                    </div>
                   </div>
 
                   <div className="research-notes">
@@ -4840,12 +4819,9 @@ const Branding = () => {
               }}
             >
               <StepNumber>02</StepNumber>
-              <StepTitle>Концепція та ідея</StepTitle>
+              <StepTitle>{t('brandingPage.approachStep2Title')}</StepTitle>
               <StepDescription>
-                Ми не малюємо навмання. Усі елементи стилю підпорядковані ідеї —
-                візуальній метафорі бренду. Це може бути форма, символ, характер
-                руху, асоціативний ряд. У результаті народжується айдентика, що
-                говорить без слів.
+                {t('brandingPage.approachStep2Desc')}
               </StepDescription>
 
               <ProcessVisualizer>
@@ -4900,7 +4876,7 @@ const Branding = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              Переваги для бізнесу
+              {t('brandingPage.benefitsTitle')}
             </BenefitsTitle>
 
             <BenefitsIntro
@@ -4909,10 +4885,7 @@ const Branding = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Сильна візуальна айдентика — це більше, ніж естетика. Це
-              інструмент стратегічного впливу на сприйняття, продажі та
-              лояльність. Фірмовий стиль виконує чіткі бізнес-завдання, і ось як
-              саме:
+              {t('brandingPage.benefitsIntro')}
             </BenefitsIntro>
           </BenefitsHeader>
 
@@ -4928,13 +4901,9 @@ const Branding = () => {
                 <BenefitIconGlow />
                 <FaRegEye />
               </BenefitIcon>
-              <BenefitTitle>Впізнаваність на ринку</BenefitTitle>
+              <BenefitTitle>{t('brandingPage.benefit1Title')}</BenefitTitle>
               <BenefitDescription>
-                Коли в усіх точках контакту — від сайту до упаковки — бренд
-                виглядає послідовно, він запам'ятовується значно швидше. Це
-                економить ресурси на рекламу: достатньо кількох дотиків, щоб
-                аудиторія впізнала ваш стиль. Візуальна сталість створює ефект
-                знайомства, який перетворюється на довіру.
+                {t('brandingPage.benefit1Desc')}
               </BenefitDescription>
               <BenefitVisual>
                 <FaUsers />
@@ -4952,13 +4921,9 @@ const Branding = () => {
                 <BenefitIconGlow />
                 <FaRocket />
               </BenefitIcon>
-              <BenefitTitle>Конкурентна перевага</BenefitTitle>
+              <BenefitTitle>{t('brandingPage.benefit2Title')}</BenefitTitle>
               <BenefitDescription>
-                У більшості ніш візуальна айдентика або слабка, або хаотична. Ви
-                виграєте вже тим, що виглядаєте краще. Ваш бренд виділяється у
-                стрічці соцмереж, виглядає впевнено на презентації, професійно
-                на виставці. Потенційні клієнти сприймають вас як сильного
-                гравця — навіть до знайомства з продуктом.
+                {t('brandingPage.benefit2Desc')}
               </BenefitDescription>
               <BenefitVisual>
                 <FaLayerGroup />
@@ -4976,12 +4941,9 @@ const Branding = () => {
                 <BenefitIconGlow />
                 <FaSwatchbook />
               </BenefitIcon>
-              <BenefitTitle>Системність у комунікації</BenefitTitle>
+              <BenefitTitle>{t('brandingPage.benefit3Title')}</BenefitTitle>
               <BenefitDescription>
-                З фірмовим стилем ви отримуєте набір правил, які полегшують
-                дизайн будь-яких матеріалів. Більше не потрібно щоразу
-                вигадувати з нуля — просто дотримуйтесь гайду. Це економія часу,
-                коштів і нервів.
+                {t('brandingPage.benefit3Desc')}
               </BenefitDescription>
               <BenefitVisual>
                 <FaFolderOpen />
@@ -4999,11 +4961,9 @@ const Branding = () => {
                 <BenefitIconGlow />
                 <FaPlus />
               </BenefitIcon>
-              <BenefitTitle>Масштабованість бізнесу</BenefitTitle>
+              <BenefitTitle>{t('brandingPage.benefit4Title')}</BenefitTitle>
               <BenefitDescription>
-                Чітка айдентика дозволяє легко запускати нові продукти,
-                франшизи, філії або рекламні кампанії. Стиль гнучкий — але не
-                втрачає зв'язку з основним брендом. Це основа для зростання.
+                {t('brandingPage.benefit4Desc')}
               </BenefitDescription>
               <BenefitVisual>
                 <FaPlus />
@@ -5033,7 +4993,7 @@ const Branding = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              Наше натхнення — ваш успішний бренд
+              {t('brandingPage.inspirationTitle')}
             </InspirationTitle>
           </InspirationHeader>
 
@@ -5045,10 +5005,7 @@ const Branding = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                Кожен наш проєкт — це не про красиву картинку. Це про{' '}
-                <InspirationHighlight>суть</InspirationHighlight>, яку ми бачимо
-                у вашому бізнесі. Ми не копіюємо тренди — ми створюємо рішення,
-                які працюють саме для вас.
+                {t('brandingPage.inspirationParagraph1')}
               </InspirationParagraph>
 
               <InspirationParagraph
@@ -5057,11 +5014,7 @@ const Branding = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Ми надихаємось не чужими кейсами, а вашою{' '}
-                <InspirationHighlight>унікальною історією</InspirationHighlight>
-                , продуктом, амбіціями. Звідси й народжуються айдентики, що
-                резонують з аудиторією, викликають емоції, викристалізовують
-                характер бренду.
+                {t('brandingPage.inspirationParagraph2')}
               </InspirationParagraph>
 
               <InspirationParagraph
@@ -5070,9 +5023,7 @@ const Branding = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Ваша <InspirationHighlight>довіра</InspirationHighlight> — наша
-                відповідальність. Саме тому ми не робимо шаблонів, не працюємо
-                поверхнево і завжди пропонуємо більше, ніж очікуєте.
+                {t('brandingPage.inspirationParagraph3')}
               </InspirationParagraph>
             </InspirationText>
 
@@ -5143,7 +5094,7 @@ const Branding = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              Як замовити фірмовий стиль
+              {t('brandingPage.orderTitle')}
             </OrderProcessTitle>
 
             <OrderProcessSubtitle
@@ -5152,7 +5103,7 @@ const Branding = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Покрокова інструкція
+              {t('brandingPage.orderSubtitle')}
             </OrderProcessSubtitle>
 
             <OrderProcessDescription
@@ -5161,7 +5112,7 @@ const Branding = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              Ми гарантуємо підтримку на кожному етапі та відкриту комунікацію.
+              {t('brandingPage.orderDescription')}
             </OrderProcessDescription>
           </OrderProcessHeader>
 
@@ -5175,9 +5126,11 @@ const Branding = () => {
             >
               <StepContent className="step-content">
                 <div className="step-number">1</div>
-                <OrderStepTitle>Заявка</OrderStepTitle>
+                <OrderStepTitle>
+                  {t('brandingPage.orderStep1Title')}
+                </OrderStepTitle>
                 <OrderStepDescription>
-                  Ви звертаєтесь до нас з коротким описом запиту.
+                  {t('brandingPage.orderStep1Desc')}
                 </OrderStepDescription>
               </StepContent>
 
@@ -5199,10 +5152,11 @@ const Branding = () => {
             >
               <StepContent className="step-content">
                 <div className="step-number">2</div>
-                <OrderStepTitle>Брифінг</OrderStepTitle>
+                <OrderStepTitle>
+                  {t('brandingPage.orderStep2Title')}
+                </OrderStepTitle>
                 <OrderStepDescription>
-                  Заповнюєте анкету або проходите онлайн-зустріч для уточнення
-                  деталей.
+                  {t('brandingPage.orderStep2Desc')}
                 </OrderStepDescription>
               </StepContent>
 
@@ -5224,10 +5178,11 @@ const Branding = () => {
             >
               <StepContent className="step-content">
                 <div className="step-number">3</div>
-                <OrderStepTitle>Пропозиція</OrderStepTitle>
+                <OrderStepTitle>
+                  {t('brandingPage.orderStep3Title')}
+                </OrderStepTitle>
                 <OrderStepDescription>
-                  Ми надсилаємо комерційну пропозицію з термінами, ціною і
-                  складом послуги.
+                  {t('brandingPage.orderStep3Desc')}
                 </OrderStepDescription>
               </StepContent>
 
@@ -5249,10 +5204,11 @@ const Branding = () => {
             >
               <StepContent className="step-content">
                 <div className="step-number">4</div>
-                <OrderStepTitle>Початок роботи</OrderStepTitle>
+                <OrderStepTitle>
+                  {t('brandingPage.orderStep4Title')}
+                </OrderStepTitle>
                 <OrderStepDescription>
-                  Після погодження та оплати стартує етап дослідження і
-                  концепції.
+                  {t('brandingPage.orderStep4Desc')}
                 </OrderStepDescription>
               </StepContent>
 
@@ -5274,9 +5230,11 @@ const Branding = () => {
             >
               <StepContent className="step-content">
                 <div className="step-number">5</div>
-                <OrderStepTitle>Дизайн і презентація</OrderStepTitle>
+                <OrderStepTitle>
+                  {t('brandingPage.orderStep5Title')}
+                </OrderStepTitle>
                 <OrderStepDescription>
-                  Показуємо рішення, обговорюємо і коригуємо.
+                  {t('brandingPage.orderStep5Desc')}
                 </OrderStepDescription>
               </StepContent>
 
@@ -5298,9 +5256,11 @@ const Branding = () => {
             >
               <StepContent className="step-content">
                 <div className="step-number">6</div>
-                <OrderStepTitle>Передача файлів і гайдлайну</OrderStepTitle>
+                <OrderStepTitle>
+                  {t('brandingPage.orderStep6Title')}
+                </OrderStepTitle>
                 <OrderStepDescription>
-                  Фіналізуємо всі матеріали й передаємо вам зручним способом.
+                  {t('brandingPage.orderStep6Desc')}
                 </OrderStepDescription>
               </StepContent>
 
@@ -5324,7 +5284,7 @@ const Branding = () => {
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
             >
-              Замовити фірмовий стиль <FaArrowRight />
+              {t('brandingPage.orderCta')} <FaArrowRight />
             </OrderCta>
           </OrderCtaContainer>
         </OrderProcessContainer>
@@ -5412,7 +5372,7 @@ const Branding = () => {
             transition={{ duration: 0.6, delay: 1.2 }}
           >
             <FaqCtaText>
-              Маєте додаткові запитання щодо фірмового стилю?
+            {t('brandingPage.faqCta')}
             </FaqCtaText>
             <FaqCtaButton
               whileHover={{
@@ -5422,14 +5382,14 @@ const Branding = () => {
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
             >
-              Зв'язатися з нами <FaArrowRight />
+              {t('brandingPage.faqCtaButton')} <FaArrowRight />
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
       </FaqSection>
 
       {/* Дополнительные секции будут добавлены здесь */}
-      
+
       {/* Modal Window */}
       <Modal isOpen={isModalOpen} onClose={closeModal} />
     </PageContainer>
