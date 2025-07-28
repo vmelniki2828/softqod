@@ -2026,14 +2026,16 @@ const resources = {
         philosophyAdvantage3: 'Faster achievement of business goals',
         philosophyResult:
           'The result is a digital product that is intuitive, aesthetically pleasing, technically perfect, and, most importantly, effectively solves business problems.',
-        
-        //Approach to UX/UI design — functionality, logic, aesthetics 
-        approachTitle: 'Approach to UX/UI design — functionality, logic, aesthetics',
-        approachText: 'Our approach to UX/UI design is based on global best practices for creating interfaces that work equally well for both users and businesses. We offer solutions that are based on real data and research.',
-        items1:{
+
+        //Approach to UX/UI design — functionality, logic, aesthetics
+        approachTitle:
+          'Approach to UX/UI design — functionality, logic, aesthetics',
+        approachText:
+          'Our approach to UX/UI design is based on global best practices for creating interfaces that work equally well for both users and businesses. We offer solutions that are based on real data and research.',
+        items1: {
           title: 'User and competitor research',
           text: 'We analyze the behavior of the target audience and the competitive environment to develop effective UX/UI solutions.',
-          item1: "Interview",
+          item1: 'Interview',
           item2: 'Data analysis',
           item3: 'User profiling',
           item4: 'Audience',
@@ -2041,29 +2043,29 @@ const resources = {
           item6: 'Competitors',
           item7: 'Scenarios',
         },
-        items2:{
+        items2: {
           title: 'UX architecture and prototyping',
           text: 'We design logical structures and interaction scenarios to create intuitive navigation and a user-friendly interface.',
-          item1: "Custom flows",
+          item1: 'Custom flows',
           item2: 'Wireframes',
           item3: 'Prototypes',
         },
-         items3:{
+        items3: {
           title: 'Brand-style UI design',
           text: 'We develop visual elements in accordance with your corporate identity, ensuring accessibility and consistency of the user experience.',
-          item1: "Visual design",
+          item1: 'Visual design',
           item2: 'Accessibility',
           item3: 'Components',
         },
-         items4:{
+        items4: {
           title: 'Testing, UX optimization and transfer to development',
           text: 'We test our solutions with real users, optimize them for a seamless experience, and prepare files for the frontend team.',
-          item1: "Usability testing",
+          item1: 'Usability testing',
           item2: 'Optimization',
           item3: 'Documentation',
         },
-        
-          // Business Benefits Section
+
+        // Business Benefits Section
         benefitsTitle: 'What UX/UI design gives your business',
         benefitsSubtitle:
           'By ordering UX/UI design from us, you get not just a beautiful picture — but a full-fledged tool for business growth.',
@@ -2094,24 +2096,20 @@ const resources = {
         solution1Feature1: 'Clear structure',
         solution1Feature2: 'Strong visual accents',
         solution1Feature3: 'Clear navigation for different target groups',
-        solution1Result:
-          'Result:',
-        solution1ResultItem:
-          'brand reputation + trust from the first click',
+        solution1Result: 'Result:',
+        solution1ResultItem: 'brand reputation + trust from the first click',
         solution2Type: 'UX/UI for online stores',
         solution2Feature1: 'Convenient catalog',
         solution2Feature2: 'Optimized checkout',
         solution2Feature3: 'Mobile adaptation focused on speed',
-        solution2Result:
-          'Result: ',
+        solution2Result: 'Result: ',
         solution2ResultItem:
           'increased conversion and reduced cart abandonment',
         solution3Type: 'UX/UI for startups and MVP',
         solution3Feature1: 'Quick prototype for testing',
         solution3Feature2: 'Minimalistic UI with MVP logic',
         solution3Feature3: 'Scalability',
-        solution3Result:
-          'Result: ',
+        solution3Result: 'Result: ',
         solution3ResultItem:
           'fast market entry with a quality first impression',
         solution4Type: 'UX/UI for mobile applications',
@@ -2164,6 +2162,386 @@ const resources = {
             'Send a short description of your project or contact us for a briefing. We will clarify the tasks, offer an approach, and calculate the cost.',
         },
         faqCta: 'Have additional questions about UX/UI design?',
+        faqCtaButton: 'Contact us',
+      },
+      typographyLetteringPage: {
+        // Hero Section
+        heroTitle: "Typography and Lettering — your brand's unique style",
+        heroDescription:
+          "Typography and lettering are not just about text styling. They are a powerful communication tool that forms the first impression of a brand. The right choice of fonts and custom word design can emphasize the company's character, convey its values, and inspire trust.",
+        orderButton: 'Order development',
+        feature1: 'Uniqueness',
+        feature2: 'Expressiveness',
+        feature3: 'Individuality',
+
+        // Typography Importance
+        importanceTitle: 'The importance of typography for branding',
+        whatIsTypography: 'What is typography?',
+        whatIsTypographyText1:
+          "Typography is the art and technique of arranging, selecting, and styling text to convey ideas and create an impression. It's how text looks, feels, and is perceived, and it's an integral part of design and communication.",
+        whatIsTypographyText2:
+          'Good typography creates hierarchy, sets the tone, mood, and atmosphere, and also creates a recognizable brand image for your company, making it easily memorable for the audience.',
+        influenceTitle: 'Impact on the brand',
+        influenceText:
+          "Properly chosen typography does more than just convey information. It shapes the perception of your brand and can influence your clients' decision-making.",
+        influenceList1: 'Forms the non-verbal communication of your brand',
+        influenceList2: 'Creates and strengthens brand identity',
+        influenceList3: 'Builds information hierarchy and improves readability',
+        influenceList4: 'Evokes an emotional response from the audience',
+        influenceConclusion:
+          "Choosing typography is a strategic decision that should reflect your brand's values and positioning, resonate with your target audience, and set you apart from competitors.",
+        item1: 'Technological',
+        item2: 'Creative',
+        item3: 'Premium',
+        item4: 'Benevolent',
+
+        // Lettering Section
+        letteringArtTitle: 'Lettering as the art of individual style',
+        letteringDiffTitle: 'How is lettering different from fonts',
+        letteringDiffText1:
+          'A font is a ready-made set of characters. Lettering is individually drawn letters. It is not repeated, created for a specific word, project, or logo. This is a maximally personalized element that cannot be copied or forged.',
+        letteringDiffText2:
+          'Lettering is appropriate when a unique accent is needed — in the brand name, logo, packaging, poster. It adds character and a living emotion that a standard font cannot provide.',
+        letteringFeature1: 'Uniqueness',
+        letteringFeature2: 'Emotionality',
+        letteringFeature3: 'Originality',
+        letteringVsTitle: 'Font vs Lettering',
+        itemLettering1: 'Type',
+        itemLettering2: 'Brand',
+        itemLettering3: 'Identical symbols',
+        itemLettering4: 'Lettering',
+        itemLettering5: 'Brand',
+        itemLettering6: 'Unique, hand-drawn symbols',
+        itemLettering7: 'Application:',
+        itemLettering8: 'Logos and headers',
+        itemLettering9: 'Packaging and labels',
+        itemLettering10: 'Posters and signs',
+        itemLettering11: 'Book covers',
+        letteringVsSubtitle: 'Visual comparison',
+        letteringShowcaseTitle: 'Lettering examples',
+        letteringCta: 'Want to create unique lettering for your project?',
+        letteringCtaButton: 'Order lettering',
+
+        // Methodology Section
+        methodologyTitle: 'Our approach to typography and lettering',
+        methodologyStep1Title: 'Brand and target audience analysis',
+        methodologyStep1Text:
+          "Before creating a typographic system or lettering, we study the brand: its positioning, values, target audience, and competitors' visual solutions. This allows us to work in context and create relevant, not random, elements.",
+        methodologyStep1Point1: 'Audience analysis',
+        methodologyStep1Point2: 'Competitor analysis',
+        methodologyStep1Point3: 'Font pair selection',
+        methodologyStep2Title:
+          'Style selection: classic, minimalism, experiment',
+        methodologyStep2Text:
+          'Depending on the tasks, we choose the style: grotesque or serif, minimalism or elaborate design. Classic solutions add solidity, experimental ones make you stand out among competitors.',
+        methodologyStep2Option1: 'Classic',
+        methodologyStep2Option11:
+          'for brands focused on reliability and prestige',
+        methodologyStep2Option2: 'Minimalism',
+        methodologyStep2Option22: 'for modern tech brands',
+        methodologyStep2Option3: 'Experiment',
+        methodologyStep2Option33:
+          'for creative industries and brands that want to go beyond',
+        methodologyStepTextItem:
+          'Style is not defined by fashion, but by purpose: what reaction a visual solution should evoke.',
+        methodologyStep3Title: 'Consistency with the overall brand design',
+        methodologyStep3Text:
+          'Typography and lettering do not exist in isolation. They are woven into the identity — logo, colors, layouts. We achieve complete visual integrity. Everything looks harmonious, logical, and stylish on all media — from the website to offline materials.',
+        methodologyStepItem1: 'Web',
+        methodologyStepItem2: 'Printing industry',
+        methodologyStepItem3: 'Mobile',
+
+        // Benefits Section
+        benefitsTitle: 'Benefits of professional typography and lettering',
+        benefit1Title: 'Increased recognition',
+        benefit1Text:
+          'Unique typography makes the brand recognizable even without a logo. It creates visual associations that stick in memory. One font — and the user remembers you.',
+        benefit2Title: 'Brand uniqueness',
+        benefit2Text:
+          'We create non-standard solutions — lettering or custom typography that are not available in template generators. Your brand gets its own visual language.',
+        benefit3Title: 'Better visual perception',
+        benefit3Text:
+          'Quality typography improves readability, structures content, and directs attention. This is especially critical in interfaces, presentations, and advertising.',
+        benefitItem1: 'Logotype',
+        benefitItem2: 'Typography',
+        benefitItem3: 'Recognition',
+        benefitItem4: 'Template',
+        benefitItem5: 'Custom',
+        benefitItem6: 'To',
+        benefitItem7: 'After',
+
+        // Workflow Section
+        workflowTitle:
+          'How we work — an example of our approach to each project',
+        workflowDescription:
+          'Each brand is a separate story, so we do not use templates. Our approach is a combination of analytics, design expertise, and attention to detail. We do not just select fonts — we form a typographic system that works for brand identity.',
+        workflowTextItem: 'Process',
+        workflowStep1: {
+          title: 'Briefing and initial immersion',
+          description:
+            'We start with a deep understanding of your business: who you are, what makes you different, who your audience is, and what style you want to communicate with them in. We study your products, services, brand mission, and existing visual elements.',
+          items: {
+            item1: 'Brand analysis',
+            item2: 'Competitor research',
+            item3: 'Target audience research',
+            item4: 'Technical requirements',
+            item5: 'Products/services',
+          },
+        },
+        workflowStep2: {
+          title: 'Market and competitor analysis',
+          description:
+            "We research the environment your brand operates in. We study competitors' visual solutions, font trends in your niche, and analyze typical approaches to avoid repetition and create distinction.",
+          items: {
+            item1: 'Competitor A',
+            item2: 'Competitor Б',
+            item3: 'Competitor В',
+          },
+        },
+        workflowStep3: {
+          title: 'Concept development',
+          description:
+            'At this stage, we offer several directions: typographic pairs, style references, lettering options. If necessary, we create sketches of handwritten solutions that emphasize individuality.',
+        },
+        workflowStep4: {
+          title: 'Design and testing',
+          description:
+            'We create the final version of typography or lettering, check how it looks in real scenarios: in a logo, on a website, in mockups, on social networks. We take into account adaptability and readability on different media.',
+        },
+        workflowStep5: {
+          title: 'Coordination and preparation of final materials',
+          description:
+            'After approval, we transfer all necessary files — in formats for printing and digital use. Upon request, we prepare a mini-guideline or instructions on the correct use of fonts or lettering.',
+          textItem: 'Guideline',
+        },
+
+        // Order Section
+        orderTitle: 'How to order the service',
+        orderSubtitle: 'Stages of cooperation',
+        orderDescription:
+          'We have made the process as convenient as possible for the client — without unnecessary bureaucracy, but with full quality control at every stage.',
+        orderStep1: {
+          title: 'Application',
+          description:
+            'Leave a request via the form on the website or send an email with a brief description of the task. We will respond within one business day.',
+        },
+        orderStep2: {
+          title: 'Discussion of the problem',
+          description:
+            'We ask clarifying questions, discuss expectations, style, and scope of work. If necessary, we send a short brief to fill out.',
+        },
+        orderStep3: {
+          title: 'Commercial offer',
+          description:
+            'We create a clear offer with cost, terms, and scope. You understand exactly what you will get, how much it costs, and when it will be ready.',
+        },
+        orderStep4: {
+          title: 'Start of work',
+          description:
+            'After agreeing on the terms, we sign a contract or confirmation of the start. The development phase begins: research, concepts, sketches.',
+        },
+        orderStep5: {
+          title: 'Interim approval',
+          description:
+            'During the draft decisions stage, we show interim options to agree on direction and make adjustments before finalization. You are involved in the process.',
+        },
+        orderStep6: {
+          title: 'Completion and transfer of the result',
+          description:
+            'You receive all the files in convenient formats, as well as explanations on how to use them. Once completed, you are left with a visual asset that works for your brand.',
+        },
+
+        // FAQ Section
+        faqTitle: 'FAQ',
+        faqData: {
+          question1: 'Can I use one font for all brand media?',
+          answer1:
+            'No, usually a typographic system is created from several fonts — main, accent, and auxiliary. They perform different functions: headings, body text, captions, etc. This provides flexibility and maintains style unity.',
+          question2: 'Do I need to buy licenses for fonts?',
+          answer2:
+            'Yes, if you use commercial fonts. We always select fonts taking into account usage rights — from open libraries or with a clear license. Free fonts are not always high-quality or unique.',
+          question3:
+            'What is the advantage of custom lettering compared to a logo based on a font?',
+          answer3:
+            'Custom lettering is created from scratch and takes into account the shape, rhythm, and uniqueness of the brand name. This ensures absolute exclusivity. A font-based logo is faster, but not always distinctive enough from competitors.',
+          question4:
+            'Can I get the font in a format for installation on my computer?',
+          answer4:
+            'Yes, if a custom font is developed or the selected typography includes downloadable files. You will receive files in OTF/TTF/WOFF formats + installation and usage instructions.',
+          question5:
+            'Can I order only lettering without a full corporate style?',
+          answer5:
+            'Of course. Lettering is a separate service. It can be used as an accent on packaging, posters, merchandise, or even on social networks. We adapt the result to your tasks.',
+          question6: 'How long does it take to create typography or lettering?',
+          answer6:
+            'On average — from 5 to 15 working days, depending on complexity. Simple font selection is faster. Unique lettering or a system with fonts for different media requires more time for research and detail development.',
+        },
+        faqCta: 'Have additional questions about typography or lettering?',
+        faqCtaButton: 'Contact us',
+      },
+      brandingPage: {
+        // Hero Section
+        heroTitle:
+          'Corporate identity development — the visual DNA of your business',
+        heroDescription:
+          "Identity is not just a logo or colors. It's a visual language that conveys your character, values, and mood to the audience. We create a corporate style that works for you — every element enhances recognition and distinguishes the brand among competitors.",
+        orderButton: 'Order development',
+        feature1: 'Uniqueness',
+        feature2: 'Recognition',
+        feature3: 'Systematic',
+
+        // About corporate identity
+        aboutTitle: 'What is corporate identity and why do you need it',
+        elementsTitle: 'Key elements of identity',
+        elementsDescription:
+          'Corporate identity is a set of visual solutions that form a holistic perception of the brand. It includes:',
+        elementLogoTitle: 'Logo and its variations',
+        elementLogoDesc:
+          'A unique graphic symbol for instant brand identification',
+        elementPaletteTitle: 'Color palette',
+        elementPaletteDesc:
+          'Characteristic colors that evoke the right emotions and associations',
+        elementTypographyTitle: 'Fonts and typographic grid',
+        elementTypographyDesc: 'Text styling for consistent communication',
+        elementIconsTitle: 'Icons, patterns, illustrations',
+        elementIconsDesc:
+          'Graphic elements that complement the overall concept',
+        elementGuideTitle: 'Guideline or brandbook',
+        elementGuideDesc:
+          'A complete document with standards for using all brand elements for different media — from business cards to digital campaigns',
+
+        // Impact of corporate identity
+        impactTitle: "How style affects the company's image",
+        impactDescription:
+          'Corporate identity is the first impression formed even before getting to know the product. Quality style:',
+        impact1: 'Company values',
+        impact2: 'Customer trust',
+        impact3: 'Emotional connection',
+        impact4: 'Recognition',
+
+        impactList1Title: 'Emphasizes company values',
+        impactList1Desc:
+          "The visual language conveys the brand's philosophy and emphasizes its key values to the audience.",
+        impactList2Title: 'Builds trust and a professional image',
+        impactList2Desc:
+          'Quality design demonstrates attention to detail and professionalism at all levels of interaction.',
+        impactList3Title: 'Creates an emotional connection with the client',
+        impactList3Desc:
+          'A harmonious visual style evokes the right emotions and builds a strong connection with the audience.',
+        impactList4Title:
+          'Promotes recognition in offline and online environments',
+        impactList4Desc:
+          'A unified style ensures instant brand recognition regardless of the communication channel.',
+
+        // Services
+        servicesTitle:
+          'What is included in the corporate identity development service',
+        serviceLogoBadge: 'Brand foundation',
+        serviceLogoTitle: 'Logo',
+        serviceLogoDesc:
+          'We create an original sign that conveys the essence of the brand. We offer several concepts and adapt the logo for different formats — from a mobile app to a billboard.',
+        servicePaletteBadge: 'Emotional impact',
+        servicePaletteTitle: 'Color palette',
+        servicePaletteDesc:
+          'We select colors that match the emotional tone of the brand, taking into account color psychology, contrast, and practicality for use on different backgrounds.',
+        serviceTypographyBadge: 'Text communication',
+        serviceTypographyTitle: 'Fonts and typography',
+        serviceTypographyDesc:
+          'We form a typographic system: main and accent fonts, heading styles, sizes, and line spacing. We ensure readability and consistency in visual communications.',
+        serviceGuideBadge: 'Usage standards',
+        serviceGuideTitle: 'Guideline (brandbook)',
+        serviceGuideDesc:
+          'We prepare a document with clear rules for using all style elements. This ensures the integrity of the visual image regardless of who does the design in the future.',
+
+        // Approach
+        approachTitle: 'Our approach to creating identity',
+        approachStep1Title: 'Briefing and market research',
+        approachStep1Desc:
+          'We start with a dialogue. We study the brand, its audience, values, competitors. We analyze the market, determine positioning. This forms the basis for a design that is not just beautiful, but strategically accurate.',
+        approachStep2Title: 'Concept and idea',
+        approachStep2Desc:
+          "We don't draw at random. All style elements are subordinated to the idea — the brand's visual metaphor. It can be a shape, symbol, movement character, associative series. As a result, an identity is born that speaks without words.",
+        approachStepItem1: 'Audience',
+        approachStepItem2: 'Values',
+        approachStepItem3: 'Competitors',
+        approachStepItem4: 'Positioning',
+
+
+        // Benefits
+        benefitsTitle: 'Business benefits',
+        benefitsIntro:
+          'A strong visual identity is more than aesthetics. It is a tool for strategic influence on perception, sales, and loyalty. Corporate identity solves clear business tasks, and here’s how:',
+        benefit1Title: 'Market recognition',
+        benefit1Desc:
+          'When the brand looks consistent at all touchpoints — from the website to packaging — it is remembered much faster. This saves advertising resources: just a few touches for the audience to recognize your style. Visual consistency creates a sense of familiarity that turns into trust.',
+        benefit2Title: 'Competitive advantage',
+        benefit2Desc:
+          'In most niches, visual identity is either weak or chaotic. You win simply by looking better. Your brand stands out in social media feeds, looks confident in presentations, and professional at exhibitions. Potential clients perceive you as a strong player — even before getting to know the product.',
+        benefit3Title: 'Systematic communication',
+        benefit3Desc:
+          'With corporate identity, you get a set of rules that make designing any materials easier. No need to invent from scratch every time — just follow the guide. This saves time, money, and nerves.',
+        benefit4Title: 'Business scalability',
+        benefit4Desc:
+          'Clear identity makes it easy to launch new products, franchises, branches, or advertising campaigns. The style is flexible — but does not lose connection with the main brand. This is the foundation for growth.',
+
+        // Inspiration
+        inspirationTitle: 'Our inspiration is your successful brand',
+        inspirationParagraph1:
+          "Every project of ours is not about a pretty picture. It's about the essence we see in your business. We don't copy trends — we create solutions that work specifically for you.",
+        inspirationParagraph2:
+          "We are inspired not by someone else's cases, but by your unique story, product, ambitions. This is where identities are born that resonate with the audience, evoke emotions, and crystallize the brand's character.",
+        inspirationParagraph3:
+          'Your trust is our responsibility. That’s why we don’t make templates, don’t work superficially, and always offer more than you expect.',
+
+        // Order
+        orderTitle: 'How to order corporate identity',
+        orderSubtitle: 'Step-by-step instructions',
+        orderDescription:
+          'We guarantee support at every stage and open communication.',
+        orderStep1Title: 'Request',
+        orderStep1Desc:
+          'You contact us with a brief description of your request.',
+        orderStep2Title: 'Briefing',
+        orderStep2Desc:
+          'You fill out a questionnaire or have an online meeting to clarify details.',
+        orderStep3Title: 'Proposal',
+        orderStep3Desc:
+          'We send a commercial proposal with deadlines, price, and service composition.',
+        orderStep4Title: 'Start of work',
+        orderStep4Desc:
+          'After approval and payment, the research and concept stage begins.',
+        orderStep5Title: 'Design and presentation',
+        orderStep5Desc: 'We show solutions, discuss, and make adjustments.',
+        orderStep6Title: 'File and guideline delivery',
+        orderStep6Desc:
+          'We finalize all materials and deliver them to you in a convenient way.',
+        orderCta: 'Order corporate identity',
+
+        // FAQ
+        faqTitle: 'FAQ',
+        faqData: {
+          question1:
+            '1. What is the difference between a logo and a corporate identity?',
+          answer1:
+            'A logo is just one element. Corporate identity includes a complete visual set: colors, fonts, visual rules, icons, social media design, etc.',
+          question2: '2. Can I order only part of the corporate identity?',
+          answer2:
+            'Yes, we can adapt the service to your request — for example, develop only a logo or update the palette and typography for an existing brand.',
+          question3: '3. Will I get a brandbook?',
+          answer3:
+            'Yes, the basic package includes a guideline with the main rules for using the style. If necessary, we can create a full brandbook with extended examples.',
+          question4:
+            '4. How long does it take to develop a corporate identity?',
+          answer4:
+            'On average — from 2 to 4 weeks, depending on the scope of work and the speed of approval. We agree on deadlines before starting.',
+          question5: '5. Can I make changes to the proposed design?',
+          answer5:
+            'Yes, 1–2 rounds of adjustments are provided within the approved concept. We take your wishes into account while maintaining professional quality.',
+          question6: '6. In what formats will I receive the final materials?',
+          answer6:
+            'We provide the logo and style elements in print formats (.ai, .pdf) and for digital (.png, .svg, .jpg). Fonts — with licenses or recommendations.',
+        },
+        faqCta: 'Have additional questions about corporate identity?',
         faqCtaButton: 'Contact us',
       },
     },
@@ -4206,10 +4584,12 @@ const resources = {
         philosophyResult:
           'Результат — цифровий продукт, який інтуїтивно зрозумілий, естетично привабливий, технічно досконалий і, головне, ефективно вирішує бізнес-завдання.',
 
-        //Approach to UX/UI design — functionality, logic, aesthetics 
-         approachTitle: 'Підхід до UX/UI дизайну — функціональність, логіка, естетика',
-         approachText: 'Наш підхід до UX/UI дизайну базується на найкращих світових практиках створення інтерфейсів, що однаково добре працюють як для користувачів, так і для бізнесу. Ми пропонуємо рішення, обґрунтовані реальними даними та дослідженнями.',
-         items1:{
+        //Approach to UX/UI design — functionality, logic, aesthetics
+        approachTitle:
+          'Підхід до UX/UI дизайну — функціональність, логіка, естетика',
+        approachText:
+          'Наш підхід до UX/UI дизайну базується на найкращих світових практиках створення інтерфейсів, що однаково добре працюють як для користувачів, так і для бізнесу. Ми пропонуємо рішення, обґрунтовані реальними даними та дослідженнями.',
+        items1: {
           title: 'Дослідження користувачів і конкурентів',
           text: 'Аналізуємо поведінку цільової аудиторії та конкурентне середовище, щоб розробити ефективні UX/UI рішення.',
           item1: "Інтерв'ю",
@@ -4220,29 +4600,29 @@ const resources = {
           item6: 'Конкуренти',
           item7: 'Сценарії',
         },
-         items2:{
+        items2: {
           title: 'UX-архітектура та прототипування',
           text: 'Проектуємо логічні структури та сценарії взаємодії для створення інтуїтивно зрозумілої навігації та зручного інтерфейсу.',
-          item1: "Користувацькі потоки",
+          item1: 'Користувацькі потоки',
           item2: 'Вайрфрейми',
           item3: 'Прототипи',
         },
-         items3:{
+        items3: {
           title: 'UI-дизайн у стилі бренду',
           text: 'Розробляємо візуальні елементи відповідно до вашої фірмової айдентики, забезпечуючи доступність та узгодженість користувацького досвіду.',
-          item1: "Візуальний дизайн",
+          item1: 'Візуальний дизайн',
           item2: 'Доступність',
           item3: 'Компоненти',
         },
-         items4:{
+        items4: {
           title: 'Тестування, UX-оптимізація та передача в розробку',
           text: 'Тестуємо наші рішення з реальними користувачами, оптимізуємо їх для безперебійного досвіду та готуємо файли для фронтенд-команди.',
-          item1: "Юзабіліті-тестування",
+          item1: 'Юзабіліті-тестування',
           item2: 'Оптимізація',
           item3: 'Документація',
         },
-        
-         // Business Benefits Section
+
+        // Business Benefits Section
         benefitsTitle: 'Що дає UX/UI дизайн для вашого бізнесу',
         benefitsSubtitle:
           'Замовляючи UX/UI дизайн у нас, ви отримуєте не просто красиву картинку — а повноцінний інструмент для зростання бізнесу.',
@@ -4279,26 +4659,22 @@ const resources = {
         solution2Feature1: 'Зручний каталог',
         solution2Feature2: 'Оптимізований чек-аут',
         solution2Feature3: 'Мобільна адаптація з фокусом на швидкість',
-        solution2Result:
-          'Результат:',
+        solution2Result: 'Результат:',
         solution2ResultItem:
           'зростання конверсії та зменшення покинутого кошика',
         solution3Type: 'UX/UI для стартапів та MVP',
         solution3Feature1: 'Швидкий прототип для тестування',
         solution3Feature2: 'Мінімалістичний UI з логікою MVP',
         solution3Feature3: 'Можливість масштабування',
-        solution3Result:
-          'Результат: ',
+        solution3Result: 'Результат: ',
         solution3ResultItem:
           'швидкий вихід на ринок із якісним першим враженням',
         solution4Type: 'UX/UI для мобільних застосунків',
         solution4Feature1: 'Іконки, жести, мікроанімація',
         solution4Feature2: 'UX-моделі під iOS/Android',
         solution4Feature3: 'Тестування сценаріїв користувачів',
-        solution4Result:
-          'Результат:',
-        solution4ResultItem:
-          'залученість користувачів та позитивний досвід',
+        solution4Result: 'Результат:',
+        solution4ResultItem: 'залученість користувачів та позитивний досвід',
         solutionsCta:
           'Отримайте UX/UI рішення, яке підходить саме вашому бізнесу',
         solutionsCtaButton: 'Обговорити проєкт',
@@ -4342,6 +4718,381 @@ const resources = {
             "Надішліть короткий опис вашого проєкту або зв'яжіться з нами для брифінгу. Ми уточнимо задачі, запропонуємо підхід і розрахуємо вартість.",
         },
         faqCta: 'Маєте додаткові запитання щодо UX/UI дизайну?',
+        faqCtaButton: "Зв'язатися з нами",
+      },
+      typographyLetteringPage: {
+        // Hero Section
+        heroTitle: 'Типографіка і летеринг — унікальний стиль вашого бренду',
+        heroDescription:
+          'Типографіка й летеринг — це не просто оформлення тексту. Це потужний інструмент комунікації, що формує перше враження про бренд. Вдалий вибір шрифтів та індивідуальне написання слів здатні підкреслити характер компанії, передати її цінності та викликати довіру.',
+        orderButton: 'Замовити розробку',
+        feature1: 'Унікальність',
+        feature2: 'Виразність',
+        feature3: 'Індивідуальність',
+
+        // Typography Importance
+        importanceTitle: 'Значення типографіки для брендингу',
+        whatIsTypography: 'Що таке типографіка?',
+        whatIsTypographyText1:
+          "Типографіка — це мистецтво та техніка розміщення, вибору та оформлення тексту для передачі ідей та створення враження. Це те, як текст виглядає, відчувається та сприймається, і це невід'ємна частина дизайну та комунікації.",
+        whatIsTypographyText2:
+          'Хороша типографія створює ієрархію, встановлює тон, настрій та атмосферу, а також створює відомий бренд-образ для вашої компанії, щоб бути легко впізнаваною для аудиторії.',
+        influenceTitle: 'Вплив на бренд',
+        influenceText:
+          'Правильно підібрана типографіка робить більше, ніж просто передає інформацію. Вона формує сприйняття вашого бренду та може впливати на прийняття рішень вашими клієнтами.',
+        influenceList1: 'Формує невербальну комунікацію вашого бренду',
+        influenceList2: 'Створює та зміцнює ідентичність бренду',
+        influenceList3:
+          'Вибудовує інформаційну ієрархію та покращує читабельність',
+        influenceList4: 'Викликає емоційний відгук у аудиторії',
+        influenceConclusion:
+          'Вибір типографіки - це стратегічне рішення, яке має відображати цінності та позиціонування вашого бренду, резонувати з цільовою аудиторією та виділяти вас серед конкурентів.',
+        item1: 'Технологічний',
+        item2: 'Креативний',
+        item3: 'Преміальний',
+        item4: 'Доброзичливий',
+
+        // Lettering Section
+        letteringArtTitle: 'Летеринг як мистецтво індивідуального стилю',
+        letteringDiffTitle: 'Чим летеринг відрізняється від шрифтів',
+        letteringDiffText1:
+          'Шрифт — це готовий набір символів. Летеринг — це індивідуально намальовані літери. Він не повторюється, створюється під конкретне слово, проєкт чи логотип. Це максимально персоналізований елемент, який неможливо скопіювати чи підробити.',
+        letteringDiffText2:
+          'Летеринг доречний, коли потрібен унікальний акцент — у назві бренду, логотипі, упаковці, афіші. Він додає характеру та живої емоції, якої не дає стандартний шрифт.',
+        letteringFeature1: 'Унікальність',
+        letteringFeature2: 'Емоційність',
+        letteringFeature3: 'Оригінальність',
+        letteringVsTitle: 'Шрифт vs Летеринг',
+        itemLettering1: 'Шрифт',
+        itemLettering2: 'Бренд',
+        itemLettering3: 'Ідентичні символи',
+        itemLettering4: 'Летеринг',
+        itemLettering5: 'Бренд',
+        itemLettering6: 'Унікальні, намальовані символи',
+        itemLettering7: 'Застосування:',
+        itemLettering8: 'Логотипи та заголовки',
+        itemLettering9: 'Упаковка та етикетки',
+        itemLettering10: 'Плакати та вивіски',
+        itemLettering11: 'Обкладинки книг',
+        letteringVsSubtitle: 'Візуальне порівняння',
+        letteringShowcaseTitle: 'Приклади летерингу',
+        letteringCta:
+          'Бажаєте розробити унікальний летеринг для вашого проєкту?',
+        letteringCtaButton: 'Замовити летеринг',
+
+        // Methodology Section
+        methodologyTitle: 'Наш підхід до типографіки та летерингу',
+        methodologyStep1Title: 'Аналіз бренду та цільової аудиторії',
+        methodologyStep1Text:
+          'Перш ніж створювати типографічну систему або летеринг, ми вивчаємо бренд: його позиціонування, цінності, цільову аудиторію, візуальні рішення конкурентів. Це дозволяє працювати в контексті та створювати доречні, а не випадкові елементи.',
+        methodologyStep1Point1: 'Аналіз аудиторії',
+        methodologyStep1Point2: 'Аналіз конкурентів',
+        methodologyStep1Point3: 'Підбір шрифтових пар',
+        methodologyStep2Title: 'Підбір стилю: класика, мінімалізм, експеримент',
+        methodologyStep2Text:
+          'Залежно від завдань ми обираємо стилістику: гротески чи антиква, мінімалізм чи вибагливий дизайн. Класичні рішення додають солідності, експериментальні — виділяють серед конкурентів.',
+        methodologyStep2Option1: 'Класика',
+        methodologyStep2Option11:
+          'для брендів з акцентом на надійність та престиж',
+        methodologyStep2Option2: 'Мінімалізм',
+        methodologyStep2Option22: 'для сучасних технологічних брендів',
+        methodologyStep2Option3: 'Експеримент',
+        methodologyStep2Option33:
+          'для креативних індустрій та брендів, які хочуть вийти за рамки',
+        methodologyStepTextItem:
+          'Стиль визначається не модою, а ціллю: яку реакцію має викликати візуальне рішення.',
+        methodologyStep3Title: 'Узгодження з загальним дизайном бренду',
+        methodologyStep3Text:
+          'Типографіка та летеринг не існують ізольовано. Вони вплітаються в айдентику — логотип, кольори, макети. Ми добиваємося повної візуальної цілісності. Все виглядає злагоджено, логічно і стильно на всіх носіях — від веб-сайту до офлайнових матеріалів.',
+        methodologyStepItem1: 'Веб',
+        methodologyStepItem2: 'Поліграфія',
+        methodologyStepItem3: 'Мобільний',
+
+        // Benefits Section
+        benefitsTitle: 'Переваги професійної типографіки та летерингу',
+        benefit1Title: 'Підвищення впізнаваності',
+        benefit1Text:
+          "Унікальна типографіка робить бренд пізнаваним навіть без логотипа. Вона створює візуальні асоціації, які закріплюються в пам'яті. Один шрифт — і користувач згадує вас.",
+        benefit2Title: 'Унікальність бренду',
+        benefit2Text:
+          'Ми створюємо нетипові рішення — летеринг або кастомну типографіку, яких немає у шаблонних генераторах. Ваш бренд отримує власну візуальну мову.',
+        benefit3Title: 'Краще візуальне сприйняття',
+        benefit3Text:
+          'Якісна типографіка підвищує читабельність, структурує контент, направляє увагу. Це особливо критично в інтерфейсах, презентаціях, рекламі.',
+        benefitItem1: 'Логотип',
+        benefitItem2: 'Типографіка',
+        benefitItem3: 'Впізнаваність',
+        benefitItem4: 'Шаблон',
+        benefitItem5: 'Кастом',
+        benefitItem6: 'До',
+        benefitItem7: 'Після',
+
+        // Workflow Section
+        workflowTitle: 'Як ми працюємо — приклад підходу до кожного проєкту',
+        workflowDescription:
+          'Кожен бренд — це окрема історія, тому ми не використовуємо шаблони. Наш підхід — це поєднання аналітики, дизайнерської експертизи та уваги до деталей. Ми не просто підбираємо шрифти — ми формуємо типографічну систему, яка працює на ідентичність бренду.',
+        workflowTextItem: 'Процес',
+        workflowStep1: {
+          title: 'Брифінг та початкове занурення',
+          description:
+            'Починаємо з глибокого розуміння вашого бізнесу: хто ви, чим відрізняєтесь, яка ваша аудиторія, у якому стилі ви хочете з нею спілкуватися. Ми вивчаємо продукти, послуги, місію бренду, вже наявні візуальні елементи.',
+          items: {
+            item1: 'Аналіз бренду',
+            item2: 'Дослідження конкурентів',
+            item3: 'Вивчення цільової аудиторії',
+            item4: 'Технічні вимоги',
+            item5: 'Продукти/послуги',
+          },
+        },
+        workflowStep2: {
+          title: 'Аналіз ринку та конкурентів',
+          description:
+            'Досліджуємо середовище, в якому працює ваш бренд. Вивчаємо візуальні рішення конкурентів, шрифтові тренди у вашій ніші, аналізуємо типові підходи, щоб уникнути повторів та створити відмінність.',
+          items: {
+            item1: 'Конкурент А',
+            item2: 'Конкурент Б',
+            item3: 'Конкурент В',
+          },
+        },
+        workflowStep3: {
+          title: 'Розробка концепції',
+          description:
+            'На цьому етапі ми пропонуємо декілька напрямків: типографічні пари, стильові референси, варіанти летерингу. Якщо потрібно — створюємо начерки рукописних рішень, які підкреслюють індивідуальність.',
+        },
+        workflowStep4: {
+          title: 'Дизайн і тестування',
+          description:
+            'Створюємо фінальну версію типографіки або летерингу, перевіряємо, як вона виглядає в реальних сценаріях: у логотипі, на сайті, в макетах, у соціальних мережах. Враховуємо адаптивність, читабельність на різних носіях.',
+        },
+        workflowStep5: {
+          title: 'Узгодження і підготовка фінальних матеріалів',
+          description:
+            'Після затвердження ми передаємо всі необхідні файли — у форматах для друку та цифрового використання. За запитом — готуємо міні-гайдлайн або інструкції з правильного використання шрифтів чи летерингу.',
+          textItem: 'Гайдлайн',
+        },
+
+        // Order Section
+        orderTitle: 'Як замовити послугу',
+        orderSubtitle: 'Етапи співпраці',
+        orderDescription:
+          'Ми зробили процес максимально зручним для клієнта — без зайвої бюрократії, але з повним контролем якості на кожному етапі.',
+        orderStep1: {
+          title: 'Заявка',
+          description:
+            'Залишаєте запит через форму на сайті або надсилаєте листа з коротким описом задачі. Ми відповідаємо протягом одного робочого дня.',
+        },
+        orderStep2: {
+          title: 'Обговорення задачі',
+          description:
+            'Ми ставимо уточнювальні запитання, обговорюємо очікування, стиль, обсяг роботи. За потреби — надсилаємо короткий бриф для заповнення.',
+        },
+        orderStep3: {
+          title: 'Комерційна пропозиція',
+          description:
+            'Формуємо чітку пропозицію із вартістю, термінами та обсягом. Ви розумієте, що саме отримаєте, скільки це коштує і коли буде готово.',
+        },
+        orderStep4: {
+          title: 'Початок роботи',
+          description:
+            'Після узгодження умов ми підписуємо договір або підтвердження про старт. Починається етап розробки: дослідження, концепції, ескізи.',
+        },
+        orderStep5: {
+          title: 'Проміжне погодження',
+          description:
+            'На етапі чорнових рішень ми показуємо проміжні варіанти, щоб узгодити напрямок і внести правки до фіналізації. Ви залучені до процесу.',
+        },
+        orderStep6: {
+          title: 'Завершення та передача результату',
+          description:
+            'Ви отримуєте всі файли у зручних форматах, а також пояснення щодо їх використання. Після завершення — залишаєтесь із візуальним активом, що працює на бренд.',
+        },
+
+        // FAQ Section
+        faqTitle: 'FAQ',
+        faqData: {
+          question1:
+            'Чи можна використовувати один шрифт для всіх носіїв бренду?',
+          answer1:
+            'Ні, зазвичай створюється типографічна система з кількох шрифтів — основного, акцентного та допоміжного. Вони виконують різні функції: заголовки, тіла текстів, підписи тощо. Це забезпечує гнучкість і зберігає єдність стилю.',
+          question2: 'Чи потрібно купувати ліцензії на шрифти?',
+          answer2:
+            'Так, якщо ви використовуєте комерційні шрифти. Ми завжди підбираємо шрифти з урахуванням прав на використання — з відкритих бібліотек або з чіткою ліцензією. Безкоштовні шрифти — не завжди якісні або унікальні.',
+          question3:
+            'У чому перевага кастомного летерингу порівняно з логотипом на основі шрифту?',
+          answer3:
+            'Кастомний летеринг створюється з нуля і враховує форму, ритм і унікальність назви бренду. Це забезпечує абсолютну ексклюзивність. Шрифтова основа — це швидше, але не завжди достатньо відмінно від конкурентів.',
+          question4:
+            "Чи можу я отримати шрифт у форматі для встановлення на комп'ютер?",
+          answer4:
+            'Так, якщо розробляється кастомний шрифт або обрана типографіка включає завантажувані файли. Ви отримаєте файли у форматах OTF/TTF/WOFF + інструкції з установлення та використання.',
+          question5:
+            'Чи можна замовити лише летеринг без повного фірмового стилю?',
+          answer5:
+            'Звісно. Летеринг — це окрема послуга. Він може бути використаний як акцент на упаковці, постері, мерчі або навіть у соціальних мережах. Ми адаптуємо результат під ваші задачі.',
+          question6: 'Скільки часу займає створення типографіки або летерингу?',
+          answer6:
+            'У середньому — від 5 до 15 робочих днів, залежно від складності. Простий підбір типографіки — швидше. Унікальний летеринг або система зі шрифтами для різних носіїв — потребують більше часу для дослідження й опрацювання деталей.',
+        },
+        faqCta: 'Маєте додаткові запитання щодо типографіки або летерингу?',
+        faqCtaButton: "Зв'язатися з нами",
+      },
+      brandingPage: {
+        // Hero Section
+        heroTitle: 'Розробка фірмового стилю — візуальна ДНК вашого бізнесу',
+        heroDescription:
+          'Айдентика — це не просто логотип чи кольори. Це візуальна мова, яка доносить ваш характер, цінності та настрій до аудиторії. Ми створюємо фірмовий стиль, що працює на вас — кожен елемент підсилює впізнаваність і відрізняє бренд серед конкурентів.',
+        orderButton: 'Замовити розробку',
+        feature1: 'Унікальність',
+        feature2: 'Впізнаваність',
+        feature3: 'Системність',
+
+        // О фирменном стиле
+        aboutTitle: 'Що таке фірмовий стиль і навіщо він потрібен',
+        elementsTitle: 'Основні елементи айдентики',
+        elementsDescription:
+          'Фірмовий стиль — це комплекс візуальних рішень, які формують цілісне сприйняття бренду. До нього входять:',
+        elementLogoTitle: 'Логотип та його варіації',
+        elementLogoDesc:
+          'Унікальний графічний символ для миттєвої ідентифікації бренду',
+        elementPaletteTitle: 'Колірна палітра',
+        elementPaletteDesc:
+          'Характерні кольори, що викликають потрібні емоції та асоціації',
+        elementTypographyTitle: 'Шрифти й типографічна сітка',
+        elementTypographyDesc:
+          'Стильове оформлення текстів для узгодженої комунікації',
+        elementIconsTitle: 'Іконки, патерни, ілюстрації',
+        elementIconsDesc: 'Графічні елементи, що доповнюють загальну концепцію',
+        elementGuideTitle: 'Гайдлайн або брендбук',
+        elementGuideDesc:
+          'Повний документ зі стандартами використання всіх елементів бренду для різних носіїв — від візиток до digital-кампаній',
+
+        // Вплив фірмового стилю
+        impactTitle: 'Як стиль впливає на імідж компанії',
+        impactDescription:
+          'Фірмовий стиль — це перше враження, яке формується ще до знайомства з продуктом. Якісний стиль:',
+        impact1: 'Цінності компанії',
+        impact2: 'Довіра клієнтів',
+        impact3: "Емоційний зв'язок",
+        impact4: 'Впізнаваність',
+
+        impactList1Title: 'Підкреслює цінності компанії',
+        impactList1Desc:
+          'Візуальна мова передає філософію бренду та підкреслює його ключові цінності для аудиторії.',
+        impactList2Title: 'Формує довіру й професійний імідж',
+        impactList2Desc:
+          'Якісний дизайн демонструє увагу до деталей і професіоналізм компанії на всіх рівнях взаємодії.',
+        impactList3Title: "Створює емоційний зв'язок із клієнтом",
+        impactList3Desc:
+          "Гармонійний візуальний стиль викликає потрібні емоції та будує міцний зв'язок з аудиторією.",
+        impactList4Title: 'Сприяє впізнаванню в офлайн та онлайн середовищі',
+        impactList4Desc:
+          'Єдиний стиль забезпечує миттєве впізнавання бренду незалежно від каналу комунікації.',
+
+        // Услуги
+        servicesTitle: 'Що входить до послуги розробки фірмового стилю',
+        serviceLogoBadge: 'Основа бренду',
+        serviceLogoTitle: 'Логотип',
+        serviceLogoDesc:
+          'Створюємо оригінальний знак, який передає сутність бренду. Пропонуємо кілька концептів, адаптуємо логотип для різних форматів — від мобільного додатку до білборду.',
+        servicePaletteBadge: 'Емоційний вплив',
+        servicePaletteTitle: 'Колірна палітра',
+        servicePaletteDesc:
+          'Підбираємо кольори, які відповідають емоційному тону бренду, враховуємо психологію кольору, контрастність і практичність використання на різних фонах.',
+        serviceTypographyBadge: 'Текстова комунікація',
+        serviceTypographyTitle: 'Шрифти та типографіка',
+        serviceTypographyDesc:
+          'Формуємо типографічну систему: основні та акцентні шрифти, стилі заголовків, розміри та міжрядкові інтервали. Забезпечуємо зручність читання й послідовність у візуальних комунікаціях.',
+        serviceGuideBadge: 'Стандарти використання',
+        serviceGuideTitle: 'Гайдлайн (брендбук)',
+        serviceGuideDesc:
+          'Готуємо документ з чіткими правилами використання всіх елементів стилю. Це забезпечує цілісність візуального образу незалежно від того, хто займається дизайном у майбутньому.',
+
+        // Approach
+        approachTitle: 'Наш підхід до створення айдентики',
+        approachStep1Title: 'Брифінг і дослідження ринку',
+        approachStep1Desc:
+          'Починаємо з діалогу. Вивчаємо бренд, його аудиторію, цінності, конкурентів. Аналізуємо ринок, визначаємо позиціонування. Це формує основу для дизайну, який не просто гарний, а стратегічно влучний.',
+        approachStep2Title: 'Концепція та ідея',
+        approachStep2Desc:
+          'Ми не малюємо навмання. Усі елементи стилю підпорядковані ідеї — візуальній метафорі бренду. Це може бути форма, символ, характер руху, асоціативний ряд. У результаті народжується айдентика, що говорить без слів.',
+          approachStepItem1: 'Аудиторія',
+          approachStepItem2: 'Цінності',
+          approachStepItem3: 'Конкуренти',
+          approachStepItem4: 'Позиціонування',
+
+
+        // Преимущества
+        benefitsTitle: 'Переваги для бізнесу',
+        benefitsIntro:
+          'Сильна візуальна айдентика — це більше, ніж естетика. Це інструмент стратегічного впливу на сприйняття, продажі та лояльність. Фірмовий стиль виконує чіткі бізнес-завдання, і ось як саме:',
+        benefit1Title: 'Впізнаваність на ринку',
+        benefit1Desc:
+          "Коли в усіх точках контакту — від сайту до упаковки — бренд виглядає послідовно, він запам'ятовується значно швидше. Це економить ресурси на рекламу: достатньо кількох дотиків, щоб аудиторія впізнала ваш стиль. Візуальна сталість створює ефект знайомства, який перетворюється на довіру.",
+        benefit2Title: 'Конкурентна перевага',
+        benefit2Desc:
+          'У більшості ніш візуальна айдентика або слабка, або хаотична. Ви виграєте вже тим, що виглядаєте краще. Ваш бренд виділяється у стрічці соцмереж, виглядає впевнено на презентації, професійно на виставці. Потенційні клієнти сприймають вас як сильного гравця — навіть до знайомства з продуктом.',
+        benefit3Title: 'Системність у комунікації',
+        benefit3Desc:
+          'З фірмовим стилем ви отримуєте набір правил, які полегшують дизайн будь-яких матеріалів. Більше не потрібно щоразу вигадувати з нуля — просто дотримуйтесь гайду. Це економія часу, коштів і нервів.',
+        benefit4Title: 'Масштабованість бізнесу',
+        benefit4Desc:
+          "Чітка айдентика дозволяє легко запускати нові продукти, франшизи, філії або рекламні кампанії. Стиль гнучкий — але не втрачає зв'язку з основним брендом. Це основа для зростання.",
+
+        // Inspiration
+        inspirationTitle: 'Наше натхнення — ваш успішний бренд',
+        inspirationParagraph1:
+          'Кожен наш проєкт — це не про красиву картинку. Це про суть, яку ми бачимо у вашому бізнесі. Ми не копіюємо тренди — ми створюємо рішення, які працюють саме для вас.',
+        inspirationParagraph2:
+          'Ми надихаємось не чужими кейсами, а вашою унікальною історією, продуктом, амбіціями. Звідси й народжуються айдентики, що резонують з аудиторією, викликають емоції, викристалізовують характер бренду.',
+        inspirationParagraph3:
+          'Ваша довіра — наша відповідальність. Саме тому ми не робимо шаблонів, не працюємо поверхнево і завжди пропонуємо більше, ніж очікуєте.',
+
+        // Order
+        orderTitle: 'Як замовити фірмовий стиль',
+        orderSubtitle: 'Покрокова інструкція',
+        orderDescription:
+          'Ми гарантуємо підтримку на кожному етапі та відкриту комунікацію.',
+        orderStep1Title: 'Заявка',
+        orderStep1Desc: 'Ви звертаєтесь до нас з коротким описом запиту.',
+        orderStep2Title: 'Брифінг',
+        orderStep2Desc:
+          'Заповнюєте анкету або проходите онлайн-зустріч для уточнення деталей.',
+        orderStep3Title: 'Пропозиція',
+        orderStep3Desc:
+          'Ми надсилаємо комерційну пропозицію з термінами, ціною і складом послуги.',
+        orderStep4Title: 'Початок роботи',
+        orderStep4Desc:
+          'Після погодження та оплати стартує етап дослідження і концепції.',
+        orderStep5Title: 'Дизайн і презентація',
+        orderStep5Desc: 'Показуємо рішення, обговорюємо і коригуємо.',
+        orderStep6Title: 'Передача файлів і гайдлайну',
+        orderStep6Desc:
+          'Фіналізуємо всі матеріали й передаємо вам зручним способом.',
+        orderCta: 'Замовити фірмовий стиль',
+
+        // FAQ
+        faqTitle: 'FAQ',
+        faqData: {
+          question1: 'Яка різниця між логотипом і фірмовим стилем?',
+          answer1:
+            'Логотип — це лише один елемент. Фірмовий стиль включає повний візуальний комплект: кольори, шрифти, візуальні правила, іконки, оформлення соцмереж і т. д.',
+          question2: 'Чи можна замовити лише частину фірмового стилю?',
+          answer2:
+            'Так, ми можемо адаптувати послугу під ваш запит — наприклад, розробити лише логотип або оновити палітру й типографіку для вже існуючого бренду.',
+          question3: 'Чи отримаю я брендбук?',
+          answer3:
+            'Так, у базовий пакет входить гайдлайн з основними правилами використання стилю. За потреби ми можемо створити повноцінний брендбук з розширеними прикладами.',
+          question4: 'Скільки часу триває розробка фірмового стилю?',
+          answer4:
+            'В середньому — від 2 до 4 тижнів, залежно від обсягу робіт і швидкості погодження. Ми погоджуємо дедлайни ще до старту.',
+          question5: 'Чи можу я внести правки до запропонованого дизайну?',
+          answer5:
+            'Так, передбачено 1–2 раунди коригувань у межах затвердженої концепції. Ми враховуємо ваші побажання, зберігаючи професійну якість.',
+          question6: 'У яких форматах я отримаю фінальні матеріали?',
+          answer6:
+            'Ми передаємо логотип і елементи стилю у форматах для друку (.ai, .pdf) і для digital (.png, .svg, .jpg). Шрифти — з ліцензіями або рекомендаціями.',
+        },
+        faqCta: 'Маєте додаткові запитання щодо фірмового стилю?',
         faqCtaButton: "Зв'язатися з нами",
       },
     },
