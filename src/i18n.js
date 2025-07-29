@@ -2466,7 +2466,6 @@ const resources = {
         approachStepItem3: 'Competitors',
         approachStepItem4: 'Positioning',
 
-
         // Benefits
         benefitsTitle: 'Business benefits',
         benefitsIntro:
@@ -2542,6 +2541,261 @@ const resources = {
             'We provide the logo and style elements in print formats (.ai, .pdf) and for digital (.png, .svg, .jpg). Fonts — with licenses or recommendations.',
         },
         faqCta: 'Have additional questions about corporate identity?',
+        faqCtaButton: 'Contact us',
+      },
+      aiBannerMarketingPage: {
+        // Hero Section
+        heroTitle:
+          'Banner advertising on websites — an effective way to attract clients',
+        heroHighlight: 'effective way',
+        heroDescription:
+          'Banner advertising is a powerful digital marketing tool that allows brands to interact with target audiences directly on popular web resources. Thanks to visual impact, precise targeting, and scalability, banners remain relevant even in conditions of high competition for user attention.',
+        stat1: '+180%',
+        stat1Label: 'CTR Growth',
+        stat2: '+65%',
+        stat2Label: 'Conversion Increase',
+        stat3: '-40%',
+        stat3Label: 'Cost Reduction',
+        orderButton: 'Order Banner Advertising',
+
+        // Info Section
+        infoTitle: 'What is banner advertising and how it works',
+        infoDescription:
+          'Banner advertising consists of graphic blocks (images, animations, or videos) that are placed on websites to attract attention, generate demand, or redirect users to a target page (landing). It works on the principle of impressions (CPM), clicks (CPC), or actions (CPA), depending on the goals of the advertising campaign.',
+        formatsTitle: 'Main banner advertising formats',
+        formatsDescription:
+          "Banners can be static (JPEG, PNG), animated (GIF), or interactive (HTML5). Additionally, adaptive formats are used that automatically adjust to the user's screen.",
+        formatLeaderboard: 'Leaderboard',
+        formatLeaderboardDesc:
+          'Placed in the upper part of the page, provides high visibility at the beginning of user interaction with the site.',
+        formatRectangle: 'Medium Rectangle',
+        formatRectangleDesc:
+          'One of the most effective formats that embeds in content or is placed in the sidebar.',
+        formatSkyscraper: 'Wide Skyscraper',
+        formatSkyscraperDesc:
+          'Vertical format that is usually placed in the sidebar and remains visible when scrolling.',
+        formatBillboard: 'Billboard',
+        formatBillboardDesc:
+          'Large format for premium campaigns that provides maximum reach and impact.',
+        howItWorksTitle: 'How banner advertising works',
+        howItWorksDescription:
+          'The advertiser chooses sites where they want to show ads, defines the audience by demographic, behavioral, or geographic parameters, after which banners are launched through advertising networks or directly through platforms.',
+        step1Title: 'Format and platform selection',
+        step1Text:
+          'The advertiser chooses banner types and sites for placement.',
+        step2Title: 'Target audience definition',
+        step2Text:
+          'Setting up demographic, behavioral, and geographic parameters.',
+        step3Title: 'Launch through advertising networks',
+        step3Text:
+          'Banners are placed through specialized platforms or directly.',
+        step4Title: 'Optimization and results analysis',
+        step4Text:
+          'Monitoring metrics and adjusting the campaign to improve effectiveness.',
+        businessBenefitsTitle: 'Benefits of banner advertising for business',
+        benefit1Title: 'Scalability',
+        benefit1Text: 'Ability to reach thousands or millions of unique users.',
+        benefit2Title: 'Visual impact',
+        benefit2Text:
+          'Effectively convey messages using colors and emotional triggers.',
+        benefit3Title: 'Precise targeting',
+        benefit3Text:
+          'Showing ads only to those who have already been interested in similar products or services.',
+        benefit4Title: 'Format flexibility',
+        benefit4Text:
+          'Suitable for launching promotions, presenting new products, or increasing brand awareness.',
+        benefit5Title: 'Measurability',
+        benefit5Text:
+          'Detailed analytics allows controlling every click, impression, or conversion.',
+
+        // Placement Section
+        placementTitle: 'Where banner advertising is placed',
+        placementDescription:
+          "Successful banner advertising starts with the right choice of placement platform. Not every site provides the same effectiveness, so it's important to analyze the topic, audience, traffic, and competitive environment of the resource. Successful placement ensures high visibility, relevance, and maximum return from each impression.",
+        thematicSitesTitle: 'Thematic sites',
+        thematicSitesDescription:
+          "Placing banners on niche websites allows addressing an already interested audience. For example, advertising travel services on travel blogs or cosmetics banners on women's forums work precisely and effectively. Thematic platforms have high relevance, which increases the likelihood of clicks and brand interaction.",
+        thematicSitesAdv1: 'High-quality traffic',
+        thematicSitesAdv2: 'Minimal losses on non-target audience',
+        thematicSitesAdv3: 'Increased trust level thanks to expert context',
+        newsPortalsTitle: 'News portals',
+        newsPortalsDescription:
+          'News sites have one of the highest daily traffic indicators. Thanks to constant content updates, users regularly return, which allows reaching a wide but active audience. Banners here are often placed in the upper part of the page or between news blocks.',
+        newsPortalsAdv1: 'High impression frequency',
+        newsPortalsAdv2: 'Rapid reach growth',
+        newsPortalsAdv3: 'Relevance: advertising alongside hot news',
+        highTrafficTitle: 'High-traffic platforms',
+        highTrafficDescription:
+          'This category includes large aggregators, encyclopedias, online magazines, forums, as well as Q&A sites (like Quora or local analogues). Placement on such platforms allows reaching a wide audience without being tied to a narrow topic.',
+        highTrafficAdv1: 'Massive reach',
+        highTrafficAdv2: 'CPM or CPC optimization',
+        highTrafficAdv3: 'Ability to A/B test banners on a large sample',
+
+        // Implementation Section
+        implementationTitle: 'Our process of creating effective banners',
+        implementationDescription:
+          "Every banner we create is the result of a comprehensive approach that combines analytics, design, and technology. We don't just draw pretty pictures, we develop strategic solutions that bring real clients. Our methodology involves deep understanding of your business and target audience needs.",
+        step01Title: 'Analysis and strategy',
+        step01Text:
+          'We study your business, competitors, and target audience to develop a unique placement strategy',
+        step01List1: 'User behavior analysis',
+        step01List2: 'Competitor research',
+        step01List3: 'Selection of optimal formats',
+        step02Title: 'Creative concept',
+        step02Text:
+          'We create unique visual solutions that attract attention and encourage action',
+        step02List1: 'Development of attractive designs',
+        step02List2: 'Testing multiple variants',
+        step02List3: 'Optimization for different platforms',
+        step03Title: 'Setup and launch',
+        step03Text:
+          'We configure banner display on selected platforms with precise targeting',
+        step03List1: 'Integration with advertising networks',
+        step03List2: 'Targeting setup',
+        step03List3: 'Selection of optimal display strategies',
+        step04Title: 'Optimization and scaling',
+        step04Text:
+          'We constantly analyze effectiveness and adjust the campaign to achieve maximum results',
+        step04List1: 'A/B testing of variants',
+        step04List2: 'Analysis of performance metrics',
+        step04List3: 'Scaling successful campaigns',
+        result1Value: '+78%',
+        result1Label: 'Average CTR Growth',
+        result2Value: '5.2M',
+        result2Label: 'Monthly Reach',
+        result3Value: '3.8x',
+        result3Label: 'Average Campaign ROI',
+        ctaTitle: 'Ready to launch banner advertising that really works?',
+        ctaDescription:
+          "Contact us today, and we'll develop an individual strategy that matches your business goals",
+        ctaButton: 'Order Consultation',
+
+        // Analytics Section
+        analyticsTitle: 'Results and analytics',
+        analyticsDescription:
+          'Successful banner advertising is not just creative and impressions, but also precise analytics. We work with data and metrics that help us optimize campaigns and achieve maximum effectiveness of invested funds.',
+        metricsTitle: 'Key metrics',
+        metricCTR:
+          'The ratio of clicks to impressions. The main indicator of banner effectiveness that demonstrates how attractive it is to the audience.',
+        metricCPM:
+          'Cost per thousand impressions. Helps evaluate the economic effectiveness of reaching the target audience.',
+        metricCPC:
+          'Cost per click. Shows how much it costs to attract one potential client to the site.',
+        metricCR:
+          'Percentage of visitors who performed a target action (order, registration, etc.) after clicking from the banner.',
+        whatYouGetTitle: 'What you get',
+        regularReports: 'Regular reporting',
+        regularReportsDesc:
+          'Weekly or monthly reports with detailed analysis of all key campaign metrics and optimization recommendations.',
+        roiAnalysis: 'ROI analysis',
+        roiAnalysisDesc:
+          'Calculation of return on investment for each advertising channel and format, allowing to determine the most profitable strategies.',
+        audienceData: 'Audience data',
+        audienceDataDesc:
+          'Detailed information about demographics, interests, and behavior of users who interact with your banners.',
+        realtimeOptimization: 'Real-time optimization',
+        realtimeOptimizationDesc:
+          'Continuous monitoring and adjustment of campaigns to achieve maximum effectiveness and minimize costs.',
+        processTitle: 'Our analytical process',
+        processStep1: 'Tracking setup',
+        processStep1Desc:
+          'Integration of Google Analytics, Facebook Pixel, and other tools for precise tracking of all user interactions with banners and the site.',
+        processStep2: 'Data collection and analysis',
+        processStep2Desc:
+          'Systematic collection of data about impressions, clicks, conversions, and other user interactions with advertising materials.',
+        processStep3: 'A/B testing',
+        processStep3Desc:
+          'Comparison of different banner versions to determine the most effective visual elements, calls to action, and placements.',
+        processStep4: 'Report formation',
+        processStep4Desc:
+          'Creation of clear and detailed reports that demonstrate campaign results and provide clear understanding of ROI.',
+        processStep5: 'Optimization and scaling',
+        processStep5Desc:
+          'Based on collected data, we make adjustments to campaigns and scale the most successful strategies to maximize results.',
+        analyticsQuote:
+          "Without analytics, advertising is just pretty pictures. With analytics — it's a powerful business development tool where every dollar works for results.",
+        analyticsQuoteAuthor: '— SoftQod Team',
+        analyticsCta:
+          'Want to learn more about how we can help you achieve measurable results with banner advertising?',
+        analyticsCtaButton: 'Order Consultation',
+
+        // Benefits Section
+        benefitsTitle: "Why it's worth ordering banner advertising from us",
+        benefitsDescription:
+          "In the world of digital advertising, it's important not just to launch banners, but to achieve specific business goals — sales, leads, reach. We offer not template solutions, but an individual approach based on experience, proven methodologies, and modern technologies. Our team deeply immerses in the client's niche to create an effective, ROI-oriented banner campaign.",
+        experienceTitle: 'Experience working with different niches',
+        experienceText:
+          'We have implemented dozens of projects in e-commerce, finance, tourism, education, B2B services, medicine, and other areas. Thanks to this, we understand the specifics of target audience behavior in each segment. We know which formats work better in specific industries, how to design offers and creatives to evoke maximum response.',
+        approachTitle: 'Our approach is:',
+        approach1: 'Deep competitive analysis',
+        approach1Desc:
+          'We study competitor strategies to create a unique offer',
+        approach2: 'Seasonal demand consideration',
+        approach2Desc:
+          'We adapt advertising campaigns to seasonal trends and consumer behavior',
+        approach3:
+          'Banner adaptation to target audience language and mentality',
+        approach3Desc:
+          'We create creatives that resonate with your audience on a cultural level',
+        industries: {
+          item1: 'E-commerce',
+          item2: 'Finance',
+          item3: 'Tourism',
+          item4: 'Education',
+          item5: 'B2B',
+          item6: 'Medicine',
+          item7: 'HoReCa',
+          item8: 'Other areas',
+        },
+
+        transparencyTitle: 'Transparent reporting and support',
+        transparencyText:
+          "We don't hide data — every client has full access to reports, statistics, and dashboards in a convenient format. You see how the campaign works in real-time, which platforms bring results, and which ones need correction. Our specialists accompany the project at every stage, providing recommendations and responding promptly to changes in user behavior.",
+        whatYouGet: 'What you get:',
+        reportMetrics: 'Reports with CTR, CPC, CPM metrics',
+        reportMetricsDesc:
+          'Detailed campaign effectiveness statistics available in real-time',
+        consult: 'Consultations on improving results',
+        consultDesc:
+          'Regular recommendations from specialists for campaign optimization',
+        manager: 'Constant communication with campaign manager',
+        managerDesc:
+          "Specialist on call who is responsible for your project's success",
+        creativeIdeas: 'Creative ideas for banners',
+        creativeIdeasDesc:
+          'Regular creative updates to prevent banner blindness',
+        testimonialText:
+          'Working with the SoftQod team, we received not just advertising, but a strategic partner who truly understands our business. Thanks to their individual approach and constant analysis, our conversion from banner advertising increased by 34%.',
+        testimonialAuthor: 'Olena Petrenko',
+        testimonialAuthorRole: 'Marketing Director, Ecommerce Store',
+
+        // FAQ Section
+        faqTitle: 'FAQ',
+        faqData: {
+          question1: 'How long does it take to launch a banner campaign?',
+          answer1:
+            'Depending on the complexity of the task, preparation takes from 2 to 5 working days. This includes audience analysis, site selection, creative development, and technical preparation for launch.',
+          question2: 'Can I test multiple banners simultaneously?',
+          answer2:
+            'Yes, we practice A/B testing to determine which banner variant has better CTR and lower CPC. This allows us to optimize the campaign even at the start stage.',
+          question3:
+            'What types of businesses are best suited for banner advertising?',
+          answer3:
+            'Banner advertising is effective both for broad B2C segments (retail, cosmetics, tourism) and for narrow B2B areas. It works especially well in niches with visual components or promotional offers.',
+          question4:
+            'Is it possible to limit banner display to specific regions?',
+          answer4:
+            'Yes, we can set up geo-targeting to the level of country, region, or even a specific city. This allows focusing the budget only on those regions where your target audience is located.',
+          question5:
+            "What happens if the campaign doesn't give expected results?",
+          answer5:
+            'We regularly analyze metrics and make changes as needed — replace creatives, change platforms, or adjust targeting. All campaigns are accompanied by a specialist who is responsible for the result.',
+          question6:
+            'Can I launch banner advertising without ready-made design?',
+          answer6:
+            'Yes, we completely take over banner creation — from concept to final layout. Our designers adapt creatives to the chosen strategy and ensure their compliance with platform technical requirements.',
+        },
+        faqCta: 'Have additional questions about banner advertising?',
         faqCtaButton: 'Contact us',
       },
     },
@@ -5015,11 +5269,10 @@ const resources = {
         approachStep2Title: 'Концепція та ідея',
         approachStep2Desc:
           'Ми не малюємо навмання. Усі елементи стилю підпорядковані ідеї — візуальній метафорі бренду. Це може бути форма, символ, характер руху, асоціативний ряд. У результаті народжується айдентика, що говорить без слів.',
-          approachStepItem1: 'Аудиторія',
-          approachStepItem2: 'Цінності',
-          approachStepItem3: 'Конкуренти',
-          approachStepItem4: 'Позиціонування',
-
+        approachStepItem1: 'Аудиторія',
+        approachStepItem2: 'Цінності',
+        approachStepItem3: 'Конкуренти',
+        approachStepItem4: 'Позиціонування',
 
         // Преимущества
         benefitsTitle: 'Переваги для бізнесу',
@@ -5093,6 +5346,259 @@ const resources = {
             'Ми передаємо логотип і елементи стилю у форматах для друку (.ai, .pdf) і для digital (.png, .svg, .jpg). Шрифти — з ліцензіями або рекомендаціями.',
         },
         faqCta: 'Маєте додаткові запитання щодо фірмового стилю?',
+        faqCtaButton: "Зв'язатися з нами",
+      },
+      aiBannerMarketingPage: {
+        //Hero/Статистика/Кнопка
+        heroTitle:
+          'Банерна реклама на сайтах — ефективний спосіб залучення клієнтів',
+        heroHighlight: 'ефективний спосіб',
+        heroDescription:
+          'Банерна реклама — це потужний інструмент цифрового маркетингу, який дозволяє брендам взаємодіяти з цільовою аудиторією безпосередньо на популярних веб-ресурсах. Завдяки візуальному впливу, точному таргетингу та можливості масштабування, банери залишаються актуальними навіть в умовах високої конкуренції за увагу користувачів.',
+        stat1: '+180%',
+        stat1Label: 'Зростання CTR',
+        stat2: '+65%',
+        stat2Label: 'Підвищення конверсії',
+        stat3: '-40%',
+        stat3Label: 'Зниження вартості залучення',
+        orderButton: 'Замовити банерну рекламу',
+
+        //Info/Формати/Як працює
+        infoTitle: 'Що таке банерна реклама та як вона працює',
+        infoDescription:
+          'Банерна реклама — це графічні блоки (зображення, анімації або відео), що розміщуються на веб-сайтах з метою привернення уваги, формування попиту або перенаправлення користувачів на цільову сторінку (лендінг). Вона працює за принципом показів (CPM), кліків (CPC) або дій (CPA), залежно від цілей рекламної кампанії.',
+        formatsTitle: 'Основні формати банерної реклами',
+        formatsDescription:
+          'Банери можуть бути статичними (JPEG, PNG), анімованими (GIF) або інтерактивними (HTML5). Крім того, використовуються адаптивні формати, що автоматично підлаштовуються під екран користувача.',
+        formatLeaderboard: 'Leaderboard',
+        formatLeaderboardDesc:
+          'Розміщується у верхній частині сторінки, забезпечує високу видимість на початку взаємодії користувача з сайтом.',
+        formatRectangle: 'Medium Rectangle',
+        formatRectangleDesc:
+          'Один з найбільш ефективних форматів, що вбудовується в контент або розміщується в боковій панелі.',
+        formatSkyscraper: 'Wide Skyscraper',
+        formatSkyscraperDesc:
+          'Вертикальний формат, який зазвичай розміщується в сайдбарі і залишається видимим при прокрутці.',
+        formatBillboard: 'Billboard',
+        formatBillboardDesc:
+          'Великий формат для преміальних кампаній, що забезпечує максимальне охоплення і вплив.',
+        howItWorksTitle: 'Як працює банерна реклама',
+        howItWorksDescription:
+          'Рекламодавець обирає сайти, на яких хоче показувати оголошення, визначає аудиторію за демографічними, поведінковими або географічними параметрами, після чого банери запускаються через рекламні мережі або напряму через майданчики.',
+        step1Title: 'Вибір форматів і площадок',
+        step1Text: 'Рекламодавець обирає типи банерів і сайти для розміщення.',
+        step2Title: 'Визначення цільової аудиторії',
+        step2Text:
+          'Налаштування демографічних, поведінкових та географічних параметрів.',
+        step3Title: 'Запуск через рекламні мережі',
+        step3Text:
+          'Банери розміщуються через спеціалізовані платформи або напряму.',
+        step4Title: 'Оптимізація і аналіз результатів',
+        step4Text:
+          'Моніторинг показників та коригування кампанії для підвищення ефективності.',
+        businessBenefitsTitle: 'Переваги банерної реклами для бізнесу',
+        benefit1Title: 'Масштабованість',
+        benefit1Text:
+          'Можливість охопити тисячі або мільйони унікальних користувачів.',
+        benefit2Title: 'Візуальний вплив',
+        benefit2Text:
+          'Ефективно передають меседжі, використовуючи кольори та емоційні тригери.',
+        benefit3Title: 'Точний таргетинг',
+        benefit3Text:
+          'Показ реклами лише тим, хто вже цікавився подібними товарами чи послугами.',
+        benefit4Title: 'Гнучкість форматів',
+        benefit4Text:
+          'Підходять для запуску акцій, презентації нових продуктів або підвищення впізнаваності.',
+        benefit5Title: 'Вимірюваність',
+        benefit5Text:
+          'Детальна аналітика дозволяє контролювати кожен клік, показ або конверсію.',
+
+        //Placement/Де розміщують
+        placementTitle: 'Де розміщують банерну рекламу',
+        placementDescription:
+          'Успішна банерна реклама починається з правильного вибору платформи для розміщення. Не кожен сайт дає однакову ефективність, тому важливо аналізувати тематику, аудиторію, трафік і конкурентне середовище ресурсу. Вдале розміщення забезпечує високу видимість, релевантність і максимальну віддачу від кожного показу.',
+        thematicSitesTitle: 'Тематичні сайти',
+        thematicSitesDescription:
+          'Розміщення банерів на нішевих веб-сайтах дозволяє звертатися до вже зацікавленої аудиторії. Наприклад, реклама туристичних послуг на тревел-блогах або банери косметики на жіночих форумах працюють точково й ефективно. Тематичні майданчики мають високу релевантність, що збільшує ймовірність кліку та взаємодії з брендом.',
+        thematicSitesAdv1: 'Висока якість трафіку',
+        thematicSitesAdv2: 'Мінімальні втрати на нецільову аудиторію',
+        thematicSitesAdv3:
+          'Підвищений рівень довіри завдяки експертному контексту',
+        newsPortalsTitle: 'Новинні портали',
+        newsPortalsDescription:
+          'Новинні сайти мають один з найвищих показників щоденного трафіку. Завдяки постійному оновленню контенту, користувачі регулярно повертаються, а це дає змогу охопити широку, але при цьому активну аудиторію. Банери тут часто розміщуються у верхній частині сторінки або між блоками новин.',
+        newsPortalsAdv1: 'Висока частота показів',
+        newsPortalsAdv2: 'Швидкий приріст охоплення',
+        newsPortalsAdv3: 'Актуальність: реклама поруч з гарячими новинами',
+        highTrafficTitle: 'Платформи з високим трафіком',
+        highTrafficDescription:
+          'До цієї категорії належать великі агрегатори, енциклопедії, онлайн-журнали, форуми, а також сайти типу "питання-відповіді" (як-от Quora або місцеві аналоги). Розміщення на таких платформах дозволяє охопити широку аудиторію без прив\'язки до вузької тематики.',
+        highTrafficAdv1: 'Масштабне охоплення',
+        highTrafficAdv2: 'Оптимізація за CPM або CPC',
+        highTrafficAdv3: 'Можливість A/B-тестування банерів на великій вибірці',
+
+        //Implementation/Процес створення
+        implementationTitle: 'Наш процес створення ефективних банерів',
+        implementationDescription:
+          'Кожен банер, який ми створюємо — це результат комплексного підходу, що поєднує аналітику, дизайн і технології. Ми не просто малюємо гарні картинки, а розробляємо стратегічні рішення, які приводять реальних клієнтів. Наша методологія передбачає глибоке розуміння вашого бізнесу та потреб цільової аудиторії.',
+        step01Title: 'Аналіз і стратегія',
+        step01Text:
+          'Вивчаємо ваш бізнес, конкурентів та цільову аудиторію, щоб розробити унікальну стратегію розміщення',
+        step01List1: 'Аналіз поведінки користувачів',
+        step01List2: 'Дослідження конкурентів',
+        step01List3: 'Вибір оптимальних форматів',
+        step02Title: 'Креативний концепт',
+        step02Text:
+          'Створюємо унікальні візуальні рішення, які привертають увагу та спонукають до дії',
+        step02List1: 'Розробка привабливих дизайнів',
+        step02List2: 'Тестування кількох варіантів',
+        step02List3: 'Оптимізація для різних майданчиків',
+        step03Title: 'Налаштування і запуск',
+        step03Text:
+          'Налаштовуємо показ банерів на обраних майданчиках з точним таргетингом',
+        step03List1: 'Інтеграція з рекламними мережами',
+        step03List2: 'Налаштування таргетингу',
+        step03List3: 'Вибір оптимальних стратегій показу',
+        step04Title: 'Оптимізація і масштабування',
+        step04Text:
+          'Постійно аналізуємо ефективність і коригуємо кампанію для досягнення максимальних результатів',
+        step04List1: 'A/B-тестування варіантів',
+        step04List2: 'Аналіз показників ефективності',
+        step04List3: 'Масштабування успішних кампаній',
+        result1Value: '+78%',
+        result1Label: 'Середнє зростання CTR',
+        result2Value: '5.2M',
+        result2Label: 'Охоплення щомісяця',
+        result3Value: '3.8x',
+        result3Label: 'Середній ROI кампаній',
+        ctaTitle: 'Готові запустити банерну рекламу, яка дійсно працює?',
+        ctaDescription:
+          "Зв'яжіться з нами сьогодні, і ми розробимо індивідуальну стратегію, що відповідає вашим бізнес-цілям",
+        ctaButton: 'Замовити консультацію',
+
+        //Analytics/Аналітика
+        analyticsTitle: 'Результати та аналітика',
+        analyticsDescription:
+          'Успішна банерна реклама — це не тільки креатив і покази, а й точна аналітика. Ми працюємо з даними та метриками, які допомагають нам оптимізувати кампанії та досягати максимальної ефективності вкладених коштів.',
+        metricsTitle: 'Ключові метрики',
+        metricCTR:
+          'Відношення кількості кліків до кількості показів. Основний показник ефективності банера, що демонструє наскільки він привабливий для аудиторії.',
+        metricCPM:
+          'Вартість за тисячу показів. Допомагає оцінити економічну ефективність охоплення цільової аудиторії.',
+        metricCPC:
+          'Вартість одного кліка. Показує, скільки коштує залучення одного потенційного клієнта на сайт.',
+        metricCR:
+          'Відсоток відвідувачів, які виконали цільову дію (замовлення, реєстрація тощо) після переходу з банера.',
+        whatYouGetTitle: 'Що ви отримуєте',
+        regularReports: 'Регулярна звітність',
+        regularReportsDesc:
+          'Щотижневі або щомісячні звіти з детальним аналізом усіх ключових показників кампанії та рекомендаціями щодо оптимізації.',
+        roiAnalysis: 'Аналіз ROI',
+        roiAnalysisDesc:
+          'Розрахунок повернення інвестицій для кожного рекламного каналу та формату, що дозволяє визначити найбільш прибуткові стратегії.',
+        audienceData: 'Дані про аудиторію',
+        audienceDataDesc:
+          'Детальна інформація про демографію, інтереси та поведінку користувачів, які взаємодіють з вашими банерами.',
+        realtimeOptimization: 'Оптимізація в реальному часі',
+        realtimeOptimizationDesc:
+          'Постійний моніторинг та коригування кампаній для досягнення максимальної ефективності та мінімізації витрат.',
+        processTitle: 'Наш аналітичний процес',
+        processStep1: 'Налаштування відстеження',
+        processStep1Desc:
+          'Інтеграція Google Analytics, Facebook Pixel та інших інструментів для точного відстеження всіх взаємодій користувачів з банерами та сайтом.',
+        processStep2: 'Збір та аналіз даних',
+        processStep2Desc:
+          'Систематичний збір даних про покази, кліки, конверсії та інші взаємодії користувачів з рекламними матеріалами.',
+        processStep3: 'A/B тестування',
+        processStep3Desc:
+          'Порівняння різних версій банерів для визначення найбільш ефективних візуальних елементів, закликів до дії та розміщень.',
+        processStep4: 'Формування звітності',
+        processStep4Desc:
+          'Створення зрозумілих і детальних звітів, що демонструють результати кампаній та дають чітке розуміння ROI.',
+        processStep5: 'Оптимізація та масштабування',
+        processStep5Desc:
+          'На основі зібраних даних вносимо корективи в кампанії та масштабуємо найбільш успішні стратегії для максимізації результатів.',
+        analyticsQuote:
+          'Без аналітики реклама — це просто красиві картинки. З аналітикою — це потужний інструмент розвитку бізнесу, де кожна гривня працює на результат.',
+        analyticsQuoteAuthor: '— Команда SoftQod',
+        analyticsCta:
+          'Хочете дізнатися більше про те, як ми можемо допомогти вам досягти вимірюваних результатів з банерною рекламою?',
+        analyticsCtaButton: 'Замовити консультацію',
+
+        //Benefits/Переваги
+        benefitsTitle: 'Чому варто замовити банерну рекламу саме у нас',
+        benefitsDescription:
+          'У світі діджитал-реклами важливо не просто запускати банери, а досягати конкретних бізнес-цілей — продажів, заявок, охоплення. Ми пропонуємо не шаблонні рішення, а індивідуальний підхід, заснований на досвіді, перевірених методиках і сучасних технологіях. Наша команда глибоко занурюється в нішу клієнта, щоб створити ефективну, ROI-орієнтовану банерну кампанію.',
+        experienceTitle: 'Досвід роботи з різними нішами',
+        experienceText:
+          'Ми реалізували десятки проєктів у сферах e-commerce, фінансів, туризму, освіти, b2b-послуг, медицини та ін. Завдяки цьому ми розуміємо специфіку поведінки цільової аудиторії в кожному сегменті. Ми знаємо, які формати працюють краще в конкретних галузях, як оформити оффер і креатив, щоб він викликав максимальний відгук.',
+        approachTitle: 'Наш підхід — це:',
+        approach1: 'Глибокий конкурентний аналіз',
+        approach1Desc:
+          'Вивчаємо стратегії конкурентів, щоб створити унікальну пропозицію',
+        approach2: 'Врахування сезонності попиту',
+        approach2Desc:
+          'Адаптуємо рекламні кампанії до сезонних трендів і поведінки споживачів',
+        approach3:
+          'Адаптація банерів під мову та менталітет цільової аудиторії',
+        approach3Desc:
+          'Створюємо креативи, що резонують з вашою аудиторією на культурному рівні',
+        industries: {
+          item1: 'E-commerce',
+          item2: 'Фінанси',
+          item3: 'Туризм',
+          item4: 'Освіта',
+          item5: 'B2B',
+          item6: 'Медицина',
+          item7: 'HoReCa',
+          item8: 'Інші сфери',
+        },
+        transparencyTitle: 'Прозора звітність і супровід',
+        transparencyText:
+          'Ми не приховуємо дані — кожен клієнт має повний доступ до звітів, статистики та дашбордів у зручному форматі. Ви бачите, як працює кампанія в реальному часі, які майданчики приносять результат, а які — потребують корекції. Наші спеціалісти супроводжують проект на кожному етапі, надаючи рекомендації та вчасно реагуючи на зміни в поведінці користувачів.',
+        whatYouGet: 'Що ви отримуєте:',
+        reportMetrics: 'Звіти з метриками CTR, CPC, CPM',
+        reportMetricsDesc:
+          'Детальна статистика ефективності кампаній, доступна в режимі реального часу',
+        consult: 'Консультації щодо покращення результатів',
+        consultDesc:
+          'Регулярні рекомендації від фахівців для оптимізації кампаній',
+        manager: "Постійний зв'язок з менеджером кампанії",
+        managerDesc:
+          "Спеціаліст на зв'язку, який відповідає за успіх вашого проєкту",
+        creativeIdeas: 'Креативні ідеї для банерів',
+        creativeIdeasDesc:
+          'Регулярне оновлення креативів для запобігання банерній сліпоті',
+        testimonialText:
+          'Працюючи з командою SoftQod, ми отримали не просто рекламу, а стратегічного партнера, який дійсно розуміє наш бізнес. Завдяки їхньому індивідуальному підходу та постійному аналізу, наша конверсія з банерної реклами зросла на 34%.',
+        testimonialAuthor: 'Олена Петренко',
+        testimonialAuthorRole: 'Маркетинг-директор, Ecommerce Store',
+
+        //FAQ
+        faqTitle: 'FAQ',
+        faqData: {
+          question1: 'Скільки часу потрібно для запуску банерної кампанії?',
+          answer1:
+            'Залежно від складності завдання, підготовка займає від 2 до 5 робочих днів. Це включає аналіз ЦА, вибір сайтів, створення креативів і технічну підготовку до запуску.',
+          question2: 'Чи можна протестувати кілька банерів одночасно?',
+          answer2:
+            'Так, ми практикуємо A/B-тестування, щоб визначити, який варіант банера має кращий CTR і нижчий CPC. Це дозволяє оптимізувати кампанію ще на етапі її старту.',
+          question3:
+            'Які типи бізнесу найкраще підходять для банерної реклами?',
+          answer3:
+            'Банерна реклама ефективна як для широкого B2C-сегменту (рітейл, косметика, туризм), так і для вузьких B2B-напрямів. Особливо вона працює в нішах з візуальною складовою або з акційними пропозиціями.',
+          question4: 'Чи можливо обмежити показ банерів певними регіонами?',
+          answer4:
+            'Так, ми можемо налаштувати геотаргетинг до рівня країни, області чи навіть конкретного міста. Це дозволяє зосередити бюджет лише на тих регіонах, де знаходиться ваша цільова аудиторія.',
+          question5: 'Що буде, якщо кампанія не дає очікуваних результатів?',
+          answer5:
+            'Ми регулярно аналізуємо показники і за потреби вносимо зміни — замінюємо креативи, змінюємо майданчики або коригуємо таргетинг. Усі кампанії супроводжує фахівець, який відповідає за результат.',
+          question6:
+            'Чи можна запустити банерну рекламу без готового дизайну?',
+          answer6:
+            'Так, ми повністю беремо на себе створення банерів — від концепту до фінального макету. Наші дизайнери адаптують креативи під обрану стратегію та забезпечують їх відповідність технічним вимогам платформ.',
+        },
+        faqCta: 'Маєте додаткові запитання щодо банерної реклами?',
         faqCtaButton: "Зв'язатися з нами",
       },
     },
