@@ -41,6 +41,7 @@ import {
   FaRobot,
   FaCogs,
 } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const PageContainer = styled.div`
   max-width: 1400px;
@@ -246,24 +247,6 @@ const AnimatedTitle = styled(motion.h1)`
   @media (max-width: 400px) {
     font-size: clamp(1.6rem, 3.5vw, 2rem);
     margin-bottom: 0.6rem;
-  }
-`;
-
-const HighlightedSpan = styled.span`
-  position: relative;
-  color: var(--accent-color);
-  white-space: nowrap;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    width: 100%;
-    height: 10px;
-    background: rgba(var(--accent-color-rgb), 0.15);
-    z-index: -1;
-    border-radius: 4px;
   }
 `;
 
@@ -1891,6 +1874,7 @@ const AIPlatformIcon = styled.div`
 const AIBannerMarketing = () => {
   const bannerRef = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { t } = useTranslation();
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -1901,34 +1885,34 @@ const AIBannerMarketing = () => {
   // FAQ data
   const faqData = [
     {
-      question: '1. Скільки часу потрібно для запуску банерної кампанії?',
+      question: t('aiBannerMarketingPage.faqData.question1'),
       answer:
-        'Залежно від складності завдання, підготовка займає від 2 до 5 робочих днів. Це включає аналіз ЦА, вибір сайтів, створення креативів і технічну підготовку до запуску.',
+      t('aiBannerMarketingPage.faqData.answer1'),
     },
     {
-      question: '2. Чи можна протестувати кілька банерів одночасно?',
+      question:  t('aiBannerMarketingPage.faqData.question2'),
       answer:
-        'Так, ми практикуємо A/B-тестування, щоб визначити, який варіант банера має кращий CTR і нижчий CPC. Це дозволяє оптимізувати кампанію ще на етапі її старту.',
+      t('aiBannerMarketingPage.faqData.answer2'),
     },
     {
-      question: '3. Які типи бізнесу найкраще підходять для банерної реклами?',
+      question:  t('aiBannerMarketingPage.faqData.question3'),
       answer:
-        'Банерна реклама ефективна як для широкого B2C-сегменту (рітейл, косметика, туризм), так і для вузьких B2B-напрямів. Особливо вона працює в нішах з візуальною складовою або з акційними пропозиціями.',
+      t('aiBannerMarketingPage.faqData.answer3'),
     },
     {
-      question: '4. Чи можливо обмежити показ банерів певними регіонами?',
+      question: t('aiBannerMarketingPage.faqData.question4'),
       answer:
-        'Так, ми можемо налаштувати геотаргетинг до рівня країни, області чи навіть конкретного міста. Це дозволяє зосередити бюджет лише на тих регіонах, де знаходиться ваша цільова аудиторія.',
+      t('aiBannerMarketingPage.faqData.answer4'),
     },
     {
-      question: '5. Що буде, якщо кампанія не дає очікуваних результатів?',
+      question:  t('aiBannerMarketingPage.faqData.question5'),
       answer:
-        'Ми регулярно аналізуємо показники і за потреби вносимо зміни — замінюємо креативи, змінюємо майданчики або коригуємо таргетинг. Усі кампанії супроводжує фахівець, який відповідає за результат.',
+      t('aiBannerMarketingPage.faqData.answer5'),
     },
     {
-      question: '6. Чи можна запустити банерну рекламу без готового дизайну?',
+      question:  t('aiBannerMarketingPage.faqData.question6'),
       answer:
-        'Так, ми повністю беремо на себе створення банерів — від концепту до фінального макету. Наші дизайнери адаптують креативи під обрану стратегію та забезпечують їх відповідність технічним вимогам платформ.',
+      t('aiBannerMarketingPage.faqData.answer6'),
     },
   ];
 
@@ -1993,76 +1977,76 @@ const AIBannerMarketing = () => {
       name: 'Leaderboard',
       size: '728×90',
       description:
-        'Розміщується у верхній частині сторінки, забезпечує високу видимість на початку взаємодії користувача з сайтом.',
+        t('aiBannerMarketingPage.formatLeaderboardDesc'),
     },
     {
       name: 'Medium Rectangle',
       size: '300×250',
       description:
-        'Один з найбільш ефективних форматів, що вбудовується в контент або розміщується в боковій панелі.',
+      t('aiBannerMarketingPage.formatRectangleDesc'),
     },
     {
       name: 'Wide Skyscraper',
       size: '160×600',
       description:
-        'Вертикальний формат, який зазвичай розміщується в сайдбарі і залишається видимим при прокрутці.',
+      t('aiBannerMarketingPage.formatSkyscraperDesc'),
     },
     {
       name: 'Billboard',
       size: '970×250',
       description:
-        'Великий формат для преміальних кампаній, що забезпечує максимальне охоплення і вплив.',
+      t('aiBannerMarketingPage.formatBillboardDesc'),
     },
   ];
 
   const benefits = [
     {
       icon: <FaChartLine />,
-      title: 'Масштабованість',
-      text: 'Можливість охопити тисячі або мільйони унікальних користувачів.',
+      title: t('aiBannerMarketingPage.benefit1Title'),
+      text: t('aiBannerMarketingPage.benefit1Text'),
     },
     {
       icon: <FaEye />,
-      title: 'Візуальний вплив',
-      text: 'Ефективно передають меседжі, використовуючи кольори та емоційні тригери.',
+      title: t('aiBannerMarketingPage.benefit2Title'),
+      text: t('aiBannerMarketingPage.benefit2Text'),
     },
     {
       icon: <FaBullseye />,
-      title: 'Точний таргетинг',
-      text: 'Показ реклами лише тим, хто вже цікавився подібними товарами чи послугами.',
+      title: t('aiBannerMarketingPage.benefit3Title'),
+      text: t('aiBannerMarketingPage.benefit3Text'),
     },
     {
       icon: <FaRegComments />,
-      title: 'Гнучкість форматів',
-      text: 'Підходять для запуску акцій, презентації нових продуктів або підвищення впізнаваності.',
+      title: t('aiBannerMarketingPage.benefit4Title'),
+      text: t('aiBannerMarketingPage.benefit4Text'),
     },
     {
       icon: <FaChartBar />,
-      title: 'Вимірюваність',
-      text: 'Детальна аналітика дозволяє контролювати кожен клік, показ або конверсію.',
+      title: t('aiBannerMarketingPage.benefit5Title'),
+      text: t('aiBannerMarketingPage.benefit5Text'),
     },
   ];
 
   const schemeSteps = [
     {
       number: '01',
-      title: 'Вибір форматів і площадок',
-      text: 'Рекламодавець обирає типи банерів і сайти для розміщення.',
+      title: t('aiBannerMarketingPage.step1Title'),
+      text: t('aiBannerMarketingPage.step1Text'),
     },
     {
       number: '02',
-      title: 'Визначення цільової аудиторії',
-      text: 'Налаштування демографічних, поведінкових та географічних параметрів.',
+      title: t('aiBannerMarketingPage.step2Title'),
+      text: t('aiBannerMarketingPage.step2Text'),
     },
     {
       number: '03',
-      title: 'Запуск через рекламні мережі',
-      text: 'Банери розміщуються через спеціалізовані платформи або напряму.',
+      title: t('aiBannerMarketingPage.step3Title'),
+      text: t('aiBannerMarketingPage.step3Text'),
     },
     {
       number: '04',
-      title: 'Оптимізація і аналіз результатів',
-      text: 'Моніторинг показників та коригування кампанії для підвищення ефективності.',
+      title: t('aiBannerMarketingPage.step4Title'),
+      text: t('aiBannerMarketingPage.step4Text'),
     },
   ];
 
@@ -2070,37 +2054,37 @@ const AIBannerMarketing = () => {
   const placementTypes = [
     {
       id: 'thematic',
-      title: 'Тематичні сайти',
+      title: t('aiBannerMarketingPage.thematicSitesTitle'),
       description:
-        'Розміщення банерів на нішевих веб-сайтах дозволяє звертатися до вже зацікавленої аудиторії. Наприклад, реклама туристичних послуг на тревел-блогах або банери косметики на жіночих форумах працюють точково й ефективно. Тематичні майданчики мають високу релевантність, що збільшує ймовірність кліку та взаємодії з брендом.',
+      t('aiBannerMarketingPage.thematicSitesDescription'),
       advantages: [
-        'Висока якість трафіку',
-        'Мінімальні втрати на нецільову аудиторію',
-        'Підвищений рівень довіри завдяки експертному контексту',
+        t('aiBannerMarketingPage.thematicSitesAdv1'),
+        t('aiBannerMarketingPage.thematicSitesAdv2'),
+        t('aiBannerMarketingPage.thematicSitesAdv3'),
       ],
       icon: <FaBullseye />,
     },
     {
       id: 'news',
-      title: 'Новинні портали',
+      title: t('aiBannerMarketingPage.newsPortalsTitle'),
       description:
-        'Новинні сайти мають один з найвищих показників щоденного трафіку. Завдяки постійному оновленню контенту, користувачі регулярно повертаються, а це дає змогу охопити широку, але при цьому активну аудиторію. Банери тут часто розміщуються у верхній частині сторінки або між блоками новин.',
+      t('aiBannerMarketingPage.newsPortalsDescription'),
       advantages: [
-        'Висока частота показів',
-        'Швидкий приріст охоплення',
-        'Актуальність: реклама поруч з гарячими новинами',
+        t('aiBannerMarketingPage.newsPortalsAdv1'),
+        t('aiBannerMarketingPage.newsPortalsAdv2'),
+        t('aiBannerMarketingPage.newsPortalsAdv3'),
       ],
       icon: <FaRegComments />,
     },
     {
       id: 'traffic',
-      title: 'Платформи з високим трафіком',
+      title: t('aiBannerMarketingPage.highTrafficTitle'),
       description:
-        'До цієї категорії належать великі агрегатори, енциклопедії, онлайн-журнали, форуми, а також сайти типу "питання-відповіді" (як-от Quora або місцеві аналоги). Розміщення на таких платформах дозволяє охопити широку аудиторію без прив\'язки до вузької тематики.',
+      t('aiBannerMarketingPage.highTrafficDescription'),
       advantages: [
-        'Масштабне охоплення',
-        'Оптимізація за CPM або CPC',
-        'Можливість A/B-тестування банерів на великій вибірці',
+        t('aiBannerMarketingPage.highTrafficAdv1'),
+        t('aiBannerMarketingPage.highTrafficAdv2'),
+        t('aiBannerMarketingPage.highTrafficAdv3'),
       ],
       icon: <FaUsers />,
     },
@@ -2142,9 +2126,7 @@ const AIBannerMarketing = () => {
         animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
               >
-                Банерна реклама на сайтах —{' '}
-                <HighlightedSpan>ефективний спосіб</HighlightedSpan> залучення
-                клієнтів
+                {t('aiBannerMarketingPage.heroTitle')}
               </AnimatedTitle>
 
               <HeroDescription
@@ -2152,12 +2134,7 @@ const AIBannerMarketing = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
               >
-                Банерна реклама — це потужний інструмент цифрового маркетингу,
-                який дозволяє брендам взаємодіяти з цільовою аудиторією
-                безпосередньо на популярних веб-ресурсах. Завдяки візуальному
-                впливу, точному таргетингу та можливості масштабування, банери
-                залишаються актуальними навіть в умовах високої конкуренції за
-                увагу користувачів.
+                {t('aiBannerMarketingPage.heroDescription')}
               </HeroDescription>
 
               <StatsRow
@@ -2167,17 +2144,17 @@ const AIBannerMarketing = () => {
               >
                 <StatColumn>
                   <StatNumber>+180%</StatNumber>
-                  <StatText>Зростання CTR</StatText>
+                  <StatText>{t('aiBannerMarketingPage.stat1Label')}</StatText>
                 </StatColumn>
 
                 <StatColumn>
                   <StatNumber>+65%</StatNumber>
-                  <StatText>Підвищення конверсії</StatText>
+                  <StatText>{t('aiBannerMarketingPage.stat2Label')}</StatText>
                 </StatColumn>
 
                 <StatColumn>
                   <StatNumber>-40%</StatNumber>
-                  <StatText>Зниження вартості залучення</StatText>
+                  <StatText>{t('aiBannerMarketingPage.stat3Label')}</StatText>
                 </StatColumn>
               </StatsRow>
 
@@ -2191,7 +2168,7 @@ const AIBannerMarketing = () => {
                   whileTap={{ scale: 0.98 }}
                   onClick={openModal}
                 >
-                  Замовити банерну рекламу
+                  {t('aiBannerMarketingPage.orderButton')}
                   <FaArrowRight />
                 </PrimaryButton>
               </ButtonGroup>
@@ -2278,13 +2255,9 @@ const AIBannerMarketing = () => {
 
       <InfoSection>
         <InfoContainer>
-          <InfoTitle>Що таке банерна реклама та як вона працює</InfoTitle>
+          <InfoTitle>{t('aiBannerMarketingPage.infoTitle')}</InfoTitle>
           <InfoDescription>
-            Банерна реклама — це графічні блоки (зображення, анімації або
-            відео), що розміщуються на веб-сайтах з метою привернення уваги,
-            формування попиту або перенаправлення користувачів на цільову
-            сторінку (лендінг). Вона працює за принципом показів (CPM), кліків
-            (CPC) або дій (CPA), залежно від цілей рекламної кампанії.
+          {t('aiBannerMarketingPage.infoDescription')}
           </InfoDescription>
 
           <BannerAnatomy
@@ -2292,11 +2265,9 @@ const AIBannerMarketing = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <SchemeTitle>Основні формати банерної реклами</SchemeTitle>
+            <SchemeTitle>{t('aiBannerMarketingPage.formatsTitle')}</SchemeTitle>
             <SchemeDescription>
-              Банери можуть бути статичними (JPEG, PNG), анімованими (GIF) або
-              інтерактивними (HTML5). Крім того, використовуються адаптивні
-              формати, що автоматично підлаштовуються під екран користувача.
+            {t('aiBannerMarketingPage.formatsDescription')}
             </SchemeDescription>
 
             <BannerTypesGrid>
@@ -2334,13 +2305,9 @@ const AIBannerMarketing = () => {
 
             <BannerWorkScheme>
               <BannerSchemeLeft>
-                <SchemeTitle>Як працює банерна реклама</SchemeTitle>
+                <SchemeTitle>{t('aiBannerMarketingPage.howItWorksTitle')}</SchemeTitle>
                 <SchemeDescription>
-                  Рекламодавець обирає сайти, на яких хоче показувати
-                  оголошення, визначає аудиторію за демографічними,
-                  поведінковими або географічними параметрами, після чого банери
-                  запускаються через рекламні мережі або напряму через
-                  майданчики.
+                {t('aiBannerMarketingPage.howItWorksDescription')}
                 </SchemeDescription>
 
                 {schemeSteps.map((step, index) => (
@@ -2498,7 +2465,7 @@ const AIBannerMarketing = () => {
               </BannerSchemeRight>
             </BannerWorkScheme>
 
-            <SchemeTitle>Переваги банерної реклами для бізнесу</SchemeTitle>
+            <SchemeTitle>{t('aiBannerMarketingPage.businessBenefitsTitle')}</SchemeTitle>
             <BenefitsList>
               {benefits.map((benefit, index) => (
                 <BenefitItem
@@ -2522,13 +2489,9 @@ const AIBannerMarketing = () => {
       {/* Новая секция про размещение баннеров */}
       <PlacementSection>
         <PlacementContainer>
-          <PlacementTitle>Де розміщують банерну рекламу</PlacementTitle>
+          <PlacementTitle>{t('aiBannerMarketingPage.placementTitle')}</PlacementTitle>
           <PlacementDescription>
-            Успішна банерна реклама починається з правильного вибору платформи
-            для розміщення. Не кожен сайт дає однакову ефективність, тому
-            важливо аналізувати тематику, аудиторію, трафік і конкурентне
-            середовище ресурсу. Вдале розміщення забезпечує високу видимість,
-            релевантність і максимальну віддачу від кожного показу.
+          {t('aiBannerMarketingPage.placementDescription')}
           </PlacementDescription>
 
           <PlacementCardsContainer>
@@ -2570,15 +2533,11 @@ const AIBannerMarketing = () => {
 
         <ImplementationContainer>
           <ImplementationTitle>
-            Наш процес створення ефективних банерів
+          {t('aiBannerMarketingPage.implementationTitle')}
           </ImplementationTitle>
 
           <ImplementationDescription>
-            Кожен банер, який ми створюємо — це результат комплексного підходу,
-            що поєднує аналітику, дизайн і технології. Ми не просто малюємо
-            гарні картинки, а розробляємо стратегічні рішення, які приводять
-            реальних клієнтів. Наша методологія передбачає глибоке розуміння
-            вашого бізнесу та потреб цільової аудиторії.
+          {t('aiBannerMarketingPage.implementationDescription')}
           </ImplementationDescription>
 
           <div className="process-timeline">
@@ -2587,23 +2546,22 @@ const AIBannerMarketing = () => {
             <div className="timeline-node active">
               <div className="node-number">01</div>
               <div className="node-content">
-                <h3>Аналіз і стратегія</h3>
+                <h3>{t('aiBannerMarketingPage.step01Title')}</h3>
                 <p>
-                  Вивчаємо ваш бізнес, конкурентів та цільову аудиторію, щоб
-                  розробити унікальну стратегію розміщення
+                {t('aiBannerMarketingPage.step01Text')}
                 </p>
                 <ul className="node-list">
                   <li>
                     <span className="check-icon">✓</span>
-                    Аналіз поведінки користувачів
+                    {t('aiBannerMarketingPage.step01List1')}
                   </li>
                   <li>
                     <span className="check-icon">✓</span>
-                    Дослідження конкурентів
+                    {t('aiBannerMarketingPage.step01List2')}
                   </li>
                   <li>
                     <span className="check-icon">✓</span>
-                    Вибір оптимальних форматів
+                    {t('aiBannerMarketingPage.step01List3')}
                   </li>
                 </ul>
               </div>
@@ -2612,23 +2570,22 @@ const AIBannerMarketing = () => {
             <div className="timeline-node">
               <div className="node-number">02</div>
               <div className="node-content">
-                <h3>Креативний концепт</h3>
+                <h3>{t('aiBannerMarketingPage.step02Title')}</h3>
                 <p>
-                  Створюємо унікальні візуальні рішення, які привертають увагу
-                  та спонукають до дії
+                {t('aiBannerMarketingPage.step02Text')}
                 </p>
                 <ul className="node-list">
                   <li>
                     <span className="check-icon">✓</span>
-                    Розробка привабливих дизайнів
+                    {t('aiBannerMarketingPage.step02List1')}
                   </li>
                   <li>
                     <span className="check-icon">✓</span>
-                    Тестування кількох варіантів
+                    {t('aiBannerMarketingPage.step02List2')}
                   </li>
                   <li>
                     <span className="check-icon">✓</span>
-                    Оптимізація для різних майданчиків
+                    {t('aiBannerMarketingPage.step02List3')}
                   </li>
                 </ul>
               </div>
@@ -2637,23 +2594,22 @@ const AIBannerMarketing = () => {
             <div className="timeline-node">
               <div className="node-number">03</div>
               <div className="node-content">
-                <h3>Налаштування і запуск</h3>
+                <h3>{t('aiBannerMarketingPage.step03Title')}</h3>
                 <p>
-                  Налаштовуємо показ банерів на обраних майданчиках з точним
-                  таргетингом
+                {t('aiBannerMarketingPage.step03Text')}
                 </p>
                 <ul className="node-list">
                   <li>
                     <span className="check-icon">✓</span>
-                    Інтеграція з рекламними мережами
+                    {t('aiBannerMarketingPage.step03List1')}
                   </li>
                   <li>
                     <span className="check-icon">✓</span>
-                    Налаштування таргетингу
+                    {t('aiBannerMarketingPage.step03List2')}
                   </li>
                   <li>
                     <span className="check-icon">✓</span>
-                    Вибір оптимальних стратегій показу
+                    {t('aiBannerMarketingPage.step03List3')}
                   </li>
                 </ul>
               </div>
@@ -2662,23 +2618,22 @@ const AIBannerMarketing = () => {
             <div className="timeline-node">
               <div className="node-number">04</div>
               <div className="node-content">
-                <h3>Оптимізація і масштабування</h3>
+                <h3>{t('aiBannerMarketingPage.step04Title')}</h3>
                 <p>
-                  Постійно аналізуємо ефективність і коригуємо кампанію для
-                  досягнення максимальних результатів
+                {t('aiBannerMarketingPage.step04Title')}
                 </p>
                 <ul className="node-list">
                   <li>
                     <span className="check-icon">✓</span>
-                    A/B-тестування варіантів
+                    {t('aiBannerMarketingPage.step04List1')}
                   </li>
                   <li>
                     <span className="check-icon">✓</span>
-                    Аналіз показників ефективності
+                    {t('aiBannerMarketingPage.step04List2')}
                   </li>
                   <li>
                     <span className="check-icon">✓</span>
-                    Масштабування успішних кампаній
+                    {t('aiBannerMarketingPage.step04List3')}
                   </li>
                 </ul>
               </div>
@@ -2691,7 +2646,7 @@ const AIBannerMarketing = () => {
                 <FaChartLine />
               </div>
               <div className="result-value">+78%</div>
-              <div className="result-label">Середнє зростання CTR</div>
+              <div className="result-label">{t('aiBannerMarketingPage.result1Label')}</div>
             </div>
 
             <div className="result-card">
@@ -2699,7 +2654,7 @@ const AIBannerMarketing = () => {
                 <FaUsers />
               </div>
               <div className="result-value">5.2M</div>
-              <div className="result-label">Охоплення щомісяця</div>
+              <div className="result-label">{t('aiBannerMarketingPage.result2Label')}</div>
             </div>
 
             <div className="result-card">
@@ -2707,22 +2662,21 @@ const AIBannerMarketing = () => {
                 <FaRocket />
               </div>
               <div className="result-value">3.8x</div>
-              <div className="result-label">Середній ROI кампаній</div>
+              <div className="result-label">{t('aiBannerMarketingPage.result3Label')}</div>
             </div>
           </div>
 
           <div className="cta-container">
             <h3 className="cta-title">
-              Готові запустити банерну рекламу, яка дійсно працює?
+            {t('aiBannerMarketingPage.ctaTitle')}
             </h3>
             <p className="cta-description">
-              Зв'яжіться з нами сьогодні, і ми розробимо індивідуальну
-              стратегію, що відповідає вашим бізнес-цілям
+            {t('aiBannerMarketingPage.ctaDescription')}
             </p>
             <div className="cta-buttons">
               <button className="cta-button primary" onClick={openModal}>
                 <FaComment />
-                <span>Замовити консультацію</span>
+                <span>{t('aiBannerMarketingPage.ctaButton')}</span>
               </button>
             </div>
           </div>
@@ -3049,13 +3003,10 @@ const AIBannerMarketing = () => {
       {/* Секция аналитики и результатов */}
       <section className="analytics-section">
         <div className="analytics-container">
-          <h2 className="analytics-title">Результати та аналітика</h2>
+          <h2 className="analytics-title">{t('aiBannerMarketingPage.analyticsTitle')}</h2>
 
           <p className="analytics-description">
-            Успішна банерна реклама — це не тільки креатив і покази, а й точна
-            аналітика. Ми працюємо з даними та метриками, які допомагають нам
-            оптимізувати кампанії та досягати максимальної ефективності
-            вкладених коштів.
+          {t('aiBannerMarketingPage.analyticsDescription')}
           </p>
 
           <div className="analytics-cards">
@@ -3063,38 +3014,33 @@ const AIBannerMarketing = () => {
               <div className="card-icon">
                 <FaChartBar />
               </div>
-              <h3>Ключові метрики</h3>
+              <h3>{t('aiBannerMarketingPage.metricsTitle')}</h3>
               <div className="metrics-list">
                 <div className="metric-item">
                   <span className="metric-name">CTR (Click-Through Rate)</span>
                   <p className="metric-desc">
-                    Відношення кількості кліків до кількості показів. Основний
-                    показник ефективності банера, що демонструє наскільки він
-                    привабливий для аудиторії.
+                  {t('aiBannerMarketingPage.metricCTR')}
                   </p>
                 </div>
 
                 <div className="metric-item">
                   <span className="metric-name">CPM (Cost Per Mille)</span>
                   <p className="metric-desc">
-                    Вартість за тисячу показів. Допомагає оцінити економічну
-                    ефективність охоплення цільової аудиторії.
+                    {t('aiBannerMarketingPage.metricCPM')}
                   </p>
                 </div>
 
                 <div className="metric-item">
                   <span className="metric-name">CPC (Cost Per Click)</span>
                   <p className="metric-desc">
-                    Вартість одного кліка. Показує, скільки коштує залучення
-                    одного потенційного клієнта на сайт.
+                  {t('aiBannerMarketingPage.metricCPC')}
                   </p>
                 </div>
 
                 <div className="metric-item">
                   <span className="metric-name">CR (Conversion Rate)</span>
                   <p className="metric-desc">
-                    Відсоток відвідувачів, які виконали цільову дію (замовлення,
-                    реєстрація тощо) після переходу з банера.
+                  {t('aiBannerMarketingPage.metricCR')}
                   </p>
                 </div>
               </div>
@@ -3104,19 +3050,17 @@ const AIBannerMarketing = () => {
               <div className="card-icon">
                 <FaChartLine />
               </div>
-              <h3>Що ви отримуєте</h3>
+              <h3>{t('aiBannerMarketingPage.whatYouGetTitle')}</h3>
               <div className="benefits-list">
                 <div className="benefit-item">
                   <div className="benefit-header">
                     <span className="benefit-icon">
                       <FaRegChartBar />
                     </span>
-                    <span className="benefit-title">Регулярна звітність</span>
+                    <span className="benefit-title">{t('aiBannerMarketingPage.regularReports')}</span>
                   </div>
                   <p>
-                    Щотижневі або щомісячні звіти з детальним аналізом усіх
-                    ключових показників кампанії та рекомендаціями щодо
-                    оптимізації.
+                  {t('aiBannerMarketingPage.regularReportsDesc')}
                   </p>
                 </div>
 
@@ -3125,12 +3069,10 @@ const AIBannerMarketing = () => {
                     <span className="benefit-icon">
                       <FaSearchDollar />
                     </span>
-                    <span className="benefit-title">Аналіз ROI</span>
+                    <span className="benefit-title">{t('aiBannerMarketingPage.roiAnalysis')}</span>
                   </div>
                   <p>
-                    Розрахунок повернення інвестицій для кожного рекламного
-                    каналу та формату, що дозволяє визначити найбільш прибуткові
-                    стратегії.
+                  {t('aiBannerMarketingPage.roiAnalysisDesc')}
                   </p>
                 </div>
 
@@ -3139,11 +3081,10 @@ const AIBannerMarketing = () => {
                     <span className="benefit-icon">
                       <FaUsers />
                     </span>
-                    <span className="benefit-title">Дані про аудиторію</span>
+                    <span className="benefit-title">{t('aiBannerMarketingPage.audienceData')}</span>
                   </div>
                   <p>
-                    Детальна інформація про демографію, інтереси та поведінку
-                    користувачів, які взаємодіють з вашими банерами.
+                  {t('aiBannerMarketingPage.audienceDataDesc')}
                   </p>
                 </div>
 
@@ -3153,12 +3094,11 @@ const AIBannerMarketing = () => {
                       <FaSyncAlt />
                     </span>
                     <span className="benefit-title">
-                      Оптимізація в реальному часі
+                    {t('aiBannerMarketingPage.realtimeOptimization')}
                     </span>
                   </div>
                   <p>
-                    Постійний моніторинг та коригування кампаній для досягнення
-                    максимальної ефективності та мінімізації витрат.
+                  {t('aiBannerMarketingPage.realtimeOptimizationDesc')}
                   </p>
                 </div>
               </div>
@@ -3168,18 +3108,16 @@ const AIBannerMarketing = () => {
               <div className="card-icon">
                 <FaClipboardCheck />
               </div>
-              <h3>Наш аналітичний процес</h3>
+              <h3>{t('aiBannerMarketingPage.processTitle')}</h3>
 
               <div className="process-steps">
                 <div className="process-row">
                   <div className="process-step">
                     <div className="step-number">01</div>
                     <div className="step-content">
-                      <h4>Налаштування відстеження</h4>
+                      <h4>{t('aiBannerMarketingPage.processStep1')}</h4>
                       <p>
-                        Інтеграція Google Analytics, Facebook Pixel та інших
-                        інструментів для точного відстеження всіх взаємодій
-                        користувачів з банерами та сайтом.
+                      {t('aiBannerMarketingPage.processStep1Desc')}
                       </p>
                     </div>
                   </div>
@@ -3187,10 +3125,9 @@ const AIBannerMarketing = () => {
                   <div className="process-step">
                     <div className="step-number">02</div>
                     <div className="step-content">
-                      <h4>Збір та аналіз даних</h4>
+                      <h4>{t('aiBannerMarketingPage.processStep2')}</h4>
                       <p>
-                        Систематичний збір даних про покази, кліки, конверсії та
-                        інші взаємодії користувачів з рекламними матеріалами.
+                      {t('aiBannerMarketingPage.processStep2Desc')}
                       </p>
                     </div>
                   </div>
@@ -3198,11 +3135,9 @@ const AIBannerMarketing = () => {
                   <div className="process-step">
                     <div className="step-number">03</div>
                     <div className="step-content">
-                      <h4>A/B тестування</h4>
+                      <h4>{t('aiBannerMarketingPage.processStep3')}</h4>
                       <p>
-                        Порівняння різних версій банерів для визначення найбільш
-                        ефективних візуальних елементів, закликів до дії та
-                        розміщень.
+                      {t('aiBannerMarketingPage.processStep3Desc')}
                       </p>
                     </div>
                   </div>
@@ -3212,10 +3147,9 @@ const AIBannerMarketing = () => {
                   <div className="process-step">
                     <div className="step-number">04</div>
                     <div className="step-content">
-                      <h4>Формування звітності</h4>
+                      <h4>{t('aiBannerMarketingPage.processStep4')}</h4>
                       <p>
-                        Створення зрозумілих і детальних звітів, що демонструють
-                        результати кампаній та дають чітке розуміння ROI.
+                      {t('aiBannerMarketingPage.processStep4Desc')}
                       </p>
                     </div>
                   </div>
@@ -3223,11 +3157,9 @@ const AIBannerMarketing = () => {
                   <div className="process-step">
                     <div className="step-number">05</div>
                     <div className="step-content">
-                      <h4>Оптимізація та масштабування</h4>
+                      <h4>{t('aiBannerMarketingPage.processStep5')}</h4>
                       <p>
-                        На основі зібраних даних вносимо корективи в кампанії та
-                        масштабуємо найбільш успішні стратегії для максимізації
-                        результатів.
+                      {t('aiBannerMarketingPage.processStep5Desc')}
                       </p>
                     </div>
                   </div>
@@ -3241,22 +3173,19 @@ const AIBannerMarketing = () => {
               <FaQuoteRight />
             </div>
             <blockquote>
-              "Без аналітики реклама — це просто красиві картинки. З аналітикою
-              — це потужний інструмент розвитку бізнесу, де кожна гривня працює
-              на результат."
+            {t('aiBannerMarketingPage.analyticsQuote')}
             </blockquote>
-            <div className="quote-author">— Команда SoftQod</div>
+            <div className="quote-author">{t('aiBannerMarketingPage.analyticsQuoteAuthor')}</div>
           </div>
 
           <div className="analytics-cta">
             <p>
-              Хочете дізнатися більше про те, як ми можемо допомогти вам досягти
-              вимірюваних результатів з банерною рекламою?
+            {t('aiBannerMarketingPage.analyticsCta')}
             </p>
             <div className="cta-buttons">
               <button className="cta-btn primary" onClick={openModal}>
                 <FaComment />
-                <span>Замовити консультацію</span>
+                <span>{t('aiBannerMarketingPage.analyticsCtaButton')}</span>
               </button>
             </div>
           </div>
@@ -4088,16 +4017,11 @@ const AIBannerMarketing = () => {
       <section className="benefits-section">
         <div className="benefits-container">
           <h2 className="benefits-title">
-            Чому варто замовити банерну рекламу саме у нас
+            {t('aiBannerMarketingPage.benefitsTitle')}
           </h2>
 
           <p className="benefits-description">
-            У світі діджитал-реклами важливо не просто запускати банери, а
-            досягати конкретних бізнес-цілей — продажів, заявок, охоплення. Ми
-            пропонуємо не шаблонні рішення, а індивідуальний підхід, заснований
-            на досвіді, перевірених методиках і сучасних технологіях. Наша
-            команда глибоко занурюється в нішу клієнта, щоб створити ефективну,
-            ROI-орієнтовану банерну кампанію.
+          {t('aiBannerMarketingPage.benefitsDescription')}
           </p>
 
           <div className="benefits-cards">
@@ -4108,31 +4032,25 @@ const AIBannerMarketing = () => {
                     <FaBriefcase />
                   </div>
                 </div>
-                <h3>Досвід роботи з різними нішами</h3>
+                <h3>{t('aiBannerMarketingPage.experienceTitle')}</h3>
               </div>
 
               <div className="card-content">
                 <p>
-                  Ми реалізували десятки проєктів у сферах e-commerce, фінансів,
-                  туризму, освіти, b2b-послуг, медицини та ін. Завдяки цьому ми
-                  розуміємо специфіку поведінки цільової аудиторії в кожному
-                  сегменті. Ми знаємо, які формати працюють краще в конкретних
-                  галузях, як оформити оффер і креатив, щоб він викликав
-                  максимальний відгук.
+                {t('aiBannerMarketingPage.experienceText')}
                 </p>
 
                 <div className="approach-list">
-                  <h4>Наш підхід — це:</h4>
+                  <h4>{t('aiBannerMarketingPage.approachTitle')}</h4>
                   <ul>
                     <li>
                       <div className="list-marker">
                         <FaSearch />
                       </div>
                       <div className="list-content">
-                        <strong>Глибокий конкурентний аналіз</strong>
+                        <strong>{t('aiBannerMarketingPage.approach1')}</strong>
                         <p>
-                          Вивчаємо стратегії конкурентів, щоб створити унікальну
-                          пропозицію
+                        {t('aiBannerMarketingPage.approach1Desc')}
                         </p>
                       </div>
                     </li>
@@ -4141,10 +4059,9 @@ const AIBannerMarketing = () => {
                         <FaCalendarAlt />
                       </div>
                       <div className="list-content">
-                        <strong>Врахування сезонності попиту</strong>
+                        <strong>{t('aiBannerMarketingPage.approach2')}</strong>
                         <p>
-                          Адаптуємо рекламні кампанії до сезонних трендів і
-                          поведінки споживачів
+                        {t('aiBannerMarketingPage.approach2Desc')}
                         </p>
                       </div>
                     </li>
@@ -4154,12 +4071,10 @@ const AIBannerMarketing = () => {
                       </div>
                       <div className="list-content">
                         <strong>
-                          Адаптація банерів під мову та менталітет цільової
-                          аудиторії
+                        {t('aiBannerMarketingPage.approach3')}
                         </strong>
                         <p>
-                          Створюємо креативи, що резонують з вашою аудиторією на
-                          культурному рівні
+                        {t('aiBannerMarketingPage.approach3Desc')}
                         </p>
                       </div>
                     </li>
@@ -4179,19 +4094,19 @@ const AIBannerMarketing = () => {
                     <div className="industry-icon">
                       <FaChartLine />
                     </div>
-                    <span>Фінанси</span>
+                    <span> {t('aiBannerMarketingPage.industries.item2')}</span>
                   </div>
                   <div className="industry-item">
                     <div className="industry-icon">
                       <FaPlane />
                     </div>
-                    <span>Туризм</span>
+                    <span>{t('aiBannerMarketingPage.industries.item3')}</span>
                   </div>
                   <div className="industry-item">
                     <div className="industry-icon">
                       <FaGraduationCap />
                     </div>
-                    <span>Освіта</span>
+                    <span>{t('aiBannerMarketingPage.industries.item4')}</span>
                   </div>
                 </div>
                 <div className="industries-row">
@@ -4205,7 +4120,7 @@ const AIBannerMarketing = () => {
                     <div className="industry-icon">
                       <FaHeartbeat />
                     </div>
-                    <span>Медицина</span>
+                    <span>{t('aiBannerMarketingPage.industries.item6')}</span>
                   </div>
                   <div className="industry-item">
                     <div className="industry-icon">
@@ -4217,7 +4132,7 @@ const AIBannerMarketing = () => {
                     <div className="industry-icon">
                       <FaEllipsisH />
                     </div>
-                    <span>Інші сфери</span>
+                    <span>{t('aiBannerMarketingPage.industries.item8')}</span>
                   </div>
                 </div>
               </div>
@@ -4230,31 +4145,25 @@ const AIBannerMarketing = () => {
                     <FaChartPie />
                   </div>
                 </div>
-                <h3>Прозора звітність і супровід</h3>
+                <h3>{t('aiBannerMarketingPage.transparencyTitle')}</h3>
               </div>
 
               <div className="card-content">
                 <p>
-                  Ми не приховуємо дані — кожен клієнт має повний доступ до
-                  звітів, статистики та дашбордів у зручному форматі. Ви бачите,
-                  як працює кампанія в реальному часі, які майданчики приносять
-                  результат, а які — потребують корекції. Наші спеціалісти
-                  супроводжують проект на кожному етапі, надаючи рекомендації та
-                  вчасно реагуючи на зміни в поведінці користувачів.
+                {t('aiBannerMarketingPage.transparencyText')}
                 </p>
 
                 <div className="features-list">
-                  <h4>Що ви отримуєте:</h4>
+                  <h4>{t('aiBannerMarketingPage.whatYouGet')}</h4>
                   <div className="features-grid">
                     <div className="feature-item">
                       <div className="feature-icon">
                         <FaChartBar />
                       </div>
                       <div className="feature-content">
-                        <h5>Звіти з метриками CTR, CPC, CPM</h5>
+                        <h5>{t('aiBannerMarketingPage.reportMetrics')}</h5>
                         <p>
-                          Детальна статистика ефективності кампаній, доступна в
-                          режимі реального часу
+                        {t('aiBannerMarketingPage.reportMetricsDesc')}
                         </p>
                       </div>
                     </div>
@@ -4264,10 +4173,9 @@ const AIBannerMarketing = () => {
                         <FaComments />
                       </div>
                       <div className="feature-content">
-                        <h5>Консультації щодо покращення результатів</h5>
+                        <h5>{t('aiBannerMarketingPage.consult')}</h5>
                         <p>
-                          Регулярні рекомендації від фахівців для оптимізації
-                          кампаній
+                        {t('aiBannerMarketingPage.consultDesc')}
                         </p>
                       </div>
                     </div>
@@ -4277,10 +4185,9 @@ const AIBannerMarketing = () => {
                         <FaHeadset />
                       </div>
                       <div className="feature-content">
-                        <h5>Постійний зв'язок з менеджером кампанії</h5>
+                        <h5>{t('aiBannerMarketingPage.manager')}</h5>
                         <p>
-                          Спеціаліст на зв'язку, який відповідає за успіх вашого
-                          проєкту
+                        {t('aiBannerMarketingPage.managerDesc')}
                         </p>
                       </div>
                     </div>
@@ -4290,10 +4197,9 @@ const AIBannerMarketing = () => {
                         <FaLightbulb />
                       </div>
                       <div className="feature-content">
-                        <h5>Креативні ідеї для банерів</h5>
+                        <h5>{t('aiBannerMarketingPage.creativeIdeas')}</h5>
                         <p>
-                          Регулярне оновлення креативів для запобігання банерній
-                          сліпоті
+                        {t('aiBannerMarketingPage.creativeIdeasDesc')}
                         </p>
                       </div>
                     </div>
@@ -4305,17 +4211,14 @@ const AIBannerMarketing = () => {
                 <div className="testimonial-content">
                   <FaQuoteLeft className="quote-icon" />
                   <p>
-                    Працюючи з командою SoftQod, ми отримали не просто рекламу,
-                    а стратегічного партнера, який дійсно розуміє наш бізнес.
-                    Завдяки їхньому індивідуальному підходу та постійному
-                    аналізу, наша конверсія з банерної реклами зросла на 34%.
+                  {t('aiBannerMarketingPage.testimonialText')}
                   </p>
                 </div>
                 <div className="testimonial-author">
                   <div className="author-avatar"></div>
                   <div className="author-info">
-                    <h5>Олена Петренко</h5>
-                    <p>Маркетинг-директор, Ecommerce Store</p>
+                    <h5>{t('aiBannerMarketingPage.testimonialAuthor')}</h5>
+                    <p>{t('aiBannerMarketingPage.testimonialAuthorRole')}</p>
                   </div>
                 </div>
               </div>
@@ -4845,7 +4748,7 @@ const AIBannerMarketing = () => {
             transition={{ duration: 0.6, delay: 1.2 }}
           >
             <FaqCtaText>
-              Маєте додаткові запитання щодо банерної реклами?
+            {t('aiBannerMarketingPage.faqCta')}
             </FaqCtaText>
             <FaqCtaButton
               whileHover={{
@@ -4855,7 +4758,7 @@ const AIBannerMarketing = () => {
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
             >
-              Зв'язатися з нами <FaArrowRight />
+              {t('aiBannerMarketingPage.faqCtaButton')} <FaArrowRight />
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>
