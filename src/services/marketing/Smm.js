@@ -27,6 +27,7 @@ import {
   FaShoppingCart,
   FaCheck,
 } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const PageContainer = styled.div`
   max-width: 1400px;
@@ -157,24 +158,6 @@ const AnimatedTitle = styled(motion.h1)`
   line-height: 1.2;
   margin-bottom: 1.5rem;
   color: var(--text-primary);
-`;
-
-const HighlightedSpan = styled.span`
-  position: relative;
-  color: var(--accent-color);
-  white-space: nowrap;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    width: 100%;
-    height: 10px;
-    background: rgba(var(--accent-color-rgb), 0.15);
-    z-index: -1;
-    border-radius: 4px;
-  }
 `;
 
 const HeroDescription = styled(motion.p)`
@@ -362,6 +345,11 @@ const Smm = () => {
   const platformRef = useRef(null);
   const tasksSliderRef = useRef(null);
 
+  const { t } = useTranslation();
+  const contentStrategyFeatures = t('smmPage.contentStrategyFeatures', { returnObjects: true });
+  const result3ProgressLabels = t('smmPage.result3ProgressLabels', { returnObjects: true });
+  const result2ChartLabels = t('smmPage.result2ChartLabels', { returnObjects: true });
+
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
@@ -371,36 +359,36 @@ const Smm = () => {
   // FAQ data with your provided content
   const faqData = [
     {
-      question: '1. Чи можна просувати бізнес у соціальних мережах без відео?',
+      question: t('smmPage.faqData.question1'),
       answer:
-        "Так, хоча відео — потужний інструмент залучення, ми адаптуємо контент-стратегію під ресурси клієнта. Можна використовувати графіку, каруселі, інфографіку, анімації чи інтерактивні опитування. Якщо згодом з'являється можливість створити відео — ми інтегруємо їх у контент-план.",
+      t('smmPage.faqData.answer1'),
     },
     {
-      question: '2. Чи потрібна окрема стратегія для кожної соціальної мережі?',
+      question: t('smmPage.faqData.question2'),
       answer:
-        'Так. Поведінка користувачів у Facebook, Instagram і TikTok — різна, як і формат контенту. Ми адаптуємо tone of voice, типи публікацій та візуальний стиль під особливості кожної платформи, щоб досягти максимального ефекту.',
-    },
-    {
-      question:
-        '3. Скільки часу потрібно, щоб побачити результати SMM-просування?',
-      answer:
-        'Перші результати (зростання активності, охоплення, звернення) зазвичай помітні вже через 2–4 тижні. Повноцінне зміцнення бренду, стабільне зростання аудиторії та конверсії — через 2–3 місяці системної роботи.',
-    },
-    {
-      question: '4. Яка мінімальна кількість постів на тиждень рекомендується?',
-      answer:
-        'Оптимально — від 3 до 5 публікацій на тиждень. Це дозволяє підтримувати активність аудиторії без перенасичення. У деяких випадках достатньо 2 постів + щоденні сторіс, залежно від платформи й специфіки ніші.',
-    },
-    {
-      question: '5. Чи можна інтегрувати SMM з email-розсилками або сайтом?',
-      answer:
-        'Так. Ми налаштовуємо перехід з соціальних мереж на сайт, лендінг або email-підписку. Це допомагає побудувати багаторівневу комунікацію з клієнтом і підвищити довіру до бренду.',
+      t('smmPage.faqData.answer2'),
     },
     {
       question:
-        '6. Чи варто використовувати інфлюенсерів у рамках SMM-кампанії?',
+      t('smmPage.faqData.question3'),
       answer:
-        'Інфлюенс-маркетинг — ефективне доповнення до класичного SMM. Ми допомагаємо підібрати мікро- або макроінфлюенсерів відповідно до вашої ніші, аналізуємо їхню авдиторію й організовуємо співпрацю "під ключ".',
+      t('smmPage.faqData.answer3'),
+    },
+    {
+      question: t('smmPage.faqData.question4'),
+      answer:
+      t('smmPage.faqData.answer4'),
+    },
+    {
+      question: t('smmPage.faqData.question5'),
+      answer:
+      t('smmPage.faqData.answer5'),
+    },
+    {
+      question:
+      t('smmPage.faqData.question6'),
+      answer:
+      t('smmPage.faqData.answer6'),
     },
   ];
 
@@ -465,19 +453,19 @@ const Smm = () => {
   const advantages = [
     {
       icon: <FaUsers />,
-      text: "Прямий зв'язок з вашою цільовою аудиторією",
+      text: t('smmPage.advantage1'),
     },
     {
       icon: <FaHeart />,
-      text: 'Формування лояльності та спільноти навколо бренду',
+      text: t('smmPage.advantage2'),
     },
     {
       icon: <FaShare />,
-      text: 'Вірусне поширення контенту через репости',
+      text: t('smmPage.advantage3'),
     },
     {
       icon: <FaChartLine />,
-      text: 'Детальна аналітика ефективності кампаній',
+      text: t('smmPage.advantage4'),
     },
   ];
 
@@ -485,35 +473,35 @@ const Smm = () => {
   const tasks = [
     {
       icon: <FaBullhorn />,
-      title: 'Формування іміджу бренду',
-      description: 'через ціннісний контент, візуальний стиль і tone of voice',
+      title: t('smmPage.task1Title'),
+      description: t('smmPage.task1Desc'),
       color: '255, 107, 129',
     },
     {
       icon: <FaRegChartBar />,
-      title: 'Підвищення впізнаваності',
+      title: t('smmPage.task2Title'),
       description:
-        'за допомогою регулярної публікації, інтерактиву та таргетингу',
+      t('smmPage.task2Desc'),
       color: '64, 223, 159',
     },
     {
       icon: <FaUsers />,
-      title: "Побудова ком'юніті",
+      title: t('smmPage.task3Title'),
       description:
-        'створення лояльної бази підписників, які підтримують, коментують, купують',
+      t('smmPage.task3Desc'),
       color: '77, 171, 247',
     },
     {
       icon: <FaComments />,
-      title: 'Комунікація з аудиторією',
+      title: t('smmPage.task4Title'),
       description:
-        "відповіді на запити, обробка відгуків, розв'язання ситуацій в режимі реального часу",
+      t('smmPage.task4Desc'),
       color: '146, 92, 255',
     },
     {
       icon: <FaRocket />,
-      title: 'Просування продуктів чи послуг',
-      description: 'через рекламні кампанії, колаборації, акції, лід-магніти',
+      title: t('smmPage.task5Title'),
+      description: t('smmPage.task5Desc'),
       color: '255, 184, 48',
     },
   ];
@@ -563,8 +551,7 @@ const Smm = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
               >
-                SMM-просування — <HighlightedSpan>ваш бренд</HighlightedSpan> у
-                соціальних мережах
+                {t('smmPage.heroTitle')}
               </AnimatedTitle>
 
               <HeroDescription
@@ -572,12 +559,7 @@ const Smm = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
               >
-                SMM-просування — це стратегічний інструмент цифрового
-                маркетингу, що дозволяє бізнесу будувати довготривалі відносини
-                з клієнтами, формувати імідж бренду та стимулювати продажі через
-                соціальні мережі. У світі, де увага споживача — найцінніший
-                ресурс, SMM допомагає зайняти своє місце в інформаційному полі
-                та трансформувати підписників у лояльну аудиторію.
+                {t('smmPage.heroDescription')}
               </HeroDescription>
 
               <AdvantagesList
@@ -608,7 +590,7 @@ const Smm = () => {
                   whileTap={{ scale: 0.95 }}
                   onClick={openModal}
                 >
-                  Замовити SMM <FaArrowRight />
+                  {t('smmPage.orderButton')} <FaArrowRight />
                 </PrimaryButton>
               </ButtonGroup>
             </HeroLeft>
@@ -710,7 +692,7 @@ const Smm = () => {
             transition={{ duration: 0.7 }}
           >
             <AccentLine />
-            Що таке SMM і чому це важливо
+            {t('smmPage.whatIsTitle')}
           </SectionHeader>
 
           <ContentGrid>
@@ -721,17 +703,10 @@ const Smm = () => {
               transition={{ duration: 0.7, delay: 0.2 }}
             >
               <p>
-                SMM (Social Media Marketing) — це комплекс дій для просування
-                компанії в соціальних мережах: від створення контенту та
-                управління спільнотами до запуску таргетованої реклами. SMM є не
-                просто каналом комунікації — це джерело лояльності, зворотного
-                зв'язку, прямого впливу на споживчу поведінку.
+              {t('smmPage.whatIsDesc1')}
               </p>
               <p>
-                Соціальні мережі щоденно використовують мільйони українців.
-                Ігнорувати цей канал — означає втрачати потенційних клієнтів,
-                які прямо зараз готові купувати, замовляти або ділитися
-                враженнями.
+              {t('smmPage.whatIsDesc2')}
               </p>
             </MainContent>
 
@@ -746,15 +721,15 @@ const Smm = () => {
                   73<span>%</span>
                 </StatNumber>
                 <StatDescription>
-                  користувачів інтернету активні в соцмережах
+                {t('smmPage.stat1Label')}
                 </StatDescription>
               </StatsCard>
               <StatsCard>
                 <StatNumber>
-                  2.4<span>год</span>
+                  2.4<span> {t('smmPage.stat2Value')}</span>
                 </StatNumber>
                 <StatDescription>
-                  середній час в соцмережах щодня
+                {t('smmPage.stat2Label')}
                 </StatDescription>
               </StatsCard>
               <StatsCard>
@@ -762,7 +737,7 @@ const Smm = () => {
                   61<span>%</span>
                 </StatNumber>
                 <StatDescription>
-                  приймають рішення про покупку після перегляду в соцмережах
+                {t('smmPage.stat3Label')}
                 </StatDescription>
               </StatsCard>
             </StatisticsWrapper>
@@ -773,7 +748,7 @@ const Smm = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.4 }}
             >
-              Основні завдання SMM
+              {t('smmPage.tasksTitle')}
             </TasksHeader>
 
             <TasksSliderContainer
@@ -870,7 +845,7 @@ const Smm = () => {
             transition={{ duration: 0.7 }}
           >
             <AccentLine />
-            Які послуги ми надаємо в межах SMM
+            {t('smmPage.servicesTitle')}
           </SectionHeader>
 
           <ServicesIntro
@@ -879,11 +854,7 @@ const Smm = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            Ми пропонуємо повний цикл SMM-супроводу — від стратегії до
-            результатів. Наші послуги охоплюють ключові напрямки, які дозволяють
-            бренду не лише "бути в соцмережах", а системно розвиватися, залучати
-            клієнтів і досягати бізнес-цілей. Ми адаптуємо підхід під специфіку
-            ринку, конкурентів і аудиторію.
+            {t('smmPage.servicesIntro')}
           </ServicesIntro>
 
           <ServicesTabs>
@@ -894,9 +865,9 @@ const Smm = () => {
               transition={{ duration: 0.7, delay: 0.3 }}
             >
               {[
-                'Розробка контент-стратегії',
-                'Ведення сторінок',
-                'Таргетована реклама',
+                t('smmPage.tab1'),
+                t('smmPage.tab2'),
+                t('smmPage.tab3')
               ].map((tab, index) => (
                 <ServiceTab
                   key={index}
@@ -927,16 +898,11 @@ const Smm = () => {
                       <ServiceTabIcon>
                         <FaRegLightbulb />
                       </ServiceTabIcon>
-                      <h3>Розробка контент-стратегії</h3>
+                      <h3>{t('smmPage.contentStrategyTitle')}</h3>
                     </ServiceTabHeader>
 
                     <ServiceTabDescription>
-                      Контент — це основа комунікації в SMM. Ми створюємо
-                      стратегії, які враховують сезонність, поведінкові патерни
-                      аудиторії, тренди платформи та позиціонування бренду.
-                      Контент-план готується на місяць уперед і включає візуали,
-                      тексти, хештеги, інтерактиви, сторіс, Reels чи Shorts —
-                      залежно від платформи.
+                    {t('smmPage.contentStrategyDesc')}
                     </ServiceTabDescription>
 
                     <ServiceFeatures>
@@ -945,7 +911,7 @@ const Smm = () => {
                           <FaCheckCircle />
                         </ServiceFeatureIcon>
                         <ServiceFeatureText>
-                          Визначення цілей і KPI
+                        {contentStrategyFeatures[0]}
                         </ServiceFeatureText>
                       </ServiceFeatureItem>
                       <ServiceFeatureItem>
@@ -953,7 +919,7 @@ const Smm = () => {
                           <FaCheckCircle />
                         </ServiceFeatureIcon>
                         <ServiceFeatureText>
-                          Побудова tone of voice
+                        {contentStrategyFeatures[1]}
                         </ServiceFeatureText>
                       </ServiceFeatureItem>
                       <ServiceFeatureItem>
@@ -961,7 +927,7 @@ const Smm = () => {
                           <FaCheckCircle />
                         </ServiceFeatureIcon>
                         <ServiceFeatureText>
-                          Контент-план по рубриках та форматах
+                        {contentStrategyFeatures[2]}
                         </ServiceFeatureText>
                       </ServiceFeatureItem>
                       <ServiceFeatureItem>
@@ -969,7 +935,7 @@ const Smm = () => {
                           <FaCheckCircle />
                         </ServiceFeatureIcon>
                         <ServiceFeatureText>
-                          Створення унікального креативу
+                        {contentStrategyFeatures[3]}
                         </ServiceFeatureText>
                       </ServiceFeatureItem>
                     </ServiceFeatures>
@@ -1003,16 +969,12 @@ const Smm = () => {
                         <FaComments />
                       </ServiceTabIcon>
                       <h3>
-                        Ведення сторінок (Instagram, Facebook, TikTok тощо)
+                        {t('smmPage.pageManagementTitle')}
                       </h3>
                     </ServiceTabHeader>
 
                     <ServiceTabDescription>
-                      Ми беремо на себе повне адміністрування акаунтів:
-                      регулярні публікації, відповіді в коментарях, обробку
-                      запитів у Direct, моніторинг згадок. Для кожної платформи
-                      обираємо найефективніші формати — короткі відео, каруселі,
-                      меми, розіграші чи гайд-пости.
+                    {t('smmPage.pageManagementDesc')}
                     </ServiceTabDescription>
 
                     <ServicePlatforms>
@@ -1021,7 +983,7 @@ const Smm = () => {
                           <FaInstagram />
                         </ServicePlatformIcon>
                         <ServicePlatformName>
-                          Instagram та Facebook (Meta)
+                        {t('smmPage.platform1')}
                         </ServicePlatformName>
                       </ServicePlatformItem>
                       <ServicePlatformItem>
@@ -1029,8 +991,7 @@ const Smm = () => {
                           <FaTiktok />
                         </ServicePlatformIcon>
                         <ServicePlatformName>
-                          TikTok — з урахуванням алгоритмів та вірусного
-                          потенціалу
+                        {t('smmPage.platform2')}
                         </ServicePlatformName>
                       </ServicePlatformItem>
                       <ServicePlatformItem>
@@ -1038,7 +999,7 @@ const Smm = () => {
                           <FaYoutube />
                         </ServicePlatformIcon>
                         <ServicePlatformName>
-                          YouTube Shorts, Telegram, LinkedIn (опціонально)
+                        {t('smmPage.platform3')}
                         </ServicePlatformName>
                       </ServicePlatformItem>
                     </ServicePlatforms>
@@ -1071,40 +1032,36 @@ const Smm = () => {
                       <ServiceTabIcon>
                         <FaBullhorn />
                       </ServiceTabIcon>
-                      <h3>Таргетована реклама в соціальних мережах</h3>
+                      <h3>{t('smmPage.targetedAdsTitle')}</h3>
                     </ServiceTabHeader>
 
                     <ServiceTabDescription>
-                      Один з найсильніших інструментів у SMM — це платна
-                      реклама. Ми запускаємо таргетинг по інтересах, поведінці,
-                      геолокації, схожих аудиторіях або ремаркетингу. Для кожної
-                      кампанії створюємо кілька креативів і тестуємо, щоб
-                      отримати оптимальний результат за мінімальною вартістю.
+                    {t('smmPage.targetedAdsDesc')}
                     </ServiceTabDescription>
 
                     <ServiceCampaignTypes>
                       <ServiceCampaignItem>
                         <ServiceCampaignCircle>01</ServiceCampaignCircle>
                         <ServiceCampaignText>
-                          Залучення підписників
+                        {t('smmPage.campaignType1')}
                         </ServiceCampaignText>
                       </ServiceCampaignItem>
                       <ServiceCampaignItem>
                         <ServiceCampaignCircle>02</ServiceCampaignCircle>
                         <ServiceCampaignText>
-                          Реклама постів або сторіс
+                        {t('smmPage.campaignType2')}
                         </ServiceCampaignText>
                       </ServiceCampaignItem>
                       <ServiceCampaignItem>
                         <ServiceCampaignCircle>03</ServiceCampaignCircle>
                         <ServiceCampaignText>
-                          Генерація лідів (лід-форми, переходи на сайт)
+                        {t('smmPage.campaignType3')}
                         </ServiceCampaignText>
                       </ServiceCampaignItem>
                       <ServiceCampaignItem>
                         <ServiceCampaignCircle>04</ServiceCampaignCircle>
                         <ServiceCampaignText>
-                          Динамічні кампанії для e-commerce
+                        {t('smmPage.campaignType4')}
                         </ServiceCampaignText>
                       </ServiceCampaignItem>
                     </ServiceCampaignTypes>
@@ -1141,7 +1098,7 @@ const Smm = () => {
             transition={{ duration: 0.7 }}
           >
             <AccentLine />
-            Як відбувається співпраця
+            {t('smmPage.collaborationTitle')}
           </SectionHeader>
 
           <CollabIntro
@@ -1150,10 +1107,7 @@ const Smm = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            Ми працюємо прозоро, системно й орієнтуємось на результат. Для
-            кожного клієнта будуємо індивідуальний SMM-процес, адаптований під
-            нішу, цілі та специфіку бізнесу. Кожен етап узгоджується і
-            підтримується нашою командою — від старту до масштабування.
+           {t('smmPage.collaborationIntro')}
           </CollabIntro>
 
           <CollaborationTimeline>
@@ -1165,35 +1119,30 @@ const Smm = () => {
             >
               <ProcessStepNumber>01</ProcessStepNumber>
               <ProcessStepContent>
-                <ProcessStepTitle>Брифінг і аналіз ЦА</ProcessStepTitle>
+                <ProcessStepTitle>{t('smmPage.step1Title')}</ProcessStepTitle>
                 <ProcessStepDescription>
-                  Починаємо з глибокого занурення у ваш бізнес: збираємо дані
-                  через бриф, аналізуємо конкурентів, визначаємо портрет
-                  цільової аудиторії. Вивчаємо її болі, інтереси, активність у
-                  соціальних мережах і адаптуємо підхід до комунікації
-                  відповідно до цих даних.
+                {t('smmPage.step1Desc')}
                 </ProcessStepDescription>
 
                 <ProcessStepList>
-                  <ProcessStepListTitle>Що включає:</ProcessStepListTitle>
+                  <ProcessStepListTitle>{t('smmPage.step1Includes')}</ProcessStepListTitle>
                   <ProcessStepListItem>
                     <ProcessStepListIcon>
                       <FaSearch />
                     </ProcessStepListIcon>
-                    Аналіз ринку, УТП, позиціонування
+                    {t('smmPage.step1Item1')}
                   </ProcessStepListItem>
                   <ProcessStepListItem>
                     <ProcessStepListIcon>
                       <FaUsers />
                     </ProcessStepListIcon>
-                    Визначення платформи, де ЦА найактивніша
+                    {t('smmPage.step1Item2')}
                   </ProcessStepListItem>
                   <ProcessStepListItem>
                     <ProcessStepListIcon>
                       <FaComments />
                     </ProcessStepListIcon>
-                    Побудова сценаріїв взаємодії (взаємний фоловінг, коментарі,
-                    реклама)
+                    {t('smmPage.step1Item3')}
                   </ProcessStepListItem>
                 </ProcessStepList>
 
@@ -1214,11 +1163,9 @@ const Smm = () => {
             >
               <ProcessStepNumber>02</ProcessStepNumber>
               <ProcessStepContent>
-                <ProcessStepTitle>Розробка стратегії</ProcessStepTitle>
+                <ProcessStepTitle>{t('smmPage.step2Title')}</ProcessStepTitle>
                 <ProcessStepDescription>
-                  На основі зібраних даних формуємо стратегію присутності в
-                  соцмережах: визначаємо оптимальні платформи, контент-план,
-                  частоту публікацій, тональність і ключові повідомлення бренду.
+                {t('smmPage.step2Desc')}
                 </ProcessStepDescription>
 
                 <ProcessStepTactic>
@@ -1226,8 +1173,7 @@ const Smm = () => {
                     <FaRegLightbulb />
                   </ProcessStepTacticIcon>
                   <ProcessStepTacticText>
-                    Ми надаємо документ з детальною стратегією, яка включає всі
-                    аспекти SMM-просування від візуального стилю до KPI
+                  {t('smmPage.step2Tactic')}
                   </ProcessStepTacticText>
                 </ProcessStepTactic>
 
@@ -1247,12 +1193,9 @@ const Smm = () => {
             >
               <ProcessStepNumber>03</ProcessStepNumber>
               <ProcessStepContent>
-                <ProcessStepTitle>Запуск і реалізація</ProcessStepTitle>
+                <ProcessStepTitle>{t('smmPage.step3Title')}</ProcessStepTitle>
                 <ProcessStepDescription>
-                  Створюємо та публікуємо контент згідно з узгодженим планом,
-                  налаштовуємо та запускаємо рекламні кампанії. Починаємо
-                  взаємодію з аудиторією та активно модеруємо коментарі та
-                  повідомлення.
+                {t('smmPage.step3Desc')}
                 </ProcessStepDescription>
 
                 <ProcessStepCards>
@@ -1261,20 +1204,20 @@ const Smm = () => {
                       <FaRegEdit />
                     </ProcessStepCardIcon>
                     <ProcessStepCardTitle>
-                      Створення контенту
+                    {t('smmPage.step3Card1')}
                     </ProcessStepCardTitle>
                   </ProcessStepCard>
                   <ProcessStepCard>
                     <ProcessStepCardIcon>
                       <FaBullhorn />
                     </ProcessStepCardIcon>
-                    <ProcessStepCardTitle>Запуск реклами</ProcessStepCardTitle>
+                    <ProcessStepCardTitle>{t('smmPage.step3Card2')}</ProcessStepCardTitle>
                   </ProcessStepCard>
                   <ProcessStepCard>
                     <ProcessStepCardIcon>
                       <FaUsers />
                     </ProcessStepCardIcon>
-                    <ProcessStepCardTitle>Комунікація</ProcessStepCardTitle>
+                    <ProcessStepCardTitle>{t('smmPage.step3Card3')}</ProcessStepCardTitle>
                   </ProcessStepCard>
                 </ProcessStepCards>
 
@@ -1296,38 +1239,34 @@ const Smm = () => {
               <ProcessStepNumber>04</ProcessStepNumber>
               <ProcessStepContent>
                 <ProcessStepTitle>
-                  Регулярна аналітика і корекція стратегії
+                {t('smmPage.step4Title')}
                 </ProcessStepTitle>
                 <ProcessStepDescription>
-                  Ми не "ведемо сторінки заради сторінок" — ми працюємо з
-                  даними. Щомісячно готуємо звітність по охопленнях, залученні,
-                  підписниках, збереженнях, кліках, коментарях. Аналізуємо, що
-                  працює, а що — ні, й коригуємо стратегію, аби не витрачати час
-                  і бюджет даремно.
+                {t('smmPage.step4Desc')}
                 </ProcessStepDescription>
 
                 <ProcessStepTools>
                   <ProcessStepToolsTitle>
-                    Інструменти аналітики:
+                  {t('smmPage.step4Tools')}
                   </ProcessStepToolsTitle>
                   <ProcessStepToolsGrid>
                     <ProcessStepTool>
                       <ProcessStepToolIcon>
                         <FaChartLine />
                       </ProcessStepToolIcon>
-                      Meta Business Suite / TikTok Analytics
+                      {t('smmPage.step4Tool1')}
                     </ProcessStepTool>
                     <ProcessStepTool>
                       <ProcessStepToolIcon>
                         <FaRegChartBar />
                       </ProcessStepToolIcon>
-                      Внутрішні CRM та трекінг-конверсій
+                      {t('smmPage.step4Tool2')}
                     </ProcessStepTool>
                     <ProcessStepTool>
                       <ProcessStepToolIcon>
                         <FaSearch />
                       </ProcessStepToolIcon>
-                      Google Analytics (у разі переходів на сайт)
+                      {t('smmPage.step4Tool3')}
                     </ProcessStepTool>
                   </ProcessStepToolsGrid>
                 </ProcessStepTools>
@@ -1371,7 +1310,7 @@ const Smm = () => {
             transition={{ duration: 0.7, delay: 0.7 }}
           >
             <CollabCTAText>
-              Готові розпочати співпрацю з командою професіоналів?
+            {t('smmPage.collaborationCta')}
             </CollabCTAText>
             <CollabCTAButtons>
               <PrimaryButton
@@ -1379,7 +1318,7 @@ const Smm = () => {
                 whileTap={{ scale: 0.95 }}
                 onClick={openModal}
               >
-                Замовити SMM <FaArrowRight />
+                {t('smmPage.collaborationCtaButton')} <FaArrowRight />
               </PrimaryButton>
             </CollabCTAButtons>
           </CollabCTA>
@@ -1391,12 +1330,9 @@ const Smm = () => {
         <ResultsWrapper>
           <ResultsHeader>
             <ResultsDecorLine />
-            <ResultsTitle>Результати від SMM-просування</ResultsTitle>
+            <ResultsTitle>{t('smmPage.resultsTitle')}</ResultsTitle>
             <ResultsDescription>
-              Робота в соціальних мережах має давати конкретний результат — не
-              лише "лайки", а й реальні показники зростання. SMM-просування
-              формує довготривалий ефект: зміцнює позиції бренду, створює
-              ком'юніті та генерує ліди.
+            {t('smmPage.resultsDesc')}
             </ResultsDescription>
           </ResultsHeader>
 
@@ -1425,51 +1361,47 @@ const Smm = () => {
               >
                 <ResultBoxInner>
                   <ResultBoxHeader>
-                    <ResultBoxTitle>Впізнаваність бренду</ResultBoxTitle>
+                    <ResultBoxTitle>{t('smmPage.result1Title')}</ResultBoxTitle>
                     <ResultBoxIcon>
                       <FaRegLightbulb />
                     </ResultBoxIcon>
                   </ResultBoxHeader>
                   <ResultBoxDesc>
-                    Завдяки регулярній публікації якісного контенту, присутності
-                    у стрічках підписників і запуску таргетованої реклами, бренд
-                    стає впізнаваним. Люди починають асоціювати вас з
-                    експертизою, надійністю або актуальністю — залежно від
-                    вибраного позиціонування.
+                  {t('smmPage.result1Desc')}
                   </ResultBoxDesc>
                   <ResultMetrics>
                     <ResultMetric>
                       <ResultMetricValue primary>+127%</ResultMetricValue>
-                      <ResultMetricLabel>Органічне охоплення</ResultMetricLabel>
+                      <ResultMetricLabel>{t('smmPage.result1Metric1Label')}</ResultMetricLabel>
                     </ResultMetric>
                     <ResultMetric>
                       <ResultMetricValue primary>+86%</ResultMetricValue>
                       <ResultMetricLabel>
-                        Впізнаваність бренду
+                      {t('smmPage.result1Metric2Label')}
                       </ResultMetricLabel>
                     </ResultMetric>
                   </ResultMetrics>
                   <ResultBoxList>
                     <ResultBoxListTitle>
-                      Результати впізнаваності:
+                    {t('smmPage.result1Results')}
                     </ResultBoxListTitle>
                     <ResultBoxListItem>
                       <CheckIcon>
                         <FaCheck />
                       </CheckIcon>
-                      <span>Зростання органічного трафіку на профіль</span>
+                      <span>{t('smmPage.result1Item1')}</span>
                     </ResultBoxListItem>
                     <ResultBoxListItem>
                       <CheckIcon>
                         <FaCheck />
                       </CheckIcon>
-                      <span>Висока частота згадок або тегів</span>
+                      <span>{t('smmPage.result1Item2')}</span>
                     </ResultBoxListItem>
                     <ResultBoxListItem>
                       <CheckIcon>
                         <FaCheck />
                       </CheckIcon>
-                      <span>Позитивні коментарі й відгуки</span>
+                      <span>{t('smmPage.result1Item3')}</span>
                     </ResultBoxListItem>
                   </ResultBoxList>
                 </ResultBoxInner>
@@ -1484,31 +1416,28 @@ const Smm = () => {
                 <ResultBoxInner>
                   <ResultBoxHeader>
                     <ResultBoxTitle>
-                      Ріст підписників і залучення
+                    {t('smmPage.result2Title')}
                     </ResultBoxTitle>
                     <ResultBoxIcon secondary>
                       <FaUsers />
                     </ResultBoxIcon>
                   </ResultBoxHeader>
                   <ResultBoxDesc>
-                    Активна сторінка з цікавим контентом приваблює нових
-                    підписників. Ми використовуємо методи природного залучення,
-                    а також платні інструменти — рекламу, взаємні згадки,
-                    співпраці з мікроінфлюенсерами.
+                  {t('smmPage.result2Desc')}
                   </ResultBoxDesc>
                   <ResultChart>
-                    <ResultChartBar height="20%" label="Січень" value="+210" />
-                    <ResultChartBar height="45%" label="Лютий" value="+460" />
+                    <ResultChartBar height="20%" label={result2ChartLabels[0]} value="+210" />
+                    <ResultChartBar height="45%" label={result2ChartLabels[1]} value="+460" />
                     <ResultChartBar
                       height="65%"
-                      label="Березень"
+                      label={result2ChartLabels[2]}
                       value="+680"
                     />
-                    <ResultChartBar height="85%" label="Квітень" value="+890" />
+                    <ResultChartBar height="85%" label={result2ChartLabels[3]} value="+890" />
                   </ResultChart>
                   <ResultBoxList>
                     <ResultBoxListTitle>
-                      Показники, на які орієнтуємось:
+                    {t('smmPage.result2Metrics')}
                     </ResultBoxListTitle>
                     <ResultBoxListItem>
                       <CheckIcon secondary>
@@ -1520,13 +1449,13 @@ const Smm = () => {
                       <CheckIcon secondary>
                         <FaCheck />
                       </CheckIcon>
-                      <span>Кількість підписок за місяць</span>
+                      <span>{t('smmPage.result2Item2')}</span>
                     </ResultBoxListItem>
                     <ResultBoxListItem>
                       <CheckIcon secondary>
                         <FaCheck />
                       </CheckIcon>
-                      <span>Динаміка залучення від посту до посту</span>
+                      <span>{t('smmPage.result2Item3')}</span>
                     </ResultBoxListItem>
                   </ResultBoxList>
                 </ResultBoxInner>
@@ -1540,41 +1469,38 @@ const Smm = () => {
               >
                 <ResultBoxInner>
                   <ResultBoxHeader>
-                    <ResultBoxTitle>Генерація заявок і продажів</ResultBoxTitle>
+                    <ResultBoxTitle>{t('smmPage.result3Title')}</ResultBoxTitle>
                     <ResultBoxIcon tertiary>
                       <FaShoppingCart />
                     </ResultBoxIcon>
                   </ResultBoxHeader>
                   <ResultBoxDesc>
-                    SMM — це також прямий канал продажів, особливо для
-                    e-commerce, онлайн-послуг і локального бізнесу. Ми створюємо
-                    спеціальні пропозиції, заклики до дії та лід-магніти для
-                    конверсій.
+                  {t('smmPage.result3Desc')}
                   </ResultBoxDesc>
                   <ResultProgressContainer>
                     <ResultProgressItem>
-                      <ResultProgressLabel>Охоплення</ResultProgressLabel>
+                      <ResultProgressLabel>{result3ProgressLabels[0]}</ResultProgressLabel>
                       <ResultProgressBar>
                         <ResultProgressFill percent="100%" tertiary />
                       </ResultProgressBar>
                       <ResultProgressValue>12,680</ResultProgressValue>
                     </ResultProgressItem>
                     <ResultProgressItem>
-                      <ResultProgressLabel>Переходи</ResultProgressLabel>
+                      <ResultProgressLabel>{result3ProgressLabels[1]}</ResultProgressLabel>
                       <ResultProgressBar>
                         <ResultProgressFill percent="58%" tertiary />
                       </ResultProgressBar>
                       <ResultProgressValue>7,354</ResultProgressValue>
                     </ResultProgressItem>
                     <ResultProgressItem>
-                      <ResultProgressLabel>Заявки</ResultProgressLabel>
+                      <ResultProgressLabel>{result3ProgressLabels[2]}</ResultProgressLabel>
                       <ResultProgressBar>
                         <ResultProgressFill percent="32%" tertiary />
                       </ResultProgressBar>
                       <ResultProgressValue>4,057</ResultProgressValue>
                     </ResultProgressItem>
                     <ResultProgressItem>
-                      <ResultProgressLabel>Продажі</ResultProgressLabel>
+                      <ResultProgressLabel>{result3ProgressLabels[3]}</ResultProgressLabel>
                       <ResultProgressBar>
                         <ResultProgressFill percent="18%" tertiary />
                       </ResultProgressBar>
@@ -1583,26 +1509,26 @@ const Smm = () => {
                   </ResultProgressContainer>
                   <ResultBoxList>
                     <ResultBoxListTitle>
-                      Інструменти конверсії:
+                    {t('smmPage.result3Tools')}
                     </ResultBoxListTitle>
                     <ResultBoxListItem>
                       <CheckIcon tertiary>
                         <FaCheck />
                       </CheckIcon>
-                      <span>Лід-форми у Facebook / Instagram</span>
+                      <span>{t('smmPage.result3Item1')}</span>
                     </ResultBoxListItem>
                     <ResultBoxListItem>
                       <CheckIcon tertiary>
                         <FaCheck />
                       </CheckIcon>
-                      <span>Заявки через Direct або коментарі</span>
+                      <span>{t('smmPage.result3Item2')}</span>
                     </ResultBoxListItem>
                     <ResultBoxListItem>
                       <CheckIcon tertiary>
                         <FaCheck />
                       </CheckIcon>
                       <span>
-                        Перенаправлення на лендінг із точковим оффером
+                      {t('smmPage.result3Item3')}
                       </span>
                     </ResultBoxListItem>
                   </ResultBoxList>
@@ -1613,19 +1539,18 @@ const Smm = () => {
 
           <ResultsQuote>
             <ResultsQuoteText>
-              "Ефективний SMM — це не погоня за лайками, а системна робота, що
-              прямо впливає на KPI вашого бізнесу."
+            {t('smmPage.resultsQuote')}
             </ResultsQuoteText>
           </ResultsQuote>
 
           <ResultsCTA>
-            <ResultsCTATitle>Бажаєте схожих результатів?</ResultsCTATitle>
+            <ResultsCTATitle>{t('smmPage.resultsCtaTitle')}</ResultsCTATitle>
             <ResultsCTAButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
             >
-              Замовити SMM-стратегію <FaArrowRight />
+              {t('smmPage.resultsCtaButton')} <FaArrowRight />
             </ResultsCTAButton>
           </ResultsCTA>
         </ResultsWrapper>
@@ -1636,14 +1561,10 @@ const Smm = () => {
         <TeamAdvantagesContainer>
           <TeamAdvantagesHeader>
             <TeamAdvantagesTitle>
-              Переваги роботи з нашою командою
+            {t('smmPage.teamAdvantagesTitle')}
             </TeamAdvantagesTitle>
             <TeamAdvantagesDescription>
-              Ми — не просто виконавці, ми — партнери, які зацікавлені в
-              результаті. Для нас важливо не лише створити естетичний профіль, а
-              й забезпечити стратегічне зростання вашого бренду в соціальних
-              мережах. Наша команда складається з SMM-фахівців, дизайнерів,
-              аналітиків і таргетологів, які працюють як єдиний механізм.
+            {t('smmPage.teamAdvantagesDesc')}
             </TeamAdvantagesDescription>
           </TeamAdvantagesHeader>
 
@@ -1654,30 +1575,29 @@ const Smm = () => {
                   <HexagonIcon>
                     <FaRocket />
                   </HexagonIcon>
-                  <HexagonTitle>Інноваційні підходи</HexagonTitle>
+                  <HexagonTitle>{t('smmPage.advantage1Title')}</HexagonTitle>
                   <HexagonText>
-                    Ми постійно тестуємо нові формати та AI-інструменти,
-                    аналізуємо тренди, щоб ваш бренд був попереду конкурентів.
+                  {t('smmPage.advantage1Desc')}
                   </HexagonText>
                 </HexagonContent>
               </Hexagon>
               <AdvantageFeatureList>
                 <AdvantageFeatureTitle>
-                  Що ми впроваджуємо:
+                {t('smmPage.advantage1Features')}
                 </AdvantageFeatureTitle>
                 <AdvantageFeature>
                   <AdvantageFeatureMarker primary>01</AdvantageFeatureMarker>
-                  <span>Адаптація під алгоритми кожної соцмережі</span>
+                  <span>{t('smmPage.advantage1Item1')}</span>
                 </AdvantageFeature>
                 <AdvantageFeature>
                   <AdvantageFeatureMarker primary>02</AdvantageFeatureMarker>
                   <span>
-                    Використання ChatGPT та AI-дизайну для генерації контенту
+                  {t('smmPage.advantage1Item2')}
                   </span>
                 </AdvantageFeature>
                 <AdvantageFeature>
                   <AdvantageFeatureMarker primary>03</AdvantageFeatureMarker>
-                  <span>Мультимовний контент і гнучке тестування меседжів</span>
+                  <span>{t('smmPage.advantage1Item3')}</span>
                 </AdvantageFeature>
               </AdvantageFeatureList>
             </HexagonWrapper>
@@ -1688,26 +1608,25 @@ const Smm = () => {
                   <HexagonIcon>
                     <FaHandshake />
                   </HexagonIcon>
-                  <HexagonTitle>Досвід у різних сферах бізнесу</HexagonTitle>
+                  <HexagonTitle>{t('smmPage.advantage2Title')}</HexagonTitle>
                   <HexagonText>
-                    Ми працювали з компаніями з таких галузей: освіта, медицина,
-                    e-commerce, інфобізнес, нерухомість, HoReCa, b2b.
+                  {t('smmPage.advantage2Desc')}
                   </HexagonText>
                 </HexagonContent>
               </Hexagon>
               <AdvantageFeatureList>
-                <AdvantageFeatureTitle>Що це дає вам:</AdvantageFeatureTitle>
+                <AdvantageFeatureTitle>{t('smmPage.advantage2Features')}</AdvantageFeatureTitle>
                 <AdvantageFeature>
                   <AdvantageFeatureMarker secondary>01</AdvantageFeatureMarker>
-                  <span>Мінімум часу на пояснення специфіки бізнесу</span>
+                  <span>{t('smmPage.advantage2Item1')}</span>
                 </AdvantageFeature>
                 <AdvantageFeature>
                   <AdvantageFeatureMarker secondary>02</AdvantageFeatureMarker>
-                  <span>Максимально швидкий запуск кампанії</span>
+                  <span>{t('smmPage.advantage2Item2')}</span>
                 </AdvantageFeature>
                 <AdvantageFeature>
                   <AdvantageFeatureMarker secondary>03</AdvantageFeatureMarker>
-                  <span>Експертні рішення, перевірені практикою</span>
+                  <span>{t('smmPage.advantage2Item3')}</span>
                 </AdvantageFeature>
               </AdvantageFeatureList>
             </HexagonWrapper>
@@ -1718,26 +1637,25 @@ const Smm = () => {
                   <HexagonIcon>
                     <FaChartLine />
                   </HexagonIcon>
-                  <HexagonTitle>Прозора звітність</HexagonTitle>
+                  <HexagonTitle>{t('smmPage.advantage3Title')}</HexagonTitle>
                   <HexagonText>
-                    Надаємо детальні звіти з конкретними KPI та метриками, які
-                    демонструють ефективність роботи.
+                  {t('smmPage.advantage3Desc')}
                   </HexagonText>
                 </HexagonContent>
               </Hexagon>
               <AdvantageFeatureList>
-                <AdvantageFeatureTitle>Що ви отримуєте:</AdvantageFeatureTitle>
+                <AdvantageFeatureTitle>{t('smmPage.advantage3Features')}</AdvantageFeatureTitle>
                 <AdvantageFeature>
                   <AdvantageFeatureMarker tertiary>01</AdvantageFeatureMarker>
-                  <span>Щотижневі дашборди з ключовими метриками</span>
+                  <span>{t('smmPage.advantage3Item1')}</span>
                 </AdvantageFeature>
                 <AdvantageFeature>
                   <AdvantageFeatureMarker tertiary>02</AdvantageFeatureMarker>
-                  <span>Щомісячний детальний аналіз і рекомендації</span>
+                  <span>{t('smmPage.advantage3Item2')}</span>
                 </AdvantageFeature>
                 <AdvantageFeature>
                   <AdvantageFeatureMarker tertiary>03</AdvantageFeatureMarker>
-                  <span>Аудити конкурентів та розрахунок ROI</span>
+                  <span>{t('smmPage.advantage3Item3')}</span>
                 </AdvantageFeature>
               </AdvantageFeatureList>
             </HexagonWrapper>
@@ -1747,14 +1665,14 @@ const Smm = () => {
             <TeamConnectDecor />
             <TeamConnectContent>
               <TeamConnectHeading>
-                Готові до співпраці з експертами?
+              {t('smmPage.teamCtaTitle')}
               </TeamConnectHeading>
               <TeamConnectButton
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={openModal}
               >
-                Зв'язатися з командою <FaArrowRight />
+                {t('smmPage.teamCtaButton')} <FaArrowRight />
               </TeamConnectButton>
             </TeamConnectContent>
           </TeamConnectBanner>
@@ -1855,7 +1773,7 @@ const Smm = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 1.2 }}
           >
-            <FaqCtaText>Маєте додаткові запитання щодо SMM?</FaqCtaText>
+            <FaqCtaText>{t('smmPage.faqCtaText')}</FaqCtaText>
             <FaqCtaButton
               whileHover={{
                 scale: 1.03,
@@ -1864,7 +1782,7 @@ const Smm = () => {
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
             >
-              Зв'язатися з нами <FaArrowRight />
+             {t('smmPage.faqCtaButton')} <FaArrowRight />
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>

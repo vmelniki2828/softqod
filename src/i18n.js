@@ -2798,6 +2798,772 @@ const resources = {
         faqCta: 'Have additional questions about banner advertising?',
         faqCtaButton: 'Contact us',
       },
+      smmPage: {
+        // Hero Section
+        heroTitle: 'SMM promotion — your brand in social networks',
+        heroHighlight: 'your brand',
+        heroDescription:
+          'SMM promotion is a strategic digital marketing tool that allows businesses to build long-term relationships with clients, form brand image, and stimulate sales through social networks. In a world where consumer attention is the most valuable resource, SMM helps take your place in the information field and transform subscribers into a loyal audience.',
+        orderButton: 'Order SMM',
+
+        // SMM Advantages
+        advantage1: 'Direct connection with your target audience',
+        advantage2: 'Formation of loyalty and community around the brand',
+        advantage3: 'Viral content distribution through reposts',
+        advantage4: 'Detailed analytics of campaign effectiveness',
+
+        // Main SMM Tasks
+        task1Title: 'Brand image formation',
+        task1Desc: 'through valuable content, visual style, and tone of voice',
+        task2Title: 'Increasing recognition',
+        task2Desc: 'through regular publication, interactivity, and targeting',
+        task3Title: 'Building community',
+        task3Desc:
+          'creating a loyal base of subscribers who support, comment, and buy',
+        task4Title: 'Communication with audience',
+        task4Desc:
+          'responding to inquiries, processing reviews, resolving situations in real-time',
+        task5Title: 'Promotion of products or services',
+        task5Desc:
+          'through advertising campaigns, collaborations, promotions, lead magnets',
+
+        // What is SMM
+        whatIsTitle: "What is SMM and why it's important",
+        whatIsDesc1:
+          "SMM (Social Media Marketing) is a set of actions for promoting a company in social networks: from content creation and community management to launching targeted advertising. SMM is not just a communication channel — it's a source of loyalty, feedback, and direct influence on consumer behavior.",
+        whatIsDesc2:
+          'Millions of Ukrainians use social networks daily. Ignoring this channel means losing potential clients who are ready to buy, order, or share impressions right now.',
+
+        // Statistics
+        stat1Value: '73%',
+        stat1Label: 'of internet users are active on social networks',
+        stat2Value: 'hr',
+        stat2Label: 'average time on social networks daily',
+        stat3Value: '61%',
+        stat3Label: 'make purchase decisions after viewing on social networks',
+
+        // Main SMM Tasks
+        tasksTitle: 'Main SMM tasks',
+
+        // Services
+        servicesTitle: 'What services we provide within SMM',
+        servicesIntro:
+          "We offer a complete SMM support cycle — from strategy to results. Our services cover key areas that allow a brand not just to 'be on social networks,' but to systematically develop, attract clients, and achieve business goals. We adapt our approach to the specifics of the market, competitors, and audience.",
+
+        // Service Tabs
+        tab1: 'Content strategy development',
+        tab2: 'Page management',
+        tab3: 'Targeted advertising',
+
+        // Content Strategy
+        contentStrategyTitle: 'Content strategy development',
+        contentStrategyDesc:
+          'Content is the foundation of communication in SMM. We create strategies that take into account seasonality, audience behavioral patterns, platform trends, and brand positioning. The content plan is prepared a month in advance and includes visuals, texts, hashtags, interactives, stories, Reels or Shorts — depending on the platform.',
+        contentStrategyFeatures: [
+          'Goal and KPI definition',
+          'Tone of voice building',
+          'Content plan by categories and formats',
+          'Creating unique creative',
+        ],
+
+        // Page Management
+        pageManagementTitle:
+          'Page management (Instagram, Facebook, TikTok, etc.)',
+        pageManagementDesc:
+          'We take full account administration: regular publications, responses in comments, processing inquiries in Direct, mention monitoring. For each platform, we choose the most effective formats — short videos, carousels, memes, giveaways, or guide posts.',
+        platform1: 'Instagram and Facebook (Meta)',
+        platform2: 'TikTok — considering algorithms and viral potential',
+        platform3: 'YouTube Shorts, Telegram, LinkedIn (optional)',
+
+        // Targeted Advertising
+        targetedAdsTitle: 'Targeted advertising in social networks',
+        targetedAdsDesc:
+          'One of the strongest tools in SMM is paid advertising. We launch targeting by interests, behavior, geolocation, similar audiences, or remarketing. For each campaign, we create several creatives and test them to get optimal results at minimal cost.',
+        campaignType1: 'Subscriber acquisition',
+        campaignType2: 'Post or story advertising',
+        campaignType3: 'Lead generation (lead forms, website transitions)',
+        campaignType4: 'Dynamic campaigns for e-commerce',
+
+        // Collaboration Process
+        collaborationTitle: 'How collaboration works',
+        collaborationIntro:
+          'We work transparently, systematically, and focus on results. For each client, we build an individual SMM process adapted to the niche, goals, and specifics of the business. Each stage is coordinated and supported by our team — from start to scaling.',
+
+        // Process Steps
+        step1Title: 'Briefing and audience analysis',
+        step1Desc:
+          'We start with deep immersion in your business: collect data through briefs, analyze competitors, determine the target audience portrait. We study their pain points, interests, activity on social networks, and adapt the communication approach accordingly.',
+        step1Includes: 'What it includes:',
+        step1Item1: 'Market analysis, USP, positioning',
+        step1Item2:
+          'Determining the platform where the target audience is most active',
+        step1Item3:
+          'Building interaction scenarios (mutual following, comments, advertising)',
+
+        step2Title: 'Strategy development',
+        step2Desc:
+          'Based on collected data, we form a social media presence strategy: determine optimal platforms, content plan, publication frequency, tone, and key brand messages.',
+        step2Tactic:
+          'We provide a document with a detailed strategy that includes all aspects of SMM promotion from visual style to KPI',
+
+        step3Title: 'Launch and implementation',
+        step3Desc:
+          'We create and publish content according to the agreed plan, set up and launch advertising campaigns. We begin interaction with the audience and actively moderate comments and messages.',
+        step3Card1: 'Content creation',
+        step3Card2: 'Advertising launch',
+        step3Card3: 'Communication',
+
+        step4Title: 'Regular analytics and strategy adjustment',
+        step4Desc:
+          "We don't 'manage pages for the sake of pages' — we work with data. Monthly, we prepare reports on reach, engagement, subscribers, saves, clicks, comments. We analyze what works and what doesn't, and adjust the strategy to avoid wasting time and budget in vain.",
+        step4Tools: 'Analytics tools:',
+        step4Tool1: 'Meta Business Suite / TikTok Analytics',
+        step4Tool2: 'Internal CRM and conversion tracking',
+        step4Tool3: 'Google Analytics (in case of website transitions)',
+
+        // Collaboration CTA
+        collaborationCta:
+          'Ready to start collaboration with a team of professionals?',
+        collaborationCtaButton: 'Order SMM',
+
+        // Results
+        resultsTitle: 'Results from SMM promotion',
+        resultsDesc:
+          "Working on social networks should give concrete results — not just 'likes,' but real growth indicators. SMM promotion forms a long-term effect: strengthens brand positions, creates community, and generates leads.",
+
+        // Result 1: Brand Recognition
+        result1Title: 'Brand recognition',
+        result1Desc:
+          'Thanks to regular publication of quality content, presence in subscriber feeds, and launching targeted advertising, the brand becomes recognizable. People begin to associate you with expertise, reliability, or relevance — depending on the chosen positioning.',
+        result1Metric1: '+127%',
+        result1Metric1Label: 'Organic reach',
+        result1Metric2: '+86%',
+        result1Metric2Label: 'Brand recognition',
+        result1Results: 'Recognition results:',
+        result1Item1: 'Growth in organic traffic to profile',
+        result1Item2: 'High frequency of mentions or tags',
+        result1Item3: 'Positive comments and reviews',
+
+        // Result 2: Subscriber Growth
+        result2Title: 'Subscriber growth and engagement',
+        result2Desc:
+          'An active page with interesting content attracts new subscribers. We use natural engagement methods, as well as paid tools — advertising, mutual mentions, collaborations with micro-influencers.',
+        result2ChartLabels: ['January', 'February', 'March', 'April'],
+        result2ChartValues: ['+210', '+460', '+680', '+890'],
+        result2Metrics: 'Metrics we focus on:',
+        result2Item1: 'Engagement Rate (ER)',
+        result2Item2: 'Number of subscriptions per month',
+        result2Item3: 'Engagement dynamics from post to post',
+
+        // Result 3: Lead Generation
+        result3Title: 'Lead generation and sales',
+        result3Desc:
+          'SMM is also a direct sales channel, especially for e-commerce, online services, and local businesses. We create special offers, calls to action, and lead magnets for conversions.',
+        result3ProgressLabels: [
+          'Reach',
+          'Transitions',
+          'Applications',
+          'Sales',
+        ],
+        result3ProgressValues: ['12,680', '7,354', '4,057', '2,282'],
+        result3ProgressPercents: ['100%', '58%', '32%', '18%'],
+        result3Tools: 'Conversion tools:',
+        result3Item1: 'Lead forms on Facebook / Instagram',
+        result3Item2: 'Applications through Direct or comments',
+        result3Item3: 'Redirect to landing with targeted offer',
+
+        // Quote
+        resultsQuote:
+          'Effective SMM is not chasing likes, but systematic work that directly affects your business KPI.',
+
+        // Results CTA
+        resultsCtaTitle: 'Want similar results?',
+        resultsCtaButton: 'Order SMM strategy',
+
+        // Team Advantages
+        teamAdvantagesTitle: 'Advantages of working with our team',
+        teamAdvantagesDesc:
+          "We are not just performers, we are partners who are interested in results. For us, it's important not only to create an aesthetic profile but also to ensure strategic growth of your brand on social networks. Our team consists of SMM specialists, designers, analysts, and targetologists who work as a single mechanism.",
+
+        // Advantage 1: Innovative Approaches
+        advantage1Title: 'Innovative approaches',
+        advantage1Desc:
+          'We constantly test new formats and AI tools, analyze trends to keep your brand ahead of competitors.',
+        advantage1Features: 'What we implement:',
+        advantage1Item1: 'Adaptation to algorithms of each social network',
+        advantage1Item2: 'Using ChatGPT and AI design for content generation',
+        advantage1Item3: 'Multi-format content and flexible message testing',
+
+        // Advantage 2: Experience in Different Spheres
+        advantage2Title: 'Experience in different business spheres',
+        advantage2Desc:
+          'We have worked with companies from such industries: education, medicine, e-commerce, infobusiness, real estate, HoReCa, b2b.',
+        advantage2Features: 'What this gives you:',
+        advantage2Item1: 'Minimum time explaining business specifics',
+        advantage2Item2: 'Maximum fast campaign launch',
+        advantage2Item3: 'Expert solutions verified by practice',
+
+        // Advantage 3: Transparent Reporting
+        advantage3Title: 'Transparent reporting',
+        advantage3Desc:
+          'We provide detailed reports with specific KPIs and metrics that demonstrate work effectiveness.',
+        advantage3Features: 'What you receive:',
+        advantage3Item1: 'Weekly dashboards with key metrics',
+        advantage3Item2: 'Monthly detailed analysis and recommendations',
+        advantage3Item3: 'Competitor audits and ROI calculation',
+
+        // Team CTA
+        teamCtaTitle: 'Ready to collaborate with experts?',
+        teamCtaButton: 'Contact the team',
+
+        // FAQ
+        faqTitle: 'FAQ',
+        faqCtaText: 'Have additional questions about SMM?',
+        faqCtaButton: 'Contact us',
+
+        // FAQ Data
+        faqData: {
+          question1:
+            'Can you promote business on social networks without video?',
+          answer1:
+            "Yes, although video is a powerful engagement tool, we adapt the content strategy to the client's resources. You can use graphics, carousels, infographics, animations, or interactive polls. If the opportunity to create video appears later, we integrate them into the content plan.",
+
+          question2: 'Do you need a separate strategy for each social network?',
+          answer2:
+            'Yes. User behavior on Facebook, Instagram, and TikTok is different, as is the content format. We adapt tone of voice, publication types, and visual style to the characteristics of each platform to achieve maximum effect.',
+
+          question3: 'How long does it take to see SMM promotion results?',
+          answer3:
+            'First results (activity growth, reach, engagement) are usually noticeable within 2–4 weeks. Full brand strengthening, stable audience growth, and conversion — within 2–3 months of systematic work.',
+
+          question4:
+            'What is the minimum number of posts per week recommended?',
+          answer4:
+            'Optimally — from 3 to 5 publications per week. This allows maintaining audience activity without oversaturation. In some cases, 2 posts + daily stories are sufficient, depending on the platform and niche specifics.',
+
+          question5: 'Can SMM be integrated with email newsletters or website?',
+          answer5:
+            'Yes. We set up transitions from social networks to the website, landing page, or email subscription. This helps build multi-level communication with the client and increase trust in the brand.',
+
+          question6: 'Is it worth using influencers within SMM campaigns?',
+          answer6:
+            "Influencer marketing is an effective addition to classical SMM. We help select micro- or macro-influencers according to your niche, analyze their audience, and organize 'turnkey' collaboration.",
+        },
+      },
+      contextualAdvertisingPage: {
+        // Hero Section
+        heroTitle:
+          'Contextual advertising — lead generation at the moment of search',
+        heroHighlight: 'lead generation',
+        heroDescription:
+          'Contextual advertising is a digital marketing tool that allows you to show your ads to potential clients exactly when they are searching for your product or service. This is a powerful tool for attracting targeted traffic ready to convert. We set up effective campaigns in Google Ads, Facebook Ads, and other platforms that bring quality leads.',
+        orderButton: 'Order contextual advertising',
+
+        // Advantages
+        advantage1: 'Precise targeting of users searching for your services',
+        advantage2: 'Ability to track ROI and conversions in real time',
+        advantage3:
+          'Flexible budget and pay only for results (click or conversion)',
+        advantage4: 'Instant campaign launch and quick results',
+        iconAdvantage5: 'Remarketing',
+
+        // Info Section
+        infoTitle: 'How contextual advertising works',
+        infoDescription:
+          'Contextual advertising is shown to users based on their search queries, interests, or online behavior. When a person searches for a product or service, they see relevant ads, which increases the likelihood of a click and conversion.',
+        infoDescription1:
+          "The main advantage of this format is relevance. You are not just showing an ad, but responding to a specific user query. For example, if they search for 'buy running shoes in Kyiv', your sports store ad may appear in the top positions of search results even before the organic results.",
+        infoDescription2:
+          'Contextual advertising uses a pay-per-click (PPC) model, meaning you only pay when a user is interested enough in your ad to click on it.',
+        infoDescription3:
+          'Today, contextual advertising is not just text ads on Google search. It also includes display ads on partner sites, YouTube, Gmail, and even mobile apps. Thanks to advanced machine learning algorithms, these systems are becoming increasingly accurate in selecting potential customers.',
+          iconSearchText: 'buy running shoes in Kiev',
+          iconSearchTitle1: 'Professional running shoes - Discounts up to -40%',
+          iconSearchDes1: 'Wide selection of branded running shoes. Free shipping. 30-day warranty. ✓ Reviews ✓ Expert advice',
+          iconSearchTitle2: 'Running shoes Nike, Adidas, Asics - SportShop',
+          iconSearchDes2: 'Large selection of running shoes in Kyiv ✓ Official guarantee ✓ Delivery throughout Ukraine ✓ Cash on delivery',
+
+
+          itemInfoTitle1: 'Search advertising',
+          itemInfoDes1: 'Appears directly in search results when a user searches for specific products or services',
+  
+          itemInfoTitle2: 'Media network',
+          itemInfoDes2: 'Placed on partner sites, mobile applications and video content, taking into account user interests',
+         
+          itemInfoTitle3: 'Remarketing',
+          itemInfoDes3: 'Targets users who have already visited your site but have not taken the targeted action',
+        
+          itemInfoTitle4: 'Merchandise advertising',
+          itemInfoDes4: 'Displays specific products from your catalog, including photos, prices, and other features',
+
+        // Types Section
+        typesTitle: 'Main types of contextual advertising',
+        typesDescription:
+          "Contextual advertising covers various formats that allow you to reach the user at different stages of the sales funnel — from the moment of searching for a product to watching a video on YouTube. Let's look at the main types in more detail.",
+
+        // Search Ads
+        searchAdsTitle: 'Search Ads',
+        searchAdsDescription:
+          'Search ads are advertisements that appear at the top of Google search results when a user enters a specific query. This is one of the most effective ad formats because it addresses the user at the moment of specific interest.',
+        searchAdsText: 'Advantages:',
+  
+        searchAdsAdvantages: [
+          'High user intent',
+          'Flexible keyword settings',
+          'Instant traffic to the site',
+        ],
+        searchAdsUseCase:
+          'Ideal for promoting products, services, booking consultations, and lead generation.',
+
+        // Display Ads
+        displayAdsTitle: 'Display Ads',
+        displayAdsDescription:
+          'Display ads are banners that appear on Google partner sites, in apps, and on platforms that support the Google Display Network. They can include images, animation, and text elements.',
+        displayAdsAdvantages: [
+          'Visual appeal',
+          'Large audience reach',
+          'Targeting by interests, demographics, and behavior',
+        ],
+        displayAdsUseCase:
+          'Effective for building brand awareness and reaching new audiences.',
+
+        // Video Ads
+        videoAdsTitle: 'Video Ads (YouTube Ads)',
+        videoAdsDescription:
+          'Video ads are placed on YouTube and the Google video partner network. They allow you to deliver an emotional message, attract attention, and increase brand trust.',
+        videoAdsText: 'Species:',
+          videoAdsTypes: [
+          'In-stream (skippable)',
+          'Bumper Ads (up to 6 seconds)',
+          'Video Discovery Ads',
+        ],
+        videoAdsUseCase:
+          'Especially suitable for B2C, brand campaigns, and new product launches.',
+
+        // Shopping Ads
+        shoppingAdsTitle: 'Shopping Campaigns (Google Shopping)',
+        shoppingAdsDescription:
+          'Google Shopping is a special ad format for online stores, where the user sees the product, its price, store name, and image directly in the search.',
+        shoppingAdsAdvantages: [
+          'High conversion rate',
+          'Visual content in search results',
+          'Automatic product data updates',
+        ],
+        shoppingAdsUseCase:
+          'To launch, you need to link Google Merchant Center and Google Ads.',
+
+        // Remarketing
+        remarketingTitle: 'Remarketing and Dynamic Remarketing',
+        remarketingDescription:
+          'Remarketing allows you to show ads to users who have already visited your site but have not completed the target action. Dynamic remarketing is personalized ads with the products or services the user viewed.',
+        remarketingAdvantages: [
+          'Brand recall',
+          'High ROI',
+          'Adapts to user behavior',
+        ],
+        remarketingUseCase:
+          'Especially effective for e-commerce, booking services, courses, and B2B companies.',
+
+        // Stages Section
+        stagesTitle: 'Stages of launching contextual advertising',
+        stagesDescription:
+          'Launching effective contextual advertising requires a systematic approach and strict adherence to the sequence of actions. Each stage plays a key role in achieving your business goals.',
+
+        // Stage 1
+        stage1Title: 'Business and audience analysis',
+        stage1Description:
+          'At the first stage, it is important to understand who your potential client is, what problems you solve, and what advantages your product or service has. Competitor analysis also helps to identify the strengths and weaknesses of the market.',
+        stage1Bullets: [
+          'Researching target audience behavior',
+          'Analyzing competitor strategies',
+          'Identifying unique product advantages',
+        ],
+
+        // Stage 2
+        stage2Title: 'Defining goals and KPIs',
+        stage2Description:
+          'The campaign goal can be different: sales, lead generation, brand awareness, or subscription. For each goal, key performance indicators (KPIs) are defined, such as cost per lead (CPL), return on ad spend (ROAS), or CTR.',
+        stage2Bullets: [
+          'Setting clear business metrics',
+          'Defining acceptable customer acquisition cost',
+          'Calculating expected ROI',
+        ],
+
+        // Stage 3
+        stage3Title: 'Selecting keywords and audiences',
+        stage3Description:
+          'A semantic core is compiled — a list of relevant key phrases that users use to search for your products or services. Target audiences are also set up — by interests, behavior, geography, language, etc.',
+        stage3Bullets: [
+          'Collecting search queries of your target audience',
+          'Analyzing search volumes and competition',
+          'Grouping keywords by topics',
+        ],
+
+        // Stage 4
+        stage4Title: 'Creating ad creatives',
+        stage4Description:
+          'Attractive texts that encourage action are written, images or videos are selected. Ads must meet user expectations and lead to a relevant landing page.',
+        stage4Bullets: [
+          'Writing conversion headlines',
+          'Creating unique selling propositions',
+          'Developing clear CTAs (calls to action)',
+        ],
+
+        // Stage 5
+        stage5Title: 'Setting up the campaign in Google Ads',
+        stage5Description:
+          'All parameters — geotargeting, budget, bids, schedule — are set according to the strategy. Conversion tracking is also connected via Google Analytics or Tag Manager.',
+        stage5Bullets: [
+          'Structuring campaigns and ad groups',
+          'Setting up targeting and exclusions',
+          'Implementing tracking systems',
+        ],
+
+        // Stage 6
+        stage6Title: 'Launch and monitoring',
+        stage6Description:
+          'After launch, it is important to monitor the campaign daily: track expenses, review click-through rates, and make prompt adjustments.',
+        stage6Bullets: [
+          'Real-time metrics analysis',
+          'Controlling costs and efficiency',
+          'Quick response to metric changes',
+        ],
+
+        // Stage 7
+        stage7Title: 'Optimization',
+        stage7Description:
+          'Based on the collected data, keywords, targeting, creatives, and bids are optimized. A/B ad variants are tested to improve effectiveness.',
+        stage7Bullets: [
+          'Strategy correction based on data',
+          'Conducting A/B tests',
+          'Scaling successful approaches',
+        ],
+
+        stagesCalloutTitle: 'Ready to launch effective contextual advertising?',
+        stagesCalloutDescription:
+          'Our team will create and launch a campaign for you that will bring targeted clients and ensure maximum return on investment.',
+        stagesCalloutButton: 'Order a consultation',
+
+        // Tools Section
+        toolsTitle: 'Tools for working with contextual advertising',
+        toolsDescription:
+          'Successful contextual advertising management is impossible without professional tools. They help automate processes, analyze results, optimize costs, and achieve better performance.',
+
+        // Google Ads
+        toolGoogleAdsName: 'Google Ads',
+        toolGoogleAdsDescription:
+          'This is the main platform for launching search, display, video, and shopping campaigns. It allows you to set up campaigns of any complexity, manage bids, create ads, segment audiences, and track performance.',
+        toolGoogleAdsFeatures: [
+          'Launching all types of ad campaigns',
+          'Flexible bid and budget management',
+          'Detailed analytics of results',
+        ],
+
+        // Google Analytics
+        toolAnalyticsName: 'Google Analytics',
+        toolAnalyticsDescription:
+          'An indispensable tool for collecting and analyzing user behavior on the site. It allows you to see how ads work, which pages are most effective, how much time users spend on the site, and what conversions occur.',
+        toolAnalyticsFeatures: [
+          'Tracking traffic sources and behavior',
+          'Setting up goals and conversions',
+          'Integration with Google Ads',
+        ],
+
+        // Google Tag Manager
+        toolTagManagerName: 'Google Tag Manager',
+        toolTagManagerDescription:
+          'A service for convenient tag management without the need to edit site code. Allows you to set up conversion pixels, remarketing, analytics events, etc.',
+        toolTagManagerFeatures: [
+          'Setting tags without editing code',
+          'Centralized tag management',
+          'Setting up triggers and variables',
+        ],
+
+        // Keyword Planner
+        toolKeywordPlannerName: 'Keyword Planner',
+        toolKeywordPlannerDescription:
+          'A Google tool for selecting keywords. Allows you to find out query frequency, competition level, and approximate cost per click. Ideal for creating a semantic core.',
+        toolKeywordPlannerFeatures: [
+          'Searching for relevant keywords',
+          'Estimating search volumes and competition',
+          'Campaign budget forecasting',
+        ],
+
+        // SEO Tools
+        toolSeoToolsName: 'SEMrush, Ahrefs, Serpstat',
+        toolSeoToolsDescription:
+          "SEO analytics services that are also useful for contextual advertising. They help study competitors, analyze other companies' ad strategies, select keywords, and track positions.",
+        toolSeoToolsFeatures: [
+          'Competitor strategy analysis',
+          'Advanced keyword research',
+          'Position and visibility tracking',
+        ],
+
+        // UX Tools
+        toolUxToolsName: 'Hotjar or Clarity',
+        toolUxToolsDescription:
+          'These services allow you to see how users interact with the site: where they click, how they scroll the page, what stops them. This is useful for increasing conversions after coming from ads.',
+        toolUxToolsFeatures: [
+          'Heatmaps of clicks and scrolls',
+          'User session recordings',
+          'Surveys and feedback forms',
+        ],
+
+        toolsNote:
+          'Our specialists are proficient in all necessary tools at a professional level and constantly monitor new features and capabilities to ensure your business gets the maximum effectiveness from contextual advertising.',
+
+        // KPI Section
+        kpiTitle: 'Key Performance Indicators (KPI)',
+        kpiDescription:
+          'To assess the success of contextual advertising, it is important to focus not only on the total number of clicks or expenses, but also on specific performance indicators — KPIs. They show how well the advertising achieves the set business goals.',
+
+        // CTR
+        kpiCtrName: 'CTR',
+        kpiCtrSubtitle: 'Click-Through Rate',
+        kpiText: 'Example:',
+        kpiCtrContent:
+          'Shows the percentage of users who saw the ad and clicked on it. A high CTR indicates the ad is relevant to the query or audience interests.',
+        kpiCtrExample:
+          'CTR = 5% means that 5 out of 100 users who saw the ad clicked on it.',
+
+        // CPC
+        kpiCpcName: 'CPC',
+        kpiCpcSubtitle: 'Cost per Click',
+        kpiCpcContent:
+          'This is the average amount you pay for each ad click. It is important to reduce CPC without losing traffic by optimizing ads and keywords.',
+        kpiCpcExample:
+          'CPC = €2 means that each click on your ad costs you an average of €2.',
+
+        // CPA
+        kpiCpaName: 'CPA',
+        kpiCpaSubtitle: 'Cost per Acquisition',
+        kpiCpaContent:
+          'CPA determines how much it costs on average to acquire one client (for example, a buyer or lead). This is a key indicator for evaluating campaign profitability.',
+        kpiCpaExample:
+          'CPA = €25 means that acquiring one new client costs an average of €25.',
+
+        // ROAS
+        kpiRoasName: 'ROAS',
+        kpiRoasSubtitle: 'Return on Ad Spend',
+        kpiRoasContent:
+          'This indicator reflects the ratio of revenue to advertising costs. If ROAS exceeds 100%, the campaign is profitable.',
+        kpiRoasExample:
+          'ROAS = 350% means that for every €1 invested in advertising, you get €3.5 in revenue.',
+
+        // Conversions
+        kpiConversionsName: 'Number of conversions',
+        kpiConversionsSubtitle: 'Volume of target user actions',
+        kpiConversionsContent:
+          'Every action considered a target is recorded: form submission, call, purchase. Analyzing the number and quality of conversions helps adjust the strategy.',
+        kpiConversionsExample:
+          '120 conversions with 3,000 clicks gives a conversion rate of 4%, which is a good indicator.',
+
+        // Traffic Quality
+        kpiQualityName: 'Traffic quality',
+        kpiQualitySubtitle: 'User behavioral metrics',
+        kpiQualityContent:
+          'Determined by user behavior on the site: depth of view, time spent, bounce rate. High-quality traffic means a higher probability of sales.',
+        kpiQualityExample:
+          'Average time on site 3:20, 3.5 pages viewed, bounce rate 35% — indicators of quality traffic.',
+
+        kpiActionText:
+          "Want to get a detailed analysis of your advertising campaign's effectiveness?",
+        kpiActionButton: 'Order an effectiveness audit',
+
+        // Suitable For Section
+        suitableForTitle: 'Who is contextual advertising suitable for',
+        suitableForDescription:
+          'Contextual advertising is a universal tool suitable for almost any business, regardless of niche, company size, or development stage. However, there are types of businesses for which it brings especially tangible results.',
+
+        // Business Types
+        businessTextItem: 'Advantages: ',
+        businessSmbName: 'Small and medium business',
+        businessSmbDescription:
+          'Search advertising allows you to get clients on the very first day of the campaign launch. There is no need to wait several months as with SEO. This is an ideal option for companies just entering the market or launching new products.',
+        businessSmbAdvantages: [
+          'Quick start and instant results',
+          'Flexible control of the advertising budget',
+          'Precise targeting for local audiences',
+          'High efficiency when launching new products',
+        ],
+        businessSmbStats: [
+          {icon: '⚡', value: '300-400%', label: 'Average ROI' },
+          {icon: '🚀', value: '1-2 days', label: 'Time to first clients' },
+        ],
+
+        businessEcommerceName: 'Online stores',
+        businessEcommerceDescription:
+          'For e-commerce, shopping campaigns, dynamic remarketing, and search advertising are effective. You can show your products to users actively searching for them, as well as bring back visitors who did not complete a purchase.',
+        businessEcommerceAdvantages: [
+          'Visual ads with products in Shopping Ads',
+          'Dynamic remarketing to bring back clients',
+          'Targeting by seasonal interests',
+          'Conversion optimization for specific product categories',
+        ],
+        businessEcommerceStats: [
+          {icon: '📊', value: '30%', label: 'Increase in conversion' },
+          {icon: '📈', value: '25%', label: 'Growth in average check' },
+        ],
+
+        businessServicesName: 'Service sector',
+        businessServicesDescription:
+          'Advertising in Google Ads allows you to attract clients for consultations, doctor appointments, delivery orders, or any other service. Targeting local audiences is especially effective for offline businesses.',
+        businessServicesAdvantages: [
+          'Geolocation targeting for district or city',
+          'Advertising by business hours',
+          'Call tracking and analysis',
+          'CRM integration for client tracking',
+        ],
+        businessServicesStats: [
+          {icon: '📱', value: '40-50%', label: 'Growth in client base' },
+          {icon: '📍', value: '60%', label: 'More local clients' },
+        ],
+
+        businessB2bName: 'B2B companies',
+        businessB2bDescription:
+          'Although the deal cycle is longer here, contextual advertising works great for lead generation, webinars, newsletter subscriptions, or booking meetings with managers.',
+        businessB2bAdvantages: [
+          'Generation of quality B2B leads',
+          'Promotion of webinars and professional events',
+          'Targeting by position and industry',
+          'Remarketing for long decision cycles',
+        ],
+        businessB2bStats: [
+          {icon: '💼', value: '25%', label: 'Lead quality improvement' },
+          {icon: '💰', value: '20%', label: 'Lead cost reduction' },
+        ],
+
+        businessStartupsName: 'Startups',
+        businessStartupsDescription:
+          'Contextual advertising is a way to quickly test hypotheses, check demand, and reach your target audience with minimal time investment.',
+        businessStartupsAdvantages: [
+            'Rapid testing of MVPs and business ideas',
+            'Detailed analysis of audience reaction',
+            'Flexible A/B testing strategies',
+            'Scaling when confirming hypotheses',
+          ],
+        businessStartupsStats: [
+            { icon: '🔥', value: '60%', label: 'Time-to-Market Reduction' },
+            { icon: '📝', value: '45%', label: "More feedback" },
+          ],
+
+        suitableForCtaTitle:
+          'Not sure if contextual advertising is right for your business?',
+        suitableForCtaText:
+          'Our specialists will help you determine if contextual advertising is right for your business and will develop an individual strategy taking into account the specifics of your niche.',
+        suitableForCtaButton: 'Get a free consultation',
+
+        // Approach Section
+        approachTitle: 'Our approach to launching advertising',
+        approachIntro:
+          "We don't just set up contextual advertising — we create solutions that deliver results. Our approach is based on deep analysis, testing, and constant optimization.",
+
+        // Approach Stage 1
+        approachStage1Title: 'Immersion in the business',
+        approachStage1Description:
+          "First, we immerse ourselves in the client's business context: we study the product, competitors, target audience, and their behavioral patterns. A deep understanding of the product allows us to find its unique advantages and present them correctly in advertising.",
+        approachStage1Tags: [
+          'Niche analysis',
+          'Competitor research',
+          'Target audience audit',
+        ],
+
+        // Approach Stage 2
+        approachStage2Title: 'Strategy and planning',
+        approachStage2Description:
+          'Next — we define clear KPIs, develop a media plan, and launch campaigns through Google Ads. Instead of just launching ads, we develop a comprehensive strategy with several development scenarios and a clear budget allocation.',
+        approachStage2Tags: ['Media planning', 'KPI definition', 'Budgeting'],
+
+        // Approach Stage 3
+        approachStage3Title: 'Monitoring and optimization',
+        approachStage3Description:
+          'During the process, we monitor effectiveness daily: review ad click-through rates, traffic quality, conversions, and acquisition cost. We make prompt adjustments as needed. After testing several ad variants, we keep the most effective ones.',
+        approachStage3Tags: [
+          'Daily control',
+          'A/B testing',
+          'Bid optimization',
+        ],
+
+        // Approach Stage 4
+        approachStage4Title: 'Reporting and scaling',
+        approachStage4Description:
+          'We provide transparent reporting: the client sees where the budget is spent, which campaigns work best, and how returns change over time. Our task is not just to spend the advertising budget, but to multiply it, so we are constantly looking for new opportunities to scale successful campaigns.',
+        approachStage4Tags: [
+          'Transparent analytics',
+          'ROI orientation',
+          'Scaling success',
+        ],
+
+        // Results Section
+        resultsTitle: 'What you will get as a result',
+        resultsIntro:
+          'Launching contextual advertising with us is not just a set of ads in Google. It is a systematic approach that brings measurable results and specific business benefits.',
+
+        // Result 1
+        result1Title: 'Targeted traffic to the site',
+        result1Description:
+          'Users who are already searching for your products or services will see your ads at the right moment. Contextual advertising provides the highest audience relevance.',
+        result1Metric: { value: '93%', label: 'audience relevance' },
+
+        // Result 2
+        result2Title: 'Increase in inquiries and sales',
+        result2Description:
+          'Thanks to precise targeting and effective campaign structure, your conversions will grow. We focus on attracting clients ready to buy.',
+        result2Metric: { value: '+45%', label: 'average conversion growth' },
+
+        // Result 3
+        result3Title: 'Increased brand awareness',
+        result3Description:
+          'Especially when using display ads and YouTube, your brand will become more visible to the target audience. We help you stay top of mind.',
+        result3Metric: { value: '3.5x', label: 'brand awareness growth' },
+
+        // Result 4
+        result4Title: 'Full budget control',
+        result4Description:
+          'You decide how much you are ready to invest. We ensure maximum efficiency for every hryvnia spent on advertising.',
+        result4Metric: { value: '100%', label: 'cost transparency' },
+
+        // Result 5
+        result5Title: 'Transparent analytics',
+        result5Description:
+          'Our reports show every click, conversion, and profitability. You always know what works and what needs optimization in your ad campaigns.',
+        result5Metric: { value: '24/7', label: 'data access' },
+
+        // Result 6
+        result6Title: 'Flexibility and speed of changes',
+        result6Description:
+          'Campaigns can be adapted in real time to market changes. We quickly respond to new trends and adjust the strategy for better results.',
+        result6Metric: { value: '~24h', label: 'to implement changes' },
+
+        resultsNoteHighlight:
+          'Our goal is not just to launch ads, but to ensure stable growth of your business through digital channels.',
+        resultsActionButton: 'Get a free consultation',
+
+        // FAQ Section
+        faqData: {
+          question1:
+            'How long does it take to see the first results from contextual advertising?',
+          answer1:
+            'Usually, the first clicks and site visits appear on the day of launch. However, to fully assess effectiveness, it is worth waiting at least 1–2 weeks to accumulate statistics.',
+          question2: 'Can I run contextual advertising without a website?',
+          answer2:
+            'Yes, in some cases you can direct traffic to a landing page, social media page, or Google My Business. However, a website or landing page significantly improves ad quality and conversion.',
+          question3:
+            "Is it worth running contextual advertising in the 'off-season'?",
+          answer3:
+            "It depends on the niche. In some areas (e.g., repairs, education, gifts), the 'off-season' means less competition and a lower cost per click. This can be a profitable strategy.",
+          question4: 'How to avoid budget draining by competitors?',
+          answer4:
+            'Google has built-in mechanisms to protect against fraudulent traffic. You can also use additional protection services, IP and geolocation restrictions. We use comprehensive countermeasures.',
+          question5: 'Can I manage the ad campaign myself after launch?',
+          answer5:
+            'Yes, we can set up the campaign for further self-management. We also provide instructions or transfer the full setup package with explanations.',
+        },
+
+        faqCtaText:
+          'Have more questions about contextual advertising? Contact us for a free consultation.',
+        faqCtaButton: 'Get a consultation',
+      },
     },
   },
   uk: {
@@ -5593,13 +6359,781 @@ const resources = {
           question5: 'Що буде, якщо кампанія не дає очікуваних результатів?',
           answer5:
             'Ми регулярно аналізуємо показники і за потреби вносимо зміни — замінюємо креативи, змінюємо майданчики або коригуємо таргетинг. Усі кампанії супроводжує фахівець, який відповідає за результат.',
-          question6:
-            'Чи можна запустити банерну рекламу без готового дизайну?',
+          question6: 'Чи можна запустити банерну рекламу без готового дизайну?',
           answer6:
             'Так, ми повністю беремо на себе створення банерів — від концепту до фінального макету. Наші дизайнери адаптують креативи під обрану стратегію та забезпечують їх відповідність технічним вимогам платформ.',
         },
         faqCta: 'Маєте додаткові запитання щодо банерної реклами?',
         faqCtaButton: "Зв'язатися з нами",
+      },
+      smmPage: {
+        // Hero Section
+        heroTitle: 'SMM-просування — ваш бренд у соціальних мережах',
+        heroHighlight: 'ваш бренд',
+        heroDescription:
+          'SMM-просування — це стратегічний інструмент цифрового маркетингу, що дозволяє бізнесу будувати довготривалі відносини з клієнтами, формувати імідж бренду та стимулювати продажі через соціальні мережі. У світі, де увага споживача — найцінніший ресурс, SMM допомагає зайняти своє місце в інформаційному полі та трансформувати підписників у лояльну аудиторію.',
+        orderButton: 'Замовити SMM',
+
+        // Преимущества SMM
+        advantage1: "Прямий зв'язок з вашою цільовою аудиторією",
+        advantage2: 'Формування лояльності та спільноти навколо бренду',
+        advantage3: 'Вірусне поширення контенту через репости',
+        advantage4: 'Детальна аналітика ефективності кампаній',
+
+        // Основные задачи SMM
+        task1Title: 'Формування іміджу бренду',
+        task1Desc: 'через ціннісний контент, візуальний стиль і tone of voice',
+        task2Title: 'Підвищення впізнаваності',
+        task2Desc:
+          'за допомогою регулярної публікації, інтерактиву та таргетингу',
+        task3Title: "Побудова ком'юніті",
+        task3Desc:
+          'створення лояльної бази підписників, які підтримують, коментують, купують',
+        task4Title: 'Комунікація з аудиторією',
+        task4Desc:
+          "відповіді на запити, обробка відгуків, розв'язання ситуацій в режимі реального часу",
+        task5Title: 'Просування продуктів чи послуг',
+        task5Desc: 'через рекламні кампанії, колаборації, акції, лід-магніти',
+
+        // Что такое SMM
+        whatIsTitle: 'Що таке SMM і чому це важливо',
+        whatIsDesc1:
+          "SMM (Social Media Marketing) — це комплекс дій для просування компанії в соціальних мережах: від створення контенту та управління спільнотами до запуску таргетованої реклами. SMM є не просто каналом комунікації — це джерело лояльності, зворотного зв'язку, прямого впливу на споживчу поведінку.",
+        whatIsDesc2:
+          'Соціальні мережі щоденно використовують мільйони українців. Ігнорувати цей канал — означає втрачати потенційних клієнтів, які прямо зараз готові купувати, замовляти або ділитися враженнями.',
+
+        // Статистика
+        stat1Value: '73%',
+        stat1Label: 'користувачів інтернету активні в соцмережах',
+        stat2Value: 'год',
+        stat2Label: 'середній час в соцмережах щодня',
+        stat3Value: '61%',
+        stat3Label:
+          'приймають рішення про покупку після перегляду в соцмережах',
+
+        // Основные задачи SMM
+        tasksTitle: 'Основні завдання SMM',
+
+        // Услуги
+        servicesTitle: 'Які послуги ми надаємо в межах SMM',
+        servicesIntro:
+          "Ми пропонуємо повний цикл SMM-супроводу — від стратегії до результатів. Наші послуги охоплюють ключові напрямки, які дозволяють бренду не лише 'бути в соцмережах', а системно розвиватися, залучати клієнтів і досягати бізнес-цілей. Ми адаптуємо підхід під специфіку ринку, конкурентів і аудиторію.",
+
+        // Вкладки услуг
+        tab1: 'Розробка контент-стратегії',
+        tab2: 'Ведення сторінок',
+        tab3: 'Таргетована реклама',
+
+        // Контент-стратегия
+        contentStrategyTitle: 'Розробка контент-стратегії',
+        contentStrategyDesc:
+          'Контент — це основа комунікації в SMM. Ми створюємо стратегії, які враховують сезонність, поведінкові патерни аудиторії, тренди платформи та позиціонування бренду. Контент-план готується на місяць уперед і включає візуали, тексти, хештеги, інтерактиви, сторіс, Reels чи Shorts — залежно від платформи.',
+        contentStrategyFeatures: [
+          'Визначення цілей і KPI',
+          'Побудова tone of voice',
+          'Контент-план по рубриках та форматах',
+          'Створення унікального креативу',
+        ],
+
+        // Ведение страниц
+        pageManagementTitle:
+          'Ведення сторінок (Instagram, Facebook, TikTok тощо)',
+        pageManagementDesc:
+          'Ми беремо на себе повне адміністрування акаунтів: регулярні публікації, відповіді в коментарях, обробку запитів у Direct, моніторинг згадок. Для кожної платформи обираємо найефективніші формати — короткі відео, каруселі, меми, розіграші чи гайд-пости.',
+        platform1: 'Instagram та Facebook (Meta)',
+        platform2: 'TikTok — з урахуванням алгоритмів та вірусного потенціалу',
+        platform3: 'YouTube Shorts, Telegram, LinkedIn (опціонально)',
+
+        // Таргетированная реклама
+        targetedAdsTitle: 'Таргетована реклама в соціальних мережах',
+        targetedAdsDesc:
+          'Один з найсильніших інструментів у SMM — це платна реклама. Ми запускаємо таргетинг по інтересах, поведінці, геолокації, схожих аудиторіях або ремаркетингу. Для кожної кампанії створюємо кілька креативів і тестуємо, щоб отримати оптимальний результат за мінімальною вартістю.',
+        campaignType1: 'Залучення підписників',
+        campaignType2: 'Реклама постів або сторіс',
+        campaignType3: 'Генерація лідів (лід-форми, переходи на сайт)',
+        campaignType4: 'Динамічні кампанії для e-commerce',
+
+        // Процесс сотрудничества
+        collaborationTitle: 'Як відбувається співпраця',
+        collaborationIntro:
+          'Ми працюємо прозоро, системно й орієнтуємось на результат. Для кожного клієнта будуємо індивідуальний SMM-процес, адаптований під нішу, цілі та специфіку бізнесу. Кожен етап узгоджується і підтримується нашою командою — від старту до масштабування.',
+
+        // Этапы процесса
+        step1Title: 'Брифінг і аналіз ЦА',
+        step1Desc:
+          'Починаємо з глибокого занурення у ваш бізнес: збираємо дані через бриф, аналізуємо конкурентів, визначаємо портрет цільової аудиторії. Вивчаємо її болі, інтереси, активність у соціальних мережах і адаптуємо підхід до комунікації відповідно до цих даних.',
+        step1Includes: 'Що включає:',
+        step1Item1: 'Аналіз ринку, УТП, позиціонування',
+        step1Item2: 'Визначення платформи, де ЦА найактивніша',
+        step1Item3:
+          'Побудова сценаріїв взаємодії (взаємний фоловінг, коментарі, реклама)',
+
+        step2Title: 'Розробка стратегії',
+        step2Desc:
+          'На основі зібраних даних формуємо стратегію присутності в соцмережах: визначаємо оптимальні платформи, контент-план, частоту публікацій, тональність і ключові повідомлення бренду.',
+        step2Tactic:
+          'Ми надаємо документ з детальною стратегією, яка включає всі аспекти SMM-просування від візуального стилю до KPI',
+
+        step3Title: 'Запуск і реалізація',
+        step3Desc:
+          'Створюємо та публікуємо контент згідно з узгодженим планом, налаштовуємо та запускаємо рекламні кампанії. Починаємо взаємодію з аудиторією та активно модеруємо коментарі та повідомлення.',
+        step3Card1: 'Створення контенту',
+        step3Card2: 'Запуск реклами',
+        step3Card3: 'Комунікація',
+
+        step4Title: 'Регулярна аналітика і корекція стратегії',
+        step4Desc:
+          "Ми не 'ведемо сторінки заради сторінок' — ми працюємо з даними. Щомісячно готуємо звітність по охопленнях, залученні, підписниках, збереженнях, кліках, коментарях. Аналізуємо, що працює, а що — ні, й коригуємо стратегію, аби не витрачати час і бюджет даремно.",
+        step4Tools: 'Інструменти аналітики:',
+        step4Tool1: 'Meta Business Suite / TikTok Analytics',
+        step4Tool2: 'Внутрішні CRM та трекінг-конверсій',
+        step4Tool3: 'Google Analytics (у разі переходів на сайт)',
+
+        // CTA для сотрудничества
+        collaborationCta:
+          'Готові розпочати співпрацю з командою професіоналів?',
+        collaborationCtaButton: 'Замовити SMM',
+
+        // Результаты
+        resultsTitle: 'Результати від SMM-просування',
+        resultsDesc:
+          "Робота в соціальних мережах має давати конкретний результат — не лише 'лайки', а й реальні показники зростання. SMM-просування формує довготривалий ефект: зміцнює позиції бренду, створює ком'юніті та генерує ліди.",
+
+        // Результат 1: Впізнаваність бренду
+        result1Title: 'Впізнаваність бренду',
+        result1Desc:
+          'Завдяки регулярній публікації якісного контенту, присутності у стрічках підписників і запуску таргетованої реклами, бренд стає впізнаваним. Люди починають асоціювати вас з експертизою, надійністю або актуальністю — залежно від вибраного позиціонування.',
+        result1Metric1: '+127%',
+        result1Metric1Label: 'Органічне охоплення',
+        result1Metric2: '+86%',
+        result1Metric2Label: 'Впізнаваність бренду',
+        result1Results: 'Результати впізнаваності:',
+        result1Item1: 'Зростання органічного трафіку на профіль',
+        result1Item2: 'Висока частота згадок або тегів',
+        result1Item3: 'Позитивні коментарі й відгуки',
+
+        // Результат 2: Ріст підписників
+        result2Title: 'Ріст підписників і залучення',
+        result2Desc:
+          'Активна сторінка з цікавим контентом приваблює нових підписників. Ми використовуємо методи природного залучення, а також платні інструменти — рекламу, взаємні згадки, співпраці з мікроінфлюенсерами.',
+        result2ChartLabels: ['Січень', 'Лютий', 'Березень', 'Квітень'],
+        result2ChartValues: ['+210', '+460', '+680', '+890'],
+        result2Metrics: 'Показники, на які орієнтуємось:',
+        result2Item1: 'Engagement Rate (ER)',
+        result2Item2: 'Кількість підписок за місяць',
+        result2Item3: 'Динаміка залучення від посту до посту',
+
+        // Результат 3: Генерація заявок
+        result3Title: 'Генерація заявок і продажів',
+        result3Desc:
+          'SMM — це також прямий канал продажів, особливо для e-commerce, онлайн-послуг і локального бізнесу. Ми створюємо спеціальні пропозиції, заклики до дії та лід-магніти для конверсій.',
+        result3ProgressLabels: ['Охоплення', 'Переходи', 'Заявки', 'Продажі'],
+        result3ProgressValues: ['12,680', '7,354', '4,057', '2,282'],
+        result3ProgressPercents: ['100%', '58%', '32%', '18%'],
+        result3Tools: 'Інструменти конверсії:',
+        result3Item1: 'Лід-форми у Facebook / Instagram',
+        result3Item2: 'Заявки через Direct або коментарі',
+        result3Item3: 'Перенаправлення на лендінг із точковим оффером',
+
+        // Цитата
+        resultsQuote:
+          'Ефективний SMM — це не погоня за лайками, а системна робота, що прямо впливає на KPI вашого бізнесу.',
+
+        // CTA для результатов
+        resultsCtaTitle: 'Бажаєте схожих результатів?',
+        resultsCtaButton: 'Замовити SMM-стратегію',
+
+        // Переваги команди
+        teamAdvantagesTitle: 'Переваги роботи з нашою командою',
+        teamAdvantagesDesc:
+          'Ми — не просто виконавці, ми — партнери, які зацікавлені в результаті. Для нас важливо не лише створити естетичний профіль, а й забезпечити стратегічне зростання вашого бренду в соціальних мережах. Наша команда складається з SMM-фахівців, дизайнерів, аналітиків і таргетологів, які працюють як єдиний механізм.',
+
+        // Перевага 1: Інноваційні підходи
+        advantage1Title: 'Інноваційні підходи',
+        advantage1Desc:
+          'Ми постійно тестуємо нові формати та AI-інструменти, аналізуємо тренди, щоб ваш бренд був попереду конкурентів.',
+        advantage1Features: 'Що ми впроваджуємо:',
+        advantage1Item1: 'Адаптація під алгоритми кожної соцмережі',
+        advantage1Item2:
+          'Використання ChatGPT та AI-дизайну для генерації контенту',
+        advantage1Item3: 'Мультимовний контент і гнучке тестування меседжів',
+
+        // Перевага 2: Досвід у різних сферах
+        advantage2Title: 'Досвід у різних сферах бізнесу',
+        advantage2Desc:
+          'Ми працювали з компаніями з таких галузей: освіта, медицина, e-commerce, інфобізнес, нерухомість, HoReCa, b2b.',
+        advantage2Features: 'Що це дає вам:',
+        advantage2Item1: 'Мінімум часу на пояснення специфіки бізнесу',
+        advantage2Item2: 'Максимально швидкий запуск кампанії',
+        advantage2Item3: 'Експертні рішення, перевірені практикою',
+
+        // Перевага 3: Прозора звітність
+        advantage3Title: 'Прозора звітність',
+        advantage3Desc:
+          'Надаємо детальні звіти з конкретними KPI та метриками, які демонструють ефективність роботи.',
+        advantage3Features: 'Що ви отримуєте:',
+        advantage3Item1: 'Щотижневі дашборди з ключовими метриками',
+        advantage3Item2: 'Щомісячний детальний аналіз і рекомендації',
+        advantage3Item3: 'Аудити конкурентів та розрахунок ROI',
+
+        // CTA для команды
+        teamCtaTitle: 'Готові до співпраці з експертами?',
+        teamCtaButton: "Зв'язатися з командою",
+
+        // FAQ
+        faqTitle: 'FAQ',
+        faqCtaText: 'Маєте додаткові запитання щодо SMM?',
+        faqCtaButton: "Зв'язатися з нами",
+
+        // FAQ данные
+        faqData: {
+          question1:
+            'Чи можна просувати бізнес у соціальних мережах без відео?',
+          answer1:
+            "Так, хоча відео — потужний інструмент залучення, ми адаптуємо контент-стратегію під ресурси клієнта. Можна використовувати графіку, каруселі, інфографіку, анімації чи інтерактивні опитування. Якщо згодом з'являється можливість створити відео — ми інтегруємо їх у контент-план.",
+
+          question2:
+            'Чи потрібна окрема стратегія для кожної соціальної мережі?',
+          answer2:
+            'Так. Поведінка користувачів у Facebook, Instagram і TikTok — різна, як і формат контенту. Ми адаптуємо tone of voice, типи публікацій та візуальний стиль під особливості кожної платформи, щоб досягти максимального ефекту.',
+
+          question3:
+            'Скільки часу потрібно, щоб побачити результати SMM-просування?',
+          answer3:
+            'Перші результати (зростання активності, охоплення, звернення) зазвичай помітні вже через 2–4 тижні. Повноцінне зміцнення бренду, стабільне зростання аудиторії та конверсії — через 2–3 місяці системної роботи.',
+
+          question4:
+            'Яка мінімальна кількість постів на тиждень рекомендується?',
+          answer4:
+            'Оптимально — від 3 до 5 публікацій на тиждень. Це дозволяє підтримувати активність аудиторії без перенасичення. У деяких випадках достатньо 2 постів + щоденні сторіс, залежно від платформи й специфіки ніші.',
+
+          question5: 'Чи можна інтегрувати SMM з email-розсилками або сайтом?',
+          answer5:
+            'Так. Ми налаштовуємо перехід з соціальних мереж на сайт, лендінг або email-підписку. Це допомагає побудувати багаторівневу комунікацію з клієнтом і підвищити довіру до бренду.',
+
+          question6:
+            'Чи варто використовувати інфлюенсерів у рамках SMM-кампанії?',
+          answer6:
+            "Інфлюенс-маркетинг — ефективне доповнення до класичного SMM. Ми допомагаємо підібрати мікро- або макроінфлюенсерів відповідно до вашої ніші, аналізуємо їхню авдиторію й організовуємо співпрацю 'під ключ'.",
+        },
+      },
+      contextualAdvertisingPage: {
+        // Hero Section
+        heroTitle: 'Контекстна реклама — лідогенерація у момент пошуку',
+        heroHighlight: 'лідогенерація',
+        heroDescription:
+          'Контекстна реклама — це інструмент цифрового маркетингу, який дозволяє показувати ваші оголошення потенційним клієнтам саме тоді, коли вони шукають ваш продукт або послугу. Це потужний інструмент для залучення цільового трафіку, який готовий до конверсії. Ми налаштовуємо ефективні кампанії в Google Ads, Facebook Ads та інших платформах, які приносять якісні ліди.',
+        orderButton: 'Замовити контекстну рекламу',
+
+        // Преимущества
+        advantage1:
+          'Точне таргетування на користувачів, які шукають ваші послуги',
+        advantage2: 'Можливість відстежувати ROI та конверсії в реальному часі',
+        advantage3:
+          'Гнучкий бюджет та оплата лише за результат (клік або конверсію)',
+        advantage4: 'Миттєвий старт кампанії та швидкі результати',
+        iconAdvantage5: 'Ремаркетинг',
+
+        // Info Section
+        infoTitle: 'Як працює контекстна реклама',
+        infoDescription:
+          'Контекстна реклама показується користувачам на основі їх пошукових запитів, інтересів або поведінки в інтернеті. Коли людина шукає товар або послугу, вона бачить релевантні оголошення, що збільшує ймовірність кліку та конверсії.',
+        infoDescription1:
+          "Основна перевага такого формату — релевантність. Ви не просто показуєте рекламу, а відповідаєте на конкретний запит користувача. Наприклад, якщо він шукає 'купити кросівки для бігу в Києві', ваша реклама спортивного магазину може з'явитися у верхніх позиціях результатів пошуку ще до органічних результатів.",
+        infoDescription2:
+          'Контекстна реклама використовує модель оплати за клік (PPC), тобто ви платите лише тоді, коли користувач зацікавився вашим оголошенням достатньо, щоб клікнути на нього.',
+        infoDescription3:
+          'Сьогодні контекстна реклама — це не лише текстові оголошення у пошуку Google. Вона також включає медійні оголошення на сайтах-партнерах, YouTube, Gmail та навіть мобільних додатках. Завдяки розвиненим алгоритмам машинного навчання, ці системи стають дедалі точнішими у виборі потенційних клієнтів.',
+
+        iconSearchText: 'купити кросівки для бігу в Києві',
+        iconSearchTitle1: 'Професійні бігові кросівки - Знижки до -40%',
+        iconSearchDes1: 'Широкий вибір брендових кросівок для бігу. Безкоштовна доставка. Гарантія 30 днів. ✓ Відгуки ✓ Консультація експертів',
+        iconSearchTitle2: 'Кросівки для бігу Nike, Adidas, Asics - SportShop',
+        iconSearchDes2: 'Великий вибір бігових кросівок у Києві ✓ Офіційна гарантія ✓ Доставка по всій Україні ✓ Оплата при отриманні',
+
+        itemInfoTitle1: 'Пошукова реклама',
+        itemInfoDes1: 'Показується безпосередньо у результатах пошуку, коли користувач шукає конкретні товари чи послуги',
+
+        itemInfoTitle2: 'Медійна мережа',
+        itemInfoDes2: 'Розміщується на сайтах-партнерах, у мобільних додатках та відеоконтенті, враховуючи інтереси користувачів',
+       
+        itemInfoTitle3: 'Ремаркетинг',
+        itemInfoDes3: 'Націлена на користувачів, які вже відвідували ваш сайт, але не здійснили цільову дію',
+      
+        itemInfoTitle4: 'Товарна реклама',
+        itemInfoDes4: 'Демонструє конкретні товари з вашого каталогу, включаючи фото, ціну та інші характеристики',
+
+
+        // Types Section
+        typesTitle: 'Основні види контекстної реклами',
+        typesDescription:
+          'Контекстна реклама охоплює різні формати, які дозволяють досягти користувача на різних етапах воронки продажів — від моменту пошуку товару до перегляду відео на YouTube. Розглянемо основні види детальніше.',
+
+        // Search Ads
+        searchAdsTitle: 'Пошукова реклама (Search Ads)',
+        searchAdsDescription:
+          "Пошукова реклама — це оголошення, що з'являються у верхній частині сторінки результатів пошуку Google, коли користувач вводить певний запит. Це один із найефективніших форматів реклами, оскільки звертається до користувача в момент конкретного інтересу.",
+        searchAdsText: 'Переваги:',
+          searchAdsAdvantages: [
+          'Високий рівень наміру (intent) у користувача',
+          'Гнучке налаштування ключових слів',
+          'Миттєвий трафік на сайт',
+        ],
+        searchAdsUseCase:
+          'Ідеально підходить для просування товарів, послуг, запису на консультації та генерації лідів.',
+
+        // Display Ads
+        displayAdsTitle: 'Медійна реклама (Display Ads)',
+        displayAdsDescription:
+          "Медійні оголошення — це банери, які з'являються на сайтах-партнерах Google, у додатках та на платформах, що підтримують Google Display Network. Вони можуть включати зображення, анімацію та текстові елементи.",
+        displayAdsAdvantages: [
+          'Візуальна привабливість',
+          'Велике охоплення аудиторії',
+          'Таргетинг за інтересами, демографією та поведінкою',
+        ],
+        displayAdsUseCase:
+          'Ефективна для формування впізнаваності бренду та охоплення нової аудиторії.',
+
+        // Video Ads
+        videoAdsTitle: 'Відеореклама (YouTube Ads)',
+        videoAdsDescription:
+          'Реклама у відеоформаті розміщується на YouTube та в мережі відеопартнерів Google. Вона дозволяє доносити емоційний меседж, залучати увагу та підвищувати довіру до бренду.',
+        videoAdsText: 'Види:',
+          videoAdsTypes: [
+          'In-stream (з можливістю пропуску)',
+          'Bumper Ads (короткі до 6 секунд)',
+          'Video Discovery Ads',
+        ],
+        videoAdsUseCase:
+          'Особливо підходить для B2C-сегменту, брендових кампаній та запуску нових продуктів.',
+
+        // Shopping Ads
+        shoppingAdsTitle: 'Торгові кампанії (Google Shopping)',
+        shoppingAdsDescription:
+          'Google Shopping — це спеціальний формат реклами для інтернет-магазинів, де користувач бачить товар, його ціну, назву магазину та зображення просто в пошуку.',
+        shoppingAdsAdvantages: [
+          'Висока конверсія',
+          'Візуальний контент у видачі',
+          'Автоматичне оновлення товарних даних',
+        ],
+        shoppingAdsUseCase:
+          "Для запуску потрібно зв'язати Google Merchant Center і Google Ads.",
+
+        // Remarketing
+        remarketingTitle: 'Ремаркетинг і динамічний ремаркетинг',
+        remarketingDescription:
+          'Ремаркетинг дозволяє показувати рекламу користувачам, які вже були на сайті, але не здійснили цільову дію. Динамічний ремаркетинг — це персоналізовані оголошення з тими товарами або послугами, які користувач переглядав.',
+        remarketingAdvantages: [
+          'Нагадування про бренд',
+          'Високий ROI',
+          'Адаптація до поведінки користувача',
+        ],
+        remarketingUseCase:
+          'Особливо ефективні для e-commerce, сервісів бронювання, курсів та B2B-компаній.',
+
+        // Stages Section
+        stagesTitle: 'Етапи запуску контекстної реклами',
+        stagesDescription:
+          'Запуск ефективної контекстної реклами вимагає системного підходу та чіткого дотримання послідовності дій. Кожен етап відіграє ключову роль у досягненні ваших бізнес-цілей.',
+
+        // Stage 1
+        stage1Title: 'Аналіз бізнесу та цільової аудиторії',
+        stage1Description:
+          'На першому етапі важливо зрозуміти, хто є вашим потенційним клієнтом, які проблеми ви вирішуєте, які переваги має ваш продукт або послуга. Аналіз конкурентів також дає змогу виявити сильні та слабкі сторони ринку.',
+        stage1Bullets: [
+          'Дослідження поведінки цільової аудиторії',
+          'Аналіз стратегій конкурентів',
+          'Виявлення унікальних переваг продукту',
+        ],
+
+        // Stage 2
+        stage2Title: 'Визначення цілей та KPI',
+        stage2Description:
+          'Мета кампанії може бути різною: продаж, генерація лідів, впізнаваність бренду або підписка. Для кожної мети визначаються ключові показники ефективності (KPI), наприклад, вартість ліда (CPL), рентабельність витрат (ROAS) чи CTR.',
+        stage2Bullets: [
+          'Встановлення чітких бізнес-метрик',
+          'Визначення допустимої вартості залучення клієнта',
+          'Розрахунок очікуваного ROI',
+        ],
+
+        // Stage 3
+        stage3Title: 'Підбір ключових слів та аудиторій',
+        stage3Description:
+          'Проводиться семантичне ядро — список релевантних ключових фраз, за якими користувачі шукають ваші товари чи послуги. Також налаштовуються цільові аудиторії — за інтересами, поведінкою, географією, мовою тощо.',
+        stage3Bullets: [
+          'Збір пошукових запитів вашої ЦА',
+          'Аналіз пошукових обсягів та конкуренції',
+          'Групування ключових слів за тематиками',
+        ],
+
+        // Stage 4
+        stage4Title: 'Створення рекламних оголошень',
+        stage4Description:
+          'Пишуться привабливі тексти, що стимулюють до дії, підбираються зображення або відео. Оголошення мають відповідати очікуванням користувача та вести на релевантну цільову сторінку.',
+        stage4Bullets: [
+          'Написання конверсійних заголовків',
+          'Створення унікальних торгових пропозицій',
+          'Розробка чітких CTA (закликів до дії)',
+        ],
+
+        // Stage 5
+        stage5Title: 'Налаштування кампанії в Google Ads',
+        stage5Description:
+          'Усі параметри — геотаргетинг, бюджет, ставки, графік показу — задаються відповідно до стратегії. Також підключається відстеження конверсій через Google Analytics або Tag Manager.',
+        stage5Bullets: [
+          'Структурування кампаній та груп оголошень',
+          'Налаштування таргетингу та виключень',
+          'Впровадження систем відстеження',
+        ],
+
+        // Stage 6
+        stage6Title: 'Запуск та моніторинг',
+        stage6Description:
+          'Після запуску важливо контролювати хід кампанії щодня: відстежувати витрати, переглядати клікабельність, вносити оперативні коригування.',
+        stage6Bullets: [
+          'Аналіз показників у реальному часі',
+          'Контроль витрат та ефективності',
+          'Швидке реагування на зміни в метриках',
+        ],
+
+        // Stage 7
+        stage7Title: 'Оптимізація',
+        stage7Description:
+          'На основі зібраних даних оптимізуються ключові слова, таргетинг, креативи, ставки. Тестуються A/B-варіанти оголошень для підвищення ефективності.',
+        stage7Bullets: [
+          'Корекція стратегії на основі даних',
+          'Проведення A/B-тестів',
+          'Масштабування успішних підходів',
+        ],
+
+        stagesCalloutTitle: 'Готові запустити ефективну контекстну рекламу?',
+        stagesCalloutDescription:
+          'Наша команда створить і запустить для вас кампанію, яка приведе цільових клієнтів та забезпечить максимальну окупність інвестицій',
+        stagesCalloutButton: 'Замовити консультацію',
+
+        // Tools Section
+        toolsTitle: 'Інструменти для роботи з контекстною рекламою',
+        toolsDescription:
+          'Успішне ведення контекстної реклами неможливе без використання професійних інструментів. Вони допомагають автоматизувати процеси, аналізувати результати, оптимізувати витрати та досягати кращих показників.',
+
+        // Google Ads
+        toolGoogleAdsName: 'Google Ads',
+        toolGoogleAdsDescription:
+          'Це основна платформа для запуску пошукових, медійних, відео- та торгових кампаній. Дозволяє налаштовувати кампанії будь-якого рівня складності, керувати ставками, створювати оголошення, сегментувати аудиторії та відстежувати ефективність.',
+        toolGoogleAdsFeatures: [
+          'Запуск всіх типів рекламних кампаній',
+          'Гнучке керування ставками та бюджетом',
+          'Детальна аналітика результатів',
+        ],
+
+        // Google Analytics
+        toolAnalyticsName: 'Google Analytics',
+        toolAnalyticsDescription:
+          'Незамінний інструмент для збору та аналізу поведінки користувачів на сайті. Дає змогу побачити, як працюють оголошення, які сторінки найефективніші, скільки часу користувач проводить на сайті, які конверсії відбуваються.',
+        toolAnalyticsFeatures: [
+          'Відстеження джерел трафіку та поведінки',
+          'Налаштування цілей та конверсій',
+          'Інтеграція з Google Ads',
+        ],
+
+        // Google Tag Manager
+        toolTagManagerName: 'Google Tag Manager',
+        toolTagManagerDescription:
+          'Сервіс для зручного керування тегами без необхідності втручання в код сайту. Дозволяє встановлювати пікселі конверсій, ремаркетингу, події аналітики тощо.',
+        toolTagManagerFeatures: [
+          'Встановлення тегів без редагування коду',
+          'Централізоване керування тегами',
+          'Налаштування тригерів та змінних',
+        ],
+
+        // Keyword Planner
+        toolKeywordPlannerName: 'Keyword Planner',
+        toolKeywordPlannerDescription:
+          'Інструмент від Google для підбору ключових слів. Дає змогу дізнатися частотність запитів, рівень конкуренції та приблизну ціну за клік. Ідеально підходить для створення семантичного ядра.',
+        toolKeywordPlannerFeatures: [
+          'Пошук релевантних ключових слів',
+          'Оцінка обсягів пошуку та конкуренції',
+          'Прогнозування бюджету кампанії',
+        ],
+
+        // SEO Tools
+        toolSeoToolsName: 'SEMrush, Ahrefs, Serpstat',
+        toolSeoToolsDescription:
+          'SEO-аналітичні сервіси, що також корисні для контекстної реклами. Допомагають вивчати конкурентів, аналізувати рекламні стратегії інших компаній, підбирати ключові слова та відстежувати позиції.',
+        toolSeoToolsFeatures: [
+          'Аналіз конкурентних стратегій',
+          'Розширений пошук ключових слів',
+          'Відстеження позицій та видимості',
+        ],
+
+        // UX Tools
+        toolUxToolsName: 'Hotjar або Clarity',
+        toolUxToolsDescription:
+          'Ці сервіси дають змогу бачити, як користувачі взаємодіють із сайтом: куди клікають, як гортaють сторінку, що їх зупиняє. Це корисно для підвищення конверсій після переходу з реклами.',
+        toolUxToolsFeatures: [
+          'Теплові карти кліків та скролу',
+          'Запис сесій користувачів',
+          "Опитування та форми зворотного зв'язку",
+        ],
+
+        toolsNote:
+          'Наші фахівці володіють усіма необхідними інструментами на професійному рівні та постійно відстежують нові функції й можливості, щоб забезпечити вашому бізнесу максимальну ефективність контекстної реклами.',
+
+        // KPI Section
+        kpiTitle: 'Показники ефективності (KPI)',
+        kpiDescription:
+          'Для оцінки успішності контекстної реклами важливо орієнтуватися не лише на загальну кількість кліків чи витрат, а й на конкретні показники ефективності — KPI. Саме вони демонструють, наскільки реклама досягає поставлених бізнес-цілей.',
+
+        // CTR
+        kpiCtrName: 'CTR',
+        kpiCtrSubtitle: 'Click-Through Rate — клікабельність',
+        kpiText: 'Приклад:',
+        kpiCtrContent:
+          'Показує відсоток користувачів, які побачили оголошення та клікнули на нього. Високий CTR свідчить про релевантність оголошення до запиту або інтересів аудиторії.',
+        kpiCtrExample:
+          'CTR = 5% означає, що 5 зі 100 користувачів, які побачили оголошення, клікнули на нього',
+
+        // CPC
+        kpiCpcName: 'CPC',
+        kpiCpcSubtitle: 'Cost per Click — ціна за клік',
+        kpiCpcContent:
+          'Це середня сума, яку ви платите за кожен перехід за оголошенням. Важливо знижувати CPC без втрати трафіку шляхом оптимізації оголошень та ключових слів.',
+        kpiCpcExample:
+          'CPC = 2€ означає, що за кожен клік по вашому оголошенню ви платите в середньому 2€',
+
+        // CPA
+        kpiCpaName: 'CPA',
+        kpiCpaSubtitle: 'Cost per Acquisition — вартість конверсії',
+        kpiCpaContent:
+          'CPA визначає, скільки в середньому коштує залучення одного клієнта (наприклад, покупця або ліда). Це ключовий показник для оцінки рентабельності кампанії.',
+        kpiCpaExample:
+          'CPA = 25€ означає, що залучення одного нового клієнта коштує в середньому 25€',
+
+        // ROAS
+        kpiRoasName: 'ROAS',
+        kpiRoasSubtitle: 'Return on Ad Spend — прибутковість',
+        kpiRoasContent:
+          'Цей показник відображає співвідношення доходу до витрат на рекламу. Якщо ROAS перевищує 100%, кампанія приносить прибуток.',
+        kpiRoasExample:
+          'ROAS = 350% означає, що на кожен 1€, вкладений у рекламу, ви отримуєте 3.5€ доходу',
+
+        // Конверсіи
+        kpiConversionsName: 'Кількість конверсій',
+        kpiConversionsSubtitle: 'Обсяг цільових дій користувачів',
+        kpiConversionsContent:
+          'Фіксується кожна дія, яку вважають цільовою: заповнення форми, дзвінок, покупка. Аналіз кількості й якості конверсій допомагає коригувати стратегію.',
+        kpiConversionsExample:
+          '120 конверсій при 3000 кліків дає коефіцієнт конверсії 4%, що є хорошим показником',
+
+        // Якість трафіку
+        kpiQualityName: 'Якість трафіку',
+        kpiQualitySubtitle: 'Поведінкові метрики користувачів',
+        kpiQualityContent:
+          'Визначається через поведінку користувачів на сайті: глибина перегляду, час перебування, відсоток відмов. Високоякісний трафік означає більшу ймовірність продажів.',
+        kpiQualityExample:
+          'Середній час на сайті 3:20, перегляд 3.5 сторінок, відсоток відмов 35% — показники якісного трафіку',
+
+        kpiActionText:
+          'Хочете отримати детальний аналіз ефективності вашої рекламної кампанії?',
+        kpiActionButton: 'Замовити аудит ефективності',
+
+        // Suitable For Section
+        suitableForTitle: 'Кому підходить контекстна реклама',
+        suitableForDescription:
+          'Контекстна реклама — це універсальний інструмент, який підходить практично для будь-якого бізнесу, незалежно від ніші, розміру компанії чи стадії розвитку. Однак є типи бізнесу, яким вона приносить особливо відчутні результати.',
+
+        // Business Types
+        businessTextItem: 'Переваги: ',
+        businessSmbName: 'Малий та середній бізнес',
+        businessSmbDescription:
+          'Пошукова реклама дозволяє отримувати клієнтів вже в перший день запуску кампанії. Немає потреби чекати кілька місяців, як у SEO. Це ідеальний варіант для компаній, які щойно виходять на ринок або запускають нові продукти.',
+        businessSmbAdvantages: [
+          'Швидкий старт і миттєві результати',
+          'Гнучкий контроль рекламного бюджету',
+          'Точне налаштування під локальну аудиторію',
+          'Висока ефективність при запуску нових продуктів',
+        ],
+        businessSmbStats: [
+          {icon: '⚡', value: '300-400%', label: 'Середній ROI' },
+          {icon: '🚀', value: '1-2 дні', label: 'Час до перших клієнтів' },
+        ],
+
+        businessEcommerceName: 'Інтернет-магазини',
+        businessEcommerceDescription:
+          'Для e-commerce ефективні торгові кампанії, динамічний ремаркетинг та пошукова реклама. Ви можете показувати свої товари користувачам, які активно їх шукають, а також повертати відвідувачів, які не завершили покупку.',
+        businessEcommerceAdvantages: [
+          'Візуальні оголошення з товарами у Shopping Ads',
+          'Динамічний ремаркетинг для повернення клієнтів',
+          'Таргетування за сезонними інтересами',
+          'Оптимізація конверсії для окремих категорій товарів',
+        ],
+        businessEcommerceStats: [
+          {icon: '📊', value: '30%', label: 'Збільшення конверсії' },
+          {icon: '📈', value: '25%', label: 'Зростання середнього чеку' },
+        ],
+
+        businessServicesName: 'Сфера послуг',
+        businessServicesDescription:
+          'Реклама у Google Ads дозволяє залучити клієнтів на консультування, запис до лікаря, замовлення доставки чи будь-яку іншу послугу. Таргетинг на локальну аудиторію особливо ефективний для офлайн-бізнесів.',
+        businessServicesAdvantages: [
+          'Геолокаційне таргетування на район чи місто',
+          'Реклама за часовим розкладом роботи',
+          'Відстеження та аналіз дзвінків',
+          'Інтеграція з CRM для відстеження клієнтів',
+        ],
+        businessServicesStats: [
+          {icon: '📱', value: '40-50%', label: 'Зростання клієнтської бази' },
+          {icon: '📍', value: '60%', label: 'Більше локальних клієнтів' },
+        ],
+
+        businessB2bName: 'B2B-компанії',
+        businessB2bDescription:
+          'Хоча цикл угоди тут довший, контекстна реклама чудово працює для залучення лідів, проведення вебінарів, підписки на розсилки або бронювання зустрічей з менеджерами.',
+        businessB2bAdvantages: [
+          'Генерація якісних B2B лідів',
+          'Просування вебінарів та професійних подій',
+          'Таргетинг за посадою та галуззю',
+          'Ремаркетинг для довгого циклу прийняття рішень',
+        ],
+        businessB2bStats: [
+          {icon: '💼', value: '25%', label: 'Підвищення якості лідів' },
+          {icon: '💰', value: '20%', label: 'Зниження вартості ліда' },
+        ],
+
+        businessStartupsName: 'Стартапи',
+        businessStartupsDescription:
+          'Контекстна реклама — це спосіб швидко протестувати гіпотези, перевірити попит і вийти на цільову аудиторію з мінімальними витратами часу.',
+        businessStartupsAdvantages: [
+            'Швидке тестування MVP та бізнес-ідей',
+            'Детальний аналіз реакції аудиторії',
+            'Гнучкі стратегії A/B тестування',
+            'Масштабування при підтвердженні гіпотез',
+          ],
+        businessStartupsStats: [
+            { icon: '🔥', value: '60%', label: 'Скорочення Time-to-Market' },
+            { icon: '📝', value: '45%', label: "Більше зворотного зв'язку" },
+          ],
+
+        suitableForCtaTitle:
+          'Не впевнені, чи підходить контекстна реклама для вашого бізнесу?',
+        suitableForCtaText:
+          "Наші фахівці допоможуть вам з'ясувати, чи підійде контекстна реклама саме вашому бізнесу, та розроблять індивідуальну стратегію з урахуванням специфіки вашої ніші.",
+        suitableForCtaButton: 'Отримати безкоштовну консультацію',
+
+        // Approach Section
+        approachTitle: 'Наш підхід до запуску реклами',
+        approachIntro:
+          'Ми не просто налаштовуємо контекстну рекламу — ми створюємо рішення, які працюють на результат. Наш підхід заснований на глибокому аналізі, тестуванні та постійній оптимізації.',
+
+        // Approach Stage 1
+        approachStage1Title: 'Занурення в бізнес',
+        approachStage1Description:
+          'Спочатку ми занурюємось у бізнес-контекст клієнта: вивчаємо продукт, конкурентів, цільову аудиторію та її поведінкові патерни. Глибоке розуміння продукту дозволяє нам знайти його унікальні переваги та правильно презентувати їх у рекламі.',
+        approachStage1Tags: [
+          'Аналіз ніші',
+          'Вивчення конкурентів',
+          'Аудит цільової аудиторії',
+        ],
+
+        // Approach Stage 2
+        approachStage2Title: 'Стратегія та планування',
+        approachStage2Description:
+          'Далі — визначаємо чіткі KPI, розробляємо медіаплан і запускаємо кампанії через Google Ads. Замість простого запуску реклами, ми розробляємо комплексну стратегію з декількома сценаріями розвитку та чітким розподілом бюджету.',
+        approachStage2Tags: [
+          'Медіапланування',
+          'Визначення KPI',
+          'Бюджетування',
+        ],
+
+        // Approach Stage 3
+        approachStage3Title: 'Моніторинг та оптимізація',
+        approachStage3Description:
+          'У процесі роботи ми щоденно моніторимо ефективність: переглядаємо клікабельність оголошень, якість трафіку, конверсії та вартість залучення. За потреби оперативно вносимо коригування. Після тестування декількох варіантів реклами залишаємо найрезультативніші.',
+        approachStage3Tags: [
+          'Щоденний контроль',
+          'A/B тестування',
+          'Оптимізація ставок',
+        ],
+
+        // Approach Stage 4
+        approachStage4Title: 'Звітність і масштабування',
+        approachStage4Description:
+          'Ми забезпечуємо прозору звітність: клієнт бачить, куди витрачається бюджет, які кампанії працюють найкраще і як змінюється віддача з часом. Наше завдання — не просто витратити рекламні кошти, а примножити їх, тому ми постійно шукаємо нові можливості для масштабування успішних кампаній.',
+        approachStage4Tags: [
+          'Прозора аналітика',
+          'ROI-орієнтованість',
+          'Масштабування успіху',
+        ],
+
+        // Results Section
+        resultsTitle: 'Що ви отримаєте в результаті',
+        resultsIntro:
+          'Запуск контекстної реклами з нами — це не просто набір оголошень у Google. Це системний підхід, що приносить вимірюваний результат і конкретні бізнес-переваги.',
+
+        // Result 1
+        result1Title: 'Цільовий трафік на сайт',
+        result1Description:
+          'Користувачі, які вже шукають ваші товари чи послуги, побачать ваші оголошення в потрібний момент. Контекстна реклама забезпечує найвищу релевантність аудиторії.',
+        result1Metric: { value: '93%', label: 'релевантності аудиторії' },
+
+        // Result 2
+        result2Title: 'Зростання звернень і продажів',
+        result2Description:
+          'Завдяки точному таргетингу та ефективній структурі кампаній, ваші конверсії зростуть. Ми зосереджуємось на залученні клієнтів, готових до покупки.',
+        result2Metric: { value: '+45%', label: 'середнє зростання конверсій' },
+
+        // Result 3
+        result3Title: 'Підвищення впізнаваності бренду',
+        result3Description:
+          'Особливо при використанні медійної реклами та YouTube, ваш бренд стане помітнішим для цільової аудиторії. Ми допомагаємо залишатися на виду.',
+        result3Metric: { value: '3.5x', label: 'зростання brand awareness' },
+
+        // Result 4
+        result4Title: 'Повний контроль над бюджетом',
+        result4Description:
+          'Ви самі визначаєте, скільки готові інвестувати. Ми забезпечуємо максимальну ефективність кожної витраченої гривні на рекламу.',
+        result4Metric: { value: '100%', label: 'прозорості витрат' },
+
+        // Result 5
+        result5Title: 'Прозора аналітика',
+        result5Description:
+          'Наші звіти показують кожен клік, конверсію та прибутковість. Ви завжди знаєте, що працює, а що потребує оптимізації в рекламних кампаніях.',
+        result5Metric: { value: '24/7', label: 'доступ до даних' },
+
+        // Result 6
+        result6Title: 'Гнучкість і швидкість змін',
+        result6Description:
+          'Кампанії можна адаптувати в реальному часі до змін на ринку. Ми оперативно реагуємо на нові тренди та коригуємо стратегію для кращих результатів.',
+        result6Metric: { value: '~24 год', label: 'на впровадження змін' },
+
+        resultsNoteHighlight:
+          'Наша мета — не просто запуск реклами, а стабільне зростання вашого бізнесу завдяки цифровим каналам.',
+        resultsActionButton: 'Отримати безкоштовну консультацію',
+
+        // FAQ Section
+        faqData: {
+          question1:
+            'Скільки часу потрібно, щоб побачити перші результати від контекстної реклами?',
+          answer1:
+            "Зазвичай перші кліки та переходи на сайт з'являються вже в день запуску. Проте для повноцінної оцінки ефективності варто дочекатися хоча б 1–2 тижнів накопичення статистики.",
+          question2: 'Чи можна запускати контекстну рекламу без сайту?',
+          answer2:
+            'Так, у деяких випадках можна направляти трафік на лендінг, сторінку в соцмережах або Google Мій бізнес. Проте сайт або посадкова сторінка значно покращують якість реклами та конверсію.',
+          question3: 'Чи варто запускати контекстну рекламу у "не сезон"?',
+          answer3:
+            'Це залежить від ніші. У деяких сферах (наприклад, ремонт, навчання, подарунки) "не сезон" означає меншу конкуренцію та нижчу ціну за клік. Це може бути вигідною стратегією.',
+          question4: 'Як уникнути склікування бюджету конкурентами?',
+          answer4:
+            'Google має вбудовані механізми захисту від фродового трафіку. Також можна використовувати додаткові сервіси захисту, обмеження по IP та геолокації. Ми застосовуємо комплексні методи протидії.',
+          question5:
+            'Чи можу я самостійно керувати рекламною кампанією після запуску?',
+          answer5:
+            'Так, ми можемо налаштувати кампанію з урахуванням подальшого самостійного управління. Також проводимо інструктаж або передаємо повний пакет налаштувань з поясненнями.',
+        },
+
+        faqCtaText:
+          "Залишилися питання щодо контекстної реклами? Зв'яжіться з нами для безкоштовної консультації",
+        faqCtaButton: 'Отримати консультацію',
       },
     },
   },
