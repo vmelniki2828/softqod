@@ -2,9 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import Modal from '../../components/Modal';
-import { 
-  FaArrowRight, 
-  FaChartLine, 
+import {
+  FaArrowRight,
+  FaChartLine,
   FaBullseye,
   FaCheck,
   FaRegChartBar,
@@ -29,8 +29,9 @@ import {
   FaComments,
   FaBullhorn,
   FaMoneyBillWave,
-  FaBolt
+  FaBolt,
 } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const PageContainer = styled.div`
   max-width: 1400px;
@@ -88,7 +89,8 @@ const GlowingCircle = styled.div`
   );
   filter: blur(60px);
   z-index: 0;
-  animation: ${breatheAnimation} ${props => props.duration || '10s'} infinite ease-in-out;
+  animation: ${breatheAnimation} ${props => props.duration || '10s'} infinite
+    ease-in-out;
 `;
 
 const TiltedLine = styled.div`
@@ -112,7 +114,10 @@ const TiltedLine = styled.div`
 const Dot = styled.div`
   width: 2px;
   height: 2px;
-  background-color: rgba(var(--accent-color-rgb), ${props => props.opacity || '0.5'});
+  background-color: rgba(
+    var(--accent-color-rgb),
+    ${props => props.opacity || '0.5'}
+  );
   border-radius: 50%;
 `;
 
@@ -159,7 +164,7 @@ const HeroLeft = styled.div`
 
 const HeroRight = styled.div`
   position: relative;
-  
+
   @media (max-width: 1024px) {
     order: 0;
     max-width: 500px;
@@ -173,24 +178,6 @@ const AnimatedTitle = styled(motion.h1)`
   line-height: 1.2;
   margin-bottom: 1.5rem;
   color: var(--text-primary);
-`;
-
-const HighlightedSpan = styled.span`
-  position: relative;
-  color: var(--accent-color);
-  white-space: nowrap;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    width: 100%;
-    height: 10px;
-    background: rgba(var(--accent-color-rgb), 0.15);
-    z-index: -1;
-    border-radius: 4px;
-  }
 `;
 
 const HeroDescription = styled(motion.p)`
@@ -324,11 +311,11 @@ const PlatformCard = styled(motion.div)`
     top: 15%;
     left: 15%;
     background: linear-gradient(
-      45deg, 
-      #4285F4 0%, 
-      #34A853 33%, 
-      #FBBC05 66%, 
-      #EA4335 100%
+      45deg,
+      #4285f4 0%,
+      #34a853 33%,
+      #fbbc05 66%,
+      #ea4335 100%
     );
   }
 
@@ -341,31 +328,19 @@ const PlatformCard = styled(motion.div)`
   &.yandex {
     bottom: 25%;
     left: 8%;
-    background: linear-gradient(
-      45deg, 
-      #fc3f1d 0%, 
-      #ff5c38 100%
-    );
+    background: linear-gradient(45deg, #fc3f1d 0%, #ff5c38 100%);
   }
 
   &.remarketing {
     top: 40%;
     right: 10%;
-    background: linear-gradient(
-      45deg, 
-      #7638fa 0%, 
-      #a388f7 100%
-    );
+    background: linear-gradient(45deg, #7638fa 0%, #a388f7 100%);
   }
 
   &.shopping {
     bottom: 10%;
     right: 25%;
-    background: linear-gradient(
-      45deg, 
-      #0ea5e9 0%, 
-      #38bdf8 100%
-    );
+    background: linear-gradient(45deg, #0ea5e9 0%, #38bdf8 100%);
   }
 `;
 
@@ -391,7 +366,7 @@ const InfoSection = styled.section`
     rgba(var(--bg-primary-rgb), 0.97) 100%
   );
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -449,18 +424,18 @@ const InfoContentGrid = styled.div`
   gap: 4rem;
   align-items: center;
   margin-top: 2rem;
-  
+
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
     gap: 3rem;
     margin-top: 2rem;
   }
-  
+
   @media (max-width: 768px) {
     gap: 2.5rem;
     margin-top: 1.5rem;
   }
-  
+
   @media (max-width: 480px) {
     gap: 2rem;
     margin-top: 1rem;
@@ -472,11 +447,11 @@ const InfoText = styled.div`
     order: 1;
     margin-top: 2rem;
   }
-  
+
   @media (max-width: 768px) {
     margin-top: 1.5rem;
   }
-  
+
   @media (max-width: 480px) {
     margin-top: 1rem;
   }
@@ -495,7 +470,7 @@ const InfoHighlight = styled.div`
   background: rgba(var(--accent-color-rgb), 0.05);
   border-left: 4px solid var(--accent-color);
   border-radius: 0 8px 8px 0;
-  
+
   p {
     font-size: 1.1rem;
     line-height: 1.7;
@@ -503,7 +478,7 @@ const InfoHighlight = styled.div`
     margin: 0;
     font-style: italic;
   }
-  
+
   strong {
     color: var(--accent-color);
   }
@@ -512,7 +487,7 @@ const InfoHighlight = styled.div`
 const InfoVisualization = styled.div`
   position: relative;
   height: 450px;
-  
+
   @media (max-width: 1024px) {
     height: 400px;
     order: 0;
@@ -568,7 +543,7 @@ const SearchAd = styled(motion.div)`
   border-radius: 8px;
   margin-bottom: 15px;
   position: relative;
-  
+
   &::before {
     content: 'Ad';
     position: absolute;
@@ -591,7 +566,7 @@ const AdTitle = styled.div`
 
 const AdUrl = styled.div`
   font-size: 0.8rem;
-  color: #34A853;
+  color: #34a853;
   margin-bottom: 5px;
 `;
 
@@ -616,7 +591,7 @@ const ResultTitle = styled.div`
 
 const ResultUrl = styled.div`
   font-size: 0.8rem;
-  color: #34A853;
+  color: #34a853;
   margin-bottom: 5px;
 `;
 
@@ -631,7 +606,7 @@ const KeyPointsList = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   margin-top: 2.5rem;
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
@@ -673,143 +648,149 @@ const KeyPointText = styled.p`
 
 const ContextualAdvertising = () => {
   const platformRef = useRef(null);
-  
+
+  const { t } = useTranslation();
+  const searchAdsAdvantages = t('contextualAdvertisingPage.searchAdsAdvantages', { returnObjects: true });
+  const displayAdsAdvantages = t('contextualAdvertisingPage.displayAdsAdvantages', { returnObjects: true });
+  const videoAdsTypes = t('contextualAdvertisingPage.videoAdsTypes', { returnObjects: true });
+  const shoppingAdsAdvantages = t('contextualAdvertisingPage.shoppingAdsAdvantages', { returnObjects: true });
+  const remarketingAdvantages = t('contextualAdvertisingPage.remarketingAdvantages', { returnObjects: true });
+  const stage1Bullets = t('contextualAdvertisingPage.stage1Bullets', { returnObjects: true });
+  const stage2Bullets = t('contextualAdvertisingPage.stage2Bullets', { returnObjects: true });
+  const stage3Bullets = t('contextualAdvertisingPage.stage3Bullets', { returnObjects: true });
+  const stage4Bullets = t('contextualAdvertisingPage.stage4Bullets', { returnObjects: true });
+  const stage5Bullets = t('contextualAdvertisingPage.stage5Bullets', { returnObjects: true });
+  const stage6Bullets = t('contextualAdvertisingPage.stage6Bullets', { returnObjects: true });
+  const stage7Bullets = t('contextualAdvertisingPage.stage7Bullets', { returnObjects: true });
+  const toolGoogleAdsFeatures = t('contextualAdvertisingPage.toolGoogleAdsFeatures', { returnObjects: true });
+  const toolAnalyticsFeatures = t('contextualAdvertisingPage.toolAnalyticsFeatures', { returnObjects: true });
+  const toolTagManagerFeatures = t('contextualAdvertisingPage.toolTagManagerFeatures', { returnObjects: true });
+  const toolKeywordPlannerFeatures = t('contextualAdvertisingPage.toolKeywordPlannerFeatures', { returnObjects: true });
+  const toolSeoToolsFeatures = t('contextualAdvertisingPage.toolSeoToolsFeatures', { returnObjects: true });
+  const toolUxToolsFeatures = t('contextualAdvertisingPage.toolUxToolsFeatures', { returnObjects: true });
+  const businessSmbAdvantages = t('contextualAdvertisingPage.businessSmbAdvantages', { returnObjects: true });
+  const businessSmbStats = t('contextualAdvertisingPage.businessSmbStats', { returnObjects: true });
+  const businessEcommerceAdvantages = t('contextualAdvertisingPage.businessEcommerceAdvantages', { returnObjects: true });
+  const businessEcommerceStats = t('contextualAdvertisingPage.businessEcommerceStats', { returnObjects: true });
+  const businessServicesAdvantages = t('contextualAdvertisingPage.businessServicesAdvantages', { returnObjects: true });
+  const businessServicesStats = t('contextualAdvertisingPage.businessServicesStats', { returnObjects: true });
+  const businessB2bAdvantages = t('contextualAdvertisingPage.businessB2bAdvantages', { returnObjects: true });
+  const businessB2bStats = t('contextualAdvertisingPage.businessB2bStats', { returnObjects: true });
+  const businessStartupsAdvantages = t('contextualAdvertisingPage.businessStartupsAdvantages', { returnObjects: true });
+  const businessStartupsStats = t('contextualAdvertisingPage.businessStartupsStats', { returnObjects: true });
+  const approachStage1Tags = t('contextualAdvertisingPage.approachStage1Tags', { returnObjects: true });
+  const approachStage2Tags = t('contextualAdvertisingPage.approachStage2Tags', { returnObjects: true });
+  const approachStage3Tags = t('contextualAdvertisingPage.approachStage3Tags', { returnObjects: true });
+  const approachStage4Tags = t('contextualAdvertisingPage.approachStage4Tags', { returnObjects: true });
+
   // Add useState hook inside the component
   const [activeTab, setActiveTab] = useState(0);
   const [expandedFaqs, setExpandedFaqs] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
   // Advantages data
   const advantages = [
     {
       icon: <FaSearchDollar />,
-      text: "Точне таргетування на користувачів, які шукають ваші послуги"
+      text: t('contextualAdvertisingPage.advantage1'),
     },
     {
       icon: <FaRegChartBar />,
-      text: "Можливість відстежувати ROI та конверсії в реальному часі"
+      text: t('contextualAdvertisingPage.advantage2'),
     },
     {
       icon: <FaTag />,
-      text: "Гнучкий бюджет та оплата лише за результат (клік або конверсію)"
+      text: t('contextualAdvertisingPage.advantage3'),
     },
     {
       icon: <FaRocket />,
-      text: "Миттєвий старт кампанії та швидкі результати"
-    }
+      text: t('contextualAdvertisingPage.advantage4'),
+    },
   ];
 
   // Business types data for the interactive tabs
   const businessData = [
     {
       id: 'smb',
-      name: 'Малий та середній бізнес',
+      name: t('contextualAdvertisingPage.businessSmbName'),
       icon: <FaHandshake />,
       color: '#4285F4',
-      description: 'Пошукова реклама дозволяє отримувати клієнтів вже в перший день запуску кампанії. Немає потреби чекати кілька місяців, як у SEO. Це ідеальний варіант для компаній, які щойно виходять на ринок або запускають нові продукти.',
-      advantages: [
-        'Швидкий старт і миттєві результати',
-        'Гнучкий контроль рекламного бюджету',
-        'Точне налаштування під локальну аудиторію',
-        'Висока ефективність при запуску нових продуктів'
-      ],
-      stats: [
-        { icon: '⚡', value: '300-400%', label: 'Середній ROI' },
-        { icon: '🚀', value: '1-2 дні', label: 'Час до перших клієнтів' }
-      ]
+      description:
+      t('contextualAdvertisingPage.businessSmbDescription'),
+      advantages: businessSmbAdvantages,
+      stats: businessSmbStats,
     },
     {
       id: 'ecommerce',
-      name: 'Інтернет-магазини',
+      name: t('contextualAdvertisingPage.businessEcommerceName'),
       icon: <FaShoppingCart />,
       color: '#EA4335',
-      description: 'Для e-commerce ефективні торгові кампанії, динамічний ремаркетинг та пошукова реклама. Ви можете показувати свої товари користувачам, які активно їх шукають, а також повертати відвідувачів, які не завершили покупку.',
-      advantages: [
-        'Візуальні оголошення з товарами у Shopping Ads',
-        'Динамічний ремаркетинг для повернення клієнтів',
-        'Таргетування за сезонними інтересами',
-        'Оптимізація конверсії для окремих категорій товарів'
-      ],
-      stats: [
-        { icon: '📊', value: '30%', label: 'Збільшення конверсії' },
-        { icon: '📈', value: '25%', label: 'Зростання середнього чеку' }
-      ]
+      description:
+      t('contextualAdvertisingPage.businessEcommerceDescription'),      
+      advantages: businessEcommerceAdvantages,
+      stats: businessEcommerceStats,
     },
     {
       id: 'services',
-      name: 'Сфера послуг',
+      name: t('contextualAdvertisingPage.businessServicesName'),
       icon: <FaRegChartBar />,
       color: '#673AB7',
-      description: 'Реклама у Google Ads дозволяє залучити клієнтів на консультування, запис до лікаря, замовлення доставки чи будь-яку іншу послугу. Таргетинг на локальну аудиторію особливо ефективний для офлайн-бізнесів.',
-      advantages: [
-        'Геолокаційне таргетування на район чи місто',
-        'Реклама за часовим розкладом роботи',
-        'Відстеження та аналіз дзвінків',
-        'Інтеграція з CRM для відстеження клієнтів'
-      ],
-      stats: [
-        { icon: '📱', value: '40-50%', label: 'Зростання клієнтської бази' },
-        { icon: '📍', value: '60%', label: 'Більше локальних клієнтів' }
-      ]
+      description:
+      t('contextualAdvertisingPage.businessServicesDescription'),      
+      advantages: businessServicesAdvantages,
+      stats: businessServicesStats,
     },
     {
       id: 'b2b',
-      name: 'B2B-компанії',
+      name: t('contextualAdvertisingPage.businessB2bName'),
       icon: <FaUsers />,
       color: '#009688',
-      description: 'Хоча цикл угоди тут довший, контекстна реклама чудово працює для залучення лідів, проведення вебінарів, підписки на розсилки або бронювання зустрічей з менеджерами.',
-      advantages: [
-        'Генерація якісних B2B лідів',
-        'Просування вебінарів та професійних подій',
-        'Таргетинг за посадою та галуззю',
-        'Ремаркетинг для довгого циклу прийняття рішень'
-      ],
-      stats: [
-        { icon: '💼', value: '25%', label: 'Підвищення якості лідів' },
-        { icon: '💰', value: '20%', label: 'Зниження вартості ліда' }
-      ]
+      description:
+      t('contextualAdvertisingPage.businessB2bDescription'),      
+      advantages: businessB2bAdvantages,
+      stats: businessB2bStats,
     },
     {
       id: 'startups',
-      name: 'Стартапи',
+      name: t('contextualAdvertisingPage.businessStartupsName'),
       icon: <FaRocket />,
       color: '#FF5722',
-      description: 'Контекстна реклама — це спосіб швидко протестувати гіпотези, перевірити попит і вийти на цільову аудиторію з мінімальними витратами часу.',
-      advantages: [
-        'Швидке тестування MVP та бізнес-ідей',
-        'Детальний аналіз реакції аудиторії',
-        'Гнучкі стратегії A/B тестування',
-        'Масштабування при підтвердженні гіпотез'
-      ],
-      stats: [
-        { icon: '🔥', value: '60%', label: 'Скорочення Time-to-Market' },
-        { icon: '📝', value: '45%', label: 'Більше зворотного зв\'язку' }
-      ]
-    }
+      description:
+      t('contextualAdvertisingPage.businessStartupsDescription'),     
+      advantages: businessStartupsAdvantages,
+      stats: businessStartupsStats,
+    },
   ];
-  
+
   // FAQ data
   const faqData = [
     {
-      question: '1. Скільки часу потрібно, щоб побачити перші результати від контекстної реклами?',
-      answer: 'Зазвичай перші кліки та переходи на сайт з\'являються вже в день запуску. Проте для повноцінної оцінки ефективності варто дочекатися хоча б 1–2 тижнів накопичення статистики.'
+      question:
+      t('contextualAdvertisingPage.faqData.question1'),  
+      answer:
+      t('contextualAdvertisingPage.faqData.answer1'),  
     },
     {
-      question: '2. Чи можна запускати контекстну рекламу без сайту?',
-      answer: 'Так, у деяких випадках можна направляти трафік на лендінг, сторінку в соцмережах або Google Мій бізнес. Проте сайт або посадкова сторінка значно покращують якість реклами та конверсію.'
+      question: t('contextualAdvertisingPage.faqData.question2'), 
+      answer:
+      t('contextualAdvertisingPage.faqData.answer2'),
     },
     {
-      question: '3. Чи варто запускати контекстну рекламу у "не сезон"?',
-      answer: 'Це залежить від ніші. У деяких сферах (наприклад, ремонт, навчання, подарунки) "не сезон" означає меншу конкуренцію та нижчу ціну за клік. Це може бути вигідною стратегією.'
+      question: t('contextualAdvertisingPage.faqData.question3'), 
+      answer:
+      t('contextualAdvertisingPage.faqData.answer3'),
     },
     {
-      question: '4. Як уникнути склікування бюджету конкурентами?',
-      answer: 'Google має вбудовані механізми захисту від фродового трафіку. Також можна використовувати додаткові сервіси захисту, обмеження по IP та геолокації. Ми застосовуємо комплексні методи протидії.'
+      question: t('contextualAdvertisingPage.faqData.question4'), 
+      answer:
+      t('contextualAdvertisingPage.faqData.answer4'),
     },
     {
-      question: '5. Чи можу я самостійно керувати рекламною кампанією після запуску?',
-      answer: 'Так, ми можемо налаштувати кампанію з урахуванням подальшого самостійного управління. Також проводимо інструктаж або передаємо повний пакет налаштувань з поясненнями.'
-    }
+      question:
+      t('contextualAdvertisingPage.faqData.question5'), 
+      answer:
+      t('contextualAdvertisingPage.faqData.answer5'),
+    },
   ];
 
   useEffect(() => {
@@ -831,7 +812,8 @@ const ContextualAdvertising = () => {
 
     const handleMouseLeave = () => {
       if (!platformRef.current) return;
-      platformRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+      platformRef.current.style.transform =
+        'perspective(1000px) rotateX(0deg) rotateY(0deg)';
     };
 
     const container = platformRef.current;
@@ -861,11 +843,9 @@ const ContextualAdvertising = () => {
   };
 
   // Toggle FAQ function
-  const toggleFaq = (index) => {
-    setExpandedFaqs(prev => 
-      prev.includes(index) 
-        ? prev.filter(i => i !== index) 
-        : [...prev, index]
+  const toggleFaq = index => {
+    setExpandedFaqs(prev =>
+      prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
     );
   };
 
@@ -909,7 +889,7 @@ const ContextualAdvertising = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
               >
-                Контекстна реклама — <HighlightedSpan>лідогенерація</HighlightedSpan> у момент пошуку
+                {t('contextualAdvertisingPage.heroTitle')}
               </AnimatedTitle>
 
               <HeroDescription
@@ -917,7 +897,7 @@ const ContextualAdvertising = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
               >
-                Контекстна реклама — це інструмент цифрового маркетингу, який дозволяє показувати ваші оголошення потенційним клієнтам саме тоді, коли вони шукають ваш продукт або послугу. Це потужний інструмент для залучення цільового трафіку, який готовий до конверсії. Ми налаштовуємо ефективні кампанії в Google Ads, Facebook Ads та інших платформах, які приносять якісні ліди.
+                {t('contextualAdvertisingPage.heroDescription')}
               </HeroDescription>
 
               <AdvantagesList
@@ -948,14 +928,14 @@ const ContextualAdvertising = () => {
                   whileTap={{ scale: 0.95 }}
                   onClick={openModal}
                 >
-                  Замовити контекстну рекламу <FaArrowRight />
+                  {t('contextualAdvertisingPage.orderButton')} <FaArrowRight />
                 </PrimaryButton>
               </ButtonGroup>
             </HeroLeft>
 
             <HeroRight>
               <PlatformsContainer ref={platformRef}>
-                <PlatformCard 
+                <PlatformCard
                   className="google"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -967,8 +947,8 @@ const ContextualAdvertising = () => {
                   </PlatformIcon>
                   <PlatformName>Google Ads</PlatformName>
                 </PlatformCard>
-                
-                <PlatformCard 
+
+                <PlatformCard
                   className="facebook"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -980,21 +960,8 @@ const ContextualAdvertising = () => {
                   </PlatformIcon>
                   <PlatformName>Facebook Ads</PlatformName>
                 </PlatformCard>
-                
-                <PlatformCard 
-                  className="yandex"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.5 }}
-                  whileHover={{ y: -10 }}
-                >
-                  <PlatformIcon>
-                    <FaSearch />
-                  </PlatformIcon>
-                  <PlatformName>Yandex Direct</PlatformName>
-                </PlatformCard>
-                
-                <PlatformCard 
+
+                <PlatformCard
                   className="remarketing"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -1004,10 +971,12 @@ const ContextualAdvertising = () => {
                   <PlatformIcon>
                     <FaUsers />
                   </PlatformIcon>
-                  <PlatformName>Ремаркетинг</PlatformName>
+                  <PlatformName>
+                    {t('contextualAdvertisingPage.iconAdvantage5')}
+                  </PlatformName>
                 </PlatformCard>
-                
-                <PlatformCard 
+
+                <PlatformCard
                   className="shopping"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -1024,82 +993,81 @@ const ContextualAdvertising = () => {
           </HeroSplit>
         </HeroInner>
       </HeroWrapper>
-      
+
       <InfoSection>
         <InfoContainer>
-          <InfoTitle>Що таке контекстна реклама</InfoTitle>
-          
+          <InfoTitle>{t('contextualAdvertisingPage.infoTitle')}</InfoTitle>
+
           <InfoContentGrid>
             <InfoText>
               <InfoDescription>
-                Контекстна реклама — це інтелектуальний рекламний механізм, який з'єднує бізнес із потенційними клієнтами саме в той момент, коли вони активно шукають пропоновані товари чи послуги. На відміну від традиційної реклами, контекстна працює не на широку аудиторію, а на конкретні пошукові запити та інтереси користувачів.
+                {t('contextualAdvertisingPage.infoDescription')}
               </InfoDescription>
-              
+
               <InfoDescription>
-                Основна перевага такого формату — релевантність. Ви не просто показуєте рекламу, а відповідаєте на конкретний запит користувача. Наприклад, якщо він шукає "купити кросівки для бігу в Києві", ваша реклама спортивного магазину може з'явитися у верхніх позиціях результатів пошуку ще до органічних результатів.
+                {t('contextualAdvertisingPage.infoDescription1')}
               </InfoDescription>
-              
               <InfoHighlight>
                 <p>
-                  <strong>Важливо:</strong> Контекстна реклама використовує модель оплати за клік (PPC), тобто ви платите лише тоді, коли користувач зацікавився вашим оголошенням достатньо, щоб клікнути на нього.
+                {t('contextualAdvertisingPage.infoDescription2')}
                 </p>
               </InfoHighlight>
-              
+
               <InfoDescription>
-                Сьогодні контекстна реклама — це не лише текстові оголошення у пошуку Google. Вона також включає медійні оголошення на сайтах-партнерах, YouTube, Gmail та навіть мобільних додатках. Завдяки розвиненим алгоритмам машинного навчання, ці системи стають дедалі точнішими у виборі потенційних клієнтів.
+              {t('contextualAdvertisingPage.infoDescription3')}
               </InfoDescription>
-              
+
               <KeyPointsList>
                 <KeyPoint>
                   <KeyPointIcon>
                     <FaSearch />
                   </KeyPointIcon>
                   <KeyPointContent>
-                    <KeyPointTitle>Пошукова реклама</KeyPointTitle>
+                    <KeyPointTitle>{t('contextualAdvertisingPage.itemInfoTitle1')}</KeyPointTitle>
                     <KeyPointText>
-                      Показується безпосередньо у результатах пошуку, коли користувач шукає конкретні товари чи послуги
+                    {t('contextualAdvertisingPage.itemInfoDes1')}
                     </KeyPointText>
                   </KeyPointContent>
                 </KeyPoint>
-                
+
                 <KeyPoint>
                   <KeyPointIcon>
                     <FaComments />
                   </KeyPointIcon>
                   <KeyPointContent>
-                    <KeyPointTitle>Медійна мережа</KeyPointTitle>
+                    <KeyPointTitle>{t('contextualAdvertisingPage.itemInfoTitle2')}</KeyPointTitle>
                     <KeyPointText>
-                      Розміщується на сайтах-партнерах, у мобільних додатках та відеоконтенті, враховуючи інтереси користувачів
+                    {t('contextualAdvertisingPage.itemInfoDes2')}
                     </KeyPointText>
                   </KeyPointContent>
                 </KeyPoint>
-                
+
                 <KeyPoint>
                   <KeyPointIcon>
                     <FaUsers />
                   </KeyPointIcon>
                   <KeyPointContent>
-                    <KeyPointTitle>Ремаркетинг</KeyPointTitle>
+                    <KeyPointTitle>{t('contextualAdvertisingPage.itemInfoTitle3')}</KeyPointTitle>
                     <KeyPointText>
-                      Націлена на користувачів, які вже відвідували ваш сайт, але не здійснили цільову дію
+                    {t('contextualAdvertisingPage.itemInfoDes3')}
                     </KeyPointText>
                   </KeyPointContent>
                 </KeyPoint>
-                
+
                 <KeyPoint>
                   <KeyPointIcon>
                     <FaShoppingCart />
                   </KeyPointIcon>
                   <KeyPointContent>
-                    <KeyPointTitle>Товарна реклама</KeyPointTitle>
+                    <KeyPointTitle>{t('contextualAdvertisingPage.itemInfoTitle4')}</KeyPointTitle>
                     <KeyPointText>
-                      Демонструє конкретні товари з вашого каталогу, включаючи фото, ціну та інші характеристики
+                      {t('contextualAdvertisingPage.itemInfoDes4')}
                     </KeyPointText>
                   </KeyPointContent>
                 </KeyPoint>
               </KeyPointsList>
             </InfoText>
-            
+
             <InfoVisualization>
               <SearchBarMockup
                 initial={{ y: -50, opacity: 0 }}
@@ -1109,9 +1077,9 @@ const ContextualAdvertising = () => {
                 <SearchIcon>
                   <FaSearch />
                 </SearchIcon>
-                <SearchText>купити кросівки для бігу в Києві</SearchText>
+                <SearchText>{t('contextualAdvertisingPage.iconSearchText')}</SearchText>
               </SearchBarMockup>
-              
+
               <SearchResultsMockup
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -1122,46 +1090,54 @@ const ContextualAdvertising = () => {
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ duration: 0.3, delay: 0.6 }}
                 >
-                  <AdTitle>Професійні бігові кросівки - Знижки до -40%</AdTitle>
+                  <AdTitle>{t('contextualAdvertisingPage.iconSearchTitle1')}</AdTitle>
                   <AdUrl>www.runnersstore.ua/sale</AdUrl>
                   <AdDescription>
-                    Широкий вибір брендових кросівок для бігу. Безкоштовна доставка. Гарантія 30 днів. ✓ Відгуки ✓ Консультація експертів
+                  {t('contextualAdvertisingPage.iconSearchDes1')}
                   </AdDescription>
                 </SearchAd>
-                
+
                 <SearchAd
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ duration: 0.3, delay: 0.7 }}
                 >
-                  <AdTitle>Кросівки для бігу Nike, Adidas, Asics - SportShop</AdTitle>
+                  <AdTitle>
+                  {t('contextualAdvertisingPage.iconSearchTitle2')}
+                  </AdTitle>
                   <AdUrl>www.sportshop.ua/running</AdUrl>
                   <AdDescription>
-                    Великий вибір бігових кросівок у Києві ✓ Офіційна гарантія ✓ Доставка по всій Україні ✓ Оплата при отриманні
+                  {t('contextualAdvertisingPage.iconSearchDes2')}
                   </AdDescription>
                 </SearchAd>
-                
+
                 <SearchResult
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ duration: 0.3, delay: 0.8 }}
                 >
-                  <ResultTitle>Як вибрати кросівки для бігу: поради експертів</ResultTitle>
+                  <ResultTitle>
+                    Як вибрати кросівки для бігу: поради експертів
+                  </ResultTitle>
                   <ResultUrl>www.runningblog.ua/how-to-choose</ResultUrl>
                   <ResultDescription>
-                    Дізнайтеся, як правильно обрати кросівки для бігу залежно від типу стопи, стилю бігу та поверхні...
+                    Дізнайтеся, як правильно обрати кросівки для бігу залежно
+                    від типу стопи, стилю бігу та поверхні...
                   </ResultDescription>
                 </SearchResult>
-                
+
                 <SearchResult
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ duration: 0.3, delay: 0.9 }}
                 >
-                  <ResultTitle>ТОП-10 кросівок для бігу у 2023 році</ResultTitle>
+                  <ResultTitle>
+                    ТОП-10 кросівок для бігу у 2023 році
+                  </ResultTitle>
                   <ResultUrl>www.runnersclub.ua/reviews</ResultUrl>
                   <ResultDescription>
-                    Рейтинг найкращих бігових кросівок за співвідношенням ціна/якість. Відгуки спортсменів...
+                    Рейтинг найкращих бігових кросівок за співвідношенням
+                    ціна/якість. Відгуки спортсменів...
                   </ResultDescription>
                 </SearchResult>
               </SearchResultsMockup>
@@ -1174,16 +1150,14 @@ const ContextualAdvertising = () => {
       <TypesSection>
         <ImplBackgroundGradient />
         <ImplBackgroundGrid />
-        
+
         <TypesContainer>
-          <TypesTitle>
-            Основні види контекстної реклами
-          </TypesTitle>
-          
+          <TypesTitle>{t('contextualAdvertisingPage.typesTitle')}</TypesTitle>
+
           <TypesDescription>
-            Контекстна реклама охоплює різні формати, які дозволяють досягти користувача на різних етапах воронки продажів — від моменту пошуку товару до перегляду відео на YouTube. Розглянемо основні види детальніше.
+          {t('contextualAdvertisingPage.typesDescription')}
           </TypesDescription>
-          
+
           <TypesGrid>
             <TypeCard
               initial={{ opacity: 0, y: 30 }}
@@ -1194,32 +1168,34 @@ const ContextualAdvertising = () => {
               <TypeIconContainer className="search">
                 <FaSearch />
               </TypeIconContainer>
-              <TypeName>Пошукова реклама <TypeNameEn>(Search Ads)</TypeNameEn></TypeName>
+              <TypeName>
+              {t('contextualAdvertisingPage.searchAdsTitle')} <TypeNameEn>(Search Ads)</TypeNameEn>
+              </TypeName>
               <TypeDescription>
-                Пошукова реклама — це оголошення, що з'являються у верхній частині сторінки результатів пошуку Google, коли користувач вводить певний запит. Це один із найефективніших форматів реклами, оскільки звертається до користувача в момент конкретного інтересу.
+                {t('contextualAdvertisingPage.searchAdsDescription')}
               </TypeDescription>
-              
+
               <TypeAdvantagesList>
-                <AdvantageTitle>Переваги:</AdvantageTitle>
+                <AdvantageTitle>{t('contextualAdvertisingPage.searchAdsText')}</AdvantageTitle>
                 <TypeAdvantageItem>
                   <TypeAdvantageIcon>✓</TypeAdvantageIcon>
-                  Високий рівень наміру (intent) у користувача
+                  {searchAdsAdvantages[0]}
                 </TypeAdvantageItem>
                 <TypeAdvantageItem>
                   <TypeAdvantageIcon>✓</TypeAdvantageIcon>
-                  Гнучке налаштування ключових слів
+                  {searchAdsAdvantages[1]}
                 </TypeAdvantageItem>
                 <TypeAdvantageItem>
                   <TypeAdvantageIcon>✓</TypeAdvantageIcon>
-                  Миттєвий трафік на сайт
+                  {searchAdsAdvantages[2]}
                 </TypeAdvantageItem>
               </TypeAdvantagesList>
-              
+
               <TypeUseCase>
-                Ідеально підходить для просування товарів, послуг, запису на консультації та генерації лідів.
+              {t('contextualAdvertisingPage.searchAdsUseCase')}
               </TypeUseCase>
             </TypeCard>
-            
+
             <TypeCard
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1229,32 +1205,34 @@ const ContextualAdvertising = () => {
               <TypeIconContainer className="display">
                 <FaRegChartBar />
               </TypeIconContainer>
-              <TypeName>Медійна реклама <TypeNameEn>(Display Ads)</TypeNameEn></TypeName>
+              <TypeName>
+              {t('contextualAdvertisingPage.displayAdsTitle')} <TypeNameEn>(Display Ads)</TypeNameEn>
+              </TypeName>
               <TypeDescription>
-                Медійні оголошення — це банери, які з'являються на сайтах-партнерах Google, у додатках та на платформах, що підтримують Google Display Network. Вони можуть включати зображення, анімацію та текстові елементи.
+              {t('contextualAdvertisingPage.displayAdsDescription')}
               </TypeDescription>
-              
+
               <TypeAdvantagesList>
-                <AdvantageTitle>Переваги:</AdvantageTitle>
+                <AdvantageTitle>{t('contextualAdvertisingPage.searchAdsText')}</AdvantageTitle>
                 <TypeAdvantageItem>
                   <TypeAdvantageIcon>✓</TypeAdvantageIcon>
-                  Візуальна привабливість
+                  {displayAdsAdvantages[0]}
                 </TypeAdvantageItem>
                 <TypeAdvantageItem>
                   <TypeAdvantageIcon>✓</TypeAdvantageIcon>
-                  Велике охоплення аудиторії
+                  {displayAdsAdvantages[1]}
                 </TypeAdvantageItem>
                 <TypeAdvantageItem>
                   <TypeAdvantageIcon>✓</TypeAdvantageIcon>
-                  Таргетинг за інтересами, демографією та поведінкою
+                  {displayAdsAdvantages[2]}
                 </TypeAdvantageItem>
               </TypeAdvantagesList>
-              
+
               <TypeUseCase>
-                Ефективна для формування впізнаваності бренду та охоплення нової аудиторії.
+              {t('contextualAdvertisingPage.displayAdsUseCase')}
               </TypeUseCase>
             </TypeCard>
-            
+
             <TypeCard
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1264,32 +1242,34 @@ const ContextualAdvertising = () => {
               <TypeIconContainer className="video">
                 <FaBullhorn />
               </TypeIconContainer>
-              <TypeName>Відеореклама <TypeNameEn>(YouTube Ads)</TypeNameEn></TypeName>
+              <TypeName>
+              {t('contextualAdvertisingPage.videoAdsTitle')} <TypeNameEn>(YouTube Ads)</TypeNameEn>
+              </TypeName>
               <TypeDescription>
-                Реклама у відеоформаті розміщується на YouTube та в мережі відеопартнерів Google. Вона дозволяє доносити емоційний меседж, залучати увагу та підвищувати довіру до бренду.
+              {t('contextualAdvertisingPage.videoAdsDescription')}
               </TypeDescription>
-              
+
               <TypeAdvantagesList>
-                <AdvantageTitle>Види:</AdvantageTitle>
+                <AdvantageTitle>{t('contextualAdvertisingPage.videoAdsText')}</AdvantageTitle>
                 <TypeAdvantageItem>
                   <TypeAdvantageIcon>✓</TypeAdvantageIcon>
-                  In-stream (з можливістю пропуску)
+                  {videoAdsTypes[0]}
                 </TypeAdvantageItem>
                 <TypeAdvantageItem>
                   <TypeAdvantageIcon>✓</TypeAdvantageIcon>
-                  Bumper Ads (короткі до 6 секунд)
+                  {videoAdsTypes[1]}
                 </TypeAdvantageItem>
                 <TypeAdvantageItem>
                   <TypeAdvantageIcon>✓</TypeAdvantageIcon>
-                  Video Discovery Ads
+                  {videoAdsTypes[2]}
                 </TypeAdvantageItem>
               </TypeAdvantagesList>
-              
+
               <TypeUseCase>
-                Особливо підходить для B2C-сегменту, брендових кампаній та запуску нових продуктів.
+              {t('contextualAdvertisingPage.videoAdsUseCase')}
               </TypeUseCase>
             </TypeCard>
-            
+
             <TypeCard
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1299,32 +1279,34 @@ const ContextualAdvertising = () => {
               <TypeIconContainer className="shopping">
                 <FaShoppingCart />
               </TypeIconContainer>
-              <TypeName>Торгові кампанії <TypeNameEn>(Google Shopping)</TypeNameEn></TypeName>
+              <TypeName>
+              {t('contextualAdvertisingPage.shoppingAdsTitle')} <TypeNameEn>(Google Shopping)</TypeNameEn>
+              </TypeName>
               <TypeDescription>
-                Google Shopping — це спеціальний формат реклами для інтернет-магазинів, де користувач бачить товар, його ціну, назву магазину та зображення просто в пошуку.
+              {t('contextualAdvertisingPage.shoppingAdsDescription')}
               </TypeDescription>
-              
+
               <TypeAdvantagesList>
-                <AdvantageTitle>Переваги:</AdvantageTitle>
+                <AdvantageTitle>{t('contextualAdvertisingPage.searchAdsText')}</AdvantageTitle>
                 <TypeAdvantageItem>
                   <TypeAdvantageIcon>✓</TypeAdvantageIcon>
-                  Висока конверсія
+                  {shoppingAdsAdvantages[0]}
                 </TypeAdvantageItem>
                 <TypeAdvantageItem>
                   <TypeAdvantageIcon>✓</TypeAdvantageIcon>
-                  Візуальний контент у видачі
+                  {shoppingAdsAdvantages[1]}
                 </TypeAdvantageItem>
                 <TypeAdvantageItem>
                   <TypeAdvantageIcon>✓</TypeAdvantageIcon>
-                  Автоматичне оновлення товарних даних
+                  {shoppingAdsAdvantages[2]}
                 </TypeAdvantageItem>
               </TypeAdvantagesList>
-              
+
               <TypeUseCase>
-                Для запуску потрібно зв'язати Google Merchant Center і Google Ads.
+              {t('contextualAdvertisingPage.shoppingAdsUseCase')}
               </TypeUseCase>
             </TypeCard>
-            
+
             <TypeCard
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1334,29 +1316,29 @@ const ContextualAdvertising = () => {
               <TypeIconContainer className="remarketing">
                 <FaUsers />
               </TypeIconContainer>
-              <TypeName>Ремаркетинг і динамічний ремаркетинг</TypeName>
+              <TypeName>{t('contextualAdvertisingPage.remarketingTitle')}</TypeName>
               <TypeDescription>
-                Ремаркетинг дозволяє показувати рекламу користувачам, які вже були на сайті, але не здійснили цільову дію. Динамічний ремаркетинг — це персоналізовані оголошення з тими товарами або послугами, які користувач переглядав.
+              {t('contextualAdvertisingPage.remarketingDescription')}
               </TypeDescription>
-              
+
               <TypeAdvantagesList>
-                <AdvantageTitle>Переваги:</AdvantageTitle>
+                <AdvantageTitle>{t('contextualAdvertisingPage.searchAdsText')}</AdvantageTitle>
                 <TypeAdvantageItem>
                   <TypeAdvantageIcon>✓</TypeAdvantageIcon>
-                  Нагадування про бренд
+                  {remarketingAdvantages[0]}
                 </TypeAdvantageItem>
                 <TypeAdvantageItem>
                   <TypeAdvantageIcon>✓</TypeAdvantageIcon>
-                  Високий ROI
+                  {remarketingAdvantages[1]}
                 </TypeAdvantageItem>
                 <TypeAdvantageItem>
                   <TypeAdvantageIcon>✓</TypeAdvantageIcon>
-                  Адаптація до поведінки користувача
+                  {remarketingAdvantages[2]}
                 </TypeAdvantageItem>
               </TypeAdvantagesList>
-              
+
               <TypeUseCase>
-                Особливо ефективні для e-commerce, сервісів бронювання, курсів та B2B-компаній.
+              {t('contextualAdvertisingPage.remarketingUseCase')}
               </TypeUseCase>
             </TypeCard>
           </TypesGrid>
@@ -1367,17 +1349,14 @@ const ContextualAdvertising = () => {
       <StagesSection>
         <ImplBackgroundGradient />
         <ImplBackgroundGrid />
-        
+
         <StagesContainer>
-          <StagesTitle>
-            Етапи запуску контекстної реклами
-          </StagesTitle>
-          
+          <StagesTitle>{t('contextualAdvertisingPage.stagesTitle')}</StagesTitle>
+
           <StagesDescription>
-            Запуск ефективної контекстної реклами вимагає системного підходу та чіткого дотримання послідовності дій. 
-            Кожен етап відіграє ключову роль у досягненні ваших бізнес-цілей.
+          {t('contextualAdvertisingPage.stagesDescription')}
           </StagesDescription>
-          
+
           <StagesTimeline>
             <StageCard
               initial={{ opacity: 0, x: -50 }}
@@ -1387,10 +1366,9 @@ const ContextualAdvertising = () => {
             >
               <StageNumber>01</StageNumber>
               <StageContent>
-                <StageTitle>Аналіз бізнесу та цільової аудиторії</StageTitle>
+                <StageTitle> {t('contextualAdvertisingPage.stage1Title')}</StageTitle>
                 <StageDescription>
-                  На першому етапі важливо зрозуміти, хто є вашим потенційним клієнтом, які проблеми ви вирішуєте, 
-                  які переваги має ваш продукт або послуга. Аналіз конкурентів також дає змогу виявити сильні та слабкі сторони ринку.
+                {t('contextualAdvertisingPage.stage1Description')}
                 </StageDescription>
                 <StageIconContainer>
                   <FaSearch />
@@ -1398,20 +1376,20 @@ const ContextualAdvertising = () => {
                 <StageBulletPoints>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Дослідження поведінки цільової аудиторії</span>
+                    <span>{stage1Bullets[0]}</span>
                   </StageBullet>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Аналіз стратегій конкурентів</span>
+                    <span>{stage1Bullets[1]}</span>
                   </StageBullet>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Виявлення унікальних переваг продукту</span>
+                    <span>{stage1Bullets[2]}</span>
                   </StageBullet>
                 </StageBulletPoints>
               </StageContent>
             </StageCard>
-            
+
             <StageCard
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -1420,11 +1398,9 @@ const ContextualAdvertising = () => {
             >
               <StageNumber>02</StageNumber>
               <StageContent>
-                <StageTitle>Визначення цілей та KPI</StageTitle>
+                <StageTitle>{t('contextualAdvertisingPage.stage2Title')}</StageTitle>
                 <StageDescription>
-                  Мета кампанії може бути різною: продаж, генерація лідів, впізнаваність бренду або підписка. 
-                  Для кожної мети визначаються ключові показники ефективності (KPI), наприклад, вартість ліда (CPL), 
-                  рентабельність витрат (ROAS) чи CTR.
+                {t('contextualAdvertisingPage.stage2Description')}
                 </StageDescription>
                 <StageIconContainer>
                   <FaChartLine />
@@ -1432,20 +1408,22 @@ const ContextualAdvertising = () => {
                 <StageBulletPoints>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Встановлення чітких бізнес-метрик</span>
+                    <span>{stage2Bullets[0]}</span>
                   </StageBullet>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Визначення допустимої вартості залучення клієнта</span>
+                    <span>
+                    {stage2Bullets[1]}
+                    </span>
                   </StageBullet>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Розрахунок очікуваного ROI</span>
+                    <span>{stage2Bullets[2]}</span>
                   </StageBullet>
                 </StageBulletPoints>
               </StageContent>
             </StageCard>
-            
+
             <StageCard
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -1454,10 +1432,9 @@ const ContextualAdvertising = () => {
             >
               <StageNumber>03</StageNumber>
               <StageContent>
-                <StageTitle>Підбір ключових слів та аудиторій</StageTitle>
+                <StageTitle>{t('contextualAdvertisingPage.stage3Title')}</StageTitle>
                 <StageDescription>
-                  Проводиться семантичне ядро — список релевантних ключових фраз, за якими користувачі шукають ваші товари чи послуги. 
-                  Також налаштовуються цільові аудиторії — за інтересами, поведінкою, географією, мовою тощо.
+                {t('contextualAdvertisingPage.stage3Description')}
                 </StageDescription>
                 <StageIconContainer>
                   <FaKeyboard />
@@ -1465,20 +1442,20 @@ const ContextualAdvertising = () => {
                 <StageBulletPoints>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Збір пошукових запитів вашої ЦА</span>
+                    <span>{stage3Bullets[0]}</span>
                   </StageBullet>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Аналіз пошукових обсягів та конкуренції</span>
+                    <span>{stage3Bullets[1]}</span>
                   </StageBullet>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Групування ключових слів за тематиками</span>
+                    <span>{stage3Bullets[2]}</span>
                   </StageBullet>
                 </StageBulletPoints>
               </StageContent>
             </StageCard>
-            
+
             <StageCard
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -1487,10 +1464,9 @@ const ContextualAdvertising = () => {
             >
               <StageNumber>04</StageNumber>
               <StageContent>
-                <StageTitle>Створення рекламних оголошень</StageTitle>
+                <StageTitle>{t('contextualAdvertisingPage.stage4Title')}</StageTitle>
                 <StageDescription>
-                  Пишуться привабливі тексти, що стимулюють до дії, підбираються зображення або відео. 
-                  Оголошення мають відповідати очікуванням користувача та вести на релевантну цільову сторінку.
+                {t('contextualAdvertisingPage.stage4Description')}
                 </StageDescription>
                 <StageIconContainer>
                   <FaEdit />
@@ -1498,20 +1474,20 @@ const ContextualAdvertising = () => {
                 <StageBulletPoints>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Написання конверсійних заголовків</span>
+                    <span><span>{stage4Bullets[0]}</span></span>
                   </StageBullet>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Створення унікальних торгових пропозицій</span>
+                    <span><span>{stage4Bullets[1]}</span></span>
                   </StageBullet>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Розробка чітких CTA (закликів до дії)</span>
+                    <span><span>{stage4Bullets[2]}</span></span>
                   </StageBullet>
                 </StageBulletPoints>
               </StageContent>
             </StageCard>
-            
+
             <StageCard
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -1520,10 +1496,9 @@ const ContextualAdvertising = () => {
             >
               <StageNumber>05</StageNumber>
               <StageContent>
-                <StageTitle>Налаштування кампанії в Google Ads</StageTitle>
+                <StageTitle>{t('contextualAdvertisingPage.stage5Title')}</StageTitle>
                 <StageDescription>
-                  Усі параметри — геотаргетинг, бюджет, ставки, графік показу — задаються відповідно до стратегії. 
-                  Також підключається відстеження конверсій через Google Analytics або Tag Manager.
+                {t('contextualAdvertisingPage.stage5Description')}
                 </StageDescription>
                 <StageIconContainer>
                   <FaCogs />
@@ -1531,20 +1506,20 @@ const ContextualAdvertising = () => {
                 <StageBulletPoints>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Структурування кампаній та груп оголошень</span>
+                    <span>{stage5Bullets[0]}</span>
                   </StageBullet>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Налаштування таргетингу та виключень</span>
+                    <span>{stage5Bullets[1]}</span>
                   </StageBullet>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Впровадження систем відстеження</span>
+                    <span>{stage5Bullets[2]}</span>
                   </StageBullet>
                 </StageBulletPoints>
               </StageContent>
             </StageCard>
-            
+
             <StageCard
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -1553,10 +1528,9 @@ const ContextualAdvertising = () => {
             >
               <StageNumber>06</StageNumber>
               <StageContent>
-                <StageTitle>Запуск та моніторинг</StageTitle>
+                <StageTitle>{t('contextualAdvertisingPage.stage6Title')}</StageTitle>
                 <StageDescription>
-                  Після запуску важливо контролювати хід кампанії щодня: відстежувати витрати, 
-                  переглядати клікабельність, вносити оперативні коригування.
+                {t('contextualAdvertisingPage.stage6Description')}
                 </StageDescription>
                 <StageIconContainer>
                   <FaRocket />
@@ -1564,20 +1538,20 @@ const ContextualAdvertising = () => {
                 <StageBulletPoints>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Аналіз показників у реальному часі</span>
+                    <span>{stage6Bullets[0]}</span>
                   </StageBullet>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Контроль витрат та ефективності</span>
+                    <span>{stage6Bullets[1]}</span>
                   </StageBullet>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Швидке реагування на зміни в метриках</span>
+                    <span>{stage6Bullets[2]}</span>
                   </StageBullet>
                 </StageBulletPoints>
               </StageContent>
             </StageCard>
-            
+
             <StageCard
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -1586,10 +1560,9 @@ const ContextualAdvertising = () => {
             >
               <StageNumber>07</StageNumber>
               <StageContent>
-                <StageTitle>Оптимізація</StageTitle>
+                <StageTitle>{t('contextualAdvertisingPage.stage7Title')}</StageTitle>
                 <StageDescription>
-                  На основі зібраних даних оптимізуються ключові слова, таргетинг, креативи, ставки. 
-                  Тестуються A/B-варіанти оголошень для підвищення ефективності.
+                {t('contextualAdvertisingPage.stage7Description')}
                 </StageDescription>
                 <StageIconContainer>
                   <FaChartBar />
@@ -1597,30 +1570,31 @@ const ContextualAdvertising = () => {
                 <StageBulletPoints>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Корекція стратегії на основі даних</span>
+                    <span>{stage7Bullets[0]}</span>
                   </StageBullet>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Проведення A/B-тестів</span>
+                    <span>{stage7Bullets[1]}</span>
                   </StageBullet>
                   <StageBullet>
                     <StageBulletIcon>✓</StageBulletIcon>
-                    <span>Масштабування успішних підходів</span>
+                    <span>{stage7Bullets[2]}</span>
                   </StageBullet>
                 </StageBulletPoints>
               </StageContent>
             </StageCard>
           </StagesTimeline>
-          
+
           <StagesCallout>
             <CalloutContent>
-              <CalloutTitle>Готові запустити ефективну контекстну рекламу?</CalloutTitle>
+              <CalloutTitle>
+              {t('contextualAdvertisingPage.stagesCalloutTitle')}
+              </CalloutTitle>
               <CalloutDescription>
-                Наша команда створить і запустить для вас кампанію, яка приведе цільових клієнтів 
-                та забезпечить максимальну окупність інвестицій
+              {t('contextualAdvertisingPage.stagesCalloutDescription')}
               </CalloutDescription>
               <CalloutButton onClick={openModal}>
-                Замовити консультацію
+              {t('contextualAdvertisingPage.stagesCalloutButton')}
                 <FaArrowRight />
               </CalloutButton>
             </CalloutContent>
@@ -1632,24 +1606,24 @@ const ContextualAdvertising = () => {
       {/* Tools for Contextual Advertising Section */}
       <ToolsSection>
         <BackgroundGradient />
-        
+
         <ToolsContainer>
-          <ToolsTitle>
-            Інструменти для роботи з контекстною рекламою
-          </ToolsTitle>
-          
+          <ToolsTitle>{t('contextualAdvertisingPage.toolsTitle')}</ToolsTitle>
+
           <ToolsDescription>
-            Успішне ведення контекстної реклами неможливе без використання професійних інструментів. 
-            Вони допомагають автоматизувати процеси, аналізувати результати, оптимізувати витрати та досягати кращих показників.
+          {t('contextualAdvertisingPage.toolsDescription')}
           </ToolsDescription>
-          
+
           <ToolsGrid>
             <ToolCard
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              whileHover={{ y: -10, boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)' }}
+              whileHover={{
+                y: -10,
+                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+              }}
             >
               <ToolIconContainer className="google-ads">
                 <FaAd />
@@ -1658,38 +1632,40 @@ const ContextualAdvertising = () => {
               <ToolContent>
                 <ToolName>Google Ads</ToolName>
                 <ToolDescription>
-                  Це основна платформа для запуску пошукових, медійних, відео- та торгових кампаній. Дозволяє налаштовувати 
-                  кампанії будь-якого рівня складності, керувати ставками, створювати оголошення, сегментувати аудиторії та відстежувати ефективність.
+                {t('contextualAdvertisingPage.toolGoogleAdsDescription')}
                 </ToolDescription>
                 <ToolFeatures>
                   <ToolFeature>
                     <ToolFeatureIcon>
                       <FaCheck />
                     </ToolFeatureIcon>
-                    <span>Запуск всіх типів рекламних кампаній</span>
+                    <span>{toolGoogleAdsFeatures[0]}</span>
                   </ToolFeature>
                   <ToolFeature>
                     <ToolFeatureIcon>
                       <FaCheck />
                     </ToolFeatureIcon>
-                    <span>Гнучке керування ставками та бюджетом</span>
+                    <span>{toolGoogleAdsFeatures[1]}</span>
                   </ToolFeature>
                   <ToolFeature>
                     <ToolFeatureIcon>
                       <FaCheck />
                     </ToolFeatureIcon>
-                    <span>Детальна аналітика результатів</span>
+                    <span>{toolGoogleAdsFeatures[2]}</span>
                   </ToolFeature>
                 </ToolFeatures>
               </ToolContent>
             </ToolCard>
-            
+
             <ToolCard
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              whileHover={{ y: -10, boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)' }}
+              whileHover={{
+                y: -10,
+                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+              }}
             >
               <ToolIconContainer className="analytics">
                 <FaChartPie />
@@ -1698,38 +1674,40 @@ const ContextualAdvertising = () => {
               <ToolContent>
                 <ToolName>Google Analytics</ToolName>
                 <ToolDescription>
-                  Незамінний інструмент для збору та аналізу поведінки користувачів на сайті. Дає змогу побачити, 
-                  як працюють оголошення, які сторінки найефективніші, скільки часу користувач проводить на сайті, які конверсії відбуваються.
+                {t('contextualAdvertisingPage.toolAnalyticsDescription')}
                 </ToolDescription>
                 <ToolFeatures>
                   <ToolFeature>
                     <ToolFeatureIcon>
                       <FaCheck />
                     </ToolFeatureIcon>
-                    <span>Відстеження джерел трафіку та поведінки</span>
+                    <span>{toolAnalyticsFeatures[0]}</span>
                   </ToolFeature>
                   <ToolFeature>
                     <ToolFeatureIcon>
                       <FaCheck />
                     </ToolFeatureIcon>
-                    <span>Налаштування цілей та конверсій</span>
+                    <span>{toolAnalyticsFeatures[1]}</span>
                   </ToolFeature>
                   <ToolFeature>
                     <ToolFeatureIcon>
                       <FaCheck />
                     </ToolFeatureIcon>
-                    <span>Інтеграція з Google Ads</span>
+                    <span>{toolAnalyticsFeatures[2]}</span>
                   </ToolFeature>
                 </ToolFeatures>
               </ToolContent>
             </ToolCard>
-            
+
             <ToolCard
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              whileHover={{ y: -10, boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)' }}
+              whileHover={{
+                y: -10,
+                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+              }}
             >
               <ToolIconContainer className="tag-manager">
                 <FaTags />
@@ -1738,38 +1716,40 @@ const ContextualAdvertising = () => {
               <ToolContent>
                 <ToolName>Google Tag Manager</ToolName>
                 <ToolDescription>
-                  Сервіс для зручного керування тегами без необхідності втручання в код сайту. 
-                  Дозволяє встановлювати пікселі конверсій, ремаркетингу, події аналітики тощо.
+                {t('contextualAdvertisingPage.toolTagManagerDescription')}
                 </ToolDescription>
                 <ToolFeatures>
                   <ToolFeature>
                     <ToolFeatureIcon>
                       <FaCheck />
                     </ToolFeatureIcon>
-                    <span>Встановлення тегів без редагування коду</span>
+                    <span>{toolTagManagerFeatures[0]}</span>
                   </ToolFeature>
                   <ToolFeature>
                     <ToolFeatureIcon>
                       <FaCheck />
                     </ToolFeatureIcon>
-                    <span>Централізоване керування тегами</span>
+                    <span>{toolTagManagerFeatures[1]}</span>
                   </ToolFeature>
                   <ToolFeature>
                     <ToolFeatureIcon>
                       <FaCheck />
                     </ToolFeatureIcon>
-                    <span>Налаштування тригерів та змінних</span>
+                    <span>{toolTagManagerFeatures[2]}</span>
                   </ToolFeature>
                 </ToolFeatures>
               </ToolContent>
             </ToolCard>
-            
+
             <ToolCard
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ y: -10, boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)' }}
+              whileHover={{
+                y: -10,
+                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+              }}
             >
               <ToolIconContainer className="keyword-planner">
                 <FaSearch />
@@ -1778,38 +1758,40 @@ const ContextualAdvertising = () => {
               <ToolContent>
                 <ToolName>Keyword Planner</ToolName>
                 <ToolDescription>
-                  Інструмент від Google для підбору ключових слів. Дає змогу дізнатися частотність запитів, 
-                  рівень конкуренції та приблизну ціну за клік. Ідеально підходить для створення семантичного ядра.
+                {t('contextualAdvertisingPage.toolKeywordPlannerDescription')}
                 </ToolDescription>
                 <ToolFeatures>
                   <ToolFeature>
                     <ToolFeatureIcon>
                       <FaCheck />
                     </ToolFeatureIcon>
-                    <span>Пошук релевантних ключових слів</span>
+                    <span>{toolKeywordPlannerFeatures[0]}</span>
                   </ToolFeature>
                   <ToolFeature>
                     <ToolFeatureIcon>
                       <FaCheck />
                     </ToolFeatureIcon>
-                    <span>Оцінка обсягів пошуку та конкуренції</span>
+                    <span>{toolKeywordPlannerFeatures[1]}</span>
                   </ToolFeature>
                   <ToolFeature>
                     <ToolFeatureIcon>
                       <FaCheck />
                     </ToolFeatureIcon>
-                    <span>Прогнозування бюджету кампанії</span>
+                    <span>{toolKeywordPlannerFeatures[2]}</span>
                   </ToolFeature>
                 </ToolFeatures>
               </ToolContent>
             </ToolCard>
-            
+
             <ToolCard
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              whileHover={{ y: -10, boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)' }}
+              whileHover={{
+                y: -10,
+                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+              }}
             >
               <ToolIconContainer className="seo-tools">
                 <FaChartLine />
@@ -1818,38 +1800,40 @@ const ContextualAdvertising = () => {
               <ToolContent>
                 <ToolName>SEMrush, Ahrefs, Serpstat</ToolName>
                 <ToolDescription>
-                  SEO-аналітичні сервіси, що також корисні для контекстної реклами. Допомагають вивчати конкурентів, 
-                  аналізувати рекламні стратегії інших компаній, підбирати ключові слова та відстежувати позиції.
+                {t('contextualAdvertisingPage.toolSeoToolsDescription')}
                 </ToolDescription>
                 <ToolFeatures>
                   <ToolFeature>
                     <ToolFeatureIcon>
                       <FaCheck />
                     </ToolFeatureIcon>
-                    <span>Аналіз конкурентних стратегій</span>
+                    <span>{toolSeoToolsFeatures[0]}</span>
                   </ToolFeature>
                   <ToolFeature>
                     <ToolFeatureIcon>
                       <FaCheck />
                     </ToolFeatureIcon>
-                    <span>Розширений пошук ключових слів</span>
+                    <span>{toolSeoToolsFeatures[1]}</span>
                   </ToolFeature>
                   <ToolFeature>
                     <ToolFeatureIcon>
                       <FaCheck />
                     </ToolFeatureIcon>
-                    <span>Відстеження позицій та видимості</span>
+                    <span>{toolSeoToolsFeatures[2]}</span>
                   </ToolFeature>
                 </ToolFeatures>
               </ToolContent>
             </ToolCard>
-            
+
             <ToolCard
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              whileHover={{ y: -10, boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)' }}
+              whileHover={{
+                y: -10,
+                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+              }}
             >
               <ToolIconContainer className="ux-tools">
                 <FaEye />
@@ -1858,41 +1842,39 @@ const ContextualAdvertising = () => {
               <ToolContent>
                 <ToolName>Hotjar або Clarity</ToolName>
                 <ToolDescription>
-                  Ці сервіси дають змогу бачити, як користувачі взаємодіють із сайтом: куди клікають, 
-                  як гортaють сторінку, що їх зупиняє. Це корисно для підвищення конверсій після переходу з реклами.
+                 {t('contextualAdvertisingPage.toolUxToolsDescription')}
                 </ToolDescription>
                 <ToolFeatures>
                   <ToolFeature>
                     <ToolFeatureIcon>
                       <FaCheck />
                     </ToolFeatureIcon>
-                    <span>Теплові карти кліків та скролу</span>
+                    <span>{toolUxToolsFeatures[0]}</span>
                   </ToolFeature>
                   <ToolFeature>
                     <ToolFeatureIcon>
                       <FaCheck />
                     </ToolFeatureIcon>
-                    <span>Запис сесій користувачів</span>
+                    <span>{toolUxToolsFeatures[1]}</span>
                   </ToolFeature>
                   <ToolFeature>
                     <ToolFeatureIcon>
                       <FaCheck />
                     </ToolFeatureIcon>
-                    <span>Опитування та форми зворотного зв'язку</span>
+                    <span>{toolUxToolsFeatures[2]}</span>
                   </ToolFeature>
                 </ToolFeatures>
               </ToolContent>
             </ToolCard>
           </ToolsGrid>
-          
+
           <ToolsFooter>
             <ToolsNote>
               <NoteIcon>
                 <FaLightbulb />
               </NoteIcon>
               <NoteText>
-                Наші фахівці володіють усіма необхідними інструментами на професійному рівні та постійно 
-                відстежують нові функції й можливості, щоб забезпечити вашому бізнесу максимальну ефективність контекстної реклами.
+              {t('contextualAdvertisingPage.toolsNote')}
               </NoteText>
             </ToolsNote>
           </ToolsFooter>
@@ -1902,19 +1884,16 @@ const ContextualAdvertising = () => {
       {/* KPI Section */}
       <KpiSection>
         <KpiBackgroundGlow />
-        
+
         <KpiContainer>
-          <KpiTitle>
-            Показники ефективності (KPI)
-          </KpiTitle>
-          
+          <KpiTitle>{t('contextualAdvertisingPage.kpiTitle')}</KpiTitle>
+
           <KpiDescription>
-            Для оцінки успішності контекстної реклами важливо орієнтуватися не лише на загальну кількість кліків чи витрат, 
-            а й на конкретні показники ефективності — KPI. Саме вони демонструють, наскільки реклама досягає поставлених бізнес-цілей.
+            {t('contextualAdvertisingPage.kpiDescription')}
           </KpiDescription>
-          
+
           <KpiGrid>
-            <KpiCard 
+            <KpiCard
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -1927,19 +1906,19 @@ const ContextualAdvertising = () => {
                 </KpiIcon>
                 <KpiMetricName>CTR</KpiMetricName>
               </KpiHeader>
-              <KpiSubtitle>Click-Through Rate — клікабельність</KpiSubtitle>
+              <KpiSubtitle>{t('contextualAdvertisingPage.kpiCtrSubtitle')}</KpiSubtitle>
               <KpiContent>
-                Показує відсоток користувачів, які побачили оголошення та клікнули на нього. Високий CTR свідчить про релевантність оголошення до запиту або інтересів аудиторії.
+              {t('contextualAdvertisingPage.kpiText')}
               </KpiContent>
               <KpiExample $bgColor="rgba(66, 133, 244, 0.05)">
-                <KpiExampleTitle>Приклад:</KpiExampleTitle>
+                <KpiExampleTitle>{t('contextualAdvertisingPage.kpiCtrSubtitle')}</KpiExampleTitle>
                 <KpiExampleContent>
-                  CTR = 5% означає, що 5 зі 100 користувачів, які побачили оголошення, клікнули на нього
+                {t('contextualAdvertisingPage.kpiCtrExample')}
                 </KpiExampleContent>
               </KpiExample>
             </KpiCard>
-            
-            <KpiCard 
+
+            <KpiCard
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -1952,19 +1931,19 @@ const ContextualAdvertising = () => {
                 </KpiIcon>
                 <KpiMetricName>CPC</KpiMetricName>
               </KpiHeader>
-              <KpiSubtitle>Cost per Click — ціна за клік</KpiSubtitle>
+              <KpiSubtitle>{t('contextualAdvertisingPage.kpiCpcSubtitle')}</KpiSubtitle>
               <KpiContent>
-                Це середня сума, яку ви платите за кожен перехід за оголошенням. Важливо знижувати CPC без втрати трафіку шляхом оптимізації оголошень та ключових слів.
+              {t('contextualAdvertisingPage.kpiCpcContent')}
               </KpiContent>
               <KpiExample $bgColor="rgba(52, 168, 83, 0.05)">
-                <KpiExampleTitle>Приклад:</KpiExampleTitle>
+                <KpiExampleTitle>{t('contextualAdvertisingPage.kpiText')}</KpiExampleTitle>
                 <KpiExampleContent>
-                  CPC = 2€ означає, що за кожен клік по вашому оголошенню ви платите в середньому 2€
+                {t('contextualAdvertisingPage.kpiCpcExample')}
                 </KpiExampleContent>
               </KpiExample>
             </KpiCard>
-            
-            <KpiCard 
+
+            <KpiCard
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -1977,19 +1956,21 @@ const ContextualAdvertising = () => {
                 </KpiIcon>
                 <KpiMetricName>CPA</KpiMetricName>
               </KpiHeader>
-              <KpiSubtitle>Cost per Acquisition — вартість конверсії</KpiSubtitle>
+              <KpiSubtitle>
+              {t('contextualAdvertisingPage.kpiCpaSubtitle')}
+              </KpiSubtitle>
               <KpiContent>
-                CPA визначає, скільки в середньому коштує залучення одного клієнта (наприклад, покупця або ліда). Це ключовий показник для оцінки рентабельності кампанії.
+              {t('contextualAdvertisingPage.kpiCpaContent')}
               </KpiContent>
               <KpiExample $bgColor="rgba(251, 188, 5, 0.05)">
-                <KpiExampleTitle>Приклад:</KpiExampleTitle>
+                <KpiExampleTitle>{t('contextualAdvertisingPage.kpiText')}</KpiExampleTitle>
                 <KpiExampleContent>
-                  CPA = 25€ означає, що залучення одного нового клієнта коштує в середньому 25€
+                {t('contextualAdvertisingPage.kpiCpaExample')}
                 </KpiExampleContent>
               </KpiExample>
             </KpiCard>
-            
-            <KpiCard 
+
+            <KpiCard
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -2002,19 +1983,19 @@ const ContextualAdvertising = () => {
                 </KpiIcon>
                 <KpiMetricName>ROAS</KpiMetricName>
               </KpiHeader>
-              <KpiSubtitle>Return on Ad Spend — прибутковість</KpiSubtitle>
+              <KpiSubtitle>{t('contextualAdvertisingPage.kpiRoasSubtitle')}</KpiSubtitle>
               <KpiContent>
-                Цей показник відображає співвідношення доходу до витрат на рекламу. Якщо ROAS перевищує 100%, кампанія приносить прибуток.
+              {t('contextualAdvertisingPage.kpiRoasContent')}
               </KpiContent>
               <KpiExample $bgColor="rgba(234, 67, 53, 0.05)">
-                <KpiExampleTitle>Приклад:</KpiExampleTitle>
+                <KpiExampleTitle>{t('contextualAdvertisingPage.kpiText')}</KpiExampleTitle>
                 <KpiExampleContent>
-                  ROAS = 350% означає, що на кожен 1€, вкладений у рекламу, ви отримуєте 3.5€ доходу
+                {t('contextualAdvertisingPage.kpiRoasExample')}
                 </KpiExampleContent>
               </KpiExample>
             </KpiCard>
-            
-            <KpiCard 
+
+            <KpiCard
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -2025,21 +2006,21 @@ const ContextualAdvertising = () => {
                 <KpiIcon $bgColor="rgba(156, 39, 176, 0.1)">
                   <FaBullseye />
                 </KpiIcon>
-                <KpiMetricName>Кількість конверсій</KpiMetricName>
+                <KpiMetricName>{t('contextualAdvertisingPage.kpiConversionsName')}</KpiMetricName>
               </KpiHeader>
-              <KpiSubtitle>Обсяг цільових дій користувачів</KpiSubtitle>
+              <KpiSubtitle>{t('contextualAdvertisingPage.kpiConversionsSubtitle')}</KpiSubtitle>
               <KpiContent>
-                Фіксується кожна дія, яку вважають цільовою: заповнення форми, дзвінок, покупка. Аналіз кількості й якості конверсій допомагає коригувати стратегію.
+              {t('contextualAdvertisingPage.kpiConversionsContent')}
               </KpiContent>
               <KpiExample $bgColor="rgba(156, 39, 176, 0.05)">
-                <KpiExampleTitle>Приклад:</KpiExampleTitle>
+                <KpiExampleTitle>{t('contextualAdvertisingPage.kpiText')}</KpiExampleTitle>
                 <KpiExampleContent>
-                  120 конверсій при 3000 кліків дає коефіцієнт конверсії 4%, що є хорошим показником
+                {t('contextualAdvertisingPage.kpiConversionsExample')}
                 </KpiExampleContent>
               </KpiExample>
             </KpiCard>
-            
-            <KpiCard 
+
+            <KpiCard
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -2050,30 +2031,33 @@ const ContextualAdvertising = () => {
                 <KpiIcon $bgColor="rgba(30, 136, 229, 0.1)">
                   <FaUsers />
                 </KpiIcon>
-                <KpiMetricName>Якість трафіку</KpiMetricName>
+                <KpiMetricName>{t('contextualAdvertisingPage.kpiQualityName')}</KpiMetricName>
               </KpiHeader>
-              <KpiSubtitle>Поведінкові метрики користувачів</KpiSubtitle>
+              <KpiSubtitle>{t('contextualAdvertisingPage.kpiQualitySubtitle')}</KpiSubtitle>
               <KpiContent>
-                Визначається через поведінку користувачів на сайті: глибина перегляду, час перебування, відсоток відмов. Високоякісний трафік означає більшу ймовірність продажів.
+              {t('contextualAdvertisingPage.kpiQualityContent')}
               </KpiContent>
               <KpiExample $bgColor="rgba(30, 136, 229, 0.05)">
-                <KpiExampleTitle>Приклад:</KpiExampleTitle>
+                <KpiExampleTitle>{t('contextualAdvertisingPage.kpiText')}</KpiExampleTitle>
                 <KpiExampleContent>
-                  Середній час на сайті 3:20, перегляд 3.5 сторінок, відсоток відмов 35% — показники якісного трафіку
+                {t('contextualAdvertisingPage.kpiQualityExample')}
                 </KpiExampleContent>
               </KpiExample>
             </KpiCard>
           </KpiGrid>
-          
+
           <KpiAction>
             <KpiActionText>
-              Хочете отримати детальний аналіз ефективності вашої рекламної кампанії?
+            {t('contextualAdvertisingPage.kpiActionText')}
             </KpiActionText>
-            <KpiActionButton 
-              whileHover={{ y: -5, boxShadow: '0 10px 25px rgba(var(--accent-color-rgb), 0.4)' }}
+            <KpiActionButton
+              whileHover={{
+                y: -5,
+                boxShadow: '0 10px 25px rgba(var(--accent-color-rgb), 0.4)',
+              }}
               onClick={openModal}
             >
-              Замовити аудит ефективності
+              {t('contextualAdvertisingPage.kpiActionButton')}
               <FaArrowRight />
             </KpiActionButton>
           </KpiAction>
@@ -2083,21 +2067,17 @@ const ContextualAdvertising = () => {
       {/* Who is contextual advertising for Section */}
       <SuitableForSection>
         <SuitableForContainer>
-          <SuitableForTitle>
-            Кому підходить контекстна реклама
-          </SuitableForTitle>
-          
+          <SuitableForTitle>{t('contextualAdvertisingPage.suitableForTitle')}</SuitableForTitle>
+
           <SuitableForDescription>
-            Контекстна реклама — це універсальний інструмент, який підходить практично для будь-якого бізнесу, 
-            незалежно від ніші, розміру компанії чи стадії розвитку. Однак є типи бізнесу, 
-            яким вона приносить особливо відчутні результати.
+          {t('contextualAdvertisingPage.suitableForDescription')}
           </SuitableForDescription>
-          
+
           <BusinessTypes>
             <BusinessTabsContainer>
               <BusinessTabs>
                 {businessData.map((business, index) => (
-                  <BusinessTab 
+                  <BusinessTab
                     key={business.id}
                     className={activeTab === index ? 'active' : ''}
                     onClick={() => setActiveTab(index)}
@@ -2109,7 +2089,7 @@ const ContextualAdvertising = () => {
                 ))}
               </BusinessTabs>
             </BusinessTabsContainer>
-            
+
             <BusinessContent>
               <AnimatePresence mode="wait">
                 <BusinessInfo
@@ -2120,65 +2100,83 @@ const ContextualAdvertising = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <BusinessInfoHeader $color={businessData[activeTab].color}>
-                    <BusinessInfoTitle>{businessData[activeTab].name}</BusinessInfoTitle>
-                    <BusinessInfoIcon>{businessData[activeTab].icon}</BusinessInfoIcon>
+                    <BusinessInfoTitle>
+                      {businessData[activeTab].name}
+                    </BusinessInfoTitle>
+                    <BusinessInfoIcon>
+                      {businessData[activeTab].icon}
+                    </BusinessInfoIcon>
                   </BusinessInfoHeader>
-                  
+
                   <BusinessInfoText>
                     {businessData[activeTab].description}
                   </BusinessInfoText>
-                  
-                  <BusinessAdvantagesTitle>Переваги:</BusinessAdvantagesTitle>
+
+                  <BusinessAdvantagesTitle>{t('contextualAdvertisingPage.businessTextItem')}</BusinessAdvantagesTitle>
                   <BusinessAdvantagesList>
-                    {businessData[activeTab].advantages.map((advantage, index) => (
-                      <BusinessAdvantageItem 
-                        key={index}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.1 }}
-                      >
-                        <BusinessAdvantageIcon $color={businessData[activeTab].color}>
-                          <FaCheck />
-                        </BusinessAdvantageIcon>
-                        {advantage}
-                      </BusinessAdvantageItem>
-                    ))}
+                    {businessData[activeTab].advantages.map(
+                      (advantage, index) => (
+                        <BusinessAdvantageItem
+                          key={index}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: index * 0.1 }}
+                        >
+                          <BusinessAdvantageIcon
+                            $color={businessData[activeTab].color}
+                          >
+                            <FaCheck />
+                          </BusinessAdvantageIcon>
+                          {advantage}
+                        </BusinessAdvantageItem>
+                      )
+                    )}
                   </BusinessAdvantagesList>
-                  
+
                   <BusinessStatsContainer>
                     <BusinessStatItem $color={businessData[activeTab].color}>
-                      <BusinessStatIcon>{businessData[activeTab].stats[0].icon}</BusinessStatIcon>
+                      <BusinessStatIcon>
+                        {businessData[activeTab].stats[0].icon}
+                      </BusinessStatIcon>
                       <BusinessStatContent>
-                        <BusinessStatValue>{businessData[activeTab].stats[0].value}</BusinessStatValue>
-                        <BusinessStatLabel>{businessData[activeTab].stats[0].label}</BusinessStatLabel>
+                        <BusinessStatValue>
+                          {businessData[activeTab].stats[0].value}
+                        </BusinessStatValue>
+                        <BusinessStatLabel>
+                          {businessData[activeTab].stats[0].label}
+                        </BusinessStatLabel>
                       </BusinessStatContent>
                     </BusinessStatItem>
                     <BusinessStatItem $color={businessData[activeTab].color}>
-                      <BusinessStatIcon>{businessData[activeTab].stats[1].icon}</BusinessStatIcon>
+                      <BusinessStatIcon>
+                        {businessData[activeTab].stats[1].icon}
+                      </BusinessStatIcon>
                       <BusinessStatContent>
-                        <BusinessStatValue>{businessData[activeTab].stats[1].value}</BusinessStatValue>
-                        <BusinessStatLabel>{businessData[activeTab].stats[1].label}</BusinessStatLabel>
+                        <BusinessStatValue>
+                          {businessData[activeTab].stats[1].value}
+                        </BusinessStatValue>
+                        <BusinessStatLabel>
+                          {businessData[activeTab].stats[1].label}
+                        </BusinessStatLabel>
                       </BusinessStatContent>
                     </BusinessStatItem>
                   </BusinessStatsContainer>
-                  
-                  <BusinessCaseStudyButton $color={businessData[activeTab].color}>
-                    Переглянути приклад кампанії
-                    <FaArrowRight />
-                  </BusinessCaseStudyButton>
+
                 </BusinessInfo>
               </AnimatePresence>
             </BusinessContent>
           </BusinessTypes>
-          
+
           <SuitableForContactCta>
             <SuitableForCtaContent>
-              <SuitableForCtaTitle>Не впевнені, чи підходить контекстна реклама для вашого бізнесу?</SuitableForCtaTitle>
+              <SuitableForCtaTitle>
+              {t('contextualAdvertisingPage.suitableForCtaTitle')}
+              </SuitableForCtaTitle>
               <SuitableForCtaText>
-                Наші фахівці допоможуть вам з'ясувати, чи підійде контекстна реклама саме вашому бізнесу, та розроблять індивідуальну стратегію з урахуванням специфіки вашої ніші.
+              {t('contextualAdvertisingPage.suitableForCtaText')}
               </SuitableForCtaText>
               <SuitableForCtaButton onClick={openModal}>
-                Отримати безкоштовну консультацію
+              {t('contextualAdvertisingPage.suitableForCtaButton')}
               </SuitableForCtaButton>
             </SuitableForCtaContent>
           </SuitableForContactCta>
@@ -2188,17 +2186,14 @@ const ContextualAdvertising = () => {
       {/* Our Approach Section */}
       <ApproachSection>
         <ApproachContainer>
-          <ApproachTitle>
-            Наш підхід до запуску реклами
-          </ApproachTitle>
-          
+          <ApproachTitle>{t('contextualAdvertisingPage.approachTitle')}</ApproachTitle>
+
           <ApproachIntro>
-            Ми не просто налаштовуємо контекстну рекламу — ми створюємо рішення, які працюють на результат. 
-            Наш підхід заснований на глибокому аналізі, тестуванні та постійній оптимізації.
+          {t('contextualAdvertisingPage.approachIntro')}
           </ApproachIntro>
-          
+
           <ApproachTimeline>
-            <ApproachStage 
+            <ApproachStage
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -2209,23 +2204,22 @@ const ContextualAdvertising = () => {
               </ApproachStageNumber>
               <ApproachStageLine $isLast={false} />
               <ApproachStageContent>
-                <ApproachStageTitle>Занурення в бізнес</ApproachStageTitle>
+                <ApproachStageTitle>{t('contextualAdvertisingPage.approachStage1Title')}</ApproachStageTitle>
                 <ApproachStageDescription>
-                  Спочатку ми занурюємось у бізнес-контекст клієнта: вивчаємо продукт, конкурентів, цільову аудиторію та її поведінкові патерни. 
-                  Глибоке розуміння продукту дозволяє нам знайти його унікальні переваги та правильно презентувати їх у рекламі.
+                {t('contextualAdvertisingPage.approachStage1Description')}
                 </ApproachStageDescription>
                 <ApproachStageTags>
-                  <ApproachTag>Аналіз ніші</ApproachTag>
-                  <ApproachTag>Вивчення конкурентів</ApproachTag>
-                  <ApproachTag>Аудит цільової аудиторії</ApproachTag>
+                  <ApproachTag>{approachStage1Tags[0]}</ApproachTag>
+                  <ApproachTag>{approachStage1Tags[1]}</ApproachTag>
+                  <ApproachTag>{approachStage1Tags[2]}</ApproachTag>
                 </ApproachStageTags>
                 <ApproachStageIcon>
                   <FaSearchDollar />
                 </ApproachStageIcon>
               </ApproachStageContent>
             </ApproachStage>
-            
-            <ApproachStage 
+
+            <ApproachStage
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -2236,24 +2230,22 @@ const ContextualAdvertising = () => {
               </ApproachStageNumber>
               <ApproachStageLine $isLast={false} />
               <ApproachStageContent>
-                <ApproachStageTitle>Стратегія та планування</ApproachStageTitle>
+                <ApproachStageTitle>{t('contextualAdvertisingPage.approachStage2Title')}</ApproachStageTitle>
                 <ApproachStageDescription>
-                  Далі — визначаємо чіткі KPI, розробляємо медіаплан і запускаємо кампанії через Google Ads. 
-                  Замість простого запуску реклами, ми розробляємо комплексну стратегію з 
-                  декількома сценаріями розвитку та чітким розподілом бюджету.
+                {t('contextualAdvertisingPage.approachStage2Description')}
                 </ApproachStageDescription>
                 <ApproachStageTags>
-                  <ApproachTag>Медіапланування</ApproachTag>
-                  <ApproachTag>Визначення KPI</ApproachTag>
-                  <ApproachTag>Бюджетування</ApproachTag>
+                  <ApproachTag>{approachStage2Tags[0]}</ApproachTag>
+                  <ApproachTag>{approachStage2Tags[1]}</ApproachTag>
+                  <ApproachTag>{approachStage2Tags[2]}</ApproachTag>
                 </ApproachStageTags>
                 <ApproachStageIcon>
                   <FaChartLine />
                 </ApproachStageIcon>
               </ApproachStageContent>
             </ApproachStage>
-            
-            <ApproachStage 
+
+            <ApproachStage
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -2264,24 +2256,24 @@ const ContextualAdvertising = () => {
               </ApproachStageNumber>
               <ApproachStageLine $isLast={false} />
               <ApproachStageContent>
-                <ApproachStageTitle>Моніторинг та оптимізація</ApproachStageTitle>
+                <ApproachStageTitle>
+                {t('contextualAdvertisingPage.approachStage3Title')}
+                </ApproachStageTitle>
                 <ApproachStageDescription>
-                  У процесі роботи ми щоденно моніторимо ефективність: переглядаємо клікабельність оголошень, якість трафіку, 
-                  конверсії та вартість залучення. За потреби оперативно вносимо коригування. 
-                  Після тестування декількох варіантів реклами залишаємо найрезультативніші.
+                {t('contextualAdvertisingPage.approachStage3Description')}
                 </ApproachStageDescription>
                 <ApproachStageTags>
-                  <ApproachTag>Щоденний контроль</ApproachTag>
-                  <ApproachTag>A/B тестування</ApproachTag>
-                  <ApproachTag>Оптимізація ставок</ApproachTag>
+                  <ApproachTag>{approachStage3Tags[0]}</ApproachTag>
+                  <ApproachTag>{approachStage3Tags[1]}</ApproachTag>
+                  <ApproachTag>{approachStage3Tags[2]}</ApproachTag>
                 </ApproachStageTags>
                 <ApproachStageIcon>
                   <FaChartBar />
                 </ApproachStageIcon>
               </ApproachStageContent>
             </ApproachStage>
-            
-            <ApproachStage 
+
+            <ApproachStage
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -2292,16 +2284,16 @@ const ContextualAdvertising = () => {
               </ApproachStageNumber>
               <ApproachStageLine $isLast={true} />
               <ApproachStageContent>
-                <ApproachStageTitle>Звітність і масштабування</ApproachStageTitle>
+                <ApproachStageTitle>
+                {t('contextualAdvertisingPage.approachStage4Title')}
+                </ApproachStageTitle>
                 <ApproachStageDescription>
-                  Ми забезпечуємо прозору звітність: клієнт бачить, куди витрачається бюджет, які кампанії працюють найкраще 
-                  і як змінюється віддача з часом. Наше завдання — не просто витратити рекламні кошти, а примножити їх, 
-                  тому ми постійно шукаємо нові можливості для масштабування успішних кампаній.
+                {t('contextualAdvertisingPage.approachStage4Description')}
                 </ApproachStageDescription>
                 <ApproachStageTags>
-                  <ApproachTag>Прозора аналітика</ApproachTag>
-                  <ApproachTag>ROI-орієнтованість</ApproachTag>
-                  <ApproachTag>Масштабування успіху</ApproachTag>
+                  <ApproachTag>{approachStage4Tags[0]}</ApproachTag>
+                  <ApproachTag>{approachStage4Tags[1]}</ApproachTag>
+                  <ApproachTag>{approachStage4Tags[2]}</ApproachTag>
                 </ApproachStageTags>
                 <ApproachStageIcon>
                   <FaChartPie />
@@ -2309,24 +2301,24 @@ const ContextualAdvertising = () => {
               </ApproachStageContent>
             </ApproachStage>
           </ApproachTimeline>
-        
+
           <ResultsSection>
-            <ResultsTitle>
-              Що ви отримаєте в результаті
-            </ResultsTitle>
-            
+            <ResultsTitle>{t('contextualAdvertisingPage.resultsTitle')}</ResultsTitle>
+
             <ResultsIntro>
-              Запуск контекстної реклами з нами — це не просто набір оголошень у Google. 
-              Це системний підхід, що приносить вимірюваний результат і конкретні бізнес-переваги.
+            {t('contextualAdvertisingPage.resultsIntro')}
             </ResultsIntro>
-            
+
             <ResultsGrid>
               <ResultCard
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                whileHover={{ y: -10, boxShadow: '0 15px 30px rgba(0, 0, 0, 0.15)' }}
+                whileHover={{
+                  y: -10,
+                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.15)',
+                }}
               >
                 <ResultIconContainer>
                   <ResultIcon>
@@ -2334,23 +2326,25 @@ const ContextualAdvertising = () => {
                   </ResultIcon>
                   <ResultIconGlow />
                 </ResultIconContainer>
-                <ResultItemTitle>Цільовий трафік на сайт</ResultItemTitle>
+                <ResultItemTitle>{t('contextualAdvertisingPage.result1Title')}</ResultItemTitle>
                 <ResultItemDescription>
-                  Користувачі, які вже шукають ваші товари чи послуги, побачать ваші оголошення в потрібний момент. 
-                  Контекстна реклама забезпечує найвищу релевантність аудиторії.
+                {t('contextualAdvertisingPage.result1Description')}
                 </ResultItemDescription>
                 <ResultMetric>
                   <ResultMetricValue>93%</ResultMetricValue>
-                  <ResultMetricLabel>релевантності аудиторії</ResultMetricLabel>
+                  <ResultMetricLabel>{t('contextualAdvertisingPage.result1Description.result1Metric.label')}</ResultMetricLabel>
                 </ResultMetric>
               </ResultCard>
-              
+
               <ResultCard
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                whileHover={{ y: -10, boxShadow: '0 15px 30px rgba(0, 0, 0, 0.15)' }}
+                whileHover={{
+                  y: -10,
+                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.15)',
+                }}
               >
                 <ResultIconContainer>
                   <ResultIcon>
@@ -2358,23 +2352,27 @@ const ContextualAdvertising = () => {
                   </ResultIcon>
                   <ResultIconGlow />
                 </ResultIconContainer>
-                <ResultItemTitle>Зростання звернень і продажів</ResultItemTitle>
+                <ResultItemTitle>{t('contextualAdvertisingPage.result2Title')}</ResultItemTitle>
                 <ResultItemDescription>
-                  Завдяки точному таргетингу та ефективній структурі кампаній, ваші конверсії зростуть.
-                  Ми зосереджуємось на залученні клієнтів, готових до покупки.
+                {t('contextualAdvertisingPage.result2Description')}
                 </ResultItemDescription>
                 <ResultMetric>
                   <ResultMetricValue>+45%</ResultMetricValue>
-                  <ResultMetricLabel>середнє зростання конверсій</ResultMetricLabel>
+                  <ResultMetricLabel>
+                  {t('contextualAdvertisingPage.result1Description.result2Metric.label')}
+                  </ResultMetricLabel>
                 </ResultMetric>
               </ResultCard>
-              
+
               <ResultCard
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                whileHover={{ y: -10, boxShadow: '0 15px 30px rgba(0, 0, 0, 0.15)' }}
+                whileHover={{
+                  y: -10,
+                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.15)',
+                }}
               >
                 <ResultIconContainer>
                   <ResultIcon>
@@ -2382,23 +2380,29 @@ const ContextualAdvertising = () => {
                   </ResultIcon>
                   <ResultIconGlow />
                 </ResultIconContainer>
-                <ResultItemTitle>Підвищення впізнаваності бренду</ResultItemTitle>
+                <ResultItemTitle>
+                {t('contextualAdvertisingPage.result3Title')}
+                </ResultItemTitle>
                 <ResultItemDescription>
-                  Особливо при використанні медійної реклами та YouTube, ваш бренд стане помітнішим для цільової аудиторії.
-                  Ми допомагаємо залишатися на виду.
+                {t('contextualAdvertisingPage.result3Description')}
                 </ResultItemDescription>
                 <ResultMetric>
                   <ResultMetricValue>3.5x</ResultMetricValue>
-                  <ResultMetricLabel>зростання brand awareness</ResultMetricLabel>
+                  <ResultMetricLabel>
+                  {t('contextualAdvertisingPage.result1Description.result3Metric.label')}
+                  </ResultMetricLabel>
                 </ResultMetric>
               </ResultCard>
-              
+
               <ResultCard
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                whileHover={{ y: -10, boxShadow: '0 15px 30px rgba(0, 0, 0, 0.15)' }}
+                whileHover={{
+                  y: -10,
+                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.15)',
+                }}
               >
                 <ResultIconContainer>
                   <ResultIcon>
@@ -2406,23 +2410,25 @@ const ContextualAdvertising = () => {
                   </ResultIcon>
                   <ResultIconGlow />
                 </ResultIconContainer>
-                <ResultItemTitle>Повний контроль над бюджетом</ResultItemTitle>
+                <ResultItemTitle>{t('contextualAdvertisingPage.result4Title')}</ResultItemTitle>
                 <ResultItemDescription>
-                  Ви самі визначаєте, скільки готові інвестувати. Ми забезпечуємо максимальну 
-                  ефективність кожної витраченої гривні на рекламу.
+                {t('contextualAdvertisingPage.result4Description')}
                 </ResultItemDescription>
                 <ResultMetric>
                   <ResultMetricValue>100%</ResultMetricValue>
-                  <ResultMetricLabel>прозорості витрат</ResultMetricLabel>
+                  <ResultMetricLabel>{t('contextualAdvertisingPage.result1Description.result4Metric.label')}</ResultMetricLabel>
                 </ResultMetric>
               </ResultCard>
-              
+
               <ResultCard
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                whileHover={{ y: -10, boxShadow: '0 15px 30px rgba(0, 0, 0, 0.15)' }}
+                whileHover={{
+                  y: -10,
+                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.15)',
+                }}
               >
                 <ResultIconContainer>
                   <ResultIcon>
@@ -2430,23 +2436,25 @@ const ContextualAdvertising = () => {
                   </ResultIcon>
                   <ResultIconGlow />
                 </ResultIconContainer>
-                <ResultItemTitle>Прозора аналітика</ResultItemTitle>
+                <ResultItemTitle>{t('contextualAdvertisingPage.result5Title')}</ResultItemTitle>
                 <ResultItemDescription>
-                  Наші звіти показують кожен клік, конверсію та прибутковість. Ви завжди знаєте, 
-                  що працює, а що потребує оптимізації в рекламних кампаніях.
+                {t('contextualAdvertisingPage.result5Description')}
                 </ResultItemDescription>
                 <ResultMetric>
                   <ResultMetricValue>24/7</ResultMetricValue>
-                  <ResultMetricLabel>доступ до даних</ResultMetricLabel>
+                  <ResultMetricLabel>{t('contextualAdvertisingPage.result1Description.result5Metric.label')}</ResultMetricLabel>
                 </ResultMetric>
               </ResultCard>
-              
+
               <ResultCard
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                whileHover={{ y: -10, boxShadow: '0 15px 30px rgba(0, 0, 0, 0.15)' }}
+                whileHover={{
+                  y: -10,
+                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.15)',
+                }}
               >
                 <ResultIconContainer>
                   <ResultIcon>
@@ -2454,28 +2462,29 @@ const ContextualAdvertising = () => {
                   </ResultIcon>
                   <ResultIconGlow />
                 </ResultIconContainer>
-                <ResultItemTitle>Гнучкість і швидкість змін</ResultItemTitle>
+                <ResultItemTitle>{t('contextualAdvertisingPage.result6Title')}</ResultItemTitle>
                 <ResultItemDescription>
-                  Кампанії можна адаптувати в реальному часі до змін на ринку. Ми оперативно 
-                  реагуємо на нові тренди та коригуємо стратегію для кращих результатів.
+                {t('contextualAdvertisingPage.result6Description')}
                 </ResultItemDescription>
                 <ResultMetric>
                   <ResultMetricValue>~24 год</ResultMetricValue>
-                  <ResultMetricLabel>на впровадження змін</ResultMetricLabel>
+                  <ResultMetricLabel>{t('contextualAdvertisingPage.result1Description.result6Metric.label')}</ResultMetricLabel>
                 </ResultMetric>
               </ResultCard>
             </ResultsGrid>
-            
+
             <ResultsNote>
-              <ResultsNoteHighlight>Наша мета — не просто запуск реклами, а стабільне зростання вашого бізнесу завдяки цифровим каналам.</ResultsNoteHighlight>
+              <ResultsNoteHighlight>
+              {t('contextualAdvertisingPage.resultsNoteHighlight')}
+              </ResultsNoteHighlight>
               <ResultsAction
-                whileHover={{ 
+                whileHover={{
                   y: -5,
-                  boxShadow: '0 10px 25px rgba(var(--accent-color-rgb), 0.4)'
+                  boxShadow: '0 10px 25px rgba(var(--accent-color-rgb), 0.4)',
                 }}
                 onClick={openModal}
               >
-                Отримати безкоштовну консультацію
+                {t('contextualAdvertisingPage.resultsActionButton')}
                 <FaArrowRight />
               </ResultsAction>
             </ResultsNote>
@@ -2486,11 +2495,11 @@ const ContextualAdvertising = () => {
       {/* FAQ Section */}
       <FaqSection>
         <FaqWaveTop />
-        
+
         <FaqContainer>
           <FaqGlowCircle className="circle-1" />
           <FaqGlowCircle className="circle-2" />
-          
+
           <FaqTitle
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -2499,7 +2508,7 @@ const ContextualAdvertising = () => {
           >
             FAQ
           </FaqTitle>
-          
+
           <FaqList
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -2523,10 +2532,7 @@ const ContextualAdvertising = () => {
                   }}
                   layout
                 >
-                  <FaqQuestion
-                    layout
-                    onClick={() => toggleFaq(index)}
-                  >
+                  <FaqQuestion layout onClick={() => toggleFaq(index)}>
                     <FaqQuestionText>{faq.question}</FaqQuestionText>
                     <FaqToggle
                       animate={{
@@ -2540,7 +2546,7 @@ const ContextualAdvertising = () => {
                       }}
                     />
                   </FaqQuestion>
-                  
+
                   {expandedFaqs.includes(index) && (
                     <FaqAnswer
                       initial={{ opacity: 0, height: 0 }}
@@ -2558,7 +2564,7 @@ const ContextualAdvertising = () => {
               </FaqItem>
             ))}
           </FaqList>
-          
+
           <FaqCta
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -2566,14 +2572,14 @@ const ContextualAdvertising = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <FaqCtaText>
-              Залишилися питання щодо контекстної реклами? Зв'яжіться з нами для безкоштовної консультації
+            {t('contextualAdvertisingPage.faqCtaText')}
             </FaqCtaText>
             <FaqCtaButton
               whileHover={{ y: -5 }}
               transition={{ type: 'spring', stiffness: 400, damping: 10 }}
               onClick={openModal}
             >
-              Отримати консультацію
+              {t('contextualAdvertisingPage.faqCtaButton')}
               <FaArrowRight />
             </FaqCtaButton>
           </FaqCta>
@@ -2595,7 +2601,7 @@ const KpiSection = styled.section`
     var(--bg-primary) 100%
   );
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -2618,9 +2624,16 @@ const KpiBackgroundGlow = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(66, 133, 244, 0.07) 0%, transparent 70%),
-    radial-gradient(circle at 80% 70%, rgba(52, 168, 83, 0.07) 0%, transparent 70%);
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(66, 133, 244, 0.07) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(52, 168, 83, 0.07) 0%,
+      transparent 70%
+    );
   z-index: 0;
 `;
 
@@ -2673,7 +2686,7 @@ const KpiGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2rem;
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
@@ -2687,7 +2700,7 @@ const KpiCard = styled(motion.div)`
   padding: 2rem;
   transition: all 0.3s ease;
   position: relative;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -2698,11 +2711,14 @@ const KpiCard = styled(motion.div)`
     background: ${props => props.$accentColor || 'var(--accent-color)'};
     border-radius: 4px 4px 0 0;
   }
-  
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-    border-color: ${props => props.$accentColor ? `rgba(${hexToRgb(props.$accentColor)}, 0.2)` : 'rgba(var(--accent-color-rgb), 0.2)'};
+    border-color: ${props =>
+      props.$accentColor
+        ? `rgba(${hexToRgb(props.$accentColor)}, 0.2)`
+        : 'rgba(var(--accent-color-rgb), 0.2)'};
   }
 `;
 
@@ -2721,7 +2737,8 @@ const KpiIcon = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  background: ${props => props.$bgColor || 'rgba(var(--accent-color-rgb), 0.1)'};
+  background: ${props =>
+    props.$bgColor || 'rgba(var(--accent-color-rgb), 0.1)'};
   color: ${props => props.$color || 'var(--accent-color)'};
 `;
 
@@ -2768,7 +2785,11 @@ const KpiAction = styled.div`
   margin-top: 5rem;
   text-align: center;
   padding: 3rem;
-  background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.1) 0%, rgba(var(--accent-color-rgb), 0.02) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent-color-rgb), 0.1) 0%,
+    rgba(var(--accent-color-rgb), 0.02) 100%
+  );
   border-radius: 16px;
 `;
 
@@ -2792,26 +2813,26 @@ const KpiActionButton = styled(motion.button)`
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   svg {
     transition: transform 0.3s ease;
   }
-  
+
   &:hover svg {
     transform: translateX(5px);
   }
 `;
 
 // Helper function to convert hex to rgb
-const hexToRgb = (hex) => {
+const hexToRgb = hex => {
   // Remove # if present
   hex = hex.replace('#', '');
-  
+
   // Parse the hex values
   const r = parseInt(hex.substring(0, 2), 16);
   const g = parseInt(hex.substring(2, 4), 16);
   const b = parseInt(hex.substring(4, 6), 16);
-  
+
   // Return RGB format
   return `${r}, ${g}, ${b}`;
 };
@@ -2850,15 +2871,15 @@ const ImplBackgroundGradient = styled.div`
   right: 0;
   bottom: 0;
   background: radial-gradient(
-    circle at 20% 30%,
-    rgba(var(--accent-color-rgb), 0.07) 0%,
-    transparent 70%
-  ),
-  radial-gradient(
-    circle at 80% 80%,
-    rgba(var(--accent-color-rgb), 0.07) 0%,
-    transparent 70%
-  );
+      circle at 20% 30%,
+      rgba(var(--accent-color-rgb), 0.07) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(var(--accent-color-rgb), 0.07) 0%,
+      transparent 70%
+    );
   z-index: 0;
 `;
 
@@ -2869,14 +2890,14 @@ const ImplBackgroundGrid = styled.div`
   right: 0;
   bottom: 0;
   background-image: linear-gradient(
-    rgba(var(--accent-color-rgb), 0.03) 1px,
-    transparent 1px
-  ),
-  linear-gradient(
-    90deg,
-    rgba(var(--accent-color-rgb), 0.03) 1px,
-    transparent 1px
-  );
+      rgba(var(--accent-color-rgb), 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(var(--accent-color-rgb), 0.03) 1px,
+      transparent 1px
+    );
   background-size: 40px 40px;
   background-position: center center;
   z-index: 0;
@@ -2933,7 +2954,7 @@ const TypesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2.5rem;
-  
+
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
   }
@@ -2950,17 +2971,17 @@ const TypeCard = styled(motion.div)`
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     border-color: rgba(var(--accent-color-rgb), 0.2);
-    
+
     &::before {
       opacity: 0.1;
     }
   }
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -2972,10 +2993,10 @@ const TypeCard = styled(motion.div)`
     z-index: 0;
     transition: opacity 0.3s ease;
   }
-  
+
   &:nth-child(5) {
     grid-column: span 2;
-    
+
     @media (max-width: 1024px) {
       grid-column: span 1;
     }
@@ -2993,29 +3014,29 @@ const TypeIconContainer = styled.div`
   margin-bottom: 1.5rem;
   position: relative;
   z-index: 1;
-  
+
   &.search {
-    background: linear-gradient(135deg, #4285F4 0%, #34A853 100%);
+    background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
     color: white;
   }
-  
+
   &.display {
     background: linear-gradient(135deg, #ea4335 0%, #fbbc05 100%);
     color: white;
   }
-  
+
   &.video {
-    background: linear-gradient(135deg, #FF0000 0%, #FF5E3A 100%);
+    background: linear-gradient(135deg, #ff0000 0%, #ff5e3a 100%);
     color: white;
   }
-  
+
   &.shopping {
-    background: linear-gradient(135deg, #34A853 0%, #4285F4 100%);
+    background: linear-gradient(135deg, #34a853 0%, #4285f4 100%);
     color: white;
   }
-  
+
   &.remarketing {
-    background: linear-gradient(135deg, #9C27B0 0%, #673AB7 100%);
+    background: linear-gradient(135deg, #9c27b0 0%, #673ab7 100%);
     color: white;
   }
 `;
@@ -3117,15 +3138,15 @@ const StagesSection = styled.section`
       transparent 100%
     );
   }
-  
+
   @media (max-width: 1024px) {
     padding: 5rem 0;
   }
-  
+
   @media (max-width: 768px) {
     padding: 4rem 0;
   }
-  
+
   @media (max-width: 480px) {
     padding: 3rem 0;
   }
@@ -3137,11 +3158,11 @@ const StagesContainer = styled.div`
   padding: 0 2rem;
   position: relative;
   z-index: 2;
-  
+
   @media (max-width: 768px) {
     padding: 0 1.5rem;
   }
-  
+
   @media (max-width: 480px) {
     padding: 0 1rem;
   }
@@ -3172,17 +3193,17 @@ const StagesTitle = styled.h2`
     background: var(--accent-color);
     border-radius: 2px;
   }
-  
+
   @media (max-width: 1024px) {
     font-size: 2.4rem;
     margin-bottom: 2rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
     margin-bottom: 1.5rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 1.8rem;
     margin-bottom: 1rem;
@@ -3197,17 +3218,17 @@ const StagesDescription = styled.p`
   margin: 0 auto 4rem;
   text-align: center;
   position: relative;
-  
+
   @media (max-width: 1024px) {
     font-size: 1.1rem;
     margin-bottom: 3rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1rem;
     margin-bottom: 2.5rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 0.95rem;
     margin-bottom: 2rem;
@@ -3219,7 +3240,7 @@ const StagesTimeline = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 2.5rem;
   position: relative;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -3237,27 +3258,27 @@ const StagesTimeline = styled.div`
     z-index: 0;
     transform: translateX(-50%);
   }
-  
+
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
     gap: 2rem;
-    
+
     &::before {
       left: 30px;
     }
   }
-  
+
   @media (max-width: 768px) {
     gap: 1.5rem;
-    
+
     &::before {
       left: 25px;
     }
   }
-  
+
   @media (max-width: 480px) {
     gap: 1rem;
-    
+
     &::before {
       left: 20px;
     }
@@ -3274,46 +3295,46 @@ const StageCard = styled(motion.div)`
   transition: all 0.3s ease;
   position: relative;
   display: flex;
-  
+
   &:nth-child(odd) {
     margin-right: 1.5rem;
-    
+
     @media (max-width: 1024px) {
       margin-right: 0;
       margin-left: 4rem;
     }
-    
+
     @media (max-width: 768px) {
       margin-left: 3rem;
     }
-    
+
     @media (max-width: 480px) {
       margin-left: 2.5rem;
     }
   }
-  
+
   &:nth-child(even) {
     margin-left: 1.5rem;
-    
+
     @media (max-width: 1024px) {
       margin-left: 4rem;
     }
-    
+
     @media (max-width: 768px) {
       margin-left: 3rem;
     }
-    
+
     @media (max-width: 480px) {
       margin-left: 2.5rem;
     }
   }
-  
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     border-color: rgba(var(--accent-color-rgb), 0.2);
   }
-  
+
   @media (max-width: 768px) {
     &:hover {
       transform: translateY(-3px);
@@ -3337,11 +3358,11 @@ const StageNumber = styled.div`
   border-radius: 50%;
   z-index: 2;
   box-shadow: 0 5px 15px rgba(var(--accent-color-rgb), 0.3);
-  
+
   @media (max-width: 1024px) {
     left: -2rem;
   }
-  
+
   @media (max-width: 768px) {
     width: 50px;
     height: 50px;
@@ -3349,7 +3370,7 @@ const StageNumber = styled.div`
     left: -1.5rem;
     top: 1rem;
   }
-  
+
   @media (max-width: 480px) {
     width: 45px;
     height: 45px;
@@ -3357,7 +3378,7 @@ const StageNumber = styled.div`
     left: -1.25rem;
     top: 0.8rem;
   }
-  
+
   ${StageCard}:hover & {
     transform: scale(1.1);
     box-shadow: 0 8px 20px rgba(var(--accent-color-rgb), 0.4);
@@ -3367,11 +3388,11 @@ const StageNumber = styled.div`
 const StageContent = styled.div`
   padding: 2rem 2rem 2rem 2.5rem;
   flex: 1;
-  
+
   @media (max-width: 768px) {
     padding: 1.5rem 1.5rem 1.5rem 2rem;
   }
-  
+
   @media (max-width: 480px) {
     padding: 1rem 1rem 1rem 1.5rem;
   }
@@ -3383,18 +3404,18 @@ const StageTitle = styled.h3`
   margin-bottom: 1rem;
   color: var(--text-primary);
   padding-right: 50px;
-  
+
   @media (max-width: 1024px) {
     font-size: 1.3rem;
     padding-right: 40px;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1.2rem;
     padding-right: 35px;
     margin-bottom: 0.8rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 1.1rem;
     padding-right: 30px;
@@ -3407,17 +3428,17 @@ const StageDescription = styled.p`
   line-height: 1.6;
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
-  
+
   @media (max-width: 1024px) {
     font-size: 0.95rem;
     margin-bottom: 1.2rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 0.9rem;
     margin-bottom: 1rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 0.85rem;
     margin-bottom: 0.8rem;
@@ -3437,7 +3458,7 @@ const StageIconContainer = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
-  
+
   @media (max-width: 768px) {
     width: 35px;
     height: 35px;
@@ -3445,7 +3466,7 @@ const StageIconContainer = styled.div`
     top: 1rem;
     right: 1rem;
   }
-  
+
   @media (max-width: 480px) {
     width: 30px;
     height: 30px;
@@ -3453,7 +3474,7 @@ const StageIconContainer = styled.div`
     top: 0.8rem;
     right: 0.8rem;
   }
-  
+
   ${StageCard}:hover & {
     transform: rotate(10deg);
     background: rgba(var(--accent-color-rgb), 0.15);
@@ -3462,11 +3483,11 @@ const StageIconContainer = styled.div`
 
 const StageBulletPoints = styled.div`
   margin-top: 1.5rem;
-  
+
   @media (max-width: 768px) {
     margin-top: 1.2rem;
   }
-  
+
   @media (max-width: 480px) {
     margin-top: 1rem;
   }
@@ -3478,16 +3499,16 @@ const StageBullet = styled.div`
   margin-bottom: 0.7rem;
   font-size: 0.95rem;
   color: var(--text-secondary);
-  
+
   &:last-child {
     margin-bottom: 0;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 0.9rem;
     margin-bottom: 0.6rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 0.85rem;
     margin-bottom: 0.5rem;
@@ -3506,14 +3527,14 @@ const StageBulletIcon = styled.span`
   font-size: 0.7rem;
   margin-right: 0.8rem;
   flex-shrink: 0;
-  
+
   @media (max-width: 768px) {
     width: 18px;
     height: 18px;
     font-size: 0.65rem;
     margin-right: 0.7rem;
   }
-  
+
   @media (max-width: 480px) {
     width: 16px;
     height: 16px;
@@ -3570,18 +3591,18 @@ const CalloutButton = styled.button`
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  
+
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
     background: rgba(255, 255, 255, 0.9);
     color: #1a73e8; /* Deeper blue for better contrast */
-    
+
     svg {
       transform: translateX(5px);
     }
   }
-  
+
   svg {
     transition: transform 0.3s ease;
   }
@@ -3593,9 +3614,9 @@ const CalloutBackground = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, var(--accent-color) 0%, #4285F4 100%);
+  background: linear-gradient(135deg, var(--accent-color) 0%, #4285f4 100%);
   z-index: 1;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -3603,7 +3624,8 @@ const CalloutBackground = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='white' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E") center center;
+    background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='white' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E")
+      center center;
     opacity: 0.3;
   }
 `;
@@ -3618,7 +3640,7 @@ const ToolsSection = styled.section`
     rgba(var(--bg-primary-rgb), 0.97) 100%
   );
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -3642,15 +3664,15 @@ const BackgroundGradient = styled.div`
   right: 0;
   bottom: 0;
   background: radial-gradient(
-    circle at 10% 10%,
-    rgba(var(--accent-color-rgb), 0.03) 0%,
-    transparent 60%
-  ),
-  radial-gradient(
-    circle at 90% 90%,
-    rgba(var(--accent-color-rgb), 0.03) 0%,
-    transparent 60%
-  );
+      circle at 10% 10%,
+      rgba(var(--accent-color-rgb), 0.03) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      rgba(var(--accent-color-rgb), 0.03) 0%,
+      transparent 60%
+    );
   z-index: 0;
 `;
 
@@ -3703,7 +3725,7 @@ const ToolsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2.5rem;
-  
+
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
   }
@@ -3733,32 +3755,32 @@ const ToolIconContainer = styled.div`
   font-size: 2rem;
   margin-bottom: 1.5rem;
   position: relative;
-  
+
   &.google-ads {
-    background: linear-gradient(135deg, #4285F4 0%, #34A853 100%);
+    background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
     color: white;
   }
-  
+
   &.analytics {
-    background: linear-gradient(135deg, #F4B400 0%, #EA4335 100%);
+    background: linear-gradient(135deg, #f4b400 0%, #ea4335 100%);
     color: white;
   }
-  
+
   &.tag-manager {
     background: linear-gradient(135deg, #1e88e5 0%, #0d47a1 100%);
     color: white;
   }
-  
+
   &.keyword-planner {
     background: linear-gradient(135deg, #039be5 0%, #01579b 100%);
     color: white;
   }
-  
+
   &.seo-tools {
     background: linear-gradient(135deg, #7b1fa2 0%, #4a148c 100%);
     color: white;
   }
-  
+
   &.ux-tools {
     background: linear-gradient(135deg, #f57c00 0%, #e65100 100%);
     color: white;
@@ -3774,10 +3796,14 @@ const ToolIconRing = styled.div`
   border: 2px dashed rgba(255, 255, 255, 0.5);
   border-radius: 50%;
   animation: spin 15s linear infinite;
-  
+
   @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 `;
 
@@ -3811,7 +3837,7 @@ const ToolFeature = styled.div`
   margin-bottom: 0.8rem;
   font-size: 0.95rem;
   color: var(--text-secondary);
-  
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -3844,7 +3870,7 @@ const ToolsNote = styled.div`
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
@@ -3881,7 +3907,7 @@ const SuitableForSection = styled.section`
     var(--bg-primary) 0%,
     rgba(var(--bg-primary-rgb), 0.98) 100%
   );
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -3957,7 +3983,7 @@ const BusinessTabsContainer = styled.div`
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -3983,15 +4009,15 @@ const BusinessTab = styled.button`
   position: relative;
   transition: all 0.3s ease;
   white-space: nowrap;
-  
+
   &:hover {
     color: var(--text-primary);
     background: rgba(255, 255, 255, 0.02);
   }
-  
+
   &.active {
     color: ${props => props.$color || 'var(--accent-color)'};
-    
+
     &::after {
       content: '';
       position: absolute;
@@ -4003,7 +4029,7 @@ const BusinessTab = styled.button`
       border-radius: 3px 3px 0 0;
     }
   }
-  
+
   @media (max-width: 768px) {
     padding: 1.2rem 1.5rem;
     font-size: 0.9rem;
@@ -4023,7 +4049,7 @@ const BusinessContent = styled.div`
   padding: 3rem;
   position: relative;
   min-height: 670px;
-  
+
   @media (max-width: 768px) {
     padding: 2rem 1.5rem;
   }
@@ -4035,7 +4061,7 @@ const BusinessInfo = styled(motion.div)`
   left: 0;
   right: 0;
   padding: 3rem;
-  
+
   @media (max-width: 768px) {
     padding: 2rem 1.5rem;
   }
@@ -4054,7 +4080,7 @@ const BusinessInfoTitle = styled.h3`
   font-size: 1.8rem;
   font-weight: 700;
   color: var(--text-primary);
-  
+
   @media (max-width: 768px) {
     font-size: 1.5rem;
   }
@@ -4063,14 +4089,17 @@ const BusinessInfoTitle = styled.h3`
 const BusinessInfoIcon = styled.div`
   width: 50px;
   height: 50px;
-  background: ${props => props.$color ? `rgba(${hexToRgb(props.$color)}, 0.1)` : 'rgba(var(--accent-color-rgb), 0.1)'};
+  background: ${props =>
+    props.$color
+      ? `rgba(${hexToRgb(props.$color)}, 0.1)`
+      : 'rgba(var(--accent-color-rgb), 0.1)'};
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
   color: ${props => props.$color || 'var(--accent-color)'};
-  
+
   @media (max-width: 768px) {
     width: 40px;
     height: 40px;
@@ -4083,7 +4112,7 @@ const BusinessInfoText = styled.p`
   line-height: 1.7;
   color: var(--text-secondary);
   margin-bottom: 2rem;
-  
+
   @media (max-width: 768px) {
     font-size: 1rem;
   }
@@ -4107,7 +4136,7 @@ const BusinessAdvantageItem = styled(motion.div)`
   margin-bottom: 0.8rem;
   font-size: 1rem;
   color: var(--text-secondary);
-  
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -4117,7 +4146,10 @@ const BusinessAdvantageIcon = styled.div`
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: ${props => props.$color ? `rgba(${hexToRgb(props.$color)}, 0.1)` : 'rgba(var(--accent-color-rgb), 0.1)'};
+  background: ${props =>
+    props.$color
+      ? `rgba(${hexToRgb(props.$color)}, 0.1)`
+      : 'rgba(var(--accent-color-rgb), 0.1)'};
   color: ${props => props.$color || 'var(--accent-color)'};
   display: flex;
   align-items: center;
@@ -4131,7 +4163,7 @@ const BusinessStatsContainer = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   margin-bottom: 2.5rem;
-  
+
   @media (max-width: 640px) {
     grid-template-columns: 1fr;
   }
@@ -4165,41 +4197,18 @@ const BusinessStatLabel = styled.div`
   color: var(--text-secondary);
 `;
 
-const BusinessCaseStudyButton = styled.button`
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  padding: 1rem 2rem;
-  background: transparent;
-  border: 1px solid ${props => props.$color || 'var(--accent-color)'};
-  color: ${props => props.$color || 'var(--accent-color)'};
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: ${props => props.$color ? `rgba(${hexToRgb(props.$color)}, 0.1)` : 'rgba(var(--accent-color-rgb), 0.1)'};
-    transform: translateY(-3px);
-    
-    svg {
-      transform: translateX(5px);
-    }
-  }
-  
-  svg {
-    transition: transform 0.3s ease;
-  }
-`;
-
 const SuitableForContactCta = styled.div`
-  background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.2) 0%, rgba(var(--accent-color-rgb), 0.05) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent-color-rgb), 0.2) 0%,
+    rgba(var(--accent-color-rgb), 0.05) 100%
+  );
   border-radius: 20px;
   padding: 3rem;
   text-align: center;
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -4207,11 +4216,18 @@ const SuitableForContactCta = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
-      radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 30%),
-      radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 30%);
+    background-image: radial-gradient(
+        circle at 20% 20%,
+        rgba(255, 255, 255, 0.03) 0%,
+        transparent 30%
+      ),
+      radial-gradient(
+        circle at 80% 80%,
+        rgba(255, 255, 255, 0.03) 0%,
+        transparent 30%
+      );
   }
-  
+
   @media (max-width: 768px) {
     padding: 2rem 1.5rem;
   }
@@ -4229,7 +4245,7 @@ const SuitableForCtaTitle = styled.h3`
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
-  
+
   @media (max-width: 768px) {
     font-size: 1.5rem;
   }
@@ -4240,7 +4256,7 @@ const SuitableForCtaText = styled.p`
   line-height: 1.7;
   color: var(--text-secondary);
   margin-bottom: 2rem;
-  
+
   @media (max-width: 768px) {
     font-size: 1rem;
   }
@@ -4255,7 +4271,7 @@ const SuitableForCtaButton = styled.button`
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(var(--accent-color-rgb), 0.3);
@@ -4272,7 +4288,7 @@ const ApproachSection = styled.section`
     rgba(var(--bg-primary-rgb), 0.98) 100%
   );
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -4287,15 +4303,15 @@ const ApproachSection = styled.section`
       transparent 100%
     );
   }
-  
+
   @media (max-width: 1024px) {
     padding: 5rem 0;
   }
-  
+
   @media (max-width: 768px) {
     padding: 4rem 0;
   }
-  
+
   @media (max-width: 480px) {
     padding: 3rem 0;
   }
@@ -4307,11 +4323,11 @@ const ApproachContainer = styled.div`
   padding: 0 2rem;
   position: relative;
   z-index: 2;
-  
+
   @media (max-width: 768px) {
     padding: 0 1.5rem;
   }
-  
+
   @media (max-width: 480px) {
     padding: 0 1rem;
   }
@@ -4342,17 +4358,17 @@ const ApproachTitle = styled.h2`
     background: var(--accent-color);
     border-radius: 2px;
   }
-  
+
   @media (max-width: 1024px) {
     font-size: 2.4rem;
     margin-bottom: 2rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
     margin-bottom: 1.5rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 1.8rem;
     margin-bottom: 1rem;
@@ -4367,17 +4383,17 @@ const ApproachIntro = styled.p`
   margin: 0 auto 4rem;
   text-align: center;
   position: relative;
-  
+
   @media (max-width: 1024px) {
     font-size: 1.1rem;
     margin-bottom: 3rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1rem;
     margin-bottom: 2.5rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 0.95rem;
     margin-bottom: 2rem;
@@ -4388,11 +4404,11 @@ const ApproachTimeline = styled.div`
   position: relative;
   margin: 0 auto 5rem;
   max-width: 900px;
-  
+
   @media (max-width: 768px) {
     margin-bottom: 3rem;
   }
-  
+
   @media (max-width: 480px) {
     margin-bottom: 2rem;
   }
@@ -4402,15 +4418,15 @@ const ApproachStage = styled(motion.div)`
   position: relative;
   display: flex;
   margin-bottom: 2.5rem;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
-  
+
   @media (max-width: 768px) {
     margin-bottom: 2rem;
   }
-  
+
   @media (max-width: 480px) {
     margin-bottom: 1.5rem;
   }
@@ -4419,7 +4435,11 @@ const ApproachStage = styled(motion.div)`
 const ApproachStageNumber = styled.div`
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.1) 0%, rgba(var(--accent-color-rgb), 0.05) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent-color-rgb), 0.1) 0%,
+    rgba(var(--accent-color-rgb), 0.05) 100%
+  );
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -4427,7 +4447,7 @@ const ApproachStageNumber = styled.div`
   flex-shrink: 0;
   position: relative;
   z-index: 2;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -4436,16 +4456,20 @@ const ApproachStageNumber = styled.div`
     right: -5px;
     bottom: -5px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent-color) 0%, rgba(var(--accent-color-rgb), 0.7) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--accent-color) 0%,
+      rgba(var(--accent-color-rgb), 0.7) 100%
+    );
     opacity: 0.2;
     z-index: -1;
   }
-  
+
   @media (max-width: 768px) {
     width: 50px;
     height: 50px;
   }
-  
+
   @media (max-width: 480px) {
     width: 45px;
     height: 45px;
@@ -4456,11 +4480,11 @@ const ApproachStageNumberInner = styled.div`
   font-size: 1.6rem;
   font-weight: 800;
   color: var(--accent-color);
-  
+
   @media (max-width: 768px) {
     font-size: 1.4rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 1.2rem;
   }
@@ -4471,19 +4495,19 @@ const ApproachStageLine = styled.div`
   top: 60px;
   left: 30px;
   width: 1px;
-  height: ${props => props.$isLast ? '0' : 'calc(100% - 30px)'};
+  height: ${props => (props.$isLast ? '0' : 'calc(100% - 30px)')};
   background: linear-gradient(
     to bottom,
     rgba(var(--accent-color-rgb), 0.3),
     rgba(var(--accent-color-rgb), 0.1)
   );
   z-index: 1;
-  
+
   @media (max-width: 768px) {
     top: 50px;
     left: 25px;
   }
-  
+
   @media (max-width: 480px) {
     top: 45px;
     left: 22.5px;
@@ -4499,18 +4523,18 @@ const ApproachStageContent = styled.div`
   margin-left: 2rem;
   flex: 1;
   position: relative;
-  
+
   &:hover {
     background: rgba(255, 255, 255, 0.03);
     border-color: rgba(var(--accent-color-rgb), 0.2);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
-  
+
   @media (max-width: 768px) {
     padding: 1.5rem;
     margin-left: 1.5rem;
   }
-  
+
   @media (max-width: 480px) {
     padding: 1rem;
     margin-left: 1rem;
@@ -4523,18 +4547,18 @@ const ApproachStageTitle = styled.h3`
   color: var(--text-primary);
   margin-bottom: 1rem;
   padding-right: 50px;
-  
+
   @media (max-width: 1024px) {
     font-size: 1.3rem;
     padding-right: 40px;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1.2rem;
     padding-right: 35px;
     margin-bottom: 0.8rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 1.1rem;
     padding-right: 30px;
@@ -4547,17 +4571,17 @@ const ApproachStageDescription = styled.p`
   line-height: 1.6;
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
-  
+
   @media (max-width: 1024px) {
     font-size: 0.95rem;
     margin-bottom: 1.2rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 0.9rem;
     margin-bottom: 1rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 0.85rem;
     margin-bottom: 0.8rem;
@@ -4568,11 +4592,11 @@ const ApproachStageTags = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
-  
+
   @media (max-width: 768px) {
     gap: 0.6rem;
   }
-  
+
   @media (max-width: 480px) {
     gap: 0.5rem;
   }
@@ -4585,16 +4609,16 @@ const ApproachTag = styled.span`
   font-size: 0.85rem;
   color: var(--accent-color);
   font-weight: 500;
-  
+
   &:hover {
     background: rgba(var(--accent-color-rgb), 0.1);
   }
-  
+
   @media (max-width: 768px) {
     padding: 0.4rem 0.8rem;
     font-size: 0.8rem;
   }
-  
+
   @media (max-width: 480px) {
     padding: 0.3rem 0.7rem;
     font-size: 0.75rem;
@@ -4614,7 +4638,7 @@ const ApproachStageIcon = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
-  
+
   @media (max-width: 768px) {
     width: 32px;
     height: 32px;
@@ -4622,7 +4646,7 @@ const ApproachStageIcon = styled.div`
     top: 1rem;
     right: 1rem;
   }
-  
+
   @media (max-width: 480px) {
     width: 28px;
     height: 28px;
@@ -4641,7 +4665,7 @@ const ResultsSection = styled.section`
     var(--bg-primary) 100%
   );
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -4699,7 +4723,7 @@ const ResultsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2rem;
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
@@ -4713,7 +4737,7 @@ const ResultCard = styled(motion.div)`
   padding: 2rem;
   transition: all 0.3s ease;
   position: relative;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -4724,11 +4748,14 @@ const ResultCard = styled(motion.div)`
     background: ${props => props.$accentColor || 'var(--accent-color)'};
     border-radius: 4px 4px 0 0;
   }
-  
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-    border-color: ${props => props.$accentColor ? `rgba(${hexToRgb(props.$accentColor)}, 0.2)` : 'rgba(var(--accent-color-rgb), 0.2)'};
+    border-color: ${props =>
+      props.$accentColor
+        ? `rgba(${hexToRgb(props.$accentColor)}, 0.2)`
+        : 'rgba(var(--accent-color-rgb), 0.2)'};
   }
 `;
 
@@ -4753,10 +4780,14 @@ const ResultIconGlow = styled.div`
   border: 2px dashed rgba(255, 255, 255, 0.5);
   border-radius: 50%;
   animation: spin 15s linear infinite;
-  
+
   @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 `;
 
@@ -4795,7 +4826,11 @@ const ResultsNote = styled.div`
   margin-top: 5rem;
   text-align: center;
   padding: 3rem;
-  background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.1) 0%, rgba(var(--accent-color-rgb), 0.05) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent-color-rgb), 0.1) 0%,
+    rgba(var(--accent-color-rgb), 0.05) 100%
+  );
   border-radius: 16px;
 `;
 
@@ -4819,11 +4854,11 @@ const ResultsAction = styled(motion.button)`
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   svg {
     transition: transform 0.3s ease;
   }
-  
+
   &:hover svg {
     transform: translateX(5px);
   }
@@ -4868,15 +4903,15 @@ const FaqSection = styled.section`
     );
     z-index: -1;
   }
-  
+
   @media (max-width: 1024px) {
     padding: 6rem 0;
   }
-  
+
   @media (max-width: 768px) {
     padding: 4rem 0;
   }
-  
+
   @media (max-width: 480px) {
     padding: 3rem 0;
   }
@@ -4895,11 +4930,11 @@ const FaqWaveTop = styled.div`
   );
   z-index: 1;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  
+
   @media (max-width: 768px) {
     height: 80px;
   }
-  
+
   @media (max-width: 480px) {
     height: 60px;
   }
@@ -4911,17 +4946,17 @@ const FaqContainer = styled.div`
   position: relative;
   z-index: 2;
   padding: 0 2rem;
-  
+
   @media (max-width: 1024px) {
     max-width: 800px;
     padding: 0 1.5rem;
   }
-  
+
   @media (max-width: 768px) {
     max-width: 700px;
     padding: 0 1rem;
   }
-  
+
   @media (max-width: 480px) {
     max-width: none;
     padding: 0 1rem;
@@ -4945,13 +4980,13 @@ const FaqGlowCircle = styled.div`
     top: 10%;
     left: -200px;
     animation: ${floatVertical} 15s infinite ease-in-out;
-    
+
     @media (max-width: 768px) {
       width: 300px;
       height: 300px;
       left: -150px;
     }
-    
+
     @media (max-width: 480px) {
       width: 250px;
       height: 250px;
@@ -4970,13 +5005,13 @@ const FaqGlowCircle = styled.div`
     bottom: 5%;
     right: -200px;
     animation: ${floatVertical} 18s infinite ease-in-out reverse;
-    
+
     @media (max-width: 768px) {
       width: 350px;
       height: 350px;
       right: -150px;
     }
-    
+
     @media (max-width: 480px) {
       width: 280px;
       height: 280px;
@@ -5025,7 +5060,7 @@ const FaqTitle = styled(motion.h2)`
     border-radius: 4px;
     animation: ${pulseFaq} 2s infinite ease-in-out;
   }
-  
+
   @media (max-width: 1024px) {
     font-size: 3rem;
     margin-bottom: 2.5rem;
@@ -5074,12 +5109,12 @@ const FaqList = styled(motion.div)`
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 4rem;
-  
+
   @media (max-width: 768px) {
     gap: 1.2rem;
     margin-bottom: 3rem;
   }
-  
+
   @media (max-width: 480px) {
     gap: 1rem;
     margin-bottom: 2rem;
@@ -5103,18 +5138,18 @@ const FaqItem = styled(motion.div)`
     border-color: rgba(var(--accent-color-rgb), 0.1);
     transform: translateY(-3px);
   }
-  
+
   @media (max-width: 768px) {
     border-radius: 12px;
-    
+
     &:hover {
       transform: translateY(-2px);
     }
   }
-  
+
   @media (max-width: 480px) {
     border-radius: 10px;
-    
+
     &:hover {
       transform: translateY(-1px);
     }
@@ -5169,19 +5204,19 @@ const FaqQuestion = styled(motion.div)`
       transparent
     );
   }
-  
+
   @media (max-width: 768px) {
     padding: 1.5rem 1.5rem;
-    
+
     &::after {
       left: 1.5rem;
       right: 1.5rem;
     }
   }
-  
+
   @media (max-width: 480px) {
     padding: 1.2rem 1rem;
-    
+
     &::after {
       left: 1rem;
       right: 1rem;
@@ -5201,15 +5236,15 @@ const FaqQuestionText = styled.h3`
     color: var(--accent-color);
     transform: translateZ(10px);
   }
-  
+
   @media (max-width: 1024px) {
     font-size: 1.1rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 0.95rem;
   }
@@ -5233,48 +5268,49 @@ const FaqToggle = styled(motion.div)`
     box-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.2);
   }
 
-  &::before, &::after {
+  &::before,
+  &::after {
     content: '';
     position: absolute;
     background: currentColor;
   }
-  
+
   &::before {
     width: 12px;
     height: 2px;
   }
-  
+
   &::after {
     width: 2px;
     height: 12px;
   }
-  
+
   @media (max-width: 768px) {
     width: 24px;
     height: 24px;
     margin-left: 0.8rem;
-    
+
     &::before {
       width: 10px;
       height: 2px;
     }
-    
+
     &::after {
       width: 2px;
       height: 10px;
     }
   }
-  
+
   @media (max-width: 480px) {
     width: 22px;
     height: 22px;
     margin-left: 0.6rem;
-    
+
     &::before {
       width: 9px;
       height: 2px;
     }
-    
+
     &::after {
       width: 2px;
       height: 9px;
@@ -5360,21 +5396,21 @@ const FaqAnswer = styled(motion.div)`
       animation: ${shimmerEffect} 2s infinite;
     }
   }
-  
+
   @media (max-width: 768px) {
     padding: 0 1.5rem 1.5rem;
     font-size: 1rem;
-    
+
     &::before {
       left: 1.5rem;
       right: 1.5rem;
     }
   }
-  
+
   @media (max-width: 480px) {
     padding: 0 1rem 1.2rem;
     font-size: 0.95rem;
-    
+
     &::before {
       left: 1rem;
       right: 1rem;
@@ -5425,13 +5461,13 @@ const FaqCta = styled(motion.div)`
     );
     z-index: -1;
   }
-  
+
   @media (max-width: 768px) {
     padding: 2rem;
     gap: 1.2rem;
     border-radius: 16px;
   }
-  
+
   @media (max-width: 480px) {
     padding: 1.5rem;
     gap: 1rem;
@@ -5445,15 +5481,15 @@ const FaqCtaText = styled.p`
   color: var(--text-primary);
   text-align: center;
   margin: 0;
-  
+
   @media (max-width: 1024px) {
     font-size: 1.3rem;
   }
-  
+
   @media (max-width: 768px) {
     font-size: 1.2rem;
   }
-  
+
   @media (max-width: 480px) {
     font-size: 1.1rem;
   }
@@ -5504,7 +5540,7 @@ const FaqCtaButton = styled(motion.button)`
     &::before {
       left: 100%;
     }
-    
+
     svg {
       transform: translateX(5px);
     }
@@ -5513,31 +5549,30 @@ const FaqCtaButton = styled(motion.button)`
   &:active {
     transform: translateY(-1px);
   }
-  
+
   svg {
     font-size: 1.1rem;
     transition: transform 0.3s ease;
   }
-  
+
   @media (max-width: 768px) {
     padding: 0.9rem 1.8rem;
     font-size: 1rem;
     gap: 0.7rem;
-    
+
     svg {
       font-size: 1rem;
     }
   }
-  
+
   @media (max-width: 480px) {
     padding: 0.8rem 1.5rem;
     font-size: 0.95rem;
     gap: 0.6rem;
-    
+
     svg {
       font-size: 0.95rem;
     }
   }
 `;
 export default ContextualAdvertising;
-
