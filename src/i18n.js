@@ -3077,24 +3077,29 @@ const resources = {
           'Contextual advertising uses a pay-per-click (PPC) model, meaning you only pay when a user is interested enough in your ad to click on it.',
         infoDescription3:
           'Today, contextual advertising is not just text ads on Google search. It also includes display ads on partner sites, YouTube, Gmail, and even mobile apps. Thanks to advanced machine learning algorithms, these systems are becoming increasingly accurate in selecting potential customers.',
-          iconSearchText: 'buy running shoes in Kiev',
-          iconSearchTitle1: 'Professional running shoes - Discounts up to -40%',
-          iconSearchDes1: 'Wide selection of branded running shoes. Free shipping. 30-day warranty. ✓ Reviews ✓ Expert advice',
-          iconSearchTitle2: 'Running shoes Nike, Adidas, Asics - SportShop',
-          iconSearchDes2: 'Large selection of running shoes in Kyiv ✓ Official guarantee ✓ Delivery throughout Ukraine ✓ Cash on delivery',
+        iconSearchText: 'buy running shoes in Kiev',
+        iconSearchTitle1: 'Professional running shoes - Discounts up to -40%',
+        iconSearchDes1:
+          'Wide selection of branded running shoes. Free shipping. 30-day warranty. ✓ Reviews ✓ Expert advice',
+        iconSearchTitle2: 'Running shoes Nike, Adidas, Asics - SportShop',
+        iconSearchDes2:
+          'Large selection of running shoes in Kyiv ✓ Official guarantee ✓ Delivery throughout Ukraine ✓ Cash on delivery',
 
+        itemInfoTitle1: 'Search advertising',
+        itemInfoDes1:
+          'Appears directly in search results when a user searches for specific products or services',
 
-          itemInfoTitle1: 'Search advertising',
-          itemInfoDes1: 'Appears directly in search results when a user searches for specific products or services',
-  
-          itemInfoTitle2: 'Media network',
-          itemInfoDes2: 'Placed on partner sites, mobile applications and video content, taking into account user interests',
-         
-          itemInfoTitle3: 'Remarketing',
-          itemInfoDes3: 'Targets users who have already visited your site but have not taken the targeted action',
-        
-          itemInfoTitle4: 'Merchandise advertising',
-          itemInfoDes4: 'Displays specific products from your catalog, including photos, prices, and other features',
+        itemInfoTitle2: 'Media network',
+        itemInfoDes2:
+          'Placed on partner sites, mobile applications and video content, taking into account user interests',
+
+        itemInfoTitle3: 'Remarketing',
+        itemInfoDes3:
+          'Targets users who have already visited your site but have not taken the targeted action',
+
+        itemInfoTitle4: 'Merchandise advertising',
+        itemInfoDes4:
+          'Displays specific products from your catalog, including photos, prices, and other features',
 
         // Types Section
         typesTitle: 'Main types of contextual advertising',
@@ -3106,7 +3111,7 @@ const resources = {
         searchAdsDescription:
           'Search ads are advertisements that appear at the top of Google search results when a user enters a specific query. This is one of the most effective ad formats because it addresses the user at the moment of specific interest.',
         searchAdsText: 'Advantages:',
-  
+
         searchAdsAdvantages: [
           'High user intent',
           'Flexible keyword settings',
@@ -3132,7 +3137,7 @@ const resources = {
         videoAdsDescription:
           'Video ads are placed on YouTube and the Google video partner network. They allow you to deliver an emotional message, attract attention, and increase brand trust.',
         videoAdsText: 'Species:',
-          videoAdsTypes: [
+        videoAdsTypes: [
           'In-stream (skippable)',
           'Bumper Ads (up to 6 seconds)',
           'Video Discovery Ads',
@@ -3387,8 +3392,8 @@ const resources = {
           'High efficiency when launching new products',
         ],
         businessSmbStats: [
-          {icon: '⚡', value: '300-400%', label: 'Average ROI' },
-          {icon: '🚀', value: '1-2 days', label: 'Time to first clients' },
+          { icon: '⚡', value: '300-400%', label: 'Average ROI' },
+          { icon: '🚀', value: '1-2 days', label: 'Time to first clients' },
         ],
 
         businessEcommerceName: 'Online stores',
@@ -3401,8 +3406,8 @@ const resources = {
           'Conversion optimization for specific product categories',
         ],
         businessEcommerceStats: [
-          {icon: '📊', value: '30%', label: 'Increase in conversion' },
-          {icon: '📈', value: '25%', label: 'Growth in average check' },
+          { icon: '📊', value: '30%', label: 'Increase in conversion' },
+          { icon: '📈', value: '25%', label: 'Growth in average check' },
         ],
 
         businessServicesName: 'Service sector',
@@ -3415,8 +3420,8 @@ const resources = {
           'CRM integration for client tracking',
         ],
         businessServicesStats: [
-          {icon: '📱', value: '40-50%', label: 'Growth in client base' },
-          {icon: '📍', value: '60%', label: 'More local clients' },
+          { icon: '📱', value: '40-50%', label: 'Growth in client base' },
+          { icon: '📍', value: '60%', label: 'More local clients' },
         ],
 
         businessB2bName: 'B2B companies',
@@ -3429,23 +3434,23 @@ const resources = {
           'Remarketing for long decision cycles',
         ],
         businessB2bStats: [
-          {icon: '💼', value: '25%', label: 'Lead quality improvement' },
-          {icon: '💰', value: '20%', label: 'Lead cost reduction' },
+          { icon: '💼', value: '25%', label: 'Lead quality improvement' },
+          { icon: '💰', value: '20%', label: 'Lead cost reduction' },
         ],
 
         businessStartupsName: 'Startups',
         businessStartupsDescription:
           'Contextual advertising is a way to quickly test hypotheses, check demand, and reach your target audience with minimal time investment.',
         businessStartupsAdvantages: [
-            'Rapid testing of MVPs and business ideas',
-            'Detailed analysis of audience reaction',
-            'Flexible A/B testing strategies',
-            'Scaling when confirming hypotheses',
-          ],
+          'Rapid testing of MVPs and business ideas',
+          'Detailed analysis of audience reaction',
+          'Flexible A/B testing strategies',
+          'Scaling when confirming hypotheses',
+        ],
         businessStartupsStats: [
-            { icon: '🔥', value: '60%', label: 'Time-to-Market Reduction' },
-            { icon: '📝', value: '45%', label: "More feedback" },
-          ],
+          { icon: '🔥', value: '60%', label: 'Time-to-Market Reduction' },
+          { icon: '📝', value: '45%', label: 'More feedback' },
+        ],
 
         suitableForCtaTitle:
           'Not sure if contextual advertising is right for your business?',
@@ -3563,6 +3568,1085 @@ const resources = {
         faqCtaText:
           'Have more questions about contextual advertising? Contact us for a free consultation.',
         faqCtaButton: 'Get a consultation',
+      },
+      seoOptimizationPage: {
+        // Hero Section
+        heroTitle: 'SEO optimization with visible results',
+        heroDescription:
+          'A comprehensive approach to website optimization that improves visibility in search engines, increases organic traffic and conversions. We combine technical SEO, content marketing, and external optimization to achieve stable results.',
+        orderButton: 'Order site audit',
+        keyPoint1: 'Growth in search positions',
+        keyPoint2: 'Increase in targeted traffic',
+        keyPoint3: 'Growth in conversions and sales',
+        iconText1: 'Technical SEO',
+        iconText2: 'Analytics',
+        iconText3: 'Local SEO',
+
+        // SEO Visualization
+        onPageSeo: 'On-Page SEO',
+        offPageSeo: 'Off-Page SEO',
+        technicalSeo: 'Technical SEO',
+        analytics: 'Analytics',
+        localSeo: 'Local SEO',
+
+        // Info Section
+        infoTitle: 'What is SEO optimization',
+        infoParagraph1:
+          'SEO (Search Engine Optimization) is a set of measures aimed at improving website visibility in search engines such as Google. The main goal is to bring website pages to the top positions for relevant user queries.',
+        infoParagraph2:
+          'Unlike paid advertising, SEO provides a long-term effect: the better optimized the site, the more free organic traffic it receives. This allows reducing customer acquisition costs in the long term.',
+        infoParagraph3:
+          'SEO covers technical quality of the site, content, external links, behavioral factors, local presence, and other aspects that affect ranking. Proper SEO strategy allows not just to "be in the top", but to attract exactly the audience that is ready to interact with your brand.',
+
+        // Advantages
+        advantage1Title: 'Long-term results',
+        advantage1Desc:
+          'Configured SEO optimization works for you for years, unlike contextual advertising that stops when the budget is turned off.',
+        advantage2Title: 'Target audience',
+        advantage2Desc:
+          'Attracting visitors who actively search for your services and are ready to interact with your brand.',
+        advantage3Title: 'User trust',
+        advantage3Desc:
+          'Most users trust organic search results more than advertising ads.',
+
+        // Directions Section
+        directionsTitle: 'Main SEO directions',
+        directionsDescription:
+          'SEO optimization consists of several key directions, each of which affects website visibility in search engines. Harmonious combination of these directions allows achieving stable organic traffic and position growth.',
+        technicalTab: 'Technical optimization',
+        onPageTab: 'Internal optimization',
+        offPageTab: 'External optimization',
+        localTab: 'Local SEO',
+
+        // Technical SEO
+        technicalTitle: 'Technical optimization',
+        technicalText:
+          'This is the foundation of SEO. It includes website loading speed, mobile responsiveness, correct page indexing, robots.txt and sitemap.xml file settings, elimination of duplicates and broken links. If the technical foundation is poor — it will be difficult to promote the site.',
+        technicalFeatures: [
+          'Page loading speed',
+          'Mobile device responsiveness',
+          'robots.txt and sitemap.xml settings',
+          'Elimination of duplicates and broken links',
+        ],
+
+        // On-Page SEO
+        onPageTitle: 'Internal optimization (On-Page SEO)',
+        onPageText:
+          "This direction covers work with content and page structure. It's important to properly write meta tags (title, description), headings (H1-H6), optimize images, use keywords in texts, improve internal linking. Content must be relevant, unique, and useful for the user.",
+        onPageFeatures: [
+          'Meta tags and headings optimization',
+          'Creating quality content with keywords',
+          'Image and multimedia optimization',
+          'Building internal linking',
+        ],
+
+        // Off-Page SEO
+        offPageTitle: 'External optimization (Off-Page SEO)',
+        offPageText:
+          "It includes building a quality backlink profile. Links from authoritative resources increase search engines' trust in the site. It's also important to work on brand mentions, reviews, and online reputation.",
+        offPageFeatures: [
+          'Building backlink profile',
+          'Collaboration with authoritative industry resources',
+          'Working with reviews and brand mentions',
+          'Improving reputation in social networks',
+        ],
+
+        // Local SEO
+        localTitle: 'Local SEO',
+        localText:
+          'Relevant for businesses that provide services in a specific region. Optimization includes creating and maintaining a Google Business profile, working with local keywords, reviews, and geolocation relevance.',
+        localFeatures: [
+          'Creating and optimizing Google Business profile',
+          'Geolocation relevance and local keywords',
+          'Managing local reviews',
+          'Presence in local directories and maps',
+        ],
+
+        // Stages Section
+        stagesTitle: 'SEO work stages',
+        stagesDescription:
+          'Effective SEO is impossible without clearly defined stages. Each of them is important for achieving stable results and gradual growth of organic traffic.',
+        stages: [
+          {
+            title: 'Site audit',
+            text: 'We start with a complete technical and content analysis. We identify errors, structural deficiencies, indexing problems, duplicates, weak points in content and external links.',
+            bullets: [
+              'Technical analysis',
+              'Content audit',
+              'Indexing analysis',
+              'Link checking',
+            ],
+          },
+          {
+            title: 'SEO strategy formation',
+            text: 'Based on the audit, we develop a promotion plan. We determine target pages, semantic core (key queries), optimization priorities, and external activities.',
+            bullets: [
+              'Promotion plan',
+              'Semantic core',
+              'Target pages',
+              'Optimization priorities',
+            ],
+          },
+          {
+            title: 'Technical and internal optimization',
+            text: 'We conduct work on site structure, loading speed, responsiveness. We make changes to meta tags, headings, texts, internal linking, images.',
+            bullets: [
+              'Structure optimization',
+              'Loading speed',
+              'Meta tags and headings',
+              'Internal linking',
+            ],
+          },
+          {
+            title: 'Content marketing and semantic expansion',
+            text: 'We create new pages, publish SEO articles, update existing content. Gradually we cover a wider range of queries, expanding organic traffic.',
+            bullets: [
+              'Creating new pages',
+              'SEO articles',
+              'Content updates',
+              'Semantic expansion',
+            ],
+          },
+          {
+            title: 'Link building and reputation management',
+            text: 'We establish obtaining quality external links, publish materials on authoritative platforms, work with reviews and brand mentions.',
+            bullets: [
+              'External links',
+              'Guest publications',
+              'Review management',
+              'Mention monitoring',
+            ],
+          },
+          {
+            title: 'Monitoring and analytics',
+            text: 'We constantly track positions, traffic, user behavior, keyword effectiveness. Based on data — we adapt strategy and action plan.',
+            bullets: [
+              'Position monitoring',
+              'Traffic analysis',
+              'User behavior assessment',
+              'Strategy adaptation',
+            ],
+          },
+        ],
+
+        // Tools Section
+        toolsTitle: 'SEO Specialist Tools',
+        toolsDescription:
+          'Successful SEO optimization is impossible without professional tools that help analyze, control changes, and measure results.',
+        seoToolsItem: [
+          {
+            name: 'Google Search Console',
+            tagline:
+              'Main service for monitoring indexing and technical errors',
+            description:
+              'The official Google tool that allows you to control how the search engine sees your site. Provides valuable data on clicks, impressions, CTR, and positions in search results.',
+            features: [
+              'Monitoring page indexing',
+              'Detection of technical errors',
+              'Analysis of key queries',
+              'Mobile version check',
+            ],
+          },
+          {
+            name: 'Google Analytics / GA4',
+            tagline: 'Source of user behavior and conversion data',
+            description:
+              'A powerful analytics platform for tracking traffic, user behavior, traffic sources, and conversions. Allows you to create segments, analyze funnels, and measure ROI.',
+            features: [
+              'Traffic analysis by sources',
+              'Tracking user behavior',
+              'Measuring conversions',
+              'Personalized reports',
+            ],
+          },
+          {
+            name: 'Ahrefs / Semrush / Serpstat',
+            tagline:
+              'Platforms for comprehensive SEO analysis and competitive intelligence',
+            description:
+              'Professional tools for comprehensive SEO analysis: keyword research, backlink audit, position tracking, competitor and content analysis.',
+            features: [
+              'Keyword research',
+              'Backlink analysis',
+              'Site position tracking',
+              'Competitor monitoring',
+            ],
+          },
+          {
+            name: 'Screaming Frog SEO Spider',
+            tagline: 'Site scanner for detecting technical errors',
+            description:
+              'A desktop crawler for deep technical audit. Scans the site like a search bot, detecting problems with meta tags, structure, redirects, broken links, and other technical aspects.',
+            features: [
+              'Duplicate content detection',
+              'Site structure analysis',
+              'Redirect and status code check',
+              'Broken link search',
+            ],
+          },
+          {
+            name: 'PageSpeed Insights / GTmetrix',
+            tagline: 'Services for evaluating page load speed',
+            description:
+              'Tools for analyzing page load speed, identifying factors that slow down the site, and getting specific recommendations for speed optimization.',
+            features: [
+              'Measuring load speed',
+              'Core Web Vitals assessment',
+              'Optimization recommendations',
+              'Comparison with competitors',
+            ],
+          },
+          {
+            name: 'SurferSEO / NeuronWriter',
+            tagline: 'Services for SEO analysis and content optimization',
+            description:
+              'Intelligent tools for creating content optimized for search engines. Analyze top results and provide recommendations on structure, keyword density, and additional terms.',
+            features: [
+              'Competitor content analysis',
+              'Text structure optimization',
+              'Keyword recommendations',
+              'Content quality assessment',
+            ],
+          },
+        ],
+        toolsText: 'Go to the official website',
+        metricsNote:
+          'Monitoring these metrics allows not only to evaluate progress, but also to timely identify problems and adjust promotion strategy.',
+        metricsAuditButton: 'Order analytical audit',
+
+        metricsTitle: 'SEO Performance Metrics',
+        metricsDescription:
+          "SEO is about analytics and measurable results. To evaluate the success of optimization, it's necessary to regularly track key metrics. Here are the most important ones:",
+        metrics: [
+          {
+            number: '01',
+            name: 'Organic Traffic',
+            description:
+              'The number of visitors who come to the site from search engines. Traffic growth indicates improved site visibility.',
+            trend: '+32%',
+            chartLegend: {
+              week1: 'Week 1',
+              week7: 'Week 7',
+            },
+            buttonText: 'Learn More',
+          },
+          {
+            number: '02',
+            name: 'Keyword Positions',
+            description:
+              'Shows where your pages rank in Google for target queries. Progress in positions is one of the main indicators of an effective SEO strategy.',
+            trend: '+22 positions',
+            chartLegend: {
+              week1: 'Week 1',
+              week7: 'Week 7',
+            },
+            buttonText: 'Learn More',
+          },
+          {
+            number: '03',
+            name: 'Organic Conversions',
+            description:
+              "It's important not only to get traffic, but also for users to perform target actions: purchases, applications, calls, etc.",
+            trend: '+17%',
+            chartLegend: {
+              week1: 'Week 1',
+              week7: 'Week 7',
+            },
+            buttonText: 'Learn More',
+          },
+          {
+            number: '04',
+            name: 'Time on Site and Bounce Rate',
+            description:
+              "These behavioral metrics signal content quality and navigation convenience. If users quickly leave the site — it's worth reviewing UX or content.",
+            trend: '-22% bounces',
+            chartLegend: {
+              week1: 'Week 1',
+              week7: 'Week 7',
+            },
+            buttonText: 'Learn More',
+          },
+          {
+            number: '05',
+            name: 'Backlinks',
+            description:
+              'Search engines evaluate site authority by the number and relevance of links from other resources. This is a critical factor in external optimization.',
+            trend: '+43 links',
+            chartLegend: {
+              week1: 'Week 1',
+              week7: 'Week 7',
+            },
+            buttonText: 'Learn More',
+          },
+          {
+            number: '06',
+            name: 'Indexed Pages',
+            description:
+              "The number of pages available in search. It's important that all important site sections are indexed, while low-quality or duplicate pages are excluded.",
+            trend: '+95 pages',
+            chartLegend: {
+              week1: 'Week 1',
+              week7: 'Week 7',
+            },
+            buttonText: 'Learn More',
+          },
+        ],
+        metricsFooterDescription:
+          'Monitoring these metrics allows not only to evaluate progress, but also to timely identify problems and adjust the promotion strategy.',
+        metricsFooterButton: 'Order Analytics Audit',
+
+        // Projects Section
+        projectsTitle: 'What projects SEO is suitable for',
+        projectsDescription:
+          "SEO optimization is a universal promotion tool, but it's especially effective for projects with medium- and long-term growth strategies.",
+        projects: [
+          {
+            name: 'Online stores (eCommerce)',
+            text: 'Catalogs with a large number of products and categories are perfect for SEO. They receive a stable flow of buyers for a wide range of queries.',
+            benefits: [
+              'Organic traffic across the entire assortment',
+              'Coverage from general to niche queries',
+              'Reducing customer acquisition cost',
+            ],
+          },
+          {
+            name: 'B2B and corporate websites',
+            text: 'SEO allows finding potential clients who are looking for specialized services or products. This is effective for generating quality leads in complex niches.',
+            benefits: [
+              'High traffic relevance',
+              'Growing authority in the industry',
+              'Quality leads with high LTV',
+            ],
+          },
+          {
+            name: 'Local business',
+            text: 'Stores, salons, medical centers, restaurants can significantly increase attendance thanks to local SEO — especially through "near me" search and Google Maps.',
+            benefits: [
+              'Attracting clients by geolocation',
+              'Presence in local 3-pack',
+              'Advantage over competitors in the area',
+            ],
+          },
+          {
+            name: 'Educational platforms and blogs',
+            text: 'Quality content and proper optimization help attract thousands of visitors from search, forming a loyal audience.',
+            benefits: [
+              'Long-term traffic growth',
+              'Brand expertise formation',
+              'Scalability through various topics',
+            ],
+          },
+          {
+            name: 'Startups and new projects',
+            text: 'For new brands, SEO is an opportunity to take a place in the niche without large advertising costs. The main thing is to competently build the structure from the very beginning.',
+            benefits: [
+              'Reducing advertising costs',
+              'Growth together with niche seasonality',
+              'Proper start with SEO-friendly architecture',
+            ],
+          },
+        ],
+        projectsNote:
+          'At the same time, SEO is less effective for temporary campaigns or one-time promotions where result speed is critical — there contextual advertising is better suited. If you need a quick result — consider combining SEO and contextual advertising to get both short-term and long-term results.',
+
+        // Approaches Section
+        approachesTitle: 'Our approaches to promotion',
+        approachesDescription:
+          'We understand that every business is unique, so our approach to SEO is individual, flexible, and maximally transparent.',
+        approaches: [
+          {
+            title: 'Deep niche and competitor analysis',
+            text: 'Before starting, we thoroughly study your market, competitors, user queries, and search trends. This allows forming a realistic strategy that really works.',
+          },
+          {
+            title: 'Prioritizing work by impact on results',
+            text: "We don't scatter resources. First, we solve critical technical problems, while simultaneously launching optimization of key pages. This gives faster results.",
+          },
+          {
+            title: 'Focus on quality content',
+            text: 'Promotion without strong content is ineffective. We create unique texts optimized for search queries, but with focus on value for the user.',
+          },
+          {
+            title: 'White hat link building',
+            text: 'We build links only from authoritative and relevant resources. We don\'t use "gray" schemes that can harm your site in the long term.',
+          },
+          {
+            title: 'Continuous analytics and adaptation',
+            text: 'SEO is not a one-time service, but a continuous process. We analyze results monthly, review strategy, and give you a complete picture of changes.',
+          },
+          {
+            title: 'Long-term collaboration',
+            text: 'Our goal is not just to "bring to the top", but to build a system of stable traffic attraction that will work for years.',
+          },
+        ],
+        approachesCtaTitle: 'Ready for organic traffic growth?',
+        approachesCtaText:
+          'Order a free consultation where we will analyze your site and offer specific steps to improve its visibility in search.',
+        approachesCtaButton: 'Order consultation',
+
+        // Results Section
+        resultsTitle: 'Results we achieve',
+        resultsDescription:
+          "We focus on specific business results, not just growth in search rankings. Here's what our clients receive as a result of SEO optimization:",
+        results: [
+          {
+            title: 'Increase in organic traffic by 2–5 times',
+            text: 'Thanks to technical site improvement, relevant content, and semantic expansion, we significantly increase the number of visitors from search.',
+          },
+          {
+            title: 'Improving brand visibility in Google',
+            text: 'Your site starts appearing for more queries, including informational, commercial, and branded ones. This increases recognition and trust.',
+          },
+          {
+            title: 'Stable growth in leads and sales',
+            text: 'Quality traffic brings interested users who more often leave applications, order services, or buy products.',
+          },
+          {
+            title: 'Reducing dependence on paid advertising',
+            text: 'Strong SEO strategy allows receiving traffic without constant advertising costs. This gives business more financial stability.',
+          },
+          {
+            title: 'Building long-term advantage',
+            text: 'SEO works for the future. Even after completing active work, results are preserved and continue to bring value.',
+          },
+        ],
+        resultsNote:
+          'We don\'t promise "top-1 in a week", but we guarantee systematic, stable, and predictable growth — exactly what serious business needs.',
+
+        // FAQ Section
+        faqTitle: 'FAQ',
+        faq: [
+          {
+            question: 'How long does it take to see results from SEO?',
+            answer:
+              'First changes may be noticeable as early as 1–2 months after start. However, stable growth in positions and traffic usually occurs after 3–6 months of active work, depending on niche competitiveness and site condition.',
+          },
+          {
+            question:
+              'Is SEO needed if contextual advertising is already launched?',
+            answer:
+              'Yes. Contextual advertising gives instant traffic, but only while you pay. SEO builds long-term presence in search, reducing customer acquisition costs in the future.',
+          },
+          {
+            question: 'Can a new site without history be promoted?',
+            answer:
+              'Yes, but it requires more time and effort. For "young" domains, we usually start with basic technical optimization, content, and gradual link building.',
+          },
+          {
+            question: 'What budget is needed for SEO promotion?',
+            answer:
+              'Budget depends on project scale, query competitiveness, and goals. On average, for small business, minimum monthly budget starts from $500–800.',
+          },
+          {
+            question: 'Can top-1 in Google be guaranteed?',
+            answer:
+              'No. No responsible SEO specialist gives such guarantees. Google algorithms constantly change, and positions depend on many factors. We guarantee systematic work that gives real results.',
+          },
+        ],
+        faqCtaText: 'Have additional questions about SEO optimization?',
+        faqCtaButton: 'Contact us',
+      },
+      targetedAdvertisingPage: {
+        // Hero Section
+        heroTitle: 'Targeted advertising that converts',
+        heroDescription:
+          'We create advertising campaigns that precisely reach your target audience. We use advanced algorithms and data to maximize ROI and increase conversions.',
+        orderButton: 'Launch advertising',
+        keyPoint1: 'Precise audience targeting',
+        keyPoint2: 'Increase conversions up to 350%',
+        keyPoint3: 'Guaranteed results',
+
+        // Social Media Modal Data
+        socialMedia: {
+          facebook: {
+            name: 'Facebook',
+            description:
+              'The largest social network with powerful targeting tools and extensive advertising capabilities.',
+            features: [
+              'Detailed demographic targeting',
+              'Retargeting based on user actions',
+              'Look-alike audiences',
+              'Various ad formats',
+              'Instagram integration',
+            ],
+          },
+          instagram: {
+            name: 'Instagram',
+            description:
+              'Visual platform ideal for brands working with B2C audiences and youth segments.',
+            features: [
+              'High engagement rate',
+              'Stories and Reels advertising',
+              'Shopping features',
+              'Influencer marketing',
+              'Visual content',
+            ],
+          },
+          tiktok: {
+            name: 'TikTok',
+            description:
+              'The fastest growing platform with unique opportunities for creative advertising and Gen Z reach.',
+            features: [
+              'Algorithmic promotion',
+              'Viral potential',
+              'Young audience',
+              'Creative formats',
+              'High CTR',
+            ],
+          },
+          linkedin: {
+            name: 'LinkedIn',
+            description:
+              'Professional network best for B2B marketing and reaching business audiences.',
+            features: [
+              'B2B targeting',
+              'Professional data',
+              'Lead Generation Forms',
+              'Sponsored Content',
+              'Message Ads',
+            ],
+          },
+          google: {
+            name: 'Google Ads',
+            description:
+              'The most powerful advertising platform with extensive targeting capabilities and reach.',
+            features: [
+              'Search advertising',
+              'Display network',
+              'YouTube advertising',
+              'Remarketing',
+              'Smart campaigns',
+            ],
+          },
+        },
+
+        // What is Targeted Advertising
+        whatIsTitle: 'What is targeted advertising',
+        whatIsParagraph1:
+          'Targeted advertising is an online advertising format that allows showing ads only to a specific audience defined by specific parameters: age, gender, geolocation, interests, behavior, status in the sales funnel, etc.',
+        whatIsParagraph2:
+          'Unlike classical advertising, which covers a broad audience, targeting allows concentrating the budget on those who are most likely interested in the product or service.',
+        whatIsParagraph3:
+          "Targeting is most often used in social networks (Facebook, Instagram, TikTok, LinkedIn), as well as in Google's contextual media network.",
+        whatIsStat1: 'Targeting accuracy',
+        whatIsStat2: 'Budget savings',
+        whatIsStat3: 'Faster results',
+        whatIsStatIconText1: 'Your business',
+        whatIsStatIconText2: 'in the center of attention',
+
+        // Targeting Types
+        targetingTypesTitle: 'Types of targeting',
+        targetingTypesSubtitle:
+          'Targeting comes in different types, and proper combination of several of them allows achieving maximum effectiveness of the advertising campaign.',
+        targetingTypesStats: [
+          '90%+ accuracy',
+          'Up to 400% ROI',
+          '5M+ audiences',
+        ],
+        targetingTypes: [
+          {
+            number: '01 / Demographic',
+            title: 'Audience targeting',
+            description:
+              'This type of targeting is based on user characteristics: age, gender, place of residence, language, interests, behavior, relationship status, education, position, and other demographic or behavioral factors.',
+            example:
+              "Example: If you sell children's toys, we can set up ad display for women aged 25-35 who have children, are interested in parenting, and regularly buy children's products.",
+            features: ['Demographics', 'Interests', 'Behavior', 'Geolocation'],
+          },
+          {
+            number: '02 / Return',
+            title: 'Retargeting',
+            description:
+              'This is showing ads to users who have already interacted with your business: visited the site, viewed products, added to cart, but didn\'t make a purchase. Retargeting "catches up" such users with a relevant offer.',
+            example:
+              'Effectiveness: Especially effective for e-commerce, booking services, online courses, and other businesses with longer decision-making cycles. Conversion can increase up to 10 times.',
+            features: [
+              'Tracking pixels',
+              'Dynamic ads',
+              'Cross-platform',
+              'Personalization',
+            ],
+          },
+          {
+            number: '03 / Similarity',
+            title: 'Look-alike audiences',
+            description:
+              'Look-alike audiences are created based on existing clients or site visitors. Advertising platform algorithms analyze your target audience behavior and find users with similar characteristics.',
+            example:
+              'Advantage: This approach allows reaching new audiences without losing lead quality. Machine learning algorithms find the most promising potential clients.',
+            features: [
+              'AI algorithms',
+              'Machine learning',
+              'Scaling',
+              'Auto-optimization',
+            ],
+          },
+        ],
+
+        // Launch Steps
+        launchStepsTitle: 'Stages of launching targeted advertising',
+        launchStepsSubtitle:
+          "For targeted advertising to bring expected results, it's important to follow a clear campaign launch structure. We work according to a proven algorithm that covers all key stages.",
+        launchSteps: [
+          {
+            title: 'Business and audience analysis',
+            description:
+              'We study the features of your product, competitive environment, and portrait of a potential client for precise strategy formulation.',
+            features: [
+              'Market research',
+              'Audience portrait',
+              'Competitive analysis',
+              'SWOT analysis',
+            ],
+          },
+          {
+            title: 'Campaign goal setting',
+            description:
+              'Depending on business needs, we determine the main goal: sales, traffic, lead generation, subscriptions, or brand awareness.',
+            features: [
+              'KPI metrics',
+              'Budget planning',
+              'ROI forecast',
+              'Timeline',
+            ],
+          },
+          {
+            title: 'Creative development',
+            description:
+              'We create effective visuals, headlines, and texts that match audience interests and encourage action.',
+            features: [
+              'Design layouts',
+              'Copywriting',
+              'A/B testing',
+              'Branding',
+            ],
+          },
+          {
+            title: 'Campaign setup',
+            description:
+              'We conduct precise targeting setup, form audiences, and launch test ads with budget control.',
+            features: [
+              'Targeting Setup',
+              'Audiences',
+              'Budget control',
+              'Testing',
+            ],
+          },
+          {
+            title: 'Launch and monitoring',
+            description:
+              'After launch, we daily track effectiveness, analyze indicators, and make operational changes to improve results.',
+            features: [
+              '24/7 monitoring',
+              'Analytics',
+              'Operational changes',
+              'Reporting',
+            ],
+          },
+          {
+            title: 'Optimization and scaling',
+            description:
+              'After getting results, we optimize bids, audiences, ad formats, and scale the campaign for better results.',
+            features: [
+              'Bid optimization',
+              'Scaling',
+              'New formats',
+              'ROI maximization',
+            ],
+          },
+        ],
+        resultsApproachTitle: 'Results of our approach',
+        resultsApproachStats: [
+          {
+            number: '85%',
+            label: 'Successful campaigns',
+          },
+          {
+            number: '4.2x',
+            label: 'Average ROI',
+          },
+          {
+            number: '-40%',
+            label: 'CPA reduction',
+          },
+          {
+            number: '7 days',
+            label: 'To first results',
+          },
+        ],
+
+        // Analytics Tools
+        analyticsToolsTitle: 'Tools for analytics and setup',
+        analyticsToolsSubtitle:
+          'For professional launch and management of targeted advertising, we use proven platforms and analytical tools that allow achieving maximum effectiveness.',
+        analyticsToolsShowcase: 'Professional tech-stack for maximum results',
+        analyticsToolsShowcaseDescription:
+          'Thanks to this set of tools, we not only launch advertising but also fully manage the result, focusing on numbers, not intuition.',
+        analyticsTools: [
+          {
+            badge: 'META',
+            name: 'Meta Ads Manager',
+            description:
+              'Central tool for launching advertising on Facebook, Instagram, and Messenger. Allows setting up audiences, goals, formats, and conducting A/B testing.',
+            features: [
+              'Audience targeting',
+              'A/B testing',
+              'Retargeting',
+              'Automation',
+            ],
+            stats: [
+              { number: '3B+', label: 'Users' },
+              { number: '95%', label: 'Accuracy' },
+            ],
+          },
+          {
+            badge: 'TIKTOK',
+            name: 'TikTok Ads Manager',
+            description:
+              'Platform for targeting youth audiences. Ability to create native video ads and launch advertising through influencers.',
+            features: [
+              'Video creatives',
+              'Influencer advertising',
+              'Gen Z audience',
+              'Viral content',
+            ],
+            stats: [
+              { number: '1B+', label: 'Active' },
+              { number: '89%', label: 'Engagement' },
+            ],
+          },
+          {
+            badge: 'GOOGLE',
+            name: 'Google Ads & Analytics',
+            description:
+              'Powerful set for visual advertising, YouTube campaigns, and detailed analytics of user behavior on the site after coming from ads.',
+            features: [
+              'YouTube advertising',
+              'Display network',
+              'GA4 analytics',
+              'Conversions',
+            ],
+            stats: [
+              { number: '8.5B', label: 'Queries/day' },
+              { number: '92%', label: 'Reach' },
+            ],
+          },
+          {
+            badge: 'TRACKING',
+            name: 'Pixel & UTM systems',
+            description:
+              'Tracking tools and UTM tags for precise tracking of user interactions, retargeting setup, and channel effectiveness analysis.',
+            features: [
+              'Meta Pixel',
+              'Google Tag Manager',
+              'UTM tracking',
+              'CRM integration',
+            ],
+            stats: [
+              { number: '99.9%', label: 'Accuracy' },
+              { number: 'Real-time', label: 'Data' },
+            ],
+          },
+        ],
+        analyticsIntegrationTitle: 'Complete integration and synchronization',
+        analyticsIntegrationDescription:
+          'All tools work in a unified ecosystem, ensuring precise tracking, optimization, and scaling of your advertising campaigns.',
+        analyticsIntegrationBenefits: [
+          {
+            title: 'Unified Dashboard',
+            text: 'All metrics in one place for quick analysis and decision making',
+          },
+          {
+            title: 'Real-time optimization',
+            text: 'Automatic campaign adjustment based on current data',
+          },
+          {
+            title: 'Precise attribution',
+            text: 'Complete understanding of customer journey from click to conversion',
+          },
+        ],
+
+        // Metrics
+        metricsTitle: 'Key performance metrics',
+        metricsSubtitle:
+          "For targeted advertising to bring real business results, it's important to constantly analyze its effectiveness by key indicators.",
+        metricsHighlightTitle: 'Data-driven approach to optimization',
+        metricsHighlightText:
+          'We work exclusively with numbers and facts, constantly analyzing metrics to achieve maximum ROI of your advertising campaigns.',
+        metrics: [
+          {
+            name: 'Click-Through Rate',
+            abbr: 'CTR',
+            description:
+              'Clickability indicator — percentage of people who saw the ad and clicked on it. The higher the CTR, the more interesting the ad is for the audience.',
+            value: '2.5%',
+            valueLabel: 'Average indicator',
+            example: 'Example: 100,000 impressions → 2,500 clicks = CTR 2.5%',
+          },
+          {
+            name: 'Cost Per Click',
+            abbr: 'CPC',
+            description:
+              'Cost per click — how much each click on an ad costs. Allows evaluating the effectiveness of creatives and audience settings.',
+            value: '$25',
+            valueLabel: 'Per click',
+            example: 'Budget $5,000 ÷ 200 clicks = CPC $25',
+          },
+          {
+            name: 'Cost Per Mille',
+            abbr: 'CPM',
+            description:
+              'Cost per 1000 impressions. Used when the goal is awareness or reach. Gives understanding of the cost of brand demonstration to the audience.',
+            value: '$150',
+            valueLabel: 'Per 1000 impressions',
+            example: '$1,500 budget → 10,000 impressions = CPM $150',
+          },
+          {
+            name: 'Cost Per Action',
+            abbr: 'CPA',
+            description:
+              'Cost per target action — purchase, form filling, call. One of the main indicators for evaluating ROI of an advertising campaign.',
+            value: '$500',
+            valueLabel: 'Per conversion',
+            example: '$10,000 budget → 20 purchases = CPA $500',
+          },
+          {
+            name: 'Return On Ad Spend',
+            abbr: 'ROAS',
+            description:
+              'Return on advertising spend. Shows how much profit you received from each invested dollar.',
+            value: '5:1',
+            valueLabel: 'Profit:Spend',
+            example: '$1,000 spend → $5,000 revenue = ROAS 5:1',
+          },
+          {
+            name: 'Conversion Rate',
+            abbr: 'CR',
+            description:
+              'Percentage of users who performed the required action after clicking on an ad. This can be a purchase, registration, or contact.',
+            value: '12%',
+            valueLabel: 'Conversion',
+            example: '1,000 visitors → 120 conversions = CR 12%',
+          },
+          {
+            name: 'Leads & Sales',
+            abbr: 'RESULT',
+            description:
+              'Final and most important indicator — how many target actions the campaign brought. We always focus on achieving specific business results.',
+            value: '150',
+            valueLabel: 'Leads/month',
+            example: 'Result: 150 quality leads per month of campaign',
+          },
+        ],
+
+        // Business Types
+        businessTypesTitle:
+          'What businesses are suitable for targeted advertising',
+        businessTypesSubtitle:
+          'Targeted advertising is a universal tool that can be adapted to any type of business. Each direction has its own features and advantages.',
+        businessTypes: [
+          {
+            title: 'E-commerce',
+            description:
+              "Advertising helps attract new buyers, return those who didn't complete a purchase, and stimulate repeat sales through retargeting and dynamic advertising.",
+            tags: ['Retargeting', 'Look-alike', 'Dynamic advertising'],
+          },
+          {
+            title: 'Educational projects',
+            features: [
+              'Interest filtering',
+              'Professional targeting',
+              'Lead Generation',
+              'Webinar funnels',
+            ],
+          },
+          {
+            title: 'Service sector',
+            description:
+              'Targeting allows "catching" a potential client at the right moment — when they\'re looking for a specialist, doctor, or consultant.',
+          },
+          {
+            title: 'Events and activities',
+            description:
+              'Selling tickets to concerts, conferences, festivals through local and interest-oriented targeting.',
+          },
+          {
+            title: 'B2B companies',
+            features: [
+              'LinkedIn targeting • Decision makers • Account-based marketing',
+            ],
+          },
+          {
+            title: 'Local businesses',
+            description:
+              'Coffee shops, beauty salons, clinics, gyms — geotargeting for those nearby.',
+          },
+        ],
+
+        // Strengths
+        strengthsTitle: 'Our strengths',
+        strengthsSubtitle:
+          "We don't just launch targeted advertising — we take full responsibility for the result. Thanks to experience, systematic approach, and deep understanding of business processes, we help clients achieve specific goals.",
+        strengths: [
+          {
+            title: 'Deep analytics before launch',
+            description:
+              'We always start with market analysis, competitors, and target audience. This allows creating truly relevant ads, not shooting blindly.',
+            features: [
+              'Competitor analysis',
+              'Audience research',
+              'Market analytics',
+              'Buyer personas',
+            ],
+          },
+          {
+            title: 'Individual strategy for each client',
+            description:
+              'No templates. We create an advertising campaign that takes into account the specifics of your product, business model, and goals.',
+            features: [
+              'Personal approach',
+              'Unique strategy',
+              'Specificity consideration',
+              'Flexible plan',
+            ],
+          },
+          {
+            title: 'Strong creatives',
+            description:
+              'The team includes copywriters and designers who know how to attract attention, generate interest, and stimulate action.',
+            features: [
+              'Professional design',
+              'Catchy texts',
+              'A/B testing',
+              'CTR optimization',
+            ],
+          },
+          {
+            title: 'Constant control and optimization',
+            description:
+              'We daily monitor campaigns, analyze effectiveness, change audiences, budgets, and creatives.',
+            features: [
+              'Daily monitoring',
+              'Quick response',
+              'Budget optimization',
+              'Scaling',
+            ],
+          },
+          {
+            title: 'Transparency and reporting',
+            description:
+              'Regular reporting with clear metrics — you always see what the budget is spent on and what results your business receives.',
+            features: [
+              'Detailed reports',
+              'Transparent metrics',
+              'Regular meetings',
+              'Cabinet access',
+            ],
+          },
+          {
+            title: 'Result orientation',
+            description:
+              "Our goal is not the number of clicks, but your profit. We always look at business through the owner's eyes and achieve ROI.",
+            features: [
+              'Profit focus',
+              'Business thinking',
+              'Measurable KPIs',
+              'Result guarantee',
+            ],
+          },
+        ],
+
+        // Results
+        resultsTitle: 'Results we achieve',
+        resultsIntro:
+          'We measure effectiveness not by likes and reach, but by specific business indicators: number of applications, sales, lead cost, advertising profitability. Here are typical results of our campaigns:',
+        resultsDashboard: [
+          {
+            number: '2-5x',
+            label: 'Sales increase',
+            description: 'Scaling without increasing acquisition cost',
+          },
+          {
+            number: '30-70%',
+            label: 'Lower lead cost',
+            description: 'Due to optimization and testing',
+          },
+          {
+            number: '400%+',
+            label: 'ROAS',
+            description: 'With proper campaign setup',
+          },
+        ],
+
+        // DETAILED RESULTS ANALYTICS (ADDED)
+        resultsBreakdownTitle: 'Detailed results analytics',
+        resultsBreakdown: [
+          {
+            icon: '🎯',
+            number: '15%',
+            title: 'Advertising conversion',
+            description:
+              'Especially in niches with clear needs — medicine, services, educational products. We know how to work with "hot" audiences.',
+          },
+          {
+            icon: '🚀',
+            number: '300+',
+            title: 'Successful launches',
+            description:
+              "During our work, we've launched over 300 advertising campaigns in various niches. Our experience allows quick adaptation.",
+          },
+          {
+            icon: '💎',
+            number: '80%',
+            title: 'Clients return',
+            description:
+              'We build long-term partnerships since we work transparently and are always focused on results.',
+          },
+          {
+            icon: '��',
+            number: '4.2x',
+            title: 'Average ROI',
+            description:
+              'Our clients receive 4+ times more revenue than they spend on advertising thanks to a well-thought-out sales funnel.',
+          },
+        ],
+
+        // FAQ (ADDED)
+        faqTitle: 'FAQ',
+        faq: [
+          {
+            question:
+              'How long does it take to see first results from targeted advertising?',
+            answer:
+              "First clicks and reach appear already on the day of launch. However, to get stable results in the form of leads or sales usually takes 3-7 days — that's how long testing of audiences and creatives lasts.",
+          },
+          {
+            question:
+              'Can you do without a website — for example, advertise only an Instagram account?',
+            answer:
+              'Yes, you can launch advertising on social media accounts or even in Direct. This is especially relevant for small businesses, beauty industry, local services. The main thing is to have clear positioning and visually attractive page.',
+          },
+          {
+            question:
+              'How much do you need to invest in advertising to get results?',
+            answer:
+              'Recommended minimum budget — from $300-500 per month. This is enough for testing hypotheses and launching the first effective "audience + creative" connection. The more complex the niche — the larger budget may be needed for data collection and scaling.',
+          },
+          {
+            question:
+              "What's the difference between targeting and promotion through influencers?",
+            answer:
+              'Targeting allows more precise control of audience, budget, and results. Blogger advertising is mainly about awareness, not guaranteed applications. Often the best results come from combining both tools.',
+          },
+          {
+            question:
+              'What happens after the campaign ends? Will advertising stop?',
+            answer:
+              'We save all developed audiences, creatives, and analytics. This allows quickly relaunching advertising in the future or using results for other marketing channels. Also, upon request, we can transfer access and teach your team to maintain campaigns independently.',
+          },
+        ],
+        faqCtaText: 'Have additional questions about targeted advertising?',
+        faqCtaButton: 'Contact us',
       },
     },
   },
@@ -6647,22 +7731,27 @@ const resources = {
 
         iconSearchText: 'купити кросівки для бігу в Києві',
         iconSearchTitle1: 'Професійні бігові кросівки - Знижки до -40%',
-        iconSearchDes1: 'Широкий вибір брендових кросівок для бігу. Безкоштовна доставка. Гарантія 30 днів. ✓ Відгуки ✓ Консультація експертів',
+        iconSearchDes1:
+          'Широкий вибір брендових кросівок для бігу. Безкоштовна доставка. Гарантія 30 днів. ✓ Відгуки ✓ Консультація експертів',
         iconSearchTitle2: 'Кросівки для бігу Nike, Adidas, Asics - SportShop',
-        iconSearchDes2: 'Великий вибір бігових кросівок у Києві ✓ Офіційна гарантія ✓ Доставка по всій Україні ✓ Оплата при отриманні',
+        iconSearchDes2:
+          'Великий вибір бігових кросівок у Києві ✓ Офіційна гарантія ✓ Доставка по всій Україні ✓ Оплата при отриманні',
 
         itemInfoTitle1: 'Пошукова реклама',
-        itemInfoDes1: 'Показується безпосередньо у результатах пошуку, коли користувач шукає конкретні товари чи послуги',
+        itemInfoDes1:
+          'Показується безпосередньо у результатах пошуку, коли користувач шукає конкретні товари чи послуги',
 
         itemInfoTitle2: 'Медійна мережа',
-        itemInfoDes2: 'Розміщується на сайтах-партнерах, у мобільних додатках та відеоконтенті, враховуючи інтереси користувачів',
-       
-        itemInfoTitle3: 'Ремаркетинг',
-        itemInfoDes3: 'Націлена на користувачів, які вже відвідували ваш сайт, але не здійснили цільову дію',
-      
-        itemInfoTitle4: 'Товарна реклама',
-        itemInfoDes4: 'Демонструє конкретні товари з вашого каталогу, включаючи фото, ціну та інші характеристики',
+        itemInfoDes2:
+          'Розміщується на сайтах-партнерах, у мобільних додатках та відеоконтенті, враховуючи інтереси користувачів',
 
+        itemInfoTitle3: 'Ремаркетинг',
+        itemInfoDes3:
+          'Націлена на користувачів, які вже відвідували ваш сайт, але не здійснили цільову дію',
+
+        itemInfoTitle4: 'Товарна реклама',
+        itemInfoDes4:
+          'Демонструє конкретні товари з вашого каталогу, включаючи фото, ціну та інші характеристики',
 
         // Types Section
         typesTitle: 'Основні види контекстної реклами',
@@ -6674,7 +7763,7 @@ const resources = {
         searchAdsDescription:
           "Пошукова реклама — це оголошення, що з'являються у верхній частині сторінки результатів пошуку Google, коли користувач вводить певний запит. Це один із найефективніших форматів реклами, оскільки звертається до користувача в момент конкретного інтересу.",
         searchAdsText: 'Переваги:',
-          searchAdsAdvantages: [
+        searchAdsAdvantages: [
           'Високий рівень наміру (intent) у користувача',
           'Гнучке налаштування ключових слів',
           'Миттєвий трафік на сайт',
@@ -6699,7 +7788,7 @@ const resources = {
         videoAdsDescription:
           'Реклама у відеоформаті розміщується на YouTube та в мережі відеопартнерів Google. Вона дозволяє доносити емоційний меседж, залучати увагу та підвищувати довіру до бренду.',
         videoAdsText: 'Види:',
-          videoAdsTypes: [
+        videoAdsTypes: [
           'In-stream (з можливістю пропуску)',
           'Bumper Ads (короткі до 6 секунд)',
           'Video Discovery Ads',
@@ -6954,8 +8043,8 @@ const resources = {
           'Висока ефективність при запуску нових продуктів',
         ],
         businessSmbStats: [
-          {icon: '⚡', value: '300-400%', label: 'Середній ROI' },
-          {icon: '🚀', value: '1-2 дні', label: 'Час до перших клієнтів' },
+          { icon: '⚡', value: '300-400%', label: 'Середній ROI' },
+          { icon: '🚀', value: '1-2 дні', label: 'Час до перших клієнтів' },
         ],
 
         businessEcommerceName: 'Інтернет-магазини',
@@ -6968,8 +8057,8 @@ const resources = {
           'Оптимізація конверсії для окремих категорій товарів',
         ],
         businessEcommerceStats: [
-          {icon: '📊', value: '30%', label: 'Збільшення конверсії' },
-          {icon: '📈', value: '25%', label: 'Зростання середнього чеку' },
+          { icon: '📊', value: '30%', label: 'Збільшення конверсії' },
+          { icon: '📈', value: '25%', label: 'Зростання середнього чеку' },
         ],
 
         businessServicesName: 'Сфера послуг',
@@ -6982,8 +8071,8 @@ const resources = {
           'Інтеграція з CRM для відстеження клієнтів',
         ],
         businessServicesStats: [
-          {icon: '📱', value: '40-50%', label: 'Зростання клієнтської бази' },
-          {icon: '📍', value: '60%', label: 'Більше локальних клієнтів' },
+          { icon: '📱', value: '40-50%', label: 'Зростання клієнтської бази' },
+          { icon: '📍', value: '60%', label: 'Більше локальних клієнтів' },
         ],
 
         businessB2bName: 'B2B-компанії',
@@ -6996,23 +8085,23 @@ const resources = {
           'Ремаркетинг для довгого циклу прийняття рішень',
         ],
         businessB2bStats: [
-          {icon: '💼', value: '25%', label: 'Підвищення якості лідів' },
-          {icon: '💰', value: '20%', label: 'Зниження вартості ліда' },
+          { icon: '💼', value: '25%', label: 'Підвищення якості лідів' },
+          { icon: '💰', value: '20%', label: 'Зниження вартості ліда' },
         ],
 
         businessStartupsName: 'Стартапи',
         businessStartupsDescription:
           'Контекстна реклама — це спосіб швидко протестувати гіпотези, перевірити попит і вийти на цільову аудиторію з мінімальними витратами часу.',
         businessStartupsAdvantages: [
-            'Швидке тестування MVP та бізнес-ідей',
-            'Детальний аналіз реакції аудиторії',
-            'Гнучкі стратегії A/B тестування',
-            'Масштабування при підтвердженні гіпотез',
-          ],
+          'Швидке тестування MVP та бізнес-ідей',
+          'Детальний аналіз реакції аудиторії',
+          'Гнучкі стратегії A/B тестування',
+          'Масштабування при підтвердженні гіпотез',
+        ],
         businessStartupsStats: [
-            { icon: '🔥', value: '60%', label: 'Скорочення Time-to-Market' },
-            { icon: '📝', value: '45%', label: "Більше зворотного зв'язку" },
-          ],
+          { icon: '🔥', value: '60%', label: 'Скорочення Time-to-Market' },
+          { icon: '📝', value: '45%', label: "Більше зворотного зв'язку" },
+        ],
 
         suitableForCtaTitle:
           'Не впевнені, чи підходить контекстна реклама для вашого бізнесу?',
@@ -7134,6 +8223,1077 @@ const resources = {
         faqCtaText:
           "Залишилися питання щодо контекстної реклами? Зв'яжіться з нами для безкоштовної консультації",
         faqCtaButton: 'Отримати консультацію',
+      },
+      seoOptimizationPage: {
+        // Hero Section
+        heroTitle: 'SEO-оптимізація з видимими результатами',
+        heroDescription:
+          'Комплексний підхід до оптимізації сайту, який підвищує видимість у пошукових системах, збільшує органічний трафік та конверсії. Ми поєднуємо технічне SEO, контент-маркетинг та зовнішню оптимізацію для досягнення стабільних результатів.',
+        orderButton: 'Замовити аудит сайту',
+        keyPoint1: 'Зростання позицій у пошуку',
+        keyPoint2: 'Збільшення цільового трафіку',
+        keyPoint3: 'Зростання конверсій і продажів',
+        iconText1: 'Технічне SEO',
+        iconText2: 'Аналітика',
+        iconText3: 'Локальне SEO',
+
+        // SEO Visualization
+        onPageSeo: 'On-Page SEO',
+        offPageSeo: 'Off-Page SEO',
+
+        // Info Section
+        infoTitle: 'Що таке SEO-оптимізація',
+        infoParagraph1:
+          'SEO (Search Engine Optimization) — це комплекс заходів, спрямованих на покращення видимості сайту в пошукових системах, таких як Google. Основна мета — вивести сторінки сайту на перші позиції за релевантними запитами користувачів.',
+        infoParagraph2:
+          'На відміну від платної реклами, SEO дає довготривалий ефект: що краще оптимізований сайт, то більше безкоштовного органічного трафіку він отримує. Це дозволяє знижувати витрати на залучення клієнтів у довгостроковій перспективі.',
+        infoParagraph3:
+          'SEO охоплює технічну якість сайту, контент, зовнішні посилання, поведінкові фактори, локальну присутність та інші аспекти, які впливають на ранжування. Правильна SEO-стратегія дозволяє не просто "бути в топі", а залучати саме ту аудиторію, яка готова до взаємодії з вашим брендом.',
+
+        // Advantages
+        advantage1Title: 'Довготривалий результат',
+        advantage1Desc:
+          'Налаштована SEO-оптимізація працює на вас роками, на відміну від контекстної реклами, що припиняється з відключенням бюджету.',
+        advantage2Title: 'Цільова аудиторія',
+        advantage2Desc:
+          'Залучення відвідувачів, які активно шукають ваші послуги та готові до взаємодії з вашим брендом.',
+        advantage3Title: 'Довіра користувачів',
+        advantage3Desc:
+          'Більшість користувачів більше довіряють органічним результатам пошуку, ніж рекламним оголошенням.',
+
+        // Directions Section
+        directionsTitle: 'Основні напрямки SEO',
+        directionsDescription:
+          'SEO-оптимізація складається з кількох ключових напрямків, кожен з яких впливає на видимість сайту в пошукових системах. Гармонійне поєднання цих напрямків дозволяє досягати стабільного органічного трафіку та зростання позицій.',
+        technicalTab: 'Технічна оптимізація',
+        onPageTab: 'Внутрішня оптимізація',
+        offPageTab: 'Зовнішня оптимізація',
+        localTab: 'Локальне SEO',
+
+        // Technical SEO
+        technicalTitle: 'Технічна оптимізація',
+        technicalText:
+          'Це фундамент SEO. Вона включає швидкість завантаження сайту, адаптивність для мобільних пристроїв, коректну індексацію сторінок, налаштування файлів robots.txt і sitemap.xml, усунення дублів та битих посилань. Якщо технічна база неякісна — просувати сайт буде складно.',
+        technicalFeatures: [
+          'Швидкість завантаження сторінок',
+          'Адаптивність для мобільних пристроїв',
+          'Налаштування robots.txt і sitemap.xml',
+          'Усунення дублів та битих посилань',
+        ],
+
+        // On-Page SEO
+        onPageTitle: 'Внутрішня оптимізація (On-Page SEO)',
+        onPageText:
+          'Цей напрямок охоплює роботу з контентом та структурою сторінок. Важливо правильно прописати мета-теги (title, description), заголовки (H1-H6), оптимізувати зображення, використовувати ключові слова у текстах, покращити внутрішню перелінковку. Контент має бути релевантним, унікальним та корисним для користувача.',
+        onPageFeatures: [
+          'Оптимізація мета-тегів та заголовків',
+          'Створення якісного контенту з ключовими словами',
+          'Оптимізація зображень та мультимедіа',
+          'Побудова внутрішньої перелінковки',
+        ],
+
+        // Off-Page SEO
+        offPageTitle: 'Зовнішня оптимізація (Off-Page SEO)',
+        offPageText:
+          'Вона включає побудову якісного профілю зворотних посилань. Посилання з авторитетних ресурсів підвищують довіру пошукових систем до сайту. Важливо також працювати над згадками бренду, відгуками та репутацією в мережі.',
+        offPageFeatures: [
+          'Побудова профілю зворотних посилань',
+          'Співпраця з авторитетними ресурсами галузі',
+          'Робота з відгуками та згадками бренду',
+          'Підвищення репутації в соціальних мережах',
+        ],
+
+        // Local SEO
+        localTitle: 'Локальне SEO',
+        localText:
+          'Актуальне для бізнесів, які надають послуги в певному регіоні. Оптимізація включає створення та ведення профілю в Google Business, роботу з локальними ключовими словами, відгуками та геолокаційною релевантністю.',
+        localFeatures: [
+          'Створення та оптимізація Google Business профілю',
+          'Геолокаційна релевантність і локальні ключі',
+          'Управління локальними відгуками',
+          'Наявність в локальних довідниках і картах',
+        ],
+
+        // Stages Section
+        stagesTitle: 'Етапи роботи з SEO',
+        stagesDescription:
+          'Ефективне SEO неможливе без чітко визначених етапів. Кожен з них важливий для досягнення стабільного результату та поступового зростання органічного трафіку.',
+        stages: [
+          {
+            title: 'Аудит сайту',
+            text: 'Починаємо з повного технічного та контентного аналізу. Виявляємо помилки, недоліки структури, проблеми індексації, дублікати, слабкі місця в контенті та зовнішніх посиланнях.',
+            bullets: [
+              'Технічний аналіз',
+              'Контентний аудит',
+              'Аналіз індексації',
+              'Перевірка посилань',
+            ],
+          },
+          {
+            title: 'Формування SEO-стратегії',
+            text: 'На основі аудиту розробляємо план просування. Визначаємо цільові сторінки, семантичне ядро (ключові запити), пріоритети оптимізації та зовнішніх активностей.',
+            bullets: [
+              'План просування',
+              'Семантичне ядро',
+              'Цільові сторінки',
+              'Пріоритети оптимізації',
+            ],
+          },
+          {
+            title: 'Технічна та внутрішня оптимізація',
+            text: 'Проводимо роботи над структурою сайту, швидкістю завантаження, адаптивністю. Вносимо зміни у мета-теги, заголовки, тексти, внутрішню перелінковку, зображення.',
+            bullets: [
+              'Оптимізація структури',
+              'Швидкість завантаження',
+              'Метатеги і заголовки',
+              'Внутрішня перелінковка',
+            ],
+          },
+          {
+            title: 'Контент-маркетинг і розширення семантики',
+            text: 'Створюємо нові сторінки, публікуємо SEO-статті, оновлюємо існуючий контент. Поступово охоплюємо ширше коло запитів, розширюючи органічний трафік.',
+            bullets: [
+              'Створення нових сторінок',
+              'SEO-статті',
+              'Оновлення контенту',
+              'Розширення семантики',
+            ],
+          },
+          {
+            title: 'Лінкбілдінг і репутаційний менеджмент',
+            text: 'Налагоджуємо отримання якісних зовнішніх посилань, публікуємо матеріали на авторитетних платформах, працюємо з відгуками та згадками про бренд.',
+            bullets: [
+              'Зовнішні посилання',
+              'Гостьові публікації',
+              'Управління відгуками',
+              'Моніторинг згадок',
+            ],
+          },
+          {
+            title: 'Моніторинг і аналітика',
+            text: 'Постійно відстежуємо позиції, трафік, поведінку користувачів, ефективність ключових слів. На основі даних — адаптуємо стратегію та план дій.',
+            bullets: [
+              'Моніторинг позицій',
+              'Аналіз трафіку',
+              'Оцінка поведінки користувачів',
+              'Адаптація стратегії',
+            ],
+          },
+        ],
+
+        // Tools Section
+        toolsTitle: 'Інструменти SEO-фахівця',
+        toolsDescription:
+          'Успішна SEO-оптимізація неможлива без професійних інструментів, які допомагають проводити аналіз, контролювати зміни та вимірювати результат.',
+        seoToolsItem: [
+          {
+            name: 'Google Search Console',
+            tagline:
+              'Основний сервіс для моніторингу індексації та технічних помилок',
+            description:
+              'Офіційний інструмент від Google, який дозволяє контролювати, як пошукова система бачить ваш сайт. Надає цінні дані про кліки, покази, CTR та позиції в пошуковій видачі.',
+            features: [
+              'Моніторинг індексації сторінок',
+              'Виявлення технічних помилок',
+              'Аналіз ключових запитів',
+              'Перевірка мобільної версії',
+            ],
+          },
+          {
+            name: 'Google Analytics / GA4',
+            tagline: 'Джерело даних про поведінку користувачів та конверсії',
+            description:
+              'Потужна аналітична платформа для відстеження трафіку, поведінки користувачів, джерел переходів та конверсій. Дозволяє створювати сегменти, аналізувати воронки та вимірювати ROI.',
+            features: [
+              'Аналіз трафіку за джерелами',
+              'Відстеження поведінки користувачів',
+              'Вимірювання конверсій',
+              'Персоналізовані звіти',
+            ],
+          },
+          {
+            name: 'Ahrefs / Semrush / Serpstat',
+            tagline:
+              'Платформи для комплексного SEO-аналізу та конкурентної розвідки',
+            description:
+              'Професійні інструменти для всебічного SEO-аналізу: дослідження ключових слів, аудит зворотних посилань, відстеження позицій, аналіз конкурентів та контенту.',
+            features: [
+              'Дослідження ключових слів',
+              'Аналіз зворотних посилань',
+              'Відстеження позицій сайту',
+              'Моніторинг конкурентів',
+            ],
+          },
+          {
+            name: 'Screaming Frog SEO Spider',
+            tagline: 'Сканер сайту для виявлення технічних помилок',
+            description:
+              'Десктопний краулер для глибокого технічного аудиту. Сканує сайт подібно пошуковому роботу, виявляючи проблеми з мета-тегами, структурою, редиректами, битими посиланнями та іншими технічними аспектами.',
+            features: [
+              'Виявлення дублікатів контенту',
+              'Аналіз структури сайту',
+              'Перевірка редиректів та статус-кодів',
+              'Пошук битих посилань',
+            ],
+          },
+          {
+            name: 'PageSpeed Insights / GTmetrix',
+            tagline: 'Сервіси для оцінки швидкості завантаження сторінок',
+            description:
+              'Інструменти для аналізу швидкості завантаження сторінок, виявлення факторів, що уповільнюють сайт, та отримання конкретних рекомендацій щодо оптимізації швидкості.',
+            features: [
+              'Вимірювання швидкості завантаження',
+              'Оцінка Core Web Vitals',
+              'Рекомендації з оптимізації',
+              'Порівняння з конкурентами',
+            ],
+          },
+          {
+            name: 'SurferSEO / NeuronWriter',
+            tagline: 'Сервіси для SEO-аналізу та оптимізації контенту',
+            description:
+              'Інтелектуальні інструменти для створення контенту, оптимізованого під пошукові системи. Аналізують топові результати і дають рекомендації щодо структури, щільності ключів та додаткових термінів.',
+            features: [
+              'Аналіз конкурентного контенту',
+              'Оптимізація структури тексту',
+              'Рекомендації щодо ключових слів',
+              'Оцінка якості контенту',
+            ],
+          },
+        ],
+        toolsText: 'Перейти на офіційний сайт',
+        metricsNote:
+          'Моніторинг цих метрик дозволяє не тільки оцінити прогрес, а й своєчасно виявляти проблеми та коригувати стратегію просування.',
+        metricsAuditButton: 'Замовити аналітичний аудит',
+
+        metricsTitle: 'Метрики ефективності SEO',
+        metricsDescription:
+          'SEO — це про аналітику та вимірюваний результат. Щоб оцінити успіх оптимізації, необхідно регулярно відстежувати ключові метрики. Ось найважливіші з них:',
+        metrics: [
+          {
+            number: '01',
+            name: 'Органічний трафік',
+            description:
+              'Кількість відвідувачів, які переходять на сайт з пошукових систем. Зростання трафіку свідчить про покращення видимості сайту.',
+            trend: '+32%',
+            chartLegend: {
+              week1: 'Тиждень 1',
+              week7: 'Тиждень 7',
+            },
+            buttonText: 'Детальніше',
+          },
+          {
+            number: '02',
+            name: 'Позиції за ключовими словами',
+            description:
+              'Відображають, на яких місцях у Google знаходяться ваші сторінки за цільовими запитами. Прогрес у позиціях — один із головних показників ефективної SEO-стратегії.',
+            trend: '+22 позиції',
+            chartLegend: {
+              week1: 'Тиждень 1',
+              week7: 'Тиждень 7',
+            },
+            buttonText: 'Детальніше',
+          },
+          {
+            number: '03',
+            name: 'Конверсії з органіки',
+            description:
+              'Важливо не лише отримувати трафік, а й щоб користувачі виконували цільові дії: покупки, заявки, дзвінки тощо.',
+            trend: '+17%',
+            chartLegend: {
+              week1: 'Тиждень 1',
+              week7: 'Тиждень 7',
+            },
+            buttonText: 'Детальніше',
+          },
+          {
+            number: '04',
+            name: 'Час перебування та відмови',
+            description:
+              'Ці поведінкові метрики сигналізують про якість контенту та зручність навігації. Якщо користувачі швидко покидають сайт — варто переглянути UX або контент.',
+            trend: '-22% відмов',
+            chartLegend: {
+              week1: 'Тиждень 1',
+              week7: 'Тиждень 7',
+            },
+            buttonText: 'Детальніше',
+          },
+          {
+            number: '05',
+            name: 'Зворотні посилання',
+            description:
+              'Пошукові системи оцінюють авторитет сайту за кількістю та релевантністю посилань з інших ресурсів. Це критичний фактор у зовнішній оптимізації.',
+            trend: '+43 посилання',
+            chartLegend: {
+              week1: 'Тиждень 1',
+              week7: 'Тиждень 7',
+            },
+            buttonText: 'Детальніше',
+          },
+          {
+            number: '06',
+            name: 'Індексовані сторінки',
+            description:
+              'Кількість сторінок, які доступні в пошуку. Важливо, щоб всі важливі розділи сайту були індексовані, а неякісні або дублікати — виключені.',
+            trend: '+95 сторінок',
+            chartLegend: {
+              week1: 'Тиждень 1',
+              week7: 'Тиждень 7',
+            },
+            buttonText: 'Детальніше',
+          },
+        ],
+        metricsFooterDescription:
+          'Моніторинг цих метрик дозволяє не тільки оцінити прогрес, а й своєчасно виявляти проблеми та коригувати стратегію просування.',
+        metricsFooterButton: 'Замовити аналітичний аудит',
+
+        // Projects Section
+        projectsTitle: 'Для яких проєктів підходить SEO',
+        projectsDescription:
+          'SEO-оптимізація — універсальний інструмент просування, але особливо ефективна вона для проєктів із середньо- та довгостроковою стратегією росту.',
+        projects: [
+          {
+            name: 'Інтернет-магазини (eCommerce)',
+            text: 'Каталоги з великою кількістю товарів і категорій ідеально підходять для SEO. Вони отримують стабільний потік покупців за широким пулом запитів.',
+            benefits: [
+              'Органічний трафік по всьому асортименту',
+              'Охоплення від загальних до нішевих запитів',
+              'Зниження вартості залучення клієнта',
+            ],
+          },
+          {
+            name: 'B2B і корпоративні сайти',
+            text: 'SEO дозволяє знаходити потенційних клієнтів, які шукають спеціалізовані послуги або продукти. Це ефективно для генерації якісних лідів у складних нішах.',
+            benefits: [
+              'Висока релевантність трафіку',
+              'Зростання авторитетності в галузі',
+              'Якісні ліди з високим LTV',
+            ],
+          },
+          {
+            name: 'Локальний бізнес',
+            text: 'Магазини, салони, медичні центри, ресторани можуть значно підвищити відвідуваність завдяки локальному SEO — особливо через пошук "поруч зі мною" та Google Maps.',
+            benefits: [
+              'Залучення клієнтів за геолокацією',
+              'Присутність в локальному 3-pack',
+              'Перевага над конкурентами в районі',
+            ],
+          },
+          {
+            name: 'Освітні платформи та блоги',
+            text: 'Якісний контент і правильна оптимізація допомагають залучати тисячі відвідувачів із пошуку, формуючи лояльну аудиторію.',
+            benefits: [
+              'Довгострокове зростання трафіку',
+              'Формування бренд-експертизи',
+              'Масштабованість через різні теми',
+            ],
+          },
+          {
+            name: 'Стартапи та нові проєкти',
+            text: 'Для нових брендів SEO — можливість зайняти місце в ніші без великих витрат на рекламу. Головне — грамотно вибудувати структуру з самого початку.',
+            benefits: [
+              'Зниження витрат на рекламу',
+              'Зростання разом із сезонністю ніші',
+              'Правильний старт з SEO-дружньою архітектурою',
+            ],
+          },
+        ],
+        projectsNote:
+          'Водночас SEO менш ефективне для тимчасових кампаній або одноразових акцій, де швидкість результату критична — там краще підходить контекстна реклама. Якщо вам потрібен швидкий результат — розгляньте комбінацію SEO і контекстної реклами для отримання як короткострокових, так і довгострокових результатів.',
+
+        // Approaches Section
+        approachesTitle: 'Наші підходи до просування',
+        approachesDescription:
+          'Ми розуміємо, що кожен бізнес унікальний, тому наш підхід до SEO — індивідуальний, гнучкий і максимально прозорий.',
+        approaches: [
+          {
+            title: 'Глибокий аналіз ніші та конкурентів',
+            text: 'Перед стартом ми детально вивчаємо ваш ринок, конкурентів, запити користувачів і тренди пошуку. Це дозволяє сформувати реалістичну стратегію, яка дійсно працює.',
+          },
+          {
+            title: 'Пріоритезація робіт за впливом на результат',
+            text: 'Ми не розпорошуємо ресурси. Спочатку вирішуємо критичні технічні проблеми, паралельно запускаючи оптимізацію ключових сторінок. Це дає швидші результати.',
+          },
+          {
+            title: 'Орієнтація на якісний контент',
+            text: 'Просування без сильного контенту — неефективне. Ми створюємо унікальні тексти, оптимізовані під пошукові запити, але з фокусом на цінність для користувача.',
+          },
+          {
+            title: 'Білий лінкбілдінг',
+            text: 'Будуємо посилання лише з авторитетних та релевантних ресурсів. Не використовуємо "сірих" схем, які можуть зашкодити вашому сайту в довгостроковій перспективі.',
+          },
+          {
+            title: 'Постійна аналітика та адаптація',
+            text: 'SEO — це не одноразова послуга, а безперервний процес. Ми щомісяця аналізуємо результати, переглядаємо стратегію та даємо вам повну картину змін.',
+          },
+          {
+            title: 'Співпраця на довгій дистанції',
+            text: 'Наша мета — не просто "вивести в топ", а побудувати систему стабільного залучення трафіку, яка працюватиме роками.',
+          },
+        ],
+        approachesCtaTitle: 'Готові до зростання органічного трафіку?',
+        approachesCtaText:
+          'Замовте безкоштовну консультацію, на якій ми проаналізуємо ваш сайт і запропонуємо конкретні кроки для покращення його видимості в пошуку.',
+        approachesCtaButton: 'Замовити консультацію',
+
+        // Results Section
+        resultsTitle: 'Результати, які ми досягаємо',
+        resultsDescription:
+          'Ми зосереджуємось на конкретних бізнес-результатах, а не лише на зростанні позицій у пошуковій видачі. Ось що отримують наші клієнти в результаті SEO-оптимізації:',
+        results: [
+          {
+            title: 'Збільшення органічного трафіку на 2–5 разів',
+            text: 'Завдяки технічному вдосконаленню сайту, релевантному контенту та розширенню семантики ми суттєво підвищуємо кількість відвідувачів з пошуку.',
+          },
+          {
+            title: 'Покращення видимості бренду в Google',
+            text: "Ваш сайт починає з'являтися за більшою кількістю запитів, включаючи інформаційні, комерційні та брендовані. Це підвищує впізнаваність і довіру.",
+          },
+          {
+            title: 'Стабільне зростання лідів і продажів',
+            text: 'Якісний трафік приводить зацікавлених користувачів, які частіше залишають заявки, замовляють послуги або купують товари.',
+          },
+          {
+            title: 'Зменшення залежності від платної реклами',
+            text: 'Сильна SEO-стратегія дозволяє отримувати трафік без постійних витрат на рекламу. Це дає бізнесу більше фінансової стабільності.',
+          },
+          {
+            title: 'Побудова довгострокової переваги',
+            text: 'SEO працює на перспективу. Навіть після завершення активних робіт результати зберігаються та продовжують приносити цінність.',
+          },
+        ],
+        resultsNote:
+          'Ми не обіцяємо "топ-1 за тиждень", але гарантуємо системний, стійкий і прогнозований ріст — саме те, що потрібно серйозному бізнесу.',
+
+        // FAQ Section
+        faqTitle: 'FAQ',
+        faq: [
+          {
+            question: 'Скільки часу потрібно, щоб побачити результати від SEO?',
+            answer:
+              'Перші зміни можуть бути помітні вже через 1–2 місяці після старту. Однак стабільне зростання позицій і трафіку зазвичай відбувається через 3–6 місяців активної роботи, залежно від конкурентності ніші та стану сайту.',
+          },
+          {
+            question: 'Чи потрібен SEO, якщо вже запущена контекстна реклама?',
+            answer:
+              'Так. Контекстна реклама дає миттєвий трафік, але тільки поки ви платите. SEO будує довгострокову присутність у пошуку, знижуючи вартість залучення клієнтів у майбутньому.',
+          },
+          {
+            question: 'Чи можна просувати новий сайт без історії?',
+            answer:
+              'Так, але потрібно більше часу та зусиль. Для "молодих" доменів ми зазвичай починаємо з базової технічної оптимізації, контенту та поступового нарощування посилань.',
+          },
+          {
+            question: 'Який бюджет потрібно для SEO-просування?',
+            answer:
+              'Бюджет залежить від масштабів проєкту, конкурентності запитів і цілей. У середньому для малого бізнесу мінімальний щомісячний бюджет стартує від 500–800$.',
+          },
+          {
+            question: 'Чи можна гарантувати топ-1 у Google?',
+            answer:
+              'Ні. Жоден відповідальний SEO-фахівець не дає таких гарантій. Алгоритми Google постійно змінюються, і позиції залежать від багатьох факторів. Ми гарантуємо системну роботу, яка дає реальний результат.',
+          },
+        ],
+        faqCtaText: 'Маєте додаткові запитання щодо SEO-оптимізації?',
+        faqCtaButton: "Зв'язатися з нами",
+      },
+      targetedAdvertisingPage: {
+        // Hero Section
+        heroTitle: 'Таргетована реклама що конвертує',
+        heroDescription:
+          'Створюємо рекламні кампанії, які точно потрапляють у вашу цільову аудиторію. Використовуємо передові алгоритми та дані для максимізації ROI та збільшення конверсій.',
+        orderButton: 'Запустити рекламу',
+        keyPoint1: 'Точне попадання в аудиторію',
+        keyPoint2: 'Підвищення конверсій до 350%',
+        keyPoint3: 'Гарантований результат',
+
+        // Social Media Modal Data
+        socialMedia: {
+          facebook: {
+            name: 'Facebook',
+            description:
+              'Найбільша соціальна мережа з потужними інструментами таргетингу та широкими можливостями для реклами.',
+            features: [
+              'Детальний демографічний таргетинг',
+              'Ретаргетинг на основі дій користувачів',
+              'Look-alike аудиторії',
+              'Різноманітні формати реклами',
+              'Інтеграція з Instagram',
+            ],
+          },
+          instagram: {
+            name: 'Instagram',
+            description:
+              'Візуальна платформа, ідеальна для брендів, що працюють з B2C аудиторією та молодіжним сегментом.',
+            features: [
+              'Високий рівень залученості',
+              'Stories та Reels реклама',
+              'Шопінг-функції',
+              'Інфлюенсер-маркетинг',
+              'Візуальний контент',
+            ],
+          },
+          tiktok: {
+            name: 'TikTok',
+            description:
+              'Найшвидше зростаюча платформа з унікальними можливостями для креативної реклами та охоплення Gen Z.',
+            features: [
+              'Алгоритмічне просування',
+              'Вірусний потенціал',
+              'Молода аудиторія',
+              'Креативні формати',
+              'Високий CTR',
+            ],
+          },
+          linkedin: {
+            name: 'LinkedIn',
+            description:
+              'Професійна мережа, найкраща для B2B маркетингу та досягнення ділової аудиторії.',
+            features: [
+              'B2B таргетинг',
+              'Професійні дані',
+              'Lead Generation Forms',
+              'Sponsored Content',
+              'Message Ads',
+            ],
+          },
+          google: {
+            name: 'Google Ads',
+            description:
+              'Найпотужніша рекламна платформа з широкими можливостями таргетингу та охоплення.',
+            features: [
+              'Пошукова реклама',
+              'Медійна мережа',
+              'YouTube реклама',
+              'Ремаркетинг',
+              'Смарт-кампанії',
+            ],
+          },
+        },
+
+        // What is Targeted Advertising
+        whatIsTitle: 'Що таке таргетована реклама',
+        whatIsParagraph1:
+          'Таргетована реклама — це формат онлайн-реклами, який дозволяє показувати оголошення лише певній аудиторії, визначеній за конкретними параметрами: вік, стать, геолокація, інтереси, поведінка, статус у воронці продажів тощо.',
+        whatIsParagraph2:
+          'На відміну від класичної реклами, де охоплюється широкий загал, таргетинг дозволяє сконцентрувати бюджет на тих, хто з великою ймовірністю зацікавлений у товарі чи послузі.',
+        whatIsParagraph3:
+          'Таргетинг найчастіше використовується в соцмережах (Facebook, Instagram, TikTok, LinkedIn), а також у контекстно-медійній мережі Google.',
+        whatIsStat1: 'Точність попадання',
+        whatIsStat2: 'Економія бюджету',
+        whatIsStat3: 'Швидше результат',
+        whatIsStatIconText1: 'Ваш бізнес',
+        whatIsStatIconText2: 'в центрі уваги',
+
+        // Targeting Types
+        targetingTypesTitle: 'Види таргетингу',
+        targetingTypesSubtitle:
+          'Таргетинг буває різних типів, і правильне комбінування кількох з них дозволяє досягти максимальної ефективності рекламної кампанії.',
+        targetingTypesStats: ['Точність 90%+', 'ROI до 400%', '5M+ аудиторій'],
+        targetingTypes: [
+          {
+            number: '01 / Демографічний',
+            title: 'Аудиторний таргетинг',
+            description:
+              'Цей тип таргетингу базується на характеристиках користувачів: вік, стать, місце проживання, мова, інтереси, поведінка, статус у стосунках, освіта, посада та інші демографічні або поведінкові фактори.',
+            example:
+              'Приклад: Якщо ви продаєте дитячі іграшки, ми можемо налаштувати показ реклами жінкам віком 25–35 років, які мають дітей, цікавляться батьківством і регулярно купують товари для дітей.',
+            features: ['Демографія', 'Інтереси', 'Поведінка', 'Геолокація'],
+          },
+          {
+            number: '02 / Повернення',
+            title: 'Ретаргетинг',
+            description:
+              'Це показ реклами тим користувачам, які вже взаємодіяли з вашим бізнесом: заходили на сайт, переглядали товари, додавали у кошик, але не зробили покупку. Ретаргетинг «наздоганяє» таких користувачів із релевантною пропозицією.',
+            example:
+              'Ефективність: Особливо результативний для інтернет-магазинів, сервісів бронювання, онлайн-курсів та інших бізнесів з довшим циклом ухвалення рішень. Конверсія може зрости до 10 разів.',
+            features: [
+              'Пікселі відстеження',
+              'Динамічні оголошення',
+              'Кросс-платформа',
+              'Персоналізація',
+            ],
+          },
+          {
+            number: '03 / Схожість',
+            title: 'Look-alike аудиторії',
+            description:
+              'Look-alike (схожі) аудиторії створюються на основі вже існуючих клієнтів або відвідувачів сайту. Алгоритми рекламних платформ аналізують поведінку вашої цільової аудиторії й знаходять користувачів з подібними характеристиками.',
+            example:
+              'Перевага: Цей підхід дозволяє охопити нову аудиторію без втрати якості лідів. Алгоритми машинного навчання знаходять найбільш перспективних потенційних клієнтів.',
+            features: [
+              'AI алгоритми',
+              'Машинне навчання',
+              'Масштабування',
+              'Автооптимізація',
+            ],
+          },
+        ],
+
+        // Launch Steps
+        launchStepsTitle: 'Етапи запуску таргетованої реклами',
+        launchStepsSubtitle:
+          'Щоб таргетована реклама приносила очікувані результати, важливо дотримуватися чіткої структури запуску кампанії. Ми працюємо за перевіреним алгоритмом, який охоплює всі ключові етапи.',
+        launchSteps: [
+          {
+            title: 'Аналіз бізнесу та аудиторії',
+            description:
+              'Ми вивчаємо особливості вашого продукту, конкурентне середовище та портрет потенційного клієнта для точного формулювання стратегії.',
+            features: [
+              'Дослідження ринку',
+              'Портрет аудиторії',
+              'Конкурентний аналіз',
+              'SWOT-аналіз',
+            ],
+          },
+          {
+            title: 'Постановка цілей кампанії',
+            description:
+              'Залежно від потреб бізнесу визначаємо основну мету: продажі, трафік, генерація лідів, підписки чи впізнаваність бренду.',
+            features: [
+              'KPI метрики',
+              'Бюджет планування',
+              'ROI прогноз',
+              'Таймлайн',
+            ],
+          },
+          {
+            title: 'Розробка креативів',
+            description:
+              'Створюємо ефективні візуали, заголовки та тексти, які відповідають інтересам аудиторії та підштовхують до дії.',
+            features: [
+              'Дизайн макетів',
+              'Копірайтинг',
+              'A/B тестування',
+              'Брендинг',
+            ],
+          },
+          {
+            title: 'Налаштування кампаній',
+            description:
+              'Проводимо точне налаштування таргетингу, формуємо аудиторії та запускаємо тестові оголошення з контролем бюджету.',
+            features: [
+              'Таргетинг Setup',
+              'Аудиторії',
+              'Бюджет контроль',
+              'Тестування',
+            ],
+          },
+          {
+            title: 'Запуск і моніторинг',
+            description:
+              'Після запуску щодня відстежуємо ефективність, аналізуємо показники та вносимо оперативні зміни для покращення результату.',
+            features: [
+              '24/7 моніторинг',
+              'Аналітика',
+              'Оперативні зміни',
+              'Звітність',
+            ],
+          },
+          {
+            title: 'Оптимізація та масштабування',
+            description:
+              'Після отримання результатів оптимізуємо ставки, аудиторії, формати оголошень і масштабуємо кампанію для кращих результатів.',
+            features: [
+              'Bid оптимізація',
+              'Масштабування',
+              'Нові формати',
+              'ROI максимізація',
+            ],
+          },
+        ],
+        resultsApproachTitle: 'Результати нашого підходу',
+        resultsApproachStats: [
+          {
+            number: '85%',
+            label: 'Успішних кампаній',
+          },
+          {
+            number: '4.2x',
+            label: 'Середній ROI',
+          },
+          {
+            number: '-40%',
+            label: 'Зниження CPA',
+          },
+          {
+            number: '7 днів',
+            label: 'До перших результатів',
+          },
+        ],
+
+        // Analytics Tools
+        analyticsToolsTitle: 'Інструменти для аналітики й налаштувань',
+        analyticsToolsSubtitle:
+          'Для професійного запуску та управління таргетованою рекламою ми використовуємо перевірені платформи й аналітичні інструменти, які дозволяють досягати максимальної ефективності.',
+        analyticsToolsShowcase:
+          'Професійний tech-stack для максимальних результатів',
+        analyticsToolsShowcaseDescription:
+          'Завдяки цьому набору інструментів ми не тільки запускаємо рекламу, а й повноцінно керуємо результатом, орієнтуючись на цифри, а не інтуїцію.',
+        analyticsTools: [
+          {
+            badge: 'META',
+            name: 'Meta Ads Manager',
+            description:
+              'Центральний інструмент для запуску реклами в Facebook, Instagram і Messenger. Дає змогу налаштовувати аудиторії, цілі, формати та проводити A/B-тестування.',
+            features: [
+              'Таргетинг аудиторій',
+              'A/B тестування',
+              'Ретаргетинг',
+              'Автоматизація',
+            ],
+            stats: [
+              { number: '3B+', label: 'Користувачів' },
+              { number: '95%', label: 'Точність' },
+            ],
+          },
+          {
+            badge: 'TIKTOK',
+            name: 'TikTok Ads Manager',
+            description:
+              'Платформа для таргетингу на молодіжну аудиторію. Можливість створювати нативні відеооголошення та запускати рекламу через інфлюенсерів.',
+            features: [
+              'Відео креативи',
+              'Інфлюенсер реклама',
+              'Gen Z аудиторія',
+              'Вірусний контент',
+            ],
+            stats: [
+              { number: '1B+', label: 'Активних' },
+              { number: '89%', label: 'Залучення' },
+            ],
+          },
+          {
+            badge: 'GOOGLE',
+            name: 'Google Ads & Analytics',
+            description:
+              'Потужний набір для візуальної реклами, YouTube кампаній та детальної аналітики поведінки користувачів на сайті після переходу з реклами.',
+            features: [
+              'YouTube реклама',
+              'Медійна мережа',
+              'GA4 аналітика',
+              'Конверсії',
+            ],
+            stats: [
+              { number: '8.5B', label: 'Запитів/день' },
+              { number: '92%', label: 'Охоплення' },
+            ],
+          },
+          {
+            badge: 'TRACKING',
+            name: 'Pixel & UTM системи',
+            description:
+              'Трекінгові інструменти та UTM-мітки для точного відстеження взаємодії користувачів, налаштування ретаргетингу та аналізу ефективності каналів.',
+            features: [
+              'Meta Pixel',
+              'Google Tag Manager',
+              'UTM трекінг',
+              'CRM інтеграція',
+            ],
+            stats: [
+              { number: '99.9%', label: 'Точність' },
+              { number: 'Real-time', label: 'Дані' },
+            ],
+          },
+        ],
+        analyticsIntegrationTitle: 'Повна інтеграція та синхронізація',
+        analyticsIntegrationDescription:
+          'Всі інструменти працюють в єдиній екосистемі, забезпечуючи точне відстеження, оптимізацію та масштабування ваших рекламних кампаній.',
+        analyticsIntegrationBenefits: [
+          {
+            title: 'Unified Dashboard',
+            text: 'Всі метрики в одному місці для швидкого аналізу та прийняття рішень',
+          },
+          {
+            title: 'Real-time оптимізація',
+            text: 'Автоматичне коригування кампаній на основі актуальних даних',
+          },
+          {
+            title: 'Точний attribution',
+            text: 'Повне розуміння customer journey від кліка до конверсії',
+          },
+        ],
+
+        // Metrics
+        metricsTitle: 'Основні метрики ефективності',
+        metricsSubtitle:
+          'Щоб таргетована реклама приносила реальні бізнес-результати, важливо постійно аналізувати її ефективність за ключовими показниками.',
+        metricsHighlightTitle: 'Data-driven підхід до оптимізації',
+        metricsHighlightText:
+          'Ми працюємо виключно з цифрами та фактами, постійно аналізуючи метрики для досягнення максимального ROI ваших рекламних кампаній.',
+        metrics: [
+          {
+            name: 'Click-Through Rate',
+            abbr: 'CTR',
+            description:
+              'Показник клікабельності — відсоток людей, які побачили рекламу й клікнули на неї. Чим вищий CTR, тим цікавіше оголошення для аудиторії.',
+            value: '2.5%',
+            valueLabel: 'Середній показник',
+            example: 'Приклад: 100,000 показів → 2,500 кліків = CTR 2.5%',
+          },
+          {
+            name: 'Cost Per Click',
+            abbr: 'CPC',
+            description:
+              'Ціна за клік — скільки коштує кожен перехід за рекламним оголошенням. Дає змогу оцінити ефективність креативу й налаштувань аудиторії.',
+            value: '₴25',
+            valueLabel: 'За клік',
+            example: 'Бюджет ₴5,000 ÷ 200 кліків = CPC ₴25',
+          },
+          {
+            name: 'Cost Per Mille',
+            abbr: 'CPM',
+            description:
+              'Ціна за 1000 показів. Використовується, коли мета — впізнаваність або охоплення. Дає розуміння вартості демонстрації бренду аудиторії.',
+            value: '₴150',
+            valueLabel: 'За 1000 показів',
+            example: '₴1,500 бюджет → 10,000 показів = CPM ₴150',
+          },
+          {
+            name: 'Cost Per Action',
+            abbr: 'CPA',
+            description:
+              'Ціна за цільову дію — покупку, заповнення форми, дзвінок. Один з головних показників для оцінки ROI рекламної кампанії.',
+            value: '₴500',
+            valueLabel: 'За конверсію',
+            example: '₴10,000 бюджет → 20 покупок = CPA ₴500',
+          },
+          {
+            name: 'Return On Ad Spend',
+            abbr: 'ROAS',
+            description:
+              'Рентабельність витрат на рекламу. Вказує, скільки прибутку ви отримали з кожної вкладеної гривні.',
+            value: '5:1',
+            valueLabel: 'Прибуток:Витрати',
+            example: '₴1,000 витрат → ₴5,000 доходу = ROAS 5:1',
+          },
+          {
+            name: 'Conversion Rate',
+            abbr: 'CR',
+            description:
+              'Відсоток користувачів, які виконали потрібну дію після кліку на рекламу. Це може бути покупка, реєстрація або звернення.',
+            value: '12%',
+            valueLabel: 'Конверсія',
+            example: '1,000 відвідувачів → 120 конверсій = CR 12%',
+          },
+          {
+            name: 'Leads & Sales',
+            abbr: 'RESULT',
+            description:
+              'Фінальний і найважливіший показник — скільки цільових дій принесла кампанія. Ми завжди орієнтуємось на досягнення конкретних бізнес-результатів.',
+            value: '150',
+            valueLabel: 'Лідів/місяць',
+            example: 'Результат: 150 якісних лідів за місяць кампанії',
+          },
+        ],
+
+        // Business Types
+        businessTypesTitle: 'Для яких бізнесів підходить таргетована реклама',
+        businessTypesSubtitle:
+          'Таргетована реклама — універсальний інструмент, який можна адаптувати під будь-який тип бізнесу. Кожен напрямок має свої особливості та переваги.',
+        businessTypes: [
+          {
+            title: 'Інтернет-магазини',
+            description:
+              'Реклама допомагає залучати нових покупців, повертати тих, хто не завершив покупку, і стимулювати повторні продажі через ретаргетинг та динамічну рекламу.',
+            tags: ['Ретаргетинг', 'Look-alike', 'Динамічна реклама'],
+          },
+          {
+            title: 'Освітні проєкти',
+            features: [
+              'Фільтрація за інтересами',
+              'Професійний таргетинг',
+              'Lead Generation',
+              'Вебінар-воронки',
+            ],
+          },
+          {
+            title: 'Сфера послуг',
+            description:
+              'Таргетинг дозволяє "ловити" потенційного клієнта у потрібний момент — коли він шукає майстра, лікаря або консультанта.',
+          },
+          {
+            title: 'Івенти та заходи',
+            description:
+              'Продаж квитків на концерти, конференції, фестивалі через локальний та інтерес-орієнтований таргетинг.',
+          },
+          {
+            title: 'B2B-компанії',
+            features: [
+              'LinkedIn таргетинг • Decision makers • Account-based маркетинг',
+            ],
+          },
+          {
+            title: 'Поруч з вами',
+            description:
+              "Кав'ярні, салони краси, клініки, спортзали — геотаргетинг для тих, хто поруч.",
+          },
+        ],
+
+        // Strengths
+        strengthsTitle: 'Наші сильні сторони',
+        strengthsSubtitle:
+          'Ми не просто запускаємо таргетовану рекламу — ми беремо на себе повну відповідальність за результат. Завдяки досвіду, системному підходу та глибокому розумінню бізнес-процесів, ми допомагаємо клієнтам досягати конкретних цілей.',
+        strengths: [
+          {
+            title: 'Глибока аналітика перед запуском',
+            description:
+              'Ми завжди починаємо з аналізу ринку, конкурентів і цільової аудиторії. Це дозволяє створювати дійсно релевантні оголошення, а не стріляти наосліп.',
+            features: [
+              'Аналіз конкурентів',
+              'Дослідження аудиторії',
+              'Ринкова аналітика',
+              'Персони покупців',
+            ],
+          },
+          {
+            title: 'Індивідуальна стратегія для кожного клієнта',
+            description:
+              'Ніяких шаблонів. Ми створюємо рекламну кампанію, яка враховує особливості саме вашого продукту, бізнес-моделі та цілей.',
+            features: [
+              'Персональний підхід',
+              'Унікальна стратегія',
+              'Врахування специфіки',
+              'Гнучкий план',
+            ],
+          },
+          {
+            title: 'Сильні креативи',
+            description:
+              'У команді — копірайтери та дизайнери, які знають, як привернути увагу, викликати інтерес і стимулювати дію.',
+            features: [
+              'Професійний дизайн',
+              'Цепкі тексти',
+              'A/B тестування',
+              'Оптимізація CTR',
+            ],
+          },
+          {
+            title: 'Постійний контроль та оптимізація',
+            description:
+              'Ми щодня моніторимо кампанії, аналізуємо ефективність, змінюємо аудиторії, бюджети й креативи.',
+            features: [
+              'Щоденний моніторинг',
+              'Швидка реакція',
+              'Оптимізація бюджету',
+              'Масштабування',
+            ],
+          },
+          {
+            title: 'Прозорість і звітність',
+            description:
+              'Регулярна звітність із чіткими метриками — ви завжди бачите, на що витрачається бюджет та які результати отримує ваш бізнес.',
+            features: [
+              'Детальні звіти',
+              'Прозорі метрики',
+              'Регулярні зустрічі',
+              'Доступ до кабінетів',
+            ],
+          },
+          {
+            title: 'Орієнтація на результат',
+            description:
+              'Наша мета — не кількість кліків, а ваш прибуток. Ми завжди дивимось на бізнес очима власника та досягаємо ROI.',
+            features: [
+              'Фокус на прибуток',
+              'Бізнес-мислення',
+              'Вимірювані KPI',
+              'Гарантія результату',
+            ],
+          },
+        ],
+
+        // Results
+        resultsTitle: 'Результати, яких досягаємо',
+        resultsIntro:
+          'Ми вимірюємо ефективність не лайками й охопленнями, а конкретними бізнес-показниками: кількістю заявок, продажами, вартістю ліда, рентабельністю реклами. Ось типові результати наших кампаній:',
+        resultsDashboard: [
+          {
+            number: '2-5x',
+            label: 'Збільшення продажів',
+            description: 'Масштабування без підвищення вартості залучення',
+          },
+          {
+            number: '30-70%',
+            label: 'Нижча вартість ліда',
+            description: 'За рахунок оптимізації та тестування',
+          },
+          {
+            number: '400%+',
+            label: 'ROAS',
+            description: 'При правильному налаштуванні кампаній',
+          },
+        ],
+
+        // ДЕТАЛЬНА АНАЛІТИКА РЕЗУЛЬТАТІВ (ДОБАВЛЕНО)
+        resultsBreakdownTitle: 'Детальна аналітика результатів',
+        resultsBreakdown: [
+          {
+            icon: '🎯',
+            number: '15%',
+            title: 'Конверсія з реклами',
+            description:
+              'Особливо в нішах з чіткою потребою — медицина, послуги, освітні продукти. Ми знаємо, як працювати з «гарячими» аудиторіями.',
+          },
+          {
+            icon: '🚀',
+            number: '300+',
+            title: 'Успішних запусків',
+            description:
+              'За час нашої роботи ми запустили понад 300 рекламних кампаній у різних нішах. Наш досвід дозволяє швидко адаптуватися.',
+          },
+          {
+            icon: '💎',
+            number: '80%',
+            title: 'Клієнтів повертаються',
+            description:
+              'Ми вибудовуємо довгострокові партнерства, оскільки працюємо прозоро й завжди націлені на результат.',
+          },
+          {
+            icon: '��',
+            number: '4.2x',
+            title: 'Середній ROI',
+            description:
+              'Наші клієнти отримують у 4+ рази більше доходу, ніж витрачають на рекламу завдяки продуманій воронці продажів.',
+          },
+        ],
+
+        // FAQ (ДОБАВЛЕНО)
+        faqTitle: 'FAQ',
+        faq: [
+          {
+            question:
+              'Скільки часу потрібно, щоб побачити перші результати від таргетованої реклами?',
+            answer:
+              "Перші кліки й охоплення з'являються вже в день запуску. Проте на отримання стабільних результатів у вигляді лідів чи продажів зазвичай потрібно 3–7 днів — саме стільки триває тестування аудиторій та креативів.",
+          },
+          {
+            question:
+              'Чи можна обійтись без сайту — наприклад, рекламувати тільки Instagram-акаунт?',
+            answer:
+              "Так, можна запускати рекламу на акаунт у соцмережах або навіть у Direct. Особливо це актуально для малого бізнесу, б'юті-сфери, локальних послуг. Головне — мати чітке позиціонування й візуально привабливу сторінку.",
+          },
+          {
+            question:
+              'Скільки потрібно інвестувати в рекламу, щоб отримати результат?',
+            answer:
+              "Рекомендований мінімальний бюджет — від 300–500 $ на місяць. Цього достатньо для тестування гіпотез і запуску першої ефективної зв'язки «аудиторія + креатив». Чим складніша ніша — тим більший бюджет може знадобитися для отримання даних і масштабування.",
+          },
+          {
+            question:
+              'У чому різниця між таргетингом і просуванням через інфлюенсерів?',
+            answer:
+              'Таргетинг дозволяє точніше контролювати аудиторію, бюджет і результат. Реклама у блогерів — це переважно про впізнаваність, а не про гарантовані заявки. Часто найкращі результати дає комбінація обох інструментів.',
+          },
+          {
+            question:
+              'Що буде після завершення кампанії? Реклама зупиниться?',
+            answer:
+              'Ми зберігаємо всі напрацьовані аудиторії, креативи та аналітику. Це дозволяє швидко перезапустити рекламу у майбутньому або використовувати результати для інших маркетингових каналів. Також за запитом можемо передати доступи й навчити вашу команду підтримувати кампанії самостійно.',
+          },
+        ],
+        faqCtaText: 'Маєте додаткові запитання щодо таргетованої реклами?',
+        faqCtaButton: "Зв'язатися з нами",
       },
     },
   },
