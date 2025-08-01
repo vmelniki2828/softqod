@@ -42,6 +42,7 @@ import {
   FaShareAlt,
   FaPlus,
 } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const PageContainer = styled.div`
   max-width: 1400px;
@@ -272,24 +273,6 @@ const AnimatedTitle = styled(motion.h1)`
   @media (max-width: 480px) {
     font-size: clamp(1.5rem, 3.5vw, 2rem);
     margin-bottom: 0.8rem;
-  }
-`;
-
-const HighlightedSpan = styled.span`
-  position: relative;
-  color: var(--accent-color);
-  white-space: nowrap;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    width: 100%;
-    height: 10px;
-    background: rgba(var(--accent-color-rgb), 0.15);
-    z-index: -1;
-    border-radius: 4px;
   }
 `;
 
@@ -1012,11 +995,6 @@ const SeoIconOrbit = styled(motion.div)`
     bottom: 10%;
     left: 15%;
   }
-`;
-
-const SeoHighlight = styled.span`
-  color: var(--accent-color);
-  font-weight: 600;
 `;
 
 const SeoAdvantagesList = styled.div`
@@ -2756,22 +2734,6 @@ const MetricTrend = styled.div`
       : 'var(--text-secondary)'};
 `;
 
-const MetricButton = styled.button`
-  background: transparent;
-  border: 1px solid rgba(var(--accent-color-rgb), 0.3);
-  color: var(--text-primary);
-  border-radius: 20px;
-  padding: 0.5rem 1rem;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(var(--accent-color-rgb), 0.1);
-    border-color: var(--accent-color);
-  }
-`;
-
 // Компоненты для раздела "Для яких проєктів підходить SEO"
 const ProjectsSection = styled.section`
   padding: 7rem 0;
@@ -4139,6 +4101,21 @@ const SeoOptimization = () => {
   const [activeTool, setActiveTool] = useState(0);
   const [expandedFaqs, setExpandedFaqs] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const { t } = useTranslation();
+  const technicalFeatures = t('seoOptimizationPage.technicalFeatures', { returnObjects: true });
+  const onPageFeatures = t('seoOptimizationPage.onPageFeatures', { returnObjects: true });
+  const offPageFeatures = t('seoOptimizationPage.offPageFeatures', { returnObjects: true });
+  const localFeatures = t('seoOptimizationPage.localFeatures', { returnObjects: true });
+  const stages = t('seoOptimizationPage.stages', { returnObjects: true });
+  const seoToolsItem = t('seoOptimizationPage.seoToolsItem', { returnObjects: true });
+  const metrics = t('seoOptimizationPage.metrics', { returnObjects: true });
+  const projects = t('seoOptimizationPage.projects', { returnObjects: true });
+  const approaches = t('seoOptimizationPage.approaches', { returnObjects: true });
+  const results = t('seoOptimizationPage.results', { returnObjects: true });
+  const faq = t('seoOptimizationPage.faq', { returnObjects: true });
+
+  
 
   // Modal functions
   const openModal = () => setIsModalOpen(true);
@@ -4151,15 +4128,13 @@ const SeoOptimization = () => {
       icon: <FaGoogle />,
       color: '#4285F4',
       colorRgb: '66, 133, 244',
-      tagline:
-        'Основний сервіс для моніторингу індексації та технічних помилок',
-      description:
-        'Офіційний інструмент від Google, який дозволяє контролювати, як пошукова система бачить ваш сайт. Надає цінні дані про кліки, покази, CTR та позиції в пошуковій видачі.',
+      tagline: seoToolsItem[0].tagline,
+      description: seoToolsItem[0].description,      
       features: [
-        'Моніторинг індексації сторінок',
-        'Виявлення технічних помилок',
-        'Аналіз ключових запитів',
-        'Перевірка мобільної версії',
+        seoToolsItem[0].features[0],
+        seoToolsItem[0].features[1],
+        seoToolsItem[0].features[2],
+        seoToolsItem[0].features[3],
       ],
       link: 'https://search.google.com/search-console',
     },
@@ -4169,14 +4144,13 @@ const SeoOptimization = () => {
       icon: <FaChartPie />,
       color: '#E49D25',
       colorRgb: '228, 157, 37',
-      tagline: 'Джерело даних про поведінку користувачів та конверсії',
-      description:
-        'Потужна аналітична платформа для відстеження трафіку, поведінки користувачів, джерел переходів та конверсій. Дозволяє створювати сегменти, аналізувати воронки та вимірювати ROI.',
+      tagline: seoToolsItem[1].tagline,
+      description: seoToolsItem[1].description,        
       features: [
-        'Аналіз трафіку за джерелами',
-        'Відстеження поведінки користувачів',
-        'Вимірювання конверсій',
-        'Персоналізовані звіти',
+        seoToolsItem[1].features[0],
+        seoToolsItem[1].features[1],
+        seoToolsItem[1].features[2],
+        seoToolsItem[1].features[3],
       ],
       link: 'https://analytics.google.com/',
     },
@@ -4186,15 +4160,13 @@ const SeoOptimization = () => {
       icon: <FaChartLine />,
       color: '#2C3E94',
       colorRgb: '44, 62, 148',
-      tagline:
-        'Платформи для комплексного SEO-аналізу та конкурентної розвідки',
-      description:
-        'Професійні інструменти для всебічного SEO-аналізу: дослідження ключових слів, аудит зворотних посилань, відстеження позицій, аналіз конкурентів та контенту.',
+      tagline: seoToolsItem[2].tagline,      
+      description: seoToolsItem[2].description,      
       features: [
-        'Дослідження ключових слів',
-        'Аналіз зворотних посилань',
-        'Відстеження позицій сайту',
-        'Моніторинг конкурентів',
+        seoToolsItem[2].features[0],
+        seoToolsItem[2].features[1],
+        seoToolsItem[2].features[2],
+        seoToolsItem[2].features[3],
       ],
       link: 'https://ahrefs.com/',
     },
@@ -4204,14 +4176,13 @@ const SeoOptimization = () => {
       icon: <FaSpider />,
       color: '#3CB04E',
       colorRgb: '60, 176, 78',
-      tagline: 'Сканер сайту для виявлення технічних помилок',
-      description:
-        'Десктопний краулер для глибокого технічного аудиту. Сканує сайт подібно пошуковому роботу, виявляючи проблеми з мета-тегами, структурою, редиректами, битими посиланнями та іншими технічними аспектами.',
+      tagline: seoToolsItem[3].tagline,
+      description: seoToolsItem[3].description,        
       features: [
-        'Виявлення дублікатів контенту',
-        'Аналіз структури сайту',
-        'Перевірка редиректів та статус-кодів',
-        'Пошук битих посилань',
+        seoToolsItem[3].features[0],
+        seoToolsItem[3].features[1],
+        seoToolsItem[3].features[2],
+        seoToolsItem[3].features[3],
       ],
       link: 'https://www.screamingfrog.co.uk/seo-spider/',
     },
@@ -4221,14 +4192,13 @@ const SeoOptimization = () => {
       icon: <FaBolt />,
       color: '#E8710A',
       colorRgb: '232, 113, 10',
-      tagline: 'Сервіси для оцінки швидкості завантаження сторінок',
-      description:
-        'Інструменти для аналізу швидкості завантаження сторінок, виявлення факторів, що уповільнюють сайт, та отримання конкретних рекомендацій щодо оптимізації швидкості.',
+      tagline: seoToolsItem[4].tagline,
+      description: seoToolsItem[4].description,       
       features: [
-        'Вимірювання швидкості завантаження',
-        'Оцінка Core Web Vitals',
-        'Рекомендації з оптимізації',
-        'Порівняння з конкурентами',
+        seoToolsItem[4].features[0],
+        seoToolsItem[4].features[1],
+        seoToolsItem[4].features[2],
+        seoToolsItem[4].features[3],
       ],
       link: 'https://pagespeed.web.dev/',
     },
@@ -4238,14 +4208,13 @@ const SeoOptimization = () => {
       icon: <FaLightbulb />,
       color: '#9C27B0',
       colorRgb: '156, 39, 176',
-      tagline: 'Сервіси для SEO-аналізу та оптимізації контенту',
-      description:
-        'Інтелектуальні інструменти для створення контенту, оптимізованого під пошукові системи. Аналізують топові результати і дають рекомендації щодо структури, щільності ключів та додаткових термінів.',
+      tagline: seoToolsItem[5].tagline,
+      description: seoToolsItem[5].description,       
       features: [
-        'Аналіз конкурентного контенту',
-        'Оптимізація структури тексту',
-        'Рекомендації щодо ключових слів',
-        'Оцінка якості контенту',
+        seoToolsItem[5].features[0],
+        seoToolsItem[5].features[1],
+        seoToolsItem[5].features[2],
+        seoToolsItem[5].features[3],
       ],
       link: 'https://surferseo.com/',
     },
@@ -4278,29 +4247,24 @@ const SeoOptimization = () => {
   // FAQ data
   const faqData = [
     {
-      question: '1. Скільки часу потрібно, щоб побачити результати від SEO?',
-      answer:
-        'Перші зміни можуть бути помітні вже через 1–2 місяці після старту. Однак стабільне зростання позицій і трафіку зазвичай відбувається через 3–6 місяців активної роботи, залежно від конкурентності ніші та стану сайту.',
+      question: faq[0].question,
+      answer: faq[0].answer,    
     },
     {
-      question: '2. Чи потрібен SEO, якщо вже запущена контекстна реклама?',
-      answer:
-        'Так. Контекстна реклама дає миттєвий трафік, але тільки поки ви платите. SEO будує довгострокову присутність у пошуку, знижуючи вартість залучення клієнтів у майбутньому.',
+      question: faq[1].question,
+      answer: faq[1].answer,    
     },
     {
-      question: '3. Чи можна просувати новий сайт без історії?',
-      answer:
-        'Так, але потрібно більше часу та зусиль. Для "молодих" доменів ми зазвичай починаємо з базової технічної оптимізації, контенту та поступового нарощування посилань.',
+      question: faq[2].question,
+      answer: faq[2].answer, 
     },
     {
-      question: '4. Який бюджет потрібно для SEO-просування?',
-      answer:
-        'Бюджет залежить від масштабів проєкту, конкурентності запитів і цілей. У середньому для малого бізнесу мінімальний щомісячний бюджет стартує від 500–800$.',
+      question: faq[3].question,
+      answer: faq[3].answer,
     },
     {
-      question: '5. Чи можна гарантувати топ-1 у Google?',
-      answer:
-        'Ні. Жоден відповідальний SEO-фахівець не дає таких гарантій. Алгоритми Google постійно змінюються, і позиції залежать від багатьох факторів. Ми гарантуємо системну роботу, яка дає реальний результат.',
+      question: faq[4].question,
+      answer: faq[4].answer,
     },
   ];
 
@@ -4347,18 +4311,14 @@ const SeoOptimization = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                SEO-оптимізація з{' '}
-                <HighlightedSpan>видимими результатами</HighlightedSpan>
+               {t('seoOptimizationPage.heroTitle')}
               </AnimatedTitle>
               <HeroDescription
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                Комплексний підхід до оптимізації сайту, який підвищує видимість
-                у пошукових системах, збільшує органічний трафік та конверсії.
-                Ми поєднуємо технічне SEO, контент-маркетинг та зовнішню
-                оптимізацію для досягнення стабільних результатів.
+                {t('seoOptimizationPage.heroDescription')}
               </HeroDescription>
               <ButtonGroup
                 initial={{ opacity: 0, y: 20 }}
@@ -4366,7 +4326,7 @@ const SeoOptimization = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 <PrimaryButton whileHover={{ y: -5 }} onClick={openModal}>
-                  Замовити аудит сайту
+                {t('seoOptimizationPage.orderButton')}
                   <FaArrowRight />
                 </PrimaryButton>
               </ButtonGroup>
@@ -4375,19 +4335,19 @@ const SeoOptimization = () => {
                   <KeyPointIcon>
                     <FaSearch />
                   </KeyPointIcon>
-                  <KeyPointText>Зростання позицій у пошуку</KeyPointText>
+                  <KeyPointText>{t('seoOptimizationPage.keyPoint1')}</KeyPointText>
                 </KeyPoint>
                 <KeyPoint>
                   <KeyPointIcon>
                     <FaUsers />
                   </KeyPointIcon>
-                  <KeyPointText>Збільшення цільового трафіку</KeyPointText>
+                  <KeyPointText>{t('seoOptimizationPage.keyPoint2')}</KeyPointText>
                 </KeyPoint>
                 <KeyPoint>
                   <KeyPointIcon>
                     <FaChartLine />
                   </KeyPointIcon>
-                  <KeyPointText>Зростання конверсій і продажів</KeyPointText>
+                  <KeyPointText>{t('seoOptimizationPage.keyPoint3')}</KeyPointText>
                 </KeyPoint>
               </KeyPoints>
             </HeroLeft>
@@ -4430,7 +4390,7 @@ const SeoOptimization = () => {
                     <CardIcon>
                       <FaCode />
                     </CardIcon>
-                    <CardName>Технічне SEO</CardName>
+                    <CardName>{t('seoOptimizationPage.iconText1')}</CardName>
                   </SeoCard>
 
                   <SeoCard
@@ -4443,7 +4403,7 @@ const SeoOptimization = () => {
                     <CardIcon>
                       <FaChartBar />
                     </CardIcon>
-                    <CardName>Аналітика</CardName>
+                    <CardName>{t('seoOptimizationPage.iconText2')}</CardName>
                   </SeoCard>
 
                   <SeoCard
@@ -4456,7 +4416,7 @@ const SeoOptimization = () => {
                     <CardIcon>
                       <FaSearchLocation />
                     </CardIcon>
-                    <CardName>Локальне SEO</CardName>
+                    <CardName>{t('seoOptimizationPage.iconText3')}</CardName>
                   </SeoCard>
 
                   <SearchPositionBadge
@@ -4496,33 +4456,20 @@ const SeoOptimization = () => {
 
       <InfoSection>
         <InfoContainer>
-          <InfoTitle>Що таке SEO-оптимізація</InfoTitle>
+          <InfoTitle>{t('seoOptimizationPage.infoTitle')}</InfoTitle>
 
           <SeoDefinitionGrid>
             <SeoDefinitionText>
               <SeoDefinitionParagraph>
-                <SeoHighlight>SEO (Search Engine Optimization)</SeoHighlight> —
-                це комплекс заходів, спрямованих на покращення видимості сайту в
-                пошукових системах, таких як Google. Основна мета — вивести
-                сторінки сайту на перші позиції за релевантними запитами
-                користувачів.
+              {t('seoOptimizationPage.infoTitle')}
               </SeoDefinitionParagraph>
 
               <SeoDefinitionParagraph>
-                На відміну від платної реклами, SEO дає{' '}
-                <SeoHighlight>довготривалий ефект</SeoHighlight>: що краще
-                оптимізований сайт, то більше безкоштовного органічного трафіку
-                він отримує. Це дозволяє знижувати витрати на залучення клієнтів
-                у довгостроковій перспективі.
+              {t('seoOptimizationPage.infoParagraph2')}
               </SeoDefinitionParagraph>
 
               <SeoDefinitionParagraph>
-                SEO охоплює технічну якість сайту, контент, зовнішні посилання,
-                поведінкові фактори, локальну присутність та інші аспекти, які
-                впливають на ранжування. Правильна SEO-стратегія дозволяє не
-                просто "бути в топі", а{' '}
-                <SeoHighlight>залучати саме ту аудиторію</SeoHighlight>, яка
-                готова до взаємодії з вашим брендом.
+              {t('seoOptimizationPage.infoParagraph3')}
               </SeoDefinitionParagraph>
             </SeoDefinitionText>
 
@@ -4595,10 +4542,9 @@ const SeoOptimization = () => {
               <SeoAdvantageIcon>
                 <FaChartLine />
               </SeoAdvantageIcon>
-              <SeoAdvantageTitle>Довготривалий результат</SeoAdvantageTitle>
+              <SeoAdvantageTitle>{t('seoOptimizationPage.advantage1Title')}</SeoAdvantageTitle>
               <SeoAdvantageDescription>
-                Налаштована SEO-оптимізація працює на вас роками, на відміну від
-                контекстної реклами, що припиняється з відключенням бюджету.
+              {t('seoOptimizationPage.advantage1Desc')}
               </SeoAdvantageDescription>
             </SeoAdvantageCard>
 
@@ -4611,10 +4557,9 @@ const SeoOptimization = () => {
               <SeoAdvantageIcon>
                 <FaUsers />
               </SeoAdvantageIcon>
-              <SeoAdvantageTitle>Цільова аудиторія</SeoAdvantageTitle>
+              <SeoAdvantageTitle>{t('seoOptimizationPage.advantage2Title')}</SeoAdvantageTitle>
               <SeoAdvantageDescription>
-                Залучення відвідувачів, які активно шукають ваші послуги та
-                готові до взаємодії з вашим брендом.
+              {t('seoOptimizationPage.advantage2Desc')}
               </SeoAdvantageDescription>
             </SeoAdvantageCard>
 
@@ -4627,10 +4572,9 @@ const SeoOptimization = () => {
               <SeoAdvantageIcon>
                 <FaUniversalAccess />
               </SeoAdvantageIcon>
-              <SeoAdvantageTitle>Довіра користувачів</SeoAdvantageTitle>
+              <SeoAdvantageTitle>{t('seoOptimizationPage.advantage3Title')}</SeoAdvantageTitle>
               <SeoAdvantageDescription>
-                Більшість користувачів більше довіряють органічним результатам
-                пошуку, ніж рекламним оголошенням.
+              {t('seoOptimizationPage.advantage2Desc')}
               </SeoAdvantageDescription>
             </SeoAdvantageCard>
           </SeoAdvantagesList>
@@ -4639,12 +4583,9 @@ const SeoOptimization = () => {
 
       <DirectionsSection>
         <DirectionsContainer>
-          <DirectionsTitle>Основні напрямки SEO</DirectionsTitle>
+          <DirectionsTitle>{t('seoOptimizationPage.directionsTitle')}</DirectionsTitle>
           <DirectionsDescription>
-            SEO-оптимізація складається з кількох ключових напрямків, кожен з
-            яких впливає на видимість сайту в пошукових системах. Гармонійне
-            поєднання цих напрямків дозволяє досягати стабільного органічного
-            трафіку та зростання позицій.
+          {t('seoOptimizationPage.directionsDescription')}
           </DirectionsDescription>
 
           <DirectionsTabs>
@@ -4652,25 +4593,25 @@ const SeoOptimization = () => {
               active={activeDirection === 'technical'}
               onClick={() => setActiveDirection('technical')}
             >
-              <FaCogs /> Технічна оптимізація
+              <FaCogs /> {t('seoOptimizationPage.technicalTab')}
             </DirectionTab>
             <DirectionTab
               active={activeDirection === 'onpage'}
               onClick={() => setActiveDirection('onpage')}
             >
-              <FaEdit /> Внутрішня оптимізація
+              <FaEdit /> {t('seoOptimizationPage.onPageTab')}
             </DirectionTab>
             <DirectionTab
               active={activeDirection === 'offpage'}
               onClick={() => setActiveDirection('offpage')}
             >
-              <FaLink /> Зовнішня оптимізація
+              <FaLink /> {t('seoOptimizationPage.offPageTab')}
             </DirectionTab>
             <DirectionTab
               active={activeDirection === 'local'}
               onClick={() => setActiveDirection('local')}
             >
-              <FaSearchLocation /> Локальне SEO
+              <FaSearchLocation /> {t('seoOptimizationPage.localTab')}
             </DirectionTab>
           </DirectionsTabs>
 
@@ -4685,14 +4626,10 @@ const SeoOptimization = () => {
                 <DirectionDetails>
                   <DirectionTitle>
                     <FaCogs />
-                    Технічна оптимізація
+                    {t('seoOptimizationPage.technicalTitle')}
                   </DirectionTitle>
                   <DirectionText>
-                    Це фундамент SEO. Вона включає швидкість завантаження сайту,
-                    адаптивність для мобільних пристроїв, коректну індексацію
-                    сторінок, налаштування файлів robots.txt і sitemap.xml,
-                    усунення дублів та битих посилань. Якщо технічна база
-                    неякісна — просувати сайт буде складно.
+                  {t('seoOptimizationPage.technicalText')}
                   </DirectionText>
                   <DirectionFeatures>
                     <DirectionFeature>
@@ -4700,7 +4637,7 @@ const SeoOptimization = () => {
                         <FaBolt />
                       </DirectionFeatureIcon>
                       <DirectionFeatureText>
-                        Швидкість завантаження сторінок
+                        {technicalFeatures[0]}
                       </DirectionFeatureText>
                     </DirectionFeature>
                     <DirectionFeature>
@@ -4708,7 +4645,7 @@ const SeoOptimization = () => {
                         <FaMobileAlt />
                       </DirectionFeatureIcon>
                       <DirectionFeatureText>
-                        Адаптивність для мобільних пристроїв
+                      {technicalFeatures[1]}
                       </DirectionFeatureText>
                     </DirectionFeature>
                     <DirectionFeature>
@@ -4716,7 +4653,7 @@ const SeoOptimization = () => {
                         <FaRobot />
                       </DirectionFeatureIcon>
                       <DirectionFeatureText>
-                        Налаштування robots.txt і sitemap.xml
+                      {technicalFeatures[2]}
                       </DirectionFeatureText>
                     </DirectionFeature>
                     <DirectionFeature>
@@ -4724,7 +4661,7 @@ const SeoOptimization = () => {
                         <FaBan />
                       </DirectionFeatureIcon>
                       <DirectionFeatureText>
-                        Усунення дублів та битих посилань
+                      {technicalFeatures[3]}
                       </DirectionFeatureText>
                     </DirectionFeature>
                   </DirectionFeatures>
@@ -4748,15 +4685,10 @@ const SeoOptimization = () => {
                 <DirectionDetails>
                   <DirectionTitle>
                     <FaEdit />
-                    Внутрішня оптимізація (On-Page SEO)
+                    {t('seoOptimizationPage.onPageTitle')}
                   </DirectionTitle>
                   <DirectionText>
-                    Цей напрямок охоплює роботу з контентом та структурою
-                    сторінок. Важливо правильно прописати мета-теги (title,
-                    description), заголовки (H1-H6), оптимізувати зображення,
-                    використовувати ключові слова у текстах, покращити внутрішню
-                    перелінковку. Контент має бути релевантним, унікальним та
-                    корисним для користувача.
+                  {t('seoOptimizationPage.onPageText')}
                   </DirectionText>
                   <DirectionFeatures>
                     <DirectionFeature>
@@ -4764,7 +4696,7 @@ const SeoOptimization = () => {
                         <FaTags />
                       </DirectionFeatureIcon>
                       <DirectionFeatureText>
-                        Оптимізація мета-тегів та заголовків
+                        {onPageFeatures[0]}
                       </DirectionFeatureText>
                     </DirectionFeature>
                     <DirectionFeature>
@@ -4772,7 +4704,7 @@ const SeoOptimization = () => {
                         <FaFileAlt />
                       </DirectionFeatureIcon>
                       <DirectionFeatureText>
-                        Створення якісного контенту з ключовими словами
+                      {onPageFeatures[1]}
                       </DirectionFeatureText>
                     </DirectionFeature>
                     <DirectionFeature>
@@ -4780,7 +4712,7 @@ const SeoOptimization = () => {
                         <FaImage />
                       </DirectionFeatureIcon>
                       <DirectionFeatureText>
-                        Оптимізація зображень та мультимедіа
+                      {onPageFeatures[2]}
                       </DirectionFeatureText>
                     </DirectionFeature>
                     <DirectionFeature>
@@ -4788,7 +4720,7 @@ const SeoOptimization = () => {
                         <FaRandom />
                       </DirectionFeatureIcon>
                       <DirectionFeatureText>
-                        Побудова внутрішньої перелінковки
+                      {onPageFeatures[3]}
                       </DirectionFeatureText>
                     </DirectionFeature>
                   </DirectionFeatures>
@@ -4812,13 +4744,10 @@ const SeoOptimization = () => {
                 <DirectionDetails>
                   <DirectionTitle>
                     <FaLink />
-                    Зовнішня оптимізація (Off-Page SEO)
+                    {t('seoOptimizationPage.offPageTitle')}
                   </DirectionTitle>
                   <DirectionText>
-                    Вона включає побудову якісного профілю зворотних посилань.
-                    Посилання з авторитетних ресурсів підвищують довіру
-                    пошукових систем до сайту. Важливо також працювати над
-                    згадками бренду, відгуками та репутацією в мережі.
+                  {t('seoOptimizationPage.offPageText')}
                   </DirectionText>
                   <DirectionFeatures>
                     <DirectionFeature>
@@ -4826,7 +4755,7 @@ const SeoOptimization = () => {
                         <FaExternalLinkAlt />
                       </DirectionFeatureIcon>
                       <DirectionFeatureText>
-                        Побудова профілю зворотних посилань
+                        {offPageFeatures[0]}
                       </DirectionFeatureText>
                     </DirectionFeature>
                     <DirectionFeature>
@@ -4834,7 +4763,7 @@ const SeoOptimization = () => {
                         <FaBuilding />
                       </DirectionFeatureIcon>
                       <DirectionFeatureText>
-                        Співпраця з авторитетними ресурсами галузі
+                      {offPageFeatures[1]}
                       </DirectionFeatureText>
                     </DirectionFeature>
                     <DirectionFeature>
@@ -4842,7 +4771,7 @@ const SeoOptimization = () => {
                         <FaComments />
                       </DirectionFeatureIcon>
                       <DirectionFeatureText>
-                        Робота з відгуками та згадками бренду
+                      {offPageFeatures[2]}
                       </DirectionFeatureText>
                     </DirectionFeature>
                     <DirectionFeature>
@@ -4850,7 +4779,7 @@ const SeoOptimization = () => {
                         <FaShareAlt />
                       </DirectionFeatureIcon>
                       <DirectionFeatureText>
-                        Підвищення репутації в соціальних мережах
+                      {offPageFeatures[3]}
                       </DirectionFeatureText>
                     </DirectionFeature>
                   </DirectionFeatures>
@@ -4874,13 +4803,10 @@ const SeoOptimization = () => {
                 <DirectionDetails>
                   <DirectionTitle>
                     <FaSearchLocation />
-                    Локальне SEO
+                    {t('seoOptimizationPage.localTitle')}
                   </DirectionTitle>
                   <DirectionText>
-                    Актуальне для бізнесів, які надають послуги в певному
-                    регіоні. Оптимізація включає створення та ведення профілю в
-                    Google Business, роботу з локальними ключовими словами,
-                    відгуками та геолокаційною релевантністю.
+                  {t('seoOptimizationPage.localText')}
                   </DirectionText>
                   <DirectionFeatures>
                     <DirectionFeature>
@@ -4888,7 +4814,7 @@ const SeoOptimization = () => {
                         <FaStoreAlt />
                       </DirectionFeatureIcon>
                       <DirectionFeatureText>
-                        Створення та оптимізація Google Business профілю
+                        {localFeatures[0]}
                       </DirectionFeatureText>
                     </DirectionFeature>
                     <DirectionFeature>
@@ -4896,7 +4822,7 @@ const SeoOptimization = () => {
                         <FaMapMarkerAlt />
                       </DirectionFeatureIcon>
                       <DirectionFeatureText>
-                        Геолокаційна релевантність і локальні ключі
+                      {localFeatures[1]}
                       </DirectionFeatureText>
                     </DirectionFeature>
                     <DirectionFeature>
@@ -4904,7 +4830,7 @@ const SeoOptimization = () => {
                         <FaStar />
                       </DirectionFeatureIcon>
                       <DirectionFeatureText>
-                        Управління локальними відгуками
+                      {localFeatures[2]}
                       </DirectionFeatureText>
                     </DirectionFeature>
                     <DirectionFeature>
@@ -4912,7 +4838,7 @@ const SeoOptimization = () => {
                         <FaMapMarkedAlt />
                       </DirectionFeatureIcon>
                       <DirectionFeatureText>
-                        Наявність в локальних довідниках і картах
+                      {localFeatures[3]}
                       </DirectionFeatureText>
                     </DirectionFeature>
                   </DirectionFeatures>
@@ -4953,11 +4879,9 @@ const SeoOptimization = () => {
           rotate="30deg"
         />
         <StagesContainer>
-          <StagesTitle>Етапи роботи з SEO</StagesTitle>
+          <StagesTitle>{t('seoOptimizationPage.stagesTitle')}</StagesTitle>
           <StagesDescription>
-            Ефективне SEO неможливе без чітко визначених етапів. Кожен з них
-            важливий для досягнення стабільного результату та поступового
-            зростання органічного трафіку.
+          {t('seoOptimizationPage.stagesDescription')}
           </StagesDescription>
 
           <StagesTimeline>
@@ -4972,24 +4896,22 @@ const SeoOptimization = () => {
                 <StageIcon>
                   <FaSearchPlus />
                 </StageIcon>
-                <StageTitle>Аудит сайту</StageTitle>
+                <StageTitle>{stages[0].title}</StageTitle>
                 <StageText>
-                  Починаємо з повного технічного та контентного аналізу.
-                  Виявляємо помилки, недоліки структури, проблеми індексації,
-                  дублікати, слабкі місця в контенті та зовнішніх посиланнях.
+                {stages[0].text}
                 </StageText>
                 <StageBullets>
                   <StageBullet>
-                    <FaCheck /> Технічний аналіз
+                    <FaCheck /> {stages[0].bullets[0]}
                   </StageBullet>
                   <StageBullet>
-                    <FaCheck /> Контентний аудит
+                    <FaCheck /> {stages[0].bullets[1]}
                   </StageBullet>
                   <StageBullet>
-                    <FaCheck /> Аналіз індексації
+                    <FaCheck /> {stages[0].bullets[2]}
                   </StageBullet>
                   <StageBullet>
-                    <FaCheck /> Перевірка посилань
+                    <FaCheck /> {stages[0].bullets[3]}
                   </StageBullet>
                 </StageBullets>
               </StageContent>
@@ -5007,24 +4929,22 @@ const SeoOptimization = () => {
                 <StageIcon>
                   <FaChartLine />
                 </StageIcon>
-                <StageTitle>Формування SEO-стратегії</StageTitle>
+                <StageTitle>{stages[1].title}</StageTitle>
                 <StageText>
-                  На основі аудиту розробляємо план просування. Визначаємо
-                  цільові сторінки, семантичне ядро (ключові запити), пріоритети
-                  оптимізації та зовнішніх активностей.
+                {stages[1].text}
                 </StageText>
                 <StageBullets>
                   <StageBullet>
-                    <FaCheck /> План просування
+                    <FaCheck /> {stages[1].bullets[0]}
                   </StageBullet>
                   <StageBullet>
-                    <FaCheck /> Семантичне ядро
+                    <FaCheck /> {stages[1].bullets[1]}
                   </StageBullet>
                   <StageBullet>
-                    <FaCheck /> Цільові сторінки
+                    <FaCheck /> {stages[1].bullets[2]}
                   </StageBullet>
                   <StageBullet>
-                    <FaCheck /> Пріоритети оптимізації
+                    <FaCheck /> {stages[1].bullets[3]}
                   </StageBullet>
                 </StageBullets>
               </StageContent>
@@ -5042,24 +4962,22 @@ const SeoOptimization = () => {
                 <StageIcon>
                   <FaCogs />
                 </StageIcon>
-                <StageTitle>Технічна та внутрішня оптимізація</StageTitle>
+                <StageTitle>{stages[2].title}</StageTitle>
                 <StageText>
-                  Проводимо роботи над структурою сайту, швидкістю завантаження,
-                  адаптивністю. Вносимо зміни у мета-теги, заголовки, тексти,
-                  внутрішню перелінковку, зображення.
+                {stages[2].text}
                 </StageText>
                 <StageBullets>
                   <StageBullet>
-                    <FaCheck /> Оптимізація структури
+                    <FaCheck /> {stages[2].bullets[0]}
                   </StageBullet>
                   <StageBullet>
-                    <FaCheck /> Швидкість завантаження
+                    <FaCheck /> {stages[2].bullets[1]}
                   </StageBullet>
                   <StageBullet>
-                    <FaCheck /> Метатеги і заголовки
+                    <FaCheck /> {stages[2].bullets[2]}
                   </StageBullet>
                   <StageBullet>
-                    <FaCheck /> Внутрішня перелінковка
+                    <FaCheck /> {stages[2].bullets[3]}
                   </StageBullet>
                 </StageBullets>
               </StageContent>
@@ -5078,25 +4996,23 @@ const SeoOptimization = () => {
                   <FaFileAlt />
                 </StageIcon>
                 <StageTitle>
-                  Контент-маркетинг і розширення семантики
+                {stages[3].title}
                 </StageTitle>
                 <StageText>
-                  Створюємо нові сторінки, публікуємо SEO-статті, оновлюємо
-                  існуючий контент. Поступово охоплюємо ширше коло запитів,
-                  розширюючи органічний трафік.
+                {stages[3].text}
                 </StageText>
                 <StageBullets>
                   <StageBullet>
-                    <FaCheck /> Створення нових сторінок
+                    <FaCheck /> {stages[3].bullets[0]}
                   </StageBullet>
                   <StageBullet>
-                    <FaCheck /> SEO-статті
+                    <FaCheck /> {stages[3].bullets[1]}
                   </StageBullet>
                   <StageBullet>
-                    <FaCheck /> Оновлення контенту
+                    <FaCheck /> {stages[3].bullets[2]}
                   </StageBullet>
                   <StageBullet>
-                    <FaCheck /> Розширення семантики
+                    <FaCheck /> {stages[3].bullets[3]}
                   </StageBullet>
                 </StageBullets>
               </StageContent>
@@ -5114,24 +5030,22 @@ const SeoOptimization = () => {
                 <StageIcon>
                   <FaLink />
                 </StageIcon>
-                <StageTitle>Лінкбілдінг і репутаційний менеджмент</StageTitle>
+                <StageTitle>{stages[4].title}</StageTitle>
                 <StageText>
-                  Налагоджуємо отримання якісних зовнішніх посилань, публікуємо
-                  матеріали на авторитетних платформах, працюємо з відгуками та
-                  згадками про бренд.
+                {stages[4].text}
                 </StageText>
                 <StageBullets>
                   <StageBullet>
-                    <FaCheck /> Зовнішні посилання
+                    <FaCheck /> {stages[4].bullets[0]}
                   </StageBullet>
                   <StageBullet>
-                    <FaCheck /> Гостьові публікації
+                    <FaCheck /> {stages[4].bullets[1]}
                   </StageBullet>
                   <StageBullet>
-                    <FaCheck /> Управління відгуками
+                    <FaCheck /> {stages[4].bullets[2]}
                   </StageBullet>
                   <StageBullet>
-                    <FaCheck /> Моніторинг згадок
+                    <FaCheck /> {stages[4].bullets[3]}
                   </StageBullet>
                 </StageBullets>
               </StageContent>
@@ -5148,24 +5062,22 @@ const SeoOptimization = () => {
                 <StageIcon>
                   <FaChartBar />
                 </StageIcon>
-                <StageTitle>Моніторинг і аналітика</StageTitle>
+                <StageTitle>{stages[5].title}</StageTitle>
                 <StageText>
-                  Постійно відстежуємо позиції, трафік, поведінку користувачів,
-                  ефективність ключових слів. На основі даних — адаптуємо
-                  стратегію та план дій.
+                {stages[5].text}
                 </StageText>
                 <StageBullets>
                   <StageBullet>
-                    <FaCheck /> Моніторинг позицій
+                    <FaCheck /> {stages[5].bullets[0]}
                   </StageBullet>
                   <StageBullet>
-                    <FaCheck /> Аналіз трафіку
+                    <FaCheck /> {stages[5].bullets[1]}
                   </StageBullet>
                   <StageBullet>
-                    <FaCheck /> Оцінка поведінки користувачів
+                    <FaCheck /> {stages[5].bullets[2]}
                   </StageBullet>
                   <StageBullet>
-                    <FaCheck /> Адаптація стратегії
+                    <FaCheck /> {stages[5].bullets[3]}
                   </StageBullet>
                 </StageBullets>
               </StageContent>
@@ -5176,11 +5088,9 @@ const SeoOptimization = () => {
 
       <ToolsSliderSection>
         <ToolsSliderContainer>
-          <ToolsSliderTitle>Інструменти SEO-фахівця</ToolsSliderTitle>
+          <ToolsSliderTitle>{t('seoOptimizationPage.toolsTitle')}</ToolsSliderTitle>
           <ToolsSliderDescription>
-            Успішна SEO-оптимізація неможлива без професійних інструментів, які
-            допомагають проводити аналіз, контролювати зміни та вимірювати
-            результат.
+          {t('seoOptimizationPage.toolsDescription')}
           </ToolsSliderDescription>
 
           <SliderNavigation>
@@ -5241,7 +5151,7 @@ const SeoOptimization = () => {
                           rel="noopener noreferrer"
                           style={{ color: tool.color }}
                         >
-                          <FaExternalLinkAlt /> Перейти на офіційний сайт
+                          <FaExternalLinkAlt /> {t('seoOptimizationPage.toolsText')}
                         </ToolSlideLink>
                       </ToolSlideContent>
                     </ToolSlide>
@@ -5274,11 +5184,9 @@ const SeoOptimization = () => {
       {/* Новая секция метрик */}
       <MetricsSection>
         <MetricsContainer>
-          <MetricsTitle>Метрики ефективності SEO</MetricsTitle>
+          <MetricsTitle>{t('seoOptimizationPage.metricsTitle')}</MetricsTitle>
           <MetricsDescription>
-            SEO — це про аналітику та вимірюваний результат. Щоб оцінити успіх
-            оптимізації, необхідно регулярно відстежувати ключові метрики. Ось
-            найважливіші з них:
+          {t('seoOptimizationPage.metricsDescription')}
           </MetricsDescription>
 
           <MetricsGrid>
@@ -5299,13 +5207,11 @@ const SeoOptimization = () => {
                 </MetricIconWrapper>
                 <MetricInfo>
                   <MetricNumber color="#4CAF50">01</MetricNumber>
-                  <MetricName>Органічний трафік</MetricName>
+                  <MetricName>{metrics[0].name}</MetricName>
                 </MetricInfo>
               </MetricHeader>
               <MetricText>
-                Кількість відвідувачів, які переходять на сайт з пошукових
-                систем. Зростання трафіку свідчить про покращення видимості
-                сайту.
+                {metrics[0].description}
               </MetricText>
 
               <MetricChart>
@@ -5321,8 +5227,8 @@ const SeoOptimization = () => {
                   />
                 ))}
                 <ChartLegend>
-                  <span>Тиждень 1</span>
-                  <span>Тиждень 7</span>
+                  <span>{metrics[0].chartLegend.week1}</span>
+                  <span>{metrics[0].chartLegend.week7}</span>
                 </ChartLegend>
               </MetricChart>
 
@@ -5330,7 +5236,6 @@ const SeoOptimization = () => {
                 <MetricTrend trend="up">
                   +32% <FaArrowRight />
                 </MetricTrend>
-                <MetricButton>Детальніше</MetricButton>
               </MetricFooter>
             </MetricCard>
 
@@ -5351,13 +5256,11 @@ const SeoOptimization = () => {
                 </MetricIconWrapper>
                 <MetricInfo>
                   <MetricNumber color="#2196F3">02</MetricNumber>
-                  <MetricName>Позиції за ключовими словами</MetricName>
+                  <MetricName>{metrics[1].name}</MetricName>
                 </MetricInfo>
               </MetricHeader>
               <MetricText>
-                Відображають, на яких місцях у Google знаходяться ваші сторінки
-                за цільовими запитами. Прогрес у позиціях — один із головних
-                показників ефективної SEO-стратегії.
+              {metrics[1].description}
               </MetricText>
 
               <MetricChart>
@@ -5373,16 +5276,15 @@ const SeoOptimization = () => {
                   />
                 ))}
                 <ChartLegend>
-                  <span>Тиждень 1</span>
-                  <span>Тиждень 7</span>
+                  <span>{metrics[1].chartLegend.week1}</span>
+                  <span>{metrics[1].chartLegend.week7}</span>
                 </ChartLegend>
               </MetricChart>
 
               <MetricFooter>
                 <MetricTrend trend="up">
-                  +22 позиції <FaArrowRight />
+                {metrics[1].trend} <FaArrowRight />
                 </MetricTrend>
-                <MetricButton>Детальніше</MetricButton>
               </MetricFooter>
             </MetricCard>
 
@@ -5403,12 +5305,11 @@ const SeoOptimization = () => {
                 </MetricIconWrapper>
                 <MetricInfo>
                   <MetricNumber color="#9C27B0">03</MetricNumber>
-                  <MetricName>Конверсії з органіки</MetricName>
+                  <MetricName>{metrics[2].name}</MetricName>
                 </MetricInfo>
               </MetricHeader>
               <MetricText>
-                Важливо не лише отримувати трафік, а й щоб користувачі
-                виконували цільові дії: покупки, заявки, дзвінки тощо.
+              {metrics[2].description}
               </MetricText>
 
               <MetricChart>
@@ -5424,8 +5325,8 @@ const SeoOptimization = () => {
                   />
                 ))}
                 <ChartLegend>
-                  <span>Тиждень 1</span>
-                  <span>Тиждень 7</span>
+                <span>{metrics[2].chartLegend.week1}</span>
+                <span>{metrics[2].chartLegend.week7}</span>
                 </ChartLegend>
               </MetricChart>
 
@@ -5433,7 +5334,6 @@ const SeoOptimization = () => {
                 <MetricTrend trend="up">
                   +17% <FaArrowRight />
                 </MetricTrend>
-                <MetricButton>Детальніше</MetricButton>
               </MetricFooter>
             </MetricCard>
 
@@ -5453,14 +5353,12 @@ const SeoOptimization = () => {
                   <FaEye />
                 </MetricIconWrapper>
                 <MetricInfo>
-                  <MetricNumber color="#FF9800">04</MetricNumber>
-                  <MetricName>Час перебування та відмови</MetricName>
+                  <MetricNumber color="#9C27B0">04</MetricNumber>
+                  <MetricName>{metrics[3].name}</MetricName>
                 </MetricInfo>
               </MetricHeader>
               <MetricText>
-                Ці поведінкові метрики сигналізують про якість контенту та
-                зручність навігації. Якщо користувачі швидко покидають сайт —
-                варто переглянути UX або контент.
+              {metrics[3].description}
               </MetricText>
 
               <MetricChart>
@@ -5476,16 +5374,15 @@ const SeoOptimization = () => {
                   />
                 ))}
                 <ChartLegend>
-                  <span>Тиждень 1</span>
-                  <span>Тиждень 7</span>
+                <span>{metrics[3].chartLegend.week1}</span>
+                <span>{metrics[3].chartLegend.week7}</span>
                 </ChartLegend>
               </MetricChart>
 
               <MetricFooter>
                 <MetricTrend trend="down">
-                  -22% відмов <FaArrowRight />
+                {metrics[3].trend} <FaArrowRight />
                 </MetricTrend>
-                <MetricButton>Детальніше</MetricButton>
               </MetricFooter>
             </MetricCard>
 
@@ -5505,14 +5402,12 @@ const SeoOptimization = () => {
                   <FaLink />
                 </MetricIconWrapper>
                 <MetricInfo>
-                  <MetricNumber color="#E91E63">05</MetricNumber>
-                  <MetricName>Зворотні посилання</MetricName>
+                  <MetricNumber color="#2196F3">05</MetricNumber>
+                  <MetricName>{metrics[4].name}</MetricName>
                 </MetricInfo>
               </MetricHeader>
               <MetricText>
-                Пошукові системи оцінюють авторитет сайту за кількістю та
-                релевантністю посилань з інших ресурсів. Це критичний фактор у
-                зовнішній оптимізації.
+              {metrics[4].description}
               </MetricText>
 
               <MetricChart>
@@ -5528,16 +5423,15 @@ const SeoOptimization = () => {
                   />
                 ))}
                 <ChartLegend>
-                  <span>Тиждень 1</span>
-                  <span>Тиждень 7</span>
+                <span>{metrics[4].chartLegend.week1}</span>
+                <span>{metrics[4].chartLegend.week7}</span>
                 </ChartLegend>
               </MetricChart>
 
               <MetricFooter>
                 <MetricTrend trend="up">
-                  +43 посилання <FaArrowRight />
+                {metrics[4].trend} <FaArrowRight />
                 </MetricTrend>
-                <MetricButton>Детальніше</MetricButton>
               </MetricFooter>
             </MetricCard>
 
@@ -5557,14 +5451,12 @@ const SeoOptimization = () => {
                   <FaRegFileAlt />
                 </MetricIconWrapper>
                 <MetricInfo>
-                  <MetricNumber color="#3F51B5">06</MetricNumber>
-                  <MetricName>Індексовані сторінки</MetricName>
+                  <MetricNumber color="#2196F3">06</MetricNumber>
+                  <MetricName>{metrics[5].name}</MetricName>
                 </MetricInfo>
               </MetricHeader>
               <MetricText>
-                Кількість сторінок, які доступні в пошуку. Важливо, щоб всі
-                важливі розділи сайту були індексовані, а неякісні або дублікати
-                — виключені.
+              {metrics[5].description}
               </MetricText>
 
               <MetricChart>
@@ -5580,16 +5472,15 @@ const SeoOptimization = () => {
                   />
                 ))}
                 <ChartLegend>
-                  <span>Тиждень 1</span>
-                  <span>Тиждень 7</span>
+                <span>{metrics[5].chartLegend.week1}</span>
+                <span>{metrics[5].chartLegend.week7}</span>
                 </ChartLegend>
               </MetricChart>
 
               <MetricFooter>
                 <MetricTrend trend="up">
-                  +95 сторінок <FaArrowRight />
+                {metrics[5].trend} <FaArrowRight />
                 </MetricTrend>
-                <MetricButton>Детальніше</MetricButton>
               </MetricFooter>
             </MetricCard>
           </MetricsGrid>
@@ -5602,8 +5493,7 @@ const SeoOptimization = () => {
             style={{ textAlign: 'center', marginTop: '3rem' }}
           >
             <MetricsDescription style={{ maxWidth: '700px', margin: '0 auto' }}>
-              Моніторинг цих метрик дозволяє не тільки оцінити прогрес, а й
-              своєчасно виявляти проблеми та коригувати стратегію просування.
+            {t('seoOptimizationPage.metricsFooterDescription')}
             </MetricsDescription>
 
             <PrimaryButton
@@ -5611,7 +5501,7 @@ const SeoOptimization = () => {
               style={{ margin: '2rem auto 0' }}
               onClick={openModal}
             >
-              Замовити аналітичний аудит
+              {t('seoOptimizationPage.metricsFooterButton')}
               <FaArrowRight />
             </PrimaryButton>
           </motion.div>
@@ -5621,11 +5511,9 @@ const SeoOptimization = () => {
       {/* Новая секция проектов */}
       <ProjectsSection>
         <ProjectsContainer>
-          <ProjectsTitle>Для яких проєктів підходить SEO</ProjectsTitle>
+          <ProjectsTitle>{t('seoOptimizationPage.projectsTitle')}</ProjectsTitle>
           <ProjectsDescription>
-            SEO-оптимізація — універсальний інструмент просування, але особливо
-            ефективна вона для проєктів із середньо- та довгостроковою
-            стратегією росту.
+          {t('seoOptimizationPage.projectsDescription')}
           </ProjectsDescription>
 
           <ProjectsGrid>
@@ -5650,11 +5538,9 @@ const SeoOptimization = () => {
                 </ProjectIcon>
               </ProjectIconContainer>
               <ProjectContent className="card-content">
-                <ProjectName>Інтернет-магазини (eCommerce)</ProjectName>
+                <ProjectName>{projects[0].name}</ProjectName>
                 <ProjectDescription>
-                  Каталоги з великою кількістю товарів і категорій ідеально
-                  підходять для SEO. Вони отримують стабільний потік покупців за
-                  широким пулом запитів.
+                {projects[0].text}
                 </ProjectDescription>
                 <ProjectBenefits className="project-benefits">
                   <BenefitItem>
@@ -5662,7 +5548,7 @@ const SeoOptimization = () => {
                       <FaCheck />
                     </BenefitIcon>
                     <BenefitText>
-                      Органічний трафік по всьому асортименту
+                    {projects[0].benefits[0]}
                     </BenefitText>
                   </BenefitItem>
                   <BenefitItem>
@@ -5670,7 +5556,7 @@ const SeoOptimization = () => {
                       <FaCheck />
                     </BenefitIcon>
                     <BenefitText>
-                      Охоплення від загальних до нішевих запитів
+                    {projects[0].benefits[1]}
                     </BenefitText>
                   </BenefitItem>
                   <BenefitItem>
@@ -5678,7 +5564,7 @@ const SeoOptimization = () => {
                       <FaCheck />
                     </BenefitIcon>
                     <BenefitText>
-                      Зниження вартості залучення клієнта
+                    {projects[0].benefits[2]}
                     </BenefitText>
                   </BenefitItem>
                 </ProjectBenefits>
@@ -5706,30 +5592,28 @@ const SeoOptimization = () => {
                 </ProjectIcon>
               </ProjectIconContainer>
               <ProjectContent className="card-content">
-                <ProjectName>B2B і корпоративні сайти</ProjectName>
+                <ProjectName>{projects[1].name}</ProjectName>
                 <ProjectDescription>
-                  SEO дозволяє знаходити потенційних клієнтів, які шукають
-                  спеціалізовані послуги або продукти. Це ефективно для
-                  генерації якісних лідів у складних нішах.
+                {projects[1].text}
                 </ProjectDescription>
                 <ProjectBenefits className="project-benefits">
                   <BenefitItem>
                     <BenefitIcon bg="rgba(33, 150, 243, 0.2)" color="#2196F3">
                       <FaCheck />
                     </BenefitIcon>
-                    <BenefitText>Висока релевантність трафіку</BenefitText>
+                    <BenefitText>{projects[1].benefits[0]}</BenefitText>
                   </BenefitItem>
                   <BenefitItem>
                     <BenefitIcon bg="rgba(33, 150, 243, 0.2)" color="#2196F3">
                       <FaCheck />
                     </BenefitIcon>
-                    <BenefitText>Зростання авторитетності в галузі</BenefitText>
+                    <BenefitText>{projects[1].benefits[1]}</BenefitText>
                   </BenefitItem>
                   <BenefitItem>
                     <BenefitIcon bg="rgba(33, 150, 243, 0.2)" color="#2196F3">
                       <FaCheck />
                     </BenefitIcon>
-                    <BenefitText>Якісні ліди з високим LTV</BenefitText>
+                    <BenefitText>{projects[1].benefits[2]}</BenefitText>
                   </BenefitItem>
                 </ProjectBenefits>
               </ProjectContent>
@@ -5756,31 +5640,29 @@ const SeoOptimization = () => {
                 </ProjectIcon>
               </ProjectIconContainer>
               <ProjectContent className="card-content">
-                <ProjectName>Локальний бізнес</ProjectName>
+                <ProjectName>{projects[2].name}</ProjectName>
                 <ProjectDescription>
-                  Магазини, салони, медичні центри, ресторани можуть значно
-                  підвищити відвідуваність завдяки локальному SEO — особливо
-                  через пошук "поруч зі мною" та Google Maps.
+                {projects[2].text}
                 </ProjectDescription>
                 <ProjectBenefits className="project-benefits">
                   <BenefitItem>
                     <BenefitIcon bg="rgba(233, 30, 99, 0.2)" color="#E91E63">
                       <FaCheck />
                     </BenefitIcon>
-                    <BenefitText>Залучення клієнтів за геолокацією</BenefitText>
+                    <BenefitText>{projects[2].benefits[0]}</BenefitText>
                   </BenefitItem>
                   <BenefitItem>
                     <BenefitIcon bg="rgba(233, 30, 99, 0.2)" color="#E91E63">
                       <FaCheck />
                     </BenefitIcon>
-                    <BenefitText>Присутність в локальному 3-pack</BenefitText>
+                    <BenefitText>{projects[2].benefits[1]}</BenefitText>
                   </BenefitItem>
                   <BenefitItem>
                     <BenefitIcon bg="rgba(233, 30, 99, 0.2)" color="#E91E63">
                       <FaCheck />
                     </BenefitIcon>
                     <BenefitText>
-                      Перевага над конкурентами в районі
+                    {projects[2].benefits[2]}
                     </BenefitText>
                   </BenefitItem>
                 </ProjectBenefits>
@@ -5810,29 +5692,28 @@ const SeoOptimization = () => {
                 </ProjectIcon>
               </ProjectIconContainer>
               <ProjectContent className="card-content">
-                <ProjectName>Освітні платформи та блоги</ProjectName>
+                <ProjectName>{projects[3].name}</ProjectName>
                 <ProjectDescription>
-                  Якісний контент і правильна оптимізація допомагають залучати
-                  тисячі відвідувачів із пошуку, формуючи лояльну аудиторію.
+                {projects[3].text}
                 </ProjectDescription>
                 <ProjectBenefits className="project-benefits">
                   <BenefitItem>
                     <BenefitIcon bg="rgba(156, 39, 176, 0.2)" color="#9C27B0">
                       <FaCheck />
                     </BenefitIcon>
-                    <BenefitText>Довгострокове зростання трафіку</BenefitText>
+                    <BenefitText>{projects[3].benefits[0]}</BenefitText>
                   </BenefitItem>
                   <BenefitItem>
                     <BenefitIcon bg="rgba(156, 39, 176, 0.2)" color="#9C27B0">
                       <FaCheck />
                     </BenefitIcon>
-                    <BenefitText>Формування бренд-експертизи</BenefitText>
+                    <BenefitText>{projects[3].benefits[1]}</BenefitText>
                   </BenefitItem>
                   <BenefitItem>
                     <BenefitIcon bg="rgba(156, 39, 176, 0.2)" color="#9C27B0">
                       <FaCheck />
                     </BenefitIcon>
-                    <BenefitText>Масштабованість через різні теми</BenefitText>
+                    <BenefitText>{projects[3].benefits[2]}</BenefitText>
                   </BenefitItem>
                 </ProjectBenefits>
               </ProjectContent>
@@ -5859,25 +5740,23 @@ const SeoOptimization = () => {
                 </ProjectIcon>
               </ProjectIconContainer>
               <ProjectContent className="card-content">
-                <ProjectName>Стартапи та нові проєкти</ProjectName>
+                <ProjectName>{projects[4].name}</ProjectName>
                 <ProjectDescription>
-                  Для нових брендів SEO — можливість зайняти місце в ніші без
-                  великих витрат на рекламу. Головне — грамотно вибудувати
-                  структуру з самого початку.
+                {projects[4].text}
                 </ProjectDescription>
                 <ProjectBenefits className="project-benefits">
                   <BenefitItem>
                     <BenefitIcon bg="rgba(255, 152, 0, 0.2)" color="#FF9800">
                       <FaCheck />
                     </BenefitIcon>
-                    <BenefitText>Зниження витрат на рекламу</BenefitText>
+                    <BenefitText>{projects[4].benefits[0]}</BenefitText>
                   </BenefitItem>
                   <BenefitItem>
                     <BenefitIcon bg="rgba(255, 152, 0, 0.2)" color="#FF9800">
                       <FaCheck />
                     </BenefitIcon>
                     <BenefitText>
-                      Зростання разом із сезонністю ніші
+                    {projects[4].benefits[1]}
                     </BenefitText>
                   </BenefitItem>
                   <BenefitItem>
@@ -5885,7 +5764,7 @@ const SeoOptimization = () => {
                       <FaCheck />
                     </BenefitIcon>
                     <BenefitText>
-                      Правильний старт з SEO-дружньою архітектурою
+                    {projects[4].benefits[2]}
                     </BenefitText>
                   </BenefitItem>
                 </ProjectBenefits>
@@ -5903,11 +5782,7 @@ const SeoOptimization = () => {
               <FaBullhorn />
             </ProjectsNoteIcon>
             <ProjectsNoteText>
-              Водночас SEO менш ефективне для тимчасових кампаній або
-              одноразових акцій, де швидкість результату критична — там краще
-              підходить контекстна реклама. Якщо вам потрібен швидкий результат
-              — розгляньте комбінацію SEO і контекстної реклами для отримання як
-              короткострокових, так і довгострокових результатів.
+            {t('seoOptimizationPage.projectsNote')}
             </ProjectsNoteText>
           </ProjectsNote>
         </ProjectsContainer>
@@ -5915,10 +5790,9 @@ const SeoOptimization = () => {
 
       <ApproachesSection>
         <ApproachesContainer>
-          <ApproachesTitle>Наші підходи до просування</ApproachesTitle>
+          <ApproachesTitle>{t('seoOptimizationPage.approachesTitle')}</ApproachesTitle>
           <ApproachesDescription>
-            Ми розуміємо, що кожен бізнес унікальний, тому наш підхід до SEO —
-            індивідуальний, гнучкий і максимально прозорий.
+          {t('seoOptimizationPage.approachesDescription')}
           </ApproachesDescription>
 
           <ApproachesGrid>
@@ -5940,14 +5814,12 @@ const SeoOptimization = () => {
                 </ApproachIconWrapper>
                 <ApproachContent>
                   <ApproachTitle>
-                    Глибокий аналіз ніші та конкурентів
+                    {approaches[0].title}
                   </ApproachTitle>
                 </ApproachContent>
               </ApproachHeader>
               <ApproachText>
-                Перед стартом ми детально вивчаємо ваш ринок, конкурентів,
-                запити користувачів і тренди пошуку. Це дозволяє сформувати
-                реалістичну стратегію, яка дійсно працює.
+              {approaches[0].text}
               </ApproachText>
             </ApproachCard>
 
@@ -5969,14 +5841,12 @@ const SeoOptimization = () => {
                 </ApproachIconWrapper>
                 <ApproachContent>
                   <ApproachTitle>
-                    Пріоритезація робіт за впливом на результат
+                  {approaches[1].title}
                   </ApproachTitle>
                 </ApproachContent>
               </ApproachHeader>
               <ApproachText>
-                Ми не розпорошуємо ресурси. Спочатку вирішуємо критичні технічні
-                проблеми, паралельно запускаючи оптимізацію ключових сторінок.
-                Це дає швидші результати.
+              {approaches[1].text}
               </ApproachText>
             </ApproachCard>
 
@@ -5997,13 +5867,11 @@ const SeoOptimization = () => {
                   <FaFileAlt />
                 </ApproachIconWrapper>
                 <ApproachContent>
-                  <ApproachTitle>Орієнтація на якісний контент</ApproachTitle>
+                  <ApproachTitle>{approaches[2].title}</ApproachTitle>
                 </ApproachContent>
               </ApproachHeader>
               <ApproachText>
-                Просування без сильного контенту — неефективне. Ми створюємо
-                унікальні тексти, оптимізовані під пошукові запити, але з
-                фокусом на цінність для користувача.
+              {approaches[2].text}
               </ApproachText>
             </ApproachCard>
 
@@ -6024,13 +5892,11 @@ const SeoOptimization = () => {
                   <FaLink />
                 </ApproachIconWrapper>
                 <ApproachContent>
-                  <ApproachTitle>Білий лінкбілдінг</ApproachTitle>
+                  <ApproachTitle>{approaches[3].title}</ApproachTitle>
                 </ApproachContent>
               </ApproachHeader>
               <ApproachText>
-                Будуємо посилання лише з авторитетних та релевантних ресурсів.
-                Не використовуємо "сірих" схем, які можуть зашкодити вашому
-                сайту в довгостроковій перспективі.
+              {approaches[3].text}
               </ApproachText>
             </ApproachCard>
 
@@ -6051,13 +5917,11 @@ const SeoOptimization = () => {
                   <FaChartBar />
                 </ApproachIconWrapper>
                 <ApproachContent>
-                  <ApproachTitle>Постійна аналітика та адаптація</ApproachTitle>
+                  <ApproachTitle>{approaches[4].title}</ApproachTitle>
                 </ApproachContent>
               </ApproachHeader>
               <ApproachText>
-                SEO — це не одноразова послуга, а безперервний процес. Ми
-                щомісяця аналізуємо результати, переглядаємо стратегію та даємо
-                вам повну картину змін.
+              {approaches[4].text}
               </ApproachText>
             </ApproachCard>
 
@@ -6078,12 +5942,11 @@ const SeoOptimization = () => {
                   <FaRocket />
                 </ApproachIconWrapper>
                 <ApproachContent>
-                  <ApproachTitle>Співпраця на довгій дистанції</ApproachTitle>
+                  <ApproachTitle>{approaches[5].title}</ApproachTitle>
                 </ApproachContent>
               </ApproachHeader>
               <ApproachText>
-                Наша мета — не просто "вивести в топ", а побудувати систему
-                стабільного залучення трафіку, яка працюватиме роками.
+              {approaches[5].text}
               </ApproachText>
             </ApproachCard>
           </ApproachesGrid>
@@ -6095,15 +5958,13 @@ const SeoOptimization = () => {
             viewport={{ once: true, amount: 0.3 }}
           >
             <ApproachesCalloutTitle>
-              Готові до зростання органічного трафіку?
+            {t('seoOptimizationPage.approachesCtaTitle')}
             </ApproachesCalloutTitle>
             <ApproachesCalloutText>
-              Замовте безкоштовну консультацію, на якій ми проаналізуємо ваш
-              сайт і запропонуємо конкретні кроки для покращення його видимості
-              в пошуку.
+            {t('seoOptimizationPage.approachesCtaText')}
             </ApproachesCalloutText>
             <CenteredButton whileHover={{ y: -5 }} onClick={openModal}>
-              Замовити консультацію
+            {t('seoOptimizationPage.approachesCtaButton')}
               <FaArrowRight />
             </CenteredButton>
           </ApproachesCallout>
@@ -6118,7 +5979,7 @@ const SeoOptimization = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            Результати, які ми досягаємо
+            {t('seoOptimizationPage.resultsTitle')}
           </ResultsTitle>
           <ResultsDescription
             initial={{ opacity: 0, y: 30 }}
@@ -6126,9 +5987,7 @@ const SeoOptimization = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            Ми зосереджуємось на конкретних бізнес-результатах, а не лише на
-            зростанні позицій у пошуковій видачі. Ось що отримують наші клієнти
-            в результаті SEO-оптимізації:
+            {t('seoOptimizationPage.resultsDescription')}
           </ResultsDescription>
 
           <ResultsWrapper>
@@ -6141,12 +6000,10 @@ const SeoOptimization = () => {
               <ResultNumber>1</ResultNumber>
               <ResultContent>
                 <ResultTitle>
-                  Збільшення органічного трафіку на 2–5 разів
+                 {results[0].title}
                 </ResultTitle>
                 <ResultDescription>
-                  Завдяки технічному вдосконаленню сайту, релевантному контенту
-                  та розширенню семантики ми суттєво підвищуємо кількість
-                  відвідувачів з пошуку.
+                {results[0].text}
                 </ResultDescription>
               </ResultContent>
               <ResultVisual>
@@ -6162,11 +6019,9 @@ const SeoOptimization = () => {
             >
               <ResultNumber>2</ResultNumber>
               <ResultContent>
-                <ResultTitle>Покращення видимості бренду в Google</ResultTitle>
+                <ResultTitle>{results[1].title}</ResultTitle>
                 <ResultDescription>
-                  Ваш сайт починає з'являтися за більшою кількістю запитів,
-                  включаючи інформаційні, комерційні та брендовані. Це підвищує
-                  впізнаваність і довіру.
+                {results[1].text}
                 </ResultDescription>
               </ResultContent>
               <ResultVisual>
@@ -6182,11 +6037,9 @@ const SeoOptimization = () => {
             >
               <ResultNumber>3</ResultNumber>
               <ResultContent>
-                <ResultTitle>Стабільне зростання лідів і продажів</ResultTitle>
+                <ResultTitle>{results[2].title}</ResultTitle>
                 <ResultDescription>
-                  Якісний трафік приводить зацікавлених користувачів, які
-                  частіше залишають заявки, замовляють послуги або купують
-                  товари.
+                {results[2].text}
                 </ResultDescription>
               </ResultContent>
               <ResultVisual>
@@ -6203,12 +6056,10 @@ const SeoOptimization = () => {
               <ResultNumber>4</ResultNumber>
               <ResultContent>
                 <ResultTitle>
-                  Зменшення залежності від платної реклами
+                {results[3].title}
                 </ResultTitle>
                 <ResultDescription>
-                  Сильна SEO-стратегія дозволяє отримувати трафік без постійних
-                  витрат на рекламу. Це дає бізнесу більше фінансової
-                  стабільності.
+                {results[3].text}
                 </ResultDescription>
               </ResultContent>
               <ResultVisual>
@@ -6224,11 +6075,9 @@ const SeoOptimization = () => {
             >
               <ResultNumber>5</ResultNumber>
               <ResultContent>
-                <ResultTitle>Побудова довгострокової переваги</ResultTitle>
+                <ResultTitle>{results[4].title}</ResultTitle>
                 <ResultDescription>
-                  SEO працює на перспективу. Навіть після завершення активних
-                  робіт результати зберігаються та продовжують приносити
-                  цінність.
+                {results[4].text}
                 </ResultDescription>
               </ResultContent>
               <ResultVisual>
@@ -6243,9 +6092,7 @@ const SeoOptimization = () => {
               viewport={{ once: true, amount: 0.3 }}
             >
               <ResultNoteText>
-                Ми не обіцяємо "топ-1 за тиждень", але гарантуємо системний,
-                стійкий і прогнозований ріст — саме те, що потрібно серйозному
-                бізнесу.
+              {t('seoOptimizationPage.resultsNote')}
               </ResultNoteText>
             </ResultNote>
           </ResultsWrapper>
@@ -6347,7 +6194,7 @@ const SeoOptimization = () => {
             transition={{ duration: 0.6, delay: 1.2 }}
           >
             <FaqCtaText>
-              Маєте додаткові запитання щодо SEO-оптимізації?
+            {t('seoOptimizationPage.faqCtaText')}
             </FaqCtaText>
             <FaqCtaButton
               whileHover={{
@@ -6357,7 +6204,7 @@ const SeoOptimization = () => {
               whileTap={{ scale: 0.98 }}
               onClick={openModal}
             >
-              Зв'язатися з нами <FaArrowRight />
+              {t('seoOptimizationPage.faqCtaButton')} <FaArrowRight />
             </FaqCtaButton>
           </FaqCta>
         </FaqContainer>

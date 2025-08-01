@@ -2,7 +2,23 @@ import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import Modal from '../../components/Modal';
-import { FaArrowRight, FaBullseye, FaFacebook, FaInstagram, FaTiktok, FaLinkedin, FaUsers, FaRedo, FaUserFriends, FaEye, FaCheckCircle, FaChartLine, FaSearch, FaPlus } from 'react-icons/fa';
+import {
+  FaArrowRight,
+  FaBullseye,
+  FaFacebook,
+  FaInstagram,
+  FaTiktok,
+  FaLinkedin,
+  FaUsers,
+  FaRedo,
+  FaUserFriends,
+  FaEye,
+  FaCheckCircle,
+  FaChartLine,
+  FaSearch,
+  FaPlus,
+} from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const breatheAnimation = keyframes`
   0% { transform: scale(1); opacity: 0.8; }
@@ -64,20 +80,20 @@ const GlowingCircle = styled.div`
     ease-in-out;
 
   @media (max-width: 1024px) {
-    width: ${props => props.size ? `calc(${props.size} * 0.8)` : '240px'};
-    height: ${props => props.size ? `calc(${props.size} * 0.8)` : '240px'};
+    width: ${props => (props.size ? `calc(${props.size} * 0.8)` : '240px')};
+    height: ${props => (props.size ? `calc(${props.size} * 0.8)` : '240px')};
     filter: blur(50px);
   }
 
   @media (max-width: 768px) {
-    width: ${props => props.size ? `calc(${props.size} * 0.6)` : '180px'};
-    height: ${props => props.size ? `calc(${props.size} * 0.6)` : '180px'};
+    width: ${props => (props.size ? `calc(${props.size} * 0.6)` : '180px')};
+    height: ${props => (props.size ? `calc(${props.size} * 0.6)` : '180px')};
     filter: blur(40px);
   }
 
   @media (max-width: 480px) {
-    width: ${props => props.size ? `calc(${props.size} * 0.4)` : '120px'};
-    height: ${props => props.size ? `calc(${props.size} * 0.4)` : '120px'};
+    width: ${props => (props.size ? `calc(${props.size} * 0.4)` : '120px')};
+    height: ${props => (props.size ? `calc(${props.size} * 0.4)` : '120px')};
     filter: blur(30px);
   }
 `;
@@ -100,15 +116,15 @@ const TiltedLine = styled.div`
   z-index: 0;
 
   @media (max-width: 1024px) {
-    width: ${props => props.width ? `calc(${props.width} * 0.8)` : '80px'};
+    width: ${props => (props.width ? `calc(${props.width} * 0.8)` : '80px')};
   }
 
   @media (max-width: 768px) {
-    width: ${props => props.width ? `calc(${props.width} * 0.6)` : '60px'};
+    width: ${props => (props.width ? `calc(${props.width} * 0.6)` : '60px')};
   }
 
   @media (max-width: 480px) {
-    width: ${props => props.width ? `calc(${props.width} * 0.4)` : '40px'};
+    width: ${props => (props.width ? `calc(${props.width} * 0.4)` : '40px')};
   }
 `;
 
@@ -253,45 +269,6 @@ const AnimatedTitle = styled(motion.h1)`
   @media (max-width: 480px) {
     font-size: clamp(1.8rem, 3.5vw, 2.2rem);
     margin-bottom: 1rem;
-  }
-`;
-
-const HighlightedSpan = styled.span`
-  position: relative;
-  color: var(--accent-color);
-  white-space: nowrap;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    width: 100%;
-    height: 10px;
-    background: rgba(var(--accent-color-rgb), 0.15);
-    z-index: -1;
-    border-radius: 4px;
-  }
-
-  @media (max-width: 1024px) {
-    &::after {
-      height: 8px;
-      bottom: 4px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    &::after {
-      height: 6px;
-      bottom: 3px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    &::after {
-      height: 5px;
-      bottom: 2px;
-    }
   }
 `;
 
@@ -728,7 +705,8 @@ const FloatingIcon = styled(motion.div)`
   position: absolute;
   color: rgba(var(--accent-color-rgb), 0.6);
   font-size: 1.2rem;
-  animation: ${floatUpDown} ${props => props.duration || '5s'} ease-in-out infinite;
+  animation: ${floatUpDown} ${props => props.duration || '5s'} ease-in-out
+    infinite;
   animation-delay: ${props => props.delay || '0s'};
 
   &.targeting {
@@ -897,7 +875,8 @@ const WhatIsSection = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+      repeat;
     z-index: 1;
   }
 `;
@@ -1069,7 +1048,11 @@ const CentralHub = styled(motion.div)`
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent-color), rgba(var(--accent-color-rgb), 0.8));
+  background: linear-gradient(
+    135deg,
+    var(--accent-color),
+    rgba(var(--accent-color-rgb), 0.8)
+  );
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1098,7 +1081,8 @@ const OrbitRing = styled(motion.div)`
   transform: translate(-50%, -50%);
   width: ${props => props.size}px;
   height: ${props => props.size}px;
-  border: 2px solid rgba(var(--accent-color-rgb), ${props => props.opacity || 0.2});
+  border: 2px solid
+    rgba(var(--accent-color-rgb), ${props => props.opacity || 0.2});
   border-radius: 50%;
   border-style: dashed;
 `;
@@ -1123,10 +1107,18 @@ const PlatformNode = styled(motion.div)`
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
   }
 
-  &.facebook { color: #1877f2; }
-  &.instagram { color: #e4405f; }
-  &.tiktok { color: #000; }
-  &.linkedin { color: #0077b5; }
+  &.facebook {
+    color: #1877f2;
+  }
+  &.instagram {
+    color: #e4405f;
+  }
+  &.tiktok {
+    color: #000;
+  }
+  &.linkedin {
+    color: #0077b5;
+  }
 `;
 
 const FloatingElement = styled(motion.div)`
@@ -1138,71 +1130,77 @@ const FloatingElement = styled(motion.div)`
 
 const TargetedHero = ({ openModal: openMainModal }) => {
   const [selectedCard, setSelectedCard] = useState(null);
+  const { t } = useTranslation();
 
   const socialMediaData = {
     facebook: {
       name: 'Facebook',
       icon: <FaFacebook />,
-      description: 'Найбільша соціальна мережа з потужними інструментами таргетингу та широкими можливостями для реклами.',
+      description:
+        'Найбільша соціальна мережа з потужними інструментами таргетингу та широкими можливостями для реклами.',
       features: [
         'Детальний демографічний таргетинг',
         'Ретаргетинг на основі дій користувачів',
         'Look-alike аудиторії',
         'Різноманітні формати реклами',
-        'Інтеграція з Instagram'
-      ]
+        'Інтеграція з Instagram',
+      ],
     },
     instagram: {
       name: 'Instagram',
       icon: <FaInstagram />,
-      description: 'Візуальна платформа, ідеальна для брендів, що працюють з B2C аудиторією та молодіжним сегментом.',
+      description:
+        'Візуальна платформа, ідеальна для брендів, що працюють з B2C аудиторією та молодіжним сегментом.',
       features: [
         'Високий рівень залученості',
         'Stories та Reels реклама',
         'Шопінг-функції',
         'Інфлюенсер-маркетинг',
-        'Візуальний контент'
-      ]
+        'Візуальний контент',
+      ],
     },
     tiktok: {
       name: 'TikTok',
       icon: <FaTiktok />,
-      description: 'Найшвидше зростаюча платформа з унікальними можливостями для креативної реклами та охоплення Gen Z.',
+      description:
+        'Найшвидше зростаюча платформа з унікальними можливостями для креативної реклами та охоплення Gen Z.',
       features: [
         'Алгоритмічне просування',
         'Вірусний потенціал',
         'Молода аудиторія',
         'Креативні формати',
-        'Високий CTR'
-      ]
+        'Високий CTR',
+      ],
     },
     linkedin: {
       name: 'LinkedIn',
       icon: <FaLinkedin />,
-      description: 'Професійна мережа, найкраща для B2B маркетингу та досягнення ділової аудиторії.',
+      description:
+        'Професійна мережа, найкраща для B2B маркетингу та досягнення ділової аудиторії.',
       features: [
         'B2B таргетинг',
         'Професійні дані',
         'Lead Generation Forms',
         'Sponsored Content',
-        'Message Ads'
-      ]
+        'Message Ads',
+      ],
     },
     google: {
       name: 'Google Ads',
       icon: <FaSearch />,
-      description: 'Найпотужніша рекламна платформа з широкими можливостями таргетингу та охоплення.',
+      description:
+        'Найпотужніша рекламна платформа з широкими можливостями таргетингу та охоплення.',
       features: [
         'Пошукова реклама',
         'Медійна мережа',
         'YouTube реклама',
         'Ремаркетинг',
-        'Смарт-кампанії'
-      ]
-    }
+        'Смарт-кампанії',
+      ],
+    },
   };
 
-  const openModal = (platform) => {
+  const openModal = platform => {
     setSelectedCard(platform);
   };
 
@@ -1213,12 +1211,24 @@ const TargetedHero = ({ openModal: openMainModal }) => {
   return (
     <HeroWrapper>
       {/* Background Effects */}
-      <GlowingCircle size="400px" top="10%" left="-10%" opacity="0.3" duration="8s" />
-      <GlowingCircle size="300px" bottom="15%" right="-5%" opacity="0.2" duration="12s" />
-      
+      <GlowingCircle
+        size="400px"
+        top="10%"
+        left="-10%"
+        opacity="0.3"
+        duration="8s"
+      />
+      <GlowingCircle
+        size="300px"
+        bottom="15%"
+        right="-5%"
+        opacity="0.2"
+        duration="12s"
+      />
+
       <TiltedLine width="150px" top="20%" right="10%" rotate="45deg" />
       <TiltedLine width="100px" bottom="30%" left="5%" rotate="-30deg" />
-      
+
       <DotGrid top="15%" right="15%" rotate="15deg">
         {[...Array(12)].map((_, i) => (
           <Dot key={i} opacity={Math.random() * 0.5 + 0.3} />
@@ -1233,8 +1243,7 @@ const TargetedHero = ({ openModal: openMainModal }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Таргетована реклама що{' '}
-              <HighlightedSpan>конвертує</HighlightedSpan>
+              {t('targetedAdvertisingPage.heroTitle')}
             </AnimatedTitle>
 
             <HeroDescription
@@ -1242,8 +1251,7 @@ const TargetedHero = ({ openModal: openMainModal }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Створюємо рекламні кампанії, які точно потрапляють у вашу цільову аудиторію. 
-              Використовуємо передові алгоритми та дані для максимізації ROI та збільшення конверсій.
+              {t('targetedAdvertisingPage.heroDescription')}
             </HeroDescription>
 
             <ButtonGroup
@@ -1256,7 +1264,7 @@ const TargetedHero = ({ openModal: openMainModal }) => {
                 whileTap={{ scale: 0.95 }}
                 onClick={openMainModal}
               >
-                Запустити рекламу
+                {t('targetedAdvertisingPage.orderButton')}
                 <FaArrowRight />
               </PrimaryButton>
             </ButtonGroup>
@@ -1266,19 +1274,25 @@ const TargetedHero = ({ openModal: openMainModal }) => {
                 <KeyPointIcon>
                   <FaBullseye />
                 </KeyPointIcon>
-                <KeyPointText>Точне попадання в аудиторію</KeyPointText>
+                <KeyPointText>
+                  {t('targetedAdvertisingPage.keyPoint1')}
+                </KeyPointText>
               </KeyPoint>
               <KeyPoint>
                 <KeyPointIcon>
                   <FaChartLine />
                 </KeyPointIcon>
-                <KeyPointText>Підвищення конверсій до 350%</KeyPointText>
+                <KeyPointText>
+                  {t('targetedAdvertisingPage.keyPoint2')}
+                </KeyPointText>
               </KeyPoint>
               <KeyPoint>
                 <KeyPointIcon>
                   <FaCheckCircle />
                 </KeyPointIcon>
-                <KeyPointText>Гарантований результат</KeyPointText>
+                <KeyPointText>
+                  {t('targetedAdvertisingPage.keyPoint3')}
+                </KeyPointText>
               </KeyPoint>
             </KeyPoints>
           </HeroLeft>
@@ -1378,7 +1392,11 @@ const TargetedHero = ({ openModal: openMainModal }) => {
                   <FloatingIcon className="analytics" duration="4s" delay="1s">
                     <FaEye />
                   </FloatingIcon>
-                  <FloatingIcon className="optimization" duration="7s" delay="3s">
+                  <FloatingIcon
+                    className="optimization"
+                    duration="7s"
+                    delay="3s"
+                  >
                     <FaUsers />
                   </FloatingIcon>
                 </FloatingIcons>
@@ -1400,7 +1418,7 @@ const TargetedHero = ({ openModal: openMainModal }) => {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
-            onClick={(e) => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
           >
             <ModalClose onClick={closeModal}>×</ModalClose>
             <ModalIcon className={selectedCard}>
@@ -1423,6 +1441,7 @@ const TargetedHero = ({ openModal: openMainModal }) => {
 };
 
 const WhatIsTargeted = () => {
+  const { t } = useTranslation();
   return (
     <WhatIsSection>
       <WhatIsContainer>
@@ -1434,7 +1453,7 @@ const WhatIsTargeted = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              Що таке таргетована реклама
+              {t('targetedAdvertisingPage.whatIsTitle')}
             </WhatIsTitle>
             <WhatIsDescription
               initial={{ opacity: 0, y: 30 }}
@@ -1442,17 +1461,11 @@ const WhatIsTargeted = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <p>
-                Таргетована реклама — це формат онлайн-реклами, який дозволяє показувати оголошення лише певній аудиторії, визначеній за конкретними параметрами: вік, стать, геолокація, інтереси, поведінка, статус у воронці продажів тощо.
-              </p>
-              <p>
-                На відміну від класичної реклами, де охоплюється широкий загал, таргетинг дозволяє сконцентрувати бюджет на тих, хто з великою ймовірністю зацікавлений у товарі чи послузі.
-              </p>
-              <p>
-                Таргетинг найчастіше використовується в соцмережах (Facebook, Instagram, TikTok, LinkedIn), а також у контекстно-медійній мережі Google.
-              </p>
+              <p>{t('targetedAdvertisingPage.whatIsParagraph1')}</p>
+              <p>{t('targetedAdvertisingPage.whatIsParagraph2')}</p>
+              <p>{t('targetedAdvertisingPage.whatIsParagraph3')}</p>
             </WhatIsDescription>
-            
+
             <StatsGrid
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1461,24 +1474,30 @@ const WhatIsTargeted = () => {
             >
               <StatCard
                 whileHover={{ y: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                transition={{ type: 'spring', stiffness: 300 }}
               >
                 <WhatIsStatNumber>75%</WhatIsStatNumber>
-                <WhatIsStatLabel>Точність попадання</WhatIsStatLabel>
+                <WhatIsStatLabel>
+                  {t('targetedAdvertisingPage.whatIsStat1')}
+                </WhatIsStatLabel>
               </StatCard>
               <StatCard
                 whileHover={{ y: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                transition={{ type: 'spring', stiffness: 300 }}
               >
                 <WhatIsStatNumber>50%</WhatIsStatNumber>
-                <WhatIsStatLabel>Економія бюджету</WhatIsStatLabel>
+                <WhatIsStatLabel>
+                  {t('targetedAdvertisingPage.whatIsStat2')}
+                </WhatIsStatLabel>
               </StatCard>
               <StatCard
                 whileHover={{ y: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                transition={{ type: 'spring', stiffness: 300 }}
               >
                 <WhatIsStatNumber>3x</WhatIsStatNumber>
-                <WhatIsStatLabel>Швидше результат</WhatIsStatLabel>
+                <WhatIsStatLabel>
+                  {t('targetedAdvertisingPage.whatIsStat3')}
+                </WhatIsStatLabel>
               </StatCard>
             </StatsGrid>
           </WhatIsContent>
@@ -1486,17 +1505,17 @@ const WhatIsTargeted = () => {
           <WhatIsVisual>
             <TargetingGraphic>
               {/* Orbit rings */}
-              <OrbitRing 
-                size={300} 
+              <OrbitRing
+                size={300}
                 opacity={0.3}
                 animate={{ rotate: 360 }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
               />
-              <OrbitRing 
-                size={400} 
+              <OrbitRing
+                size={400}
                 opacity={0.2}
                 animate={{ rotate: -360 }}
-                transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 45, repeat: Infinity, ease: 'linear' }}
               />
 
               {/* Central hub */}
@@ -1506,8 +1525,12 @@ const WhatIsTargeted = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 viewport={{ once: true }}
               >
-                <HubTitle>Ваш бізнес</HubTitle>
-                <HubSubtitle>в центрі уваги</HubSubtitle>
+                <HubTitle>
+                  {t('targetedAdvertisingPage.whatIsStatIconText1')}
+                </HubTitle>
+                <HubSubtitle>
+                  {t('targetedAdvertisingPage.whatIsStatIconText2')}
+                </HubSubtitle>
               </CentralHub>
 
               {/* Platform nodes */}
@@ -1559,7 +1582,11 @@ const WhatIsTargeted = () => {
               <FloatingElement
                 style={{ top: '25%', left: '50%' }}
                 animate={{ y: [0, -15, 0], opacity: [0.4, 0.8, 0.4] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
               >
                 <FaBullseye />
               </FloatingElement>
@@ -1567,7 +1594,12 @@ const WhatIsTargeted = () => {
               <FloatingElement
                 style={{ bottom: '30%', right: '45%' }}
                 animate={{ y: [0, -10, 0], opacity: [0.3, 0.7, 0.3] }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                transition={{
+                  duration: 3.5,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                  delay: 1,
+                }}
               >
                 <FaChartLine />
               </FloatingElement>
@@ -1575,7 +1607,12 @@ const WhatIsTargeted = () => {
               <FloatingElement
                 style={{ top: '45%', left: '20%' }}
                 animate={{ y: [0, -8, 0], opacity: [0.5, 0.9, 0.5] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                  delay: 2,
+                }}
               >
                 <FaEye />
               </FloatingElement>
@@ -1600,9 +1637,21 @@ const TargetingTypesSection = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 20% 50%, rgba(var(--accent-color-rgb), 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(var(--accent-color-rgb), 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(var(--accent-color-rgb), 0.03) 0%, transparent 50%);
+    background: radial-gradient(
+        circle at 20% 50%,
+        rgba(var(--accent-color-rgb), 0.05) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        rgba(var(--accent-color-rgb), 0.08) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 40% 80%,
+        rgba(var(--accent-color-rgb), 0.03) 0%,
+        transparent 50%
+      );
     z-index: 0;
   }
 
@@ -1613,8 +1662,12 @@ const TargetingTypesSection = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: linear-gradient(90deg, transparent 1px, rgba(var(--accent-color-rgb), 0.03) 1px),
-                      linear-gradient(rgba(var(--accent-color-rgb), 0.03) 1px, transparent 1px);
+    background-image: linear-gradient(
+        90deg,
+        transparent 1px,
+        rgba(var(--accent-color-rgb), 0.03) 1px
+      ),
+      linear-gradient(rgba(var(--accent-color-rgb), 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
     opacity: 0.5;
     z-index: 0;
@@ -1689,7 +1742,11 @@ const TargetingTypesTitle = styled(motion.h2)`
     transform: translateX(-50%);
     width: 60px;
     height: 4px;
-    background: linear-gradient(90deg, var(--accent-color), rgba(var(--accent-color-rgb), 0.3));
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
+      rgba(var(--accent-color-rgb), 0.3)
+    );
     border-radius: 2px;
   }
 
@@ -1701,7 +1758,12 @@ const TargetingTypesTitle = styled(motion.h2)`
     transform: translateX(-50%);
     width: 120px;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-color),
+      transparent
+    );
     border-radius: 1px;
   }
 
@@ -1949,9 +2011,10 @@ const TypesCard = styled(motion.div)`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, 
-      transparent, 
-      rgba(var(--accent-color-rgb), 0.05), 
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(var(--accent-color-rgb), 0.05),
       transparent
     );
     opacity: 0;
@@ -2027,7 +2090,11 @@ const TypesCardIcon = styled.div`
   width: 70px;
   height: 70px;
   border-radius: 18px;
-  background: linear-gradient(135deg, var(--accent-color), rgba(var(--accent-color-rgb), 0.8));
+  background: linear-gradient(
+    135deg,
+    var(--accent-color),
+    rgba(var(--accent-color-rgb), 0.8)
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2225,6 +2292,13 @@ const FeatureTag = styled.div`
 `;
 
 const TargetingTypes = () => {
+  const { t } = useTranslation();
+  const targetingTypesStats = t('targetedAdvertisingPage.targetingTypesStats', {
+    returnObjects: true,
+  });
+  const targetingTypes = t('targetedAdvertisingPage.targetingTypes', {
+    returnObjects: true,
+  });
   return (
     <TargetingTypesSection>
       <TargetingTypesContainer>
@@ -2235,16 +2309,16 @@ const TargetingTypes = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Види таргетингу
+            {t('targetedAdvertisingPage.targetingTypesTitle')}
           </TargetingTypesTitle>
-          
+
           <TargetingTypesSubtitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Таргетинг буває різних типів, і правильне комбінування кількох з них дозволяє досягти максимальної ефективності рекламної кампанії.
+            {t('targetedAdvertisingPage.targetingTypesSubtitle')}
           </TargetingTypesSubtitle>
 
           <TargetingStatsRow
@@ -2255,24 +2329,30 @@ const TargetingTypes = () => {
           >
             <QuickStat
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
-              <StatIcon><FaBullseye /></StatIcon>
-              <StatText>Точність 90%+</StatText>
+              <StatIcon>
+                <FaBullseye />
+              </StatIcon>
+              <StatText>{targetingTypesStats[0]}</StatText>
             </QuickStat>
             <QuickStat
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
-              <StatIcon><FaChartLine /></StatIcon>
-              <StatText>ROI до 400%</StatText>
+              <StatIcon>
+                <FaChartLine />
+              </StatIcon>
+              <StatText>{targetingTypesStats[1]}</StatText>
             </QuickStat>
             <QuickStat
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
-              <StatIcon><FaUsers /></StatIcon>
-              <StatText>5M+ аудиторій</StatText>
+              <StatIcon>
+                <FaUsers />
+              </StatIcon>
+              <StatText>{targetingTypesStats[2]}</StatText>
             </QuickStat>
           </TargetingStatsRow>
         </TargetingTypesHeader>
@@ -2290,24 +2370,24 @@ const TargetingTypes = () => {
                 <FaUsers />
               </TypesCardIcon>
               <TypesCardTitleWrapper>
-                <TypesCardNumber className="card-number">01 / Демографічний</TypesCardNumber>
-                <TypesCardTitle>Аудиторний таргетинг</TypesCardTitle>
+                <TypesCardNumber className="card-number">
+                  {targetingTypes[0].number}
+                </TypesCardNumber>
+                <TypesCardTitle>{targetingTypes[0].title}</TypesCardTitle>
               </TypesCardTitleWrapper>
             </TypesCardHeader>
-            
+
             <TypesCardDescription>
-              Цей тип таргетингу базується на характеристиках користувачів: вік, стать, місце проживання, мова, інтереси, поведінка, статус у стосунках, освіта, посада та інші демографічні або поведінкові фактори.
+              {targetingTypes[0].description}
             </TypesCardDescription>
-            
-            <TypesCardExample>
-              <strong>Приклад:</strong> Якщо ви продаєте дитячі іграшки, ми можемо налаштувати показ реклами жінкам віком 25–35 років, які мають дітей, цікавляться батьківством і регулярно купують товари для дітей.
-            </TypesCardExample>
+
+            <TypesCardExample>{targetingTypes[0].example}</TypesCardExample>
 
             <TypesCardFeatures>
-              <FeatureTag>Демографія</FeatureTag>
-              <FeatureTag>Інтереси</FeatureTag>
-              <FeatureTag>Поведінка</FeatureTag>
-              <FeatureTag>Геолокація</FeatureTag>
+              <FeatureTag>{targetingTypes[0].features[0]}</FeatureTag>
+              <FeatureTag>{targetingTypes[0].features[1]}</FeatureTag>
+              <FeatureTag>{targetingTypes[0].features[2]}</FeatureTag>
+              <FeatureTag>{targetingTypes[0].features[3]}</FeatureTag>
             </TypesCardFeatures>
           </TypesCard>
 
@@ -2323,24 +2403,24 @@ const TargetingTypes = () => {
                 <FaRedo />
               </TypesCardIcon>
               <TypesCardTitleWrapper>
-                <TypesCardNumber className="card-number">02 / Повернення</TypesCardNumber>
-                <TypesCardTitle>Ретаргетинг</TypesCardTitle>
+                <TypesCardNumber className="card-number">
+                  {targetingTypes[1].number}
+                </TypesCardNumber>
+                <TypesCardTitle>{targetingTypes[1].title}</TypesCardTitle>
               </TypesCardTitleWrapper>
             </TypesCardHeader>
-            
+
             <TypesCardDescription>
-              Це показ реклами тим користувачам, які вже взаємодіяли з вашим бізнесом: заходили на сайт, переглядали товари, додавали у кошик, але не зробили покупку. Ретаргетинг «наздоганяє» таких користувачів із релевантною пропозицією.
+              {targetingTypes[1].description}
             </TypesCardDescription>
-            
-            <TypesCardExample>
-              <strong>Ефективність:</strong> Особливо результативний для інтернет-магазинів, сервісів бронювання, онлайн-курсів та інших бізнесів з довшим циклом ухвалення рішень. Конверсія може зрости до 10 разів.
-            </TypesCardExample>
+
+            <TypesCardExample>{targetingTypes[1].example}</TypesCardExample>
 
             <TypesCardFeatures>
-              <FeatureTag>Пікселі відстеження</FeatureTag>
-              <FeatureTag>Динамічні оголошення</FeatureTag>
-              <FeatureTag>Кросс-платформа</FeatureTag>
-              <FeatureTag>Персоналізація</FeatureTag>
+              <FeatureTag>{targetingTypes[1].features[0]}</FeatureTag>
+              <FeatureTag>{targetingTypes[1].features[1]}</FeatureTag>
+              <FeatureTag>{targetingTypes[1].features[2]}</FeatureTag>
+              <FeatureTag>{targetingTypes[1].features[3]}</FeatureTag>
             </TypesCardFeatures>
           </TypesCard>
 
@@ -2356,24 +2436,24 @@ const TargetingTypes = () => {
                 <FaUserFriends />
               </TypesCardIcon>
               <TypesCardTitleWrapper>
-                <TypesCardNumber className="card-number">03 / Схожість</TypesCardNumber>
-                <TypesCardTitle>Look-alike аудиторії</TypesCardTitle>
+                <TypesCardNumber className="card-number">
+                  {targetingTypes[2].number}
+                </TypesCardNumber>
+                <TypesCardTitle>{targetingTypes[2].title}</TypesCardTitle>
               </TypesCardTitleWrapper>
             </TypesCardHeader>
-            
+
             <TypesCardDescription>
-              Look-alike (схожі) аудиторії створюються на основі вже існуючих клієнтів або відвідувачів сайту. Алгоритми рекламних платформ аналізують поведінку вашої цільової аудиторії й знаходять користувачів з подібними характеристиками.
+              {targetingTypes[2].description}
             </TypesCardDescription>
-            
-            <TypesCardExample>
-              <strong>Перевага:</strong> Цей підхід дозволяє охопити нову аудиторію без втрати якості лідів. Алгоритми машинного навчання знаходять найбільш перспективних потенційних клієнтів.
-            </TypesCardExample>
+
+            <TypesCardExample>{targetingTypes[2].example}</TypesCardExample>
 
             <TypesCardFeatures>
-              <FeatureTag>AI алгоритми</FeatureTag>
-              <FeatureTag>Машинне навчання</FeatureTag>
-              <FeatureTag>Масштабування</FeatureTag>
-              <FeatureTag>Автооптимізація</FeatureTag>
+              <FeatureTag>{targetingTypes[2].features[0]}</FeatureTag>
+              <FeatureTag>{targetingTypes[2].features[1]}</FeatureTag>
+              <FeatureTag>{targetingTypes[2].features[2]}</FeatureTag>
+              <FeatureTag>{targetingTypes[2].features[3]}</FeatureTag>
             </TypesCardFeatures>
           </TypesCard>
         </TargetingTypesGrid>
@@ -2394,9 +2474,16 @@ const LaunchStepsSection = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-      radial-gradient(circle at 25% 25%, rgba(var(--accent-color-rgb), 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, rgba(var(--accent-color-rgb), 0.08) 0%, transparent 50%);
+    background: radial-gradient(
+        circle at 25% 25%,
+        rgba(var(--accent-color-rgb), 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 75% 75%,
+        rgba(var(--accent-color-rgb), 0.08) 0%,
+        transparent 50%
+      );
     z-index: 0;
   }
 `;
@@ -2431,7 +2518,12 @@ const LaunchStepsTitle = styled(motion.h2)`
     transform: translateX(-50%);
     width: 100px;
     height: 3px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-color),
+      transparent
+    );
     border-radius: 2px;
   }
 `;
@@ -2455,9 +2547,10 @@ const TimelineProgress = styled(motion.div)`
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, 
-    var(--accent-color) 0%, 
-    rgba(var(--accent-color-rgb), 0.6) 50%, 
+  background: linear-gradient(
+    90deg,
+    var(--accent-color) 0%,
+    rgba(var(--accent-color-rgb), 0.6) 50%,
     rgba(var(--accent-color-rgb), 0.2) 100%
   );
   border-radius: 2px;
@@ -2519,7 +2612,11 @@ const StepCard = styled(motion.div)`
     left: 0;
     right: 0;
     height: 6px;
-    background: linear-gradient(90deg, var(--accent-color), rgba(var(--accent-color-rgb), 0.3));
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
+      rgba(var(--accent-color-rgb), 0.3)
+    );
     opacity: 0.7;
     transform: translateY(-6px);
     transition: all 0.4s ease;
@@ -2532,7 +2629,11 @@ const StepCard = styled(motion.div)`
     right: -50%;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, rgba(var(--accent-color-rgb), 0.05) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(var(--accent-color-rgb), 0.05) 0%,
+      transparent 70%
+    );
     border-radius: 50%;
     z-index: 0;
   }
@@ -2551,7 +2652,11 @@ const StepNumber = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 15px;
-  background: linear-gradient(135deg, var(--accent-color), rgba(var(--accent-color-rgb), 0.8));
+  background: linear-gradient(
+    135deg,
+    var(--accent-color),
+    rgba(var(--accent-color-rgb), 0.8)
+  );
   color: white;
   display: flex;
   align-items: center;
@@ -2627,8 +2732,9 @@ const StepFeature = styled.span`
 `;
 
 const ResultsPreview = styled(motion.div)`
-  background: linear-gradient(135deg, 
-    rgba(var(--accent-color-rgb), 0.1) 0%, 
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent-color-rgb), 0.1) 0%,
     rgba(var(--accent-color-rgb), 0.05) 100%
   );
   border: 1px solid rgba(var(--accent-color-rgb), 0.2);
@@ -2645,7 +2751,8 @@ const ResultsPreview = styled(motion.div)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M20 20c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8zm0-20c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+    background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M20 20c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8zm0-20c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+      repeat;
     z-index: 0;
   }
 
@@ -2808,49 +2915,82 @@ const ResultLabel = styled.div`
 `;
 
 const LaunchSteps = () => {
+  const { t } = useTranslation();
+  const launchSteps = t('targetedAdvertisingPage.launchSteps', { returnObjects: true });
+  const resultsApproachStats = t('targetedAdvertisingPage.resultsApproachStats', { returnObjects: true });
   const steps = [
     {
       number: 1,
       icon: <FaSearch />,
-      title: "Аналіз бізнесу та аудиторії",
-      description: "Ми вивчаємо особливості вашого продукту, конкурентне середовище та портрет потенційного клієнта для точного формулювання стратегії.",
-      features: ["Дослідження ринку", "Портрет аудиторії", "Конкурентний аналіз", "SWOT-аналіз"]
+      title: launchSteps[0].title,
+      description: launchSteps[0].description,
+      features: [
+        launchSteps[0].features[0],
+        launchSteps[0].features[1],
+        launchSteps[0].features[2],
+        launchSteps[0].features[3],
+      ],
     },
     {
       number: 2,
       icon: <FaBullseye />,
-      title: "Постановка цілей кампанії",
-      description: "Залежно від потреб бізнесу визначаємо основну мету: продажі, трафік, генерація лідів, підписки чи впізнаваність бренду.",
-      features: ["KPI метрики", "Бюджет планування", "ROI прогноз", "Таймлайн"]
+      title: launchSteps[1].title,
+      description: launchSteps[1].description,
+      features: [
+        launchSteps[1].features[0],
+        launchSteps[1].features[1],
+        launchSteps[1].features[2],
+        launchSteps[1].features[3],
+      ],
     },
     {
       number: 3,
       icon: <FaEye />,
-      title: "Розробка креативів",
-      description: "Створюємо ефективні візуали, заголовки та тексти, які відповідають інтересам аудиторії та підштовхують до дії.",
-      features: ["Дизайн макетів", "Копірайтинг", "A/B тестування", "Брендинг"]
+      title: launchSteps[2].title,
+      description: launchSteps[2].description,
+      features: [
+        launchSteps[2].features[0],
+        launchSteps[2].features[1],
+        launchSteps[2].features[2],
+        launchSteps[2].features[3],
+      ],
     },
     {
       number: 4,
       icon: <FaUsers />,
-      title: "Налаштування кампаній",
-      description: "Проводимо точне налаштування таргетингу, формуємо аудиторії та запускаємо тестові оголошення з контролем бюджету.",
-      features: ["Таргетинг Setup", "Аудиторії", "Бюджет контроль", "Тестування"]
+      title: launchSteps[3].title,
+      description: launchSteps[3].description,
+      features: [
+        launchSteps[3].features[0],
+        launchSteps[3].features[1],
+        launchSteps[3].features[2],
+        launchSteps[3].features[3],
+      ],
     },
     {
       number: 5,
       icon: <FaChartLine />,
-      title: "Запуск і моніторинг",
-      description: "Після запуску щодня відстежуємо ефективність, аналізуємо показники та вносимо оперативні зміни для покращення результату.",
-      features: ["24/7 моніторинг", "Аналітика", "Оперативні зміни", "Звітність"]
+      title: launchSteps[4].title,
+      description: launchSteps[4].description,
+      features: [
+        launchSteps[4].features[0],
+        launchSteps[4].features[1],
+        launchSteps[4].features[2],
+        launchSteps[4].features[3],
+      ],
     },
     {
       number: 6,
       icon: <FaRedo />,
-      title: "Оптимізація та масштабування",
-      description: "Після отримання результатів оптимізуємо ставки, аудиторії, формати оголошень і масштабуємо кампанію для кращих результатів.",
-      features: ["Bid оптимізація", "Масштабування", "Нові формати", "ROI максимізація"]
-    }
+      title: launchSteps[5].title,
+      description: launchSteps[5].description,
+      features: [
+        launchSteps[5].features[0],
+        launchSteps[5].features[1],
+        launchSteps[5].features[2],
+        launchSteps[5].features[3],
+      ],
+    },
   ];
 
   return (
@@ -2863,16 +3003,16 @@ const LaunchSteps = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Етапи запуску таргетованої реклами
+            {t('targetedAdvertisingPage.launchStepsTitle')}
           </LaunchStepsTitle>
-          
+
           <LaunchStepsSubtitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Щоб таргетована реклама приносила очікувані результати, важливо дотримуватися чіткої структури запуску кампанії. Ми працюємо за перевіреним алгоритмом, який охоплює всі ключові етапи.
+            {t('targetedAdvertisingPage.launchStepsSubtitle')}
           </LaunchStepsSubtitle>
         </LaunchStepsHeader>
 
@@ -2896,18 +3036,14 @@ const LaunchSteps = () => {
               whileHover={{ scale: 1.02 }}
             >
               <StepHeader>
-                <StepNumber className="step-number">
-                  {step.number}
-                </StepNumber>
-                <StepIcon className="step-icon">
-                  {step.icon}
-                </StepIcon>
+                <StepNumber className="step-number">{step.number}</StepNumber>
+                <StepIcon className="step-icon">{step.icon}</StepIcon>
               </StepHeader>
-              
+
               <StepContent>
                 <StepTitle>{step.title}</StepTitle>
                 <StepDescription>{step.description}</StepDescription>
-                
+
                 <StepFeatures>
                   {step.features.map((feature, idx) => (
                     <StepFeature key={idx}>{feature}</StepFeature>
@@ -2924,36 +3060,36 @@ const LaunchSteps = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <ResultsTitle>Результати нашого підходу</ResultsTitle>
-          
+          <ResultsTitle>{t('targetedAdvertisingPage.resultsApproachTitle')}</ResultsTitle>
+
           <ResultsStats>
             <ResultStat
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
               <ResultNumber>85%</ResultNumber>
-              <ResultLabel>Успішних кампаній</ResultLabel>
+              <ResultLabel>{resultsApproachStats[0].label}</ResultLabel>
             </ResultStat>
             <ResultStat
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
               <ResultNumber>4.2x</ResultNumber>
-              <ResultLabel>Середній ROI</ResultLabel>
+              <ResultLabel>{resultsApproachStats[1].label}</ResultLabel>
             </ResultStat>
             <ResultStat
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
               <ResultNumber>-40%</ResultNumber>
-              <ResultLabel>Зниження CPA</ResultLabel>
+              <ResultLabel>{resultsApproachStats[2].label}</ResultLabel>
             </ResultStat>
             <ResultStat
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
               <ResultNumber>7 днів</ResultNumber>
-              <ResultLabel>До перших результатів</ResultLabel>
+              <ResultLabel>{resultsApproachStats[3].label}</ResultLabel>
             </ResultStat>
           </ResultsStats>
         </ResultsPreview>
@@ -2975,10 +3111,21 @@ const AnalyticsToolsSection = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-      conic-gradient(from 0deg at 20% 30%, rgba(var(--accent-color-rgb), 0.1) 0deg, transparent 60deg),
-      conic-gradient(from 180deg at 80% 70%, rgba(var(--accent-color-rgb), 0.08) 0deg, transparent 90deg),
-      radial-gradient(circle at 50% 50%, rgba(var(--accent-color-rgb), 0.02) 0%, transparent 70%);
+    background: conic-gradient(
+        from 0deg at 20% 30%,
+        rgba(var(--accent-color-rgb), 0.1) 0deg,
+        transparent 60deg
+      ),
+      conic-gradient(
+        from 180deg at 80% 70%,
+        rgba(var(--accent-color-rgb), 0.08) 0deg,
+        transparent 90deg
+      ),
+      radial-gradient(
+        circle at 50% 50%,
+        rgba(var(--accent-color-rgb), 0.02) 0%,
+        transparent 70%
+      );
     z-index: 0;
   }
 
@@ -2989,9 +3136,30 @@ const AnalyticsToolsSection = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
-      linear-gradient(45deg, transparent 24%, rgba(var(--accent-color-rgb), 0.02) 25%, rgba(var(--accent-color-rgb), 0.02) 26%, transparent 27%, transparent 74%, rgba(var(--accent-color-rgb), 0.02) 75%, rgba(var(--accent-color-rgb), 0.02) 76%, transparent 77%, transparent),
-      linear-gradient(-45deg, transparent 24%, rgba(var(--accent-color-rgb), 0.02) 25%, rgba(var(--accent-color-rgb), 0.02) 26%, transparent 27%, transparent 74%, rgba(var(--accent-color-rgb), 0.02) 75%, rgba(var(--accent-color-rgb), 0.02) 76%, transparent 77%, transparent);
+    background-image: linear-gradient(
+        45deg,
+        transparent 24%,
+        rgba(var(--accent-color-rgb), 0.02) 25%,
+        rgba(var(--accent-color-rgb), 0.02) 26%,
+        transparent 27%,
+        transparent 74%,
+        rgba(var(--accent-color-rgb), 0.02) 75%,
+        rgba(var(--accent-color-rgb), 0.02) 76%,
+        transparent 77%,
+        transparent
+      ),
+      linear-gradient(
+        -45deg,
+        transparent 24%,
+        rgba(var(--accent-color-rgb), 0.02) 25%,
+        rgba(var(--accent-color-rgb), 0.02) 26%,
+        transparent 27%,
+        transparent 74%,
+        rgba(var(--accent-color-rgb), 0.02) 75%,
+        rgba(var(--accent-color-rgb), 0.02) 76%,
+        transparent 77%,
+        transparent
+      );
     background-size: 60px 60px;
     opacity: 0.3;
     z-index: 0;
@@ -3028,7 +3196,12 @@ const AnalyticsTitle = styled(motion.h2)`
     transform: translateX(-50%);
     width: 120px;
     height: 3px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-color),
+      transparent
+    );
     border-radius: 2px;
   }
 `;
@@ -3058,7 +3231,12 @@ const ToolsShowcase = styled(motion.div)`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
     animation: ${shimmer} 3s ease-in-out infinite;
     z-index: 1;
   }
@@ -3135,7 +3313,11 @@ const ToolCard = styled(motion.div)`
     right: -50%;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, rgba(var(--accent-color-rgb), 0.08) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(var(--accent-color-rgb), 0.08) 0%,
+      transparent 70%
+    );
     border-radius: 50%;
     opacity: 0.5;
     transition: all 0.4s ease;
@@ -3149,7 +3331,12 @@ const ToolCard = styled(motion.div)`
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--accent-color), rgba(var(--accent-color-rgb), 0.3), transparent);
+    background: linear-gradient(
+      90deg,
+      var(--accent-color),
+      rgba(var(--accent-color-rgb), 0.3),
+      transparent
+    );
     opacity: 0.8;
   }
 `;
@@ -3167,7 +3354,9 @@ const ToolIcon = styled.div`
   width: 70px;
   height: 70px;
   border-radius: 18px;
-  background: ${props => props.gradient || 'linear-gradient(135deg, var(--accent-color), rgba(var(--accent-color-rgb), 0.8))'};
+  background: ${props =>
+    props.gradient ||
+    'linear-gradient(135deg, var(--accent-color), rgba(var(--accent-color-rgb), 0.8))'};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3273,8 +3462,9 @@ const AnalyticsStatLabel = styled.div`
 `;
 
 const IntegrationFlow = styled(motion.div)`
-  background: linear-gradient(135deg, 
-    rgba(var(--accent-color-rgb), 0.08) 0%, 
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent-color-rgb), 0.08) 0%,
     rgba(var(--accent-color-rgb), 0.03) 100%
   );
   border: 1px solid rgba(var(--accent-color-rgb), 0.15);
@@ -3292,7 +3482,8 @@ const IntegrationFlow = styled(motion.div)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M30 30c0 5.5-4.5 10-10 10s-10-4.5-10-10 4.5-10 10-10 10 4.5 10 10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M30 30c0 5.5-4.5 10-10 10s-10-4.5-10-10 4.5-10 10-10 10 4.5 10 10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+      repeat;
     z-index: 0;
   }
 `;
@@ -3367,55 +3558,46 @@ const BenefitText = styled.p`
 `;
 
 const AnalyticsTools = () => {
+  const { t } = useTranslation();
+  const analyticsTools = t('targetedAdvertisingPage.analyticsTools', { returnObjects: true });
+  const analyticsIntegrationBenefits = t('targetedAdvertisingPage.analyticsIntegrationBenefits', { returnObjects: true });
   const tools = [
     {
-      badge: "META",
-      name: "Meta Ads Manager",
+      badge: 'META',
+      name: 'Meta Ads Manager',
       icon: <FaFacebook />,
-      gradient: "linear-gradient(135deg, #1877f2 0%, #4267b2 100%)",
-      description: "Центральний інструмент для запуску реклами в Facebook, Instagram і Messenger. Дає змогу налаштовувати аудиторії, цілі, формати та проводити A/B-тестування.",
-      features: ["Таргетинг аудиторій", "A/B тестування", "Ретаргетинг", "Автоматизація"],
-      stats: [
-        { number: "3B+", label: "Користувачів" },
-        { number: "95%", label: "Точність" }
-      ]
+      gradient: 'linear-gradient(135deg, #1877f2 0%, #4267b2 100%)',
+      description: analyticsTools[0].description,
+      features: analyticsTools[0].features,
+      stats: analyticsTools[0].stats,
     },
     {
-      badge: "TIKTOK",
-      name: "TikTok Ads Manager",
+      badge: 'TIKTOK',
+      name: 'TikTok Ads Manager',
       icon: <FaTiktok />,
-      gradient: "linear-gradient(135deg, #000000 0%, #ff0050 100%)",
-      description: "Платформа для таргетингу на молодіжну аудиторію. Можливість створювати нативні відеооголошення та запускати рекламу через інфлюенсерів.",
-      features: ["Відео креативи", "Інфлюенсер реклама", "Gen Z аудиторія", "Вірусний контент"],
-      stats: [
-        { number: "1B+", label: "Активних" },
-        { number: "89%", label: "Залучення" }
-      ]
+      gradient: 'linear-gradient(135deg, #000000 0%, #ff0050 100%)',
+      description: analyticsTools[1].description,
+      features: analyticsTools[1].features,
+      stats: analyticsTools[1].stats,
     },
     {
-      badge: "GOOGLE",
-      name: "Google Ads & Analytics",
+      badge: 'GOOGLE',
+      name: 'Google Ads & Analytics',
       icon: <FaSearch />,
-      gradient: "linear-gradient(135deg, #4285f4 0%, #34a853 100%)",
-      description: "Потужний набір для візуальної реклами, YouTube кампаній та детальної аналітики поведінки користувачів на сайті після переходу з реклами.",
-      features: ["YouTube реклама", "Медійна мережа", "GA4 аналітика", "Конверсії"],
-      stats: [
-        { number: "8.5B", label: "Запитів/день" },
-        { number: "92%", label: "Охоплення" }
-      ]
+      gradient: 'linear-gradient(135deg, #4285f4 0%, #34a853 100%)',
+      description: analyticsTools[2].description,
+      features: analyticsTools[2].features,
+      stats: analyticsTools[2].stats,
     },
     {
-      badge: "TRACKING",
-      name: "Pixel & UTM системи",
+      badge: 'TRACKING',
+      name: 'Pixel & UTM системи',
       icon: <FaChartLine />,
-      gradient: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
-      description: "Трекінгові інструменти та UTM-мітки для точного відстеження взаємодії користувачів, налаштування ретаргетингу та аналізу ефективності каналів.",
-      features: ["Meta Pixel", "Google Tag Manager", "UTM трекінг", "CRM інтеграція"],
-      stats: [
-        { number: "99.9%", label: "Точність" },
-        { number: "Real-time", label: "Дані" }
-      ]
-    }
+      gradient: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+      description: analyticsTools[3].description,
+      features: analyticsTools[3].features,
+      stats: analyticsTools[3].stats,
+    },
   ];
 
   return (
@@ -3428,16 +3610,16 @@ const AnalyticsTools = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Інструменти для аналітики й налаштувань
+            {t('targetedAdvertisingPage.analyticsToolsTitle')}
           </AnalyticsTitle>
-          
+
           <AnalyticsSubtitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Для професійного запуску та управління таргетованою рекламою ми використовуємо перевірені платформи й аналітичні інструменти, які дозволяють досягати максимальної ефективності.
+             {t('targetedAdvertisingPage.analyticsToolsSubtitle')}
           </AnalyticsSubtitle>
 
           <ToolsShowcase
@@ -3446,9 +3628,11 @@ const AnalyticsTools = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <ShowcaseText>Професійний tech-stack для максимальних результатів</ShowcaseText>
+            <ShowcaseText>
+            {t('targetedAdvertisingPage.analyticsToolsShowcase')}
+            </ShowcaseText>
             <ShowcaseDescription>
-              Завдяки цьому набору інструментів ми не тільки запускаємо рекламу, а й повноцінно керуємо результатом, орієнтуючись на цифри, а не інтуїцію.
+            {t('targetedAdvertisingPage.analyticsToolsShowcaseDescription')}
             </ShowcaseDescription>
           </ToolsShowcase>
         </AnalyticsHeader>
@@ -3472,10 +3656,10 @@ const AnalyticsTools = () => {
                   <ToolName>{tool.name}</ToolName>
                 </ToolInfo>
               </ToolHeader>
-              
+
               <ToolContent>
                 <ToolDescription>{tool.description}</ToolDescription>
-                
+
                 <ToolFeatures>
                   {tool.features.map((feature, idx) => (
                     <ToolFeature key={idx}>{feature}</ToolFeature>
@@ -3501,35 +3685,41 @@ const AnalyticsTools = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <IntegrationTitle>Повна інтеграція та синхронізація</IntegrationTitle>
+          <IntegrationTitle>{t('targetedAdvertisingPage.analyticsIntegrationTitle')}</IntegrationTitle>
           <IntegrationDescription>
-            Всі інструменти працюють в єдиній екосистемі, забезпечуючи точне відстеження, оптимізацію та масштабування ваших рекламних кампаній.
+          {t('targetedAdvertisingPage.analyticsIntegrationDescription')}
           </IntegrationDescription>
-          
+
           <IntegrationBenefits>
             <BenefitCard
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
               <BenefitIcon>📊</BenefitIcon>
               <BenefitTitle>Unified Dashboard</BenefitTitle>
-              <BenefitText>Всі метрики в одному місці для швидкого аналізу та прийняття рішень</BenefitText>
+              <BenefitText>
+                {analyticsIntegrationBenefits[0].text}
+              </BenefitText>
             </BenefitCard>
             <BenefitCard
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
               <BenefitIcon>⚡</BenefitIcon>
-              <BenefitTitle>Real-time оптимізація</BenefitTitle>
-              <BenefitText>Автоматичне коригування кампаній на основі актуальних даних</BenefitText>
+              <BenefitTitle>{analyticsIntegrationBenefits[1].title}</BenefitTitle>
+              <BenefitText>
+              {analyticsIntegrationBenefits[1].text}
+              </BenefitText>
             </BenefitCard>
             <BenefitCard
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
               <BenefitIcon>🎯</BenefitIcon>
-              <BenefitTitle>Точний attribution</BenefitTitle>
-              <BenefitText>Повне розуміння customer journey від кліка до конверсії</BenefitText>
+              <BenefitTitle>{analyticsIntegrationBenefits[2].title}</BenefitTitle>
+              <BenefitText>
+              {analyticsIntegrationBenefits[2].text}
+              </BenefitText>
             </BenefitCard>
           </IntegrationBenefits>
         </IntegrationFlow>
@@ -3550,10 +3740,21 @@ const MetricsSection = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-      radial-gradient(circle at 25% 25%, rgba(var(--accent-color-rgb), 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, rgba(var(--accent-color-rgb), 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 50% 0%, rgba(var(--accent-color-rgb), 0.05) 0%, transparent 40%);
+    background: radial-gradient(
+        circle at 25% 25%,
+        rgba(var(--accent-color-rgb), 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 75% 75%,
+        rgba(var(--accent-color-rgb), 0.08) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 50% 0%,
+        rgba(var(--accent-color-rgb), 0.05) 0%,
+        transparent 40%
+      );
     z-index: 0;
   }
 
@@ -3564,9 +3765,20 @@ const MetricsSection = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
-      repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(var(--accent-color-rgb), 0.02) 2px, rgba(var(--accent-color-rgb), 0.02) 4px),
-      repeating-linear-gradient(-45deg, transparent, transparent 2px, rgba(var(--accent-color-rgb), 0.02) 2px, rgba(var(--accent-color-rgb), 0.02) 4px);
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(var(--accent-color-rgb), 0.02) 2px,
+        rgba(var(--accent-color-rgb), 0.02) 4px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 2px,
+        rgba(var(--accent-color-rgb), 0.02) 2px,
+        rgba(var(--accent-color-rgb), 0.02) 4px
+      );
     opacity: 0.5;
     z-index: 0;
   }
@@ -3602,7 +3814,12 @@ const MetricsTitle = styled(motion.h2)`
     transform: translateX(-50%);
     width: 150px;
     height: 4px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-color),
+      transparent
+    );
     border-radius: 2px;
   }
 `;
@@ -3616,8 +3833,9 @@ const MetricsSubtitle = styled(motion.p)`
 `;
 
 const MetricsHighlight = styled(motion.div)`
-  background: linear-gradient(135deg, 
-    rgba(var(--accent-color-rgb), 0.1) 0%, 
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent-color-rgb), 0.1) 0%,
     rgba(var(--accent-color-rgb), 0.05) 100%
   );
   border: 1px solid rgba(var(--accent-color-rgb), 0.2);
@@ -3635,7 +3853,12 @@ const MetricsHighlight = styled(motion.div)`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
     animation: ${shimmer} 4s ease-in-out infinite;
     z-index: 1;
   }
@@ -3675,7 +3898,7 @@ const MetricsGrid = styled.div`
 
   @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
-    
+
     .metric-card:nth-child(7) {
       grid-column: 1 / -1;
       max-width: 500px;
@@ -3686,7 +3909,7 @@ const MetricsGrid = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    
+
     .metric-card:nth-child(7) {
       grid-column: 1;
       max-width: none;
@@ -3733,7 +3956,9 @@ const MetricCard = styled(motion.div)`
     right: -50%;
     width: 100%;
     height: 100%;
-    background: ${props => props.gradient || `radial-gradient(circle, rgba(var(--accent-color-rgb), 0.1) 0%, transparent 70%)`};
+    background: ${props =>
+      props.gradient ||
+      `radial-gradient(circle, rgba(var(--accent-color-rgb), 0.1) 0%, transparent 70%)`};
     border-radius: 50%;
     opacity: 0.7;
     transition: all 0.4s ease;
@@ -3747,7 +3972,9 @@ const MetricCard = styled(motion.div)`
     left: 0;
     right: 0;
     height: 5px;
-    background: ${props => props.topColor || `linear-gradient(90deg, var(--accent-color), rgba(var(--accent-color-rgb), 0.3))`};
+    background: ${props =>
+      props.topColor ||
+      `linear-gradient(90deg, var(--accent-color), rgba(var(--accent-color-rgb), 0.3))`};
     opacity: 0.8;
   }
 `;
@@ -3765,7 +3992,9 @@ const MetricIcon = styled.div`
   width: 70px;
   height: 70px;
   border-radius: 18px;
-  background: ${props => props.bgGradient || 'linear-gradient(135deg, var(--accent-color), rgba(var(--accent-color-rgb), 0.8))'};
+  background: ${props =>
+    props.bgGradient ||
+    'linear-gradient(135deg, var(--accent-color), rgba(var(--accent-color-rgb), 0.8))'};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3781,7 +4010,9 @@ const MetricIcon = styled.div`
     inset: -2px;
     border-radius: 20px;
     padding: 2px;
-    background: ${props => props.bgGradient || 'linear-gradient(135deg, var(--accent-color), rgba(var(--accent-color-rgb), 0.8))'};
+    background: ${props =>
+      props.bgGradient ||
+      'linear-gradient(135deg, var(--accent-color), rgba(var(--accent-color-rgb), 0.8))'};
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: xor;
     opacity: 0;
@@ -3868,91 +4099,100 @@ const MetricExample = styled.div`
 `;
 
 const MetricsEfficiency = () => {
-  const metrics = [
+  const { t } = useTranslation();
+  const metrics = t('targetedAdvertisingPage.metrics', { returnObjects: true });
+  const metricsItem = [
     {
-      name: "Click-Through Rate",
-      abbr: "CTR",
-      icon: "👆",
-      bgGradient: "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)",
-      topColor: "linear-gradient(90deg, #3b82f6, rgba(59, 130, 246, 0.3))",
-      gradient: "radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%)",
-      description: "Показник клікабельності — відсоток людей, які побачили рекламу й клікнули на неї. Чим вищий CTR, тим цікавіше оголошення для аудиторії.",
-      value: "2.5%",
-      valueLabel: "Середній показник",
-      example: "Приклад: 100,000 показів → 2,500 кліків = CTR 2.5%"
+      name: 'Click-Through Rate',
+      abbr: 'CTR',
+      icon: '👆',
+      bgGradient: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
+      topColor: 'linear-gradient(90deg, #3b82f6, rgba(59, 130, 246, 0.3))',
+      gradient:
+        'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%)',
+      description: metrics[0].description,
+      value: '2.5%',
+      valueLabel: metrics[0].valueLabel,
+      example: metrics[0].example,
     },
     {
-      name: "Cost Per Click",
-      abbr: "CPC",
-      icon: "💰",
-      bgGradient: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
-      topColor: "linear-gradient(90deg, #10b981, rgba(16, 185, 129, 0.3))",
-      gradient: "radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%)",
-      description: "Ціна за клік — скільки коштує кожен перехід за рекламним оголошенням. Дає змогу оцінити ефективність креативу й налаштувань аудиторії.",
-      value: "₴25",
-      valueLabel: "За клік",
-      example: "Бюджет ₴5,000 ÷ 200 кліків = CPC ₴25"
+      name: 'Cost Per Click',
+      abbr: 'CPC',
+      icon: '💰',
+      bgGradient: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+      topColor: 'linear-gradient(90deg, #10b981, rgba(16, 185, 129, 0.3))',
+      gradient:
+        'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%)',
+      description: metrics[1].description,
+      value: '₴25',
+      valueLabel: metrics[1].valueLabel,
+      example: metrics[1].example,
     },
     {
-      name: "Cost Per Mille",
-      abbr: "CPM",
-      icon: "👁️",
-      bgGradient: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)",
-      topColor: "linear-gradient(90deg, #8b5cf6, rgba(139, 92, 246, 0.3))",
-      gradient: "radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%)",
-      description: "Ціна за 1000 показів. Використовується, коли мета — впізнаваність або охоплення. Дає розуміння вартості демонстрації бренду аудиторії.",
-      value: "₴150",
-      valueLabel: "За 1000 показів",
-      example: "₴1,500 бюджет → 10,000 показів = CPM ₴150"
+      name: 'Cost Per Mille',
+      abbr: 'CPM',
+      icon: '👁️',
+      bgGradient: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
+      topColor: 'linear-gradient(90deg, #8b5cf6, rgba(139, 92, 246, 0.3))',
+      gradient:
+        'radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%)',
+      description: metrics[2].description,
+      value: '₴150',
+      valueLabel: metrics[2].valueLabel,
+      example: metrics[2].example,
     },
     {
-      name: "Cost Per Action",
-      abbr: "CPA",
-      icon: "🎯",
-      bgGradient: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
-      topColor: "linear-gradient(90deg, #f59e0b, rgba(245, 158, 11, 0.3))",
-      gradient: "radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%)",
-      description: "Ціна за цільову дію — покупку, заповнення форми, дзвінок. Один з головних показників для оцінки ROI рекламної кампанії.",
-      value: "₴500",
-      valueLabel: "За конверсію",
-      example: "₴10,000 бюджет → 20 покупок = CPA ₴500"
+      name: 'Cost Per Action',
+      abbr: 'CPA',
+      icon: '🎯',
+      bgGradient: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+      topColor: 'linear-gradient(90deg, #f59e0b, rgba(245, 158, 11, 0.3))',
+      gradient:
+        'radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%)',
+      description: metrics[3].description,
+      value: '₴500',
+      valueLabel: metrics[3].valueLabel,
+      example: metrics[3].example,
     },
     {
-      name: "Return On Ad Spend",
-      abbr: "ROAS",
-      icon: "📈",
-      bgGradient: "linear-gradient(135deg, #ef4444 0%, #dc2626 100%)",
-      topColor: "linear-gradient(90deg, #ef4444, rgba(239, 68, 68, 0.3))",
-      gradient: "radial-gradient(circle, rgba(239, 68, 68, 0.1) 0%, transparent 70%)",
-      description: "Рентабельність витрат на рекламу. Вказує, скільки прибутку ви отримали з кожної вкладеної гривні.",
-      value: "5:1",
-      valueLabel: "Прибуток:Витрати",
-      example: "₴1,000 витрат → ₴5,000 доходу = ROAS 5:1"
+      name: 'Return On Ad Spend',
+      abbr: 'ROAS',
+      icon: '📈',
+      bgGradient: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
+      topColor: 'linear-gradient(90deg, #ef4444, rgba(239, 68, 68, 0.3))',
+      gradient:
+        'radial-gradient(circle, rgba(239, 68, 68, 0.1) 0%, transparent 70%)',
+      description: metrics[4].description,
+      value: '5:1',
+      valueLabel: metrics[4].valueLabel,
+      example: metrics[4].example,
     },
     {
-      name: "Conversion Rate",
-      abbr: "CR",
-      icon: "⚡",
-      bgGradient: "linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)",
-      topColor: "linear-gradient(90deg, #06b6d4, rgba(6, 182, 212, 0.3))",
-      gradient: "radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%)",
-      description: "Відсоток користувачів, які виконали потрібну дію після кліку на рекламу. Це може бути покупка, реєстрація або звернення.",
-      value: "12%",
-      valueLabel: "Конверсія",
-      example: "1,000 відвідувачів → 120 конверсій = CR 12%"
+      name: 'Conversion Rate',
+      abbr: 'CR',
+      icon: '⚡',
+      bgGradient: 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)',
+      topColor: 'linear-gradient(90deg, #06b6d4, rgba(6, 182, 212, 0.3))',
+      gradient:
+        'radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%)',
+      description: metrics[5].description,
+      value: '12%',
+      valueLabel: metrics[5].valueLabel,
+      example: metrics[5].example,
     },
     {
-      name: "Leads & Sales",
-      abbr: "RESULT",
-      icon: "🏆",
-      bgGradient: "linear-gradient(135deg, #84cc16 0%, #65a30d 100%)",
-      topColor: "linear-gradient(90deg, #84cc16, rgba(132, 204, 22, 0.3))",
-      gradient: "radial-gradient(circle, rgba(132, 204, 22, 0.1) 0%, transparent 70%)",
-      description: "Фінальний і найважливіший показник — скільки цільових дій принесла кампанія. Ми завжди орієнтуємось на досягнення конкретних бізнес-результатів.",
-      value: "150",
-      valueLabel: "Лідів/місяць",
-      example: "Результат: 150 якісних лідів за місяць кампанії"
-    }
+      name: 'Leads & Sales',
+      abbr: 'RESULT',
+      icon: '🏆',
+      bgGradient: 'linear-gradient(135deg, #84cc16 0%, #65a30d 100%)',
+      topColor: 'linear-gradient(90deg, #84cc16, rgba(132, 204, 22, 0.3))',
+      gradient:
+        'radial-gradient(circle, rgba(132, 204, 22, 0.1) 0%, transparent 70%)',
+      description: metrics[6].description,
+      value: '150',
+      valueLabel: metrics[6].valueLabel,
+      example: metrics[6].example,
+    },
   ];
 
   return (
@@ -3965,16 +4205,16 @@ const MetricsEfficiency = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Основні метрики ефективності
+            {t('targetedAdvertisingPage.metricsTitle')}
           </MetricsTitle>
-          
+
           <MetricsSubtitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Щоб таргетована реклама приносила реальні бізнес-результати, важливо постійно аналізувати її ефективність за ключовими показниками.
+            {t('targetedAdvertisingPage.metricsSubtitle')}
           </MetricsSubtitle>
 
           <MetricsHighlight
@@ -3983,15 +4223,15 @@ const MetricsEfficiency = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <HighlightTitle>Data-driven підхід до оптимізації</HighlightTitle>
+            <HighlightTitle>{t('targetedAdvertisingPage.metricsHighlightTitle')}</HighlightTitle>
             <HighlightText>
-              Ми працюємо виключно з цифрами та фактами, постійно аналізуючи метрики для досягнення максимального ROI ваших рекламних кампаній.
+            {t('targetedAdvertisingPage.metricsHighlightText')}
             </HighlightText>
           </MetricsHighlight>
         </MetricsHeader>
 
         <MetricsGrid>
-          {metrics.map((metric, index) => (
+          {metricsItem.map((metric, index) => (
             <MetricCard
               key={metric.abbr}
               className="metric-card"
@@ -4004,7 +4244,10 @@ const MetricsEfficiency = () => {
               topColor={metric.topColor}
             >
               <MetricHeader>
-                <MetricIcon className="metric-icon" bgGradient={metric.bgGradient}>
+                <MetricIcon
+                  className="metric-icon"
+                  bgGradient={metric.bgGradient}
+                >
                   {metric.icon}
                 </MetricIcon>
                 <MetricInfo>
@@ -4012,14 +4255,14 @@ const MetricsEfficiency = () => {
                   <MetricAbbr>{metric.abbr}</MetricAbbr>
                 </MetricInfo>
               </MetricHeader>
-              
+
               <MetricContent>
                 <MetricDescription>{metric.description}</MetricDescription>
-                
+
                 <MetricValue
                   className="metric-value"
                   whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
                 >
                   <ValueNumber>{metric.value}</ValueNumber>
                   <ValueLabel>{metric.valueLabel}</ValueLabel>
@@ -4062,7 +4305,7 @@ const BusinessTypesTitle = styled(motion.h2)`
   color: var(--text-primary);
   position: relative;
   letter-spacing: -0.02em;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -4071,7 +4314,12 @@ const BusinessTypesTitle = styled(motion.h2)`
     transform: translateX(-50%);
     width: 180px;
     height: 4px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-color),
+      transparent
+    );
     border-radius: 2px;
   }
 `;
@@ -4147,7 +4395,7 @@ const EcommerceTitle = styled.h3`
   font-size: 2rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  
+
   &::before {
     content: '01. ';
     opacity: 0.7;
@@ -4237,7 +4485,7 @@ const EducationFeatures = styled.div`
 const EducationFeature = styled.div`
   font-size: 0.9rem;
   opacity: 0.9;
-  
+
   &::before {
     content: '→ ';
     margin-right: 0.5rem;
@@ -4285,7 +4533,7 @@ const ServicesTitle = styled.h3`
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  
+
   &::before {
     content: '03';
     display: block;
@@ -4388,7 +4636,11 @@ const B2BCard = styled(motion.div)`
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 70%
+    );
     animation: ${shimmer} 4s ease-in-out infinite;
   }
 
@@ -4418,7 +4670,7 @@ const B2BTitle = styled.h3`
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  
+
   &::before {
     content: '05 ';
     opacity: 0.6;
@@ -4483,9 +4735,9 @@ const LocalNumber = styled.div`
   font-size: 1rem;
   opacity: 0.7;
   margin-bottom: 0.5rem;
-  
+
   &::before {
-    content: '06. ЛОКАЛЬНИЙ БІЗНЕС';
+    content: '06';
   }
 `;
 
@@ -4503,6 +4755,8 @@ const LocalDescription = styled.p`
 `;
 
 const BusinessTypes = () => {
+  const { t } = useTranslation();
+  const businessTypes = t('targetedAdvertisingPage.businessTypes', { returnObjects: true });
   return (
     <BusinessTypesSection>
       <BusinessTypesContainer>
@@ -4513,16 +4767,16 @@ const BusinessTypes = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Для яких бізнесів підходить таргетована реклама
+            {t('targetedAdvertisingPage.businessTypesTitle')}
           </BusinessTypesTitle>
-          
+
           <BusinessTypesSubtitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Таргетована реклама — універсальний інструмент, який можна адаптувати під будь-який тип бізнесу. Кожен напрямок має свої особливості та переваги.
+            {t('targetedAdvertisingPage.businessTypesSubtitle')}
           </BusinessTypesSubtitle>
         </BusinessTypesHeader>
 
@@ -4533,14 +4787,14 @@ const BusinessTypes = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <EcommerceTitle>Інтернет-магазини</EcommerceTitle>
+            <EcommerceTitle>{businessTypes[0].title}</EcommerceTitle>
             <EcommerceDescription>
-              Реклама допомагає залучати нових покупців, повертати тих, хто не завершив покупку, і стимулювати повторні продажі через ретаргетинг та динамічну рекламу.
+            {businessTypes[0].description}
             </EcommerceDescription>
             <EcommerceTags>
-              <EcommerceTag>Ретаргетинг</EcommerceTag>
-              <EcommerceTag>Look-alike</EcommerceTag>
-              <EcommerceTag>Динамічна реклама</EcommerceTag>
+              <EcommerceTag>{businessTypes[0].tags[0]}</EcommerceTag>
+              <EcommerceTag>{businessTypes[0].tags[1]}</EcommerceTag>
+              <EcommerceTag>{businessTypes[0].tags[2]}</EcommerceTag>
             </EcommerceTags>
           </EcommerceCard>
 
@@ -4551,12 +4805,12 @@ const BusinessTypes = () => {
             viewport={{ once: true }}
           >
             <EducationNumber>02</EducationNumber>
-            <EducationTitle>Освітні проєкти</EducationTitle>
+            <EducationTitle>{businessTypes[1].title}</EducationTitle>
             <EducationFeatures>
-              <EducationFeature>Фільтрація за інтересами</EducationFeature>
-              <EducationFeature>Професійний таргетинг</EducationFeature>
-              <EducationFeature>Lead Generation</EducationFeature>
-              <EducationFeature>Вебінар-воронки</EducationFeature>
+              <EducationFeature>{businessTypes[1].features[0]}</EducationFeature>
+              <EducationFeature>{businessTypes[1].features[1]}</EducationFeature>
+              <EducationFeature>{businessTypes[1].features[2]}</EducationFeature>
+              <EducationFeature>{businessTypes[1].features[3]}</EducationFeature>
             </EducationFeatures>
           </EducationCard>
 
@@ -4566,9 +4820,9 @@ const BusinessTypes = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <ServicesTitle>Сфера послуг</ServicesTitle>
+            <ServicesTitle>{businessTypes[2].title}</ServicesTitle>
             <ServicesDescription>
-              Таргетинг дозволяє "ловити" потенційного клієнта у потрібний момент — коли він шукає майстра, лікаря або консультанта.
+            {businessTypes[2].description}
             </ServicesDescription>
           </ServicesCard>
 
@@ -4580,9 +4834,9 @@ const BusinessTypes = () => {
           >
             <EventsContent>
               <EventsNumber>04</EventsNumber>
-              <EventsTitle>Івенти та заходи</EventsTitle>
+              <EventsTitle>{businessTypes[3].title}</EventsTitle>
               <EventsText>
-                Продаж квитків на концерти, конференції, фестивалі через локальний та інтерес-орієнтований таргетинг.
+              {businessTypes[3].description}
               </EventsText>
             </EventsContent>
           </EventsCard>
@@ -4594,9 +4848,9 @@ const BusinessTypes = () => {
             viewport={{ once: true }}
           >
             <B2BIcon>🏢</B2BIcon>
-            <B2BTitle>B2B-компанії</B2BTitle>
+            <B2BTitle>{businessTypes[4].title}</B2BTitle>
             <B2BFeatures>
-              LinkedIn таргетинг • Decision makers • Account-based маркетинг
+            {businessTypes[4].features[0]}
             </B2BFeatures>
           </B2BCard>
 
@@ -4608,14 +4862,13 @@ const BusinessTypes = () => {
           >
             <LocalContent>
               <LocalNumber />
-              <LocalTitle>Поруч з вами</LocalTitle>
+              <LocalTitle>{businessTypes[5].title}</LocalTitle>
               <LocalDescription>
-                Кав'ярні, салони краси, клініки, спортзали — геотаргетинг для тих, хто поруч.
+              {businessTypes[5].description}
               </LocalDescription>
             </LocalContent>
           </LocalCard>
         </BusinessMosaic>
-
       </BusinessTypesContainer>
     </BusinessTypesSection>
   );
@@ -4648,7 +4901,7 @@ const StrengthsTitle = styled(motion.h2)`
   color: var(--text-primary);
   position: relative;
   letter-spacing: -0.02em;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -4657,7 +4910,12 @@ const StrengthsTitle = styled(motion.h2)`
     transform: translateX(-50%);
     width: 180px;
     height: 4px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-color),
+      transparent
+    );
     border-radius: 2px;
   }
 `;
@@ -4684,9 +4942,10 @@ const StrengthsTimeline = styled.div`
     transform: translateX(-50%);
     width: 4px;
     height: 100%;
-    background: linear-gradient(to bottom, 
-      var(--accent-color) 0%, 
-      rgba(var(--accent-color-rgb), 0.5) 50%, 
+    background: linear-gradient(
+      to bottom,
+      var(--accent-color) 0%,
+      rgba(var(--accent-color-rgb), 0.5) 50%,
       var(--accent-color) 100%
     );
     border-radius: 2px;
@@ -4706,7 +4965,7 @@ const TimelineItem = styled(motion.div)`
 
   &:nth-child(even) {
     flex-direction: row-reverse;
-    
+
     .timeline-content {
       text-align: right;
       padding-right: 4rem;
@@ -4721,7 +4980,7 @@ const TimelineItem = styled(motion.div)`
 
     @media (max-width: 768px) {
       flex-direction: row;
-      
+
       .timeline-content {
         text-align: left;
         padding-left: 4rem;
@@ -4778,7 +5037,11 @@ const TimelineNumber = styled.div`
   transform: translate(-50%, -50%);
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, var(--accent-color), rgba(var(--accent-color-rgb), 0.8));
+  background: linear-gradient(
+    135deg,
+    var(--accent-color),
+    rgba(var(--accent-color-rgb), 0.8)
+  );
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -4795,7 +5058,12 @@ const TimelineNumber = styled.div`
     position: absolute;
     inset: -8px;
     border-radius: 50%;
-    background: conic-gradient(from 0deg, var(--accent-color), transparent, var(--accent-color));
+    background: conic-gradient(
+      from 0deg,
+      var(--accent-color),
+      transparent,
+      var(--accent-color)
+    );
     z-index: -1;
     animation: ${floatUpDown} 3s ease-in-out infinite;
   }
@@ -4877,43 +5145,45 @@ const TimelineFeature = styled.span`
 `;
 
 const OurStrengths = () => {
-  const strengths = [
+  const { t } = useTranslation();
+  const strengths = t('targetedAdvertisingPage.strengths', { returnObjects: true });
+  const strengthsItem = [
     {
-      icon: "🔍",
-      title: "Глибока аналітика перед запуском",
-      description: "Ми завжди починаємо з аналізу ринку, конкурентів і цільової аудиторії. Це дозволяє створювати дійсно релевантні оголошення, а не стріляти наосліп.",
-      features: ["Аналіз конкурентів", "Дослідження аудиторії", "Ринкова аналітика", "Персони покупців"]
+      icon: '🔍',
+      title: strengths[0].title,
+      description: strengths[0].description,
+      features: strengths[0].features,
     },
     {
-      icon: "🎯",
-      title: "Індивідуальна стратегія для кожного клієнта",
-      description: "Ніяких шаблонів. Ми створюємо рекламну кампанію, яка враховує особливості саме вашого продукту, бізнес-моделі та цілей.",
-      features: ["Персональний підхід", "Унікальна стратегія", "Врахування специфіки", "Гнучкий план"]
+      icon: '🎯',
+      title: strengths[1].title,
+      description: strengths[1].description,
+      features: strengths[1].features,
     },
     {
-      icon: "🎨",
-      title: "Сильні креативи",
-      description: "У команді — копірайтери та дизайнери, які знають, як привернути увагу, викликати інтерес і стимулювати дію.",
-      features: ["Професійний дизайн", "Цепкі тексти", "A/B тестування", "Оптимізація CTR"]
+      icon: '🎨',
+      title: strengths[2].title,
+      description: strengths[2].description,
+      features: strengths[2].features,
     },
     {
-      icon: "⚡",
-      title: "Постійний контроль та оптимізація",
-      description: "Ми щодня моніторимо кампанії, аналізуємо ефективність, змінюємо аудиторії, бюджети й креативи.",
-      features: ["Щоденний моніторинг", "Швидка реакція", "Оптимізація бюджету", "Масштабування"]
+      icon: '⚡',
+      title: strengths[3].title,
+      description: strengths[3].description,
+      features: strengths[3].features,
     },
     {
-      icon: "📊",
-      title: "Прозорість і звітність",
-      description: "Регулярна звітність із чіткими метриками — ви завжди бачите, на що витрачається бюджет та які результати отримує ваш бізнес.",
-      features: ["Детальні звіти", "Прозорі метрики", "Регулярні зустрічі", "Доступ до кабінетів"]
+      icon: '📊',
+      title: strengths[4].title,
+      description: strengths[4].description,
+      features: strengths[4].features,
     },
     {
-      icon: "🚀",
-      title: "Орієнтація на результат",
-      description: "Наша мета — не кількість кліків, а ваш прибуток. Ми завжди дивимось на бізнес очима власника та досягаємо ROI.",
-      features: ["Фокус на прибуток", "Бізнес-мислення", "Вимірювані KPI", "Гарантія результату"]
-    }
+      icon: '🚀',
+      title: strengths[5].title,
+      description: strengths[5].description,
+      features: strengths[5].features,
+    },
   ];
 
   return (
@@ -4926,21 +5196,21 @@ const OurStrengths = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Наші сильні сторони
+            {t('targetedAdvertisingPage.strengthsTitle')}
           </StrengthsTitle>
-          
+
           <StrengthsSubtitle
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Ми не просто запускаємо таргетовану рекламу — ми беремо на себе повну відповідальність за результат. Завдяки досвіду, системному підходу та глибокому розумінню бізнес-процесів, ми допомагаємо клієнтам досягати конкретних цілей.
+            {t('targetedAdvertisingPage.strengthsSubtitle')}
           </StrengthsSubtitle>
         </StrengthsIntro>
 
         <StrengthsTimeline>
-          {strengths.map((strength, index) => (
+          {strengthsItem.map((strength, index) => (
             <TimelineItem
               key={index}
               initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
@@ -4950,11 +5220,13 @@ const OurStrengths = () => {
             >
               <TimelineNumber>{index + 1}</TimelineNumber>
               <TimelineConnector className="timeline-connector" />
-              
+
               <TimelineContent className="timeline-content">
                 <TimelineIcon>{strength.icon}</TimelineIcon>
                 <TimelineTitle>{strength.title}</TimelineTitle>
-                <TimelineDescription>{strength.description}</TimelineDescription>
+                <TimelineDescription>
+                  {strength.description}
+                </TimelineDescription>
                 <TimelineFeatures>
                   {strength.features.map((feature, idx) => (
                     <TimelineFeature key={idx}>{feature}</TimelineFeature>
@@ -4964,7 +5236,6 @@ const OurStrengths = () => {
             </TimelineItem>
           ))}
         </StrengthsTimeline>
-
       </StrengthsContainer>
     </StrengthsSection>
   );
@@ -4972,7 +5243,8 @@ const OurStrengths = () => {
 
 // Блок результатів - унікальний дизайн з числами та анімаціями
 const ResultsAchievedSection = styled.section`
-  background: linear-gradient(180deg, 
+  background: linear-gradient(
+    180deg,
     var(--bg-primary) 0%,
     rgba(var(--accent-color-rgb), 0.02) 50%,
     var(--bg-primary) 100%
@@ -4987,7 +5259,9 @@ const ResultsAchievedSection = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23${props => props.theme?.accentColor?.replace('#', '') || '6366f1'}' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23${props =>
+      props.theme?.accentColor?.replace('#', '') ||
+      '6366f1'}' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     opacity: 0.4;
   }
 `;
@@ -5013,7 +5287,7 @@ const ResultsMainTitle = styled(motion.h2)`
   color: var(--text-primary);
   position: relative;
   letter-spacing: -0.02em;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -5022,7 +5296,12 @@ const ResultsMainTitle = styled(motion.h2)`
     transform: translateX(-50%);
     width: 180px;
     height: 4px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-color),
+      transparent
+    );
     border-radius: 2px;
   }
 `;
@@ -5041,12 +5320,12 @@ const ResultsDashboard = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 3rem;
   margin-bottom: 8rem;
-  
+
   @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -5054,7 +5333,8 @@ const ResultsDashboard = styled.div`
 `;
 
 const DashboardCard = styled(motion.div)`
-  background: linear-gradient(135deg, 
+  background: linear-gradient(
+    135deg,
     rgba(255, 255, 255, 0.1) 0%,
     rgba(255, 255, 255, 0.05) 100%
   );
@@ -5066,7 +5346,7 @@ const DashboardCard = styled(motion.div)`
   overflow: hidden;
   backdrop-filter: blur(20px);
   cursor: pointer;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -5074,18 +5354,19 @@ const DashboardCard = styled(motion.div)`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, 
-      transparent, 
-      rgba(var(--accent-color-rgb), 0.1), 
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(var(--accent-color-rgb), 0.1),
       transparent
     );
     transition: left 0.8s ease;
   }
-  
+
   &:hover::before {
     left: 100%;
   }
-  
+
   &:hover {
     transform: translateY(-10px) scale(1.02);
     border-color: rgba(var(--accent-color-rgb), 0.3);
@@ -5096,7 +5377,11 @@ const DashboardCard = styled(motion.div)`
 const DashboardNumber = styled.div`
   font-size: 4rem;
   font-weight: 900;
-  background: linear-gradient(135deg, var(--accent-color), rgba(var(--accent-color-rgb), 0.7));
+  background: linear-gradient(
+    135deg,
+    var(--accent-color),
+    rgba(var(--accent-color-rgb), 0.7)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -5119,7 +5404,8 @@ const DashboardDescription = styled.p`
 
 // Детальні результати у вигляді таблиці показників
 const ResultsBreakdown = styled.div`
-  background: linear-gradient(135deg, 
+  background: linear-gradient(
+    135deg,
     rgba(var(--accent-color-rgb), 0.05) 0%,
     rgba(var(--accent-color-rgb), 0.02) 100%
   );
@@ -5128,7 +5414,7 @@ const ResultsBreakdown = styled.div`
   margin-bottom: 6rem;
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -5136,7 +5422,11 @@ const ResultsBreakdown = styled.div`
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(var(--accent-color-rgb), 0.03) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(var(--accent-color-rgb), 0.03) 0%,
+      transparent 70%
+    );
     animation: ${shimmer} 8s ease-in-out infinite;
   }
 
@@ -5167,7 +5457,7 @@ const BreakdownTitle = styled.h3`
   color: var(--text-primary);
   position: relative;
   z-index: 2;
-  
+
   &::before {
     content: '📊';
     display: block;
@@ -5178,7 +5468,7 @@ const BreakdownTitle = styled.h3`
   @media (max-width: 1024px) {
     font-size: 2.2rem;
     margin-bottom: 3.5rem;
-    
+
     &::before {
       font-size: 2.5rem;
       margin-bottom: 0.8rem;
@@ -5188,7 +5478,7 @@ const BreakdownTitle = styled.h3`
   @media (max-width: 768px) {
     font-size: 1.8rem;
     margin-bottom: 3rem;
-    
+
     &::before {
       font-size: 2rem;
       margin-bottom: 0.6rem;
@@ -5198,7 +5488,7 @@ const BreakdownTitle = styled.h3`
   @media (max-width: 480px) {
     font-size: 1.5rem;
     margin-bottom: 2.5rem;
-    
+
     &::before {
       font-size: 1.8rem;
       margin-bottom: 0.5rem;
@@ -5212,7 +5502,7 @@ const ResultsMetricsGrid = styled.div`
   gap: 4rem;
   position: relative;
   z-index: 2;
-  
+
   @media (max-width: 1024px) {
     gap: 3rem;
   }
@@ -5236,7 +5526,7 @@ const ResultsMetricItem = styled(motion.div)`
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateX(10px);
     background: rgba(255, 255, 255, 0.08);
@@ -5247,7 +5537,7 @@ const ResultsMetricItem = styled(motion.div)`
     gap: 1.5rem;
     padding: 1.8rem;
     border-radius: 20px;
-    
+
     &:hover {
       transform: translateX(8px);
     }
@@ -5257,7 +5547,7 @@ const ResultsMetricItem = styled(motion.div)`
     gap: 1.2rem;
     padding: 1.5rem;
     border-radius: 18px;
-    
+
     &:hover {
       transform: translateX(5px);
     }
@@ -5267,7 +5557,7 @@ const ResultsMetricItem = styled(motion.div)`
     gap: 1rem;
     padding: 1.2rem;
     border-radius: 16px;
-    
+
     &:hover {
       transform: translateX(3px);
     }
@@ -5278,7 +5568,11 @@ const ResultsMetricIcon = styled.div`
   width: 80px;
   height: 80px;
   border-radius: 20px;
-  background: linear-gradient(135deg, var(--accent-color), rgba(var(--accent-color-rgb), 0.8));
+  background: linear-gradient(
+    135deg,
+    var(--accent-color),
+    rgba(var(--accent-color-rgb), 0.8)
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5286,13 +5580,18 @@ const ResultsMetricIcon = styled.div`
   color: white;
   flex-shrink: 0;
   position: relative;
-  
+
   &::before {
     content: '';
     position: absolute;
     inset: -3px;
     border-radius: 23px;
-    background: linear-gradient(45deg, var(--accent-color), transparent, var(--accent-color));
+    background: linear-gradient(
+      45deg,
+      var(--accent-color),
+      transparent,
+      var(--accent-color)
+    );
     z-index: -1;
     animation: ${floatUpDown} 3s ease-in-out infinite;
   }
@@ -5302,7 +5601,7 @@ const ResultsMetricIcon = styled.div`
     height: 70px;
     border-radius: 18px;
     font-size: 1.8rem;
-    
+
     &::before {
       inset: -2px;
       border-radius: 20px;
@@ -5314,7 +5613,7 @@ const ResultsMetricIcon = styled.div`
     height: 60px;
     border-radius: 16px;
     font-size: 1.6rem;
-    
+
     &::before {
       inset: -2px;
       border-radius: 18px;
@@ -5326,7 +5625,7 @@ const ResultsMetricIcon = styled.div`
     height: 50px;
     border-radius: 14px;
     font-size: 1.4rem;
-    
+
     &::before {
       inset: -1px;
       border-radius: 15px;
@@ -5405,49 +5704,52 @@ const ResultsMetricDescription = styled.p`
 `;
 
 const ResultsAchieved = () => {
+  const { t } = useTranslation();
+  const resultsDashboard = t('targetedAdvertisingPage.resultsDashboard', { returnObjects: true });
+  const resultsBreakdown = t('targetedAdvertisingPage.resultsBreakdown', { returnObjects: true });
   const dashboardMetrics = [
     {
-      number: "2-5x",
-      label: "Збільшення продажів",
-      description: "Масштабування без підвищення вартості залучення"
+      number: '2-5x',
+      label: resultsDashboard[0].label,
+      description: resultsDashboard[0].description,
     },
     {
-      number: "30-70%",
-      label: "Нижча вартість ліда",
-      description: "За рахунок оптимізації та тестування"
+      number: '30-70%',
+      label: resultsDashboard[1].label,
+      description: resultsDashboard[1].description,
     },
     {
-      number: "400%+",
-      label: "ROAS",
-      description: "При правильному налаштуванні кампаній"
-    }
+      number: '400%+',
+      label: resultsDashboard[2].label,
+      description: resultsDashboard[2].description,
+    },
   ];
 
   const detailedMetrics = [
     {
-      icon: "🎯",
-      number: "15%",
-      title: "Конверсія з реклами",
-      description: "Особливо в нішах з чіткою потребою — медицина, послуги, освітні продукти. Ми знаємо, як працювати з «гарячими» аудиторіями."
+      icon: '🎯',
+      number: '15%',
+      title: resultsBreakdown[0].title,
+      description: resultsBreakdown[0].description,
     },
     {
-      icon: "🚀",
-      number: "300+",
-      title: "Успішних запусків",
-      description: "За час нашої роботи ми запустили понад 300 рекламних кампаній у різних нішах. Наш досвід дозволяє швидко адаптуватися."
+      icon: '🚀',
+      number: '300+',
+      title: resultsBreakdown[1].title,
+      description: resultsBreakdown[1].description,
     },
     {
-      icon: "💎",
-      number: "80%",
-      title: "Клієнтів повертаються",
-      description: "Ми вибудовуємо довгострокові партнерства, оскільки працюємо прозоро й завжди націлені на результат."
+      icon: '💎',
+      number: '80%',
+      title: resultsBreakdown[2].title,
+      description: resultsBreakdown[2].description,
     },
     {
-      icon: "📈",
-      number: "4.2x",
-      title: "Середній ROI",
-      description: "Наші клієнти отримують у 4+ рази більше доходу, ніж витрачають на рекламу завдяки продуманій воронці продажів."
-    }
+      icon: '📈',
+      number: '4.2x',
+      title: resultsBreakdown[3].title,
+      description: resultsBreakdown[3].description,
+    },
   ];
 
   return (
@@ -5460,16 +5762,16 @@ const ResultsAchieved = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Результати, яких досягаємо
+            {t('targetedAdvertisingPage.resultsTitle')}
           </ResultsMainTitle>
-          
+
           <ResultsIntro
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Ми вимірюємо ефективність не лайками й охопленнями, а конкретними бізнес-показниками: кількістю заявок, продажами, вартістю ліда, рентабельністю реклами. Ось типові результати наших кампаній:
+            {t('targetedAdvertisingPage.resultsIntro')}
           </ResultsIntro>
         </ResultsHeader>
 
@@ -5491,8 +5793,8 @@ const ResultsAchieved = () => {
         </ResultsDashboard>
 
         <ResultsBreakdown>
-          <BreakdownTitle>Детальна аналітика результатів</BreakdownTitle>
-          
+          <BreakdownTitle>{t('targetedAdvertisingPage.resultsBreakdownTitle')}</BreakdownTitle>
+
           <ResultsMetricsGrid>
             {detailedMetrics.map((metric, index) => (
               <ResultsMetricItem
@@ -5506,7 +5808,9 @@ const ResultsAchieved = () => {
                 <ResultsMetricContent>
                   <ResultsMetricNumber>{metric.number}</ResultsMetricNumber>
                   <ResultsMetricTitle>{metric.title}</ResultsMetricTitle>
-                  <ResultsMetricDescription>{metric.description}</ResultsMetricDescription>
+                  <ResultsMetricDescription>
+                    {metric.description}
+                  </ResultsMetricDescription>
                 </ResultsMetricContent>
               </ResultsMetricItem>
             ))}
@@ -5681,7 +5985,7 @@ const FaqTitle = styled(motion.h2)`
     z-index: -1;
     white-space: nowrap;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -5902,12 +6206,12 @@ const FaqToggle = styled(motion.div)`
   border-radius: 50%;
   transition: all 0.3s ease;
   padding: 6px;
-  transform: ${props => props['data-open'] === 'true' ? 'rotate(45deg)' : 'rotate(0deg)'};
-  background-color: ${props => 
-    props['data-open'] === 'true' 
-      ? 'rgba(var(--accent-color-rgb), 0.15)' 
-      : 'rgba(var(--accent-color-rgb), 0.05)'
-  };
+  transform: ${props =>
+    props['data-open'] === 'true' ? 'rotate(45deg)' : 'rotate(0deg)'};
+  background-color: ${props =>
+    props['data-open'] === 'true'
+      ? 'rgba(var(--accent-color-rgb), 0.15)'
+      : 'rgba(var(--accent-color-rgb), 0.05)'};
 
   ${FaqQuestion}:hover & {
     background: rgba(var(--accent-color-rgb), 0.1);
@@ -6171,42 +6475,43 @@ const FaqCtaButton = styled(motion.button)`
 
 const TargetedFaq = ({ openModal: openMainModal }) => {
   const [expandedFaqs, setExpandedFaqs] = useState([]);
-  
+  const { t } = useTranslation();
+
+  const faq = t('targetedAdvertisingPage.faq', { returnObjects: true });
+
   const faqData = [
     {
-      question: "1. Скільки часу потрібно, щоб побачити перші результати від таргетованої реклами?",
-      answer: "Перші кліки й охоплення з'являються вже в день запуску. Проте на отримання стабільних результатів у вигляді лідів чи продажів зазвичай потрібно 3–7 днів — саме стільки триває тестування аудиторій та креативів."
+      question: faq[0].question,
+      answer: faq[0].answer,
     },
     {
-      question: "2. Чи можна обійтись без сайту — наприклад, рекламувати тільки Instagram-акаунт?",
-      answer: "Так, можна запускати рекламу на акаунт у соцмережах або навіть у Direct. Особливо це актуально для малого бізнесу, б'юті-сфери, локальних послуг. Головне — мати чітке позиціонування й візуально привабливу сторінку."
+      question: faq[1].question,
+      answer: faq[1].answer,    
     },
     {
-      question: "3. Скільки потрібно інвестувати в рекламу, щоб отримати результат?",
-      answer: "Рекомендований мінімальний бюджет — від 300–500 $ на місяць. Цього достатньо для тестування гіпотез і запуску першої ефективної зв'язки «аудиторія + креатив». Чим складніша ніша — тим більший бюджет може знадобитися для отримання даних і масштабування."
+      question: faq[2].question,
+      answer: faq[2].answer,
     },
     {
-      question: "4. У чому різниця між таргетингом і просуванням через інфлюенсерів?",
-      answer: "Таргетинг дозволяє точніше контролювати аудиторію, бюджет і результат. Реклама у блогерів — це переважно про впізнаваність, а не про гарантовані заявки. Часто найкращі результати дає комбінація обох інструментів."
+      question: faq[3].question,
+      answer: faq[3].answer,
     },
     {
-      question: "5. Що буде після завершення кампанії? Реклама зупиниться?",
-      answer: "Ми зберігаємо всі напрацьовані аудиторії, креативи та аналітику. Це дозволяє швидко перезапустити рекламу у майбутньому або використовувати результати для інших маркетингових каналів. Також за запитом можемо передати доступи й навчити вашу команду підтримувати кампанії самостійно."
-    }
+      question: faq[4].question,
+      answer: faq[4].answer,
+    },
   ];
 
-  const toggleFaq = (index) => {
-    setExpandedFaqs(prev => 
-      prev.includes(index) 
-        ? prev.filter(i => i !== index) 
-        : [...prev, index]
+  const toggleFaq = index => {
+    setExpandedFaqs(prev =>
+      prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
     );
   };
 
   return (
     <FaqSection>
       <FaqWaveTop />
-      
+
       <FaqContainer>
         <FaqGlowCircle className="circle-1" />
         <FaqGlowCircle className="circle-2" />
@@ -6298,7 +6603,7 @@ const TargetedFaq = ({ openModal: openMainModal }) => {
           transition={{ duration: 0.6, delay: 1.2 }}
         >
           <FaqCtaText>
-            Маєте додаткові запитання щодо таргетованої реклами?
+          {t('targetedAdvertisingPage.faqCtaText')}
           </FaqCtaText>
           <FaqCtaButton
             whileHover={{
@@ -6308,7 +6613,7 @@ const TargetedFaq = ({ openModal: openMainModal }) => {
             whileTap={{ scale: 0.98 }}
             onClick={openMainModal}
           >
-            Зв'язатися з нами <FaArrowRight />
+            {t('targetedAdvertisingPage.faqCtaButton')} <FaArrowRight />
           </FaqCtaButton>
         </FaqCta>
       </FaqContainer>
@@ -6335,7 +6640,7 @@ const TargetedAdvertising = () => {
       <OurStrengths />
       <ResultsAchieved />
       <TargetedFaq openModal={openMainModal} />
-      
+
       <Modal isOpen={isModalOpen} onClose={closeMainModal} />
     </>
   );
